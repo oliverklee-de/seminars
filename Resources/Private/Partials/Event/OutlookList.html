@@ -1,98 +1,140 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:oelib="OliverKlee\Oelib\ViewHelpers"
       data-namespace-typo3-fluid="true">
-    <div class="table-responsive">
-        <table class="table table-hover table-striped w-auto">
-            <thead>
-                <tr>
-                    <oelib:isFieldEnabled fieldName="date">
-                        <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.date"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="eventType">
-                        <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.eventType"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="topic">
-                        <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.topic"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="city">
-                        <th scope="city">
-                            <f:translate key="plugin.eventOutlook.events.property.city"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="venue">
-                        <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.venue"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="vacancies">
-                        <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.vacancies"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="registration">
-                        <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.registration"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-                </tr>
-            </thead>
-            <tbody>
-                <f:for each="{events}" as="event">
-                    <tr>
-                        <oelib:isFieldEnabled fieldName="date">
-                            <td>
-                                <f:render partial="EventDate" arguments="{event: event}"/>
-                            </td>
-                        </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="eventType">
-                            <td>
-                                <f:if condition="{event.eventType}">
-                                    {event.eventType.title}
-                                </f:if>
-                            </td>
-                        </oelib:isFieldEnabled>
+    <div class="event-list">
+        <f:for each="{events}" as="event">
+            <div class="p-3 mb-3 bg-body-tertiary rounded">
+                <div class="row justify-content-between">
+                    <div class="col col-12 col-md-auto event-list-item__content">
                         <oelib:isFieldEnabled fieldName="topic">
-                            <td>
+                            <f:if condition="{event.start}">
+                                <strong class="d-block mb-1 small">
+                                    <f:render partial="EventDate" arguments="{event: event}"/>
+                                </strong>
+                            </f:if>
+                            <h2 class="event-list-item__header h3 mb-3">
                                 <f:link.action action="show" arguments="{event: event}"
                                                pageUid="{settings.singleViewPage}}">
                                     {event.displayTitle}
                                 </f:link.action>
-                            </td>
+                            </h2>
                         </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="city">
-                            <td>
-                                <f:for each="{event.cityNames}" as="cityName" iteration="iteration">
-                                    {cityName}{f:if(condition: iteration.isLast, then: '', else: ', ')}
-                                </f:for>
-                            </td>
-                        </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="venue">
-                            <td>
-                                <f:for each="{event.venues}" as="venue" iteration="iteration">
-                                    {venue.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
-                                </f:for>
-                            </td>
-                        </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="vacancies">
-                            <td class="text-end">
-                                <f:render partial="Event/VacanciesIfRegistrationPossibleByDate"
-                                          arguments="{event: event, viewName: 'eventOutlook'}"/>
-                            </td>
-                        </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="registration">
-                            <td>
-                                <f:render partial="Event/RegistrationLink"
-                                          arguments="{event: event, viewName: 'eventOutlook'}"/>
-                            </td>
-                        </oelib:isFieldEnabled>
-                    </tr>
-                </f:for>
-            </tbody>
-        </table>
+
+                        <div class="event-list-item__details">
+                            <f:if condition="{event.organizers}">
+                                <div class="d-flex mb-1">
+                                    <f:render partial="Event/Organizers" arguments="{event: event, listView: 1}"></f:render>
+                                </div>
+                            </f:if>
+
+                            <f:if condition="{event.venues} || {event.cityNames}">
+                                <div class="d-flex mb-1">
+                                    <span class="event-list-item__details-title">
+                                        <f:translate key="plugin.eventOutlook.events.property.venue"/>:
+                                    </span>
+                                    <f:if condition="{event.venues}">
+                                        <f:for each="{event.venues}" as="venue" iteration="iteration">
+                                            {venue.title}<f:if condition="!{iteration.isLast}"><f:then>,</f:then><f:else><f:if condition="{event.cityNames}">,</f:if></f:else></f:if>
+                                        </f:for>
+                                    </f:if>
+                                    <f:if condition="{event.cityNames}">
+                                        <f:for each="{event.cityNames}" as="cityName" iteration="iteration">
+                                            {cityName}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                        </f:for>
+                                    </f:if>
+                                </div>
+                            </f:if>
+
+                            <oelib:isFieldEnabled fieldName="speakers">
+                                <f:if condition="{event.speakers}">
+                                    <div class="d-flex mb-1">
+                                        <span class="event-list-item__details-title">
+                                            <f:render partial="Event/SpeakersHeading" arguments="{event: event}"/>:
+                                        </span>
+                                        <f:render partial="Event/Speakers" arguments="{event: event, iconSize: iconSize, iconColor: iconColor}"/>
+                                    </div>
+                                </f:if>
+                            </oelib:isFieldEnabled>
+
+                            <f:if condition="{event.registrationPossibleByDate}">
+                                <div class="d-flex mb-1">
+                                    <span class="event-list-item__details-title">
+                                        <f:translate key="plugin.eventSingleView.events.property.price"/>:
+                                    </span>
+                                    <f:render partial="PriceWithVat" arguments="{amount: event.standardPrice}"/>
+                                </div>
+                            </f:if>
+
+                            <div class="event-list-item__badges">
+                                <oelib:isFieldEnabled fieldName="eventType">
+                                    <f:if condition="{event.eventType}">
+                                        <span class="badge rounded-pill fs-6 fw-medium bg-dark-subtle text-dark mt-3">
+                                            {event.eventType.title}
+                                        </span>
+                                    </f:if>
+                                </oelib:isFieldEnabled>
+
+                                <f:if condition="{event.registrationRequired}">
+                                    <span class="badge rounded-pill fs-6 fw-medium bg-primary-subtle text-dark mt-3">
+                                        <f:render partial="Event/AttendanceMode" arguments="{event: event}"/>
+                                    </span>
+                                </f:if>
+
+                                <f:if condition="{event.topic.categories}">
+                                    <f:for each="{event.topic.categories}" as="category" iteration="iteration">
+                                        <span class="badge rounded-pill fs-6 fw-medium bg-info-subtle text-dark mt-3">
+                                            {category.title}
+                                        </span>
+                                    </f:for>
+                                </f:if>
+
+                                <span class="badge rounded-pill fs-6 fw-medium bg-body-secondary text-dark mt-3">
+                                    #{event.uid}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <oelib:isFieldEnabled fieldName="vacancies|registration">
+                        <div class="col col-12 col-md-auto d-md-block justify-content-center justify-content-sm-start event-list-item__action">
+                            <div class="row h-100 justify-content-between">
+                                <f:variable name="detailsAriaLabel">{f:translate(key: 'plugin.eventOutlook.events.property.registration.details.ariaLabel')} '{event.displayTitle}'</f:variable>
+                                <div class="col col-12 col-sm-6 col-md-12">
+                                    <f:link.action action="show" arguments="{event: event}"
+                                                   pageUid="{settings.singleViewPage}}"
+                                                   additionalAttributes="{'aria-label': '{detailsAriaLabel}'}"
+                                                   class="btn btn-primary w-100">
+                                        <f:translate key="plugin.eventOutlook.events.property.registration.details"/>
+                                    </f:link.action>
+                                </div>
+                                <f:if condition="{settings.registrationPage} && {event.registrationRequired} && {event.registrationPossibleByDate}">
+                                    <div class="col col-12 col-sm-6 col-md-12 align-content-end">
+                                        <oelib:isFieldEnabled fieldName="registration">
+                                            <f:render partial="Event/RegistrationLink"
+                                                      arguments="{event: event, viewName: 'eventOutlook', listView: 1}"/>
+                                        </oelib:isFieldEnabled>
+                                        <oelib:isFieldEnabled fieldName="vacancies">
+                                            <f:if condition="{event.registrationRequired} && {event.registrationPossibleByDate}">
+                                                <f:if condition="!{event.statistics.regularVacancies}">
+                                                    <f:then>
+                                                        <f:variable name="spacingBottom" value=" mt-2 mt-sm-0 mb-sm-2 mb-md-0"/>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:variable name="spacingBottom" value=""/>
+                                                    </f:else>
+                                                </f:if>
+                                                <div class="d-flex justify-content-center{spacingBottom}">
+                                                    <f:render partial="Event/VacanciesIfRegistrationPossibleByDate"
+                                                              arguments="{event: event, viewName: 'eventOutlook'}"/>
+                                                </div>
+                                            </f:if>
+                                        </oelib:isFieldEnabled>
+                                    </div>
+                                </f:if>
+                            </div>
+                        </div>
+                    </oelib:isFieldEnabled>
+                </div>
+            </div>
+        </f:for>
     </div>
 </html>
