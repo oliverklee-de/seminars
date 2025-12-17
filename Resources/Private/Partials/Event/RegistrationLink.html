@@ -12,9 +12,16 @@
             </f:if>
             <f:variable name="registrationLinkAriaLabel"
                         value="{f:translate(key: 'plugin.eventOutlook.events.property.registration.{registrationType}.ariaLabel', arguments: {0: event.displayTitle})}"/>
+            <f:variable name="stylingClasses">
+                <f:if condition="{viewName} == 'eventOutlook'">
+                    <f:then> w-100 mt-3 mt-sm-0</f:then>
+                    <f:else if="{buttonFullWidth} == 1"> w-100</f:else>
+                </f:if>
+            </f:variable>
             <f:link.action controller="EventRegistration" action="checkPrerequisites"
                            pageUid="{settings.registrationPage}" arguments="{event: event}"
-                           additionalAttributes="{'aria-label': '{registrationLinkAriaLabel}'}">
+                           additionalAttributes="{'aria-label': '{registrationLinkAriaLabel}'}"
+                           class="btn btn-primary mb-2{stylingClasses}">
                 <f:translate key="plugin.{viewName}.events.property.registration.{registrationType}"/>
             </f:link.action>
         </f:if>
