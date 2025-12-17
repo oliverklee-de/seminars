@@ -1974,26 +1974,11 @@
       <trans-unit id="plugin.eventOutlook.message.noEventsFound">
         <source>No events found.</source>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.date">
-        <source>Date</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventType">
-        <source>Type</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.topic">
-        <source>Topic</source>
-      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.organizer">
         <source>Organizer</source>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.city">
-        <source>City</source>
-      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.venue">
         <source>Venue</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventFormat">
-        <source>Format</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.0">
         <source>on-site</source>
@@ -2004,23 +1989,17 @@
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.2">
         <source>online</source>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.categories">
-        <source>Categories</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.speakers">
-        <source>Speakers</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventUid">
-        <source>Number</source>
-      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number">
         <source>#%1$u</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.singleViewLink">
+        <source>Details</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.singleViewLink.ariaLabel">
+        <source>Show details for the event &quot;%1$s&quot;</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.price">
         <source>Price</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies">
-        <source>Vacancies</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked">
         <source>fully booked</source>
@@ -2037,8 +2016,14 @@
       <trans-unit id="plugin.eventOutlook.events.property.registration.register">
         <source>registration</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.registration.register.ariaLabel">
+        <source>Register for</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList">
         <source>waiting list</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList.ariaLabel">
+        <source>Subscribe to waiting list for</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView">
         <source>Event single view</source>
