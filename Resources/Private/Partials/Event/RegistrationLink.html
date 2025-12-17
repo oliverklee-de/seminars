@@ -2,8 +2,22 @@
     <f:variable name="statistics" value="{event.statistics}"/>
     <f:if condition="{settings.registrationPage} && {event.registrationRequired}">
         <f:if condition="{event.registrationPossibleByDate} && {statistics.anyVacancies}">
+            <f:comment>
+                Prevent new line breaks in the generated source code
+                by wrapping the whole variable value in one row
+            </f:comment>
+            <f:variable name="linkAriaLabel"><f:if condition="{statistics.regularVacancies}"><f:then>{f:translate(key: 'plugin.eventOutlook.events.property.registration.register.ariaLabel')} '{event.displayTitle}'</f:then><f:else>{f:translate(key: 'plugin.{viewName}.events.property.registration.waitingList.ariaLabel')} '{event.displayTitle}'</f:else></f:if></f:variable>
+            <f:variable name="stylingClasses">
+                <f:if condition="{viewName} == 'eventOutlook'">
+                    <f:then> w-100 mt-3 mt-sm-0</f:then>
+                    <f:else if="{buttonFullWidth} == 1"> w-100</f:else>
+                    <f:else></f:else>
+                </f:if>
+            </f:variable>
             <f:link.action controller="EventRegistration" action="checkPrerequisites"
-                           pageUid="{settings.registrationPage}" arguments="{event: event}">
+                           pageUid="{settings.registrationPage}" arguments="{event: event}"
+                           additionalAttributes="{'aria-label': '{linkAriaLabel}'}"
+                           class="btn btn-primary mb-2{stylingClasses}">
                 <f:if condition="{statistics.regularVacancies}">
                     <f:then>
                         <f:translate key="plugin.{viewName}.events.property.registration.register"/>
