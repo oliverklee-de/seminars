@@ -1,170 +1,104 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:oelib="OliverKlee\Oelib\ViewHelpers"
       data-namespace-typo3-fluid="true">
-    <div class="table-responsive">
-        <table class="table table-hover table-striped w-auto">
-            <thead>
-                <tr>
-                    <oelib:isFieldEnabled fieldName="date">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.date"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="eventType">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.eventType"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="topic">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.topic"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="organizer">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.organizer"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="city">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.city"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="venue">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.venue"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="eventFormat">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.eventFormat"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="categories">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.categories"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="speakers">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.speakers"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="eventUid">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.eventUid"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="singleViewLink">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.singleViewLink"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-                </tr>
-            </thead>
-            <tbody>
-                <f:for each="{events}" as="event">
-                    <f:variable name="singleViewLinkAriaLabel"
-                                value="{f:translate(key: 'plugin.eventArchive.events.property.singleViewLink.ariaLabel', arguments: {0: event.displayTitle})}"/>
-                    <tr>
-                        <oelib:isFieldEnabled fieldName="date">
-                            <td>
-                                <f:render partial="EventDate" arguments="{event: event}"/>
-                            </td>
-                        </oelib:isFieldEnabled>
-
-                        <oelib:isFieldEnabled fieldName="eventType">
-                            <td>
-                                <f:if condition="{event.eventType}">
-                                    {event.eventType.title}
-                                </f:if>
-                            </td>
-                        </oelib:isFieldEnabled>
-
+    <div class="event-list">
+        <f:for each="{events}" as="event">
+            <div class="p-3 mb-3 bg-body-tertiary rounded">
+                <div class="row justify-content-between">
+                    <div class="col col-12 col-md-auto event-list-item__content">
                         <oelib:isFieldEnabled fieldName="topic">
-                            <td>
+                            <f:if condition="{event.start}">
+                                <strong class="d-block mb-1 small">
+                                    <f:render partial="EventDate" arguments="{event: event}"/>
+                                </strong>
+                            </f:if>
+                            <h2 class="event-list-item__header h3 mb-3">
                                 <f:link.action action="show" arguments="{event: event}"
-                                               pageUid="{settings.singleViewPage}"
-                                               additionalAttributes="{'aria-label': '{singleViewLinkAriaLabel}'}">
+                                               pageUid="{settings.singleViewPage}">
                                     {event.displayTitle}
                                 </f:link.action>
-                            </td>
+                            </h2>
                         </oelib:isFieldEnabled>
 
-                        <oelib:isFieldEnabled fieldName="organizer">
-                            <td>
-                                <f:for each="{event.organizers}" as="organizer" iteration="iteration">
-                                    {organizer.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
-                                </f:for>
-                            </td>
-                        </oelib:isFieldEnabled>
+                        <div class="event-list-item__details">
+                            <f:if condition="{event.organizers}">
+                                <div class="d-flex mb-1">
+                                    <span class="event-list-item__details-title">
+                                        <f:translate key="plugin.eventArchive.events.property.organizer"/>:
+                                    </span>
+                                    <f:for each="{event.organizers}" as="organizer" iteration="iteration">
+                                        {organizer.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                    </f:for>
+                                </div>
+                            </f:if>
 
-                        <oelib:isFieldEnabled fieldName="city">
-                            <td>
-                                <f:for each="{event.cityNames}" as="cityName" iteration="iteration">
-                                    {cityName}{f:if(condition: iteration.isLast, then: '', else: ', ')}
-                                </f:for>
-                            </td>
-                        </oelib:isFieldEnabled>
+                            <f:if condition="{event.venues} || {event.cityNames}">
+                                <div class="d-flex mb-1">
+                                    <span class="event-list-item__details-title">
+                                        <f:translate key="plugin.eventArchive.events.property.venue"/>:
+                                    </span>
+                                    <f:if condition="{event.venues}">
+                                        <f:for each="{event.venues}" as="venue" iteration="iteration">
+                                            {venue.title}
+                                            <f:if condition="!{iteration.isLast}">
+                                                <f:then>,</f:then>
+                                                <f:else>
+                                                    <f:if condition="{event.cityNames}">,</f:if>
+                                                </f:else>
+                                            </f:if>
+                                        </f:for>
+                                    </f:if>
+                                    <f:if condition="{event.cityNames}">
+                                        <f:for each="{event.cityNames}" as="cityName" iteration="iteration">
+                                            {cityName}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                        </f:for>
+                                    </f:if>
+                                </div>
+                            </f:if>
 
-                        <oelib:isFieldEnabled fieldName="venue">
-                            <td>
-                                <f:for each="{event.venues}" as="venue" iteration="iteration">
-                                    {venue.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
-                                </f:for>
-                            </td>
-                        </oelib:isFieldEnabled>
+                            <oelib:isFieldEnabled fieldName="speakers">
+                                <f:if condition="{event.speakers}">
+                                    <div class="d-flex mb-1">
+                                        <span class="event-list-item__details-title">
+                                            <f:render partial="Event/SpeakersHeading" arguments="{event: event}"/>:
+                                        </span>
+                                        <f:for each="{event.speakers}" as="speaker" iteration="iteration">
+                                            {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                        </f:for>
+                                    </div>
+                                </f:if>
+                            </oelib:isFieldEnabled>
 
-                        <oelib:isFieldEnabled fieldName="eventFormat">
-                            <td>
-                                <f:translate key="plugin.eventArchive.events.property.eventFormat.{event.eventFormat}"/>
-                            </td>
-                        </oelib:isFieldEnabled>
+                            <div class="event-list-item__badges">
+                                <oelib:isFieldEnabled fieldName="eventType">
+                                    <f:if condition="{event.eventType}">
+                                        <span class="badge rounded-pill fs-6 fw-medium bg-dark-subtle text-dark mt-3">
+                                            {event.eventType.title}
+                                        </span>
+                                    </f:if>
+                                </oelib:isFieldEnabled>
 
-                        <oelib:isFieldEnabled fieldName="categories">
-                            <td>
-                                <f:for each="{event.categories}" as="category">
-                                    {category.title}
-                                </f:for>
-                            </td>
-                        </oelib:isFieldEnabled>
+                                <f:if condition="{event.registrationRequired}">
+                                    <span class="badge rounded-pill fs-6 fw-medium bg-primary-subtle text-dark mt-3">
+                                        <f:render partial="Event/AttendanceMode" arguments="{event: event}"/>
+                                    </span>
+                                </f:if>
 
-                        <oelib:isFieldEnabled fieldName="speakers">
-                            <td>
-                                <f:for each="{event.speakers}" as="speaker" iteration="iteration">
-                                    {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
-                                </f:for>
-                            </td>
-                        </oelib:isFieldEnabled>
+                                <f:if condition="{event.topic.categories}">
+                                    <f:for each="{event.topic.categories}" as="category" iteration="iteration">
+                                        <span class="badge rounded-pill fs-6 fw-medium bg-info-subtle text-dark mt-3">
+                                            {category.title}
+                                        </span>
+                                    </f:for>
+                                </f:if>
 
-                        <oelib:isFieldEnabled fieldName="eventUid">
-                            <td class="text-end">
-                                <f:translate key="plugin.eventArchive.events.property.eventUid.number"
-                                             arguments="{0: event.uid}"/>
-                            </td>
-                        </oelib:isFieldEnabled>
-
-                        <oelib:isFieldEnabled fieldName="singleViewLink">
-                            <td>
-                                <f:link.action action="show" arguments="{event: event}"
-                                               pageUid="{settings.singleViewPage}"
-                                               additionalAttributes="{'aria-label': '{singleViewLinkAriaLabel}'}">
-                                    <f:translate key="plugin.eventArchive.events.property.singleViewLink"/>
-                                </f:link.action>
-                            </td>
-                        </oelib:isFieldEnabled>
-                    </tr>
-                </f:for>
-            </tbody>
-        </table>
+                                <span class="badge rounded-pill fs-6 fw-medium bg-body-secondary text-dark mt-3">
+                                    #{event.uid}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:for>
     </div>
 </html>
