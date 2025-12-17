@@ -1869,29 +1869,20 @@
       <trans-unit id="plugin.eventArchive.message.noEventsFound">
         <source>No events found.</source>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.date">
-        <source>Date</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.topic">
-        <source>Topic</source>
-      </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.organizer">
-        <source>Organizer</source>
+        <source>Organizer:</source>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.city">
-        <source>City</source>
+        <source>City:</source>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.venue">
-        <source>Venue</source>
+        <source>Venue:</source>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.speakers">
-        <source>Speakers</source>
+      <trans-unit id="plugin.eventArchive.events.property.speakers.one">
+        <source>Speaker:</source>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventType">
-        <source>Type</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventFormat">
-        <source>Format</source>
+      <trans-unit id="plugin.eventArchive.events.property.speakers.many">
+        <source>Speakers:</source>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.0">
         <source>on-site</source>
@@ -1901,12 +1892,6 @@
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.2">
         <source>online</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.categories">
-        <source>Categories</source>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventUid">
-        <source>Number</source>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventUid.number">
         <source>#%1$u</source>
