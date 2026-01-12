@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\Tests\Unit\Domain\Model\Registration;
 
 use OliverKlee\Seminars\Domain\Model\AccommodationOption;
 use OliverKlee\Seminars\Domain\Model\Event\EventDate;
-use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Model\FoodOption;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
@@ -103,17 +102,6 @@ final class RegistrationTest extends UnitTestCase
     }
 
     /**
-     * @return array<string, array{0: EventDateInterface}>
-     */
-    public function validEventTypesDataProvider(): array
-    {
-        return [
-            'single event' => [new SingleEvent()],
-            'event date' => [new EventDate()],
-        ];
-    }
-
-    /**
      * @test
      */
     public function getUserInitiallyReturnsNull(): void
@@ -195,49 +183,6 @@ final class RegistrationTest extends UnitTestCase
         $this->subject->setUser($user);
 
         self::assertTrue($this->subject->belongsToUser($userUid));
-    }
-
-    /**
-     * @test
-     *
-     * @dataProvider validEventTypesDataProvider
-     */
-    public function hasNecessaryAssociationsWithUserAndWithEventReturnsTrue(EventDateInterface $event): void
-    {
-        $this->subject->setUser(new FrontendUser());
-        $this->subject->setEvent($event);
-
-        self::assertTrue($this->subject->hasNecessaryAssociations());
-    }
-
-    /**
-     * @test
-     *
-     * @dataProvider validEventTypesDataProvider
-     */
-    public function hasNecessaryAssociationsWithoutUserAndWithEventReturnsFalse(EventDateInterface $event): void
-    {
-        $this->subject->setEvent($event);
-
-        self::assertFalse($this->subject->hasNecessaryAssociations());
-    }
-
-    /**
-     * @test
-     */
-    public function hasNecessaryAssociationsWithUserAndWithoutEventReturnsFalse(): void
-    {
-        $this->subject->setUser(new FrontendUser());
-
-        self::assertFalse($this->subject->hasNecessaryAssociations());
-    }
-
-    /**
-     * @test
-     */
-    public function hasNecessaryAssociationsWithNeitherUserNorEventReturnsFalse(): void
-    {
-        self::assertFalse($this->subject->hasNecessaryAssociations());
     }
 
     /**

@@ -8,7 +8,6 @@ use OliverKlee\Seminars\Domain\Model\AccommodationOption;
 use OliverKlee\Seminars\Domain\Model\Event\Event;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\FoodOption;
-use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\RawDataInterface;
 use OliverKlee\Seminars\Domain\Model\RawDataTrait;
 use OliverKlee\Seminars\Domain\Model\RegistrationCheckbox;
@@ -168,16 +167,6 @@ class Registration extends AbstractEntity implements RawDataInterface
     public function setEvent(EventDateInterface $event): void
     {
         $this->event = $event;
-    }
-
-    /**
-     * Checks whether all associations are set in a way that this registration can be used.
-     *
-     * This safeguards against cases where an event or a user is deleted, but the registration is not.
-     */
-    public function hasNecessaryAssociations(): bool
-    {
-        return ($this->getEvent() instanceof EventDateInterface) && ($this->getUser() instanceof FrontendUser);
     }
 
     /**
