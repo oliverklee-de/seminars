@@ -81,6 +81,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Make the room in the BE a one-line input (#4687)
 - Suggest the `seminars_premium` extension (#4676)
 - Rely on the Core to autogenerate the MM tables (#4577, #4578)
 - Make a BE label in the billing address more specific (#4533)
