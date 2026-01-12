@@ -386,9 +386,10 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.room',
             'config' => [
-                'type' => 'text',
-                'cols' => 30,
-                'rows' => 5,
+                'type' => 'input',
+                'size' => 20,
+                'max' => 255,
+                'eval' => 'trim',
             ],
         ],
         'webinar_url' => [
