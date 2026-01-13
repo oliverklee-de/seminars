@@ -81,6 +81,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Show the "attended" checkbox for regular registrations only (#4697)
 - Add a certificate tab to the registration TCEforms (#4696)
 - Make the room in the BE a one-line input (#4687)
 - Suggest the `seminars_premium` extension (#4676)
