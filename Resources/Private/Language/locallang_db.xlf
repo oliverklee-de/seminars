@@ -342,6 +342,9 @@
       <trans-unit id="tx_seminars_attendances.divLabelRegistrationComments">
         <source>Registration Comments</source>
       </trans-unit>
+      <trans-unit id="tx_seminars_attendances.divLabelCertificateOfAttendance">
+        <source>Certificate of attendance</source>
+      </trans-unit>
       <trans-unit id="tx_seminars_attendances.divLabelPaymentInformation">
         <source>Billing</source>
       </trans-unit>
