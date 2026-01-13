@@ -2106,11 +2106,11 @@
       <trans-unit id="plugin.myRegistrations.index.heading.certificateOfAttendance">
         <source>Certificate</source>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.downloadCertificateOfAttendance.short">
-        <source>📄 Download</source>
+      <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.short">
+        <source>📄 Display</source>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.downloadCertificateOfAttendance.long">
-        <source>📄 Download certificate of attendance</source>
+      <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.long">
+        <source>📄 Display certificate of attendance</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.0">
         <source>regular</source>
@@ -2136,8 +2136,8 @@
       <trans-unit id="plugin.myRegistrations.show.heading.unregistration">
         <source>Unregistration</source>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.downloadCertificateOfAttendance">
-        <source>📄 Download certificate of attendance</source>
+      <trans-unit id="plugin.myRegistrations.show.displayCertificateOfAttendance">
+        <source>📄 Display certificate of attendance</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm">
         <source>proceed to unregistration</source>

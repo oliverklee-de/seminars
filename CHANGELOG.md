@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 
 - Add stub functionality for certificates of attendance
-  (#4669, #4671, #4677, #4678, #4679)
+  (#4669, #4671, #4677, #4678, #4679, #4688)
 - Add `Permissions::isAdmin()` (#4607)
 - Show the registrations statistics in the FE editor list view (#4569, #4584)
 - Show the invoicing status of registrations in the BE module (#4562)
