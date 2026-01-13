@@ -1,9 +1,9 @@
 # TYPO3 extension `seminars`
 
 [![TYPO3 V11](https://img.shields.io/badge/TYPO3-11-orange.svg)](https://get.typo3.org/version/11)
-[![License](https://img.shields.io/github/license/oliverklee/ext-seminars)](https://packagist.org/packages/oliverklee/seminars)
+[![License](https://img.shields.io/github/license/oliverklee-de/seminars)](https://packagist.org/packages/oliverklee/seminars)
 [![GitHub CI Status](https://github.com/oliverklee-de/seminars/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/oliverklee-de/seminars/actions)
-[![Coverage Status](https://coveralls.io/repos/github/oliverklee/ext-seminars/badge.svg?branch=main)](https://coveralls.io/github/oliverklee/ext-seminars?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/oliverklee-de/seminars/badge.svg?branch=main)](https://coveralls.io/github/oliverklee-de/seminars?branch=main)
 
 This TYPO3 extension allows you to create and manage a list of seminars,
 workshops, lectures, theater performances and other events, allowing front-end
