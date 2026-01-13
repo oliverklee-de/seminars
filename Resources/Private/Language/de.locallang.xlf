@@ -2828,13 +2828,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Certificate</source>
         <target state="final">Bescheinigung</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.short">
+      <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.short" approved="yes">
         <source>📄 Display</source>
-        <target state="needs-translation">📄 Display</target>
+        <target state="final">📄 Anzeigen</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.long">
+      <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.long" approved="yes">
         <source>📄 Display certificate of attendance</source>
-        <target state="needs-translation">📄 Display certificate of attendance</target>
+        <target state="final">📄 Teilnahmebescheinigung anzeigen</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.0" approved="yes">
         <source>regular</source>
@@ -2868,9 +2868,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Unregistration</source>
         <target state="final">Abmeldung</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.displayCertificateOfAttendance">
+      <trans-unit id="plugin.myRegistrations.show.displayCertificateOfAttendance" approved="yes">
         <source>📄 Display certificate of attendance</source>
-        <target state="needs-translation">📄 Display certificate of attendance</target>
+        <target state="final">📄 Teilnahmebescheinigung anzeigen</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm" approved="yes">
         <source>proceed to unregistration</source>
