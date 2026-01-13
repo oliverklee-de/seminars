@@ -5,8 +5,8 @@
     <extension class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
                project-home="https://extensions.typo3.org/extension/seminars"
                project-contact="mailto:typo3-coding@oliverklee.de"
-               project-repository="https://github.com/oliverklee/ext-seminars"
-               project-issues="https://github.com/oliverklee/ext-seminars/issues" edit-on-github-branch="main"
+               project-repository="https://github.com/oliverklee-de/seminars"
+               project-issues="https://github.com/oliverklee-de/seminars/issues" edit-on-github-branch="main"
                edit-on-github="oliverklee/ext-seminars" typo3-core-preferred="stable"
                interlink-shortcode="oliverklee/seminars"/>
     <project title="Seminar Manager" release="6.0.x-dev" version="6.0" copyright="2026"/>

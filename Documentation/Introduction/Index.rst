@@ -20,7 +20,7 @@ Compatibility with TYPO3 12LTS/12.4
 -----------------------------------
 
 A TYPO3-12LTS-compatible version of this extension is available via an
-`early-acces program <https://github.com/oliverklee/ext-seminars/wiki/Early-access-program-for-newer-TYPO3-versions>`_.
+`early-acces program <https://github.com/oliverklee-de/seminars/wiki/Early-access-program-for-newer-TYPO3-versions>`_.
 
 Staying informed about the extension
 ------------------------------------
