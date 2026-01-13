@@ -2,7 +2,7 @@
 
 [![TYPO3 V11](https://img.shields.io/badge/TYPO3-11-orange.svg)](https://get.typo3.org/version/11)
 [![License](https://img.shields.io/github/license/oliverklee/ext-seminars)](https://packagist.org/packages/oliverklee/seminars)
-[![GitHub CI Status](https://github.com/oliverklee/ext-seminars/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/oliverklee/ext-seminars/actions)
+[![GitHub CI Status](https://github.com/oliverklee-de/seminars/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/oliverklee-de/seminars/actions)
 [![Coverage Status](https://coveralls.io/repos/github/oliverklee/ext-seminars/badge.svg?branch=main)](https://coveralls.io/github/oliverklee/ext-seminars?branch=main)
 
 This TYPO3 extension allows you to create and manage a list of seminars,
@@ -16,12 +16,12 @@ Most of the documentation is in ReST format
 ## Compatibility with TYPO3 12LTS/12.4
 
 A TYPO3-12LTS-compatible version of this extension is available via an
-[early-acces program](https://github.com/oliverklee/ext-seminars/wiki/Early-access-program-for-newer-TYPO3-versions).
+[early-acces program](https://github.com/oliverklee-de/seminars/wiki/Early-access-program-for-newer-TYPO3-versions).
 
 ## Give it a try!
 
 If you would like to test the extension yourself, there is a
-[DDEV-based TYPO3 distribution](https://github.com/oliverklee/TYPO3-testing-distribution)
+[DDEV-based TYPO3 distribution](https://github.com/oliverklee-de/TYPO3-testing-distribution)
 with this extension installed and some test records ready to go.
 
 ## Staying informed about the extension
