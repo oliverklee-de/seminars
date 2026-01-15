@@ -455,6 +455,10 @@
         <source>Registration Comments</source>
         <target state="needs-translation">Registration Comments</target>
       </trans-unit>
+      <trans-unit id="tx_seminars_attendances.divLabelCertificateOfAttendance">
+        <source>Certificate of attendance</source>
+        <target state="needs-translation">Certificate of attendance</target>
+      </trans-unit>
       <trans-unit id="tx_seminars_attendances.divLabelPaymentInformation">
         <source>Billing</source>
         <target state="needs-translation">Billing</target>
