@@ -1509,4 +1509,4 @@ Special thanks go to @mk-mxp for his work on the hooks.
 ## 1.3.0
 
 The change log up to version 1.3.0
-[has been archived](https://github.com/oliverklee/ext-seminars/blob/v4.4.0/Documentation/changelog-archive.txt).
+[has been archived](https://github.com/oliverklee-de/seminars/blob/v4.4.0/Documentation/changelog-archive.txt).

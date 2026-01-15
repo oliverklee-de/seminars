@@ -6,7 +6,7 @@ Give it a try!
 ==============
 
 If you would like to test the extension yourself, there is a
-`DDEV-based TYPO3 distribution <https://github.com/oliverklee/TYPO3-testing-distribution>`_
+`DDEV-based TYPO3 distribution <https://github.com/oliverklee-de/TYPO3-testing-distribution>`_
 with this extension installed and some test records ready to go.
 
 References

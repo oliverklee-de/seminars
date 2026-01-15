@@ -67,7 +67,7 @@ class RegistrationGuard implements SingletonInterface
      * Throws an exception if the event is not a bookable event type.
      *
      * We should probably replace this with a redirect to the deny action:
-     * https://github.com/oliverklee/ext-seminars/issues/1978
+     * https://github.com/oliverklee-de/seminars/issues/1978
      *
      * @throws \InvalidArgumentException
      *
