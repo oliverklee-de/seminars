@@ -455,9 +455,9 @@
         <source>Registration Comments</source>
         <target state="final">Anmeldekommentare</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_attendances.divLabelCertificateOfAttendance">
+      <trans-unit id="tx_seminars_attendances.divLabelCertificateOfAttendance" approved="yes">
         <source>Certificate of attendance</source>
-        <target state="needs-translation">Certificate of attendance</target>
+        <target state="final">Teilnahmebescheinigung</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.divLabelPaymentInformation" approved="yes">
         <source>Billing</source>
