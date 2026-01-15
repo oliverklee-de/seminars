@@ -78,6 +78,7 @@ $tca = [
         'been_there' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.been_there',
+            'displayCond' => 'FIELD:registration_queue:=:' . Registration::STATUS_REGULAR,
             'config' => [
                 'type' => 'check',
             ],
@@ -117,6 +118,7 @@ $tca = [
         'registration_queue' => [
             'exclude' => true,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue',
+            'onChange' => 'reload',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
