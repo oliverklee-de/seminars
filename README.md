@@ -42,7 +42,7 @@ with the Composer dependencies installed.
 To run all unit tests on the command line:
 
 ```bash
-composer ci:tests:unit
+composer check:tests:unit
 ```
 
 To run all unit tests in a directory or file (using the directory
@@ -90,7 +90,7 @@ running the functional tests:
 To run all functional tests on the command line:
 
 ```bash
-typo3DatabaseUsername=typo3 typo3DatabasePassword=typo3pass typo3DatabaseName=typo3_test composer ci:tests:functional
+typo3DatabaseUsername=typo3 typo3DatabasePassword=typo3pass typo3DatabaseName=typo3_test composer check:tests:functional
 ```
 
 To run all functional tests in a directory or file (using the directory

@@ -59,7 +59,7 @@ jobs:
       - name: Create the tests directory
         run: "mkdir -p .Build/public/typo3temp/var/tests"
       - name: Run unit tests with coverage
-        run: composer ci:coverage:unit
+        run: composer check:coverage:unit
       - name: Show generated coverage files
         run: "ls -lahR .Build/coverage/"
       - name: Run functional tests with coverage
@@ -68,7 +68,7 @@ jobs:
           export typo3DatabaseHost="127.0.0.1";
           export typo3DatabaseUsername="root";
           export typo3DatabasePassword="root";
-          composer ci:coverage:functional
+          composer check:coverage:functional
       - name: Show generated coverage files
         run: "ls -lahR .Build/coverage/"
       - name: Run legacy functional tests with coverage
@@ -77,11 +77,11 @@ jobs:
           export typo3DatabaseHost="127.0.0.1";
           export typo3DatabaseUsername="root";
           export typo3DatabasePassword="root";
-          composer ci:coverage:legacy-functional
+          composer check:coverage:legacy-functional
       - name: Show generated coverage files
         run: "ls -lahR .Build/coverage/"
       - name: Merge coverage results
-        run: composer ci:coverage:merge
+        run: composer check:coverage:merge
       - name: Show merged coverage files
         run: "ls -lahR build/logs/"
       - name: Upload coverage results to Coveralls

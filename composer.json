@@ -120,53 +120,53 @@
 		}
 	},
 	"scripts": {
-		"ci:composer:normalize": "@composer normalize --no-check-lock --dry-run",
-		"ci:coverage": [
-			"@ci:coverage:unit",
-			"@ci:coverage:functional"
+		"check:composer:normalize": "@composer normalize --no-check-lock --dry-run",
+		"check:coverage": [
+			"@check:coverage:unit",
+			"@check:coverage:functional"
 		],
-		"ci:coverage:functional": [
+		"check:coverage:functional": [
 			"@coverage:create-directories",
 			"find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml --whitelist Classes --coverage-php=\".Build/coverage/{}.cov\" {}';"
 		],
-		"ci:coverage:legacy-functional": [
+		"check:coverage:legacy-functional": [
 			"@coverage:create-directories",
 			"find 'Tests/LegacyFunctional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running legacy functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml --whitelist Classes --coverage-php=\".Build/coverage/{}.cov\" {}';"
 		],
-		"ci:coverage:merge": [
+		"check:coverage:merge": [
 			"@coverage:create-directories",
 			"tools/phpcov merge --clover=./build/logs/clover.xml ./.Build/coverage/"
 		],
-		"ci:coverage:unit": [
+		"check:coverage:unit": [
 			"@coverage:create-directories",
 			"phpunit -c Build/phpunit/UnitTests.xml --whitelist Classes --coverage-php=.Build/coverage/unit.cov Tests/Unit"
 		],
-		"ci:php": [
-			"@ci:php:cs-fixer",
-			"@ci:php:lint",
-			"@ci:php:sniff",
-			"@ci:php:stan"
+		"check:php": [
+			"@check:php:cs-fixer",
+			"@check:php:lint",
+			"@check:php:sniff",
+			"@check:php:stan"
 		],
-		"ci:php:cs-fixer": "php-cs-fixer fix -v --dry-run --diff",
-		"ci:php:lint": "find .*.php *.php Classes Configuration Documentation Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
-		"ci:php:rector": "rector --dry-run",
-		"ci:php:sniff": "phpcs *.php Classes Documentation Configuration Tests",
-		"ci:php:stan": "phpstan --no-progress",
-		"ci:static": [
-			"@ci:composer:normalize",
-			"@ci:php:cs-fixer",
-			"@ci:php:lint",
-			"@ci:php:rector",
-			"@ci:php:sniff",
-			"@ci:php:stan",
-			"@ci:ts:lint",
-			"@ci:xliff:lint"
+		"check:php:cs-fixer": "php-cs-fixer fix -v --dry-run --diff",
+		"check:php:lint": "find .*.php *.php Classes Configuration Documentation Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
+		"check:php:rector": "rector --dry-run",
+		"check:php:sniff": "phpcs *.php Classes Documentation Configuration Tests",
+		"check:php:stan": "phpstan --no-progress",
+		"check:static": [
+			"@check:composer:normalize",
+			"@check:php:cs-fixer",
+			"@check:php:lint",
+			"@check:php:rector",
+			"@check:php:sniff",
+			"@check:php:stan",
+			"@check:ts:lint",
+			"@check:xliff:lint"
 		],
-		"ci:tests:functional": "find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml {}';",
-		"ci:tests:legacy-functional": "find 'Tests/LegacyFunctional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running legacy functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml {}';",
-		"ci:tests:unit": "phpunit -c Build/phpunit/UnitTests.xml Tests/Unit",
-		"ci:ts:lint": "typoscript-lint -c Configuration/TypoScriptLint.yaml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript Tests/Functional/Controller/Fixtures/TypoScript",
-		"ci:xliff:lint": "php Build/xliff/xliff-lint lint:xliff Resources/Private/Language",
+		"check:tests:functional": "find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml {}';",
+		"check:tests:legacy-functional": "find 'Tests/LegacyFunctional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running legacy functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml {}';",
+		"check:tests:unit": "phpunit -c Build/phpunit/UnitTests.xml Tests/Unit",
+		"check:ts:lint": "typoscript-lint -c Configuration/TypoScriptLint.yaml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript Tests/Functional/Controller/Fixtures/TypoScript",
+		"check:xliff:lint": "php Build/xliff/xliff-lint lint:xliff Resources/Private/Language",
 		"coverage:create-directories": "mkdir -p build/logs .Build/coverage",
 		"fix": [
 			"@fix:composer",
@@ -203,24 +203,24 @@
 		]
 	},
 	"scripts-descriptions": {
-		"ci:composer:normalize": "Checks the composer.json.",
-		"ci:coverage": "Generates the code coverage report for unit and functional tests.",
-		"ci:coverage:functional": "Generates the code coverage report for functional tests.",
-		"ci:coverage:legacy-functional": "Generates the code coverage report for legacy functional tests.",
-		"ci:coverage:merge": "Merges the code coverage reports for unit and functional tests.",
-		"ci:coverage:unit": "Generates the code coverage report for unit tests.",
-		"ci:php": "Runs all static checks for the PHP files.",
-		"ci:php:cs-fixer": "Checks the code style with the PHP Coding Standards Fixer (PHP-CS-Fixer).",
-		"ci:php:lint": "Lints the PHP files for syntax errors.",
-		"ci:php:rector": "Checks for code for changes by Rector.",
-		"ci:php:sniff": "Checks the code style with PHP_CodeSniffer (PHPCS).",
-		"ci:php:stan": "Checks the PHP types using PHPStan.",
-		"ci:static": "Runs all static code analysis checks for the code.",
-		"ci:tests:functional": "Runs the functional tests.",
-		"ci:tests:legacy-functional": "Runs the legacy functional tests.",
-		"ci:tests:unit": "Runs the unit tests.",
-		"ci:ts:lint": "Lints all TypoScript files.",
-		"ci:xliff:lint": "Lints the XLIFF files.",
+		"check:composer:normalize": "Checks the composer.json.",
+		"check:coverage": "Generates the code coverage report for unit and functional tests.",
+		"check:coverage:functional": "Generates the code coverage report for functional tests.",
+		"check:coverage:legacy-functional": "Generates the code coverage report for legacy functional tests.",
+		"check:coverage:merge": "Merges the code coverage reports for unit and functional tests.",
+		"check:coverage:unit": "Generates the code coverage report for unit tests.",
+		"check:php": "Runs all static checks for the PHP files.",
+		"check:php:cs-fixer": "Checks the code style with the PHP Coding Standards Fixer (PHP-CS-Fixer).",
+		"check:php:lint": "Lints the PHP files for syntax errors.",
+		"check:php:rector": "Checks for code for changes by Rector.",
+		"check:php:sniff": "Checks the code style with PHP_CodeSniffer (PHPCS).",
+		"check:php:stan": "Checks the PHP types using PHPStan.",
+		"check:static": "Runs all static code analysis checks for the code.",
+		"check:tests:functional": "Runs the functional tests.",
+		"check:tests:legacy-functional": "Runs the legacy functional tests.",
+		"check:tests:unit": "Runs the unit tests.",
+		"check:ts:lint": "Lints all TypoScript files.",
+		"check:xliff:lint": "Lints the XLIFF files.",
 		"coverage:create-directories": "Creates the directories needed for recording and merging the code coverage reports.",
 		"fix": "Runs all automatic code style fixes.",
 		"fix:composer": "Runs all fixers for the PHP code.",
