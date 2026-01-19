@@ -1696,16 +1696,6 @@ parameters:
 			path: Tests/Functional/Controller/MyRegistrationsControllerTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 6
-			path: Tests/Functional/Csv/DownloadRegistrationListViewTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$recordData of method OliverKlee\\\\Oelib\\\\Testing\\\\TestingFramework\\:\\:createRecord\\(\\) expects array\\<string, bool\\|int\\|string\\>, array\\<string, mixed\\> given\\.$#"
-			count: 1
-			path: Tests/Functional/Csv/DownloadRegistrationListViewTest.php
-
-		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertSame\\(\\) with array\\{\\} and array\\{\\} will always evaluate to true\\.$#"
 			count: 1
 			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
