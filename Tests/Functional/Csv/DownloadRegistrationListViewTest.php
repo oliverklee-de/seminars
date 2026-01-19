@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Tests\LegacyUnit\Csv;
+namespace OliverKlee\Seminars\Tests\Functional\Csv;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
@@ -14,6 +14,10 @@ use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
+/**
+ * @covers \OliverKlee\Seminars\Csv\AbstractRegistrationListView
+ * @covers \OliverKlee\Seminars\Csv\DownloadRegistrationListView
+ */
 final class DownloadRegistrationListViewTest extends FunctionalTestCase
 {
     use LanguageHelper;
