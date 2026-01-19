@@ -8,7 +8,6 @@ use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Seminars\Csv\CsvDownloader;
 use OliverKlee\Seminars\Middleware\ResponseHeadersModifier;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -34,8 +33,7 @@ final class CsvDownloaderTest extends FunctionalTestCase
 
         $this->setUpExtensionConfiguration();
 
-        $this->responseHeadersModifier = new ResponseHeadersModifier();
-        GeneralUtility::setSingletonInstance(ResponseHeadersModifier::class, $this->responseHeadersModifier);
+        $this->responseHeadersModifier = $this->get(ResponseHeadersModifier::class);
 
         $this->subject = new CsvDownloader();
     }
@@ -53,8 +51,6 @@ final class CsvDownloaderTest extends FunctionalTestCase
      */
     public function createAndOutputListOfRegistrationsForExistentEventSetsResponseHeaderContentType(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsAndRegistrations.xml');
-
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'name');
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'uid');
 
@@ -69,8 +65,6 @@ final class CsvDownloaderTest extends FunctionalTestCase
      */
     public function createAndOutputListOfRegistrationsForExistentEventSetsResponseHeaderContentDisposition(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsAndRegistrations.xml');
-
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'name');
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'uid');
 
@@ -85,7 +79,7 @@ final class CsvDownloaderTest extends FunctionalTestCase
      */
     public function createAndOutputListOfRegistrationsForExistentEventWithoutRegistrationsHasHeaderOnly(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsAndRegistrations.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/CsvDownloader/EventWithoutRegistrations.csv');
 
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'name');
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'uid');
@@ -101,8 +95,6 @@ final class CsvDownloaderTest extends FunctionalTestCase
      */
     public function createListOfRegistrationsForBothConfigurationFieldsNotEmptyAddsSemicolonBetweenFieldHeaders(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsAndRegistrations.xml');
-
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'name');
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'address');
 
@@ -117,8 +109,6 @@ final class CsvDownloaderTest extends FunctionalTestCase
      */
     public function createListOfRegistrationsForZeroEventUidAndNoPageUidThrowsException(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsAndRegistrations.xml');
-
         $this->expectException(\BadMethodCallException::class);
         $this->expectExceptionCode(1390320210);
         $this->expectExceptionMessage('No event UID or page UID set');
@@ -131,7 +121,7 @@ final class CsvDownloaderTest extends FunctionalTestCase
      */
     public function createListOfRegistrationsPageReturnsExportsRegistrationsOnTheGivenPage(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsAndRegistrations.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/CsvDownloader/EventWithRegistrationOnPage.csv');
 
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'address');
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'name');
@@ -146,7 +136,7 @@ final class CsvDownloaderTest extends FunctionalTestCase
      */
     public function createListOfRegistrationsPageReturnsIgnoresRegistrationsOnOtherPage(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsAndRegistrations.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/CsvDownloader/EventWithRegistrationOnPage.csv');
 
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'address');
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'name');
