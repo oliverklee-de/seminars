@@ -133,4 +133,34 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
 
         self::assertStringNotContainsString('1', $this->subject->render());
     }
+
+    /**
+     * @return array<non-empty-string, array{0: non-empty-string}>
+     */
+    public static function unavailableUserDataProvider(): array
+    {
+        return [
+            'deleted' => ['EventWithRegistrationWithDeletedUser.csv'],
+            'disabled' => ['EventWithRegistrationWithDisabledUser.csv'],
+            'missing' => ['EventWithRegistrationWithMissingUser.csv'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @param non-empty-string $fixtureName
+     *
+     * @dataProvider unavailableUserDataProvider
+     */
+    public function renderForUnavailableUserRecordsSkipsUnavailableUsers(string $fixtureName): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DownloadRegistrationListView/' . $fixtureName);
+        $this->subject->setPageUid(1);
+
+        $this->configuration->setAsString('fieldsFromFeUserForCsv', 'uid');
+        $this->configuration->setAsString('fieldsFromAttendanceForCsv', '');
+
+        self::assertSame("fe_users.uid\r\n", $this->subject->render());
+    }
 }
