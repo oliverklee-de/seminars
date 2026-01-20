@@ -1,7 +1,8 @@
 #
 # Table structure for table 'fe_users'
 #
-CREATE TABLE fe_users (
+CREATE TABLE fe_users
+(
 	tx_seminars_registration int(11) unsigned DEFAULT '0' NOT NULL,
 	default_organizer        int(11) unsigned DEFAULT '0' NOT NULL,
 	available_topics         text
@@ -11,7 +12,8 @@ CREATE TABLE fe_users (
 #
 # Table structure for table 'tx_seminars_test'
 #
-CREATE TABLE tx_seminars_test (
+CREATE TABLE tx_seminars_test
+(
 	title tinytext
 );
 
@@ -19,19 +21,21 @@ CREATE TABLE tx_seminars_test (
 #
 # Table structure for table 'tx_seminars_test_mm'
 #
-CREATE TABLE tx_seminars_test_test_mm (
+CREATE TABLE tx_seminars_test_test_mm
+(
 	uid_local   int(11) unsigned DEFAULT '0' NOT NULL,
 	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 	sorting     int(11) unsigned DEFAULT '0' NOT NULL,
-	KEY uid_local(uid_local),
-	KEY uid_foreign(uid_foreign)
+	KEY         uid_local(uid_local),
+	KEY         uid_foreign(uid_foreign)
 );
 
 
 #
 # Table structure for table 'tx_seminars_seminars'
 #
-CREATE TABLE tx_seminars_seminars (
+CREATE TABLE tx_seminars_seminars
+(
 	object_type                               int(11) unsigned    DEFAULT '0'    NOT NULL,
 	title                                     tinytext,
 	topic                                     int(11) unsigned    DEFAULT '0'    NOT NULL,
@@ -62,10 +66,10 @@ CREATE TABLE tx_seminars_seminars (
 	partners                                  int(11) unsigned    DEFAULT '0'    NOT NULL,
 	tutors                                    int(11) unsigned    DEFAULT '0'    NOT NULL,
 	leaders                                   int(11) unsigned    DEFAULT '0'    NOT NULL,
-	price_regular                             decimal(10, 2)      DEFAULT '0.00' NOT NULL,
-	price_regular_early                       decimal(10, 2)      DEFAULT '0.00' NOT NULL,
-	price_special                             decimal(10, 2)      DEFAULT '0.00' NOT NULL,
-	price_special_early                       decimal(10, 2)      DEFAULT '0.00' NOT NULL,
+	price_regular                             decimal(10, 2) DEFAULT '0.00' NOT NULL,
+	price_regular_early                       decimal(10, 2) DEFAULT '0.00' NOT NULL,
+	price_special                             decimal(10, 2) DEFAULT '0.00' NOT NULL,
+	price_special_early                       decimal(10, 2) DEFAULT '0.00' NOT NULL,
 	additional_information                    text,
 	payment_methods                           int(11) unsigned    DEFAULT '0'    NOT NULL,
 	organizers                                int(11) unsigned    DEFAULT '0'    NOT NULL,
@@ -79,7 +83,7 @@ CREATE TABLE tx_seminars_seminars (
 	queue_size                                int(1) unsigned     DEFAULT '0'    NOT NULL,
 	offline_attendees                         int(11) unsigned    DEFAULT '0'    NOT NULL,
 	target_groups                             int(11) unsigned    DEFAULT '0'    NOT NULL,
-	# @deprecated #1324 will be removed in seminars 6.0
+	#                                         @deprecated #1324 will be removed in seminars 6.0
 	registrations                             int(11) unsigned    DEFAULT '0'    NOT NULL,
 	cancelled                                 tinyint(1) unsigned DEFAULT '0'    NOT NULL,
 	owner_feuser                              int(11) unsigned    DEFAULT '0'    NOT NULL,
@@ -100,21 +104,21 @@ CREATE TABLE tx_seminars_seminars (
 	webinar_url                               tinytext,
 	additional_email_text                     text,
 
-	KEY object_type(object_type),
-	KEY topic(topic),
-	KEY event_takes_place_reminder_sent(event_takes_place_reminder_sent),
-	KEY cancelation_deadline_reminder_sent(cancelation_deadline_reminder_sent),
-	KEY slug(slug(127)),
-	FULLTEXT index_event_searchfields(accreditation_number),
-	FULLTEXT index_topic_searchfields(title, subtitle, description)
-)
-	ENGINE = MyISAM;
+	KEY                                       object_type(object_type),
+	KEY                                       topic(topic),
+	KEY                                       event_takes_place_reminder_sent(event_takes_place_reminder_sent),
+	KEY                                       cancelation_deadline_reminder_sent(cancelation_deadline_reminder_sent),
+	KEY                                       slug(slug(127)),
+	FULLTEXT                                  index_event_searchfields(accreditation_number),
+	FULLTEXT                                  index_topic_searchfields(title, subtitle, description)
+) ENGINE = MyISAM;
 
 
 #
 # Table structure for table 'tx_seminars_speakers'
 #
-CREATE TABLE tx_seminars_speakers (
+CREATE TABLE tx_seminars_speakers
+(
 	title              tinytext,
 	organization       tinytext,
 	homepage           tinytext,
@@ -129,15 +133,15 @@ CREATE TABLE tx_seminars_speakers (
 	email              tinytext,
 	cancelation_period int(11) unsigned DEFAULT '0' NOT NULL,
 
-	FULLTEXT index_searchfields(title)
-)
-	ENGINE = MyISAM;
+	FULLTEXT           index_searchfields(title)
+) ENGINE = MyISAM;
 
 
 #
 # Table structure for table 'tx_seminars_attendances'
 #
-CREATE TABLE tx_seminars_attendances (
+CREATE TABLE tx_seminars_attendances
+(
 	title                    tinytext,
 	user                     int(11) unsigned    DEFAULT '0'    NOT NULL,
 	seminar                  int(11) unsigned    DEFAULT '0'    NOT NULL,
@@ -146,24 +150,24 @@ CREATE TABLE tx_seminars_attendances (
 	price_code               tinytext,
 	seats                    int(3) unsigned     DEFAULT '0'    NOT NULL,
 	registered_themselves    tinyint(1) unsigned DEFAULT '0'    NOT NULL,
-	total_price              decimal(10, 2)      DEFAULT '0.00' NOT NULL,
+	total_price              decimal(10, 2) DEFAULT '0.00' NOT NULL,
 	attendees_names          text,
 	additional_persons       int(11) unsigned    DEFAULT '0'    NOT NULL,
 	invoice_date             int(11) unsigned    DEFAULT '0'    NOT NULL,
 	datepaid                 int(11) unsigned    DEFAULT '0'    NOT NULL,
-	invoice_number           varchar(8)                         NULL DEFAULT NULL,
-	customer_number          varchar(8)                         NULL DEFAULT NULL,
+	invoice_number           varchar(8) NULL DEFAULT NULL,
+	customer_number          varchar(8) NULL DEFAULT NULL,
 	method_of_payment        int(11) unsigned    DEFAULT '0'    NOT NULL,
 	separate_billing_address tinyint(1) unsigned DEFAULT '1'    NOT NULL,
-	company                  varchar(80)         DEFAULT '',
-	name                     varchar(80)         DEFAULT ''     NOT NULL,
+	company                  varchar(80)    DEFAULT '',
+	name                     varchar(80)    DEFAULT ''     NOT NULL,
 	gender                   tinyint(1) unsigned DEFAULT '0'    NOT NULL,
-	address                  varchar(40)         DEFAULT '',
-	zip                      varchar(10)         DEFAULT ''     NOT NULL,
-	city                     varchar(40)         DEFAULT ''     NOT NULL,
-	country                  varchar(40)         DEFAULT ''     NOT NULL,
-	telephone                varchar(40)         DEFAULT ''     NOT NULL,
-	email                    varchar(50)         DEFAULT ''     NOT NULL,
+	address                  varchar(40)    DEFAULT '',
+	zip                      varchar(10)    DEFAULT ''     NOT NULL,
+	city                     varchar(40)    DEFAULT ''     NOT NULL,
+	country                  varchar(40)    DEFAULT ''     NOT NULL,
+	telephone                varchar(40)    DEFAULT ''     NOT NULL,
+	email                    varchar(50)    DEFAULT ''     NOT NULL,
 	been_there               tinyint(3) unsigned DEFAULT '0'    NOT NULL,
 	interests                text,
 	expectations             text,
@@ -179,7 +183,7 @@ CREATE TABLE tx_seminars_attendances (
 	attendance_mode          int(1) unsigned     DEFAULT '0'    NOT NULL,
 	order_reference          tinytext,
 
-	KEY seminar(seminar),
+	KEY                      seminar(seminar),
 	KEY user(user)
 );
 
@@ -187,7 +191,8 @@ CREATE TABLE tx_seminars_attendances (
 #
 # Table structure for table 'tx_seminars_sites'
 #
-CREATE TABLE tx_seminars_sites (
+CREATE TABLE tx_seminars_sites
+(
 	title          tinytext,
 	address        text,
 	city           tinytext,
@@ -198,15 +203,15 @@ CREATE TABLE tx_seminars_sites (
 	email_address  tinytext,
 	phone_number   tinytext,
 
-	FULLTEXT index_searchfields(title, city)
-)
-	ENGINE = MyISAM;
+	FULLTEXT       index_searchfields(title, city)
+) ENGINE = MyISAM;
 
 
 #
 # Table structure for table 'tx_seminars_organizers'
 #
-CREATE TABLE tx_seminars_organizers (
+CREATE TABLE tx_seminars_organizers
+(
 	title        tinytext,
 	homepage     tinytext,
 	email        tinytext,
@@ -218,7 +223,8 @@ CREATE TABLE tx_seminars_organizers (
 #
 # Table structure for table 'tx_seminars_payment_methods'
 #
-CREATE TABLE tx_seminars_payment_methods (
+CREATE TABLE tx_seminars_payment_methods
+(
 	title       tinytext,
 	description text
 );
@@ -227,19 +233,20 @@ CREATE TABLE tx_seminars_payment_methods (
 #
 # Table structure for table 'tx_seminars_event_types'
 #
-CREATE TABLE tx_seminars_event_types (
+CREATE TABLE tx_seminars_event_types
+(
 	title            tinytext,
 	single_view_page int(11) unsigned DEFAULT '0' NOT NULL,
 
-	FULLTEXT index_searchfields(title)
-)
-	ENGINE = MyISAM;
+	FULLTEXT         index_searchfields(title)
+) ENGINE = MyISAM;
 
 
 #
 # Table structure for table 'tx_seminars_checkboxes'
 #
-CREATE TABLE tx_seminars_checkboxes (
+CREATE TABLE tx_seminars_checkboxes
+(
 	title       tinytext,
 	description text
 );
@@ -248,7 +255,8 @@ CREATE TABLE tx_seminars_checkboxes (
 #
 # Table structure for table 'tx_seminars_lodgings'
 #
-CREATE TABLE tx_seminars_lodgings (
+CREATE TABLE tx_seminars_lodgings
+(
 	title tinytext
 );
 
@@ -256,7 +264,8 @@ CREATE TABLE tx_seminars_lodgings (
 #
 # Table structure for table 'tx_seminars_foods'
 #
-CREATE TABLE tx_seminars_foods (
+CREATE TABLE tx_seminars_foods
+(
 	title tinytext
 );
 
@@ -264,45 +273,47 @@ CREATE TABLE tx_seminars_foods (
 #
 # Table structure for table 'tx_seminars_timeslots'
 #
-CREATE TABLE tx_seminars_timeslots (
+CREATE TABLE tx_seminars_timeslots
+(
 	seminar    int(11) unsigned DEFAULT '0' NOT NULL,
 	begin_date int(11) unsigned DEFAULT '0' NOT NULL,
 	end_date   int(11) unsigned DEFAULT '0' NOT NULL,
 	place      int(11) unsigned DEFAULT '0' NOT NULL,
 	room       text,
 
-	KEY seminar(seminar)
+	KEY        seminar(seminar)
 );
 
 
 #
 # Table structure for table 'tx_seminars_target_groups'
 #
-CREATE TABLE tx_seminars_target_groups (
+CREATE TABLE tx_seminars_target_groups
+(
 	title       tinytext,
 	minimum_age tinyint(3) unsigned DEFAULT '0' NOT NULL,
 	maximum_age tinyint(3) unsigned DEFAULT '0' NOT NULL,
 
-	FULLTEXT index_searchfields(title)
-)
-	ENGINE = MyISAM;
+	FULLTEXT    index_searchfields(title)
+) ENGINE = MyISAM;
 
 
 #
 # Table structure for table 'tx_seminars_categories'
 #
-CREATE TABLE tx_seminars_categories (
+CREATE TABLE tx_seminars_categories
+(
 	title            tinytext,
 	single_view_page int(11) unsigned DEFAULT '0' NOT NULL,
 
-	FULLTEXT index_searchfields(title)
-)
-	ENGINE = MyISAM;
+	FULLTEXT         index_searchfields(title)
+) ENGINE = MyISAM;
 
 
 #
 # Table structure for table 'tx_seminars_skills'
 #
-CREATE TABLE tx_seminars_skills (
+CREATE TABLE tx_seminars_skills
+(
 	title tinytext
 );
