@@ -1,0 +1,7 @@
+"tx_seminars_attendances"
+,"uid","user"
+,1,1
+
+"fe_users"
+,"uid","crdate","tstamp","gender","status","date_of_birth","name","city"
+,1,1734004800,1734008400,1,1,481939200,"Max Caulfield","Arcadia Bay"

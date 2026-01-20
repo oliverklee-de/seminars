@@ -532,4 +532,53 @@ final class LegacyRegistrationTest extends FunctionalTestCase
         $expected = $this->translate('label_attendance_mode.online');
         self::assertSame($expected, $result);
     }
+
+    /**
+     * @return array<non-empty-string, array{0: non-empty-string, 1: string}>
+     */
+    public static function userDataDataProvider(): array
+    {
+        return [
+            'uid' => ['uid', '1'],
+            'gender' => ['gender', 'Ms.'],
+            'status' => ['status', 'Student'],
+            'crdate' => ['crdate', '2024-12-12 12:00'],
+            'tstamp' => ['tstamp', '2024-12-12 13:00'],
+            'date_of_birth' => ['date_of_birth', '1985-04-10'],
+            'name' => ['name', 'Max Caulfield'],
+            'untransformed value' => ['city', 'Arcadia Bay'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @param non-empty-string $key
+     *
+     * @dataProvider userDataDataProvider
+     */
+    public function getUserDataReturnsDataFromExistingUser(string $key, string $expected): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/LegacyRegistration/RegistrationWithUser.csv');
+        $subject = LegacyRegistration::fromUid(1);
+        self::assertInstanceOf(LegacyRegistration::class, $subject);
+
+        $result = $subject->getUserData($key);
+
+        self::assertSame($expected, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function getUserDataWithInexistentKeyReturnsEmptyString(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/LegacyRegistration/RegistrationWithUser.csv');
+        $subject = LegacyRegistration::fromUid(1);
+        self::assertInstanceOf(LegacyRegistration::class, $subject);
+
+        $result = $subject->getUserData('favorite_movie');
+
+        self::assertSame('', $result);
+    }
 }
