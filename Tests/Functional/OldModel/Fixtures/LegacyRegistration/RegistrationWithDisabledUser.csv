@@ -1,0 +1,7 @@
+"fe_users"
+,"uid","disable","first_name","last_name"
+,1,1,"John","Doe"
+
+"tx_seminars_attendances"
+,"uid","seminar","user","known_from","notes"
+,1,1,1,"Google","Looking forward to the event!"

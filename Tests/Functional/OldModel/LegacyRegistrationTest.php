@@ -581,4 +581,88 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         self::assertSame('', $result);
     }
+
+    /**
+     * @return array<non-empty-string, array{0: non-empty-string}>
+     */
+    public static function unavailableUserDataProvider(): array
+    {
+        return [
+            'deleted' => ['RegistrationWithDeletedUser.csv'],
+            'disabled' => ['RegistrationWithDisabledUser.csv'],
+            'missing' => ['RegistrationWithMissingUser.csv'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @param non-empty-string $fixtureName
+     *
+     * @dataProvider unavailableUserDataProvider
+     */
+    public function getUserDataWithUnavailableUserReturnsEmptyStringAsUnstranformedData(string $fixtureName): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/LegacyRegistration/' . $fixtureName);
+
+        $subject = LegacyRegistration::fromUid(1);
+        self::assertInstanceOf(LegacyRegistration::class, $subject);
+
+        $result = $subject->getUserData('city');
+
+        self::assertSame('', $result);
+    }
+
+    /**
+     * @return array<non-empty-string, array{0: non-empty-string}>
+     */
+    public static function transformedUserDataKeysDataProvider(): array
+    {
+        return [
+            'gender' => ['gender'],
+            'status' => ['status'],
+            'crdate' => ['crdate'],
+            'tstamp' => ['tstamp'],
+            'date_of_birth' => ['date_of_birth'],
+            'name' => ['name'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @param non-empty-string $key
+     *
+     * @dataProvider transformedUserDataKeysDataProvider
+     */
+    public function getUserDataWithUnavailableUserReturnsEmptyStringAsData(string $key): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/LegacyRegistration/RegistrationWithDeletedUser.csv');
+
+        $subject = LegacyRegistration::fromUid(1);
+        self::assertInstanceOf(LegacyRegistration::class, $subject);
+
+        $result = $subject->getUserData($key);
+
+        self::assertSame('', $result);
+    }
+
+    /**
+     * @test
+     *
+     * @param non-empty-string $fixtureName
+     *
+     * @dataProvider unavailableUserDataProvider
+     */
+    public function getUserDataWithUnavailableUserReturnsUidWhenRequested(string $fixtureName): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/LegacyRegistration/' . $fixtureName);
+
+        $subject = LegacyRegistration::fromUid(1);
+        self::assertInstanceOf(LegacyRegistration::class, $subject);
+
+        $result = $subject->getUserData('uid');
+
+        self::assertSame('1', $result);
+    }
 }
