@@ -35,8 +35,6 @@ class LegacyRegistration extends AbstractModel
 
     private ?LegacyEvent $seminar = null;
 
-    private bool $userDataHasBeenRetrieved = false;
-
     /**
      * This variable stores the data of the user as an array and makes it
      * available without further database queries.
@@ -114,7 +112,7 @@ class LegacyRegistration extends AbstractModel
      *
      * The attendee's user data (from fe_users) will be written to `$this->userData`.
      *
-     * `$this->userData` will be null if retrieving the user data fails.
+     * `$this->userData` will be only contain the UID if retrieving the user data fails.
      *
      * @throws NotFoundException
      */
@@ -122,7 +120,7 @@ class LegacyRegistration extends AbstractModel
     {
         $uid = $this->getUser();
         if ($uid === 0) {
-            $this->userData = null;
+            $this->userData = [];
             return;
         }
 
@@ -130,10 +128,7 @@ class LegacyRegistration extends AbstractModel
         /** @var array<string, string|int|bool>|false $data */
         $data = self::getConnectionForTable($table)->select(['*'], $table, ['uid' => $uid])->fetchAssociative();
         if (!\is_array($data)) {
-            throw new NotFoundException(
-                'The FE user with the UID ' . $uid . ' could not be retrieved.',
-                1390065114,
-            );
+            $data = ['uid' => (string)$uid];
         }
 
         $this->setUserData($data);
@@ -147,7 +142,6 @@ class LegacyRegistration extends AbstractModel
     public function setUserData(array $data): void
     {
         $this->userData = $data;
-        $this->userDataHasBeenRetrieved = true;
     }
 
     /**
@@ -237,24 +231,24 @@ class LegacyRegistration extends AbstractModel
 
     /**
      * Retrieves a value out of the userData array. The return value will be an
-     * empty string if the key is not defined in the $this->userData array.
+     * empty string if the key is not defined in the `$this->userData` array.
      *
      * If the data needs to be decoded to be readable (e.g., the gender, the date
      * of birth or the status), this function will already return the clear-text version.
      *
      * @param string $key key of the data to retrieve, may contain leading or trailing spaces
      *
-     * @return string the trimmed value retrieved from $this->userData, may be empty
+     * @return string the trimmed value retrieved from `$this->userData`, may be empty
      */
     public function getUserData(string $key): string
     {
-        if (!$this->userDataHasBeenRetrieved) {
+        if (!\is_array($this->userData)) {
             $this->retrieveUserData();
+            \assert(\is_array($this->userData));
         }
 
         $trimmedKey = \trim($key);
-
-        if (!\is_array($this->userData) || $trimmedKey === '' || !\array_key_exists($trimmedKey, $this->userData)) {
+        if ($trimmedKey === '' || !\array_key_exists($trimmedKey, $this->userData)) {
             return '';
         }
 
