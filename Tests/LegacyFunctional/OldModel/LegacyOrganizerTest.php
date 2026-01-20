@@ -9,6 +9,7 @@ use OliverKlee\Seminars\OldModel\LegacyOrganizer;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\LegacyOrganizer
  */
 final class LegacyOrganizerTest extends FunctionalTestCase

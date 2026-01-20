@@ -9,6 +9,7 @@ use OliverKlee\Seminars\OldModel\LegacySpeaker;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\LegacySpeaker
  */
 final class LegacySpeakerTest extends UnitTestCase

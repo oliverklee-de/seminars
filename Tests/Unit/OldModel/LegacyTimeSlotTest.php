@@ -9,6 +9,7 @@ use OliverKlee\Seminars\OldModel\LegacyTimeSlot;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\LegacyTimeSlot
  */
 final class LegacyTimeSlotTest extends UnitTestCase

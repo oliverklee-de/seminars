@@ -23,6 +23,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
+ * @covers \OliverKlee\Seminars\OldModel\AbstractTimeSpan
  * @covers \OliverKlee\Seminars\OldModel\LegacyEvent
  * @covers \OliverKlee\Seminars\Templating\TemplateHelper
  */

@@ -11,6 +11,7 @@ use OliverKlee\Seminars\OldModel\LegacyRegistration;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\LegacyRegistration
  */
 final class LegacyRegistrationTest extends UnitTestCase

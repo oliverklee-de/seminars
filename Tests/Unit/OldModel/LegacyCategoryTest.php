@@ -9,6 +9,7 @@ use OliverKlee\Seminars\OldModel\LegacyCategory;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\LegacyCategory
  */
 final class LegacyCategoryTest extends UnitTestCase
