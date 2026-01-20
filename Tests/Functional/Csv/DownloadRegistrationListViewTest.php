@@ -43,7 +43,7 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
     public function renderForEventWithoutRegistrationsHasHeadersOnly(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DownloadRegistrationListView/EventWithoutRegistrations.csv');
-        $this->subject->setEventUid(1);
+        $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromFeUserForCsv', '');
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'uid');
@@ -57,7 +57,7 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
     public function renderCanContainOneRegistrationUid(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DownloadRegistrationListView/EventWithRegistration.csv');
-        $this->subject->setEventUid(1);
+        $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromFeUserForCsv', '');
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'uid');
@@ -71,7 +71,7 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
     public function renderContainsFrontEndUserFieldsForDownload(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DownloadRegistrationListView/EventWithRegistration.csv');
-        $this->subject->setEventUid(1);
+        $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'first_name');
 
@@ -81,10 +81,10 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function renderNotContainsFrontEndUserFieldsForEmail(): void
+    public function renderDoesNotContainFrontEndUserFieldsForEmail(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DownloadRegistrationListView/EventWithRegistration.csv');
-        $this->subject->setEventUid(1);
+        $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'first_name');
         $this->configuration->setAsString('fieldsFromFeUserForEmailCsv', 'last_name');
@@ -98,7 +98,7 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
     public function renderContainsRegistrationFieldsForDownload(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DownloadRegistrationListView/EventWithRegistration.csv');
-        $this->subject->setEventUid(1);
+        $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'known_from');
         $this->configuration->setAsString('fieldsFromAttendanceForEmailCsv', 'notes');
@@ -109,10 +109,10 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function renderNotContainsRegistrationFieldsForEmail(): void
+    public function renderDoesNotContainRegistrationFieldsForEmail(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DownloadRegistrationListView/EventWithRegistration.csv');
-        $this->subject->setEventUid(1);
+        $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'known_from');
         $this->configuration->setAsString('fieldsFromAttendanceForEmailCsv', 'notes');
@@ -126,7 +126,7 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
     public function renderDoesNotContainRegistrationOnQueue(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DownloadRegistrationListView/EventWithQueueRegistration.csv');
-        $this->subject->setEventUid(1);
+        $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'uid');
         $this->configuration->setAsString('fieldsFromAttendanceForEmailCsv', 'uid');
