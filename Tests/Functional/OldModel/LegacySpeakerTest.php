@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\LegacySpeaker
  */
 final class LegacySpeakerTest extends FunctionalTestCase

@@ -13,6 +13,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\AbstractTimeSpan
  */
 final class AbstractTimeSpanTest extends FunctionalTestCase

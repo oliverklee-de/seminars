@@ -15,6 +15,7 @@ use OliverKlee\Seminars\Tests\Support\LanguageHelper;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\LegacyRegistration
  */
 final class LegacyRegistrationTest extends FunctionalTestCase

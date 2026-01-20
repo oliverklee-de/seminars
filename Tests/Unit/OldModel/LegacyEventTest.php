@@ -11,6 +11,8 @@ use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
+ * @covers \OliverKlee\Seminars\OldModel\AbstractTimeSpan
  * @covers \OliverKlee\Seminars\OldModel\LegacyEvent
  * @covers \OliverKlee\Seminars\Templating\TemplateHelper
  */

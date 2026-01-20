@@ -19,6 +19,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\LegacyRegistration
  */
 final class LegacyRegistrationTest extends FunctionalTestCase

@@ -8,6 +8,7 @@ use OliverKlee\Seminars\OldModel\LegacyCategory;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
+ * @covers \OliverKlee\Seminars\OldModel\AbstractModel
  * @covers \OliverKlee\Seminars\OldModel\LegacyCategory
  */
 final class LegacyCategoryTest extends FunctionalTestCase
