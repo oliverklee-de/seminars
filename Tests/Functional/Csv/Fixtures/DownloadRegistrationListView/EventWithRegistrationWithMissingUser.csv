@@ -1,0 +1,7 @@
+"tx_seminars_seminars"
+,"uid","title","registrations"
+,1,"Event with one registration",1
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user","known_from","notes"
+,1,1,1,1,"Google","Looking forward to the event!"

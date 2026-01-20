@@ -213,6 +213,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Fix crash in the CSV export for deleted FE users (#4712, #4714)
 - Ensure that `Registration::getEvent()` returns an `EventDateInterface` (#4668)
 - Avoid overwriting event venues for events with timeslots (#4601)
 - Make the registration digest template auto-formattable (#4586)
