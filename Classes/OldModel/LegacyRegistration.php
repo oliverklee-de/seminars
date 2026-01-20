@@ -266,9 +266,6 @@ class LegacyRegistration extends AbstractModel
             case 'status':
                 $result = (int)$rawData !== 0 ? $this->translate('label_status.I.' . $rawData) : '';
                 break;
-            case 'wheelchair':
-                $result = (bool)$rawData ? $this->translate('label_yes') : $this->translate('label_no');
-                break;
             case 'crdate':
                 // The fallthrough is intended.
             case 'tstamp':
