@@ -14,6 +14,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class FrontEndEditorControllerTest extends FunctionalTestCase
 {
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures/FrontEndEditorController';
+
     private const PAGE_UID = 8;
 
     protected array $testExtensionsToLoad = [
@@ -43,8 +45,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         parent::setUp();
 
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Sites/SiteStructure.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/FrontEndEditorContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndEditorContentElement.csv');
 
         $this->setUpFrontendRootPage(1, [
             'constants' => [
@@ -140,7 +142,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionWithoutLoggedInUserDoesNotRenderEventsWithoutOwner(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/indexAction/SingleEventWithoutOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithoutOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $response = $this->executeFrontendSubRequest($request);
@@ -153,7 +155,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionWithoutLoggedInUserDoesNotRenderEventsWithOwner(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/indexAction/SingleEventWithOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $response = $this->executeFrontendSubRequest($request);
@@ -194,9 +196,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionConfiguredForSingleEventsHasLinkToNewSingleEventAction(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/indexAction/pageAndContentElementForCreatingSingleEvents.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/pageAndContentElementForCreatingSingleEvents.csv');
 
         $request = (new InternalRequest())->withPageId(99);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -212,9 +212,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionConfiguredForEventDatesHasLinkToNewEventDateAction(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/indexAction/pageAndContentElementForCreatingEventDates.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/pageAndContentElementForCreatingEventDates.csv');
 
         $request = (new InternalRequest())->withPageId(99);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -230,7 +228,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserDoesNotRenderSingleEventsWithoutOwner(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/indexAction/SingleEventWithoutOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithoutOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -244,9 +242,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserDoesNotRenderSingleEventsFromOtherOwner(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/indexAction/SingleEventFromDifferentOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventFromDifferentOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -260,7 +256,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserRendersSingleEventsOwnedByLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/indexAction/SingleEventWithOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -274,7 +270,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserRendersEventDateOwnedByLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/indexAction/EventDateWithOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/EventDateWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -288,7 +284,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserDoesNotRenderEventTopicOwnedByLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/indexAction/EventTopicWithOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/EventTopicWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -302,9 +298,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersEventUid(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/indexAction/SingleEventWithOwnerAndHigherUid.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithOwnerAndHigherUid.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -318,9 +312,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersDateOfOneDayEvent(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/indexAction/OneDaySingleEventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/OneDaySingleEventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -334,9 +326,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersDateOfMultiDayEvent(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/indexAction/TwoDaySingleEventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/TwoDaySingleEventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -352,9 +342,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionForEventWithRegularRegistrationsRendersRegistrationCount(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/indexAction/SingleEventWithRegistrations.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithRegistrations.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -369,9 +357,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionForEventWithVacanciesRendersVacanciesCount(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/indexAction/SingleEventWithVacancies.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithVacancies.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -386,7 +372,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionWithSingleEventHasEditSingleEventLink(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/indexAction/SingleEventWithOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -403,7 +389,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionWithEventDateHasEditEventDateLink(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/indexAction/EventDateWithOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/EventDateWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -420,9 +406,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionHasUpdateSingleEventFormAction(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -463,9 +447,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionHasAllNonDateFormFields(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -499,9 +481,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionHasAllDateFormFields(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -547,12 +527,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionHasAllAssociationFormFields(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -583,13 +559,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionHasNoFormFieldsIrrelevantForSingleEvents(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwner.csv',
-        );
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/Topic.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -611,12 +583,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     public function editSingleEventActionForEventWithAllAssociationsHasSelectedMultiAssociationOptions(
         string $key
     ): void {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwnerAndAllAssociations.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwnerAndAllAssociations.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -637,12 +605,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionForEventWithAllAssociationsHasSelectedEventTypeOption(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwnerAndAllAssociations.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwnerAndAllAssociations.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -677,12 +641,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionHasTitlesOfAuxiliaryRecords(string $title): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -700,9 +660,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionWithOwnEventAssignsProvidedEventToView(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -724,15 +682,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionForUserWithDefaultOrganizerHasNoOrganizerFormField(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/FrontEndUserWithDefaultOrganizer.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwnerWithDefaultOrganizer.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/FrontEndUserWithDefaultOrganizer.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwnerWithDefaultOrganizer.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -750,9 +702,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionWithOwnEventRendersNumberOfOfflineRegistrations(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -770,9 +720,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionWithEventFromOtherUserThrowsException(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventFromDifferentOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventFromDifferentOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -792,9 +740,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editSingleEventActionWithEventWithoutOwnerThrowsException(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editSingleEventAction/EventWithoutOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithoutOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
@@ -814,9 +760,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateSingleEventActionWithOwnEventUpdatesEvent(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]'
@@ -840,9 +784,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateSingleEventActionKeepsPidUnchanged(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/EventWithDifferentPid.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/EventWithDifferentPid.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]'
@@ -865,12 +807,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateSingleEventActionCanSetOrganizer(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]'
@@ -895,14 +833,10 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateSingleEventActionForUserWithDefaultOrganizerKeepsOrganizerUnchanged(): void
     {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/FrontEndUserWithDefaultOrganizer.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/FrontEndUserWithDefaultOrganizer.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/EventWithOwnerWithDefaultOrganizer.csv',
+            self::FIXTURES_PATH . '/updateSingleEventAction/EventWithOwnerWithDefaultOrganizer.csv',
         );
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
@@ -926,12 +860,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateSingleEventActionCanSetCategory(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]'
@@ -956,9 +886,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateSingleEventActionUpdatesSlug(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/EventWithOwner.csv');
 
         $newTitle = 'Karaoke party';
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
@@ -982,9 +910,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionHasUpdateEventDateFormAction(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1022,9 +948,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionHasAllNonDateFormFields(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1058,9 +982,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionHasAllDateFormFields(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1105,13 +1027,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionHasAllAssociationFormFields(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/Topic.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1146,12 +1064,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionHasNoFormFieldsIrrelevantForEventDates(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1173,12 +1087,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     public function editEventDateActionForEventWithAllAssociationsHasSelectedMultiAssociationOptions(
         string $key
     ): void {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwnerAndAllAssociations.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwnerAndAllAssociations.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1199,9 +1109,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionForEventWithTopicHasSelectedTopicOption(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwnerAndTopic.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwnerAndTopic.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1235,13 +1143,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionHasTitlesOfAuxiliaryRecords(string $title): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/Topic.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1259,9 +1163,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionWithOwnEventAssignsProvidedEventToView(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1283,15 +1185,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionForUserWithDefaultOrganizerHasNoOrganizerFormField(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/FrontEndUserWithDefaultOrganizer.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwnerWithDefaultOrganizer.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/FrontEndUserWithDefaultOrganizer.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwnerWithDefaultOrganizer.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1309,9 +1205,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionWithOwnEventRendersNumberOfOfflineRegistrations(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1329,9 +1223,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionWithEventFromOtherUserThrowsException(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventFromDifferentOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventFromDifferentOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1351,9 +1243,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function editEventDateActionWithEventWithoutOwnerThrowsException(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/editEventDateAction/EventWithoutOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithoutOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'editEventDate',
@@ -1373,9 +1263,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateEventDateActionWithOwnEventUpdatesEvent(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromEditEventDateForm(1, 1),
@@ -1398,9 +1286,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateEventDateActionKeepsPidUnchanged(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/EventWithDifferentPid.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/EventWithDifferentPid.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromEditEventDateForm(1, 1),
@@ -1422,12 +1308,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateEventDateActionCanSetOrganizer(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/EventWithOwner.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromEditEventDateForm(1, 1),
@@ -1451,10 +1333,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateEventDateActionCanSetTopic(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/EventWithOwner.csv',
-        );
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/EventWithOwner.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/Topic.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromEditEventDateForm(1, 1),
@@ -1477,15 +1357,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateEventDateActionForUserWithDefaultOrganizerKeepsOrganizerUnchanged(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/FrontEndUserWithDefaultOrganizer.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/EventWithOwnerWithDefaultOrganizer.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/FrontEndUserWithDefaultOrganizer.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/EventWithOwnerWithDefaultOrganizer.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromEditEventDateForm(1, 2),
@@ -1507,9 +1381,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateEventDateActionForEventWithTopicUpdatesSlug(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/EventWithTopicAndOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/EventWithTopicAndOwner.csv');
 
         $newTitle = 'Karaoke party';
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
@@ -1532,9 +1404,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function updateEventDateActionForEventWithoutTopicSetsSlugToUidOnly(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/EventWithOwner.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/updateEventDateAction/EventWithOwner.csv');
 
         $newTitle = 'Karaoke party';
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
@@ -1630,9 +1500,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function newSingleEventActionHasAllAssociationFormFields(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/newSingleEventAction/AuxiliaryRecords.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newSingleEventAction/AuxiliaryRecords.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'newSingleEvent',
@@ -1652,10 +1520,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function newSingleEventEventActionHasNoFormFieldsIrrelevantForSingleEvents(string $key): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/newSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/newSingleEventAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newSingleEventAction/Topic.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'newSingleEvent',
@@ -1672,12 +1538,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function newSingleEventActionForUserWithDefaultOrganizerHasNoOrganizerFormField(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/newSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/newSingleEventAction/FrontEndUserWithDefaultOrganizer.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newSingleEventAction/FrontEndUserWithDefaultOrganizer.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'newSingleEvent',
@@ -1697,9 +1559,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function newSingleEventActionHasTitlesOfAuxiliaryRecords(string $title): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/newSingleEventAction/AuxiliaryRecords.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newSingleEventAction/AuxiliaryRecords.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'newSingleEvent',
@@ -1812,9 +1672,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function createSingleEventActionCanSetOrganizer(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/AuxiliaryRecords.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/createSingleEventAction/AuxiliaryRecords.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromNewSingleEventForm(1),
@@ -1837,12 +1695,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function createSingleEventForUserWithDefaultOrganizerSetsDefaultOrganizer(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/FrontEndUserWithDefaultOrganizer.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/createSingleEventAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/createSingleEventAction/FrontEndUserWithDefaultOrganizer.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromNewSingleEventForm(2),
@@ -1863,9 +1717,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function createSingleEventActionCanSetCategory(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/AuxiliaryRecords.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/createSingleEventAction/AuxiliaryRecords.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromNewSingleEventForm(1),
@@ -1961,7 +1813,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function newEventDateActionHasAllAssociationFormFields(string $key): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/newEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/AuxiliaryRecords.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'newEventDate',
@@ -1981,8 +1833,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function newEventDateEventActionHasNoFormFieldsIrrelevantForEventDates(string $key): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/newEventDateAction/AuxiliaryRecords.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/newEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/Topic.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'newEventDate',
@@ -1999,10 +1851,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function newEventDateActionForUserWithDefaultOrganizerHasNoOrganizerFormField(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/newEventDateAction/AuxiliaryRecords.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/newEventDateAction/FrontEndUserWithDefaultOrganizer.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/FrontEndUserWithDefaultOrganizer.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'newEventDate',
@@ -2022,8 +1872,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function newEventDateActionHasTitlesOfAuxiliaryRecords(string $title): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/newEventDateAction/AuxiliaryRecords.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/newEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/Topic.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[action]' => 'newEventDate',
@@ -2097,7 +1947,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function createEventDateActionCanSetTopic(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/createEventDateAction/Topic.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromNewEventDateForm(1),
@@ -2119,7 +1969,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function createEventDateActionSetsSlug(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/createEventDateAction/Topic.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromNewEventDateForm(1),
@@ -2161,9 +2011,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function createEventDateActionCanSetOrganizer(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/AuxiliaryRecords.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/createEventDateAction/AuxiliaryRecords.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromNewEventDateForm(1),
@@ -2186,12 +2034,8 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function createEventDateForUserWithDefaultOrganizerSetsDefaultOrganizer(): void
     {
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/AuxiliaryRecords.csv',
-        );
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/FrontEndUserWithDefaultOrganizer.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/createEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/createEventDateAction/FrontEndUserWithDefaultOrganizer.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
             'tx_seminars_frontendeditor[__trustedProperties]' => $this->getTrustedPropertiesFromNewEventDateForm(2),
