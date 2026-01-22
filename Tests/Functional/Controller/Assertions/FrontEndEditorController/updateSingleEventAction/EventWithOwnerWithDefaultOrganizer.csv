@@ -1,0 +1,7 @@
+"tx_seminars_seminars"
+,"uid","pid","title","owner_feuser","organizers"
+,1,2,"event with owner",2,1
+
+"tx_seminars_seminars_organizers_mm"
+,"uid_local","uid_foreign"
+,1,1

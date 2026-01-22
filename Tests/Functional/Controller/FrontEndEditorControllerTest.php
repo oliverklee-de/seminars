@@ -15,6 +15,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 final class FrontEndEditorControllerTest extends FunctionalTestCase
 {
     private const FIXTURES_PATH = __DIR__ . '/Fixtures/FrontEndEditorController';
+    private const ASSERTIONS_PATH = __DIR__ . '/Assertions/FrontEndEditorController';
 
     private const PAGE_UID = 8;
 
@@ -774,9 +775,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/UpdatedEvent.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateSingleEventAction/UpdatedEvent.csv');
     }
 
     /**
@@ -797,9 +796,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/EventWithDifferentPid.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateSingleEventAction/EventWithDifferentPid.csv');
     }
 
     /**
@@ -823,9 +820,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/UpdatedEventWithOrganizer.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateSingleEventAction/UpdatedEventWithOrganizer.csv');
     }
 
     /**
@@ -851,7 +846,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $this->executeFrontendSubRequest($request, $context);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/EventWithOwnerWithDefaultOrganizer.csv',
+            self::ASSERTIONS_PATH . '/updateSingleEventAction/EventWithOwnerWithDefaultOrganizer.csv',
         );
     }
 
@@ -876,9 +871,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/UpdatedEventWithCategory.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateSingleEventAction/UpdatedEventWithCategory.csv');
     }
 
     /**
@@ -900,9 +893,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateSingleEventAction/UpdatedEventWithSlug.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateSingleEventAction/UpdatedEventWithSlug.csv');
     }
 
     /**
@@ -1276,9 +1267,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/UpdatedEvent.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateEventDateAction/UpdatedEvent.csv');
     }
 
     /**
@@ -1298,9 +1287,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/EventWithDifferentPid.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateEventDateAction/EventWithDifferentPid.csv');
     }
 
     /**
@@ -1323,9 +1310,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/UpdatedEventWithOrganizer.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateEventDateAction/UpdatedEventWithOrganizer.csv');
     }
 
     /**
@@ -1347,9 +1332,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/UpdatedEventWithTopic.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateEventDateAction/UpdatedEventWithTopic.csv');
     }
 
     /**
@@ -1372,7 +1355,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $this->executeFrontendSubRequest($request, $context);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/EventWithOwnerWithDefaultOrganizer.csv',
+            self::ASSERTIONS_PATH . '/updateEventDateAction/EventWithOwnerWithDefaultOrganizer.csv',
         );
     }
 
@@ -1394,9 +1377,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/UpdatedEventWithTopicAndSlug.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateEventDateAction/UpdatedEventWithTopicAndSlug.csv');
     }
 
     /**
@@ -1417,9 +1398,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/updateEventDateAction/UpdatedEventWithUidOnlySlug.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/updateEventDateAction/UpdatedEventWithUidOnlySlug.csv');
     }
 
     /**
@@ -1585,9 +1564,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/CreatedSingleEvent.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createSingleEventAction/CreatedSingleEvent.csv');
     }
 
     /**
@@ -1604,9 +1581,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/CreatedEventWithOwner.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createSingleEventAction/CreatedEventWithOwner.csv');
     }
 
     /**
@@ -1623,9 +1598,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/CreatedEventWithPid.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createSingleEventAction/CreatedEventWithPid.csv');
     }
 
     /**
@@ -1642,9 +1615,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/CreatedEventWithSlug.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createSingleEventAction/CreatedEventWithSlug.csv');
     }
 
     /**
@@ -1663,7 +1634,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $this->executeFrontendSubRequest($request, $context);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/CreatedEventWithOfflineRegistrations.csv',
+            self::ASSERTIONS_PATH . '/createSingleEventAction/CreatedEventWithOfflineRegistrations.csv',
         );
     }
 
@@ -1685,9 +1656,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/CreatedEventWithOrganizer.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createSingleEventAction/CreatedEventWithOrganizer.csv');
     }
 
     /**
@@ -1708,7 +1677,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $this->executeFrontendSubRequest($request, $context);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/CreatedEventWithDefaultOrganizer.csv',
+            self::ASSERTIONS_PATH . '/createSingleEventAction/CreatedEventWithDefaultOrganizer.csv',
         );
     }
 
@@ -1730,9 +1699,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createSingleEventAction/CreatedEventWithCategory.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createSingleEventAction/CreatedEventWithCategory.csv');
     }
 
     /**
@@ -1899,9 +1866,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/CreatedEventDate.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createEventDateAction/CreatedEventDate.csv');
     }
 
     /**
@@ -1918,9 +1883,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/CreatedEventWithOwner.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createEventDateAction/CreatedEventWithOwner.csv');
     }
 
     /**
@@ -1937,9 +1900,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/CreatedEventWithPid.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createEventDateAction/CreatedEventWithPid.csv');
     }
 
     /**
@@ -1959,9 +1920,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/CreatedEventWithTopic.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createEventDateAction/CreatedEventWithTopic.csv');
     }
 
     /**
@@ -1981,9 +1940,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/CreatedEventWithTopicAndSlug.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createEventDateAction/CreatedEventWithTopicAndSlug.csv');
     }
 
     /**
@@ -2002,7 +1959,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $this->executeFrontendSubRequest($request, $context);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/CreatedEventWithOfflineRegistrations.csv',
+            self::ASSERTIONS_PATH . '/createEventDateAction/CreatedEventWithOfflineRegistrations.csv',
         );
     }
 
@@ -2024,9 +1981,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/CreatedEventWithOrganizer.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createEventDateAction/CreatedEventWithOrganizer.csv');
     }
 
     /**
@@ -2046,8 +2001,6 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $this->executeFrontendSubRequest($request, $context);
 
-        $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/FrontEndEditorController/createEventDateAction/CreatedEventWithDefaultOrganizer.csv',
-        );
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createEventDateAction/CreatedEventWithDefaultOrganizer.csv');
     }
 }
