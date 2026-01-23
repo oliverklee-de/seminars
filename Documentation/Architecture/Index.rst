@@ -1,3 +1,5 @@
+:navigation-title: Architecture
+
 .. include:: /Includes.rst.txt
 
 ======================================
@@ -8,4 +10,4 @@ Architecture of the seminars extension
    :maxdepth: 2
    :titlesonly:
 
-   PackagesAndDependencies/Index
+   PackagesAndDependencies
