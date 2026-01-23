@@ -25,6 +25,17 @@ checks.
 
 `oelib on GitHub <https://github.com/oliverklee-de/oelib>`__
 
+onetimeaccount
+--------------
+
+This package provides a Bootstrap-5-compatible form that allows users to create
+a short-lived FE user account without having to enter a user name or password.
+This allows people to register for events without having to create a FE user account.
+
+It also provides a CAPTCHA.
+
+`onetimeaccount on GitHub <https://github.com/oliverklee-de/onetimeaccount>`__
+
 feuserextrafields
 -----------------
 
