@@ -4,7 +4,7 @@
 Packages and dependencies
 =========================
 
-Packages
+Packages and TYPO3 extensions
 ========
 
 seminars
