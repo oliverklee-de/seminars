@@ -428,9 +428,8 @@ $tca = [
             'exclude' => true,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.company',
             'config' => [
-                'type' => 'text',
-                'cols' => 20,
-                'rows' => 3,
+                'type' => 'input',
+                'size' => 40,
                 'max' => 80,
                 'eval' => 'trim',
             ],
