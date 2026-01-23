@@ -10,9 +10,9 @@ Related TYPO3 extensions
 seminars-premium
 ----------------
 
-This package provides advanced features for the seminars extension, like certificates of participation and
-watermarks on downloads for attendees. These features streamline seminar
-management and reduce manual work.
+This package provides advanced features for the seminars extension, like
+certificates of participation and watermarks on downloads for attendees. These
+features streamline seminar management and reduce manual work.
 
 This extension is a paid add-on.
 
@@ -23,7 +23,7 @@ This package provides general library functions for TYPO3 extensions like helper
 functions for unit testing, templating and automatic configuration
 checks.
 
-`oelib-library on GitHub <https://github.com/oliverklee-de/oelib>`__
+`oelib on GitHub <https://github.com/oliverklee-de/oelib>`__
 
 feuserextrafields
 -----------------
@@ -45,7 +45,7 @@ static-info-tables
 
 This package adds static info tables like languages, currencies and countries.
 
-`static-info-tables on TYPO3.org <https://extensions.typo3.org/extension/static_info_tables>`__
+`static-info-tables on the TER <https://extensions.typo3.org/extension/static_info_tables>`__
 
 Additional Composer dependencies
 ================================
