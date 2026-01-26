@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequestContext;
@@ -729,11 +730,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         ]);
         $context = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('You do not have permission to edit this event.');
-        $this->expectExceptionCode(1666954310);
+        $response = $this->executeFrontendSubRequest($request, $context);
 
-        $this->executeFrontendSubRequest($request, $context);
+        self::assertForbiddenResponse($response);
     }
 
     /**
@@ -749,11 +748,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         ]);
         $context = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('You do not have permission to edit this event.');
-        $this->expectExceptionCode(1666954310);
+        $response = $this->executeFrontendSubRequest($request, $context);
 
-        $this->executeFrontendSubRequest($request, $context);
+        self::assertForbiddenResponse($response);
     }
 
     /**
@@ -1222,11 +1219,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         ]);
         $context = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('You do not have permission to edit this event.');
-        $this->expectExceptionCode(1666954310);
+        $response = $this->executeFrontendSubRequest($request, $context);
 
-        $this->executeFrontendSubRequest($request, $context);
+        self::assertForbiddenResponse($response);
     }
 
     /**
@@ -1242,11 +1237,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         ]);
         $context = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('You do not have permission to edit this event.');
-        $this->expectExceptionCode(1666954310);
+        $response = $this->executeFrontendSubRequest($request, $context);
 
-        $this->executeFrontendSubRequest($request, $context);
+        self::assertForbiddenResponse($response);
     }
 
     /**
@@ -2002,5 +1995,15 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $this->executeFrontendSubRequest($request, $context);
 
         $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/createEventDateAction/CreatedEventWithDefaultOrganizer.csv');
+    }
+
+    private static function assertForbiddenResponse(ResponseInterface $response): void
+    {
+        self::assertSame(403, $response->getStatusCode());
+        self::assertSame('Forbidden', $response->getReasonPhrase());
+        self::assertStringContainsString(
+            'You do not have permission to edit this event.',
+            $response->getBody()->__toString(),
+        );
     }
 }
