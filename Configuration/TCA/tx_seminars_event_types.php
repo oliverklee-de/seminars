@@ -10,7 +10,7 @@ return [
         'crdate' => 'crdate',
         'default_sortby' => 'ORDER BY title',
         'delete' => 'deleted',
-        'iconfile' => 'EXT:seminars/Resources/Public/Icons/EventType.gif',
+        'iconfile' => 'EXT:seminars/Resources/Public/Icons/EventType.svg',
         'searchFields' => 'title',
     ],
     'columns' => [

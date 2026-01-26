@@ -10,7 +10,7 @@ return [
         'crdate' => 'crdate',
         'default_sortby' => 'ORDER BY title',
         'delete' => 'deleted',
-        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Checkbox.gif',
+        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Checkbox.svg',
         'searchFields' => 'title',
     ],
     'columns' => [

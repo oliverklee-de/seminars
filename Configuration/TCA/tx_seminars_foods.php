@@ -10,7 +10,7 @@ return [
         'crdate' => 'crdate',
         'default_sortby' => 'ORDER BY title',
         'delete' => 'deleted',
-        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Food.gif',
+        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Food.svg',
         'searchFields' => 'title',
     ],
     'columns' => [

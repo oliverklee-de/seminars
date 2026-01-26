@@ -10,7 +10,7 @@ $tca = [
         'crdate' => 'crdate',
         'delete' => 'deleted',
         'hideTable' => true,
-        'iconfile' => 'EXT:seminars/Resources/Public/Icons/TimeSlot.gif',
+        'iconfile' => 'EXT:seminars/Resources/Public/Icons/TimeSlot.svg',
         'searchFields' => '',
     ],
     'columns' => [

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-1 {
+            fill: #f1f3f5;
+            }
+
+            .cls-2 {
+            stroke: #fff;
+            }
+
+            .cls-2, .cls-3, .cls-4 {
+            fill: none;
+            }
+
+            .cls-2, .cls-4 {
+            stroke-miterlimit: 10;
+            stroke-width: .75px;
+            }
+
+            .cls-3 {
+            stroke: #a6a6a6;
+            stroke-linejoin: round;
+            }
+
+            .cls-5 {
+            fill: #767a7d;
+            }
+
+            .cls-4 {
+            stroke: #c3ccd2;
+            }
+
+            .cls-6 {
+            fill: #56595c;
+            }
+
+            .cls-7 {
+            fill: #a3a3a3;
+            }
+
+            .cls-8 {
+            fill: url(#linear-gradient);
+            }
+        </style>
+        <linearGradient id="linear-gradient" x1="5.94" y1="8.66" x2="10.08" y2="8.66" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ff4715"/>
+            <stop offset="1" stop-color="#f70"/>
+        </linearGradient>
+    </defs>
+    <rect class="cls-1" x="1.42" y="1.42" width="13.16" height="13.16"/>
+    <g>
+        <path class="cls-7"
+              d="M11.53,12.73h-7.05c-.22,0-.39-.18-.39-.39V4.21c0-.22.18-.39.39-.39h7.05c.22,0,.39.18.39.39v8.13c0,.22-.18.39-.39.39ZM4.86,11.95h6.27v-7.35h-6.27v7.35Z"/>
+        <line class="cls-3" x1="6.31" y1="3.27" x2="6.31" y2="5.56"/>
+        <line class="cls-3" x1="8" y1="3.27" x2="8" y2="5.56"/>
+        <line class="cls-3" x1="9.69" y1="3.27" x2="9.69" y2="5.56"/>
+        <path class="cls-8"
+              d="M9.69,10.76h0l-3.63-.02v-.78s3.24.02,3.24.02v-.92l-2.97-.02c-.22,0-.39-.18-.39-.39v-1.69c0-.22.18-.39.39-.39h3.62v.78h-3.23v.91l2.97.02c.22,0,.39.18.39.39v1.7c0,.1-.04.2-.12.28-.07.07-.17.11-.28.11Z"/>
+    </g>
+    <polygon class="cls-6" points="14.12 14.12 1.88 14.12 1 15 15 15 15 1 14.12 1.88 14.12 14.12"/>
+    <polygon class="cls-5" points="1 15 1.88 14.12 1.88 1.88 14.12 1.88 15 1 1 1 1 15"/>
+    <polyline class="cls-2" points="2.21 13.83 2.21 2.21 13.84 2.21"/>
+    <polyline class="cls-4" points="13.81 1.83 13.81 13.81 1.83 13.81"/>
+</svg>
