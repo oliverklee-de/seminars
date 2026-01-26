@@ -10,7 +10,7 @@ return [
         'crdate' => 'crdate',
         'default_sortby' => 'ORDER BY title',
         'delete' => 'deleted',
-        'iconfile' => 'EXT:seminars/Resources/Public/Icons/PaymentMethod.gif',
+        'iconfile' => 'EXT:seminars/Resources/Public/Icons/PaymentMethod.svg',
         'searchFields' => 'title',
     ],
     'columns' => [

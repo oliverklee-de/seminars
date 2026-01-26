@@ -67,16 +67,15 @@ defined('TYPO3') or die('Access denied.');
     ];
 
     $icons = [
-        'tx-seminars-canceled' => 'Canceled.png',
-        'tx-seminars-category' => 'Category.gif',
-        'tx-seminars-registration' => 'Registration.gif',
-        'tx-seminars-event-complete' => 'EventComplete.gif',
-        'tx-seminars-event-topic' => 'EventTopic.gif',
-        'tx-seminars-event-date' => 'EventDate.gif',
-        'tcarecords-tx_seminars_speakers-default' => 'Speaker.gif',
-        'tcarecords-tx_seminars_organizers-default' => 'Organizer.gif',
-        'tcarecords-tx_seminars_registrations-default' => 'Registration.gif',
-        'ext-seminars-wizard-icon' => 'Extension.svg',
+        'tx-seminars-category' => 'Category.svg',
+        'tx-seminars-registration' => 'Registration.svg',
+        'tx-seminars-single-event' => 'SingleEvent.svg',
+        'tx-seminars-event-topic' => 'EventTopic.svg',
+        'tx-seminars-event-date' => 'EventDate.svg',
+        'tcarecords-tx_seminars_speakers-default' => 'Speaker.svg',
+        'tcarecords-tx_seminars_organizers-default' => 'Organizer.svg',
+        'tcarecords-tx_seminars_registrations-default' => 'Registration.svg',
+        'ext-seminars-wizard-icon' => 'ContentWizard.svg',
     ];
 
     /** @var IconRegistry $iconRegistry */

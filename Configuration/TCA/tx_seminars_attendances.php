@@ -16,7 +16,7 @@ $tca = [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Registration.gif',
+        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Registration.svg',
         'searchFields' => 'title, order_reference, invoice_number, customer_number',
     ],
     'columns' => [

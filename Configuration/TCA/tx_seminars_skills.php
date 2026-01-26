@@ -10,7 +10,7 @@ return [
         'crdate' => 'crdate',
         'default_sortby' => 'ORDER BY title',
         'delete' => 'deleted',
-        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Skill.gif',
+        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Skill.svg',
         'searchFields' => 'title',
     ],
     'columns' => [

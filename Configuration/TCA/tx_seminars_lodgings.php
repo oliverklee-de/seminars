@@ -10,7 +10,7 @@ return [
         'crdate' => 'crdate',
         'default_sortby' => 'ORDER BY title',
         'delete' => 'deleted',
-        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Lodging.gif',
+        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Lodging.svg',
         'searchFields' => 'title',
     ],
     'columns' => [

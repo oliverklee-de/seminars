@@ -10,7 +10,7 @@ $tca = [
         'crdate' => 'crdate',
         'default_sortby' => 'ORDER BY title',
         'delete' => 'deleted',
-        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Place.gif',
+        'iconfile' => 'EXT:seminars/Resources/Public/Icons/Venue.svg',
         'searchFields' => 'title, contact_person, email_address',
     ],
     'columns' => [
