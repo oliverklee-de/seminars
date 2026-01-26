@@ -28,7 +28,7 @@
 		"php": "^7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
 		"ext-json": "*",
 		"doctrine/dbal": "^2.13.8 || ^3.9",
-		"oliverklee/feuserextrafields": "^6.5.0",
+		"oliverklee/feuserextrafields": "^6.7",
 		"oliverklee/oelib": "^6.2.0",
 		"pelago/emogrifier": "^8.1.0",
 		"psr/event-dispatcher": "^1.0",
