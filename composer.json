@@ -54,7 +54,7 @@
 		"phpstan/phpstan": "1.12.32",
 		"phpstan/phpstan-phpunit": "1.4.2",
 		"phpstan/phpstan-strict-rules": "1.6.2",
-		"phpunit/phpunit": "9.6.32",
+		"phpunit/phpunit": "9.6.34",
 		"rector/type-perfect": "1.0.0",
 		"saschaegerer/phpstan-typo3": "1.10.2 || 2.1.1",
 		"squizlabs/php_codesniffer": "4.0.1",
