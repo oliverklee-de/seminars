@@ -21,9 +21,11 @@ use OliverKlee\Seminars\Seo\SlugGenerator;
 use OliverKlee\Seminars\Service\EventStatisticsCalculator;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Frontend\Controller\ErrorController;
 
 /**
  * Plugin for editing single events in the FE.
@@ -48,6 +50,8 @@ class FrontEndEditorController extends ActionController
 
     private EventStatisticsCalculator $eventStatisticsCalculator;
 
+    private ErrorController $errorController;
+
     public function __construct(
         EventRepository $eventRepository,
         EventTypeRepository $eventTypeRepository,
@@ -57,7 +61,8 @@ class FrontEndEditorController extends ActionController
         CategoryRepository $categoryRepository,
         FrontendUserRepository $userRepository,
         SlugGenerator $slugGenerator,
-        EventStatisticsCalculator $eventStatisticsCalculator
+        EventStatisticsCalculator $eventStatisticsCalculator,
+        ErrorController $errorController
     ) {
         $this->eventRepository = $eventRepository;
         $this->eventTypeRepository = $eventTypeRepository;
@@ -68,6 +73,7 @@ class FrontEndEditorController extends ActionController
         $this->userRepository = $userRepository;
         $this->slugGenerator = $slugGenerator;
         $this->eventStatisticsCalculator = $eventStatisticsCalculator;
+        $this->errorController = $errorController;
     }
 
     /**
@@ -111,25 +117,34 @@ class FrontEndEditorController extends ActionController
     }
 
     /**
-     * Checks if the logged-in FE user is the owner of the provided event, and throws an exception otherwise.
-     *
-     * This should only happen if someone manipulates the request.
-     *
-     * Note: This cannot go into an `initialize*Action()` method because the event is not available there.
-     *
      * @param SingleEvent|EventDate $event
      *
-     * @throws \RuntimeException
+     * @throws PropagateResponseException
      */
     private function checkEventOwner($event): void
     {
         if ($event->getOwnerUid() !== $this->getLoggedInUserUid()) {
-            throw new \RuntimeException('You do not have permission to edit this event.', 1666954310);
+            $this->trigger403('You do not have permission to edit this event.');
         }
     }
 
     /**
+     * @return never
+     *
+     * @throws PropagateResponseException
+     */
+    private function trigger403(string $message): void
+    {
+        throw new PropagateResponseException(
+            $this->errorController->accessDeniedAction($this->request, $message),
+            1769449755,
+        );
+    }
+
+    /**
      * @IgnoreValidation("event")
+     *
+     * @throws PropagateResponseException
      */
     public function editSingleEventAction(SingleEvent $event): ResponseInterface
     {
@@ -151,6 +166,9 @@ class FrontEndEditorController extends ActionController
         $this->view->assign('categories', $this->categoryRepository->findAll());
     }
 
+    /**
+     * @throws PropagateResponseException
+     */
     public function updateSingleEventAction(SingleEvent $event): ResponseInterface
     {
         $this->checkEventOwner($event);
@@ -209,6 +227,8 @@ class FrontEndEditorController extends ActionController
 
     /**
      * @IgnoreValidation("event")
+     *
+     * @throws PropagateResponseException
      */
     public function editEventDateAction(EventDate $event): ResponseInterface
     {
@@ -229,6 +249,9 @@ class FrontEndEditorController extends ActionController
         $this->view->assign('venues', $this->venueRepository->findAll());
     }
 
+    /**
+     * @throws PropagateResponseException
+     */
     public function updateEventDateAction(EventDate $event): ResponseInterface
     {
         $this->checkEventOwner($event);
