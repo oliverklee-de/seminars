@@ -17,7 +17,7 @@ Extbase separates persistence, data access and domain logic:
 +===============+======================================+===============+===========================+
 | TCA           | How Data is shown & stored in the Backend            | Configuration/TCA         |
 +---------------+------------------------------------------------------+---------------------------+
-| Model         | The Business-Logic, for what happens with the data   | Classes/Domain/Model      |
+| Model         | The business logic, for what happens with the data   | Classes/Domain/Model      |
 +---------------+------------------------------------------------------+---------------------------+
 | Repository    | Access to the Data between Database and Domain Model | Classes/Domain/Repository |
 +---------------+------------------------------------------------------+---------------------------+
