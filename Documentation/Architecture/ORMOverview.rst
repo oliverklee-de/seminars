@@ -48,7 +48,7 @@ Legacy seminars
 Concept
 -------
 
-This one is already an old grandfather -lived happily before Extbase- and shouldn`t be expanded.
+This one is already an old grandfather - lived happily before Extbase - and shouldn`t be used anymore.
 The Legacy-ORM is not able to do Workspaces or Translations.
 
 +----------------+----------------------------------------------------------+--------------------+
