@@ -11,3 +11,4 @@ Architecture of the seminars extension
    :titlesonly:
 
    PackagesAndDependencies
+   ORMOverview
