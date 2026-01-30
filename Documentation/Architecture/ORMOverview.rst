@@ -17,7 +17,7 @@ Extbase separates persistence, data access and domain logic:
 +=====================+======================================+================+
 | ``Model``           | The business logic, for what happens with the data    |
 +---------------------+-------------------------------------------------------+
-| ``Repository``      | Access to the Data between database and domain model  |
+| ``Repository``      | Persisting the models to the database  |
 +---------------------+-------------------------------------------------------+
 
 Legacy oelib
