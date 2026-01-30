@@ -36,7 +36,7 @@ People then would register for the individual **event dates**.
 +-----------------------+---------------------+--------------------+-------------------------+---------------------------------+
 | term                  | Extbase model       | legacy oelib model | legacy seminars model   | database table                  |
 +=======================+=====================+====================+=========================+=================================+
-| category              | ``Category``        | ``Category``       | `LegacyCategory`        | ``tx_seminars_categories``      |
+| category              | ``Category``        | ``Category``       | ``LegacyCategory``      | ``tx_seminars_categories``      |
 +-----------------------+---------------------+--------------------+-------------------------+---------------------------------+
 | event                 | ``Event``           | ``Event``          | ``LegacyEvent``         | ``tx_seminars_seminars``        |
 +-----------------------+---------------------+--------------------+-------------------------+---------------------------------+
