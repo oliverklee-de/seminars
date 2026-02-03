@@ -54,7 +54,7 @@
 		"phpstan/phpstan": "1.12.3",
 		"phpstan/phpstan-phpunit": "1.4.0",
 		"phpstan/phpstan-strict-rules": "1.6.0",
-		"phpunit/phpunit": "8.5.39",
+		"phpunit/phpunit": "8.5.52",
 		"saschaegerer/phpstan-typo3": "^1.8.4",
 		"squizlabs/php_codesniffer": "3.10.2",
 		"symfony/property-info": "^4.4.49 || ^5.4.42 || ^6.4.10 || ^7.1.3",
