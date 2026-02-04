@@ -1,21 +1,58 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
     <f:if condition="{event.registrationRequired}">
         <f:variable name="statistics" value="{event.statistics}"/>
-        <span class="text-nowrap">
-            <f:if condition="{event.unlimitedSeats}">
-                <f:then>
-                    <f:translate key="plugin.{viewName}.events.property.vacancies.unlimited"/> 🟢
-                </f:then>
-                <f:else if="{statistics.vacancies} >= {settings.enoughVacanciesThreshold}">
-                    ≥ {settings.enoughVacanciesThreshold} 🟢
-                </f:else>
-                <f:else if="{statistics.fullyBooked}">
-                    <f:translate key="plugin.{viewName}.events.property.vacancies.fullyBooked"/> 🔴
-                </f:else>
-                <f:else>
-                    {statistics.vacancies} 🟡
-                </f:else>
-            </f:if>
-        </span>
+        <f:if condition="{event.unlimitedSeats}">
+            <f:then>
+                <f:render section="iconAvailable"/>
+                <span class="ms-2">
+                    <f:translate key="plugin.eventOutlook.events.property.vacancies.available"/>
+                </span>
+            </f:then>
+            <f:else if="{statistics.vacancies} >= {settings.enoughVacanciesThreshold}">
+                <f:render section="iconAvailable"/>
+                <span class="ms-2">
+                    <f:translate key="plugin.eventOutlook.events.property.vacancies.available"/>
+                </span>
+            </f:else>
+            <f:else if="{statistics.fullyBooked}">
+                <f:render section="iconUnavailable"/>
+                <span class="ms-2">
+                    <f:translate key="plugin.eventOutlook.events.property.vacancies.fullyBooked"/>
+                </span>
+            </f:else>
+            <f:else>
+                <f:render section="iconFewLeft"/>
+                <span class="ms-2">
+                    <f:translate key="plugin.eventOutlook.events.property.vacancies.fewLeft"/>
+                </span>
+            </f:else>
+        </f:if>
     </f:if>
+
+    <f:section name="iconAvailable">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" aria-hidden="true">
+            <!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path fill="var(--bs-success-bg-subtle)" d="M256,512C114.6,512,0,397.4,0,256S114.6,0,256,0s256,114.6,256,256-114.6,256-256,256Z"/>
+            <path fill="var(--bs-success-text-emphasis)" d="M374,145.7c-10.7-7.8-25.7-5.4-33.5,5.3l-119.4,164.2-52.1-52.1c-9.4-9.4-24.6-9.4-33.9,0-9.3,9.4-9.4,24.6,0,33.9l72,72c5,5,11.8,7.5,18.8,7s13.4-4.1,17.5-9.8l135.9-187c7.8-10.7,5.4-25.7-5.3-33.5Z"/>
+        </svg>
+    </f:section>
+
+    <f:section name="iconUnavailable">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" aria-hidden="true">
+            <!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path fill="var(--bs-danger-bg-subtle)" d="M256,512C114.6,512,0,397.4,0,256S114.6,0,256,0s256,114.6,256,256-114.6,256-256,256Z"/>
+            <path fill="var(--bs-danger-text-emphasis)" d="M167,167c9.4-9.4,24.6-9.4,33.9,0l55,55,55-55c9.4-9.4,24.6-9.4,33.9,0,9.3,9.4,9.4,24.6,0,33.9l-55,55,55,55c9.4,9.4,9.4,24.6,0,33.9-9.4,9.3-24.6,9.4-33.9,0l-55-55-55,55c-9.4,9.4-24.6,9.4-33.9,0-9.3-9.4-9.4-24.6,0-33.9l55-55-55-55c-9.4-9.4-9.4-24.6,0-33.9Z"/>
+        </svg>
+    </f:section>
+
+    <f:section name="iconFewLeft">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="24" height="24" aria-hidden="true">
+            <!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path fill="var(--bs-warning-bg-subtle)" d="M256,512C114.6,512,0,397.4,0,256S114.6,0,256,0s256,114.6,256,256-114.6,256-256,256Z"/>
+            <g xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--bs-warning-text-emphasis)" d="M256,320c-17.7,0-32,14.3-32,32s14.3,32,32,32,32-14.3,32-32-14.3-32-32-32Z"/>
+                <path fill="var(--bs-warning-text-emphasis)" d="M256,128c-18.2,0-32.7,15.5-31.4,33.7l7.4,104c.9,12.6,11.4,22.3,23.9,22.3s23-9.7,23.9-22.3l7.4-104c1.3-18.2-13.1-33.7-31.4-33.7h.2Z"/>
+            </g>
+        </svg>
+    </f:section>
 </html>
