@@ -58,3 +58,40 @@ People then would register for the individual **event dates**.
 +-----------------------+---------------------+--------------------+-------------------------+---------------------------------+
 | venue                 | ``Venue``           | ``Place``          | —                       | ``tx_seminars_sites``           |
 +-----------------------+---------------------+--------------------+-------------------------+---------------------------------+
+
+Registrations
+=============
+
+Concept
+-------
+
+A registration creates the connection between a user and an event.
+More precisely, it connects a user with a specific event,
+a ``SingleEvent`` or a particular date represented by ``EventDate``.
+
+Implementation details
+----------------------
+
+Within the ``Registration`` model, this connection is established between:
+
+- ``$event``
+- ``$user``
+
+The ``$user`` property is implemented in the ``AttendeesTrait``.
+
+Technically, the user is the person who submits the registration.
+
+Signing up other persons
+------------------------
+
+In some cases, a person may register other participants without attending the event
+themselves. Typical examples include:
+
+- a secretary registering colleagues, or
+- a parent signing up their children.
+
+To support these scenarios, the ``AttendeesTrait`` provides the variable
+``$registeredThemselves``.
+
+This variable has the default value ``false`` and indicates whether the user
+is registering themselves or signing up someone else.
