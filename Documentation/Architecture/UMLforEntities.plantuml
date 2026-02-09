@@ -1,0 +1,77 @@
+' ==========
+' Interfaces
+' ==========
+interface EventDateInterface
+interface EventInterface
+interface EventTopicInterface
+interface EventTypeInterface
+interface MailRole
+
+' ==============
+' Domain Classes
+' ==============
+class AccommodationOption
+class Category
+class DateTime
+class Event
+class EventDate
+class EventStatistics
+class EventTopic
+class EventType
+class FoodOption
+class Organizer
+class PaymentMethod
+class Price
+class Registration
+class RegistrationCheckbox
+class SingleEvent
+class Speaker
+class Venue
+
+' ===========
+' Inheritance
+' ===========
+EventDate --|> Event
+EventTopic --|> Event
+SingleEvent --|> Event
+
+EventDateInterface --|> EventInterface
+EventTopicInterface --|> EventInterface
+
+' =========
+' Interface
+' =========
+Category ..|> EventTypeInterface
+Event ..|> EventInterface
+EventDate ..|> EventDateInterface
+EventTopic ..|> EventTopicInterface
+EventType ..|> EventTypeInterface
+Organizer ..|> MailRole
+SingleEvent ..|> EventDateInterface
+SingleEvent ..|> EventTopicInterface
+Speaker ..|> MailRole
+
+
+
+' ============
+' Associations
+' ============
+EventDate "*" --> "1" EventType
+EventDate "*" --> "*" PaymentMethod
+EventDate "*" --> "*" Price
+EventDate "*" --> "0..1" EventTopic
+
+EventDateInterface "1" --> "*" AccommodationOption
+EventDateInterface "1" --> "*" DateTime
+EventDateInterface "1" --> "*" FoodOption
+EventDateInterface "1" --> "*" Organizer
+EventDateInterface "1" --> "*" RegistrationCheckbox
+EventDateInterface "1" --> "*" Speaker
+EventDateInterface "1" --> "*" Venue
+
+EventTopicInterface "1" --> "*" Category
+
+Registration "*" --> "*" AccommodationOption
+Registration "*" --> "1" EvenDateInterface
+Registration "*" --> "*" FoodOption
+Registration "*" --> "*" RegistrationCheckbox

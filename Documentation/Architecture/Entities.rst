@@ -95,3 +95,11 @@ To support these scenarios, the ``AttendeesTrait`` provides the variable
 
 This variable has the default value ``false`` and indicates whether the user
 is registering themselves or signing up someone else.
+
+Database Connections
+--------------------
+
+..  uml:: UMLforEntities.plantuml
+    :align: center
+    :caption: UML class diagram of the entities
+    :width: 1000
