@@ -47,7 +47,7 @@
 		"typo3fluid/fluid": "^2.7.4 || ^4.0"
 	},
 	"require-dev": {
-		"ergebnis/composer-normalize": "2.49.0",
+		"ergebnis/composer-normalize": "2.50.0",
 		"friendsofphp/php-cs-fixer": "3.93.1",
 		"helmich/typo3-typoscript-lint": "2.5.2 || 3.3.0",
 		"phpstan/extension-installer": "1.4.3",
