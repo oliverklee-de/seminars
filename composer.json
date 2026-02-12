@@ -48,7 +48,7 @@
 	},
 	"require-dev": {
 		"ergebnis/composer-normalize": "2.50.0",
-		"friendsofphp/php-cs-fixer": "3.93.1",
+		"friendsofphp/php-cs-fixer": "3.94.0",
 		"helmich/typo3-typoscript-lint": "2.5.2 || 3.3.0",
 		"phpstan/extension-installer": "1.4.3",
 		"phpstan/phpstan": "1.12.32",
