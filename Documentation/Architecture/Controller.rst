@@ -7,7 +7,7 @@ Extbase Controller
 Used Controller and their purposes
 ==================================
 
-BackEnd
+Backend controllers
 -------
 
 +------------------------+-----------------------------------------------------+
