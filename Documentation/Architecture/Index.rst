@@ -13,3 +13,5 @@ Architecture of the seminars extension
    PackagesAndDependencies
    ORMOverview
    Entities
+   Controllers
+   Testing
