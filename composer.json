@@ -56,19 +56,19 @@
 		"phpstan/phpstan-strict-rules": "1.6.2",
 		"phpunit/phpunit": "9.6.34",
 		"rector/type-perfect": "1.0.0",
-		"saschaegerer/phpstan-typo3": "1.10.2 || 2.1.1",
+		"saschaegerer/phpstan-typo3": "1.10.2",
 		"squizlabs/php_codesniffer": "4.0.1",
 		"ssch/typo3-rector": "2.13.1",
 		"ssch/typo3-rector-testing-framework": "2.0.1",
-		"symfony/console": "5.4.47 || 6.4.27 || 7.3.5",
-		"symfony/translation": "5.4.45 || 6.4.26 || 7.3.4",
-		"symfony/yaml": "5.4.45 || 6.4.26 || 7.3.5",
+		"symfony/console": "5.4.47 || 6.4.32 || 7.4.4",
+		"symfony/translation": "5.4.45 || 6.4.32 || 7.4.4",
+		"symfony/yaml": "5.4.45 || 6.4.30 || 7.4.1",
 		"typo3/cms-fluid-styled-content": "^11.5 || ^12.4",
 		"typo3/cms-install": "^11.5 || ^12.4",
 		"typo3/cms-scheduler": "^11.5 || ^12.4",
 		"typo3/coding-standards": "0.6.1",
 		"typo3/testing-framework": "7.1.1",
-		"webmozart/assert": "^1.12.1"
+		"webmozart/assert": "^1.12.1 || ^2.1.5"
 	},
 	"replace": {
 		"typo3-ter/seminars": "self.version"
