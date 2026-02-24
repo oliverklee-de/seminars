@@ -4,16 +4,13 @@
         <span class="text-nowrap">
             <f:if condition="{event.unlimitedSeats}">
                 <f:then>
-                    <f:translate key="plugin.{viewName}.events.property.vacancies.unlimited"/> 🟢
+                    <f:translate key="plugin.{viewName}.events.property.vacancies.unlimited"/>
                 </f:then>
-                <f:else if="{statistics.vacancies} >= {settings.enoughVacanciesThreshold}">
-                    ≥ {settings.enoughVacanciesThreshold} 🟢
-                </f:else>
                 <f:else if="{statistics.fullyBooked}">
                     <f:translate key="plugin.{viewName}.events.property.vacancies.fullyBooked"/> 🔴
                 </f:else>
                 <f:else>
-                    {statistics.vacancies} 🟡
+                    {statistics.vacancies}
                 </f:else>
             </f:if>
         </span>
