@@ -183,3 +183,41 @@ form.tx-seminars-event-registration input[type="number"] {
 form.tx-seminars-event-registration label {
     user-select: none;
 }
+
+/*
+ * Events list page
+ */
+.event-list-item__header a:hover,
+.event-list-item__header a:focus,
+.event-list-item__header a:active {
+    text-decoration: none;
+}
+
+.event-list-item__header a:active {
+    outline: 2px dashed var(--bs-link-hover-color, #0a58ca);
+}
+
+.event-list-item__details-title {
+    display: inline-block;
+    min-width: 8rem;
+    overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 767px) {
+    .event-list-item__details {
+        border-bottom: 1px solid var(--bs-white, #ffffff);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .event-list-item__content {
+        flex: 1;
+    }
+
+    .event-list-item__action {
+        border-left: 1px solid var(--bs-white, #ffffff);
+        width: min(25%, 220px);
+    }
+}
