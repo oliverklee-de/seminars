@@ -344,14 +344,59 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      */
     public function indexActionForEventWithRegularRegistrationsRendersRegistrationCount(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithRegistrations.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithRegularRegistrations.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
         $response = $this->executeFrontendSubRequest($request, $requestContext);
         $body = (string)$response->getBody();
 
-        self::assertStringContainsString(' 4', $body);
+        self::assertMatchesRegularExpression('#<td[^>]*>\\s*4\\s*</td>#', $body);
+    }
+
+    /**
+     * @test
+     */
+    public function indexActionForEventWithZeroRegistrationsRendersRegistrationCount(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithoutRegistrations.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $body = (string)$response->getBody();
+
+        self::assertMatchesRegularExpression('#<td[^>]*>\\s*0\\s*</td>#', $body);
+    }
+
+    /**
+     * @test
+     */
+    public function indexActionForEventWithZeroRegistrationsDoesDisplayCountOfWaitingListRegistrations(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithWaitingListRegistrations.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $body = (string)$response->getBody();
+
+        self::assertMatchesRegularExpression('#<td[^>]*>\\s*0\\s*</td>#', $body);
+    }
+
+    /**
+     * @test
+     */
+    public function indexActionForEventWithZeroRegistrationsDoesDisplayCountOfNonBindingReservations(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithNonBindingReservations.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $body = (string)$response->getBody();
+
+        self::assertMatchesRegularExpression('#<td[^>]*>\\s*0\\s*</td>#', $body);
     }
 
     /**
@@ -366,7 +411,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $response = $this->executeFrontendSubRequest($request, $requestContext);
         $body = (string)$response->getBody();
 
-        self::assertStringContainsString('17', $body);
+        self::assertMatchesRegularExpression('#<td[^>]*>\\s*17\\s*</td>#', $body);
     }
 
     /**
