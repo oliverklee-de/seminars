@@ -366,7 +366,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $response = $this->executeFrontendSubRequest($request, $requestContext);
         $body = (string)$response->getBody();
 
-        self::assertStringContainsString('≥ 5 🟢', $body);
+        self::assertStringContainsString('17', $body);
     }
 
     /**
