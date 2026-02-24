@@ -166,7 +166,7 @@
 		"check:tests:legacy-functional": "find 'Tests/LegacyFunctional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running legacy functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml {}';",
 		"check:tests:unit": "phpunit -c Build/phpunit/UnitTests.xml Tests/Unit",
 		"check:ts:lint": "typoscript-lint -c Configuration/TypoScriptLint.yaml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript Tests/Functional/Controller/Fixtures/TypoScript",
-		"check:xliff:lint": "php Build/xliff/xliff-lint lint:xliff Resources/Private/Language",
+		"check:xliff:lint": "php Build/Scripts/xliffLint.sh lint:xliff Resources/Private/Language",
 		"coverage:create-directories": "mkdir -p build/logs .Build/coverage",
 		"fix": [
 			"@fix:composer",
