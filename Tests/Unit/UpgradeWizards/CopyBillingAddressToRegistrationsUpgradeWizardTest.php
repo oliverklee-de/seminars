@@ -6,6 +6,7 @@ namespace OliverKlee\Seminars\Tests\Unit\UpgradeWizards;
 
 use OliverKlee\Seminars\UpgradeWizards\CopyBillingAddressToRegistrationsUpgradeWizard;
 use Psr\Log\LoggerAwareInterface;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
@@ -22,7 +23,7 @@ final class CopyBillingAddressToRegistrationsUpgradeWizardTest extends UnitTestC
     {
         parent::setUp();
 
-        $this->subject = new CopyBillingAddressToRegistrationsUpgradeWizard();
+        $this->subject = new CopyBillingAddressToRegistrationsUpgradeWizard($this->createStub(ConnectionPool::class));
     }
 
     /**

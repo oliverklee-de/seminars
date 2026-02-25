@@ -6,6 +6,7 @@ namespace OliverKlee\Seminars\Tests\Unit\UpgradeWizards;
 
 use OliverKlee\Seminars\UpgradeWizards\GenerateEventSlugsUpgradeWizard;
 use Psr\Log\LoggerAwareInterface;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
@@ -22,7 +23,7 @@ final class GenerateEventSlugsUpgradeWizardTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->subject = new GenerateEventSlugsUpgradeWizard();
+        $this->subject = new GenerateEventSlugsUpgradeWizard($this->createStub(ConnectionPool::class));
     }
 
     /**
