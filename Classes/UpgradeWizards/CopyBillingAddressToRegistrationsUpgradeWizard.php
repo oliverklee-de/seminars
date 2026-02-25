@@ -9,7 +9,6 @@ use Psr\Log\LoggerAwareTrait;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
@@ -31,6 +30,13 @@ class CopyBillingAddressToRegistrationsUpgradeWizard implements
 
     private const TABLE_NAME_REGISTRATIONS = 'tx_seminars_attendances';
     private const TABLE_NAME_USERS = 'fe_users';
+
+    private ConnectionPool $connectionPool;
+
+    public function __construct(ConnectionPool $connectionPool)
+    {
+        $this->connectionPool = $connectionPool;
+    }
 
     public function getIdentifier(): string
     {
@@ -147,7 +153,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizard implements
 
     private function getConnectionPool(): ConnectionPool
     {
-        return GeneralUtility::makeInstance(ConnectionPool::class);
+        return $this->connectionPool;
     }
 
     private function getRegistrationQueryBuilder(): QueryBuilder

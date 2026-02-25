@@ -8,7 +8,6 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
@@ -28,6 +27,13 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizard implements
     use LoggerAwareTrait;
 
     private const TABLE_NAME_EVENTS = 'tx_seminars_seminars';
+
+    private ConnectionPool $connectionPool;
+
+    public function __construct(ConnectionPool $connectionPool)
+    {
+        $this->connectionPool = $connectionPool;
+    }
 
     public function getIdentifier(): string
     {
@@ -90,7 +96,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizard implements
         $duplicates = \array_filter($statistics, static fn (array $item): bool => $item['count'] > 1);
 
         $numberOfDeletions = 0;
-        $connection = $this->getConnectionPool()->getConnectionForTable('tx_seminars_seminars_place_mm');
+        $connection = $this->connectionPool->getConnectionForTable('tx_seminars_seminars_place_mm');
         foreach ($duplicates as $item) {
             $sql = 'DELETE FROM tx_seminars_seminars_place_mm WHERE uid_local = ? AND uid_foreign = ? LIMIT ?';
             $statement = $connection->prepare($sql);
@@ -110,14 +116,9 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizard implements
         return true;
     }
 
-    private function getConnectionPool(): ConnectionPool
-    {
-        return GeneralUtility::makeInstance(ConnectionPool::class);
-    }
-
     private function getQueryBuilder(): QueryBuilder
     {
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE_NAME_EVENTS);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME_EVENTS);
         $queryBuilder->getRestrictions()->removeAll();
 
         return $queryBuilder;
