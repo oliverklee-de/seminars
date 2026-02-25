@@ -26,6 +26,13 @@ class GenerateEventSlugsUpgradeWizard implements UpgradeWizardInterface, Repeata
 
     private const TABLE_NAME_EVENTS = 'tx_seminars_seminars';
 
+    private ConnectionPool $connectionPool;
+
+    public function __construct(ConnectionPool $connectionPool)
+    {
+        $this->connectionPool = $connectionPool;
+    }
+
     public function getIdentifier(): string
     {
         return 'seminars_generateEventSlugs';
@@ -74,7 +81,7 @@ class GenerateEventSlugsUpgradeWizard implements UpgradeWizardInterface, Repeata
         $queryResult = $query->executeQuery();
 
         $slugGenerator = GeneralUtility::makeInstance(SlugGenerator::class);
-        $connection = $this->getConnectionPool()->getConnectionForTable(self::TABLE_NAME_EVENTS);
+        $connection = $this->connectionPool->getConnectionForTable(self::TABLE_NAME_EVENTS);
         /** @var array<string, string> $row */
         foreach ($queryResult->fetchAllAssociative() as $row) {
             /** @var array{uid: int<0, max>, title: string, object_type: int<0, max>, topic: int<0, max>} $row */
@@ -89,14 +96,9 @@ class GenerateEventSlugsUpgradeWizard implements UpgradeWizardInterface, Repeata
         return true;
     }
 
-    private function getConnectionPool(): ConnectionPool
-    {
-        return GeneralUtility::makeInstance(ConnectionPool::class);
-    }
-
     private function getQueryBuilder(): QueryBuilder
     {
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE_NAME_EVENTS);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME_EVENTS);
         $queryBuilder->getRestrictions()->removeAll();
 
         return $queryBuilder;
