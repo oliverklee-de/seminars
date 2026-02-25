@@ -7,8 +7,8 @@ namespace OliverKlee\Seminars\Domain\Repository;
 use OliverKlee\Seminars\Domain\Model\RawDataInterface;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
+use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -17,6 +17,15 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 abstract class AbstractRawDataCapableRepository extends Repository
 {
+    protected ConnectionPool $connectionPool;
+
+    public function __construct(ObjectManagerInterface $objectManager, ConnectionPool $connectionPool)
+    {
+        parent::__construct($objectManager);
+
+        $this->connectionPool = $connectionPool;
+    }
+
     /**
      * @return non-empty-string
      */
@@ -44,7 +53,7 @@ abstract class AbstractRawDataCapableRepository extends Repository
         }
 
         $tableName = $this->getTableName();
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($tableName);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($tableName);
         $queryBuilder->getRestrictions()->removeAll();
         $query = $queryBuilder
             ->select('*')
