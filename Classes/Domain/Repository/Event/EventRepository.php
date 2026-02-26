@@ -11,10 +11,8 @@ use OliverKlee\Seminars\Domain\Model\Event\NullEventTopic;
 use OliverKlee\Seminars\Domain\Repository\AbstractRawDataCapableRepository;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\Connection;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Qom\ConstraintInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
@@ -40,10 +38,8 @@ class EventRepository extends AbstractRawDataCapableRepository
 
     private Context $context;
 
-    public function __construct(ObjectManagerInterface $objectManager, ConnectionPool $connectionPool, Context $context)
+    public function injectContext(Context $context): void
     {
-        parent::__construct($objectManager, $connectionPool);
-
         $this->context = $context;
     }
 
