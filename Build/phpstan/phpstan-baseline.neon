@@ -3,3419 +3,3419 @@ parameters:
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
 			count: 2
-			path: Classes/BackEnd/FlexForms.php
+			path: ../../Classes/BackEnd/FlexForms.php
 
 		-
 			message: "#^Cannot access offset 'Field' on mixed\\.$#"
 			count: 1
-			path: Classes/BackEnd/FlexForms.php
+			path: ../../Classes/BackEnd/FlexForms.php
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
-			path: Classes/Bag/AbstractBag.php
+			path: ../../Classes/Bag/AbstractBag.php
 
 		-
 			message: "#^Cannot access offset non\\-empty\\-string on mixed\\.$#"
 			count: 1
-			path: Classes/Bag/AbstractBag.php
+			path: ../../Classes/Bag/AbstractBag.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/Bag/AbstractBag.php
+			path: ../../Classes/Bag/AbstractBag.php
 
 		-
 			message: "#^Class OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag implements generic interface Iterator but does not specify its types\\: TKey, TValue$#"
 			count: 1
-			path: Classes/Bag/AbstractBag.php
+			path: ../../Classes/Bag/AbstractBag.php
 
 		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 1
-			path: Classes/Bag/AbstractBag.php
+			path: ../../Classes/Bag/AbstractBag.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag\\:\\:countWithoutLimit\\(\\) should return int\\<0, max\\> but returns int\\.$#"
 			count: 1
-			path: Classes/Bag/AbstractBag.php
+			path: ../../Classes/Bag/AbstractBag.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag\\<M of OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\>\\:\\:\\$countWithoutLimit \\(int\\<0, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Classes/Bag/AbstractBag.php
+			path: ../../Classes/Bag/AbstractBag.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag\\<M of OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\>\\:\\:\\$queryResult \\(array\\<int, array\\<string, float\\|int\\|string\\|null\\>\\>\\) does not accept array\\.$#"
 			count: 1
-			path: Classes/Bag/AbstractBag.php
+			path: ../../Classes/Bag/AbstractBag.php
 
 		-
 			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
 			count: 1
-			path: Classes/BagBuilder/AbstractBagBuilder.php
+			path: ../../Classes/BagBuilder/AbstractBagBuilder.php
 
 		-
 			message: "#^Parameter \\#1 \\$pageUids of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\PageRepository\\:\\:findWithinParentPages\\(\\) expects array\\<int\\<1, max\\>\\>, array\\<int\\> given\\.$#"
 			count: 1
-			path: Classes/BagBuilder/AbstractBagBuilder.php
+			path: ../../Classes/BagBuilder/AbstractBagBuilder.php
 
 		-
 			message: "#^Only booleans are allowed in a negated boolean, int\\|false given\\.$#"
 			count: 1
-			path: Classes/BagBuilder/CategoryBagBuilder.php
+			path: ../../Classes/BagBuilder/CategoryBagBuilder.php
 
 		-
 			message: "#^Only booleans are allowed in \\|\\|, int\\|false given on the right side\\.$#"
 			count: 1
-			path: Classes/BagBuilder/CategoryBagBuilder.php
+			path: ../../Classes/BagBuilder/CategoryBagBuilder.php
 
 		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
-			path: Classes/BagBuilder/EventBagBuilder.php
+			path: ../../Classes/BagBuilder/EventBagBuilder.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and int results in an error\\.$#"
 			count: 1
-			path: Classes/BagBuilder/EventBagBuilder.php
+			path: ../../Classes/BagBuilder/EventBagBuilder.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 3
-			path: Classes/BagBuilder/EventBagBuilder.php
+			path: ../../Classes/BagBuilder/EventBagBuilder.php
 
 		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 9
-			path: Classes/BagBuilder/EventBagBuilder.php
+			path: ../../Classes/BagBuilder/EventBagBuilder.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:prepareSearchWord\\(\\) should return string but returns mixed\\.$#"
 			count: 1
-			path: Classes/BagBuilder/EventBagBuilder.php
+			path: ../../Classes/BagBuilder/EventBagBuilder.php
 
 		-
 			message: "#^Parameter \\#1 \\$array of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:cleanIntegers\\(\\) expects array\\<int, int\\|string\\>, array\\<int, mixed\\> given\\.$#"
 			count: 1
-			path: Classes/BagBuilder/EventBagBuilder.php
+			path: ../../Classes/BagBuilder/EventBagBuilder.php
 
 		-
 			message: "#^Parameter &\\$configuration by\\-ref type of method OliverKlee\\\\Seminars\\\\Configuration\\\\EventRegistrationFlexForms\\:\\:buildFields\\(\\) expects array\\<string, array\\<string, string\\>\\>, array\\<string, array\\<int\\|string, array\\<int, mixed\\>\\|string\\>\\> given\\.$#"
 			count: 1
-			path: Classes/Configuration/EventRegistrationFlexForms.php
+			path: ../../Classes/Configuration/EventRegistrationFlexForms.php
 
 		-
 			message: "#^Provide more specific return type \"OliverKlee\\\\Seminars\\\\Csv\\\\CsvResponse\" over abstract one$#"
 			count: 1
-			path: Classes/Controller/BackEnd/RegistrationController.php
+			path: ../../Classes/Controller/BackEnd/RegistrationController.php
 
 		-
 			message: "#^Parameter \\#2 \\$storageFolderUid of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationProcessor\\:\\:createAdditionalPersons\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
-			path: Classes/Controller/EventRegistrationController.php
+			path: ../../Classes/Controller/EventRegistrationController.php
 
 		-
 			message: "#^Parameter \\#2 \\$userUid of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationGuard\\:\\:isFreeFromRegistrationConflicts\\(\\) expects int, int\\<1, max\\>\\|null given\\.$#"
 			count: 1
-			path: Classes/Controller/EventRegistrationController.php
+			path: ../../Classes/Controller/EventRegistrationController.php
 
 		-
 			message: "#^Provide more specific return type \"TYPO3\\\\CMS\\\\Extbase\\\\Http\\\\ForwardResponse\" over abstract one$#"
 			count: 1
-			path: Classes/Controller/EventRegistrationController.php
+			path: ../../Classes/Controller/EventRegistrationController.php
 
 		-
 			message: "#^Provide more specific return type \"TYPO3\\\\CMS\\\\Extbase\\\\Http\\\\ForwardResponse\" over abstract one$#"
 			count: 1
-			path: Classes/Controller/EventUnregistrationController.php
+			path: ../../Classes/Controller/EventUnregistrationController.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/Controller/FrontEndEditorController.php
+			path: ../../Classes/Controller/FrontEndEditorController.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 3
-			path: Classes/Csv/AbstractRegistrationListView.php
+			path: ../../Classes/Csv/AbstractRegistrationListView.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Csv\\\\AbstractRegistrationListView\\:\\:render\\(\\) should return string but returns mixed\\.$#"
 			count: 1
-			path: Classes/Csv/AbstractRegistrationListView.php
+			path: ../../Classes/Csv/AbstractRegistrationListView.php
 
 		-
 			message: "#^Parameter \\#1 \\$model of method OliverKlee\\\\Seminars\\\\Csv\\\\AbstractRegistrationListView\\:\\:createCsvColumnsForFrontEndUser\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
-			path: Classes/Csv/AbstractRegistrationListView.php
+			path: ../../Classes/Csv/AbstractRegistrationListView.php
 
 		-
 			message: "#^Parameter \\#1 \\$model of method OliverKlee\\\\Seminars\\\\Csv\\\\AbstractRegistrationListView\\:\\:createCsvColumnsForRegistration\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
-			path: Classes/Csv/AbstractRegistrationListView.php
+			path: ../../Classes/Csv/AbstractRegistrationListView.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
-			path: Classes/Csv/CsvDownloader.php
+			path: ../../Classes/Csv/CsvDownloader.php
 
 		-
 			message: "#^Call to function is_string\\(\\) with non\\-empty\\-string will always evaluate to true\\.$#"
 			count: 1
-			path: Classes/Csv/CsvResponse.php
+			path: ../../Classes/Csv/CsvResponse.php
 
 		-
 			message: "#^Return type \\(list\\<string\\>\\) of method OliverKlee\\\\Seminars\\\\Csv\\\\DownloadRegistrationListView\\:\\:getFrontEndUserFieldKeys\\(\\) should be covariant with return type \\(list\\<non\\-empty\\-string\\>\\) of method OliverKlee\\\\Seminars\\\\Csv\\\\AbstractRegistrationListView\\:\\:getFrontEndUserFieldKeys\\(\\)$#"
 			count: 1
-			path: Classes/Csv/DownloadRegistrationListView.php
+			path: ../../Classes/Csv/DownloadRegistrationListView.php
 
 		-
 			message: "#^Return type \\(list\\<string\\>\\) of method OliverKlee\\\\Seminars\\\\Csv\\\\DownloadRegistrationListView\\:\\:getRegistrationFieldKeys\\(\\) should be covariant with return type \\(list\\<non\\-empty\\-string\\>\\) of method OliverKlee\\\\Seminars\\\\Csv\\\\AbstractRegistrationListView\\:\\:getRegistrationFieldKeys\\(\\)$#"
 			count: 1
-			path: Classes/Csv/DownloadRegistrationListView.php
+			path: ../../Classes/Csv/DownloadRegistrationListView.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventDate\\:\\:getPaymentMethods\\(\\) should return TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\PaymentMethod\\> but returns TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<mixed\\>\\.$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventDate.php
+			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\AccommodationOption\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventDate.php
+			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FoodOption\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventDate.php
+			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Organizer\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventDate.php
+			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\RegistrationCheckbox\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventDate.php
+			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Speaker\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventDate.php
+			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Venue\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventDate.php
+			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<TYPO3\\\\CMS\\\\Extbase\\\\Domain\\\\Model\\\\FileReference\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventDate.php
+			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventTopic\\:\\:getEventType\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\EventType\\|null but returns object\\|null\\.$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventTopic.php
+			path: ../../Classes/Domain/Model/Event/EventTopic.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Category\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventTopic.php
+			path: ../../Classes/Domain/Model/Event/EventTopic.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\PaymentMethod\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/EventTopic.php
+			path: ../../Classes/Domain/Model/Event/EventTopic.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\SingleEvent\\:\\:getEventType\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\EventType\\|null but returns object\\|null\\.$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\AccommodationOption\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Category\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FoodOption\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Organizer\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\PaymentMethod\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\RegistrationCheckbox\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Speaker\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Venue\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<TYPO3\\\\CMS\\\\Extbase\\\\Domain\\\\Model\\\\FileReference\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Event/SingleEvent.php
+			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
 		-
 			message: "#^Call to static method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Price\\:\\:isPriceCodeValid\\(\\) with 'price_regular'\\|'price_regular_early'\\|'price_special'\\|'price_special_early' will always evaluate to true\\.$#"
 			count: 1
-			path: Classes/Domain/Model/Registration/Registration.php
+			path: ../../Classes/Domain/Model/Registration/Registration.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:getEvent\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventDateInterface\\|null but returns object\\|null\\.$#"
 			count: 1
-			path: Classes/Domain/Model/Registration/Registration.php
+			path: ../../Classes/Domain/Model/Registration/Registration.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:getPaymentMethod\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\PaymentMethod\\|null but returns object\\|null\\.$#"
 			count: 1
-			path: Classes/Domain/Model/Registration/Registration.php
+			path: ../../Classes/Domain/Model/Registration/Registration.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:getUser\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FrontendUser\\|null but returns object\\|null\\.$#"
 			count: 1
-			path: Classes/Domain/Model/Registration/Registration.php
+			path: ../../Classes/Domain/Model/Registration/Registration.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\AccommodationOption\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Registration/Registration.php
+			path: ../../Classes/Domain/Model/Registration/Registration.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FoodOption\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Registration/Registration.php
+			path: ../../Classes/Domain/Model/Registration/Registration.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FrontendUser\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Registration/Registration.php
+			path: ../../Classes/Domain/Model/Registration/Registration.php
 
 		-
 			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\RegistrationCheckbox\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Domain/Model/Registration/Registration.php
+			path: ../../Classes/Domain/Model/Registration/Registration.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/Domain/Repository/AbstractRawDataCapableRepository.php
+			path: ../../Classes/Domain/Repository/AbstractRawDataCapableRepository.php
 
 		-
 			message: "#^Parameter \\#1 \\$rawData of method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\RawDataInterface\\:\\:setRawData\\(\\) expects array\\<string, float\\|int\\|string\\|null\\>, array\\<string, mixed\\> given\\.$#"
 			count: 1
-			path: Classes/Domain/Repository/AbstractRawDataCapableRepository.php
+			path: ../../Classes/Domain/Repository/AbstractRawDataCapableRepository.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/Domain/Repository/Event/EventRepository.php
+			path: ../../Classes/Domain/Repository/Event/EventRepository.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Event\\\\EventRepository\\:\\:now\\(\\) should return DateTimeInterface but returns mixed\\.$#"
 			count: 1
-			path: Classes/Domain/Repository/Event/EventRepository.php
+			path: ../../Classes/Domain/Repository/Event/EventRepository.php
 
 		-
 			message: "#^Method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\>\\:\\:logicalAnd\\(\\) invoked with 2 parameters, 1 required\\.$#"
 			count: 4
-			path: Classes/Domain/Repository/Event/EventRepository.php
+			path: ../../Classes/Domain/Repository/Event/EventRepository.php
 
 		-
 			message: "#^Method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\>\\:\\:logicalOr\\(\\) invoked with 2 parameters, 1 required\\.$#"
 			count: 1
-			path: Classes/Domain/Repository/Event/EventRepository.php
+			path: ../../Classes/Domain/Repository/Event/EventRepository.php
 
 		-
 			message: "#^PHPDoc tag @var with type array\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventTopicInterface\\> is not subtype of type array\\<int, OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\>\\.$#"
 			count: 2
-			path: Classes/Domain/Repository/Event/EventRepository.php
+			path: ../../Classes/Domain/Repository/Event/EventRepository.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/Domain/Repository/PageRepository.php
+			path: ../../Classes/Domain/Repository/PageRepository.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/Domain/Repository/Registration/RegistrationRepository.php
+			path: ../../Classes/Domain/Repository/Registration/RegistrationRepository.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepository\\:\\:countSeatsByEvent\\(\\) should return int\\<0, max\\> but returns int\\.$#"
 			count: 1
-			path: Classes/Domain/Repository/Registration/RegistrationRepository.php
+			path: ../../Classes/Domain/Repository/Registration/RegistrationRepository.php
 
 		-
 			message: "#^Method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\>\\:\\:logicalAnd\\(\\) invoked with 2 parameters, 1 required\\.$#"
 			count: 2
-			path: Classes/Domain/Repository/Registration/RegistrationRepository.php
+			path: ../../Classes/Domain/Repository/Registration/RegistrationRepository.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 1
-			path: Classes/Email/Salutation.php
+			path: ../../Classes/Email/Salutation.php
 
 		-
 			message: "#^Cannot access offset 'modifyEmailSalutati…' on mixed\\.$#"
 			count: 1
-			path: Classes/Email/Salutation.php
+			path: ../../Classes/Email/Salutation.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 1
-			path: Classes/Email/Salutation.php
+			path: ../../Classes/Email/Salutation.php
 
 		-
 			message: "#^Parameter \\#1 \\$format of function sprintf expects string, string\\|null given\\.$#"
 			count: 1
-			path: Classes/Email/Salutation.php
+			path: ../../Classes/Email/Salutation.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Form\\\\Element\\\\EventDetailsElement\\:\\:render\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Form/Element/EventDetailsElement.php
+			path: ../../Classes/Form/Element/EventDetailsElement.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\AbstractView\\:\\:__construct\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/FrontEnd/AbstractView.php
+			path: ../../Classes/FrontEnd/AbstractView.php
 
 		-
 			message: "#^Parameter \\#2 \\$frontendController of method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:__construct\\(\\) expects TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController\\|null, mixed given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/AbstractView.php
+			path: ../../Classes/FrontEnd/AbstractView.php
 
 		-
 			message: "#^Cannot call method getTypoLink\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/CategoryList.php
+			path: ../../Classes/FrontEnd/CategoryList.php
 
 		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 1
-			path: Classes/FrontEnd/CategoryList.php
+			path: ../../Classes/FrontEnd/CategoryList.php
 
 		-
 			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToAttendee\\(\\)\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToDateAndSingleRecords\\(\\)\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToEventManager\\(\\)\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToEventsNextDay\\(\\)\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToEventsWithVacancies\\(\\)\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToOtherDatesForTopic\\(\\)\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToTopicRecords\\(\\)\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot access property \\$currentRecord on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot access property \\$id on TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method cObjGetSingle\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method canViewRegistrationsList\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 3
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getAccreditationNumber\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getAdditionalInformation\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getAttachedFiles\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getCategories\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getCities\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getCreditPoints\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getCurrentPriceRegular\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getCurrentPriceSpecial\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getDate\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 3
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getDependencies\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getDescription\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getEarlyBirdDeadline\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getEarlyBirdPriceRegular\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getEarlyBirdPriceSpecial\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getEventType\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getExpiry\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getImage\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getLanguageKeySuffixForType\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getOrganizerBag\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getOrganizers\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getOrganizingPartners\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getOwner\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getPaymentMethods\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getPlaceShort\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getPlaceWithDetails\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getPriceOnRequest\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 3
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getPriceRegular\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getPriceSpecial\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getRecordType\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getRegistrationBegin\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getRegistrationDeadline\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getRoom\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getSeats\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getSpeakersShort\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getSpeakersWithDetails\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getStatus\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getSubtitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getTargetGroupNames\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getTargetGroupsAsArray\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getTime\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getTimeSlotsAsArrayWithMarkers\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 4
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getTotalPrice\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getTypoLink\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\Model\\\\FrontEndUser\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 5
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getVacanciesString\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasAccreditationNumber\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasAdditionalInformation\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasAttachedFiles\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasCategories\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasCreditPoints\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasDependencies\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasDescription\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasEarlyBirdPrice\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasEndDate\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasEventType\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasExpiry\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasImage\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasLeaders\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasOrganizers\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasOrganizingPartners\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasOwner\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasPartners\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasPaymentMethods\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasPriceSpecial\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasRegistrationDeadline\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasRequirements\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasRoom\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasSpeakers\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasSubtitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasTargetGroups\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasTimeslots\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasTutors\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method isCanceled\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method isEarlyBirdDeadlineOver\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method isEventDate\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method isEventTopic\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method isHidden\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method isOwnerFeUser\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method isUnregistrationPossible\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method isUserRegistered\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method typoLink\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method typoLink_URL\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 3
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:getIntegerArrayFromRequest\\(\\) should return array\\<int\\>\\|null but returns array\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:getLinkBuilder\\(\\) should return OliverKlee\\\\Seminars\\\\Service\\\\SingleViewLinkBuilder but returns OliverKlee\\\\Seminars\\\\Service\\\\SingleViewLinkBuilder\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:getLoggedInFrontEndUserUid\\(\\) should return int but returns mixed\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:main\\(\\) has parameter \\$conf with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Only booleans are allowed in a ternary operator condition, int\\<\\-1, 1\\> given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Only booleans are allowed in an if condition, int given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$age of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:limitToAge\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$builder of method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:limitForAdditionalParameters\\(\\) expects OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder, OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$builder of method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:limitToTimeFrameSetting\\(\\) expects OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder, OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:getVacanciesClasses\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\FrontEnd\\\\RequirementsList\\:\\:setEvent\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:canRegisterIfLoggedIn\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:canRegisterIfLoggedInMessage\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:registrationHasStarted\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$maximumPrice of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:limitToMaximumPrice\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$minimumPrice of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:limitToMinimumPrice\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$searchWords of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:limitToFullTextSearch\\(\\) expects string, array\\|float\\|int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#1 \\$uid of method OliverKlee\\\\Oelib\\\\Mapper\\\\AbstractDataMapper\\<OliverKlee\\\\Seminars\\\\Model\\\\FrontEndUser\\>\\:\\:find\\(\\) expects int\\<1, max\\>, mixed given\\.$#"
 			count: 2
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#2 \\$event of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getLinkToRegistrationPage\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#2 \\$event of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getRegistrationLink\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#2 \\$registration of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getLinkToUnregistrationPage\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, array\\|float\\|int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Parameters should have \"string\\|int\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$internal \\(array\\{descFlag\\: bool, maxPages\\: int, orderBy\\?\\: string, res_count\\: int\\<0, max\\>, results_at_a_time\\: int\\}\\) does not accept array\\{descFlag\\: string, maxPages\\: int, orderBy\\?\\: string, res_count\\: int\\<0, max\\>, results_at_a_time\\: int\\}\\.$#"
 			count: 1
-			path: Classes/FrontEnd/DefaultController.php
+			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getTypoLink\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/RegistrationsList.php
+			path: ../../Classes/FrontEnd/RegistrationsList.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\RegistrationsList\\:\\:__construct\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/FrontEnd/RegistrationsList.php
+			path: ../../Classes/FrontEnd/RegistrationsList.php
 
 		-
 			message: "#^Parameter \\#4 \\$accessLevel of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'attendees_and…'\\|'login', string given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/RegistrationsList.php
+			path: ../../Classes/FrontEnd/RegistrationsList.php
 
 		-
 			message: "#^Cannot call method createRelativeUrlForEvent\\(\\) on OliverKlee\\\\Seminars\\\\Service\\\\SingleViewLinkBuilder\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/RequirementsList.php
+			path: ../../Classes/FrontEnd/RequirementsList.php
 
 		-
 			message: "#^Cannot call method getRequirements\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/FrontEnd/RequirementsList.php
+			path: ../../Classes/FrontEnd/RequirementsList.php
 
 		-
 			message: "#^Argument of an invalid type OliverKlee\\\\Oelib\\\\DataStructures\\\\Collection\\<OliverKlee\\\\Seminars\\\\Model\\\\Place\\>\\|null supplied for foreach, only iterables are supported\\.$#"
 			count: 2
-			path: Classes/FrontEnd/SelectorWidget.php
+			path: ../../Classes/FrontEnd/SelectorWidget.php
 
 		-
 			message: "#^Cannot cast array\\|float\\|int\\|string to string\\.$#"
 			count: 2
-			path: Classes/FrontEnd/SelectorWidget.php
+			path: ../../Classes/FrontEnd/SelectorWidget.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\SelectorWidget\\:\\:createDateArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/FrontEnd/SelectorWidget.php
+			path: ../../Classes/FrontEnd/SelectorWidget.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\SelectorWidget\\:\\:removeDummyOptionFromFormData\\(\\) has parameter \\$formData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/FrontEnd/SelectorWidget.php
+			path: ../../Classes/FrontEnd/SelectorWidget.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\SelectorWidget\\:\\:removeDummyOptionFromFormData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/FrontEnd/SelectorWidget.php
+			path: ../../Classes/FrontEnd/SelectorWidget.php
 
 		-
 			message: "#^Parameter \\#1 \\$dataOfModels of method OliverKlee\\\\Oelib\\\\Mapper\\\\AbstractDataMapper\\<OliverKlee\\\\Seminars\\\\Model\\\\Place\\>\\:\\:getListOfModels\\(\\) expects array\\<array\\<string, bool\\|float\\|int\\|string\\|null\\>\\>, array\\<int, array\\<string, mixed\\>\\> given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/SelectorWidget.php
+			path: ../../Classes/FrontEnd/SelectorWidget.php
 
 		-
 			message: "#^Parameter \\#1 \\$name of method OliverKlee\\\\Seminars\\\\FrontEnd\\\\SelectorWidget\\:\\:createOptionBox\\(\\) expects 'city'\\|'event_type'\\|'places', 'categories'\\|'city'\\|'event_type'\\|'organizer'\\|'place' given\\.$#"
 			count: 1
-			path: Classes/FrontEnd/SelectorWidget.php
+			path: ../../Classes/FrontEnd/SelectorWidget.php
 
 		-
 			message: "#^Cannot access offset 'columns' on mixed\\.$#"
 			count: 2
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Cannot access offset 'config' on mixed\\.$#"
 			count: 2
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Cannot access offset 'registrations' on mixed\\.$#"
 			count: 2
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Cannot access offset 'tx_seminars_seminars' on mixed\\.$#"
 			count: 2
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Cannot access offset 'type' on mixed\\.$#"
 			count: 2
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\DataHandlerHook\\:\\:copyBeginDateFromTimeSlots\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\DataHandlerHook\\:\\:copyDatesFromTimeSlots\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\DataHandlerHook\\:\\:copyEndDateFromTimeSlots\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\DataHandlerHook\\:\\:sanitizeEventDates\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Hooks/DataHandlerHook.php
+			path: ../../Classes/Hooks/DataHandlerHook.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 1
-			path: Classes/Hooks/HookProvider.php
+			path: ../../Classes/Hooks/HookProvider.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 1
-			path: Classes/Hooks/HookProvider.php
+			path: ../../Classes/Hooks/HookProvider.php
 
 		-
 			message: "#^Cannot access offset string on mixed\\.$#"
 			count: 1
-			path: Classes/Hooks/HookProvider.php
+			path: ../../Classes/Hooks/HookProvider.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\HookProvider\\:\\:executeHookReturningMergedArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Hooks/HookProvider.php
+			path: ../../Classes/Hooks/HookProvider.php
 
 		-
 			message: "#^Parameter \\#1 \\$className of static method TYPO3\\\\CMS\\\\Core\\\\Utility\\\\GeneralUtility\\:\\:makeInstance\\(\\) expects class\\-string\\<object\\>, mixed given\\.$#"
 			count: 1
-			path: Classes/Hooks/HookProvider.php
+			path: ../../Classes/Hooks/HookProvider.php
 
 		-
 			message: "#^Unable to resolve the template type T in call to method static method TYPO3\\\\CMS\\\\Core\\\\Utility\\\\GeneralUtility\\:\\:makeInstance\\(\\)$#"
 			count: 1
-			path: Classes/Hooks/HookProvider.php
+			path: ../../Classes/Hooks/HookProvider.php
 
 		-
 			message: "#^Variable method call on OliverKlee\\\\Seminars\\\\Hooks\\\\Interfaces\\\\Hook\\.$#"
 			count: 3
-			path: Classes/Hooks/HookProvider.php
+			path: ../../Classes/Hooks/HookProvider.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\Interfaces\\\\DataSanitization\\:\\:sanitizeEventData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Hooks/Interfaces/DataSanitization.php
+			path: ../../Classes/Hooks/Interfaces/DataSanitization.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\Interfaces\\\\DataSanitization\\:\\:sanitizeEventData\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Hooks/Interfaces/DataSanitization.php
+			path: ../../Classes/Hooks/Interfaces/DataSanitization.php
 
 		-
 			message: "#^Parameter \\#1 \\$dataOfModels of method OliverKlee\\\\Oelib\\\\Mapper\\\\AbstractDataMapper\\<OliverKlee\\\\Seminars\\\\Model\\\\Event\\>\\:\\:getListOfModels\\(\\) expects array\\<array\\<string, bool\\|float\\|int\\|string\\|null\\>\\>, array\\<int, array\\<string, mixed\\>\\> given\\.$#"
 			count: 2
-			path: Classes/Mapper/EventMapper.php
+			path: ../../Classes/Mapper/EventMapper.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Mapper\\\\EventMapper\\:\\:\\$relations with generic class OliverKlee\\\\Oelib\\\\Mapper\\\\AbstractDataMapper does not specify its types\\: M$#"
 			count: 1
-			path: Classes/Mapper/EventMapper.php
+			path: ../../Classes/Mapper/EventMapper.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Mapper\\\\FrontEndUserMapper\\:\\:\\$relations with generic class OliverKlee\\\\Oelib\\\\Mapper\\\\AbstractDataMapper does not specify its types\\: M$#"
 			count: 1
-			path: Classes/Mapper/FrontEndUserMapper.php
+			path: ../../Classes/Mapper/FrontEndUserMapper.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Mapper\\\\RegistrationMapper\\:\\:\\$relations with generic class OliverKlee\\\\Oelib\\\\Mapper\\\\AbstractDataMapper does not specify its types\\: M$#"
 			count: 1
-			path: Classes/Mapper/RegistrationMapper.php
+			path: ../../Classes/Mapper/RegistrationMapper.php
 
 		-
 			message: "#^Cannot call method getName\\(\\) on OliverKlee\\\\Seminars\\\\Model\\\\FrontEndUser\\|null\\.$#"
 			count: 1
-			path: Classes/Model/Event.php
+			path: ../../Classes/Model/Event.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Model\\\\Event\\:\\:getStatus\\(\\) should return 0\\|1\\|2 but returns int\\.$#"
 			count: 1
-			path: Classes/Model/Event.php
+			path: ../../Classes/Model/Event.php
 
 		-
 			message: "#^Parameters should have \"OliverKlee\\\\Oelib\\\\DataStructures\\\\Collection\\<OliverKlee\\\\Seminars\\\\Model\\\\Registration\\>\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Model/Event.php
+			path: ../../Classes/Model/Event.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/OldModel/AbstractModel.php
+			path: ../../Classes/OldModel/AbstractModel.php
 
 		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 1
-			path: Classes/OldModel/AbstractModel.php
+			path: ../../Classes/OldModel/AbstractModel.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\:\\:getMmRecordsByUid\\(\\) should return array\\<array\\<string, bool\\|int\\|string\\|null\\>\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
-			path: Classes/OldModel/AbstractModel.php
+			path: ../../Classes/OldModel/AbstractModel.php
 
 		-
 			message: "#^Binary operation \"\\.\\=\" between mixed and non\\-falsy\\-string results in an error\\.$#"
 			count: 1
-			path: Classes/OldModel/AbstractTimeSpan.php
+			path: ../../Classes/OldModel/AbstractTimeSpan.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/OldModel/AbstractTimeSpan.php
+			path: ../../Classes/OldModel/AbstractTimeSpan.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
-			path: Classes/OldModel/AbstractTimeSpan.php
+			path: ../../Classes/OldModel/AbstractTimeSpan.php
 
 		-
 			message: "#^Cannot call method cObjGetSingle\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Cannot call method getPublicUrl\\(\\) on TYPO3\\\\CMS\\\\Core\\\\Resource\\\\FileReference\\|null\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyCategory\\|null\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Cannot call method getTypoLink\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyCategory\\|null\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 4
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 2
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Left side of && is always true\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:getAssociationAsArray\\(\\) should return array\\<int, array\\<string, int\\|string\\>\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:getCheckboxes\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:getCitiesFromPlaces\\(\\) should return list\\<string\\> but returns list\\<int\\|string\\>\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:getEventData\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:getPaymentMethods\\(\\) should return array\\<int, string\\> but returns array\\<int, int\\|string\\>\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:getPlacesAsArray\\(\\) should return list\\<array\\<string, int\\|string\\>\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Parameter \\#1 \\$eventUid of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:limitToDependingEventTopics\\(\\) expects int\\<1, max\\>, int given\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Parameter \\#1 \\$eventUid of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:limitToRequiredEventTopics\\(\\) expects int\\<1, max\\>, int given\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Parameter \\#1 \\$foreignTable of method OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\:\\:getMmRecordTitlesByUid\\(\\) expects non\\-empty\\-string, string given\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Parameter \\#1 \\$userUid of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:isUserVip\\(\\) expects int\\<1, max\\>, mixed given\\.$#"
 			count: 2
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Parameter \\#2 \\$mmTable of method OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\:\\:getMmRecordTitlesByUid\\(\\) expects non\\-empty\\-string, string given\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, int\\|string given\\.$#"
 			count: 2
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Parameters should have \"OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:\\$registrations \\(array\\<array\\<string, int\\|string\\>\\>\\) does not accept array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Right side of && is always true\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyEvent.php
+			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
 			message: "#^Cannot call method getName\\(\\) on OliverKlee\\\\Seminars\\\\Model\\\\FrontEndUser\\|null\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyRegistration.php
+			path: ../../Classes/OldModel/LegacyRegistration.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyRegistration.php
+			path: ../../Classes/OldModel/LegacyRegistration.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\:\\:getSeminarObject\\(\\) should return OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent but returns OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyRegistration.php
+			path: ../../Classes/OldModel/LegacyRegistration.php
 
 		-
 			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyRegistration.php
+			path: ../../Classes/OldModel/LegacyRegistration.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyTimeSlot\\:\\:getPlaceShort\\(\\) should return string but returns mixed\\.$#"
 			count: 1
-			path: Classes/OldModel/LegacyTimeSlot.php
+			path: ../../Classes/OldModel/LegacyTimeSlot.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/SchedulerTasks/MailNotifier.php
+			path: ../../Classes/SchedulerTasks/MailNotifier.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\SchedulerTasks\\\\MailNotifierConfiguration\\:\\:getLanguageService\\(\\) should return TYPO3\\\\CMS\\\\Core\\\\Localization\\\\LanguageService but returns mixed\\.$#"
 			count: 1
-			path: Classes/SchedulerTasks/MailNotifierConfiguration.php
+			path: ../../Classes/SchedulerTasks/MailNotifierConfiguration.php
 
 		-
 			message: "#^Parameter \\#1 \\$submittedData \\(array\\<string, string\\>\\) of method OliverKlee\\\\Seminars\\\\SchedulerTasks\\\\MailNotifierConfiguration\\:\\:saveAdditionalFields\\(\\) should be contravariant with parameter \\$submittedData \\(array\\) of method TYPO3\\\\CMS\\\\Scheduler\\\\AdditionalFieldProviderInterface\\:\\:saveAdditionalFields\\(\\)$#"
 			count: 2
-			path: Classes/SchedulerTasks/MailNotifierConfiguration.php
+			path: ../../Classes/SchedulerTasks/MailNotifierConfiguration.php
 
 		-
 			message: "#^Parameter \\#1 \\$submittedData \\(array\\<string, string\\>\\) of method OliverKlee\\\\Seminars\\\\SchedulerTasks\\\\MailNotifierConfiguration\\:\\:validateAdditionalFields\\(\\) should be contravariant with parameter \\$submittedData \\(array\\) of method TYPO3\\\\CMS\\\\Scheduler\\\\AdditionalFieldProviderInterface\\:\\:validateAdditionalFields\\(\\)$#"
 			count: 2
-			path: Classes/SchedulerTasks/MailNotifierConfiguration.php
+			path: ../../Classes/SchedulerTasks/MailNotifierConfiguration.php
 
 		-
 			message: "#^Parameter \\#1 \\$taskInfo \\(array\\<string, string\\>\\) of method OliverKlee\\\\Seminars\\\\SchedulerTasks\\\\MailNotifierConfiguration\\:\\:getAdditionalFields\\(\\) should be contravariant with parameter \\$taskInfo \\(array\\) of method TYPO3\\\\CMS\\\\Scheduler\\\\AdditionalFieldProviderInterface\\:\\:getAdditionalFields\\(\\)$#"
 			count: 2
-			path: Classes/SchedulerTasks/MailNotifierConfiguration.php
+			path: ../../Classes/SchedulerTasks/MailNotifierConfiguration.php
 
 		-
 			message: "#^Parameter &\\$submittedData by\\-ref type of method OliverKlee\\\\Seminars\\\\SchedulerTasks\\\\MailNotifierConfiguration\\:\\:validateAdditionalFields\\(\\) expects array\\<string, string\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
-			path: Classes/SchedulerTasks/MailNotifierConfiguration.php
+			path: ../../Classes/SchedulerTasks/MailNotifierConfiguration.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/SchedulerTasks/RegistrationDigest.php
+			path: ../../Classes/SchedulerTasks/RegistrationDigest.php
 
 		-
 			message: "#^Parameter \\#1 \\$subject of method OliverKlee\\\\Seminars\\\\Email\\\\EmailBuilder\\:\\:subject\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
-			path: Classes/SchedulerTasks/RegistrationDigest.php
+			path: ../../Classes/SchedulerTasks/RegistrationDigest.php
 
 		-
 			message: "#^Parameter \\#1 \\$eventUid of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepository\\:\\:countRegularSeatsByEvent\\(\\) expects int\\<1, max\\>, int given\\.$#"
 			count: 1
-			path: Classes/Service/EventStatisticsCalculator.php
+			path: ../../Classes/Service/EventStatisticsCalculator.php
 
 		-
 			message: "#^Parameter \\#1 \\$eventUid of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepository\\:\\:countWaitingListSeatsByEvent\\(\\) expects int\\<1, max\\>, int given\\.$#"
 			count: 1
-			path: Classes/Service/EventStatisticsCalculator.php
+			path: ../../Classes/Service/EventStatisticsCalculator.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/Service/EventStatusService.php
+			path: ../../Classes/Service/EventStatusService.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationGuard.php
+			path: ../../Classes/Service/RegistrationGuard.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationGuard\\:\\:now\\(\\) should return DateTimeImmutable but returns mixed\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationGuard.php
+			path: ../../Classes/Service/RegistrationGuard.php
 
 		-
 			message: "#^Parameter \\#1 \\$key of function array_key_exists expects int\\|string, int\\|null given\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationGuard.php
+			path: ../../Classes/Service/RegistrationGuard.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Service\\\\RegistrationGuard\\:\\:\\$vacanciesCache \\(array\\<int\\<1, max\\>, int\\<0, max\\>\\|null\\>\\) does not accept non\\-empty\\-array\\<''\\|int, int\\<0, max\\>\\|null\\>\\.$#"
 			count: 2
-			path: Classes/Service/RegistrationGuard.php
+			path: ../../Classes/Service/RegistrationGuard.php
 
 		-
 			message: "#^Cannot call method getSeats\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 2
-			path: Classes/Service/RegistrationManager.php
+			path: ../../Classes/Service/RegistrationManager.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationManager.php
+			path: ../../Classes/Service/RegistrationManager.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
-			path: Classes/Service/RegistrationManager.php
+			path: ../../Classes/Service/RegistrationManager.php
 
 		-
 			message: "#^Parameter \\#1 \\$css of method Pelago\\\\Emogrifier\\\\CssInliner\\:\\:inlineCss\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationManager.php
+			path: ../../Classes/Service/RegistrationManager.php
 
 		-
 			message: "#^Parameter \\#1 \\$oldRegistration of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:notifyAttendee\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationManager.php
+			path: ../../Classes/Service/RegistrationManager.php
 
 		-
 			message: "#^Parameter \\#1 \\$registration of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:notifyOrganizers\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationManager.php
+			path: ../../Classes/Service/RegistrationManager.php
 
 		-
 			message: "#^Parameter \\#1 \\$registration of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:sendAdditionalNotification\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationManager.php
+			path: ../../Classes/Service/RegistrationManager.php
 
 		-
 			message: "#^Parameter \\#1 \\.\\.\\.\\$recipients of method OliverKlee\\\\Seminars\\\\Email\\\\EmailBuilder\\:\\:to\\(\\) expects OliverKlee\\\\Oelib\\\\Interfaces\\\\MailRole\\|OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FrontendUser, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyOrganizer\\|null given\\.$#"
 			count: 2
-			path: Classes/Service/RegistrationManager.php
+			path: ../../Classes/Service/RegistrationManager.php
 
 		-
 			message: "#^Parameters should have \"OliverKlee\\\\Seminars\\\\Configuration\\\\LegacyConfiguration\\|OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Service/RegistrationManager.php
+			path: ../../Classes/Service/RegistrationManager.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationProcessor.php
+			path: ../../Classes/Service/RegistrationProcessor.php
 
 		-
 			message: "#^Parameter \\#1 \\$format of method DateTime\\:\\:format\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationProcessor.php
+			path: ../../Classes/Service/RegistrationProcessor.php
 
 		-
 			message: "#^Parameter \\#1 \\$name of method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:setTitle\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
-			path: Classes/Service/RegistrationProcessor.php
+			path: ../../Classes/Service/RegistrationProcessor.php
 
 		-
 			message: "#^Constructor of class OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper has an unused parameter \\$_\\.$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:pi_getFFvalue\\(\\) has parameter \\$T3FlexForm_array with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:pi_getFFvalueFromSheetArray\\(\\) has parameter \\$fieldNameArr with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:pi_getFFvalueFromSheetArray\\(\\) has parameter \\$sheetArray with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:pi_linkTP\\(\\) has parameter \\$urlParameters with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:pi_linkTP_keepPIvars\\(\\) has parameter \\$overrulePIvars with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^PHPDoc tag @var with type non\\-falsy\\-string is not subtype of native type lowercase\\-string\\.$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^Parameters should have \"string\\|string\" types as the only types passed to this method$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$LOCAL_LANG \\(array\\<string, array\\<string, array\\<int, array\\<string, string\\>\\>\\>\\>\\) does not accept array\\<array\\<array\\<int, array\\<string, mixed\\>\\>\\>\\>\\.$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$conf type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Classes/Templating/TemplateHelper.php
+			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
 			message: "#^Binary operation \"\\.\" between mixed and ' ' results in an error\\.$#"
 			count: 1
-			path: Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
+			path: ../../Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
 
 		-
 			message: "#^Binary operation \"\\.\" between non\\-falsy\\-string and mixed results in an error\\.$#"
 			count: 1
-			path: Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
+			path: ../../Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 3
-			path: Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
+			path: ../../Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
 
 		-
 			message: "#^Parameter \\#1 \\$str of function trim expects string, mixed given\\.$#"
 			count: 1
-			path: Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
+			path: ../../Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
 
 		-
 			message: "#^Parameter \\#1 \\$string of function substr expects string, mixed given\\.$#"
 			count: 7
-			path: Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
+			path: ../../Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Classes/UpgradeWizards/GenerateEventSlugsUpgradeWizard.php
+			path: ../../Classes/UpgradeWizards/GenerateEventSlugsUpgradeWizard.php
 
 		-
 			message: "#^PHPDoc tag @var with type array\\<string, int\\<0, max\\>\\|string\\> is not subtype of type array\\<string, string\\>\\.$#"
 			count: 1
-			path: Classes/UpgradeWizards/GenerateEventSlugsUpgradeWizard.php
+			path: ../../Classes/UpgradeWizards/GenerateEventSlugsUpgradeWizard.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\ViewHelpers\\\\DateRangeViewHelper\\:\\:render\\(\\) should return string but returns string\\|null\\.$#"
 			count: 1
-			path: Classes/ViewHelpers/DateRangeViewHelper.php
+			path: ../../Classes/ViewHelpers/DateRangeViewHelper.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 5
-			path: Classes/ViewHelpers/SalutationAwareTranslateViewHelper.php
+			path: ../../Classes/ViewHelpers/SalutationAwareTranslateViewHelper.php
 
 		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 1
-			path: Tests/Functional/BackEnd/EmailServiceTest.php
+			path: ../../Tests/Functional/BackEnd/EmailServiceTest.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Tests/Functional/BackEnd/EmailServiceTest.php
+			path: ../../Tests/Functional/BackEnd/EmailServiceTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
 			count: 1
-			path: Tests/Functional/BackEnd/EmailServiceTest.php
+			path: ../../Tests/Functional/BackEnd/EmailServiceTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/Bag/SpeakerBagTest.php
+			path: ../../Tests/Functional/Bag/SpeakerBagTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Bag\\\\SpeakerBagTest\\:\\:assertBagHasUid\\(\\) has parameter \\$bag with generic class OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag but does not specify its types\\: M$#"
 			count: 1
-			path: Tests/Functional/Bag/SpeakerBagTest.php
+			path: ../../Tests/Functional/Bag/SpeakerBagTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Bag\\\\SpeakerBagTest\\:\\:assertBagNotHasUid\\(\\) has parameter \\$bag with generic class OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag but does not specify its types\\: M$#"
 			count: 1
-			path: Tests/Functional/Bag/SpeakerBagTest.php
+			path: ../../Tests/Functional/Bag/SpeakerBagTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Bag\\\\SpeakerBagTest\\:\\:bagHasUid\\(\\) has parameter \\$bag with generic class OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag but does not specify its types\\: M$#"
 			count: 1
-			path: Tests/Functional/Bag/SpeakerBagTest.php
+			path: ../../Tests/Functional/Bag/SpeakerBagTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/BagBuilder/AbstractBagBuilderTest.php
+			path: ../../Tests/Functional/BagBuilder/AbstractBagBuilderTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\BagBuilder\\\\AbstractBagBuilderTest\\:\\:assertBagHasUid\\(\\) has parameter \\$bag with generic class OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag but does not specify its types\\: M$#"
 			count: 1
-			path: Tests/Functional/BagBuilder/AbstractBagBuilderTest.php
+			path: ../../Tests/Functional/BagBuilder/AbstractBagBuilderTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\BagBuilder\\\\AbstractBagBuilderTest\\:\\:assertBagNotHasUid\\(\\) has parameter \\$bag with generic class OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag but does not specify its types\\: M$#"
 			count: 1
-			path: Tests/Functional/BagBuilder/AbstractBagBuilderTest.php
+			path: ../../Tests/Functional/BagBuilder/AbstractBagBuilderTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\BagBuilder\\\\AbstractBagBuilderTest\\:\\:bagHasUid\\(\\) has parameter \\$bag with generic class OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag but does not specify its types\\: M$#"
 			count: 1
-			path: Tests/Functional/BagBuilder/AbstractBagBuilderTest.php
+			path: ../../Tests/Functional/BagBuilder/AbstractBagBuilderTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\BagBuilder\\\\EventBagBuilderTest\\:\\:assertBagContainsUid\\(\\) has parameter \\$bag with generic class OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag but does not specify its types\\: M$#"
 			count: 1
-			path: Tests/Functional/BagBuilder/EventBagBuilderTest.php
+			path: ../../Tests/Functional/BagBuilder/EventBagBuilderTest.php
 
 		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 3
-			path: Tests/Functional/Controller/MyRegistrationsControllerTest.php
+			path: ../../Tests/Functional/Controller/MyRegistrationsControllerTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertSame\\(\\) with array\\{\\} and array\\{\\} will always evaluate to true\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 3
-			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
 			count: 2
-			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Event\\\\EventRepository\\:\\:updateRegistrationCounterCache\\(\\) expects OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event, OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\|null given\\.$#"
 			count: 4
-			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Event\\\\EventRepositoryTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Event\\\\EventRepositoryTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Event\\\\EventRepositoryTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertSame\\(\\) with array\\{\\} and array\\{\\} will always evaluate to true\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 3
-			path: Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
 			count: 2
-			path: Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepository\\:\\:existsRegistrationForEventAndUser\\(\\) expects OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventInterface, OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\|null given\\.$#"
 			count: 7
-			path: Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepositoryTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepositoryTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepositoryTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
+			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\FrontEnd\\\\CategoryListTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
-			path: Tests/Functional/FrontEnd/CategoryListTest.php
+			path: ../../Tests/Functional/FrontEnd/CategoryListTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\FrontEnd\\\\DefaultController\\\\ListViewTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
-			path: Tests/Functional/FrontEnd/DefaultController/ListViewTest.php
+			path: ../../Tests/Functional/FrontEnd/DefaultController/ListViewTest.php
 
 		-
 			message: "#^Cannot access offset 'FE' on mixed\\.$#"
 			count: 1
-			path: Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
+			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultContentRende…' on mixed\\.$#"
 			count: 1
-			path: Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
+			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultTypoScript…' on mixed\\.$#"
 			count: 1
-			path: Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
+			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
-			path: Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
+			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\FrontEnd\\\\DefaultController\\\\PluginDefinitionTest\\:\\:extractClassNameFromUserFunction\\(\\) should return class\\-string but returns string\\.$#"
 			count: 1
-			path: Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
+			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
 
 		-
 			message: "#^Offset 1 might not exist on array\\{0\\?\\: string, 1\\?\\: non\\-empty\\-string\\}\\.$#"
 			count: 2
-			path: Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
+			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\FrontEnd\\\\DefaultController\\\\SingleViewTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
-			path: Tests/Functional/FrontEnd/DefaultController/SingleViewTest.php
+			path: ../../Tests/Functional/FrontEnd/DefaultController/SingleViewTest.php
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
 			count: 4
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 7
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\DataSanitization' on mixed\\.$#"
 			count: 4
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'SC_OPTIONS' on mixed\\.$#"
 			count: 2
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'begin_date' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 6
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'deadline_early_bird' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 4
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'deadline…' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 4
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'end_date' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 4
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
 			count: 2
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 7
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'slug' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 6
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 't3lib/class\\.t3lib…' on mixed\\.$#"
 			count: 2
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot access offset 'title' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 2
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 2
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Hooks\\\\DataHandlerHookTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Hooks\\\\DataHandlerHookTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Hooks\\\\DataHandlerHookTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Property TYPO3\\\\CMS\\\\Core\\\\DataHandling\\\\DataHandler\\:\\:\\$datamap \\(array\\<int\\|string, array\\<int\\|string, array\\>\\>\\) does not accept array\\<int\\|string, array\\<int\\|string, array\\|bool\\>\\>\\.$#"
 			count: 2
-			path: Tests/Functional/Hooks/DataHandlerHookTest.php
+			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Mapper\\\\EventMapperTest\\:\\:assertContainsModelWithUid\\(\\) has parameter \\$models with generic class OliverKlee\\\\Oelib\\\\DataStructures\\\\Collection but does not specify its types\\: M$#"
 			count: 1
-			path: Tests/Functional/Mapper/EventMapperTest.php
+			path: ../../Tests/Functional/Mapper/EventMapperTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Mapper\\\\EventMapperTest\\:\\:assertNotContainsModelWithUid\\(\\) has parameter \\$models with generic class OliverKlee\\\\Oelib\\\\DataStructures\\\\Collection but does not specify its types\\: M$#"
 			count: 1
-			path: Tests/Functional/Mapper/EventMapperTest.php
+			path: ../../Tests/Functional/Mapper/EventMapperTest.php
 
 		-
 			message: "#^Use explicit methods over array access on object$#"
 			count: 2
-			path: Tests/Functional/Middleware/ResponseHeadersModifierTest.php
+			path: ../../Tests/Functional/Middleware/ResponseHeadersModifierTest.php
 
 		-
 			message: "#^Cannot access offset 'crdate' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 2
-			path: Tests/Functional/OldModel/AbstractModelTest.php
+			path: ../../Tests/Functional/OldModel/AbstractModelTest.php
 
 		-
 			message: "#^Cannot access offset 'tstamp' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 2
-			path: Tests/Functional/OldModel/AbstractModelTest.php
+			path: ../../Tests/Functional/OldModel/AbstractModelTest.php
 
 		-
 			message: "#^Cannot call method commitToDatabase\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingModel\\|null\\.$#"
 			count: 2
-			path: Tests/Functional/OldModel/AbstractModelTest.php
+			path: ../../Tests/Functional/OldModel/AbstractModelTest.php
 
 		-
 			message: "#^Cannot call method createMmRecords\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingModel\\|null\\.$#"
 			count: 7
-			path: Tests/Functional/OldModel/AbstractModelTest.php
+			path: ../../Tests/Functional/OldModel/AbstractModelTest.php
 
 		-
 			message: "#^Cannot call method setTitle\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingModel\\|null\\.$#"
 			count: 2
-			path: Tests/Functional/OldModel/AbstractModelTest.php
+			path: ../../Tests/Functional/OldModel/AbstractModelTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 5
-			path: Tests/Functional/OldModel/AbstractModelTest.php
+			path: ../../Tests/Functional/OldModel/AbstractModelTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\OldModel\\\\AbstractModelTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/AbstractModelTest.php
+			path: ../../Tests/Functional/OldModel/AbstractModelTest.php
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
 			count: 10
-			path: Tests/Functional/OldModel/AbstractTimeSpanTest.php
+			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 10
-			path: Tests/Functional/OldModel/AbstractTimeSpanTest.php
+			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\DateTimeSpan' on mixed\\.$#"
 			count: 10
-			path: Tests/Functional/OldModel/AbstractTimeSpanTest.php
+			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 10
-			path: Tests/Functional/OldModel/AbstractTimeSpanTest.php
+			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
 
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyCategory\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyCategoryTest.php
+			path: ../../Tests/Functional/OldModel/LegacyCategoryTest.php
 
 		-
 			message: "#^Cannot call method allowsMultipleRegistrations\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method calculateStatistics\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 3
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getAccreditationNumber\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getAdditionalInformation\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getAttendances\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 11
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getAttendancesMax\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getAttendancesMin\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getBeginDateAsTimestamp\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getCheckboxes\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 4
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getCreditPoints\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getDescription\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getDetailsPage\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getEarlyBirdDeadline\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getEarlyBirdPriceRegular\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getEarlyBirdPriceSpecial\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getEndDateAsTimestamp\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getExpiry\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getOfflineRegistrations\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getPlaceShort\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 3
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getPlaceWithDetails\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 7
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getPlaceWithDetailsRaw\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 7
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getPlaces\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 2
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getPriceOnRequest\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getPriceRegular\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getPriceSpecial\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getRegistrationBeginAsUnixTimestamp\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getRegistrationDeadline\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getRoom\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getSubtitle\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getTargetGroupsAsArray\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 4
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getTeaser\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getUnregistrationDeadlineAsTimestamp\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getVacancies\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 6
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method hasRegistrationQueue\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method hasTerms2\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method haveOrganizersBeenNotifiedAboutEnoughAttendees\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method isCanceled\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method needsRegistration\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method setOfflineRegistrationNumber\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method shouldAutomaticallyConfirmOrCancel\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method shouldMuteNotificationEmails\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyEventTest.php
+			path: ../../Tests/Functional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getAccommodation\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getAttendeesNames\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getExpectations\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getFood\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getFrontEndUser\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getInterests\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getKnowledge\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getKnownFrom\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getNotes\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getNumberOfKids\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getPrice\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getSeats\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getSeminar\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getSeminarObject\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getUser\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method hasRegisteredThemselves\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Functional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot call method getAddress\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getCancelationPeriodInDays\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getDescriptionRaw\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getEmail\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getHomepage\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getNotes\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getOrganization\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getPhoneHome\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getPhoneMobile\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getPhoneWork\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getSkillsShort\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 2
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 1
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Cannot call method hasSkills\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 2
-			path: Tests/Functional/OldModel/LegacySpeakerTest.php
+			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Tests/Functional/SchedulerTasks/RegistrationDigestTest.php
+			path: ../../Tests/Functional/SchedulerTasks/RegistrationDigestTest.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Tests/Functional/Service/EmailServiceTest.php
+			path: ../../Tests/Functional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
 			count: 2
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 2
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 6
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\RegistrationEmail' on mixed\\.$#"
 			count: 2
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultMailFromAddr…' on mixed\\.$#"
 			count: 3
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
 			count: 3
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 2
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, string\\|null given\\.$#"
 			count: 2
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Service\\\\RegistrationManagerTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/Functional/Service/RegistrationManagerTest.php
+			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$format of method DateTime\\:\\:format\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
-			path: Tests/Functional/Service/RegistrationProcessorTest.php
+			path: ../../Tests/Functional/Service/RegistrationProcessorTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingModel\\|null\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/Bag/AbstractBagTest.php
+			path: ../../Tests/LegacyFunctional/Bag/AbstractBagTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertIsObject\\(\\) with OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Bag\\\\Fixtures\\\\TestingBag will always evaluate to true\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/BagBuilder/AbstractBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/AbstractBagBuilderTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingModel\\|null\\.$#"
 			count: 4
-			path: Tests/LegacyFunctional/BagBuilder/AbstractBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/AbstractBagBuilderTest.php
 
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyCategory\\|null\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/BagBuilder/CategoryBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/CategoryBagBuilderTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyCategory\\|null\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/BagBuilder/CategoryBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/CategoryBagBuilderTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 38
-			path: Tests/LegacyFunctional/BagBuilder/EventBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/EventBagBuilderTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 90
-			path: Tests/LegacyFunctional/BagBuilder/EventBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/EventBagBuilderTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyOrganizer\\|null\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/BagBuilder/OrganizerBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/OrganizerBagBuilderTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 86400 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
 
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 7
-			path: Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
+			path: ../../Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 1 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 4
-			path: Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\RegistrationListCsv' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 13
-			path: Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^PHPDoc tag @var with type PHPUnit\\\\Framework\\\\MockObject\\\\MockObject is not subtype of type PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&stdClass\\.$#"
 			count: 4
-			path: Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$recordData of method OliverKlee\\\\Oelib\\\\Testing\\\\TestingFramework\\:\\:createRecord\\(\\) expects array\\<string, bool\\|int\\|string\\>, array\\<string, mixed\\> given\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyUnit\\\\Csv\\\\AbstractRegistrationListViewTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
+			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
 			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
+			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
+			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 18
-			path: Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
+			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyUnit\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
+			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyUnit\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
+			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyUnit\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
+			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 6
-			path: Tests/LegacyFunctional/Csv/EmailRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/EmailRegistrationListViewTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$recordData of method OliverKlee\\\\Oelib\\\\Testing\\\\TestingFramework\\:\\:createRecord\\(\\) expects array\\<string, bool\\|int\\|string\\>, array\\<string, mixed\\> given\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Csv/EmailRegistrationListViewTest.php
+			path: ../../Tests/LegacyFunctional/Csv/EmailRegistrationListViewTest.php
 
 		-
 			message: "#^Cannot access offset 'AnEmailSalutationHo…' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Cannot access offset 'AnotherEmailSalutat…' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 6
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Cannot access offset 'modifyEmailSalutati…' on mixed\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 4
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Cannot access offset class\\-string\\<OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\Fixtures\\\\EmailSalutationHookInterface&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\> on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\SalutationTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\SalutationTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\SalutationTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\AbstractViewTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/AbstractViewTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/AbstractViewTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 1000 results in an error\\.$#"
 			count: 9
-			path: Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 2000 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
 
 		-
 			message: "#^Binary operation \"\\-\" between mixed and 1000 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
 
 		-
 			message: "#^Binary operation \"\\-\" between mixed and 2000 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\CategoryListTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 1000 results in an error\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 11000 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 12000 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 20 results in an error\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 2000 results in an error\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 21 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 40 results in an error\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 42 results in an error\\.$#"
 			count: 24
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 45 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 50 results in an error\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 604800 results in an error\\.$#"
 			count: 8
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\-\" between mixed and 20 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\-\" between mixed and 42 results in an error\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\-\" between mixed and 45 results in an error\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\FrontEnd\\\\Fixtures\\\\TestingDefaultController will always evaluate to true\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Cannot access an offset on array\\|float\\|int\\|string\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
 			count: 6
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 9
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\SeminarListView' on mixed\\.$#"
 			count: 5
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\SeminarSingleView' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 7
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 16
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:addCategoryRelation\\(\\) has parameter \\$categoryData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:addOrganizerRelation\\(\\) has parameter \\$organizerData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:addTargetGroupRelation\\(\\) has parameter \\$targetGroupData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:hideListRegistrationsColumnIfNecessaryDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 500 results in an error\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/RegistrationsListTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/RegistrationsListTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\RegistrationsListTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/RegistrationsListTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/RegistrationsListTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\RequirementsListTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/RequirementsListTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/RequirementsListTest.php
 
 		-
 			message: "#^Cannot access an offset on array\\|float\\|int\\|string\\.$#"
 			count: 10
-			path: Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\SeminarSelectorWidget' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\SelectorWidgetTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
+			path: ../../Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/OldModel/AbstractModelTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/AbstractModelTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\Model\\\\FrontEndUser\\|null\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 4
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addCategoryRelation\\(\\) has parameter \\$categoryData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addEventTypeRelation\\(\\) has parameter \\$eventTypeData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addLeaderRelation\\(\\) has parameter \\$speakerData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addOrganizerRelation\\(\\) has parameter \\$organizerData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addOrganizingPartnerRelation\\(\\) has parameter \\$organizerData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addPartnerRelation\\(\\) has parameter \\$speakerData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addPaymentMethodRelation\\(\\) has parameter \\$paymentMethodData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addTargetGroupRelation\\(\\) has parameter \\$targetGroupData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addTutorRelation\\(\\) has parameter \\$speakerData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'list_vip…'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsListMessage\\(\\) expects 'list_registrations'\\|'list_vip…'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$accessLevel of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsListMessage\\(\\) expects 'attendees_and…'\\|'login', string given\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$registrationsListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Parameter \\#3 \\$registrationsVipListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyRegistrationTest\\:\\:setPaymentMethodRelation\\(\\) has parameter \\$paymentMethodData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 10
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultMailFromAddr…' on mixed\\.$#"
 			count: 5
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
 			count: 5
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Instanceof between OliverKlee\\\\Oelib\\\\Testing\\\\TestingFramework and OliverKlee\\\\Oelib\\\\Testing\\\\TestingFramework will always evaluate to true\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\SchedulerTasks\\\\MailNotifierTest\\:\\:createSeminarWithOrganizer\\(\\) has parameter \\$additionalSeminarData with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Only numeric types are allowed in \\-, int\\<0, max\\>\\|false given on the left side\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
 			count: 9
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, string\\|null given\\.$#"
 			count: 4
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\SchedulerTasks\\\\MailNotifierTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\SchedulerTasks\\\\MailNotifierTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\SchedulerTasks\\\\MailNotifierTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
+			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 6
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultMailFromAddr…' on mixed\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
 			count: 5
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\EmailServiceTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\EmailServiceTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\EmailServiceTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/EmailServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/Service/EventStatusServiceTest.php
+			path: ../../Tests/LegacyFunctional/Service/EventStatusServiceTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController will always evaluate to true\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&TYPO3\\\\CMS\\\\Core\\\\Mail\\\\MailMessage will always evaluate to true\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
 			count: 4
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 6
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 12
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\RegistrationEmail' on mixed\\.$#"
 			count: 4
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultMailFromAddr…' on mixed\\.$#"
 			count: 6
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
 			count: 6
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 4
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
 			count: 6
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, string\\|null given\\.$#"
 			count: 3
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$string of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertMatchesRegularExpression\\(\\) expects string, resource\\|string\\|null given\\.$#"
 			count: 2
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\RegistrationManagerTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\RegistrationManagerTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
-			path: Tests/LegacyFunctional/Service/RegistrationManagerTest.php
+			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertIsArray\\(\\) with array\\<string, string\\> will always evaluate to true\\.$#"
 			count: 3
-			path: Tests/Unit/Configuration/EventRegistrationFlexFormsTest.php
+			path: ../../Tests/Unit/Configuration/EventRegistrationFlexFormsTest.php
 
 		-
 			message: "#^Instanceof between Psr\\\\Http\\\\Message\\\\ResponseInterface and Psr\\\\Http\\\\Message\\\\ResponseInterface will always evaluate to true\\.$#"
 			count: 2
-			path: Tests/Unit/Controller/BackEnd/RegistrationControllerTest.php
+			path: ../../Tests/Unit/Controller/BackEnd/RegistrationControllerTest.php
 
 		-
 			message: "#^Call to static method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Price\\:\\:isPriceCodeValid\\(\\) with 'price_regular'\\|'price_regular_early'\\|'price_special'\\|'price_special_early' will always evaluate to true\\.$#"
 			count: 1
-			path: Tests/Unit/Domain/Model/PriceTest.php
+			path: ../../Tests/Unit/Domain/Model/PriceTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\) with true will always evaluate to true\\.$#"
 			count: 1
-			path: Tests/Unit/Domain/Model/PriceTest.php
+			path: ../../Tests/Unit/Domain/Model/PriceTest.php
 
 		-
 			message: "#^Cannot call method toString\\(\\) on Symfony\\\\Component\\\\Mime\\\\Header\\\\HeaderInterface\\|null\\.$#"
 			count: 1
-			path: Tests/Unit/Email/EmailBuilderTest.php
+			path: ../../Tests/Unit/Email/EmailBuilderTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Hooks\\\\Fixtures\\\\TestingHookImplementorReturnsArray\\:\\:testHookMethodReturnsNestedArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Unit/Hooks/Fixtures/TestingHookImplementorReturnsArray.php
+			path: ../../Tests/Unit/Hooks/Fixtures/TestingHookImplementorReturnsArray.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Hooks\\\\Fixtures\\\\TestingHookImplementorReturnsArray2\\:\\:testHookMethodReturnsNestedArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Unit/Hooks/Fixtures/TestingHookImplementorReturnsArray2.php
+			path: ../../Tests/Unit/Hooks/Fixtures/TestingHookImplementorReturnsArray2.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Hooks\\\\Fixtures\\\\TestingHookInterfaceReturnsArray\\:\\:testHookMethodReturnsNestedArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Unit/Hooks/Fixtures/TestingHookInterfaceReturnsArray.php
+			path: ../../Tests/Unit/Hooks/Fixtures/TestingHookInterfaceReturnsArray.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 23
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Tests\\\\\\\\Unit\\\\\\\\Hooks\\\\\\\\Fixtures\\\\\\\\TestingHookInterface' on mixed\\.$#"
 			count: 6
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Tests\\\\\\\\Unit\\\\\\\\Hooks\\\\\\\\Fixtures\\\\\\\\TestingHookInterfaceReturnsArray' on mixed\\.$#"
 			count: 5
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Tests\\\\\\\\Unit\\\\\\\\Hooks\\\\\\\\Fixtures\\\\\\\\TestingHookInterfaceReturnsModifiedValue' on mixed\\.$#"
 			count: 7
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 'anyIndex' on mixed\\.$#"
 			count: 2
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 23
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 1565007112 on mixed\\.$#"
 			count: 4
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 1565007113 on mixed\\.$#"
 			count: 1
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 1574270061 on mixed\\.$#"
 			count: 3
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 1577363366 on mixed\\.$#"
 			count: 7
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 1577363367 on mixed\\.$#"
 			count: 5
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$interfaceName of class OliverKlee\\\\Seminars\\\\Hooks\\\\HookProvider constructor expects class\\-string\\<OliverKlee\\\\Seminars\\\\Hooks\\\\Interfaces\\\\Hook\\>, string given\\.$#"
 			count: 3
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Hooks\\\\HookProviderTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\|null\\) does not accept mixed\\.$#"
 			count: 1
-			path: Tests/Unit/Hooks/HookProviderTest.php
+			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Binary operation \"\\+\" between mixed and 42 results in an error\\.$#"
 			count: 1
-			path: Tests/Unit/OldModel/AbstractTimeSpanTest.php
+			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
 
 		-
 			message: "#^Binary operation \"\\-\" between mixed and 42 results in an error\\.$#"
 			count: 1
-			path: Tests/Unit/OldModel/AbstractTimeSpanTest.php
+			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
 
 		-
 			message: "#^Cannot access offset 'LOG' on mixed\\.$#"
 			count: 1
-			path: Tests/Unit/OldModel/LegacyEventTest.php
+			path: ../../Tests/Unit/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\LegacyRegistrationTest\\:\\:nameUserDataDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: Tests/Unit/OldModel/LegacyRegistrationTest.php
+			path: ../../Tests/Unit/OldModel/LegacyRegistrationTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Service\\\\PriceFinderTest\\:\\:createFromImmutable\\(\\) should return DateTime but returns DateTime\\|false\\.$#"
 			count: 1
-			path: Tests/Unit/Service/PriceFinderTest.php
+			path: ../../Tests/Unit/Service/PriceFinderTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Service\\\\RegistrationGuardTest\\:\\:createFromImmutable\\(\\) should return DateTime but returns DateTime\\|false\\.$#"
 			count: 1
-			path: Tests/Unit/Service/RegistrationGuardTest.php
+			path: ../../Tests/Unit/Service/RegistrationGuardTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$json of method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:setJsonEncodedAdditionAttendees\\(\\) expects string, string\\|false given\\.$#"
 			count: 15
-			path: Tests/Unit/Service/RegistrationProcessorTest.php
+			path: ../../Tests/Unit/Service/RegistrationProcessorTest.php
 
 		-
 			message: "#^OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Templating\\\\Fixtures\\\\TestingTemplateHelper\\:\\:__construct\\(\\) does not call parent constructor from OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\.$#"
 			count: 1
-			path: Tests/Unit/Templating/Fixtures/TestingTemplateHelper.php
+			path: ../../Tests/Unit/Templating/Fixtures/TestingTemplateHelper.php
 
 		-
 			message: "#^Access to private property \\$template of parent class OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\.$#"
 			count: 1
-			path: Tests/Unit/Templating/TemplateHelperTest.php
+			path: ../../Tests/Unit/Templating/TemplateHelperTest.php
 
 		-
 			message: "#^Access to protected property OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Templating\\\\Fixtures\\\\TestingTemplateHelper\\:\\:\\$cObj\\.$#"
 			count: 2
-			path: Tests/Unit/Templating/TemplateHelperTest.php
+			path: ../../Tests/Unit/Templating/TemplateHelperTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$cObj \\(TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\) does not accept array\\.$#"
 			count: 1
-			path: Tests/Unit/Templating/TemplateHelperTest.php
+			path: ../../Tests/Unit/Templating/TemplateHelperTest.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
-			path: Tests/Unit/Traits/EmailTraitTest.php
+			path: ../../Tests/Unit/Traits/EmailTraitTest.php
 
 		-
 			message: "#^Cannot access offset 'FE' on mixed\\.$#"
 			count: 2
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\SchedulerTasks\\\\\\\\MailNotifier' on mixed\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'SC_OPTIONS' on mixed\\.$#"
 			count: 6
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'SYS' on mixed\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'additionalCanonical…' on mixed\\.$#"
 			count: 2
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'ext/install' on mixed\\.$#"
 			count: 3
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'formEngine' on mixed\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'nodeRegistry' on mixed\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'processCmdmapClass' on mixed\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'processDatamapClass' on mixed\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'scheduler' on mixed\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 2
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'seminars…' on mixed\\.$#"
 			count: 3
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 't3lib/class\\.t3lib…' on mixed\\.$#"
 			count: 2
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'tasks' on mixed\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 'update' on mixed\\.$#"
 			count: 3
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Cannot access offset 1749486974 on mixed\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
 
 		-
 			message: "#^Parameter \\#1 \\$arr1 of function array_merge expects array, mixed given\\.$#"
 			count: 1
-			path: ext_localconf.php
+			path: ../../ext_localconf.php
