@@ -22,7 +22,7 @@ final class MailNotifierConfigurationTest extends FunctionalTestCase
 {
     private const LABEL_PREFIX = 'LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:';
 
-    protected array $coreExtensionsToLoad = ['scheduler'];
+    protected array $coreExtensionsToLoad = ['typo3/cms-scheduler'];
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',

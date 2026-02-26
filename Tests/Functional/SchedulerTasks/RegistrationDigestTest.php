@@ -26,7 +26,7 @@ final class RegistrationDigestTest extends FunctionalTestCase
 {
     use EmailTrait;
 
-    protected array $coreExtensionsToLoad = ['scheduler'];
+    protected array $coreExtensionsToLoad = ['typo3/cms-scheduler'];
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',

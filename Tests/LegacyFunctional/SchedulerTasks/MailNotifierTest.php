@@ -36,7 +36,7 @@ final class MailNotifierTest extends FunctionalTestCase
     use EmailTrait;
     use MakeInstanceTrait;
 
-    protected array $coreExtensionsToLoad = ['scheduler'];
+    protected array $coreExtensionsToLoad = ['typo3/cms-scheduler'];
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
