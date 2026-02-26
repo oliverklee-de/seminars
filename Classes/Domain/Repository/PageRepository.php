@@ -6,15 +6,20 @@ namespace OliverKlee\Seminars\Domain\Repository;
 
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Repository for finding page records by UID.
  */
 class PageRepository implements SingletonInterface
 {
+    private ConnectionPool $connectionPool;
+
+    public function __construct(ConnectionPool $connectionPool)
+    {
+        $this->connectionPool = $connectionPool;
+    }
+
     /**
      * Recursively finds all pages within the given page, and returns them as a sorted list (including the provided
      * parent pages).
@@ -79,7 +84,7 @@ class PageRepository implements SingletonInterface
      */
     private function findDirectSubpages(array $pageUids): array
     {
-        $queryBuilder = $this->getQueryBuilderForTable('pages');
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable('pages');
         $query = $queryBuilder->select('uid')->from('pages');
         $query->andWhere(
             $query->expr()->in('pid', $queryBuilder->createNamedParameter($pageUids, Connection::PARAM_INT_ARRAY)),
@@ -93,18 +98,5 @@ class PageRepository implements SingletonInterface
         }
 
         return $subpageUids;
-    }
-
-    /**
-     * @param non-empty-string $tableName
-     */
-    private function getQueryBuilderForTable(string $tableName): QueryBuilder
-    {
-        return $this->getConnectionPool()->getQueryBuilderForTable($tableName);
-    }
-
-    private function getConnectionPool(): ConnectionPool
-    {
-        return GeneralUtility::makeInstance(ConnectionPool::class);
     }
 }

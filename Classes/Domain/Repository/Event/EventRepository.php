@@ -14,6 +14,7 @@ use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Qom\ConstraintInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
@@ -36,6 +37,15 @@ class EventRepository extends AbstractRawDataCapableRepository
         'slug',
         'webinar_url',
     ];
+
+    private Context $context;
+
+    public function __construct(ObjectManagerInterface $objectManager, ConnectionPool $connectionPool, Context $context)
+    {
+        parent::__construct($objectManager, $connectionPool);
+
+        $this->context = $context;
+    }
 
     /**
      * @return non-empty-string
@@ -121,8 +131,7 @@ class EventRepository extends AbstractRawDataCapableRepository
     public function updateRegistrationCounterCache(Event $event): void
     {
         $eventUid = $event->getUid();
-        $registrationQueryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getQueryBuilderForTable('tx_seminars_attendances');
+        $registrationQueryBuilder = $this->connectionPool->getQueryBuilderForTable('tx_seminars_attendances');
         $registrationCountQuery = $registrationQueryBuilder
             ->count('*')
             ->from('tx_seminars_attendances')
@@ -135,8 +144,7 @@ class EventRepository extends AbstractRawDataCapableRepository
         $registrationCountQueryResult = $registrationCountQuery->executeQuery();
         $registrationCount = (int)$registrationCountQueryResult->fetchOne();
 
-        $eventQueryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getQueryBuilderForTable('tx_seminars_seminars');
+        $eventQueryBuilder = $this->connectionPool->getQueryBuilderForTable('tx_seminars_seminars');
         $eventUpdateQuery = $eventQueryBuilder
             ->update('tx_seminars_seminars')
             ->where(
@@ -391,7 +399,7 @@ class EventRepository extends AbstractRawDataCapableRepository
 
     private function now(): \DateTimeInterface
     {
-        return GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'full');
+        return $this->context->getPropertyFromAspect('date', 'full');
     }
 
     /**

@@ -8,7 +8,6 @@ use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Repository\AbstractRawDataCapableRepository;
 use TYPO3\CMS\Core\Database\Connection;
-use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
@@ -62,7 +61,7 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
      */
     public function countRegularRegistrationsByPageUid(int $pageUid): int
     {
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($this->getTableName());
+        $connection = $this->connectionPool->getConnectionForTable($this->getTableName());
 
         $count = $connection->count(
             '*',
@@ -115,7 +114,7 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
     private function countSeatsByEvent(int $eventUid, int $status): int
     {
         $tableName = $this->getTableName();
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($tableName);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($tableName);
         $query = $queryBuilder
             ->addSelectLiteral($queryBuilder->expr()->sum('seats'))
             ->from($tableName)
