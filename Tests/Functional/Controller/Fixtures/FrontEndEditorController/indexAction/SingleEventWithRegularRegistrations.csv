@@ -1,0 +1,10 @@
+"tx_seminars_seminars"
+,"uid","pid","object_type","title","owner_feuser","attendees_max","registrations"
+,1,2,0,"event with owner",1,100,4
+
+"tx_seminars_attendances"
+,"uid","seminar","registration_queue"
+,1,1,0
+,2,1,0
+,3,1,0
+,4,1,0

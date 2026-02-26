@@ -55,11 +55,11 @@
                             <f:render partial="EventDate" arguments="{event: event}"/>
                         </td>
                         <td class="text-end">
-                            <f:if condition="{statistics} && {statistics.regularSeatsCount}">
+                            <f:if condition="{event.registrationRequired} && {statistics}">
                                 {statistics.regularSeatsCount}
                             </f:if>
                         </td>
-                        <td class="text-end">
+                        <td class="text-end text-nowrap">
                             <f:render partial="FrontEndEditor/Vacancies"
                                       arguments="{event: event, viewName: 'frontEndEditor'}"/>
                         </td>

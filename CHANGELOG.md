@@ -12,7 +12,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
   (#4669, #4671, #4677, #4678, #4679, #4690)
 - Add `Permissions::isAdmin()` (#4607)
 - Show the registrations statistics in the FE editor list view
-  (#4569, #4584, #4764)
+  (#4569, #4584, #4764, #4765)
 - Show the invoicing status of registrations in the BE module (#4562)
 - Add accessors for the payment status of registrations (#4560)
 - Add more invoicing-related fields to registrations
