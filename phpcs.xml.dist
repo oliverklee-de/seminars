@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="phpList Coding Standard">
-    <description>
-        This standard requires PHP_CodeSniffer >= 3.5.4.
-    </description>
-
+<ruleset name="oliverklee.de coding standard">
     <arg name="colors"/>
     <arg name="extensions" value="php"/>
 
-    <!-- The complete PSR-12 ruleset -->
-    <rule ref="PSR12">
-        <!-- We'll enable this rule once the line lengths are fixed. -->
-        <exclude name="Generic.Files.LineLength"/>
-        <!-- This rule contradict the TYPO3 CS-Fixer ruleset. -->
-        <exclude name="Generic.WhiteSpace.ScopeIndent"/>
-        <!-- This rule contradict the TYPO3 CS-Fixer ruleset. -->
-        <exclude name="Squiz.WhiteSpace.ScopeClosingBrace"/>
-    </rule>
+    <!-- We'll enable this rule once the line lengths are fixed. -->
+<!--    <rule ref="Generic.Files.LineLength">-->
+<!--        <properties>-->
+<!--            <property name="lineLimit" value="120"/>-->
+<!--            <property name="absoluteLineLimit" value="120"/>-->
+<!--        </properties>-->
+<!--    </rule>-->
+    <rule ref="Squiz.PHP.Heredoc"/>
 </ruleset>
