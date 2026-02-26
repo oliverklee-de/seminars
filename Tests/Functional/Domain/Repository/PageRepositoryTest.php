@@ -13,7 +13,11 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class PageRepositoryTest extends FunctionalTestCase
 {
-    protected array $testExtensionsToLoad = ['oliverklee/feuserextrafields', 'oliverklee/oelib', 'oliverklee/seminars'];
+    protected array $testExtensionsToLoad = [
+        'oliverklee/feuserextrafields',
+        'oliverklee/oelib',
+        'oliverklee/seminars',
+    ];
 
     private PageRepository $subject;
 

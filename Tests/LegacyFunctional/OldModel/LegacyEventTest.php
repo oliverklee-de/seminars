@@ -39,6 +39,8 @@ final class LegacyEventTest extends FunctionalTestCase
         'oliverklee/seminars',
     ];
 
+    protected array $coreExtensionsToLoad = ['typo3/cms-install'];
+
     private DummyConfiguration $configuration;
 
     private TestingLegacyEvent $subject;
