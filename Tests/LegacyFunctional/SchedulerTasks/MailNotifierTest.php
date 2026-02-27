@@ -405,8 +405,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendEventTakesPlaceRemindersForConfirmedWithinTimeFrameAndReminderSentFlagTrueSendsNoReminder(): void
-    {
+    public function sendEventTakesPlaceRemindersForConfirmedWithinTimeFrameAndReminderSentFlagTrueSendsNoReminder(
+    ): void {
         $this->createSeminarWithOrganizer(
             [
                 'begin_date' => $this->now + Time::SECONDS_PER_DAY,
@@ -442,8 +442,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendEventTakesPlaceRemindersForConfirmedEventBeginningLaterThanConfiguredTimeFrameSendsNoReminder(): void
-    {
+    public function sendEventTakesPlaceRemindersForConfirmedEventBeginningLaterThanConfiguredTimeFrameSendsNoReminder(
+    ): void {
         $this->createSeminarWithOrganizer(
             [
                 'begin_date' => $this->now + (3 * Time::SECONDS_PER_DAY),
@@ -620,8 +620,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendCancellationDeadlineRemindersForPlannedEventWithTwoOrganizersAndOptionEnabledSendsTwoReminders(): void
-    {
+    public function sendCancellationDeadlineRemindersForPlannedEventWithTwoOrganizersAndOptionEnabledSendsTwoReminders(
+    ): void {
         $eventUid = $this->createSeminarWithOrganizer(
             [
                 'begin_date' => $this->now + Time::SECONDS_PER_DAY,
@@ -680,8 +680,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendCancellationDeadlineRemindersForPlannedAndOptionEnabledAndReminderSentFlagTrueSendsNoReminder(): void
-    {
+    public function sendCancellationDeadlineRemindersForPlannedAndOptionEnabledAndReminderSentFlagTrueSendsNoReminder(
+    ): void {
         $this->addSpeaker(
             $this->createSeminarWithOrganizer(
                 [
@@ -721,8 +721,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendCancellationDeadlineRemindersForPlannedEventWithSpeakersDeadlineNotYetReachedSendsNoReminder(): void
-    {
+    public function sendCancellationDeadlineRemindersForPlannedEventWithSpeakersDeadlineNotYetReachedSendsNoReminder(
+    ): void {
         $this->addSpeaker(
             $this->createSeminarWithOrganizer(
                 [
@@ -853,8 +853,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendRemindersToOrganizersForEventWithTwoOrganizersSendsEmailWithTypo3DefaultFromAddressAsSender(): void
-    {
+    public function sendRemindersToOrganizersForEventWithTwoOrganizersSendsEmailWithTypo3DefaultFromAddressAsSender(
+    ): void {
         $eventUid = $this->createSeminarWithOrganizer(
             [
                 'begin_date' => $this->now + Time::SECONDS_PER_DAY,
@@ -938,8 +938,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendRemindersToOrganizersForEventWithTwoOrganizersWithoutTypo3DefaultFromAddressSendsEmailWithFirstOrganizerAsSender(): void
-    {
+    public function sendRemindersToOrganizersForEventWithTwoOrganizersWithoutTypo3DefaultFromAddressSendsEmailWithFirstOrganizerAsSender(
+    ): void {
         $eventUid = $this->createSeminarWithOrganizer(
             [
                 'begin_date' => $this->now + Time::SECONDS_PER_DAY,
@@ -970,8 +970,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendRemindersToOrganizersForEventWithNoAttendancesAndAttachCsvFileTrueNotAttachesRegistrationsCsv(): void
-    {
+    public function sendRemindersToOrganizersForEventWithNoAttendancesAndAttachCsvFileTrueNotAttachesRegistrationsCsv(
+    ): void {
         $this->configuration->setAsBoolean('addRegistrationCsvToOrganizerReminderMail', true);
 
         $this->createSeminarWithOrganizer(
@@ -1029,8 +1029,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendRemindersToOrganizersForEventWithAttendancesAndAttachCsvFileFalseNotAttachesRegistrationsCsv(): void
-    {
+    public function sendRemindersToOrganizersForEventWithAttendancesAndAttachCsvFileFalseNotAttachesRegistrationsCsv(
+    ): void {
         $this->configuration->setAsBoolean('addRegistrationCsvToOrganizerReminderMail', false);
         $eventUid = $this->createSeminarWithOrganizer(
             [
@@ -1471,8 +1471,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmailWithConfirmSubject(): void
-    {
+    public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmailWithConfirmSubject(
+    ): void {
         $events = new Collection();
         $event = new Event();
         $event->confirm();
@@ -1494,8 +1494,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmailWithConfirmBody(): void
-    {
+    public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmailWithConfirmBody(
+    ): void {
         $events = new Collection();
         $event = new Event();
         $event->confirm();
@@ -1562,8 +1562,8 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function automaticallyChangeEventStatusesForOneEventWithCanceledStatusChangeSendsEmailWithCancelSubject(): void
-    {
+    public function automaticallyChangeEventStatusesForOneEventWithCanceledStatusChangeSendsEmailWithCancelSubject(
+    ): void {
         $events = new Collection();
         $event = new Event();
         $event->cancel();
