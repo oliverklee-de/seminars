@@ -9,6 +9,9 @@ use OliverKlee\Seminars\Mapper\EventTypeMapper;
 use OliverKlee\Seminars\Model\EventType;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
+/**
+ * @covers \OliverKlee\Seminars\Mapper\EventTypeMapper
+ */
 final class EventTypeMapperTest extends FunctionalTestCase
 {
     protected array $testExtensionsToLoad = [
