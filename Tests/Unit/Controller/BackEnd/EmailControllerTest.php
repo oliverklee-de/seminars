@@ -88,6 +88,8 @@ final class EmailControllerTest extends UnitTestCase
     {
         GeneralUtility::purgeInstances();
 
+        unset($GLOBALS['BE_USER'], $GLOBALS['LANG']);
+
         parent::tearDown();
     }
 

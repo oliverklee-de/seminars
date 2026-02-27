@@ -24,26 +24,20 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 final class HookProviderTest extends UnitTestCase
 {
-    /**
-     * backed-up extension configuration of the TYPO3 configuration variables
-     *
-     * @var array<string, mixed>|null
-     */
-    private ?array $extConfBackup = [];
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'] ?? null;
-        unset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars']);
         TestingHookImplementor::$wasCalled = 0;
         TestingHookImplementor2::$wasCalled = 0;
     }
 
     protected function tearDown(): void
     {
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'] = $this->extConfBackup;
+        TestingHookImplementor::$wasCalled = 0;
+        TestingHookImplementor2::$wasCalled = 0;
+
+        unset($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']);
 
         parent::tearDown();
     }
