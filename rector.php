@@ -103,4 +103,7 @@ return RectorConfig::configure()
         ExtEmConfRector::ADDITIONAL_VALUES_TO_BE_REMOVED => [],
     ])
     ->withSkip([
+        InjectMethodToConstructorInjectionRector::class => [
+            'Classes/Domain/Repository/*',
+        ],
     ]);
