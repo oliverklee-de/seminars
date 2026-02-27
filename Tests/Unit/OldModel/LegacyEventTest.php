@@ -22,9 +22,17 @@ final class LegacyEventTest extends UnitTestCase
 
     private TestingLegacyEvent $subject;
 
+    /**
+     * @var array<string, mixed>
+     */
+    private array $configurationBackup;
+
     protected function setUp(): void
     {
         parent::setUp();
+
+        self::assertIsArray($GLOBALS['TYPO3_CONF_VARS']);
+        $this->configurationBackup = $GLOBALS['TYPO3_CONF_VARS'];
 
         $GLOBALS['TYPO3_CONF_VARS']['LOG'] = [];
         $begin = \mktime(10, 0, 0, 4, 8, 2020);
@@ -35,6 +43,13 @@ final class LegacyEventTest extends UnitTestCase
         $this->subject = TestingLegacyEvent::fromData(
             ['title' => 'A nice event', 'begin_date' => $begin, 'end_date' => $end],
         );
+    }
+
+    protected function tearDown(): void
+    {
+        $GLOBALS['TYPO3_CONF_VARS'] = $this->configurationBackup;
+
+        parent::tearDown();
     }
 
     /**
