@@ -762,8 +762,6 @@ final class EventTest extends UnitTestCase
 
     /**
      * @test
-     *
-     * @doesNotPerformAssertions
      */
     public function cancelForCanceledEventNotThrowsException(): void
     {
@@ -798,8 +796,6 @@ final class EventTest extends UnitTestCase
 
     /**
      * @test
-     *
-     * @doesNotPerformAssertions
      */
     public function confirmForConfirmedEventNotThrowsException(): void
     {

@@ -105,7 +105,6 @@ final class RegistrationGuardTest extends UnitTestCase
 
     /**
      * @test
-     * @doesNotPerformAssertions
      */
     public function assertBookableEventTypeWithSingleEventThrowsNoException(): void
     {
@@ -114,7 +113,6 @@ final class RegistrationGuardTest extends UnitTestCase
 
     /**
      * @test
-     * @doesNotPerformAssertions
      */
     public function assertBookableEventTypeWithEventDateThrowsNoException(): void
     {
