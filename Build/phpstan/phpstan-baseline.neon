@@ -3306,6 +3306,11 @@ parameters:
 			path: ../../Tests/Unit/Service/RegistrationProcessorTest.php
 
 		-
+			message: "#^OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Templating\\\\Fixtures\\\\TestingContentObjectRenderer\\:\\:__construct\\(\\) does not call parent constructor from TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Templating/Fixtures/TestingContentObjectRenderer.php
+
+		-
 			message: "#^OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Templating\\\\Fixtures\\\\TestingTemplateHelper\\:\\:__construct\\(\\) does not call parent constructor from OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\.$#"
 			count: 1
 			path: ../../Tests/Unit/Templating/Fixtures/TestingTemplateHelper.php
