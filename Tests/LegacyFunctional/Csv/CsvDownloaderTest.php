@@ -663,8 +663,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function createListOfRegistrationsForConfigurationAttendanceCsvFieldsEmptyDoesNotAddSemicolonOnEndOfHeader(): void
-    {
+    public function createListOfRegistrationsForConfigurationAttendanceCsvFieldsEmptyDoesNotAddSemicolonOnEndOfHeader(
+    ): void {
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', '');
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'name');
 
@@ -677,8 +677,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function createListOfRegistrationsForConfigurationFeUserCsvFieldsEmptyDoesNotAddSemicolonAtBeginningOfHeader(): void
-    {
+    public function createListOfRegistrationsForConfigurationFeUserCsvFieldsEmptyDoesNotAddSemicolonAtBeginningOfHeader(
+    ): void {
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'address');
         $this->configuration->setAsString('fieldsFromFeUserForCsv', '');
 

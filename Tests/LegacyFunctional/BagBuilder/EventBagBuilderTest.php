@@ -5107,8 +5107,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToEarliestBeginOrEndDateForEventWithBeginDateLowerThanGivenTimestampDoesNotFindThisEvent(): void
-    {
+    public function limitToEarliestBeginOrEndDateForEventWithBeginDateLowerThanGivenTimestampDoesNotFindThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             ['begin_date' => 42],
@@ -5433,8 +5433,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToEventsWithVacanciesForEventWithNoVacanciesThroughOfflineRegistrationsDoesNotFindThisEvent(): void
-    {
+    public function limitToEventsWithVacanciesForEventWithNoVacanciesThroughOfflineRegistrationsDoesNotFindThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -5455,8 +5455,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToEventsWithVacanciesForEventWithNoVacanciesThroughRegistrationsWithMultipleSeatsNotFindsIt(): void
-    {
+    public function limitToEventsWithVacanciesForEventWithNoVacanciesThroughRegistrationsWithMultipleSeatsNotFindsIt(
+    ): void {
         $eventUid = $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -5481,8 +5481,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToEventsWithVacanciesForEventWithNoVacanciesThroughRegularAndOfflineRegistrationsNotFindsIt(): void
-    {
+    public function limitToEventsWithVacanciesForEventWithNoVacanciesThroughRegularAndOfflineRegistrationsNotFindsIt(
+    ): void {
         $eventUid = $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6023,8 +6023,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToAgeForEventWithTwoTargetGroupOneWithMatchingRangeAndOneWithoutMatchingRangeFindsThisEvent(): void
-    {
+    public function limitToAgeForEventWithTwoTargetGroupOneWithMatchingRangeAndOneWithoutMatchingRangeFindsThisEvent(
+    ): void {
         $targetGroupUid1 = $this->testingFramework->createRecord(
             'tx_seminars_target_groups',
             ['minimum_age' => 20, 'maximum_age' => 50],
@@ -6323,8 +6323,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndRegularEarlyPriceLowerThanMaximumFindsIt(): void
-    {
+    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndRegularEarlyPriceLowerThanMaximumFindsIt(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6346,8 +6346,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndRegularEarlyPriceEqualToMaximumFindsIt(): void
-    {
+    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndRegularEarlyPriceEqualToMaximumFindsIt(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6391,8 +6391,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInPastAndRegularEarlyPriceLowerThanMaxNotFindsIt(): void
-    {
+    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInPastAndRegularEarlyPriceLowerThanMaxNotFindsIt(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6413,8 +6413,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndSpecialEarlyPriceLowerThanMaxFindsIt(): void
-    {
+    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndSpecialEarlyPriceLowerThanMaxFindsIt(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6436,8 +6436,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndSpecialEarlyPriceEqualToMaxFindsIt(): void
-    {
+    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndSpecialEarlyPriceEqualToMaxFindsIt(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6502,8 +6502,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInPastAndSpecialEarlyPriceLowerThanMaxNotFindsIt(): void
-    {
+    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInPastAndSpecialEarlyPriceLowerThanMaxNotFindsIt(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6524,8 +6524,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceWithDeadlineInFutureAndRegularEarlyHigherThanAndRegularLowerThanMaxiNotFindsIt(): void
-    {
+    public function limitToMaximumPriceWithDeadlineInFutureAndRegularEarlyHigherThanAndRegularLowerThanMaxiNotFindsIt(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6546,8 +6546,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceWithDeadlineInFutureAndNoSpecialEarlyAndRegularPriceLowerThanMaximumFindsIt(): void
-    {
+    public function limitToMaximumPriceWithDeadlineInFutureAndNoSpecialEarlyAndRegularPriceLowerThanMaximumFindsIt(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6568,8 +6568,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndNoEarlySpecialPriceAndSpecialPriceLowerThanMaximumFindsThisEvent(): void
-    {
+    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndNoEarlySpecialPriceAndSpecialPriceLowerThanMaximumFindsThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6591,8 +6591,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndNoRegularEarlyPriceAndRegularPriceLowerThanMaximumFindsThisEvent(): void
-    {
+    public function limitToMaximumPriceForEventWithEarlyBirdDeadlineInFutureAndNoRegularEarlyPriceAndRegularPriceLowerThanMaximumFindsThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6765,8 +6765,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndRegularEarlyPriceZeroAndRegularPriceHigherThanMinimumFindsThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndRegularEarlyPriceZeroAndRegularPriceHigherThanMinimumFindsThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6805,8 +6805,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndRegularEarlyPriceLowerThanMinimumDoesNotFindThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndRegularEarlyPriceLowerThanMinimumDoesNotFindThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6826,8 +6826,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndRegularEarlyPriceEqualToMinimumFindsThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndRegularEarlyPriceEqualToMinimumFindsThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6848,8 +6848,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndRegularEarlyPriceHigherThanMinimumFindsThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndRegularEarlyPriceHigherThanMinimumFindsThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6870,8 +6870,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndSpecialEarlyPriceZeroAndSpecialPriceHigherThanMinimumFindsThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndSpecialEarlyPriceZeroAndSpecialPriceHigherThanMinimumFindsThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6892,8 +6892,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndSpecialEarlyPriceLowerThanMinimumDoesNotFindThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndSpecialEarlyPriceLowerThanMinimumDoesNotFindThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6913,8 +6913,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndSpecialEarlyPriceEqualToMinimumFindsThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndSpecialEarlyPriceEqualToMinimumFindsThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6935,8 +6935,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndSpecialEarlyPriceHigherThanMinimumFindsThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInFutureAndSpecialEarlyPriceHigherThanMinimumFindsThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6957,8 +6957,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInPastAndRegularEarlyPriceHigherThanMinimumDoesNotFindThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInPastAndRegularEarlyPriceHigherThanMinimumDoesNotFindThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -6978,8 +6978,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function limitToMinimumPriceForEarlyBirdDeadlineInPastAndSpecialEarlyPriceHigherThanMinimumDoesNotFindThisEvent(): void
-    {
+    public function limitToMinimumPriceForEarlyBirdDeadlineInPastAndSpecialEarlyPriceHigherThanMinimumDoesNotFindThisEvent(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [

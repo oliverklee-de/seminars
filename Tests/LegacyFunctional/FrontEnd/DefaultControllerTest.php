@@ -975,8 +975,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function attachedFilesSubpartIsHiddenInSingleViewWithoutAttachedFilesAndWithLoggedInAndRegisteredFeUser(): void
-    {
+    public function attachedFilesSubpartIsHiddenInSingleViewWithoutAttachedFilesAndWithLoggedInAndRegisteredFeUser(
+    ): void {
         $this->subject->setConfigurationValue('what_to_display', 'single_view');
         $this->subject->setConfigurationValue('limitFileDownloadToAttendees', 1);
         $this->createLogInAndRegisterFeUser();
@@ -991,8 +991,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function attachedFilesSubpartIsHiddenInSingleViewWithoutAttachedFilesAndWithDisabledLimitFileDownloadToAttendees(): void
-    {
+    public function attachedFilesSubpartIsHiddenInSingleViewWithoutAttachedFilesAndWithDisabledLimitFileDownloadToAttendees(
+    ): void {
         $this->subject->setConfigurationValue('what_to_display', 'single_view');
         $this->subject->setConfigurationValue('limitFileDownloadToAttendees', 0);
 
@@ -2018,8 +2018,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function singleViewForHiddenRecordAndLoggedInUserNotOwnerOfHiddenRecordReturnsWrongSeminarNumberMessage(): void
-    {
+    public function singleViewForHiddenRecordAndLoggedInUserNotOwnerOfHiddenRecordReturnsWrongSeminarNumberMessage(
+    ): void {
         $this->testingFramework->createAndLoginFrontEndUser();
         $this->testingFramework->changeRecord(
             'tx_seminars_seminars',
@@ -5386,8 +5386,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getVacanciesClassesForEventWithNoVacanciesAndNoRegistrationQueueDoesNotReturnRegistrationQueueClass(): void
-    {
+    public function getVacanciesClassesForEventWithNoVacanciesAndNoRegistrationQueueDoesNotReturnRegistrationQueueClass(
+    ): void {
         $event = new TestingLegacyEvent($this->seminarUid);
         $event->setAttendancesMax(10);
         $event->setNumberOfAttendances(10);
@@ -5485,8 +5485,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getVacanciesClassesForEventWithoutDateAndWithUnlimitedVacanciesDoesNotReturnDeadlineOverClass(): void
-    {
+    public function getVacanciesClassesForEventWithoutDateAndWithUnlimitedVacanciesDoesNotReturnDeadlineOverClass(
+    ): void {
         $event = new TestingLegacyEvent($this->seminarUid);
         $event->setUnlimitedVacancies();
         $event->setNumberOfAttendances(0);

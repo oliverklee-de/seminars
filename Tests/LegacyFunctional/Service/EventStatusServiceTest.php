@@ -174,8 +174,8 @@ final class EventStatusServiceTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function updateStatusAndSaveForPlannedEventWithEnoughRegistrationsWithoutAutomaticFlagKeepsEventAsPlanned(): void
-    {
+    public function updateStatusAndSaveForPlannedEventWithEnoughRegistrationsWithoutAutomaticFlagKeepsEventAsPlanned(
+    ): void {
         $event = new Event();
         $event->setData(
             [
@@ -209,8 +209,8 @@ final class EventStatusServiceTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function updateStatusAndSaveForPlannedEventWithNotEnoughRegistrationsWithoutRegistrationDeadlineIsFalse(): void
-    {
+    public function updateStatusAndSaveForPlannedEventWithNotEnoughRegistrationsWithoutRegistrationDeadlineIsFalse(
+    ): void {
         $event = new Event();
         $event->setData(
             [
@@ -231,8 +231,8 @@ final class EventStatusServiceTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function updateStatusAndSaveForPlannedWithNotEnoughRegistrationsWithRegistrationDeadlineInFutureIsFalse(): void
-    {
+    public function updateStatusAndSaveForPlannedWithNotEnoughRegistrationsWithRegistrationDeadlineInFutureIsFalse(
+    ): void {
         $event = new Event();
         $event->setData(
             [
@@ -253,8 +253,8 @@ final class EventStatusServiceTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function updateStatusAndSaveForPlannedEventWithNotEnoughRegistrationsWithRegistrationDeadlineInPastIsTrue(): void
-    {
+    public function updateStatusAndSaveForPlannedEventWithNotEnoughRegistrationsWithRegistrationDeadlineInPastIsTrue(
+    ): void {
         $event = new Event();
         $event->setData(
             [

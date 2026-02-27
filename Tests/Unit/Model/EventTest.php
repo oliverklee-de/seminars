@@ -169,8 +169,8 @@ final class EventTest extends UnitTestCase
     /**
      * @test
      */
-    public function getRegistrationDeadlineAsUnixTimeStampWithPositiveRegistrationDeadlineReturnsRegistrationDeadline(): void
-    {
+    public function getRegistrationDeadlineAsUnixTimeStampWithPositiveRegistrationDeadlineReturnsRegistrationDeadline(
+    ): void {
         $this->subject->setData(['deadline_registration' => 42]);
 
         self::assertSame(
@@ -333,8 +333,8 @@ final class EventTest extends UnitTestCase
     /**
      * @test
      */
-    public function getCombinedSingleViewPageForAvailableEventTypeWithSingleViewPageReturnsSingleViewPageFromEventType(): void
-    {
+    public function getCombinedSingleViewPageForAvailableEventTypeWithSingleViewPageReturnsSingleViewPageFromEventType(
+    ): void {
         $eventType = new EventType();
         $eventType->setData(['single_view_page' => 42]);
         $this->subject->setData(
@@ -370,8 +370,8 @@ final class EventTest extends UnitTestCase
     /**
      * @test
      */
-    public function getCombinedSingleViewPageForAvailableCategoryTypeWithSingleViewPageReturnsSingleViewPageFromCategory(): void
-    {
+    public function getCombinedSingleViewPageForAvailableCategoryTypeWithSingleViewPageReturnsSingleViewPageFromCategory(
+    ): void {
         $category = new Category();
         $category->setData(['single_view_page' => 42]);
         $categories = new Collection();
@@ -387,8 +387,8 @@ final class EventTest extends UnitTestCase
     /**
      * @test
      */
-    public function getCombinedSingleViewPageForTwoAvailableCategoriesWithSingleViewPageReturnsSingleViewPageFromFirstCategory(): void
-    {
+    public function getCombinedSingleViewPageForTwoAvailableCategoriesWithSingleViewPageReturnsSingleViewPageFromFirstCategory(
+    ): void {
         $category1 = new Category();
         $category1->setData(['single_view_page' => 42]);
         $category2 = new Category();

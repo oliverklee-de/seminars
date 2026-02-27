@@ -329,8 +329,8 @@ final class HookProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function hookObjectForTestHookWithIndexWithHookImplementorRegisteredByClassnameSucceedsWithMethodNotCalled(): void
-    {
+    public function hookObjectForTestHookWithIndexWithHookImplementorRegisteredByClassnameSucceedsWithMethodNotCalled(
+    ): void {
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterface::class][1574270061] =
             TestingHookImplementor::class;
         $hookObject = $this->createHookObject('anyIndex');
@@ -343,8 +343,8 @@ final class HookProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function hookObjectForTestHookWithIndexWithTwoHookImplementorsRegisteredSucceedsWithOneMethodCalledOnce(): void
-    {
+    public function hookObjectForTestHookWithIndexWithTwoHookImplementorsRegisteredSucceedsWithOneMethodCalledOnce(
+    ): void {
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterface::class][1565007112] =
             TestingHookImplementor::class;
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars']['anyIndex'][1574270061] =
@@ -439,8 +439,8 @@ final class HookProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function hookObjectForTestingHookReturningArrayWithTwoHookImplementorsRegisteredReturnsNestedMergedArray(): void
-    {
+    public function hookObjectForTestingHookReturningArrayWithTwoHookImplementorsRegisteredReturnsNestedMergedArray(
+    ): void {
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterfaceReturnsArray::class][1577363366] =
             TestingHookImplementorReturnsArray::class;
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterfaceReturnsArray::class][1577363367] =
@@ -488,8 +488,8 @@ final class HookProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function hookObjectForTestingHookReturningModifiedValueWithNoHookImplementorRegisteredFailsForEmptyMethod(): void
-    {
+    public function hookObjectForTestingHookReturningModifiedValueWithNoHookImplementorRegisteredFailsForEmptyMethod(
+    ): void {
         $hookObject = new HookProvider(TestingHookInterfaceReturnsModifiedValue::class);
 
         $this->expectException(\InvalidArgumentException::class);
@@ -501,8 +501,8 @@ final class HookProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function hookObjectForTestingHookReturningModifiedValueWithNoHookImplementorRegisteredFailsForUnknownMethod(): void
-    {
+    public function hookObjectForTestingHookReturningModifiedValueWithNoHookImplementorRegisteredFailsForUnknownMethod(
+    ): void {
         $hookObject = new HookProvider(TestingHookInterfaceReturnsModifiedValue::class);
 
         $this->expectException(\UnexpectedValueException::class);
@@ -514,8 +514,8 @@ final class HookProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function hookObjectForTestingHookReturningModifiedValueWithOneHookImplementorRegisteredReturnsModifiedValue(): void
-    {
+    public function hookObjectForTestingHookReturningModifiedValueWithOneHookImplementorRegisteredReturnsModifiedValue(
+    ): void {
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterfaceReturnsModifiedValue::class][1577363366]
             = TestingHookImplementorReturnsModifiedValue::class;
         $hookObject = new HookProvider(TestingHookInterfaceReturnsModifiedValue::class);
@@ -526,8 +526,8 @@ final class HookProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function hookObjectForTestingHookReturningModifiedValueWithTwoHookImplementorsRegisteredReturnsModifiedBool(): void
-    {
+    public function hookObjectForTestingHookReturningModifiedValueWithTwoHookImplementorsRegisteredReturnsModifiedBool(
+    ): void {
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterfaceReturnsModifiedValue::class][1577363366]
             = TestingHookImplementorReturnsModifiedValue::class;
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterfaceReturnsModifiedValue::class][1577363367]
@@ -540,8 +540,8 @@ final class HookProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function hookObjectForTestingHookReturningModedValueWithTwoHookImplementorsRegisteredReturnsNestedMergedInt(): void
-    {
+    public function hookObjectForTestingHookReturningModedValueWithTwoHookImplementorsRegisteredReturnsNestedMergedInt(
+    ): void {
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterfaceReturnsModifiedValue::class][1577363366]
             = TestingHookImplementorReturnsModifiedValue::class;
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterfaceReturnsModifiedValue::class][1577363367]
@@ -557,8 +557,8 @@ final class HookProviderTest extends UnitTestCase
     /**
      * @test
      */
-    public function hookObjectForTestingHookReturningModValWithTwoHookImplementorsRegisteredReturnsNestedMergedString(): void
-    {
+    public function hookObjectForTestingHookReturningModValWithTwoHookImplementorsRegisteredReturnsNestedMergedString(
+    ): void {
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterfaceReturnsModifiedValue::class][1577363366]
             = TestingHookImplementorReturnsModifiedValue::class;
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][TestingHookInterfaceReturnsModifiedValue::class][1577363367]
