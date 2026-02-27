@@ -44,6 +44,7 @@
 		"typo3/cms-extbase": "^11.5.41",
 		"typo3/cms-fluid": "^11.5.41",
 		"typo3/cms-frontend": "^11.5.41",
+		"typo3/cms-install": "^11.5 || ^12.4",
 		"typo3fluid/fluid": "^2.7.4 || ^4.0"
 	},
 	"require-dev": {
@@ -75,8 +76,7 @@
 	},
 	"suggest": {
 		"oliverklee/onetimeaccount": "for event registration without an explicit FE login",
-		"oliverklee/seminars_premium": "for premium functionality",
-		"typo3/cms-install": "for running the upgrade wizards"
+		"oliverklee/seminars_premium": "for premium functionality"
 	},
 	"prefer-stable": true,
 	"autoload": {
