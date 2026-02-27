@@ -3207,7 +3207,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 23
+			count: 21
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
@@ -3232,7 +3232,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 23
+			count: 20
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
@@ -3266,11 +3266,6 @@ parameters:
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Hooks\\\\HookProviderTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\|null\\) does not accept mixed\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Hooks/HookProviderTest.php
-
-		-
 			message: "#^Binary operation \"\\+\" between mixed and 42 results in an error\\.$#"
 			count: 1
 			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
@@ -3279,11 +3274,6 @@ parameters:
 			message: "#^Binary operation \"\\-\" between mixed and 42 results in an error\\.$#"
 			count: 1
 			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
-
-		-
-			message: "#^Cannot access offset 'LOG' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/Unit/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\LegacyRegistrationTest\\:\\:nameUserDataDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
