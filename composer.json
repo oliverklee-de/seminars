@@ -59,7 +59,7 @@
 		"rector/type-perfect": "1.0.0",
 		"saschaegerer/phpstan-typo3": "1.10.2",
 		"squizlabs/php_codesniffer": "4.0.1",
-		"ssch/typo3-rector": "2.13.1",
+		"ssch/typo3-rector": "2.15.2",
 		"ssch/typo3-rector-testing-framework": "2.0.1",
 		"symfony/console": "5.4.47 || 6.4.32 || 7.4.4",
 		"symfony/translation": "5.4.45 || 6.4.32 || 7.4.4",
