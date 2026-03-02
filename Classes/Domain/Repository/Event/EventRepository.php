@@ -36,7 +36,9 @@ class EventRepository extends AbstractRawDataCapableRepository
         'webinar_url',
     ];
 
-    private Context $context;
+    // This needs to be `protected` instead of `private` so that extending classes (e.g., in the `seminars-premium`
+    // extension) can access the property.
+    protected Context $context;
 
     public function injectContext(Context $context): void
     {
