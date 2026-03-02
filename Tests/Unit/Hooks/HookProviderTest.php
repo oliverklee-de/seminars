@@ -231,7 +231,6 @@ final class HookProviderTest extends UnitTestCase
 
     /**
      * @test
-     * @doesNotPerformAssertions
      */
     public function hookObjectForTestHookWithNoHookImplementorRegisteredSucceedsForValidMethod(): void
     {
