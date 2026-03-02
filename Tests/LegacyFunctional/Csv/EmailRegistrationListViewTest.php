@@ -14,6 +14,9 @@ use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
+/**
+ * @covers \OliverKlee\Seminars\Csv\EmailRegistrationListView
+ */
 final class EmailRegistrationListViewTest extends FunctionalTestCase
 {
     use LanguageHelper;
