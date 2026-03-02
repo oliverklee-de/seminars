@@ -393,8 +393,8 @@ final class LegacyRegistrationTest extends UnitTestCase
     /**
      * @test
      */
-    public function getRegistrationDataForNotesWithCarriageReturnAndLineFeedReturnsNotesWithLinefeedAndNoCarriageReturn(): void
-    {
+    public function getRegistrationDataForNotesWithCarriageReturnAndLineFeedReturnsNotesWithLinefeedAndNoCarriageReturn(
+    ): void {
         $subject = LegacyRegistration::fromData(['notes' => "foo\r\nbar"]);
 
         self::assertSame(

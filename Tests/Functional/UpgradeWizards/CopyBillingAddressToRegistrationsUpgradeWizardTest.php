@@ -85,8 +85,8 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
     /**
      * @test
      */
-    public function updateNecessaryForRegistrationWithoutSeparateBillingAddressWithMissingReferenceUserReturnsTrue(): void
-    {
+    public function updateNecessaryForRegistrationWithoutSeparateBillingAddressWithMissingReferenceUserReturnsTrue(
+    ): void {
         $this->importCSVDataSet(
             self::FIXTURES_PREFIX . 'RegistrationWithoutSeparateBillingAddressWithMissingReferencedUser.csv',
         );

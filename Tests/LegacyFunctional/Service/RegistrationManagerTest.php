@@ -494,8 +494,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canRegisterIfLoggedInForLoggedInButAlreadyRegisteredAndWithMultipleRegistrationsAllowedIsTrue(): void
-    {
+    public function canRegisterIfLoggedInForLoggedInButAlreadyRegisteredAndWithMultipleRegistrationsAllowedIsTrue(
+    ): void {
         $this->seminar->setAllowsMultipleRegistrations(true);
 
         $this->testingFramework->createRecord(
@@ -661,8 +661,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canRegisterIfLoggedInMessageForLoggedInButAlreadyRegisteredUserReturnsAlreadyRegisteredMessage(): void
-    {
+    public function canRegisterIfLoggedInMessageForLoggedInButAlreadyRegisteredUserReturnsAlreadyRegisteredMessage(
+    ): void {
         $this->testingFramework->createRecord(
             'tx_seminars_attendances',
             [
@@ -680,8 +680,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canRegisterIfLoggedInMessageForLoggedInButAlreadyRegisteredAndMultipleRegistrationsAllowedIsEmpty(): void
-    {
+    public function canRegisterIfLoggedInMessageForLoggedInButAlreadyRegisteredAndMultipleRegistrationsAllowedIsEmpty(
+    ): void {
         $this->seminar->setAllowsMultipleRegistrations(true);
 
         $this->testingFramework->createRecord(
@@ -727,8 +727,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canRegisterIfLoggedInMessageForLoggedOutAndWithoutRegistrationReturnsNoRegistrationNeededMessage(): void
-    {
+    public function canRegisterIfLoggedInMessageForLoggedOutAndWithoutRegistrationReturnsNoRegistrationNeededMessage(
+    ): void {
         $this->seminar->setAttendancesMax(0);
         $this->seminar->setNeedsRegistration(false);
 
@@ -741,8 +741,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canRegisterIfLoggedInMessageForLoggedOutUserAndSeminarWithUnlimitedVacanciesReturnsEmptyString(): void
-    {
+    public function canRegisterIfLoggedInMessageForLoggedOutUserAndSeminarWithUnlimitedVacanciesReturnsEmptyString(
+    ): void {
         $this->seminar->setUnlimitedVacancies();
 
         self::assertSame(
@@ -754,8 +754,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canRegisterIfLoggedInMessageForLoggedInUserAndSeminarWithUnlimitedVacanciesReturnsEmptyString(): void
-    {
+    public function canRegisterIfLoggedInMessageForLoggedInUserAndSeminarWithUnlimitedVacanciesReturnsEmptyString(
+    ): void {
         $this->seminar->setUnlimitedVacancies();
         $this->testingFramework->createAndLoginFrontEndUser();
 
@@ -1702,8 +1702,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function sendAdditionalNotificationForEventWithEnoughAttendancesAndOrganizersAlreadyNotifiedNotSendsEmail(): void
-    {
+    public function sendAdditionalNotificationForEventWithEnoughAttendancesAndOrganizersAlreadyNotifiedNotSendsEmail(
+    ): void {
         $this->testingFramework->changeRecord(
             'tx_seminars_seminars',
             $this->seminarUid,

@@ -1387,8 +1387,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canSomebodyRegisterMessageForEventWithoutNeedeRegistrationReturnsNoRegistrationNecessaryMessage(): void
-    {
+    public function canSomebodyRegisterMessageForEventWithoutNeedeRegistrationReturnsNoRegistrationNecessaryMessage(
+    ): void {
         $this->subject->setNeedsRegistration(false);
 
         self::assertSame(
@@ -1433,8 +1433,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canSomebodyRegisterMessageForEventWithRegistrationBeginInFutureReturnsRegistrationOpensOnMessage(): void
-    {
+    public function canSomebodyRegisterMessageForEventWithRegistrationBeginInFutureReturnsRegistrationOpensOnMessage(
+    ): void {
         $this->subject->setBeginDate($this->now + 45);
         $this->subject->setUnlimitedVacancies();
         $this->subject->setRegistrationBeginDate(
@@ -2231,8 +2231,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getPaymentMethodsPlainShortDoesNotSeparateMultiplePaymentMethodsWithCarriageReturnsAndLineFeeds(): void
-    {
+    public function getPaymentMethodsPlainShortDoesNotSeparateMultiplePaymentMethodsWithCarriageReturnsAndLineFeeds(
+    ): void {
         $this->addPaymentMethodRelation(['title' => 'Payment Method 1']);
         $this->addPaymentMethodRelation(['title' => 'Payment Method 2']);
 
@@ -2272,8 +2272,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getSinglePaymentMethodPlainWithValidPaymentMethodUidWithDescriptionReturnsTitleAndDescription(): void
-    {
+    public function getSinglePaymentMethodPlainWithValidPaymentMethodUidWithDescriptionReturnsTitleAndDescription(
+    ): void {
         $title = 'Test payment method';
         $description = 'some description';
         $uid = $this->addPaymentMethodRelation(['title' => $title, 'description' => $description]);
@@ -3514,8 +3514,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getSpeakersWithDescriptionRawForSpeakerWithOrganizationAndHomepageReturnsSpeakerWithOrganizationAndHomepage(): void
-    {
+    public function getSpeakersWithDescriptionRawForSpeakerWithOrganizationAndHomepageReturnsSpeakerWithOrganizationAndHomepage(
+    ): void {
         $this->addSpeakerRelation(
             [
                 'organization' => 'test organization',
@@ -3545,8 +3545,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getSpeakersWithDescriptionRawForSpeakerWithOrganizationAndDescriptionReturnsOrganizationAndDescription(): void
-    {
+    public function getSpeakersWithDescriptionRawForSpeakerWithOrganizationAndDescriptionReturnsOrganizationAndDescription(
+    ): void {
         $this->addSpeakerRelation(
             [
                 'organization' => 'foo',
@@ -3562,8 +3562,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getSpeakersWithDescriptionRawForSpeakerWithHomepageAndDescriptionReturnsHomepageAndDescription(): void
-    {
+    public function getSpeakersWithDescriptionRawForSpeakerWithHomepageAndDescriptionReturnsHomepageAndDescription(
+    ): void {
         $this->addSpeakerRelation(
             [
                 'homepage' => 'test homepage',
@@ -3598,8 +3598,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getSpeakersWithDescriptionRawForTwoSpeakersWithOrganizationReturnsTwoSpeakersWithOrganization(): void
-    {
+    public function getSpeakersWithDescriptionRawForTwoSpeakersWithOrganizationReturnsTwoSpeakersWithOrganization(
+    ): void {
         $this->addSpeakerRelation(
             ['organization' => 'test organization 1'],
         );
@@ -3701,8 +3701,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getSpeakersWithDescriptionRawDoesNotSeparateSpeakersDescriptionAndTitleWithCarriageReturnsAndLineFeeds(): void
-    {
+    public function getSpeakersWithDescriptionRawDoesNotSeparateSpeakersDescriptionAndTitleWithCarriageReturnsAndLineFeeds(
+    ): void {
         $this->addSpeakerRelation(
             [
                 'title' => 'foo',
@@ -5058,8 +5058,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getCancellationDeadlineForEventWithTwoSpeakersWithoutCancellationPeriodReturnsBeginDateOfEvent(): void
-    {
+    public function getCancellationDeadlineForEventWithTwoSpeakersWithoutCancellationPeriodReturnsBeginDateOfEvent(
+    ): void {
         $this->subject->setBeginDate($this->now);
         $this->addSpeakerRelation(['cancelation_period' => 0]);
         $this->addSpeakerRelation(['cancelation_period' => 0]);
@@ -5073,8 +5073,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getCancellationDeadlineForEventWithOneSpeakersWithCancellationPeriodReturnsBeginDateMinusCancelationPeriod(): void
-    {
+    public function getCancellationDeadlineForEventWithOneSpeakersWithCancellationPeriodReturnsBeginDateMinusCancelationPeriod(
+    ): void {
         $this->subject->setBeginDate($this->now);
         $this->addSpeakerRelation(['cancelation_period' => 1]);
 
@@ -5087,8 +5087,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getCancellationDeadlineForEventWithTwoSpeakersWithCancellationPeriodsReturnsBeginDateMinusBiggestCancelationPeriod(): void
-    {
+    public function getCancellationDeadlineForEventWithTwoSpeakersWithCancellationPeriodsReturnsBeginDateMinusBiggestCancelationPeriod(
+    ): void {
         $this->subject->setBeginDate($this->now);
         $this->addSpeakerRelation(['cancelation_period' => 21]);
         $this->addSpeakerRelation(['cancelation_period' => 42]);
@@ -5227,8 +5227,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getEventDataForEventWithMultipleLodgingsDoesNotSeparateLodgingsWithCarriageReturnsAndLineFeeds(): void
-    {
+    public function getEventDataForEventWithMultipleLodgingsDoesNotSeparateLodgingsWithCarriageReturnsAndLineFeeds(
+    ): void {
         $eventUid = $this->subject->getUid();
         \assert($eventUid > 0);
 
@@ -5468,8 +5468,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function dumpSeminarValuesForEventWithoutDescriptionAndDescriptionGivenReturnsDescriptionLabelWithColonsAndLineFeed(): void
-    {
+    public function dumpSeminarValuesForEventWithoutDescriptionAndDescriptionGivenReturnsDescriptionLabelWithColonsAndLineFeed(
+    ): void {
         $this->subject->setDescription('');
 
         self::assertStringContainsString(":\n", $this->subject->dumpSeminarValues('description'));
@@ -5508,8 +5508,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function dumpSeminarValuesForEventWithUnlimitedVacanciesAndVacanciesGivenReturnsVacanciesUnlimitedString(): void
-    {
+    public function dumpSeminarValuesForEventWithUnlimitedVacanciesAndVacanciesGivenReturnsVacanciesUnlimitedString(
+    ): void {
         $this->subject->setUnlimitedVacancies();
 
         self::assertSame(
@@ -5617,8 +5617,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getRegistrationBeginAsUnixTimestampForEventWithRegistrationBeginReturnsRegistrationBeginAsUnixTimestamp(): void
-    {
+    public function getRegistrationBeginAsUnixTimestampForEventWithRegistrationBeginReturnsRegistrationBeginAsUnixTimestamp(
+    ): void {
         $this->subject->setRegistrationBeginDate(42);
 
         self::assertSame(
@@ -5797,8 +5797,8 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getLatestPossibleRegistrationTimeForEventWithBeginDateAndRegistrationDeadlineReturnsRegistrationDeadline(): void
-    {
+    public function getLatestPossibleRegistrationTimeForEventWithBeginDateAndRegistrationDeadlineReturnsRegistrationDeadline(
+    ): void {
         $uid = $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
