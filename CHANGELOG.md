@@ -216,6 +216,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Avoid using deprecated feuserextrafields API (#4786)
 - Add `typo3/cms-install` as a production dependency (#4775)
 - Fix crash in the CSV export for deleted FE users (#4712, #4714)
 - Ensure that `Registration::getEvent()` returns an `EventDateInterface` (#4668)
