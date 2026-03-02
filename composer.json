@@ -74,6 +74,12 @@
 	"replace": {
 		"typo3-ter/seminars": "self.version"
 	},
+	"conflict": {
+		"guzzlehttp/promises": "< 2.3.0",
+		"thecodingmachine/safe": "< 1.3.3",
+		"typo3/class-alias-loader": "< 1.2.0",
+		"typo3/phar-stream-wrapper": "< 3.1.8"
+	},
 	"suggest": {
 		"oliverklee/onetimeaccount": "for event registration without an explicit FE login",
 		"oliverklee/seminars_premium": "for premium functionality"
