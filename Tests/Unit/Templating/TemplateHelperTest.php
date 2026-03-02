@@ -6,6 +6,7 @@ namespace OliverKlee\Seminars\Tests\Unit\Templating;
 
 use OliverKlee\Oelib\Configuration\ConfigurationProxy;
 use OliverKlee\Oelib\Templating\Template;
+use OliverKlee\Seminars\Tests\Unit\Templating\Fixtures\TestingContentObjectRenderer;
 use OliverKlee\Seminars\Tests\Unit\Templating\Fixtures\TestingTemplateHelper;
 use TYPO3\CMS\Core\Cache\Backend\NullBackend;
 use TYPO3\CMS\Core\Cache\CacheManager;
@@ -29,7 +30,7 @@ final class TemplateHelperTest extends UnitTestCase
         $cacheManager->setCacheConfigurations(['l10n' => ['backend' => NullBackend::class]]);
 
         $frontEndControllerMock = $this->createMock(TypoScriptFrontendController::class);
-        $frontEndControllerMock->cObj = $this->createMock(ContentObjectRenderer::class);
+        $frontEndControllerMock->cObj = new TestingContentObjectRenderer();
         $GLOBALS['TSFE'] = $frontEndControllerMock;
 
         $this->subject = new TestingTemplateHelper([]);
@@ -39,6 +40,8 @@ final class TemplateHelperTest extends UnitTestCase
     {
         ConfigurationProxy::purgeInstances();
         GeneralUtility::purgeInstances();
+
+        unset($GLOBALS['TSFE']);
 
         parent::tearDown();
     }
@@ -131,8 +134,6 @@ final class TemplateHelperTest extends UnitTestCase
 
     /**
      * @test
-     *
-     * @doesNotPerformAssertions
      */
     public function processTemplateWithoutTemplateFileDoesNotThrowException(): void
     {
