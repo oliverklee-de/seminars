@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:layout name="FrontEndEditor"/>
+
+    <f:section name="main">
+        <h2>
+            <f:translate key="plugin.frontEndEditor.listRegistrations.headline"/>
+        </h2>
+        <h3>
+            {event.displayTitle}
+            <f:render partial="EventDate" arguments="{event: event}"/>
+        </h3>
+
+        <f:if condition="{regularRegistrations}">
+            <h2>
+                <f:translate key="plugin.frontEndEditor.listRegistrations.headline.regularRegistrations"/>
+            </h2>
+
+            <table class="table table-hover table-responsive w-auto">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.number"/>
+                        </th>
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.name"/>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <f:for each="{regularRegistrations}" as="registration" iteration="iteration">
+                        <tr>
+                            <td>
+                                {iteration.cycle}
+                            </td>
+                            <td>
+                                {registration.user.displayName}
+                            </td>
+                        </tr>
+                    </f:for>
+                </tbody>
+            </table>
+        </f:if>
+    </f:section>
+</html>

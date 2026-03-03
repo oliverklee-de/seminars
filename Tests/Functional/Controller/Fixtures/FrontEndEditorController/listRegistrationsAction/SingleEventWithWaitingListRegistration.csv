@@ -1,0 +1,11 @@
+"tx_seminars_seminars"
+,"uid","pid","object_type","title","offline_attendees","owner_feuser","begin_date","end_date","registrations"
+,1,2,0,"single event with owner",59,1,1761649200,1761678000,1
+
+"fe_users"
+,"uid","pid","name"
+,2,1,"Betty Botter"
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user","registration_queue"
+,1,1,1,2,1

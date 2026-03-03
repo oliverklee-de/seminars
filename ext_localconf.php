@@ -135,6 +135,7 @@ defined('TYPO3') or die('Access denied.');
         'updateEventDate',
         'newEventDate',
         'createEventDate',
+        'listRegistrations',
     ];
     $frontEndEditorActions = [FrontEndEditorController::class => \implode(', ', $frontEndEditorActionMethods)];
     ExtensionUtility::configurePlugin('Seminars', 'FrontEndEditor', $frontEndEditorActions, $frontEndEditorActions);
