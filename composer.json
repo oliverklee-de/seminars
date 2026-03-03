@@ -186,7 +186,7 @@
 		],
 		"fix:php:cs-fixer": "php-cs-fixer fix --config ./Build/php-cs-fixer/config.php",
 		"fix:php:rector": "rector process",
-		"fix:php:sniff": "phpcbf *.php Classes Configuration Documentation Tests",
+		"fix:php:sniff": "phpcbf --standard=./Build/phpcs/config.xml *.php Classes Configuration Documentation Tests",
 		"phpstan:baseline": "phpstan  --generate-baseline=Build/phpstan/phpstan-baseline.neon --allow-empty-baseline --configuration=Build/phpstan/phpstan.neon",
 		"prepare-release": [
 			"rm -rf .Build",
