@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Controller;
 
+use OliverKlee\Seminars\Domain\Model\Event\Event;
 use OliverKlee\Seminars\Domain\Model\Event\EventDate;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventTopic;
@@ -310,5 +311,12 @@ class FrontEndEditorController extends ActionController
 
         $this->eventRepository->update($event);
         $this->eventRepository->persistAll();
+    }
+
+    public function listRegistrationsAction(Event $event): ResponseInterface
+    {
+        $this->view->assign('event', $event);
+
+        return $this->htmlResponse();
     }
 }

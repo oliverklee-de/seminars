@@ -2051,4 +2051,135 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
             $response->getBody()->__toString(),
         );
     }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnEventHasHeadline(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        $expected = LocalizationUtility::translate('plugin.frontEndEditor.listRegistrations.headline', 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnSingleEventShowsEventTitle(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('single event with owner', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnSingleEventWithSingleDayDateShowsEventDate(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('2025-10-28', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnSingleEventWithMultiDayDateShowsEventDates(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/MultiDaySingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('2039-12-01–2039-12-02', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnEventDateShowsEventTopicTitle(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/EventDateWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('event topic', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnEventDateWithDateShowsEventDate(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/EventDateWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('2025-10-28', $html);
+    }
+
+    // Einzel-Veranstaltung: Titel
+    // Einzel-Veranstaltung: Datum
+    // Datum: Titel
+    // Datum: Datum
+    // Topic: 404
+    // keine Anmeldungen: Message
+    // Liste mit regulären Anmeldungen hat Link
+    // Liste mit Wartelisten-Anmeldungen hat Link
+    // Liste mit unverbindlichen Voranmeldungen hat Link
+    // nicht eingeloggt: 403
+    // nicht Owner bei 0: 403
+    // nicht Owner bei anderem Owner: 403
+    // listet reguläre Anmeldungen mit DP
+    // listet Wartelisten-Anmeldungen mit DP
+    // listet unverbindlichen Voranmeldungen mit DP
+    // Mailadresse ist verlinkt
+    // Back-Link
+    // locallang für Config
+    // Config in Flexforms
+    // Felder konfigurierbar anzeigen
 }
