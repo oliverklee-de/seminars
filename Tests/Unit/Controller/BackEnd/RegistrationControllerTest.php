@@ -124,7 +124,8 @@ final class RegistrationControllerTest extends UnitTestCase
 
     protected function tearDown(): void
     {
-        unset($_GET['id'], $_GET['pid'], $GLOBALS['LANG'], $GLOBALS['BE_USER']);
+        unset($GLOBALS['LANG'], $GLOBALS['BE_USER']);
+        $GLOBALS['_GET'] = [];
         GeneralUtility::purgeInstances();
 
         parent::tearDown();
