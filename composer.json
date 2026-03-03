@@ -156,7 +156,7 @@
 		"check:php:cs-fixer": "php-cs-fixer fix --config ./Build/php-cs-fixer/config.php -v --dry-run --diff",
 		"check:php:lint": "find .*.php *.php Classes Configuration Documentation Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l",
 		"check:php:rector": "rector process --dry-run",
-		"check:php:sniff": "phpcs *.php Classes Documentation Configuration Tests",
+		"check:php:sniff": "phpcs --standard=./Build/phpcs/config.xml *.php Classes Documentation Configuration Tests",
 		"check:php:stan": "phpstan --no-progress --configuration=Build/phpstan/phpstan.neon",
 		"check:static": [
 			"@check:composer:normalize",
@@ -201,7 +201,6 @@
 			"rm .gitignore",
 			"rm Configuration/TypoScriptLint.yaml",
 			"rm crowdin.yml",
-			"rm phpcs.xml.dist",
 			"rm rector.php"
 		]
 	},
