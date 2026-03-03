@@ -10,4 +10,3 @@
 /Tests/ export-ignore
 /crowdin.yml export-ignore
 /phpcs.xml.dist export-ignore
-/rector.php export-ignore
