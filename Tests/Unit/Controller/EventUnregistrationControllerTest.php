@@ -67,12 +67,13 @@ final class EventUnregistrationControllerTest extends UnitTestCase
         parent::setUp();
 
         $this->registrationManagerMock = $this->createMock(RegistrationManager::class);
+        $this->context = new Context();
 
         /** @var EventUnregistrationController&AccessibleObjectInterface&MockObject $subject */
         $subject = $this->getAccessibleMock(
             EventUnregistrationController::class,
             ['htmlResponse', 'redirect', 'redirectToUri'],
-            [$this->registrationManagerMock],
+            [$this->registrationManagerMock, $this->context],
         );
         $this->subject = $subject;
 
@@ -82,7 +83,6 @@ final class EventUnregistrationControllerTest extends UnitTestCase
         $this->viewMock = $this->createMock(TemplateView::class);
         $this->subject->_set('view', $this->viewMock);
 
-        $this->context = GeneralUtility::makeInstance(Context::class);
         $this->legacyRegistrationMock = $this->createMock(LegacyRegistration::class);
         GeneralUtility::addInstance(LegacyRegistration::class, $this->legacyRegistrationMock);
         $this->legacyConfigurationMock = $this->createMock(LegacyConfiguration::class);

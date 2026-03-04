@@ -131,11 +131,6 @@ parameters:
 			path: ../../Classes/Controller/EventUnregistrationController.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Classes/Controller/FrontEndEditorController.php
-
-		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 3
 			path: ../../Classes/Csv/AbstractRegistrationListView.php

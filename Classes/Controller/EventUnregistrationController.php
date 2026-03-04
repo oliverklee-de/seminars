@@ -23,9 +23,12 @@ class EventUnregistrationController extends ActionController
 {
     private RegistrationManager $registrationManager;
 
-    public function __construct(RegistrationManager $registrationManager)
+    private Context $context;
+
+    public function __construct(RegistrationManager $registrationManager, Context $context)
     {
         $this->registrationManager = $registrationManager;
+        $this->context = $context;
     }
 
     /**
@@ -54,10 +57,11 @@ class EventUnregistrationController extends ActionController
 
     private function belongsToLoggedInUser(Registration $registration): bool
     {
-        $loggedInUserUid = GeneralUtility::makeInstance(Context::class)
-            ->getPropertyFromAspect('frontend.user', 'id', 0);
+        $loggedInUserUid = $this->context->getPropertyFromAspect('frontend.user', 'id', 0);
+        \assert(\is_int($loggedInUserUid));
+        \assert($loggedInUserUid >= 0);
 
-        return \is_int($loggedInUserUid) && $registration->belongsToUser($loggedInUserUid);
+        return $registration->belongsToUser($loggedInUserUid);
     }
 
     private function isUnregistrationPossible(Registration $registration): bool
