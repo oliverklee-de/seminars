@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\Service;
 
 use OliverKlee\Oelib\DataStructures\Collection;
-use OliverKlee\Oelib\Testing\CacheNullifyer;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\Model\FrontEndUser;
@@ -47,8 +46,6 @@ final class EmailServiceTest extends FunctionalTestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        (new CacheNullifyer())->setAllCoreCaches();
 
         $this->unifyTestingEnvironment();
 
