@@ -52,6 +52,8 @@ class FrontEndEditorController extends ActionController
 
     private ErrorController $errorController;
 
+    private Context $context;
+
     public function __construct(
         EventRepository $eventRepository,
         EventTypeRepository $eventTypeRepository,
@@ -62,7 +64,8 @@ class FrontEndEditorController extends ActionController
         FrontendUserRepository $userRepository,
         SlugGenerator $slugGenerator,
         EventStatisticsCalculator $eventStatisticsCalculator,
-        ErrorController $errorController
+        ErrorController $errorController,
+        Context $context
     ) {
         $this->eventRepository = $eventRepository;
         $this->eventTypeRepository = $eventTypeRepository;
@@ -74,6 +77,7 @@ class FrontEndEditorController extends ActionController
         $this->slugGenerator = $slugGenerator;
         $this->eventStatisticsCalculator = $eventStatisticsCalculator;
         $this->errorController = $errorController;
+        $this->context = $context;
     }
 
     /**
@@ -81,7 +85,8 @@ class FrontEndEditorController extends ActionController
      */
     private function getLoggedInUserUid(): int
     {
-        $uid = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
+        $uid = $this->context->getPropertyFromAspect('frontend.user', 'id');
+        \assert(\is_int($uid));
         \assert($uid >= 0);
 
         return $uid;
