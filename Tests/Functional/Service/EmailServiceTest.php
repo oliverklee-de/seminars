@@ -45,7 +45,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        (new CacheNullifyer())->setAllCoreCaches();
+        GeneralUtility::makeInstance(CacheNullifyer::class)->setAllCoreCaches();
 
         $languageService = GeneralUtility::makeInstance(LanguageServiceFactory::class)->create('default');
         $GLOBALS['LANG'] = $languageService;

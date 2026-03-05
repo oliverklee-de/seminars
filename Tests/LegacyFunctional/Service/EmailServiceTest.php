@@ -17,6 +17,7 @@ use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
 use OliverKlee\Seminars\ViewHelpers\DateRangeViewHelper;
 use TYPO3\CMS\Core\Mail\MailMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -48,7 +49,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        (new CacheNullifyer())->setAllCoreCaches();
+        GeneralUtility::makeInstance(CacheNullifyer::class)->setAllCoreCaches();
 
         $this->unifyTestingEnvironment();
 

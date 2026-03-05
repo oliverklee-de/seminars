@@ -69,7 +69,7 @@ final class MailNotifierTest extends FunctionalTestCase
 
         $this->importCSVDataSet(__DIR__ . '/Fixtures/BackEndUser.csv');
 
-        (new CacheNullifyer())->setAllCoreCaches();
+        GeneralUtility::makeInstance(CacheNullifyer::class)->setAllCoreCaches();
         $this->unifyTestingEnvironment();
 
         $this->configuration->setAsInteger('sendEventTakesPlaceReminderDaysBeforeBeginDate', 2);
