@@ -68,8 +68,7 @@
 		"typo3/cms-fluid-styled-content": "^11.5 || ^12.4",
 		"typo3/cms-scheduler": "^11.5 || ^12.4",
 		"typo3/coding-standards": "0.6.1",
-		"typo3/testing-framework": "7.1.1",
-		"webmozart/assert": "^1.12.1 || ^2.1.5"
+		"typo3/testing-framework": "7.1.1"
 	},
 	"replace": {
 		"typo3-ter/seminars": "self.version"
@@ -78,7 +77,8 @@
 		"guzzlehttp/promises": "< 2.3.0",
 		"thecodingmachine/safe": "< 1.3.3",
 		"typo3/class-alias-loader": "< 1.2.0",
-		"typo3/phar-stream-wrapper": "< 3.1.8"
+		"typo3/phar-stream-wrapper": "< 3.1.8",
+		"webmozart/assert": "< 1.12.1"
 	},
 	"suggest": {
 		"oliverklee/onetimeaccount": "for event registration without an explicit FE login",
