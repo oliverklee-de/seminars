@@ -437,8 +437,6 @@ final class LegacyRegistrationTest extends FunctionalTestCase
      */
     public function instantiationWithoutLoggedInUserDoesNotThrowException(): void
     {
-        $this->testingFramework->logoutFrontEndUser();
-
         new LegacyRegistration(
             $this->testingFramework->createRecord(
                 'tx_seminars_attendances',
