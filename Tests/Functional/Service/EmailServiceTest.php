@@ -7,7 +7,6 @@ namespace OliverKlee\Seminars\Tests\Functional\Service;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\DataStructures\Collection;
-use OliverKlee\Oelib\Testing\CacheNullifyer;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Organizer;
@@ -44,8 +43,6 @@ final class EmailServiceTest extends FunctionalTestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        (new CacheNullifyer())->setAllCoreCaches();
 
         $languageService = GeneralUtility::makeInstance(LanguageServiceFactory::class)->create('default');
         $GLOBALS['LANG'] = $languageService;

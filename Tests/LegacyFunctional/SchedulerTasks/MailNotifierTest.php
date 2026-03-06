@@ -8,7 +8,6 @@ use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Oelib\Interfaces\Time;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
-use OliverKlee\Oelib\Testing\CacheNullifyer;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Mapper\EventMapper;
@@ -69,7 +68,6 @@ final class MailNotifierTest extends FunctionalTestCase
 
         $this->importCSVDataSet(__DIR__ . '/Fixtures/BackEndUser.csv');
 
-        (new CacheNullifyer())->setAllCoreCaches();
         $this->unifyTestingEnvironment();
 
         $this->configuration->setAsInteger('sendEventTakesPlaceReminderDaysBeforeBeginDate', 2);
