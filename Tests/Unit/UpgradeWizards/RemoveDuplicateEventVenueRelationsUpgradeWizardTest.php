@@ -6,6 +6,7 @@ namespace OliverKlee\Seminars\Tests\Unit\UpgradeWizards;
 
 use OliverKlee\Seminars\UpgradeWizards\RemoveDuplicateEventVenueRelationsUpgradeWizard;
 use Psr\Log\LoggerAwareInterface;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
@@ -22,7 +23,7 @@ final class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends UnitTest
     {
         parent::setUp();
 
-        $this->subject = new RemoveDuplicateEventVenueRelationsUpgradeWizard();
+        $this->subject = new RemoveDuplicateEventVenueRelationsUpgradeWizard($this->createStub(ConnectionPool::class));
     }
 
     /**
