@@ -4631,7 +4631,6 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'title' => 'foo',
             ],
         );
-        $this->testingFramework->logoutFrontEndUser();
 
         $loginPageUid = $this->testingFramework->createFrontEndPage($this->rootPageUid);
         $this->testingFramework->changeRecord('pages', $loginPageUid, ['slug' => '/login']);
@@ -4779,7 +4778,6 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForLoggedOutUserAndLimitFileDownloadToAttendeesTrueHidesAttachedFilesHeader(): void
     {
-        $this->testingFramework->logoutFrontEndUser();
         $this->subject->setConfigurationValue('hideColumns', '');
         $this->subject->setConfigurationValue('limitFileDownloadToAttendees', 1);
         $this->testingFramework->createRecord(
@@ -4802,7 +4800,6 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForLoggedOutUserAndLimitFileDownloadToAttendeesFalseShowsAttachedFilesHeader(): void
     {
-        $this->testingFramework->logoutFrontEndUser();
         $this->subject->setConfigurationValue('hideColumns', '');
         $this->subject->setConfigurationValue('limitFileDownloadToAttendees', 0);
         $this->testingFramework->createRecord(
@@ -4825,7 +4822,6 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForLoggedOutUserAndLimitFileDownloadToAttendeesTrueHidesAttachedFilesListRowItem(): void
     {
-        $this->testingFramework->logoutFrontEndUser();
         $this->subject->setConfigurationValue('hideColumns', '');
         $this->subject->setConfigurationValue('limitFileDownloadToAttendees', 1);
         $this->testingFramework->createRecord(
@@ -4848,7 +4844,6 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForLoggedOutUserAndLimitFileDownloadToAttendeesFalseShowsAttachedFilesListRowItem(): void
     {
-        $this->testingFramework->logoutFrontEndUser();
         $this->subject->setConfigurationValue('hideColumns', '');
         $this->subject->setConfigurationValue('limitFileDownloadToAttendees', 0);
         $this->testingFramework->createRecord(
