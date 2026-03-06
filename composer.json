@@ -29,7 +29,7 @@
 		"ext-json": "*",
 		"doctrine/dbal": "^2.13.8 || ^3.9",
 		"oliverklee/feuserextrafields": "^6.7",
-		"oliverklee/oelib": "^6.2.0",
+		"oliverklee/oelib": "dev-main",
 		"pelago/emogrifier": "^8.1.0",
 		"psr/event-dispatcher": "^1.0",
 		"psr/http-message": "^1.0.1 || ^2.0",
