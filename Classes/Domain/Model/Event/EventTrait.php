@@ -28,6 +28,8 @@ trait EventTrait
 
     /**
      * the UID of the FE user who has created the event
+     *
+     * @phpstan-var int<0, max>
      */
     protected int $ownerUid = 0;
 
@@ -59,11 +61,17 @@ trait EventTrait
         $this->internalTitle = $name;
     }
 
+    /**
+     * @return int<0, max>
+     */
     public function getOwnerUid(): int
     {
         return $this->ownerUid;
     }
 
+    /**
+     * @param int<0, max> $ownerUid
+     */
     public function setOwnerUid(int $ownerUid): void
     {
         $this->ownerUid = $ownerUid;

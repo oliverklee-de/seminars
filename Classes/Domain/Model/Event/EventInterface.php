@@ -49,6 +49,9 @@ interface EventInterface extends DomainObjectInterface
 
     public function getEventType(): ?EventType;
 
+    /**
+     * @return int<0, max>
+     */
     public function getOwnerUid(): int;
 
     public function hasAdditionalTerms(): bool;

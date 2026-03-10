@@ -108,6 +108,9 @@ class NullEventTopic extends AbstractDomainObject implements EventTopicInterface
         return null;
     }
 
+    /**
+     * @return int<0, max>
+     */
     public function getOwnerUid(): int
     {
         return 0;
