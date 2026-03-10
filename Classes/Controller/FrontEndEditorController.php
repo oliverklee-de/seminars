@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Controller;
 
 use OliverKlee\Seminars\Domain\Model\Event\EventDate;
+use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventTopic;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
@@ -122,13 +123,12 @@ class FrontEndEditorController extends ActionController
     }
 
     /**
-     * @param SingleEvent|EventDate $event
-     *
      * @throws PropagateResponseException
      */
-    private function checkEventOwner($event): void
+    private function checkEventOwner(EventDateInterface $event): void
     {
-        if ($event->getOwnerUid() !== $this->getLoggedInUserUid()) {
+        $loggedInUserUid = $this->getLoggedInUserUid();
+        if (($loggedInUserUid === 0) || ($event->getOwnerUid() !== $loggedInUserUid)) {
             $this->trigger403('You do not have permission to edit this event.');
         }
     }
