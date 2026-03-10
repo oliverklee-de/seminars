@@ -1906,7 +1906,7 @@
         <source>Vacancies</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked">
-        <source>full</source>
+        <source>fully booked</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.unlimited">
         <source>∞</source>
