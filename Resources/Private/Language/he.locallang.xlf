@@ -2594,8 +2594,8 @@
         <target state="needs-translation">Vacancies</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked">
-        <source>full</source>
-        <target state="needs-translation">full</target>
+        <source>fully booked</source>
+        <target state="needs-translation">fully booked</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.unlimited">
         <source>∞</source>
