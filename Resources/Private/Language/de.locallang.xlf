@@ -2560,9 +2560,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Vacancies</source>
         <target state="final">Frei</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked" approved="yes">
-        <source>full</source>
-        <target state="final">voll</target>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked">
+        <source>fully booked</source>
+        <target state="needs-translation">fully booked</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.unlimited" approved="yes">
         <source>∞</source>
