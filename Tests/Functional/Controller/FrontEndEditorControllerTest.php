@@ -801,6 +801,23 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function editSingleEventActionWithoutLoginWithEventWithoutOwnerCreatesForbiddenResponse(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithoutOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'editSingleEvent',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+
+        $response = $this->executeFrontendSubRequest($request);
+
+        self::assertForbiddenResponse($response);
+    }
+
+    /**
+     * @test
+     */
     public function updateSingleEventActionWithOwnEventUpdatesEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/updateSingleEventAction/EventWithOwner.csv');
@@ -1283,6 +1300,23 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $context = (new InternalRequestContext())->withFrontendUserId(1);
 
         $response = $this->executeFrontendSubRequest($request, $context);
+
+        self::assertForbiddenResponse($response);
+    }
+
+    /**
+     * @test
+     */
+    public function editEventDateActionWithoutLoginWithEventWithoutOwnerCreatesForbiddenResponse(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithoutOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'editEventDate',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+
+        $response = $this->executeFrontendSubRequest($request);
 
         self::assertForbiddenResponse($response);
     }
