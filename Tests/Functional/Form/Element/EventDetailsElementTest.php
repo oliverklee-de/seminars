@@ -60,9 +60,22 @@ final class EventDetailsElementTest extends FunctionalTestCase
 
     /**
      * @param array<string, mixed> $additionalData
+     * @param non-empty-string $fieldName
      */
-    private function renderWithData(array $additionalData = []): string
+    private function renderWithData(array $additionalData = [], $fieldName = 'seminar'): string
     {
+        $fieldConfiguration = [
+            'config' => [
+                'type' => 'group',
+                'renderType' => 'eventDetails',
+                'allowed' => 'tx_seminars_seminars',
+                'default' => 0,
+                'size' => 1,
+                'minitems' => 1,
+                'maxitems' => 1,
+                'clipboardElements' => [],
+            ],
+        ];
         $data = [
             'databaseRow' => [
                 'uid' => 8,
@@ -87,23 +100,14 @@ final class EventDetailsElementTest extends FunctionalTestCase
             'inlineStructure' => [],
             'renderType' => 'eventDetails',
             'tableName' => 'tx_seminars_attendances',
-            'fieldName' => 'seminar',
+            'fieldName' => $fieldName,
             'parameterArray' => [
-                'fieldConf' => [
-                    'config' => [
-                        'type' => 'group',
-                        'renderType' => 'eventDetails',
-                        'allowed' => 'tx_seminars_seminars',
-                        'default' => 0,
-                        'size' => 1,
-                        'minitems' => 1,
-                        'maxitems' => 1,
-                    ],
-                ],
-                [],
+                'fieldConf' => $fieldConfiguration,
                 'itemFormElName' => 'data[tx_seminars_attendances][8][seminar]',
                 'itemFormElID' => 'data_tx_seminars_attendances_8_seminar',
+                'itemFormElValue' => [],
             ],
+            'processedTca' => ['columns' => [$fieldName => $fieldConfiguration]],
         ];
         ArrayUtility::mergeRecursiveWithOverrule($data, $additionalData);
         $subject = new EventDetailsElement(new NodeFactory(), $data);
@@ -407,7 +411,7 @@ final class EventDetailsElementTest extends FunctionalTestCase
                 ],
             ],
         ];
-        $result = $this->renderWithData($additionalData);
+        $result = $this->renderWithData($additionalData, $fieldName);
 
         self::assertStringContainsString($title, $result);
     }
@@ -425,7 +429,7 @@ final class EventDetailsElementTest extends FunctionalTestCase
                 $fieldName => [],
             ],
         ];
-        $result = $this->renderWithData($additionalData);
+        $result = $this->renderWithData($additionalData, $fieldName);
 
         self::assertStringNotContainsString('class="tx-seminars-event-details"', $result);
     }
@@ -443,7 +447,7 @@ final class EventDetailsElementTest extends FunctionalTestCase
                 $fieldName => [],
             ],
         ];
-        $result = $this->renderWithData($additionalData);
+        $result = $this->renderWithData($additionalData, $fieldName);
 
         $marker = 'class="tx-seminars-event-details-event"';
         self::assertStringNotContainsString($marker, $result);
