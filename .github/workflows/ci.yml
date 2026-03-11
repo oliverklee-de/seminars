@@ -52,9 +52,6 @@ jobs:
           - typo3-version: "11.5"
             php-version: "8.3"
             composer-dependencies: Max
-          - typo3-version: "11.5"
-            php-version: "8.4"
-            composer-dependencies: Max
   code-quality:
     name: Code quality checks
     runs-on: ubuntu-24.04
