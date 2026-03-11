@@ -765,7 +765,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function editSingleEventActionWithEventFromOtherUserThrowsException(): void
+    public function editSingleEventActionWithEventFromOtherUserCreatesForbiddenResponse(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventFromDifferentOwner.csv');
 
@@ -783,7 +783,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function editSingleEventActionWithEventWithoutOwnerThrowsException(): void
+    public function editSingleEventActionWithEventWithoutOwnerCreatesForbiddenResponse(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithoutOwner.csv');
 
@@ -1254,7 +1254,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function editEventDateActionWithEventFromOtherUserThrowsException(): void
+    public function editEventDateActionWithEventFromOtherUserCreatesForbiddenResponse(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventFromDifferentOwner.csv');
 
@@ -1272,7 +1272,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function editEventDateActionWithEventWithoutOwnerThrowsException(): void
+    public function editEventDateActionWithEventWithoutOwnerCreatesForbiddenResponse(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithoutOwner.csv');
 
