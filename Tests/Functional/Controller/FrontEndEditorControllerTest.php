@@ -2085,4 +2085,322 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
             $response->getBody()->__toString(),
         );
     }
+
+    private static function assertNotFoundResponse(ResponseInterface $response): void
+    {
+        self::assertSame(404, $response->getStatusCode());
+        self::assertSame('Not Found', $response->getReasonPhrase());
+        self::assertStringContainsString(
+            'This event is not available in the editor.',
+            $response->getBody()->__toString(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnEventHasHeadline(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        $expected = LocalizationUtility::translate('plugin.frontEndEditor.listRegistrations.headline', 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnSingleEventShowsEventTitle(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('single event with owner', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnSingleEventWithSingleDayDateShowsEventDate(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('2025-10-28', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnSingleEventWithMultiDayDateShowsEventDates(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/MultiDaySingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('2039-12-01–2039-12-02', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnEventDateShowsEventTopicTitle(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/EventDateWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('event topic', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnEventDateWithDateShowsEventDate(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/EventDateWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('2025-10-28', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForOwnEventTopicCreatesNotFoundResponse(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/EventTopicWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        self::assertNotFoundResponse($response);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionWithoutLoginForNotOwnedSingleEventCreatesForbiddenResponse(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithoutOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+
+        $response = $this->executeFrontendSubRequest($request);
+
+        self::assertForbiddenResponse($response);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionWithoutLoginForNotOwnedEventDateCreatesForbiddenResponse(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/EventDateWithoutOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+
+        $response = $this->executeFrontendSubRequest($request);
+
+        self::assertForbiddenResponse($response);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForSingleEventFromOtherUserCreatesForbiddenResponse(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(2);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        self::assertForbiddenResponse($response);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventDateFromOtherUserCreatesForbiddenResponse(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/EventDateWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(2);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        self::assertForbiddenResponse($response);
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithoutRegistrationsHasNoRegularRegistrationsHeading(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $key = 'plugin.frontEndEditor.listRegistrations.headline.regularRegistrations';
+        $expected = LocalizationUtility::translate($key, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringNotContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithRegularRegistrationHasRegularRegistrationsHeading(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithRegularRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $key = 'plugin.frontEndEditor.listRegistrations.headline.regularRegistrations';
+        $expected = LocalizationUtility::translate($key, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithWaitingListRegistrationsHasNoRegularRegistrationsHeading(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithWaitingListRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $key = 'plugin.frontEndEditor.listRegistrations.headline.regularRegistrations';
+        $expected = LocalizationUtility::translate($key, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringNotContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithNonBindingReservationHasNoRegularRegistrationsHeading(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithNonBindingReservation.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $key = 'plugin.frontEndEditor.listRegistrations.headline.regularRegistrations';
+        $expected = LocalizationUtility::translate($key, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringNotContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithRegularRegistrationListsAttendeeName(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithRegularRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        self::assertStringContainsString('Betty Botter', (string)$response->getBody());
+    }
 }

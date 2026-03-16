@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Controller;
 
+use OliverKlee\Seminars\Domain\Model\Event\Event;
 use OliverKlee\Seminars\Domain\Model\Event\EventDate;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
@@ -16,6 +17,7 @@ use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Domain\Repository\EventTypeRepository;
 use OliverKlee\Seminars\Domain\Repository\FrontendUserRepository;
 use OliverKlee\Seminars\Domain\Repository\OrganizerRepository;
+use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\Domain\Repository\SpeakerRepository;
 use OliverKlee\Seminars\Domain\Repository\VenueRepository;
 use OliverKlee\Seminars\Seo\SlugGenerator;
@@ -47,6 +49,8 @@ class FrontEndEditorController extends ActionController
 
     private FrontendUserRepository $userRepository;
 
+    private RegistrationRepository $registrationRepository;
+
     private SlugGenerator $slugGenerator;
 
     private EventStatisticsCalculator $eventStatisticsCalculator;
@@ -63,6 +67,7 @@ class FrontEndEditorController extends ActionController
         VenueRepository $venueRepository,
         CategoryRepository $categoryRepository,
         FrontendUserRepository $userRepository,
+        RegistrationRepository $registrationRepository,
         SlugGenerator $slugGenerator,
         EventStatisticsCalculator $eventStatisticsCalculator,
         ErrorController $errorController,
@@ -75,6 +80,7 @@ class FrontEndEditorController extends ActionController
         $this->venueRepository = $venueRepository;
         $this->categoryRepository = $categoryRepository;
         $this->userRepository = $userRepository;
+        $this->registrationRepository = $registrationRepository;
         $this->slugGenerator = $slugGenerator;
         $this->eventStatisticsCalculator = $eventStatisticsCalculator;
         $this->errorController = $errorController;
@@ -143,6 +149,19 @@ class FrontEndEditorController extends ActionController
         throw new PropagateResponseException(
             $this->errorController->accessDeniedAction($this->request, $message),
             1769449755,
+        );
+    }
+
+    /**
+     * @return never
+     *
+     * @throws PropagateResponseException
+     */
+    private function trigger404(string $message): void
+    {
+        throw new PropagateResponseException(
+            $this->errorController->pageNotFoundAction($this->request, $message),
+            1773164525,
         );
     }
 
@@ -315,5 +334,28 @@ class FrontEndEditorController extends ActionController
 
         $this->eventRepository->update($event);
         $this->eventRepository->persistAll();
+    }
+
+    /**
+     * @IgnoreValidation("event")
+     *
+     * @throws PropagateResponseException
+     */
+    public function listRegistrationsAction(Event $event): ResponseInterface
+    {
+        if (!($event instanceof EventDateInterface)) {
+            $this->trigger404('This event is not available in the editor.');
+        }
+        $this->checkEventOwner($event);
+
+        $eventUid = $event->getUid();
+        \assert(\is_int($eventUid));
+        \assert($eventUid > 0);
+        $this->view->assignMultiple([
+            'event' => $event,
+            'regularRegistrations' => $this->registrationRepository->findRegularRegistrationsByEvent($eventUid),
+        ]);
+
+        return $this->htmlResponse();
     }
 }
