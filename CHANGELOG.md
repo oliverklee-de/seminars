@@ -83,6 +83,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Allow feuserextrafields 7.x (#4821)
 - Make the room in the BE for `company` a one-line input (#4721)
 - Show the "attended" checkbox for regular registrations only (#4697)
 - Add a certificate tab to the registration TCEforms (#4696)
