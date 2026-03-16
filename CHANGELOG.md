@@ -20,7 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Add a field for the billing start for an event (#4476)
 - Add a PSR-14 event for modifying an attendee download (#4463)
 - Add documentation for the PSR-14 event for slug generation (#4465)
-- Show event details in the registration TCEforms (#4423, #4447)
+- Show event details in the registration TCEforms (#4423, #4447, #4819)
 - Add a configuration for available topics in FE editor to FE users (#4425)
 - Allow creating event date records in the FE editor (#4414, #4420)
 - Allow editing event date records in the FE editor
