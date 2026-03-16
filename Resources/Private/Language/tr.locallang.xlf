@@ -1661,6 +1661,22 @@
         <source>Save</source>
         <target state="needs-translation">Save</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.headline">
+        <source>Registration list</source>
+        <target state="needs-translation">Registration list</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.headline.regularRegistrations">
+        <source>Regular registrations</source>
+        <target state="needs-translation">Regular registrations</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.number">
+        <source>#</source>
+        <target state="needs-translation">#</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.name">
+        <source>Name</source>
+        <target state="needs-translation">Name</target>
+      </trans-unit>
       <trans-unit id="plugin.eventRegistration">
         <source>Registration form for events</source>
         <target state="needs-translation">Registration form for events</target>
