@@ -62,7 +62,7 @@ final class EventDetailsElementTest extends FunctionalTestCase
      * @param array<string, mixed> $additionalData
      * @param non-empty-string $fieldName
      */
-    private function renderWithData(array $additionalData = [], $fieldName = 'seminar'): string
+    private function renderWithData(array $additionalData = [], string $fieldName = 'seminar'): string
     {
         $fieldConfiguration = [
             'config' => [
