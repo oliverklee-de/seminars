@@ -1209,6 +1209,9 @@
       <trans-unit id="plugin.frontEndEditor.action.save">
         <source>Save</source>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.action.listRegistrations">
+        <source>Registration list</source>
+      </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.headline">
         <source>Registration list</source>
       </trans-unit>

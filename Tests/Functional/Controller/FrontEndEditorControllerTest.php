@@ -451,6 +451,40 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function indexActionWithEventWithoutAnyRegistrationsDoesNotHaveListRegistrationsLink(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithoutRegistrations.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+
+        $expected = '?tx_seminars_frontendeditor%5Baction%5D=listRegistrations'
+            . '&amp;tx_seminars_frontendeditor%5Bcontroller%5D=FrontEndEditor'
+            . '&amp;tx_seminars_frontendeditor%5Bevent%5D=1';
+        self::assertStringNotContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function indexActionWithEventWithRegularRegistrationHasListRegistrationsLink(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithRegularRegistration.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+
+        $expected = '?tx_seminars_frontendeditor%5Baction%5D=listRegistrations'
+            . '&amp;tx_seminars_frontendeditor%5Bcontroller%5D=FrontEndEditor'
+            . '&amp;tx_seminars_frontendeditor%5Bevent%5D=1';
+        self::assertStringContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
     public function editSingleEventActionHasUpdateSingleEventFormAction(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
