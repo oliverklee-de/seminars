@@ -4,42 +4,41 @@
 
     <f:section name="main">
         <h2>
-            <f:translate key="plugin.frontEndEditor.listRegistrations.headline"/>
-        </h2>
-        <h3>
             {event.displayTitle}
             <f:render partial="EventDate" arguments="{event: event}"/>
-        </h3>
+        </h2>
 
         <f:if condition="{regularRegistrations}">
-            <h2>
+            <h3>
                 <f:translate key="plugin.frontEndEditor.listRegistrations.headline.regularRegistrations"/>
-            </h2>
+            </h3>
 
-            <table class="table table-hover table-responsive w-auto">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.number"/>
-                        </th>
-                        <th scope="col">
-                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.name"/>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <f:for each="{regularRegistrations}" as="registration" iteration="iteration">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped w-auto">
+                    <thead>
                         <tr>
-                            <td>
-                                {iteration.cycle}
-                            </td>
-                            <td>
-                                {registration.user.displayName}
-                            </td>
+                            <th scope="col">
+                                <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.number"/>
+                            </th>
+                            <th scope="col">
+                                <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.name"/>
+                            </th>
                         </tr>
-                    </f:for>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <f:for each="{regularRegistrations}" as="registration" iteration="iteration">
+                            <tr>
+                                <td>
+                                    {iteration.cycle}
+                                </td>
+                                <td>
+                                    {registration.user.displayName}
+                                </td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+            </div>
         </f:if>
     </f:section>
 </html>

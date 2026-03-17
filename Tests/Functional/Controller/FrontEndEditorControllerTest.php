@@ -2133,26 +2133,6 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function listRegistrationsActionForOwnEventHasHeadline(): void
-    {
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
-
-        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
-            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
-            'tx_seminars_frontendeditor[event]' => '1',
-        ]);
-        $context = (new InternalRequestContext())->withFrontendUserId(1);
-
-        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
-
-        $expected = LocalizationUtility::translate('plugin.frontEndEditor.listRegistrations.headline', 'seminars');
-        self::assertIsString($expected);
-        self::assertStringContainsString($expected, $html);
-    }
-
-    /**
-     * @test
-     */
     public function listRegistrationsActionForOwnSingleEventShowsEventTitle(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
