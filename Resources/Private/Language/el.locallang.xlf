@@ -1665,10 +1665,6 @@
         <source>Registration list</source>
         <target state="needs-translation">Registration list</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.headline">
-        <source>Registration list</source>
-        <target state="needs-translation">Registration list</target>
-      </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.headline.regularRegistrations">
         <source>Regular registrations</source>
         <target state="needs-translation">Regular registrations</target>
