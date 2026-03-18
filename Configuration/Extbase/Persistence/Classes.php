@@ -141,6 +141,7 @@ return [
     Registration::class => [
         'tableName' => 'tx_seminars_attendances',
         'properties' => [
+            'registrationDate' => ['fieldName' => 'crdate'],
             'event' => ['fieldName' => 'seminar'],
             'status' => ['fieldName' => 'registration_queue'],
             'comments' => ['fieldName' => 'notes'],
