@@ -84,6 +84,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Polish the FE editor table markup (#4827)
 - Allow feuserextrafields 7.x (#4821)
 - Make the room in the BE for `company` a one-line input (#4721)
 - Show the "attended" checkbox for regular registrations only (#4697)
