@@ -1626,6 +1626,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Save</source>
         <target state="final">Speichern</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.action.listRegistrations">
+        <source>Registration list</source>
+        <target state="needs-translation">Registration list</target>
+      </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.headline" approved="yes">
         <source>Registration list</source>
         <target state="final">Anmeldungsliste</target>
