@@ -2399,9 +2399,27 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     }
 
     /**
-     * @test
+     * @return array<non-empty-string, array{0: non-empty-string}>
      */
-    public function listRegistrationsActionForEventWithRegularRegistrationListsAttendeeName(): void
+    public static function attendeeDataDataProvider(): array
+    {
+        return [
+            'membership number' => ['12345678'],
+            'name' => ['Betty Botter'],
+            'street address' => ['Marktplatz 1'],
+            'ZIP code' => ['53111'],
+            'city' => ['Bonn'],
+            'email address as link text' => ['>betty@example.com<'],
+            'phone number' => ['+49 1234 567800'],
+        ];
+    }
+
+    /**
+     * @test
+     * @param non-empty-string $expected
+     * @dataProvider attendeeDataDataProvider
+     */
+    public function listRegistrationsActionForEventWithRegularRegistrationListsAttendeeData(string $expected): void
     {
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithRegularRegistration.csv',
@@ -2415,6 +2433,29 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         $response = $this->executeFrontendSubRequest($request, $context);
 
-        self::assertStringContainsString('Betty Botter', (string)$response->getBody());
+        self::assertStringContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithRegularRegistrationListsDateOfBirth(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithRegularRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $dateFormat = LocalizationUtility::translate('dateFormat', 'seminars');
+        self::assertIsString($dateFormat);
+        $expectedDate = (new \DateTime('1975-03-18'))->format($dateFormat);
+        self::assertStringContainsString($expectedDate, (string)$response->getBody());
     }
 }

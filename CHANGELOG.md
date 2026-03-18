@@ -8,7 +8,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 
 - Add `Registration.registrationDate` (#4829)
-- Add a registration list to the FE editor (#4812)
+- Add a registration list to the FE editor (#4812, #4824, #4825, #4828)
 - Add SVG icons in the BE (#4726)
 - Add stub functionality for certificates of attendance
   (#4669, #4671, #4677, #4678, #4679, #4690)
