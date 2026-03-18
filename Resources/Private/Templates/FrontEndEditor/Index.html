@@ -40,6 +40,8 @@
                     </th>
                     <th scope="col">
                     </th>
+                    <th scope="col">
+                    </th>
                 </tr>
                 <f:for each="{events}" as="event">
                     <f:variable name="statistics" value="{event.statistics}"/>
@@ -75,6 +77,13 @@
                                         <f:translate key="plugin.frontEndEditor.action.edit"/>
                                     </f:link.action>
                                 </f:else>
+                            </f:if>
+                        </td>
+                        <td>
+                            <f:if condition="{statistics.regularSeatsCount}">
+                                <f:link.action action="listRegistrations" arguments="{event: event}">
+                                    <f:translate key="plugin.frontEndEditor.action.listRegistrations"/>
+                                </f:link.action>
                             </f:if>
                         </td>
                     </tr>
