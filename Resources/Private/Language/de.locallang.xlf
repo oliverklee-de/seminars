@@ -1638,9 +1638,29 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>#</source>
         <target state="final">#</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.membershipNumber">
+        <source>Membership number</source>
+        <target state="needs-translation">Membership number</target>
+      </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.name" approved="yes">
         <source>Name</source>
         <target state="final">Name</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.address">
+        <source>Address</source>
+        <target state="needs-translation">Address</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.email">
+        <source>Email</source>
+        <target state="needs-translation">Email</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.telephone">
+        <source>Phone</source>
+        <target state="needs-translation">Phone</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.dateOfBirth">
+        <source>Date of birth</source>
+        <target state="needs-translation">Date of birth</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration" approved="yes">
         <source>Registration form for events</source>
