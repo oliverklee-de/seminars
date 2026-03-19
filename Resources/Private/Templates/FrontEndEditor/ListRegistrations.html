@@ -21,18 +21,57 @@
                                 <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.number"/>
                             </th>
                             <th scope="col">
+                                <f:translate
+                                    key="plugin.frontEndEditor.listRegistrations.tableHeading.membershipNumber"/>
+                            </th>
+                            <th scope="col">
                                 <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.name"/>
+                            </th>
+                            <th scope="col">
+                                <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.address"/>
+                            </th>
+                            <th scope="col">
+                                <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.email"/>
+                            </th>
+                            <th scope="col">
+                                <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.telephone"/>
+                            </th>
+                            <th scope="col">
+                                <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.dateOfBirth"/>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <f:for each="{regularRegistrations}" as="registration" iteration="iteration">
+                            <f:variable name="user" value="{registration.user}"/>
                             <tr>
                                 <td>
                                     {iteration.cycle}
                                 </td>
                                 <td>
-                                    {registration.user.displayName}
+                                    {user.membershipNumber}
+                                </td>
+                                <td>
+                                    {user.displayName}
+                                </td>
+                                <td>
+                                    {user.address}
+                                    <f:if condition="{user.address} && ({user.zip} || {user.city})">
+                                        <br/>
+                                    </f:if>
+                                    {user.zip} {user.city}
+                                </td>
+                                <td>
+                                    <f:link.email email="{user.email}"/>
+                                </td>
+                                <td>
+                                    {user.telephone}
+                                </td>
+                                <td>
+                                    <f:if condition="{user.dateOfBirth}">
+                                        {f:translate(key: 'dateFormat') -> f:variable(name: 'dateFormat')}
+                                        {user.dateOfBirth -> f:format.date(format: dateFormat)}
+                                    </f:if>
                                 </td>
                             </tr>
                         </f:for>
