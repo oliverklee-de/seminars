@@ -130,6 +130,8 @@ class Registration extends AbstractEntity implements RawDataInterface
      */
     protected bool $consentedToAdditionalTerms = false;
 
+    protected ?\DateTime $registrationDate = null;
+
     public function __construct()
     {
         $this->initializeObject();
@@ -411,5 +413,15 @@ class Registration extends AbstractEntity implements RawDataInterface
     public function hasDownloadableCertificate(): bool
     {
         return false;
+    }
+
+    public function getRegistrationDate(): ?\DateTime
+    {
+        return $this->registrationDate;
+    }
+
+    public function setRegistrationDate(\DateTime $registrationDate): void
+    {
+        $this->registrationDate = $registrationDate;
     }
 }

@@ -1353,4 +1353,23 @@ final class RegistrationTest extends UnitTestCase
     {
         self::assertFalse($this->subject->hasDownloadableCertificate());
     }
+
+    /**
+     * @test
+     */
+    public function getRegistrationDateInitiallyReturnsNull(): void
+    {
+        self::assertNull($this->subject->getRegistrationDate());
+    }
+
+    /**
+     * @test
+     */
+    public function setRegistrationDateSetsRegistrationDate(): void
+    {
+        $date = new \DateTime();
+        $this->subject->setRegistrationDate($date);
+
+        self::assertSame($date, $this->subject->getRegistrationDate());
+    }
 }
