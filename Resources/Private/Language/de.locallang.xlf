@@ -1638,29 +1638,29 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>#</source>
         <target state="final">#</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.membershipNumber">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.membershipNumber" approved="yes">
         <source>Membership number</source>
-        <target state="needs-translation">Membership number</target>
+        <target state="final">Mitgliedsnummer</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.name" approved="yes">
         <source>Name</source>
         <target state="final">Name</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.address">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.address" approved="yes">
         <source>Address</source>
-        <target state="needs-translation">Address</target>
+        <target state="final">Adresse</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.email">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.email" approved="yes">
         <source>Email</source>
-        <target state="needs-translation">Email</target>
+        <target state="final">E-Mail</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.telephone">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.telephone" approved="yes">
         <source>Phone</source>
-        <target state="needs-translation">Phone</target>
+        <target state="final">Telefon</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.dateOfBirth">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.dateOfBirth" approved="yes">
         <source>Date of birth</source>
-        <target state="needs-translation">Date of birth</target>
+        <target state="final">Geburtsdatum</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration" approved="yes">
         <source>Registration form for events</source>
