@@ -22,72 +22,76 @@
         </p>
         <div class="table-responsive">
             <table class="table table-hover table-striped w-auto">
-                <tr>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.property.uid"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.property.internalTitle"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.property.date"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.property.regularRegistrations"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.property.vacancies"/>
-                    </th>
-                    <th scope="col">
-                    </th>
-                    <th scope="col">
-                    </th>
-                </tr>
-                <f:for each="{events}" as="event">
-                    <f:variable name="statistics" value="{event.statistics}"/>
-
+                <thead>
                     <tr>
-                        <td>
-                            {event.uid}
-                        </td>
-                        <td>
-                            {event.internalTitle}
-                        </td>
-                        <td>
-                            <f:render partial="EventDate" arguments="{event: event}"/>
-                        </td>
-                        <td class="text-end">
-                            <f:if condition="{event.registrationRequired} && {statistics}">
-                                {statistics.regularSeatsCount}
-                            </f:if>
-                        </td>
-                        <td class="text-end text-nowrap">
-                            <f:render partial="FrontEndEditor/Vacancies"
-                                      arguments="{event: event, viewName: 'frontEndEditor'}"/>
-                        </td>
-                        <td>
-                            <f:if condition="{event.singleEvent}">
-                                <f:then>
-                                    <f:link.action action="editSingleEvent" arguments="{event: event}">
-                                        <f:translate key="plugin.frontEndEditor.action.edit"/>
-                                    </f:link.action>
-                                </f:then>
-                                <f:else if="{event.eventDate}">
-                                    <f:link.action action="editEventDate" arguments="{event: event}">
-                                        <f:translate key="plugin.frontEndEditor.action.edit"/>
-                                    </f:link.action>
-                                </f:else>
-                            </f:if>
-                        </td>
-                        <td>
-                            <f:if condition="{statistics.regularSeatsCount}">
-                                <f:link.action action="listRegistrations" arguments="{event: event}">
-                                    <f:translate key="plugin.frontEndEditor.action.listRegistrations"/>
-                                </f:link.action>
-                            </f:if>
-                        </td>
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.property.uid"/>
+                        </th>
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.property.internalTitle"/>
+                        </th>
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.property.date"/>
+                        </th>
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.property.regularRegistrations"/>
+                        </th>
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.property.vacancies"/>
+                        </th>
+                        <th scope="col">
+                        </th>
+                        <th scope="col">
+                        </th>
                     </tr>
-                </f:for>
+                </thead>
+                <tbody>
+                    <f:for each="{events}" as="event">
+                        <f:variable name="statistics" value="{event.statistics}"/>
+
+                        <tr>
+                            <td>
+                                {event.uid}
+                            </td>
+                            <td>
+                                {event.internalTitle}
+                            </td>
+                            <td>
+                                <f:render partial="EventDate" arguments="{event: event}"/>
+                            </td>
+                            <td class="text-end">
+                                <f:if condition="{event.registrationRequired} && {statistics}">
+                                    {statistics.regularSeatsCount}
+                                </f:if>
+                            </td>
+                            <td class="text-end text-nowrap">
+                                <f:render partial="FrontEndEditor/Vacancies"
+                                          arguments="{event: event, viewName: 'frontEndEditor'}"/>
+                            </td>
+                            <td>
+                                <f:if condition="{event.singleEvent}">
+                                    <f:then>
+                                        <f:link.action action="editSingleEvent" arguments="{event: event}">
+                                            <f:translate key="plugin.frontEndEditor.action.edit"/>
+                                        </f:link.action>
+                                    </f:then>
+                                    <f:else if="{event.eventDate}">
+                                        <f:link.action action="editEventDate" arguments="{event: event}">
+                                            <f:translate key="plugin.frontEndEditor.action.edit"/>
+                                        </f:link.action>
+                                    </f:else>
+                                </f:if>
+                            </td>
+                            <td>
+                                <f:if condition="{statistics.regularSeatsCount}">
+                                    <f:link.action action="listRegistrations" arguments="{event: event}">
+                                        <f:translate key="plugin.frontEndEditor.action.listRegistrations"/>
+                                    </f:link.action>
+                                </f:if>
+                            </td>
+                        </tr>
+                    </f:for>
+                </tbody>
             </table>
         </div>
     </f:section>
