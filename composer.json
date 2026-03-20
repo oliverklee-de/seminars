@@ -35,7 +35,6 @@
 		"psr/http-message": "^1.0.1 || ^2.0",
 		"psr/log": "^1.0 || ^2.0 || ^3.0",
 		"sjbr/static-info-tables": "^11.5.5 || ^12.4.3",
-		"symfony/console": "^5.4 || ^6.4 || ^7.0",
 		"symfony/mailer": "^5.4 || ^6.4 || ^7.0",
 		"symfony/mime": "^5.4 || ^6.4 || ^7.0",
 		"symfony/polyfill-php80": "^1.32.0",
