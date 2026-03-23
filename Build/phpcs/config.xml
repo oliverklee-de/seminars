@@ -4,11 +4,11 @@
     <arg name="extensions" value="php"/>
 
     <!-- We'll enable this rule once the line lengths are fixed. -->
-<!--    <rule ref="Generic.Files.LineLength">-->
-<!--        <properties>-->
-<!--            <property name="lineLimit" value="120"/>-->
-<!--            <property name="absoluteLineLimit" value="120"/>-->
-<!--        </properties>-->
-<!--    </rule>-->
+    <!--    <rule ref="Generic.Files.LineLength">-->
+    <!--        <properties>-->
+    <!--            <property name="lineLimit" value="120"/>-->
+    <!--            <property name="absoluteLineLimit" value="120"/>-->
+    <!--        </properties>-->
+    <!--    </rule>-->
     <rule ref="Squiz.PHP.Heredoc"/>
 </ruleset>
