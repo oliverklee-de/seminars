@@ -8,6 +8,9 @@
             <f:render partial="EventDate" arguments="{event: event}"/>
         </h2>
 
+        <f:variable name="dateFormat" value="{f:translate(key: 'dateFormat')}"/>
+        <f:variable name="timeFormat" value="{f:translate(key: 'timeFormat')}"/>
+
         <f:if condition="{regularRegistrations}">
             <h3>
                 <f:translate key="plugin.frontEndEditor.listRegistrations.headline.regularRegistrations"/>
@@ -39,6 +42,10 @@
                             <th scope="col">
                                 <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.dateOfBirth"/>
                             </th>
+                            <th scope="col">
+                                <f:translate
+                                    key="plugin.frontEndEditor.listRegistrations.tableHeading.registrationDate"/>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,9 +76,12 @@
                                 </td>
                                 <td>
                                     <f:if condition="{user.dateOfBirth}">
-                                        {f:translate(key: 'dateFormat') -> f:variable(name: 'dateFormat')}
-                                        {user.dateOfBirth -> f:format.date(format: dateFormat)}
+                                        <f:format.date date="{user.dateOfBirth}" format="{dateFormat}"/>
                                     </f:if>
+                                </td>
+                                <td>
+                                    <f:format.date date="{registration.registrationDate}" format="{dateFormat}"/>
+                                    <f:format.date date="{registration.registrationDate}" format="{timeFormat}"/>
                                 </td>
                             </tr>
                         </f:for>

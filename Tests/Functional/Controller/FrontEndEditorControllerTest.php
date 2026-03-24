@@ -2458,4 +2458,50 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $expectedDate = (new \DateTime('1975-03-18'))->format($dateFormat);
         self::assertStringContainsString($expectedDate, (string)$response->getBody());
     }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithRegularRegistrationListsRegistrationDate(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithRegularRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $dateFormat = LocalizationUtility::translate('dateFormat', 'seminars');
+        self::assertIsString($dateFormat);
+        $expectedDate = (new \DateTime('2026-03-24 11:37'))->format($dateFormat);
+        self::assertStringContainsString($expectedDate, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithRegularRegistrationListsRegistrationTime(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithRegularRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $timeFormat = LocalizationUtility::translate('timeFormat', 'seminars');
+        self::assertIsString($timeFormat);
+        $expectedTime = (new \DateTime('2026-03-24 10:37'))->format($timeFormat);
+        self::assertStringContainsString($expectedTime, (string)$response->getBody());
+    }
 }
