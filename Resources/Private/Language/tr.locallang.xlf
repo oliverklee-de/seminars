@@ -1697,6 +1697,10 @@
         <source>Date of birth</source>
         <target state="needs-translation">Date of birth</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.registrationDate">
+        <source>Registration date</source>
+        <target state="needs-translation">Registration date</target>
+      </trans-unit>
       <trans-unit id="plugin.eventRegistration">
         <source>Registration form for events</source>
         <target state="needs-translation">Registration form for events</target>
