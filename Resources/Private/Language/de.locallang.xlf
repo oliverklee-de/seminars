@@ -1662,6 +1662,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Date of birth</source>
         <target state="final">Geburtsdatum</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.registrationDate">
+        <source>Registration date</source>
+        <target state="needs-translation">Registration date</target>
+      </trans-unit>
       <trans-unit id="plugin.eventRegistration" approved="yes">
         <source>Registration form for events</source>
         <target state="final">Anmeldeformular für Veranstaltungen</target>
