@@ -2332,6 +2332,50 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function listRegistrationsActionForEventWithoutRegistrationsHasMessageAboutNoRegistrations(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithOwner.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $key = 'plugin.frontEndEditor.listRegistrations.message.noRegistrations';
+        $expected = LocalizationUtility::translate($key, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithRegularRegistrationHasNoMessageAboutNoRegistrations(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithRegularRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $key = 'plugin.frontEndEditor.listRegistrations.message.noRegistrations';
+        $expected = LocalizationUtility::translate($key, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringNotContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
     public function listRegistrationsActionForEventWithRegularRegistrationHasRegularRegistrationsHeading(): void
     {
         $this->importCSVDataSet(

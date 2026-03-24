@@ -1239,6 +1239,9 @@
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.registrationDate">
         <source>Registration date</source>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.message.noRegistrations">
+        <source>This event does not have any registrations yet.</source>
+      </trans-unit>
       <trans-unit id="plugin.eventRegistration">
         <source>Registration form for events</source>
       </trans-unit>
