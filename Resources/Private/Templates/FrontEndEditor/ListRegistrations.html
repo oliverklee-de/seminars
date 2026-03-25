@@ -11,6 +11,12 @@
         <f:variable name="dateFormat" value="{f:translate(key: 'dateFormat')}"/>
         <f:variable name="timeFormat" value="{f:translate(key: 'timeFormat')}"/>
 
+        <f:if condition="!{regularRegistrations}">
+            <p class="alert alert-info" role="alert">
+                <f:translate key="plugin.frontEndEditor.listRegistrations.message.noRegistrations"/>
+            </p>
+        </f:if>
+
         <f:if condition="{regularRegistrations}">
             <h3>
                 <f:translate key="plugin.frontEndEditor.listRegistrations.headline.regularRegistrations"/>
