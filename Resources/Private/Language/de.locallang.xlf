@@ -1666,6 +1666,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Registration date</source>
         <target state="final">Anmeldedatum</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.message.noRegistrations">
+        <source>This event does not have any registrations yet.</source>
+        <target state="needs-translation">This event does not have any registrations yet.</target>
+      </trans-unit>
       <trans-unit id="plugin.eventRegistration" approved="yes">
         <source>Registration form for events</source>
         <target state="final">Anmeldeformular für Veranstaltungen</target>
