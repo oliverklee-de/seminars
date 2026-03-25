@@ -1701,6 +1701,10 @@
         <source>Registration date</source>
         <target state="needs-translation">Registration date</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.message.noRegistrations">
+        <source>This event does not have any registrations yet.</source>
+        <target state="needs-translation">This event does not have any registrations yet.</target>
+      </trans-unit>
       <trans-unit id="plugin.eventRegistration">
         <source>Registration form for events</source>
         <target state="needs-translation">Registration form for events</target>
