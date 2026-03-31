@@ -221,6 +221,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Fix a bogus label in the FE editor flexforms (#4846)
 - Drop nonsensical `NULL` from `ext_tables.sql` (#4834)
 - Avoid using deprecated feuserextrafields API (#4786)
 - Add `typo3/cms-install` as a production dependency (#4775)
