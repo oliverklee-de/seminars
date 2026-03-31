@@ -425,7 +425,8 @@ abstract class AbstractModel
     /**
      * Gets a list of the titles of records referenced by this record.
      *
-     * @param non-empty-string $foreignTable the name of the foreign table (must not be empty), having the uid and title fields
+     * @param non-empty-string $foreignTable the name of the foreign table (must not be empty), having the uid and
+     *     title fields
      * @param non-empty-string $mmTable the name of the m:m table, having the uid_local, uid_foreign and sorting fields
      *
      * @return list<string> the titles of the referenced records
@@ -438,7 +439,8 @@ abstract class AbstractModel
     /**
      * Gets a list of the titles of records referenced by this record.
      *
-     * @param non-empty-string $foreignTable the name of the foreign table (must not be empty), having the uid and title fields
+     * @param non-empty-string $foreignTable the name of the foreign table (must not be empty), having the uid and
+     *     title fields
      * @param non-empty-string $mmTable the name of the m:m table, having the uid_local, uid_foreign and sorting fields
      * @param int<0, max> $uid
      *
@@ -457,7 +459,8 @@ abstract class AbstractModel
     /**
      * Gets records referenced by this record.
      *
-     * @param non-empty-string $foreignTable the name of the foreign table (must not be empty), having the uid and title fields
+     * @param non-empty-string $foreignTable the name of the foreign table (must not be empty), having the uid and
+     *     title fields
      * @param non-empty-string $mmTable the name of the m:m table, having the uid_local, uid_foreign and sorting fields
      *
      * @return array<array<string, bool|int|string|null>>
@@ -470,7 +473,8 @@ abstract class AbstractModel
     /**
      * Gets records referenced by the record with the given UID.
      *
-     * @param non-empty-string $foreignTable the name of the foreign table (must not be empty), having the uid and title fields
+     * @param non-empty-string $foreignTable the name of the foreign table (must not be empty), having the uid and
+     *     title fields
      * @param non-empty-string $mmTable the name of the m:m table, having the uid_local, uid_foreign and sorting fields
      * @param int<0, max> $uid
      *

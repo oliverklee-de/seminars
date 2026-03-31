@@ -78,7 +78,8 @@ final class TestingLegacyEvent extends LegacyEvent
     /**
      * Sets the number of target groups for this record.
      *
-     * TODO: This function needs to be removed once the testing framework can update the counter for the number of target groups.
+     * TODO: This function needs to be removed once the testing framework can update the counter for the number of
+     * target groups.
      *
      * @param int<0, max> $targetGroups the number of target groups that are associated with this event
      */
@@ -121,7 +122,8 @@ final class TestingLegacyEvent extends LegacyEvent
     /**
      * Sets the number of categories for this record.
      *
-     * TODO: This function needs to be removed once the testing framework can update the counter for the number of categories.
+     * TODO: This function needs to be removed once the testing framework can update the counter for the number of
+     * categories.
      *
      * @param int<0, max> $number the number of categories that are associated with this event
      */
@@ -326,7 +328,8 @@ final class TestingLegacyEvent extends LegacyEvent
     /**
      * Sets the registration deadline.
      *
-     * @param int $registrationDeadline the registration deadline as timestamp, set to 0 to unset the registration deadline
+     * @param int $registrationDeadline the registration deadline as timestamp, set to 0 to unset the registration
+     *     deadline
      */
     public function setRegistrationDeadline(int $registrationDeadline): void
     {

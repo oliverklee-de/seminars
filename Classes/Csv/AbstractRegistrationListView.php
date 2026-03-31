@@ -72,8 +72,8 @@ abstract class AbstractRegistrationListView
     }
 
     /**
-     * Depending on the configuration, either returns the first line containing the specification of the separator character
-     * or just an empty string.
+     * Depending on the configuration, either returns the first line containing the specification of the separator
+     * character or just an empty string.
      */
     protected function createCsvSeparatorLine(): string
     {
@@ -259,8 +259,8 @@ abstract class AbstractRegistrationListView
     }
 
     /**
-     * Retrieves data from an object and returns that data as an array of values. The individual values are already wrapped in
-     * double quotes, with the contents having all quotes escaped.
+     * Retrieves data from an object and returns that data as an array of values. The individual values are already
+     * wrapped in double quotes, with the contents having all quotes escaped.
      *
      * @param LegacyRegistration $model object that will deliver the data
      *
@@ -278,8 +278,8 @@ abstract class AbstractRegistrationListView
     }
 
     /**
-     * Retrieves data from an object and returns that data as an array of values. The individual values are already wrapped in
-     * double quotes, with the contents having all quotes escaped.
+     * Retrieves data from an object and returns that data as an array of values. The individual values are already
+     * wrapped in double quotes, with the contents having all quotes escaped.
      *
      * @param LegacyRegistration $model object that will deliver the data
      *

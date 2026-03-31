@@ -2015,7 +2015,8 @@ class LegacyEvent extends AbstractTimeSpan
         $allowsRegistrationBySeats = $registrationManager->allowsRegistrationBySeats($this);
 
         return $this->needsRegistration() && !$this->isCanceled()
-            && $allowsRegistrationByDate && $allowsRegistrationBySeats;
+            && $allowsRegistrationByDate
+            && $allowsRegistrationBySeats;
     }
 
     /**

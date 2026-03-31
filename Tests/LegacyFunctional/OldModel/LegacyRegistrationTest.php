@@ -207,6 +207,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
      * @test
      *
      * @param Registration::STATUS_* $status
+     *
      * @dataProvider statusDataProvider
      */
     public function getStatusReturnsLabelForStatus(int $status, string $label): void

@@ -1260,7 +1260,8 @@ abstract class TemplateHelper
      * Return value from somewhere inside a FlexForm structure
      *
      * @param array $T3FlexForm_array FlexForm data
-     * @param string $fieldName Field name to extract. Can be given like "test/el/2/test/el/field_templateObject" where each part will dig a level deeper in the FlexForm data.
+     * @param string $fieldName Field name to extract. Can be given like "test/el/2/test/el/field_templateObject" where
+     *     each part will dig a level deeper in the FlexForm data.
      * @param string $sheet Sheet pointer, eg. "sDEF"
      */
     // phpcs:disable
@@ -1278,8 +1279,12 @@ abstract class TemplateHelper
      * Returns part of $sheetArray pointed to by the keys in $fieldNameArray
      *
      * @param array $sheetArray Multidimensional array, typically FlexForm contents
-     * @param array $fieldNameArr Array where each value points to a key in the FlexForms content - the input array will have the value returned pointed to by these keys. All integer keys will not take their integer counterparts, but rather traverse the current position in the array and return element number X (whether this is right behavior is not settled yet...)
+     * @param array $fieldNameArr Array where each value points to a key in the FlexForms content - the input array
+     *     will have the value returned pointed to by these keys. All integer keys will not take their integer
+     *     counterparts, but rather traverse the current position in the array and return element number X (whether
+     *     this is right behavior is not settled yet...)
      * @param string $value Value for outermost key, typ. "vDEF" depending on language.
+     *
      * @internal
      */
     // phpcs:disable
@@ -1331,6 +1336,7 @@ abstract class TemplateHelper
      * Returns a class-name prefixed with $this->prefixId and with all underscores substituted to dashes (-)
      *
      * @param non-empty-string $class The class name (or the END of it since it will be prefixed by $this->prefixId.'-')
+     *
      * @return non-empty-string The combined class name (with the correct prefix)
      */
     // phpcs:disable
@@ -1341,12 +1347,17 @@ abstract class TemplateHelper
 
     /**
      * Link string to the current page.
-     * Returns the $str wrapped in <a>-tags with a link to the CURRENT page, but with $urlParameters set as extra parameters for the page.
+     * Returns the $str wrapped in <a>-tags with a link to the CURRENT page, but with $urlParameters set as extra
+     * parameters for the page.
      *
      * @param string $str The content string to wrap in <a> tags
-     * @param array $urlParameters Array with URL parameters as key/value pairs. They will be "imploded" and added to the list of parameters defined in the plugins TypoScript property "parent.addParams".
-     * @param bool $cache If $cache is set (0/1), the page is asked to be cached by a &cHash value (unless the current plugin using this class is a USER_INT). Otherwise the no_cache-parameter will be a part of the link.
-     * @param int<0, max> $altPageId Alternative page ID for the link. (By default this function links to the SAME page!)
+     * @param array $urlParameters Array with URL parameters as key/value pairs. They will be "imploded" and added to
+     *     the list of parameters defined in the plugins TypoScript property "parent.addParams".
+     * @param bool $cache If $cache is set (0/1), the page is asked to be cached by a &cHash value (unless the current
+     *     plugin using this class is a USER_INT). Otherwise the no_cache-parameter will be a part of the link.
+     * @param int<0, max> $altPageId Alternative page ID for the link. (By default this function links to the SAME
+     *     page!)
+     *
      * @return string The input string wrapped in <a> tags
      */
     // phpcs:disable
@@ -1376,11 +1387,11 @@ abstract class TemplateHelper
     }
 
     /**
-     * Returns a results browser. This means a bar of page numbers plus a "previous" and "next" link. For each entry in the bar the piVars "pointer" will be pointing to the "result page" to show.
-     * Using $this->piVars['pointer'] as pointer to the page to display.
-     * Using $this->internal['maxPages'] for the max number of pages to include in the browse bar.
-     * Using $this->internal['res_count'] for count number
-     * Using $this->internal['results_at_a_time'] for how many results to show
+     * Returns a results browser. This means a bar of page numbers plus a "previous" and "next" link. For each entry in
+     * the bar the piVars "pointer" will be pointing to the "result page" to show. Using $this->piVars['pointer'] as
+     * pointer to the page to display. Using $this->internal['maxPages'] for the max number of pages to include in the
+     * browse bar. Using $this->internal['res_count'] for count number Using $this->internal['results_at_a_time'] for
+     * how many results to show
      *
      * @return string Output HTML-Table, wrapped in <div>-tags with a class attribute
      */
@@ -1504,9 +1515,11 @@ abstract class TemplateHelper
 
     /**
      * Wraps the input string in a <div> tag with the class attribute set to the prefixId.
-     * All content returned from your plugins should be returned through this function so all content from your plugin is encapsulated in a <div>-tag nicely identifying the content of your plugin.
+     * All content returned from your plugins should be returned through this function so all content from your plugin
+     * is encapsulated in a <div>-tag nicely identifying the content of your plugin.
      *
      * @param string $str HTML content to wrap in the div-tags with the "main class" of the plugin
+     *
      * @return non-empty-string HTML content wrapped, ready to return to the parent object.
      */
     // phpcs:disable
@@ -1535,8 +1548,9 @@ abstract class TemplateHelper
     }
 
     /**
-     * Returns TRUE if the piVars array has ONLY those fields entered that is set in the $fList (commalist) AND if none of those fields value is greater than $lowerThan field if they are integers.
-     * Notice that this function will only work as long as values are integers.
+     * Returns TRUE if the piVars array has ONLY those fields entered that is set in the $fList (commalist) AND if none
+     * of those fields value is greater than $lowerThan field if they are integers. Notice that this function will only
+     * work as long as values are integers.
      */
     // phpcs:disable
     private function pi_isOnlyFields(): bool
@@ -1544,7 +1558,8 @@ abstract class TemplateHelper
         $explodedList = ['mode', 'pointer'];
         $tempPiVars = $this->piVars;
         foreach ($explodedList as $k) {
-            if (isset($tempPiVars[$k]) && (!MathUtility::canBeInterpretedAsInteger($tempPiVars[$k])
+            if (isset($tempPiVars[$k])
+                && (!MathUtility::canBeInterpretedAsInteger($tempPiVars[$k])
                     || $tempPiVars[$k] < 5)
             ) {
                 unset($tempPiVars[$k]);
@@ -1559,6 +1574,7 @@ abstract class TemplateHelper
      * Using pi_getClassName()
      *
      * @param non-empty-string $class The class name (suffix)
+     *
      * @return non-empty-string A "class" attribute with value and a single space char before it.
      */
     // phpcs:disable
@@ -1570,11 +1586,17 @@ abstract class TemplateHelper
     /**
      * Link a string to the current page while keeping currently set values in piVars.
      * Like pi_linkTP, but $urlParameters is by default set to $this->piVars with $overrulePIvars overlaid.
-     * This means any current entries from this->piVars are passed on (except the key "DATA" which will be unset before!) and entries in $overrulePIvars will OVERRULE the current in the link.
+     * This means any current entries from this->piVars are passed on (except the key "DATA" which will be unset
+     * before!) and entries in $overrulePIvars will OVERRULE the current in the link.
      *
      * @param string $str The content string to wrap in <a> tags
-     * @param array $overrulePIvars Array of values to override in the current piVars. Contrary to pi_linkTP the keys in this array must correspond to the real piVars array and therefore NOT be prefixed with the $this->prefixId string. Further, if a value is a blank string it means the piVar key will not be a part of the link (unset)
-     * @param bool $cache If $cache is set, the page is asked to be cached by a &cHash value (unless the current plugin using this class is a USER_INT). Otherwise the no_cache-parameter will be a part of the link.
+     * @param array $overrulePIvars Array of values to override in the current piVars. Contrary to pi_linkTP the keys
+     *     in this array must correspond to the real piVars array and therefore NOT be prefixed with the
+     *     $this->prefixId string. Further, if a value is a blank string it means the piVar key will not be a part of
+     *     the link (unset)
+     * @param bool $cache If $cache is set, the page is asked to be cached by a &cHash value (unless the current plugin
+     *     using this class is a USER_INT). Otherwise the no_cache-parameter will be a part of the link.
+     *
      * @return string The input string wrapped in <a> tags
      */
     // phpcs:disable

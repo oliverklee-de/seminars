@@ -210,8 +210,10 @@ final class RegistrationProcessorTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param Price::PRICE_* $priceCode
      * @param positive-int $seats
+     *
      * @dataProvider priceCalculationDataProvider
      */
     public function calculateTotalPriceSetsTotalPriceToProductOfSeatsAndSelectedPriceAmount(

@@ -503,7 +503,8 @@ final class CategoryBagBuilderTest extends FunctionalTestCase
             \BadMethodCallException::class,
         );
         $this->expectExceptionMessage(
-            'The event UIDs were empty. This means limitToEvents has not been called. LimitToEvents has to be called before ' .
+            'The event UIDs were empty. This means limitToEvents has not been called. LimitToEvents has to be called before '
+            .
             'calling this function.',
         );
 

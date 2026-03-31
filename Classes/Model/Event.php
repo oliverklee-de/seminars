@@ -102,7 +102,8 @@ class Event extends AbstractTimeSpan
     }
 
     /**
-     * @return int<0, max> our registration deadline as UNIX time-stamp, will be 0 if this event has no registration deadline
+     * @return int<0, max> our registration deadline as UNIX time-stamp, will be 0 if this event has no registration
+     *                     deadline
      */
     public function getRegistrationDeadlineAsUnixTimeStamp(): int
     {
@@ -232,7 +233,7 @@ class Event extends AbstractTimeSpan
 
     /**
      * @return int<0, max> our minimum attendees, will be 0 if this event has no
-     *                 minimum attendees, will be >= 0
+     *                     minimum attendees
      */
     public function getMinimumAttendees(): int
     {
@@ -241,8 +242,7 @@ class Event extends AbstractTimeSpan
 
     /**
      * @return int<0, max> our maximum attendees, will be 0 if this event has no
-     *                 maximum attendees and allows unlimited number of attendees,
-     *                 will be >= 0
+     *                     maximum attendees and allows unlimited number of attendees
      */
     public function getMaximumAttendees(): int
     {
@@ -312,8 +312,8 @@ class Event extends AbstractTimeSpan
     }
 
     /**
-     * @return int<0, max> the number of offline registrations for this event, will
-     *                 be 0 if this event has no offline registrations
+     * @return int<0, max> the number of offline registrations for this event,
+     *                     will be 0 if this event has no offline registrations
      */
     public function getOfflineRegistrations(): int
     {
