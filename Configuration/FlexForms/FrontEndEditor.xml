@@ -174,5 +174,83 @@
                 </el>
             </ROOT>
         </displayOptions>
+        <registrationList>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.registrationFieldsToShow>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectCheckBox</renderType>
+                                <minitems>1</minitems>
+                                <maxitems>99</maxitems>
+                                <default>
+                                    counter,membershipNumber,name,address,email,telephone,dateOfBirth,registrationDate
+                                </default>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.counter
+                                        </numIndex>
+                                        <numIndex index="1">counter</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.membershipNumber
+                                        </numIndex>
+                                        <numIndex index="1">membershipNumber</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.name
+                                        </numIndex>
+                                        <numIndex index="1">name</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.address
+                                        </numIndex>
+                                        <numIndex index="1">address</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.email
+                                        </numIndex>
+                                        <numIndex index="1">email</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.telephone
+                                        </numIndex>
+                                        <numIndex index="1">telephone</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.dateOfBirth
+                                        </numIndex>
+                                        <numIndex index="1">dateOfBirth</numIndex>
+                                    </numIndex>
+                                    <numIndex index="7" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.registrationDate
+                                        </numIndex>
+                                        <numIndex index="1">registrationDate</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.registrationFieldsToShow>
+                </el>
+            </ROOT>
+        </registrationList>
     </sheets>
 </T3DataStructure>

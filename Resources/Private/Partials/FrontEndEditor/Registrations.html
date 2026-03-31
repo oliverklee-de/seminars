@@ -1,4 +1,5 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:oelib="OliverKlee\Oelib\ViewHelpers"
+      data-namespace-typo3-fluid="true">
     <f:variable name="dateFormat" value="{f:translate(key: 'dateFormat')}"/>
     <f:variable name="timeFormat" value="{f:translate(key: 'timeFormat')}"/>
 
@@ -6,67 +7,99 @@
         <table class="table table-hover table-striped w-auto">
             <thead>
                 <tr>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.number"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.membershipNumber"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.name"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.address"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.email"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.telephone"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.dateOfBirth"/>
-                    </th>
-                    <th scope="col">
-                        <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.registrationDate"/>
-                    </th>
+                    <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="counter">
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.number"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="membershipNumber">
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.membershipNumber"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="name">
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.name"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="address">
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.address"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="email">
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.email"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="telephone">
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.telephone"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="dateOfBirth">
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.dateOfBirth"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="registrationDate">
+                        <th scope="col">
+                            <f:translate key="plugin.frontEndEditor.listRegistrations.tableHeading.registrationDate"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                 </tr>
             </thead>
             <tbody>
                 <f:for each="{registrations}" as="registration" iteration="iteration">
                     <f:variable name="user" value="{registration.user}"/>
                     <tr>
-                        <td>
-                            {iteration.cycle}
-                        </td>
-                        <td>
-                            {user.membershipNumber}
-                        </td>
-                        <td>
-                            {user.displayName}
-                        </td>
-                        <td>
-                            {user.address}
-                            <f:if condition="{user.address} && ({user.zip} || {user.city})">
-                                <br/>
-                            </f:if>
-                            {user.zip} {user.city}
-                        </td>
-                        <td>
-                            <f:link.email email="{user.email}"/>
-                        </td>
-                        <td>
-                            {user.telephone}
-                        </td>
-                        <td>
-                            <f:if condition="{user.dateOfBirth}">
-                                <f:format.date date="{user.dateOfBirth}" format="{dateFormat}"/>
-                            </f:if>
-                        </td>
-                        <td>
-                            <f:format.date date="{registration.registrationDate}" format="{dateFormat}"/>
-                            <f:format.date date="{registration.registrationDate}" format="{timeFormat}"/>
-                        </td>
+                        <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="counter">
+                            <td>
+                                {iteration.cycle}
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="membershipNumber">
+                            <td>
+                                {user.membershipNumber}
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="name">
+                            <td>
+                                {user.displayName}
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="address">
+                            <td>
+                                {user.address}
+                                <f:if condition="{user.address} && ({user.zip} || {user.city})">
+                                    <br/>
+                                </f:if>
+                                {user.zip} {user.city}
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="email">
+                            <td>
+                                <f:link.email email="{user.email}"/>
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="telephone">
+                            <td>
+                                {user.telephone}
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="dateOfBirth">
+                            <td>
+                                <f:if condition="{user.dateOfBirth}">
+                                    <f:format.date date="{user.dateOfBirth}" format="{dateFormat}"/>
+                                </f:if>
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled configurationKey="registrationFieldsToShow" fieldName="registrationDate">
+                            <td>
+                                <f:format.date date="{registration.registrationDate}" format="{dateFormat}"/>
+                                <f:format.date date="{registration.registrationDate}" format="{timeFormat}"/>
+                            </td>
+                        </oelib:isFieldEnabled>
                     </tr>
                 </f:for>
             </tbody>

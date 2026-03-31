@@ -1116,6 +1116,36 @@
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow.speakers">
         <source>speakers</source>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList">
+        <source>Registration list</source>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow">
+        <source>Columns to show</source>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.counter">
+        <source>counter</source>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.membershipNumber">
+        <source>membership number</source>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.name">
+        <source>name</source>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.address">
+        <source>address</source>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.email">
+        <source>email</source>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.telephone">
+        <source>telephone</source>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.dateOfBirth">
+        <source>date of birth</source>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.registrationDate">
+        <source>registration date</source>
+      </trans-unit>
       <trans-unit id="plugin.frontEndEditor.index.headline">
         <source>Events I have created</source>
       </trans-unit>
