@@ -1669,6 +1669,10 @@
         <source>Regular registrations</source>
         <target state="needs-translation">Regular registrations</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.headline.waitingListRegistrations">
+        <source>Waiting list registrations</source>
+        <target state="needs-translation">Waiting list registrations</target>
+      </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.number">
         <source>#</source>
         <target state="needs-translation">#</target>
