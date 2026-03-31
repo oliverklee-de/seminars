@@ -1634,6 +1634,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Regular registrations</source>
         <target state="final">Reguläre Anmeldungen</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.headline.waitingListRegistrations">
+        <source>Waiting list registrations</source>
+        <target state="needs-translation">Waiting list registrations</target>
+      </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.number" approved="yes">
         <source>#</source>
         <target state="final">#</target>
