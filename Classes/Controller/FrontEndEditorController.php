@@ -354,6 +354,7 @@ class FrontEndEditorController extends ActionController
         $this->view->assignMultiple([
             'event' => $event,
             'regularRegistrations' => $this->registrationRepository->findRegularRegistrationsByEvent($eventUid),
+            'waitingListRegistrations' => $this->registrationRepository->findWaitingListRegistrationsByEvent($eventUid),
         ]);
 
         return $this->htmlResponse();

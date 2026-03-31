@@ -8,7 +8,7 @@
             <f:render partial="EventDate" arguments="{event: event}"/>
         </h2>
 
-        <f:if condition="!{regularRegistrations}">
+        <f:if condition="!{regularRegistrations} && !{waitingListRegistrations}">
             <p class="alert alert-info" role="alert">
                 <f:translate key="plugin.frontEndEditor.listRegistrations.message.noRegistrations"/>
             </p>
@@ -20,6 +20,14 @@
             </h3>
 
             <f:render partial="FrontEndEditor/Registrations" arguments="{registrations: regularRegistrations}"/>
+        </f:if>
+
+        <f:if condition="{waitingListRegistrations}">
+            <h3>
+                <f:translate key="plugin.frontEndEditor.listRegistrations.headline.waitingListRegistrations"/>
+            </h3>
+
+            <f:render partial="FrontEndEditor/Registrations" arguments="{registrations: waitingListRegistrations}"/>
         </f:if>
     </f:section>
 </html>

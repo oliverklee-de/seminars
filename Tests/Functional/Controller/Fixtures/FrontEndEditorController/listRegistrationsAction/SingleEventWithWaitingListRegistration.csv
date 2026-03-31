@@ -3,9 +3,9 @@
 ,1,2,0,"single event with owner",59,1,1761649200,1761678000,1
 
 "fe_users"
-,"uid","pid","name"
-,2,1,"Betty Botter"
+,"uid","pid","name","address","zip","city","email","telephone","membership_number","date_of_birth"
+,2,1,"Betty Botter","Marktplatz 1","53111","Bonn","betty@example.com","+49 1234 567800","12345678",164332800
 
 "tx_seminars_attendances"
-,"uid","pid","seminar","user","registration_queue"
-,1,1,1,2,1
+,"uid","pid","crdate","seminar","user","registration_queue"
+,1,1,1774348620,1,2,1
