@@ -1438,9 +1438,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Display options</source>
         <target state="final">Anzeigeoptionen</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow" approved="yes">
-        <source>categories</source>
-        <target state="final">Kategorien</target>
+      <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow">
+        <source>Columns in the event list</source>
+        <target state="needs-translation">Columns in the event list</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow.categories" approved="yes">
         <source>categories</source>
@@ -1673,6 +1673,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.frontEndEditor.listRegistrations.message.noRegistrations">
         <source>This event does not have any registrations yet.</source>
         <target state="needs-translation">This event does not have any registrations yet.</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.backlink">
+        <source>Back to the event list</source>
+        <target state="needs-translation">Back to the event list</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration" approved="yes">
         <source>Registration form for events</source>
