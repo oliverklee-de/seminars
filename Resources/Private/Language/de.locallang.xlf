@@ -1438,9 +1438,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Display options</source>
         <target state="final">Anzeigeoptionen</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow">
+      <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow" approved="yes">
         <source>Fields in the editor form</source>
-        <target state="needs-translation">Fields in the editor form</target>
+        <target state="final">Felder im Editor</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow.categories" approved="yes">
         <source>categories</source>
