@@ -1245,6 +1245,9 @@
       <trans-unit id="plugin.frontEndEditor.listRegistrations.message.noRegistrations">
         <source>This event does not have any registrations yet.</source>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.backlink">
+        <source>Back to the event list</source>
+      </trans-unit>
       <trans-unit id="plugin.eventRegistration">
         <source>Registration form for events</source>
       </trans-unit>

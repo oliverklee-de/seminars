@@ -8,10 +8,18 @@
             <f:render partial="EventDate" arguments="{event: event}"/>
         </h2>
 
-        <f:if condition="!{regularRegistrations} && !{waitingListRegistrations}">
-            <p class="alert alert-info" role="alert">
-                <f:translate key="plugin.frontEndEditor.listRegistrations.message.noRegistrations"/>
-            </p>
+        <f:if condition="{regularRegistrations} || {waitingListRegistrations}">
+            <f:then>
+                <f:comment>
+                    Only show an additional backlink if there are registrations and the user might need to scroll.
+                </f:comment>
+                <f:render partial="FrontEndEditor/Backlink"/>
+            </f:then>
+            <f:else>
+                <p class="alert alert-info" role="alert">
+                    <f:translate key="plugin.frontEndEditor.listRegistrations.message.noRegistrations"/>
+                </p>
+            </f:else>
         </f:if>
 
         <f:if condition="{regularRegistrations}">
@@ -29,5 +37,7 @@
 
             <f:render partial="FrontEndEditor/Registrations" arguments="{registrations: waitingListRegistrations}"/>
         </f:if>
+
+        <f:render partial="FrontEndEditor/Backlink"/>
     </f:section>
 </html>
