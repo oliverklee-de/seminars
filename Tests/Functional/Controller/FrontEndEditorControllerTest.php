@@ -524,6 +524,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider nonDateFormFieldKeysForSingleEventDataProvider
      */
     public function editSingleEventActionHasAllNonDateFormFields(string $key): void
@@ -558,6 +559,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider dateFormFieldKeysForSingleEventDataProvider
      */
     public function editSingleEventActionHasAllDateFormFields(string $key): void
@@ -603,6 +605,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider singleAssociationFormFieldKeysForSingleEventDataProvider
      * @dataProvider multiAssociationFormFieldKeysForSingleEventDataProvider
      */
@@ -636,6 +639,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider formFieldKeysIrrelevantForSingleEventsDataProvider
      */
     public function editSingleEventActionHasNoFormFieldsIrrelevantForSingleEvents(string $key): void
@@ -659,6 +663,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider multiAssociationFormFieldKeysForSingleEventDataProvider
      */
     public function editSingleEventActionForEventWithAllAssociationsHasSelectedMultiAssociationOptions(
@@ -718,6 +723,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $title
+     *
      * @dataProvider auxiliaryRecordTitlesForSingleEventDataProvider
      */
     public function editSingleEventActionHasTitlesOfAuxiliaryRecords(string $title): void
@@ -1028,6 +1034,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider nonDateFormFieldKeysForEventDateDataProvider
      */
     public function editEventDateActionHasAllNonDateFormFields(string $key): void
@@ -1062,6 +1069,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider dateFormFieldKeysForEventDateDataProvider
      */
     public function editEventDateActionHasAllDateFormFields(string $key): void
@@ -1106,6 +1114,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider singleAssociationFormFieldKeysForEventDateDataProvider
      * @dataProvider multiAssociationFormFieldKeysForEventDateDataProvider
      */
@@ -1144,6 +1153,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider formFieldKeysIrrelevantForEventDatesDataProvider
      */
     public function editEventDateActionHasNoFormFieldsIrrelevantForEventDates(string $key): void
@@ -1166,6 +1176,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider multiAssociationFormFieldKeysForEventDateDataProvider
      */
     public function editEventDateActionForEventWithAllAssociationsHasSelectedMultiAssociationOptions(
@@ -1223,6 +1234,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $title
+     *
      * @dataProvider auxiliaryRecordTitlesForEventDateDataProvider
      */
     public function editEventDateActionHasTitlesOfAuxiliaryRecords(string $title): void
@@ -1543,6 +1555,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider nonDateFormFieldKeysForSingleEventDataProvider
      */
     public function newSingleEventActionHasAllNonDateFormFields(string $key): void
@@ -1561,6 +1574,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider dateFormFieldKeysForSingleEventDataProvider
      */
     public function newSingleEventActionHasAllDateFormFields(string $key): void
@@ -1580,6 +1594,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider multiAssociationFormFieldKeysForSingleEventDataProvider
      * @dataProvider singleAssociationFormFieldKeysForSingleEventDataProvider
      */
@@ -1601,6 +1616,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider formFieldKeysIrrelevantForSingleEventsDataProvider
      */
     public function newSingleEventEventActionHasNoFormFieldsIrrelevantForSingleEvents(string $key): void
@@ -1640,6 +1656,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $title
+     *
      * @dataProvider auxiliaryRecordTitlesForSingleEventDataProvider
      */
     public function newSingleEventActionHasTitlesOfAuxiliaryRecords(string $title): void
@@ -1844,6 +1861,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider nonDateFormFieldKeysForEventDateDataProvider
      */
     public function newEventDateActionHasAllNonDateFormFields(string $key): void
@@ -1862,6 +1880,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider dateFormFieldKeysForEventDateDataProvider
      */
     public function newEventDateActionHasAllDateFormFields(string $key): void
@@ -1881,6 +1900,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider multiAssociationFormFieldKeysForEventDateDataProvider
      * @dataProvider singleAssociationFormFieldKeysForEventDateDataProvider
      */
@@ -1902,6 +1922,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $key
+     *
      * @dataProvider formFieldKeysIrrelevantForEventDatesDataProvider
      */
     public function newEventDateEventActionHasNoFormFieldsIrrelevantForEventDates(string $key): void
@@ -1941,6 +1962,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
      * @test
      *
      * @param non-empty-string $title
+     *
      * @dataProvider auxiliaryRecordTitlesForEventDateDataProvider
      */
     public function newEventDateActionHasTitlesOfAuxiliaryRecords(string $title): void
@@ -2460,7 +2482,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
     /**
      * @test
+     *
      * @param non-empty-string $expected
+     *
      * @dataProvider attendeeDataDataProvider
      */
     public function listRegistrationsActionForEventWithRegularRegistrationListsAttendeeData(string $expected): void

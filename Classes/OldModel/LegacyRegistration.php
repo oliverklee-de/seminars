@@ -556,8 +556,8 @@ class LegacyRegistration extends AbstractModel
     }
 
     /**
-     * Gets a plain text list of attendance (registration) property values (if they exist), formatted as strings (and nicely
-     * lined up) in the following format:
+     * Gets a plain text list of attendance (registration) property values (if they exist), formatted as strings (and
+     * nicely lined up) in the following format:
      *
      * key1: value1
      *
@@ -710,7 +710,8 @@ class LegacyRegistration extends AbstractModel
      * Gets the selected food options separated by LF. If there is no
      * food option selected, this function will return an empty string.
      *
-     * @return string the titles of the selected lodging options separated by LF or an empty string if no food option is selected
+     * @return string the titles of the selected lodging options separated by LF or an empty string if no food option
+     *     is selected
      */
     public function getFoods(): string
     {

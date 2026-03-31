@@ -886,9 +886,10 @@ class EventBagBuilder extends AbstractBagBuilder
     }
 
     /**
-     * Limits the bag to events which start later than $earliestBeginDate or which are still running at $earliestBeginDate.
+     * Limits the bag to events which start later than `$earliestBeginDate` or which are still running at
+     * `$earliestBeginDate`.
      *
-     * A $earliestBeginDate of 0 will remove the filter.
+     * A `$earliestBeginDate` of 0 will remove the filter.
      *
      * @param int $earliestBeginDate the earliest begin date as UNIX time-stamp, 0 will remove the limit
      */

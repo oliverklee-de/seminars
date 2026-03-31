@@ -937,7 +937,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     public function findWaitingListRegistrationsByEventOrdersByCreationDateNewestFirst(): void
     {
         $this->importDataSet(
-            __DIR__ . '/Fixtures/findWaitingListRegistrationsByEvent/TwoWaitingListRegistrationsWithSameEventAndUser.xml',
+            __DIR__
+            . '/Fixtures/findWaitingListRegistrationsByEvent/TwoWaitingListRegistrationsWithSameEventAndUser.xml',
         );
 
         $result = $this->subject->findWaitingListRegistrationsByEvent(1);

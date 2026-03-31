@@ -833,7 +833,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegularRegistrationWithUnregistrationPossible.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/showAction/RegularRegistrationWithUnregistrationPossible.csv',
         );
 
         $request = (new InternalRequest())
@@ -863,7 +864,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegularRegistrationWithUnregistrationDeadlineOver.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/showAction/RegularRegistrationWithUnregistrationDeadlineOver.csv',
         );
 
         $request = (new InternalRequest())
@@ -1047,7 +1049,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationWithoutEvent.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationWithoutEvent.csv',
         );
 
         $request = (new InternalRequest())
@@ -1072,7 +1075,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationWithoutDownload.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationWithoutDownload.csv',
         );
 
         $request = (new InternalRequest())
@@ -1097,7 +1101,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownloadFromOtherEvent.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownloadFromOtherEvent.csv',
         );
 
         $request = (new InternalRequest())
@@ -1122,7 +1127,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
         );
 
         $request = (new InternalRequest())
@@ -1145,7 +1151,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
         );
 
         $request = (new InternalRequest())
@@ -1168,7 +1175,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
         );
 
         $request = (new InternalRequest())
@@ -1191,7 +1199,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
         );
 
         $request = (new InternalRequest())
@@ -1214,7 +1223,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
         );
 
         $request = (new InternalRequest())
@@ -1237,7 +1247,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
+            __DIR__
+            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
         );
 
         $request = (new InternalRequest())

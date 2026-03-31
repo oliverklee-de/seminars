@@ -643,7 +643,8 @@ class DefaultController extends TemplateHelper
     }
 
     /**
-     * Fills in the matching marker for the accreditation number or hides the subpart if there is no accreditation number.
+     * Fills in the matching marker for the accreditation number or hides the subpart if there is no accreditation
+     * number.
      */
     private function setAccreditationNumberMarker(): void
     {
@@ -2239,7 +2240,8 @@ class DefaultController extends TemplateHelper
         $day = (int)($this->piVars['from_day'] ?? 0) > 0 ? (int)($this->piVars['from_day'] ?? 0) : 1;
         $month = (int)($this->piVars['from_month'] ?? 0) > 0 ? (int)($this->piVars['from_month'] ?? 0) : 1;
         $year = (int)($this->piVars['from_year'] ?? 0) > 0
-            ? (int)($this->piVars['from_year'] ?? 0) : (int)date(
+            ? (int)($this->piVars['from_year'] ?? 0)
+            : (int)date(
                 'Y',
                 (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp'),
             );

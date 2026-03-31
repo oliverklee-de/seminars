@@ -145,7 +145,9 @@ final class SalutationAwareTranslateViewHelperTest extends FunctionalTestCase
 
     /**
      * @test
+     *
      * @param non-empty-string $salutation
+     *
      * @dataProvider salutationDataProvider
      */
     public function renderWithSalutationInSettingsForLabelWithSalutationByRendersLabelWithGivenSalutationMode(
@@ -161,7 +163,9 @@ final class SalutationAwareTranslateViewHelperTest extends FunctionalTestCase
 
     /**
      * @test
+     *
      * @param non-empty-string $salutation
+     *
      * @dataProvider salutationDataProvider
      */
     public function renderWithSalutationInSettingsForLabelWithoutSalutationByRendersLabelWithoutSalutation(
@@ -176,7 +180,9 @@ final class SalutationAwareTranslateViewHelperTest extends FunctionalTestCase
 
     /**
      * @test
+     *
      * @param non-empty-string $salutation
+     *
      * @dataProvider salutationDataProvider
      */
     public function renderWithSalutationInSettingsForInexistentLabelKeyReturnsLabelKey(string $salutation): void

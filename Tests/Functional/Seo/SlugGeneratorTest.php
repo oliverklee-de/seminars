@@ -92,6 +92,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      * @test
      *
      * @param EventInterface::TYPE_* $type
+     *
      * @dataProvider nonDateEventTypeDataProvider
      */
     public function generateSlugForNonDateEventWithEmptyTitleReturnsUidWithoutTrailingSlash(int $type): void
@@ -108,6 +109,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      * @test
      *
      * @param EventInterface::TYPE_* $type
+     *
      * @dataProvider nonDateEventTypeDataProvider
      */
     public function generateSlugForNonDateEventWithWhitespaceOnlyTitleReturnsUidWithoutTrailingSlash(int $type): void
@@ -124,6 +126,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      * @test
      *
      * @param EventInterface::TYPE_* $type
+     *
      * @dataProvider nonDateEventTypeDataProvider
      */
     public function generateSlugForNonDateEventWithNonEmptyTitleReturnsSlugifiedTitleAndUid(int $type): void
@@ -301,6 +304,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      * @test
      *
      * @param EventInterface::TYPE_* $type
+     *
      * @dataProvider nonDateEventTypeDataProvider
      */
     public function generateSlugForNonDateEventDispatchesAfterSlugGeneratedEventWithEventUid(int $type): void
@@ -318,6 +322,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      * @test
      *
      * @param EventInterface::TYPE_* $type
+     *
      * @dataProvider nonDateEventTypeDataProvider
      */
     public function generateSlugForNonDateEventDispatchesSAfterSlugGeneratedEventWithEventDisplayTitle(int $type): void
@@ -335,6 +340,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      * @test
      *
      * @param EventInterface::TYPE_* $type
+     *
      * @dataProvider nonDateEventTypeDataProvider
      */
     public function generateSlugForNonDateEventDispatchesAfterSlugGeneratedEventWithGeneratedSlugWithUid(

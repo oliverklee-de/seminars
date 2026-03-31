@@ -162,7 +162,8 @@ defined('TYPO3') or die('Access denied.');
 
     // This removes the default controls from the plugin.
     // @phpstan-ignore-next-line We know that this array key exists and is an array.
-    $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['seminars_myregistrations'] = 'recursive,pages';
+    $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['seminars_myregistrations'] =
+        'recursive,pages';
 
     // These two commands add the flexform configuration for the plugin.
     // @phpstan-ignore-next-line We know that this array key exists and is an array.

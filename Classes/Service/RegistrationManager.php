@@ -132,9 +132,9 @@ class RegistrationManager implements SingletonInterface
      * @param DefaultController $plugin the pi1 object with configuration data
      * @param LegacyEvent $event the seminar to create the registration link for
      *
-     * @return string the HTML tag, will be empty if the event needs no registration, nobody can register to this event or the
-     *                currently logged-in user is already registered to this event and the event does not allow multiple
-     *                registrations by one user
+     * @return string the HTML tag, will be empty if the event needs no registration, nobody can register to this event
+     *     or the currently logged-in user is already registered to this event and the event does not allow multiple
+     *     registrations by one user
      */
     public function getRegistrationLink(DefaultController $plugin, LegacyEvent $event): string
     {
@@ -146,10 +146,11 @@ class RegistrationManager implements SingletonInterface
     }
 
     /**
-     * Creates an HTML link to either the registration page (if a user is logged in) or the login page (if no user is logged in).
+     * Creates an HTML link to either the registration page (if a user is logged in) or the login page (if no user is
+     * logged in).
      *
-     * Before you can call this function, you should make sure that the link makes sense (ie. the seminar still has vacancies, the
-     * user has not registered for this seminar etc.).
+     * Before you can call this function, you should make sure that the link makes sense (ie. the seminar still has
+     * vacancies, the user has not registered for this seminar etc.).
      *
      * @param LegacyEvent $event a seminar for which we'll check if it is possible to register
      *

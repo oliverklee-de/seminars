@@ -60,7 +60,9 @@ final class PriceTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param Price::PRICE_* $priceCode
+     *
      * @dataProvider validPriceCodeDataProvider
      */
     public function isPriceCodeValidForValidPriceCodeReturnsTrue(string $priceCode): void

@@ -32,7 +32,8 @@ abstract class AbstractBagBuilder
     protected string $tableName;
 
     /**
-     * @var array<string, non-empty-string> associative array with the WHERE clause parts (will be concatenated with " AND " later)
+     * @var array<string, non-empty-string> associative array with the WHERE clause parts
+     *      (will be concatenated with "` AND `" later)
      */
     protected array $whereClauseParts = [];
 

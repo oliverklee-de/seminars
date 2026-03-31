@@ -31,9 +31,9 @@ class RegistrationBagBuilder extends AbstractBagBuilder
 
     /**
      * Limits the bag to the registrations of the events provided by the
-     * parameter $eventUids.
+     * parameter `$eventUids`.
      *
-     * @param positive-int $eventUid the UID of the event to which the registration selection should be limited, must be > 0
+     * @param positive-int $eventUid the UID of the event to which the registration selection should be limited
      */
     public function limitToEvent(int $eventUid): void
     {

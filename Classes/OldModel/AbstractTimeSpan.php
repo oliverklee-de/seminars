@@ -34,7 +34,8 @@ abstract class AbstractTimeSpan extends AbstractModel
      */
     public function hasStarted(): bool
     {
-        return $this->hasBeginDate() && (int)GeneralUtility::makeInstance(Context::class)
+        return $this->hasBeginDate()
+            && (int)GeneralUtility::makeInstance(Context::class)
                 ->getPropertyFromAspect('date', 'timestamp')
             >= $this->getBeginDateAsTimestamp();
     }

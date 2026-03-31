@@ -207,7 +207,9 @@ final class RegistrationTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param Registration::STATUS_* $status
+     *
      * @dataProvider statusDataProvider
      */
     public function setStatusSetsStatus(int $status): void
@@ -402,7 +404,9 @@ final class RegistrationTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param Price::PRICE_* $priceCode
+     *
      * @dataProvider validPriceCodeDataProvider
      */
     public function setPriceCodeSetsPriceCode(string $priceCode): void
@@ -1081,6 +1085,7 @@ final class RegistrationTest extends UnitTestCase
      * @test
      *
      * @param Registration::ATTENDANCE_MODE_* $mode
+     *
      * @dataProvider attendanceModeDataProvider
      */
     public function setAttendanceModeCanSetAttendanceModeToAnyExistingMode(int $mode): void
@@ -1103,7 +1108,9 @@ final class RegistrationTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param Registration::ATTENDANCE_MODE_* $mode
+     *
      * @dataProvider onSiteAttendanceModeDataProvider
      */
     public function isAtLeastPartiallyOnSiteForAtLeastPartiallyOnSiteAttendanceReturnsTrue(int $mode): void
@@ -1126,7 +1133,9 @@ final class RegistrationTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param Registration::ATTENDANCE_MODE_* $mode
+     *
      * @dataProvider notOnSiteAttendanceModeDataProvider
      */
     public function isAtLeastPartiallyOnSiteForAtNotLeastPartiallyOnSiteAttendanceReturnsFalse(int $mode): void
@@ -1149,7 +1158,9 @@ final class RegistrationTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param Registration::ATTENDANCE_MODE_* $mode
+     *
      * @dataProvider onlineAttendanceModeDataProvider
      */
     public function isAtLeastPartiallyOnlineForAtLeastPartiallyOnlineAttendanceReturnsTrue(int $mode): void
@@ -1172,7 +1183,9 @@ final class RegistrationTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param Registration::ATTENDANCE_MODE_* $mode
+     *
      * @dataProvider notOnlineAttendanceModeDataProvider
      */
     public function isAtLeastPartiallyOnlineForAtNotLeastPartiallyOnlineAttendanceReturnsFalse(int $mode): void

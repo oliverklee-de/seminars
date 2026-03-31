@@ -945,7 +945,9 @@ final class EventDateTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param EventInterface::STATUS_* $status
+     *
      * @dataProvider statusDataProvider
      */
     public function setStatusSetsStatus(int $status): void
@@ -968,7 +970,9 @@ final class EventDateTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param EventInterface::STATUS_* $status
+     *
      * @dataProvider nonCanceledStatusDataProvider
      */
     public function isCanceledForNonCanceledStatusReturnsFalse(int $status): void
@@ -1440,7 +1444,9 @@ final class EventDateTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param EventDateInterface::EVENT_FORMAT_* $eventFormat
+     *
      * @dataProvider atLeastPartiallyOnlineEventFormatsDataProvider
      */
     public function hasUsableWebinarUrlForPartiallyOnlineEventWithWebinarUrlReturnsTrue(int $eventFormat): void
@@ -1453,7 +1459,9 @@ final class EventDateTest extends UnitTestCase
 
     /**
      * @test
+     *
      * @param EventDateInterface::EVENT_FORMAT_* $eventFormat
+     *
      * @dataProvider atLeastPartiallyOnlineEventFormatsDataProvider
      */
     public function hasUsableWebinarUrlForPartiallyOnlineEventWithoutWebinarUrlReturnsFalse(int $eventFormat): void
