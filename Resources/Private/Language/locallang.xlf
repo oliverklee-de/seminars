@@ -1069,7 +1069,7 @@
         <source>Display options</source>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow">
-        <source>Columns in the event list</source>
+        <source>Fields in the editor form</source>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow.categories">
         <source>categories</source>
