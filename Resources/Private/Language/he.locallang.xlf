@@ -1474,8 +1474,8 @@
         <target state="needs-translation">Display options</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow">
-        <source>Columns in the event list</source>
-        <target state="needs-translation">Columns in the event list</target>
+        <source>Fields in the editor form</source>
+        <target state="needs-translation">Fields in the editor form</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow.categories">
         <source>categories</source>
