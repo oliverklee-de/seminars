@@ -1439,8 +1439,8 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <target state="final">Anzeigeoptionen</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow">
-        <source>Columns in the event list</source>
-        <target state="needs-translation">Columns in the event list</target>
+        <source>Fields in the editor form</source>
+        <target state="needs-translation">Fields in the editor form</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow.categories" approved="yes">
         <source>categories</source>
@@ -1634,9 +1634,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Regular registrations</source>
         <target state="final">Reguläre Anmeldungen</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.headline.waitingListRegistrations">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.headline.waitingListRegistrations" approved="yes">
         <source>Waiting list registrations</source>
-        <target state="needs-translation">Waiting list registrations</target>
+        <target state="final">Anmeldungen auf der Warteliste</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.number" approved="yes">
         <source>#</source>
@@ -1670,13 +1670,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Registration date</source>
         <target state="final">Anmeldedatum</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.message.noRegistrations">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.message.noRegistrations" approved="yes">
         <source>This event does not have any registrations yet.</source>
-        <target state="needs-translation">This event does not have any registrations yet.</target>
+        <target state="final">Diese Veranstaltung hat noch keine Anmeldungen.</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.backlink">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.backlink" approved="yes">
         <source>Back to the event list</source>
-        <target state="needs-translation">Back to the event list</target>
+        <target state="final">Zurück zur Veranstaltungsliste</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration" approved="yes">
         <source>Registration form for events</source>
