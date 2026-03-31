@@ -1215,6 +1215,9 @@
       <trans-unit id="plugin.frontEndEditor.listRegistrations.headline.regularRegistrations">
         <source>Regular registrations</source>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.headline.waitingListRegistrations">
+        <source>Waiting list registrations</source>
+      </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.number">
         <source>#</source>
       </trans-unit>

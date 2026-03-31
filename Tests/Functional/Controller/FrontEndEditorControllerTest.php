@@ -485,6 +485,23 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function indexActionWithEventWithWaitingListRegistrationHasListRegistrationsLink(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithWaitingListRegistrations.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+
+        $expected = '?tx_seminars_frontendeditor%5Baction%5D=listRegistrations'
+            . '&amp;tx_seminars_frontendeditor%5Bcontroller%5D=FrontEndEditor'
+            . '&amp;tx_seminars_frontendeditor%5Bevent%5D=1';
+        self::assertStringContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
     public function editSingleEventActionHasUpdateSingleEventFormAction(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/editSingleEventAction/EventWithOwner.csv');
@@ -2557,6 +2574,145 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithRegularRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $timeFormat = LocalizationUtility::translate('timeFormat', 'seminars');
+        self::assertIsString($timeFormat);
+        $expectedTime = (new \DateTime('2026-03-24 10:37'))->format($timeFormat);
+        self::assertStringContainsString($expectedTime, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithWaitingListRegistrationsHasWaitingListRegistrationsHeading(
+    ): void {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithWaitingListRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $key = 'plugin.frontEndEditor.listRegistrations.headline.waitingListRegistrations';
+        $expected = LocalizationUtility::translate($key, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithWaitingListRegistrationHasNoMessageAboutNoRegistrations(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithWaitingListRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $key = 'plugin.frontEndEditor.listRegistrations.message.noRegistrations';
+        $expected = LocalizationUtility::translate($key, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringNotContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     *
+     * @param non-empty-string $expected
+     *
+     * @dataProvider attendeeDataDataProvider
+     */
+    public function listRegistrationsActionForEventWithWaitingListRegistrationListsAttendeeData(string $expected): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithWaitingListRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        self::assertStringContainsString($expected, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithWaitingListRegistrationListsDateOfBirth(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithWaitingListRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $dateFormat = LocalizationUtility::translate('dateFormat', 'seminars');
+        self::assertIsString($dateFormat);
+        $expectedDate = (new \DateTime('1975-03-18'))->format($dateFormat);
+        self::assertStringContainsString($expectedDate, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithWaitingListRegistrationListsRegistrationDate(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithWaitingListRegistration.csv',
+        );
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'listRegistrations',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $response = $this->executeFrontendSubRequest($request, $context);
+
+        $dateFormat = LocalizationUtility::translate('dateFormat', 'seminars');
+        self::assertIsString($dateFormat);
+        $expectedDate = (new \DateTime('2026-03-24 11:37'))->format($dateFormat);
+        self::assertStringContainsString($expectedDate, (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function listRegistrationsActionForEventWithWaitingListRegistrationListsRegistrationTime(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithWaitingListRegistration.csv',
         );
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([

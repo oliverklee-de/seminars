@@ -83,7 +83,7 @@
                                 </f:if>
                             </td>
                             <td>
-                                <f:if condition="{statistics.regularSeatsCount}">
+                                <f:if condition="{statistics.regularSeatsCount} || {statistics.waitingListSeatsCount}">
                                     <f:link.action action="listRegistrations" arguments="{event: event}">
                                         <f:translate key="plugin.frontEndEditor.action.listRegistrations"/>
                                     </f:link.action>
