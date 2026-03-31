@@ -1474,8 +1474,8 @@
         <target state="needs-translation">Display options</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow">
-        <source>categories</source>
-        <target state="needs-translation">categories</target>
+        <source>Columns in the event list</source>
+        <target state="needs-translation">Columns in the event list</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow.categories">
         <source>categories</source>
@@ -1708,6 +1708,10 @@
       <trans-unit id="plugin.frontEndEditor.listRegistrations.message.noRegistrations">
         <source>This event does not have any registrations yet.</source>
         <target state="needs-translation">This event does not have any registrations yet.</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.backlink">
+        <source>Back to the event list</source>
+        <target state="needs-translation">Back to the event list</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration">
         <source>Registration form for events</source>
