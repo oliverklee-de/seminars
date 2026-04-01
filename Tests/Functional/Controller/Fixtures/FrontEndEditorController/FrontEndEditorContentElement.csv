@@ -17,5 +17,12 @@
                                                                               </field>
                                                                           </language>
                                                                       </sheet>
+                                                                      <sheet index=""registrationList"">
+                                                                          <language index=""lDEF"">
+                                                                              <field index=""settings.registrationFieldsToShow"">
+                                                                                  <value index=""vDEF"">counter,membershipNumber,name,address,email,telephone,dateOfBirth,registrationDate</value>
+                                                                              </field>
+                                                                          </language>
+                                                                      </sheet>
                                                                   </data>
                                                               </T3FlexForms>"
