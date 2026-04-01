@@ -1248,7 +1248,7 @@
       <trans-unit id="plugin.frontEndEditor.listRegistrations.headline.waitingListRegistrations">
         <source>Waiting list registrations</source>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.number">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.counter">
         <source>#</source>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.membershipNumber">
