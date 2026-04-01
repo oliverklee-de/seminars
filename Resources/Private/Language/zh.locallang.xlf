@@ -1537,6 +1537,46 @@
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
       </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList">
+        <source>Registration list</source>
+        <target state="needs-translation">Registration list</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow">
+        <source>Columns to show</source>
+        <target state="needs-translation">Columns to show</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.counter">
+        <source>counter</source>
+        <target state="needs-translation">counter</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.membershipNumber">
+        <source>membership number</source>
+        <target state="needs-translation">membership number</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.name">
+        <source>name</source>
+        <target state="needs-translation">name</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.address">
+        <source>address</source>
+        <target state="needs-translation">address</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.email">
+        <source>email</source>
+        <target state="needs-translation">email</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.telephone">
+        <source>telephone</source>
+        <target state="needs-translation">telephone</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.dateOfBirth">
+        <source>date of birth</source>
+        <target state="needs-translation">date of birth</target>
+      </trans-unit>
+      <trans-unit id="plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.registrationDate">
+        <source>registration date</source>
+        <target state="needs-translation">registration date</target>
+      </trans-unit>
       <trans-unit id="plugin.frontEndEditor.index.headline">
         <source>Events I have created</source>
         <target state="needs-translation">Events I have created</target>
