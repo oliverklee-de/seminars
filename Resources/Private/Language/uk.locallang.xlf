@@ -1713,7 +1713,7 @@
         <source>Waiting list registrations</source>
         <target state="needs-translation">Waiting list registrations</target>
       </trans-unit>
-      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.number">
+      <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.counter">
         <source>#</source>
         <target state="needs-translation">#</target>
       </trans-unit>
