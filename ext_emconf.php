@@ -13,7 +13,6 @@ $EM_CONF[$_EXTKEY] = [
             'feuserextrafields' => '6.7.1-7.99.99',
             'install' => '11.5.41-11.5.99',
             'oelib' => '6.3.0-6.99.99',
-            'static_info_tables' => '11.5.5-12.4.99',
         ],
         'conflicts' => [
         ],
