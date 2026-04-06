@@ -878,8 +878,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function findWaitingListRegistrationsByEventFindsRegistrationsOnAnyPage(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/findWaitingListRegistrationsByEvent/WaitingListRegistrationWithEventAndUserOnPage.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findWaitingListRegistrationsByEvent/WaitingListRegistrationWithEventAndUserOnPage.csv',
         );
 
         $result = $this->subject->findWaitingListRegistrationsByEvent(1);
@@ -908,8 +908,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function findWaitingListRegistrationsByEventIgnoresHiddenRegistrations(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/findWaitingListRegistrationsByEvent/HiddenWaitingListRegistrationWithEventAndUser.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findWaitingListRegistrationsByEvent/HiddenWaitingListRegistrationWithEventAndUser.csv',
         );
 
         $result = $this->subject->findWaitingListRegistrationsByEvent(1);
@@ -922,8 +922,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function findWaitingListRegistrationsByEventIgnoresDeletedRegistrations(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/findWaitingListRegistrationsByEvent/DeletedWaitingListRegistrationWithEvent.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findWaitingListRegistrationsByEvent/DeletedWaitingListRegistrationWithEvent.csv',
         );
 
         $result = $this->subject->findWaitingListRegistrationsByEvent(1);
@@ -936,9 +936,9 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function findWaitingListRegistrationsByEventOrdersByCreationDateNewestFirst(): void
     {
-        $this->importDataSet(
+        $this->importCSVDataSet(
             __DIR__
-            . '/Fixtures/findWaitingListRegistrationsByEvent/TwoWaitingListRegistrationsWithSameEventAndUser.xml',
+            . '/Fixtures/findWaitingListRegistrationsByEvent/TwoWaitingListRegistrationsWithSameEventAndUser.csv',
         );
 
         $result = $this->subject->findWaitingListRegistrationsByEvent(1);

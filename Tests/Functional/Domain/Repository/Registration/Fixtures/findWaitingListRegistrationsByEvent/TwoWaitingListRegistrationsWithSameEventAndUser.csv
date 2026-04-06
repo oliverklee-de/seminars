@@ -1,0 +1,12 @@
+"tx_seminars_seminars"
+,"uid"
+,1
+
+"fe_users"
+,"uid"
+,1
+
+"tx_seminars_attendances"
+,"uid","seminar","user","registration_queue","seats","crdate"
+,1,1,1,1,1,1
+,2,1,1,1,1,2
