@@ -750,8 +750,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function findRegularRegistrationsByEventFindsRegistrationsOnAnyPage(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/RegistrationWithEventAndUserOnPage.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/RegistrationWithEventAndUserOnPage.csv',
         );
 
         $result = $this->subject->findRegularRegistrationsByEvent(1);
@@ -780,8 +780,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function findRegularRegistrationsByEventIgnoresHiddenRegistrations(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/HiddenRegistrationWithEventAndUser.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/HiddenRegistrationWithEventAndUser.csv',
         );
 
         $result = $this->subject->findRegularRegistrationsByEvent(1);
@@ -794,8 +794,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function findRegularRegistrationsByEventIgnoresDeletedRegistrations(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/DeletedRegistrationWithEventAndUser.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/DeletedRegistrationWithEventAndUser.csv',
         );
 
         $result = $this->subject->findRegularRegistrationsByEvent(1);
@@ -808,8 +808,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function findRegularRegistrationsOrdersByCreationDateNewestFirst(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/TwoRegistrationsWithSameEventAndUser.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/TwoRegistrationsWithSameEventAndUser.csv',
         );
 
         $result = $this->subject->findRegularRegistrationsByEvent(1);
