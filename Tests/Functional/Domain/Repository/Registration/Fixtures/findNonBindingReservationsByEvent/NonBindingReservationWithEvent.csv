@@ -1,0 +1,7 @@
+"tx_seminars_seminars"
+,"uid"
+,1
+
+"tx_seminars_attendances"
+,"uid","seminar","registration_queue"
+,1,1,2
