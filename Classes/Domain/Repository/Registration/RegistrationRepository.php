@@ -155,6 +155,16 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
 
     /**
      * @param positive-int $eventUid
+     *
+     * @return array<Registration>
+     */
+    public function findNonBindingReservationsByEvent(int $eventUid): array
+    {
+        return $this->findByEventAndStatus($eventUid, Registration::STATUS_NONBINDING_RESERVATION);
+    }
+
+    /**
+     * @param positive-int $eventUid
      * @param Registration::STATUS_* $status
      *
      * @return array<Registration>

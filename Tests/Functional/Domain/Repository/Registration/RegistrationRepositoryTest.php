@@ -951,6 +951,135 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function findNonBindingReservationsByEventForNoDataReturnsEmptyArray(): void
+    {
+        $result = $this->subject->findNonBindingReservationsByEvent(1);
+
+        self::assertSame([], $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findNonBindingReservationsByEventFindsNonBindingReservationForTheGivenEvent(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/NonBindingReservationWithEvent.csv',
+        );
+
+        $result = $this->subject->findNonBindingReservationsByEvent(1);
+
+        self::assertCount(1, $result);
+        $firstRegistration = $result[0];
+        self::assertInstanceOf(Registration::class, $firstRegistration);
+    }
+
+    /**
+     * @test
+     */
+    public function findNonBindingReservationsByEventIgnoresRegularRegistrationsForTheGivenEvent(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/RegularRegistrationWithEventAndUser.csv',
+        );
+
+        $result = $this->subject->findNonBindingReservationsByEvent(1);
+
+        self::assertSame([], $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findNonBindingReservationsByEventIgnoresWaitingListRegistrationForTheGivenEvent(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/WaitingListRegistrationWithEvent.csv',
+        );
+
+        $result = $this->subject->findNonBindingReservationsByEvent(1);
+
+        self::assertSame([], $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findNonBindingReservationsByEventFindsReservationOnAnyPage(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/NonBindingReservationWithEventAndUserOnPage.csv',
+        );
+
+        $result = $this->subject->findNonBindingReservationsByEvent(1);
+
+        self::assertCount(1, $result);
+        $firstRegistration = $result[0];
+        self::assertInstanceOf(Registration::class, $firstRegistration);
+    }
+
+    /**
+     * @test
+     */
+    public function findNonBindingReservationsByEventIgnoresNonBindingReservationForDifferentEvent(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/NonBindingReservationWithEvent.csv',
+        );
+
+        $result = $this->subject->findNonBindingReservationsByEvent(2);
+
+        self::assertSame([], $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findNonBindingReservationsByEventIgnoresHiddenReservation(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/HiddenNonBindingReservationWithEventAndUser.csv',
+        );
+
+        $result = $this->subject->findNonBindingReservationsByEvent(1);
+
+        self::assertSame([], $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findNonBindingReservationsByEventIgnoresDeletedReservation(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/DeletedNonBindingReservationWithEvent.csv',
+        );
+
+        $result = $this->subject->findNonBindingReservationsByEvent(1);
+
+        self::assertSame([], $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findNonBindingReservationsByEventOrdersByCreationDateNewestFirst(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__
+            . '/Fixtures/findNonBindingReservationsByEvent/TwoNonBindingReservationsWithSameEventAndUser.csv',
+        );
+
+        $result = $this->subject->findNonBindingReservationsByEvent(1);
+
+        $firstRegistration = $result[0];
+        self::assertInstanceOf(Registration::class, $firstRegistration);
+        self::assertSame(2, $firstRegistration->getUid());
+    }
+
+    /**
+     * @test
+     */
     public function enrichWithRawDataCanBeCalledWithEmptyArray(): void
     {
         $events = [];
