@@ -93,8 +93,7 @@ class FrontEndEditorController extends ActionController
     private function getLoggedInUserUid(): int
     {
         $uid = $this->context->getPropertyFromAspect('frontend.user', 'id');
-        \assert(\is_int($uid));
-        \assert($uid >= 0);
+        \assert(\is_int($uid) && $uid >= 0);
 
         return $uid;
     }
@@ -112,11 +111,8 @@ class FrontEndEditorController extends ActionController
     private function getDefaultOrganizerUid(): int
     {
         $user = $this->getLoggedInUser();
-        if (!($user instanceof FrontendUser)) {
-            return 0;
-        }
 
-        return $user->getDefaultOrganizerUid();
+        return $user instanceof FrontendUser ? $user->getDefaultOrganizerUid() : 0;
     }
 
     public function indexAction(): ResponseInterface
@@ -176,20 +172,24 @@ class FrontEndEditorController extends ActionController
     {
         $this->checkEventOwner($event);
 
-        $this->view->assign('event', $event);
+        $this->view->assignMultiple([
+            'event' => $event,
+            'defaultOrganizerUid' => $this->getDefaultOrganizerUid(),
+        ]);
         $this->assignAuxiliaryRecordsForSingleEventToView();
-        $this->view->assign('defaultOrganizerUid', $this->getDefaultOrganizerUid());
 
         return $this->htmlResponse();
     }
 
     private function assignAuxiliaryRecordsForSingleEventToView(): void
     {
-        $this->view->assign('eventTypes', $this->eventTypeRepository->findAllPlusNullEventType());
-        $this->view->assign('organizers', $this->organizerRepository->findAll());
-        $this->view->assign('speakers', $this->speakerRepository->findAll());
-        $this->view->assign('venues', $this->venueRepository->findAll());
-        $this->view->assign('categories', $this->categoryRepository->findAll());
+        $this->view->assignMultiple([
+            'eventTypes' => $this->eventTypeRepository->findAllPlusNullEventType(),
+            'organizers' => $this->organizerRepository->findAll(),
+            'speakers' => $this->speakerRepository->findAll(),
+            'venues' => $this->venueRepository->findAll(),
+            'categories' => $this->categoryRepository->findAll(),
+        ]);
     }
 
     /**
@@ -206,14 +206,27 @@ class FrontEndEditorController extends ActionController
     public function newSingleEventAction(): ResponseInterface
     {
         $eventToCreate = GeneralUtility::makeInstance(SingleEvent::class);
-        $this->view->assign('event', $eventToCreate);
+        $this->view->assignMultiple([
+            'event' => $eventToCreate,
+            'defaultOrganizerUid' => $this->getDefaultOrganizerUid(),
+        ]);
         $this->assignAuxiliaryRecordsForSingleEventToView();
-        $this->view->assign('defaultOrganizerUid', $this->getDefaultOrganizerUid());
 
         return $this->htmlResponse();
     }
 
     public function createSingleEventAction(SingleEvent $event): ResponseInterface
+    {
+        $this->createEvent($event);
+        $this->updateAndSlaveSlugForSingleEvent($event);
+
+        return $this->redirect('index');
+    }
+
+    /**
+     * @param SingleEvent|EventDate $event
+     */
+    private function createEvent($event): void
     {
         $event->setOwnerUid($this->getLoggedInUserUid());
         $defaultOrganizerUid = $this->getDefaultOrganizerUid();
@@ -224,16 +237,14 @@ class FrontEndEditorController extends ActionController
             }
         }
 
-        $folderSettings = $this->settings['folderForCreatedEvents'] ?? null;
-        $folderUid = \is_string($folderSettings) ? (int)$folderSettings : 0;
-        $event->setPid($folderUid);
+        \assert(
+            isset($this->settings['folderForCreatedEvents']) && \is_string($this->settings['folderForCreatedEvents']),
+        );
+        $event->setPid((int)$this->settings['folderForCreatedEvents']);
 
         // We first need to persist the event to get a UID for it, so we can generate a slug.
         $this->eventRepository->add($event);
         $this->eventRepository->persistAll();
-        $this->updateAndSlaveSlugForSingleEvent($event);
-
-        return $this->redirect('index');
     }
 
     private function updateAndSlaveSlugForSingleEvent(SingleEvent $event): void
@@ -260,9 +271,11 @@ class FrontEndEditorController extends ActionController
     {
         $this->checkEventOwner($event);
 
-        $this->view->assign('event', $event);
+        $this->view->assignMultiple([
+            'event' => $event,
+            'defaultOrganizerUid' => $this->getDefaultOrganizerUid(),
+        ]);
         $this->assignAuxiliaryRecordsForEventDateToView();
-        $this->view->assign('defaultOrganizerUid', $this->getDefaultOrganizerUid());
 
         return $this->htmlResponse();
     }
@@ -272,10 +285,12 @@ class FrontEndEditorController extends ActionController
         $user = $this->getLoggedInUser();
         \assert($user instanceof FrontendUser);
 
-        $this->view->assign('topics', $this->eventRepository->findTopicsAccessibleToFrontendUser($user));
-        $this->view->assign('organizers', $this->organizerRepository->findAll());
-        $this->view->assign('speakers', $this->speakerRepository->findAll());
-        $this->view->assign('venues', $this->venueRepository->findAll());
+        $this->view->assignMultiple([
+            'topics' => $this->eventRepository->findTopicsAccessibleToFrontendUser($user),
+            'organizers' => $this->organizerRepository->findAll(),
+            'speakers' => $this->speakerRepository->findAll(),
+            'venues' => $this->venueRepository->findAll(),
+        ]);
     }
 
     /**
@@ -291,32 +306,18 @@ class FrontEndEditorController extends ActionController
 
     public function newEventDateAction(): ResponseInterface
     {
-        $eventToCreate = GeneralUtility::makeInstance(EventDate::class);
-        $this->view->assign('event', $eventToCreate);
+        $this->view->assignMultiple([
+            'event' => GeneralUtility::makeInstance(EventDate::class),
+            'defaultOrganizerUid' => $this->getDefaultOrganizerUid(),
+        ]);
         $this->assignAuxiliaryRecordsForEventDateToView();
-        $this->view->assign('defaultOrganizerUid', $this->getDefaultOrganizerUid());
 
         return $this->htmlResponse();
     }
 
     public function createEventDateAction(EventDate $event): ResponseInterface
     {
-        $event->setOwnerUid($this->getLoggedInUserUid());
-        $defaultOrganizerUid = $this->getDefaultOrganizerUid();
-        if ($defaultOrganizerUid > 0) {
-            $organizer = $this->organizerRepository->findByUid($defaultOrganizerUid);
-            if ($organizer instanceof Organizer) {
-                $event->setSingleOrganizer($organizer);
-            }
-        }
-
-        $folderSettings = $this->settings['folderForCreatedEvents'] ?? null;
-        $folderUid = \is_string($folderSettings) ? (int)$folderSettings : 0;
-        $event->setPid($folderUid);
-
-        // We first need to persist the event to get a UID for it, so we can generate a slug.
-        $this->eventRepository->add($event);
-        $this->eventRepository->persistAll();
+        $this->createEvent($event);
         $this->updateAndSlaveSlugForEventDate($event);
 
         return $this->redirect('index');
@@ -354,8 +355,7 @@ class FrontEndEditorController extends ActionController
         $this->checkEventOwner($event);
 
         $eventUid = $event->getUid();
-        \assert(\is_int($eventUid));
-        \assert($eventUid > 0);
+        \assert(\is_int($eventUid) && $eventUid > 0);
         $this->view->assignMultiple([
             'event' => $event,
             'regularRegistrations' => $this->registrationRepository->findRegularRegistrationsByEvent($eventUid),
