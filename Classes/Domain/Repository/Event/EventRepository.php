@@ -421,7 +421,7 @@ class EventRepository extends AbstractRawDataCapableRepository
      *
      * @return array<EventTopicInterface>
      */
-    public function findTopicsByUidsPlusNullTopic(array $uids): array
+    public function findTopicsPlusNullTopicByUids(array $uids): array
     {
         $query = $this->createQuery();
         $this->setQuerySettingsForFindingTopics($query);
