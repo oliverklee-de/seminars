@@ -86,6 +86,20 @@
                 <f:render partial="BackEnd/RegistrationList"
                           arguments="{eventUid: event.uid, registrations: waitingListRegistrations, permissions: permissions}"/>
             </f:if>
+
+            <h2>
+                <f:translate key="backEndModule.heading.nonbindingReservations"/>
+            </h2>
+            <f:if condition="{nonbindingReservations}">
+                <f:then>
+                    <f:render partial="BackEnd/RegistrationList"
+                              arguments="{eventUid: event.uid, registrations: nonbindingReservations, permissions: permissions}"/>
+                </f:then>
+                <f:else>
+                    <f:render partial="BackEnd/FlashMessage"
+                              arguments="{severity: 'info', messageBodyKey: 'noNonbindingReservationsForEvent'}"/>
+                </f:else>
+            </f:if>
         </f:if>
     </f:section>
 </html>
