@@ -48,7 +48,7 @@ class FrontendUser extends ExtraFieldsFrontendUser
     }
 
     /**
-     * @return array<int<0, max>, int>
+     * @return array<int>
      */
     public function getUidsOfAvailableTopicsForFrontEndEditor(): array
     {

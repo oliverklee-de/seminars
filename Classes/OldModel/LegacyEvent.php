@@ -243,7 +243,6 @@ class LegacyEvent extends AbstractTimeSpan
 
             $descriptionParts = [];
             if ((string)$place['address'] !== '') {
-                /** @var array<int, non-empty-string> $addressParts */
                 $addressParts = GeneralUtility::trimExplode("\r", (string)$place['address'], true);
                 $address = \implode(', ', $addressParts);
                 $descriptionParts[] = \htmlspecialchars($address, ENT_QUOTES | ENT_HTML5);
@@ -1666,7 +1665,6 @@ class LegacyEvent extends AbstractTimeSpan
      */
     public function dumpSeminarValues(string $keysList): string
     {
-        /** @var array<int, non-empty-string> $keys */
         $keys = GeneralUtility::trimExplode(',', $keysList, true);
         $keysWithLabels = [];
 
