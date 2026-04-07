@@ -15,6 +15,7 @@ use OliverKlee\Seminars\Domain\Model\Event\NullEventTopic;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\FoodOption;
+use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Organizer;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\RegistrationCheckbox;
@@ -2582,5 +2583,262 @@ final class EventRepositoryTest extends FunctionalTestCase
         $secondMatch = $result[2];
         self::assertInstanceOf(EventTopic::class, $secondMatch);
         self::assertSame('juggling', $secondMatch->getInternalTitle());
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForNoEventsAndUserWithoutLimitReturnsNullEventTopicOnly(): void
+    {
+        $user = new FrontendUser();
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+        $firstMatch = $result[0];
+        self::assertInstanceOf(NullEventTopic::class, $firstMatch);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithoutLimitFindsEventTopic(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/EventTopic.csv');
+        $user = new FrontendUser();
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(2, $result);
+        $firstMatch = $result[1];
+        self::assertInstanceOf(EventTopic::class, $firstMatch);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithoutLimitIgnoresEventDate(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/EventDate.csv');
+        $user = new FrontendUser();
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithoutLimitIgnoresSingleEvent(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/SingleEvent.csv');
+        $user = new FrontendUser();
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithoutLimitFindsTopicOnPage(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/EventTopicOnPage.csv');
+        $user = new FrontendUser();
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(2, $result);
+        $firstMatch = $result[1];
+        self::assertInstanceOf(EventTopic::class, $firstMatch);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithoutLimitIgnoresHiddenTopic(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/HiddenEventTopic.csv');
+        $user = new FrontendUser();
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithoutLimitIgnoresDeletedTopic(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/DeletedEventTopic.csv');
+        $user = new FrontendUser();
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithoutLimitOrdersInAscendingOrderByInternalTitle(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/TwoEventTopicsInReverseOrder.csv',
+        );
+        $user = new FrontendUser();
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(3, $result);
+        $firstTopic = $result[1];
+        self::assertInstanceOf(EventTopic::class, $firstTopic);
+        self::assertSame('acrobatics', $firstTopic->getInternalTitle());
+        $secondTopic = $result[2];
+        self::assertInstanceOf(EventTopic::class, $secondTopic);
+        self::assertSame('juggling', $secondTopic->getInternalTitle());
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForNoEventsAndUserWithLimitReturnsNullEventTopicOnly(): void
+    {
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableTopicsForFrontEndEditor('1');
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+        $firstMatch = $result[0];
+        self::assertInstanceOf(NullEventTopic::class, $firstMatch);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithLimitFindsEventTopicWithMatchingUid(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/EventTopic.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableTopicsForFrontEndEditor('1');
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(2, $result);
+        $firstMatch = $result[1];
+        self::assertInstanceOf(EventTopic::class, $firstMatch);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithLimitIgnoresEventTopicWithNonMatchingUid(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/EventTopic.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableTopicsForFrontEndEditor('2');
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+        self::assertInstanceOf(NullEventTopic::class, $result[0]);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithLimitIgnoresEventDate(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/EventDate.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableTopicsForFrontEndEditor('1');
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithLimitIgnoresSingleEvent(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/SingleEvent.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableTopicsForFrontEndEditor('1');
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithLimitFindsTopicOnPage(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/EventTopicOnPage.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableTopicsForFrontEndEditor('1');
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(2, $result);
+        $firstMatch = $result[1];
+        self::assertInstanceOf(EventTopic::class, $firstMatch);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithLimitIgnoresHiddenTopic(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/HiddenEventTopic.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableTopicsForFrontEndEditor('1');
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithLimitIgnoresDeletedTopic(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/DeletedEventTopic.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableTopicsForFrontEndEditor('1');
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findTopicsAccessibleToFrontendUserForUserWithLimitOrdersInAscendingOrderByInternalTitle(): void
+    {
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/findTopicsAccessibleToFrontendUser/TwoEventTopicsInReverseOrder.csv',
+        );
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableTopicsForFrontEndEditor('1,2');
+
+        $result = $this->subject->findTopicsAccessibleToFrontendUser($user);
+
+        self::assertCount(3, $result);
+        $firstTopic = $result[1];
+        self::assertInstanceOf(EventTopic::class, $firstTopic);
+        self::assertSame('acrobatics', $firstTopic->getInternalTitle());
+        $secondTopic = $result[2];
+        self::assertInstanceOf(EventTopic::class, $secondTopic);
+        self::assertSame('juggling', $secondTopic->getInternalTitle());
     }
 }

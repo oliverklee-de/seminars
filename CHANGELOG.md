@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Add `EventRepository.findTopicsAccessibleToFrontendUser` (#4858)
 - Add `RegistrationRepository.findNonBindingReservationsByEvent` (#4854)
 - Add `Registration.registrationDate` (#4829)
 - Add a registration list to the FE editor
