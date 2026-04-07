@@ -1536,6 +1536,11 @@ parameters:
 			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:getAvailableLanguages\\(\\) should return list\\<string\\> but returns array\\<int\\<0, max\\>, string\\>\\.$#"
+			count: 1
+			path: ../../Classes/Templating/TemplateHelper.php
+
+		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:pi_getFFvalue\\(\\) has parameter \\$T3FlexForm_array with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../Classes/Templating/TemplateHelper.php
@@ -1572,6 +1577,11 @@ parameters:
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$LOCAL_LANG \\(array\\<string, array\\<string, array\\<int, array\\<string, string\\>\\>\\>\\>\\) does not accept array\\<array\\<array\\<int, array\\<string, mixed\\>\\>\\>\\>\\.$#"
+			count: 1
+			path: ../../Classes/Templating/TemplateHelper.php
+
+		-
+			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$availableLanguages \\(list\\<string\\>\\|null\\) does not accept array\\<0, string\\>\\.$#"
 			count: 1
 			path: ../../Classes/Templating/TemplateHelper.php
 

@@ -1974,11 +1974,10 @@ class DefaultController extends TemplateHelper
     /**
      * Un-hides the columns specified in the parameter.
      *
-     * @param array<int, non-empty-string> $columnsToUnhide the columns to un-hide, may be empty
+     * @param array<non-empty-string> $columnsToUnhide the columns to un-hide, may be empty
      */
     protected function unhideColumns(array $columnsToUnhide): void
     {
-        /** @var array<int, non-empty-string> $permanentlyHiddenColumns */
         $permanentlyHiddenColumns = GeneralUtility::trimExplode(
             ',',
             $this->getConfValueString('hideColumns', 's_template_special'),
@@ -2084,7 +2083,6 @@ class DefaultController extends TemplateHelper
      */
     private function hideColumnsForAllViewsFromTypoScriptSetup(): void
     {
-        /** @var array<int, non-empty-string> $columns */
         $columns = GeneralUtility::trimExplode(
             ',',
             $this->getConfValueString('hideColumns', 's_template_special'),

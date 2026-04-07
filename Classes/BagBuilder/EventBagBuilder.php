@@ -567,7 +567,7 @@ class EventBagBuilder extends AbstractBagBuilder
      *
      * @param non-empty-string $quotedSearchWord the current search word, must be SQL-safe
      *
-     * @return non-empty-array<int, non-empty-string> the WHERE clause parts for the search in categories
+     * @return array{0: non-empty-string} the WHERE clause parts for the search in categories
      */
     private function getSearchWherePartForCategories(string $quotedSearchWord): array
     {
@@ -585,7 +585,7 @@ class EventBagBuilder extends AbstractBagBuilder
      *
      * @param non-empty-string $quotedSearchWord the current search word, must be SQL-safe
      *
-     * @return non-empty-array<int, non-empty-string> the WHERE clause parts for the search in categories
+     * @return array{0: non-empty-string} the WHERE clause parts for the search in categories
      */
     private function getSearchWherePartForTargetGroups(string $quotedSearchWord): array
     {
@@ -603,7 +603,7 @@ class EventBagBuilder extends AbstractBagBuilder
      *
      * @param non-empty-string $quotedSearchWord the current search word, must be SQL-safe
      *
-     * @return non-empty-array<int, non-empty-string> the WHERE clause parts for the search in event types
+     * @return array{0: non-empty-string} the WHERE clause parts for the search in event types
      */
     private function getSearchWherePartForEventTypes(string $quotedSearchWord): array
     {
@@ -715,7 +715,7 @@ class EventBagBuilder extends AbstractBagBuilder
      * @param non-empty-string $foreignTable the foreign table to search in
      * @param non-empty-string $mmTable the m:n relation table
      *
-     * @return non-empty-array<int, non-empty-string> the WHERE clause parts for the search in categories
+     * @return array{0: non-empty-string} the WHERE clause parts for the search in categories
      */
     private function getSearchWherePartInMmRelationForTopicOrSingleEventRecord(
         string $quotedSearchWord,

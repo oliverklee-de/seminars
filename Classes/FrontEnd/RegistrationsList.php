@@ -231,34 +231,28 @@ class RegistrationsList extends AbstractView
      * Gets the keys of the front-end user fields that should be displayed in
      * the list.
      *
-     * @return array<int, non-empty-string> keys of the front-end user fields to display, might be empty
+     * @return list<non-empty-string> keys of the front-end user fields to display, might be empty
      */
     private function getFrontEndUserFields(): array
     {
-        /** @var array<int, non-empty-string> $keys */
-        $keys = GeneralUtility::trimExplode(
+        return GeneralUtility::trimExplode(
             ',',
             $this->getConfValueString('showFeUserFieldsInRegistrationsList', 's_template_special'),
             true,
         );
-
-        return $keys;
     }
 
     /**
      * Gets the keys of the registration fields that should be displayed in the list.
      *
-     * @return array<int, non-empty-string> keys of the registration fields to display, might be empty
+     * @return list<non-empty-string> keys of the registration fields to display, might be empty
      */
     private function getRegistrationFields(): array
     {
-        /** @var array<int, non-empty-string> $keys */
-        $keys = GeneralUtility::trimExplode(
+        return GeneralUtility::trimExplode(
             ',',
             $this->getConfValueString('showRegistrationFieldsInRegistrationList', 's_template_special'),
             true,
         );
-
-        return $keys;
     }
 }

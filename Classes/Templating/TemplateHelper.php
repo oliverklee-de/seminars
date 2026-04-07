@@ -144,7 +144,7 @@ abstract class TemplateHelper
      * A list of language keys for which the localizations have been loaded
      * (or NULL if the list has not been compiled yet).
      *
-     * @var array<int<0, max>, string>|null
+     * @var list<string>|null
      */
     private ?array $availableLanguages = null;
 
@@ -710,7 +710,7 @@ abstract class TemplateHelper
      * If the prefix is empty and the array has two elements "one" and "two",
      * the subparts "###ONE###" and "###TWO###" will be unhidden.
      *
-     * @param array<string|int, non-empty-string> $subparts $subparts subpart names to unhide
+     * @param array<non-empty-string> $subparts $subparts subpart names to unhide
      *       (may be empty, case-insensitive, will get uppercased)
      * @param string[] $permanentlyHiddenSubparts subpart names that shouldn't get unhidden
      * @param string $prefix prefix to the subpart names (may be empty, case-insensitive, will get uppercased)
@@ -1107,7 +1107,7 @@ abstract class TemplateHelper
     /**
      * Compiles a list of language keys for which localizations have been loaded.
      *
-     * @return array<int<0, max>, string> a list of language keys (might be empty)
+     * @return list<string> a list of language keys
      */
     private function getAvailableLanguages(): array
     {
