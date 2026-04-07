@@ -1274,6 +1274,49 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function editEventDateActionOffersTopicAccessibleToTheUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/FrontEndUserWithTopicLimit.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwnerWithTopicLimit.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'editEventDate',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(2);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('OOP with PHP', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function editEventDateActionDoesNotOfferTopicNotAccessibleToTheUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/AnotherTopic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/FrontEndUserWithTopicLimit.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwnerWithTopicLimit.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'editEventDate',
+            'tx_seminars_frontendeditor[event]' => '1',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(2);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringNotContainsString('Authentication and authorization', $html);
+    }
+
+    /**
+     * @test
+     */
     public function editEventDateActionWithOwnEventAssignsProvidedEventToView(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/editEventDateAction/EventWithOwner.csv');
@@ -1995,6 +2038,44 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
 
         self::assertStringContainsString($title, $html);
+    }
+    /**
+     * @test
+     */
+    public function newEventDateActionOffersTopicAccessibleToTheUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/FrontEndUserWithTopicLimit.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'newEventDate',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(2);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringContainsString('OOP with PHP', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function newEventDateActionDoesNotOfferNotTopicAccessibleToTheUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/AuxiliaryRecords.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/Topic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/AnotherTopic.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/newEventDateAction/FrontEndUserWithTopicLimit.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([
+            'tx_seminars_frontendeditor[action]' => 'newEventDate',
+        ]);
+        $context = (new InternalRequestContext())->withFrontendUserId(2);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        self::assertStringNotContainsString('Authentication and authorization', $html);
     }
 
     /**
