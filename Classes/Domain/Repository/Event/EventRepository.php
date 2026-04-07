@@ -8,6 +8,7 @@ use OliverKlee\Seminars\Domain\Model\Event\Event;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventTopicInterface;
 use OliverKlee\Seminars\Domain\Model\Event\NullEventTopic;
+use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Repository\AbstractRawDataCapableRepository;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\Connection;
@@ -445,5 +446,21 @@ class EventRepository extends AbstractRawDataCapableRepository
         $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
         $query->setQuerySettings($querySettings->setRespectStoragePage(false));
         $query->setOrderings(['internalTitle' => QueryInterface::ORDER_ASCENDING]);
+    }
+
+    /**
+     * Finds the topics the given user has access to.
+     *
+     * If the user has no topic access restriction, returns all topics.
+     *
+     * @return array<EventTopicInterface>
+     */
+    public function findTopicsAccessibleToFrontendUser(FrontendUser $user): array
+    {
+        $accessibleTopicUids = $user->getUidsOfAvailableTopicsForFrontEndEditor();
+
+        return ($accessibleTopicUids !== [])
+            ? $this->findTopicsPlusNullTopicByUids($accessibleTopicUids)
+            : $this->findAllTopicsPlusNullTopic();
     }
 }
