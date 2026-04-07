@@ -99,17 +99,19 @@ class FrontEndEditorController extends ActionController
         return $uid;
     }
 
+    private function getLoggedInUser(): ?FrontendUser
+    {
+        $uid = $this->getLoggedInUserUid();
+
+        return $uid > 0 ? $this->userRepository->findByUid($uid) : null;
+    }
+
     /**
      * @return int<0, max>
      */
     private function getDefaultOrganizerUid(): int
     {
-        $userUid = $this->getLoggedInUserUid();
-        if ($userUid <= 0) {
-            return 0;
-        }
-
-        $user = $this->userRepository->findByUid($userUid);
+        $user = $this->getLoggedInUser();
         if (!($user instanceof FrontendUser)) {
             return 0;
         }
@@ -267,7 +269,10 @@ class FrontEndEditorController extends ActionController
 
     private function assignAuxiliaryRecordsForEventDateToView(): void
     {
-        $this->view->assign('topics', $this->eventRepository->findAllTopicsPlusNullTopic());
+        $user = $this->getLoggedInUser();
+        \assert($user instanceof FrontendUser);
+
+        $this->view->assign('topics', $this->eventRepository->findTopicsAccessibleToFrontendUser($user));
         $this->view->assign('organizers', $this->organizerRepository->findAll());
         $this->view->assign('speakers', $this->speakerRepository->findAll());
         $this->view->assign('venues', $this->venueRepository->findAll());

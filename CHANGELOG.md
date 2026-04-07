@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Allow limiting FE editor topic access for FE users (#4860)
 - Add `EventRepository.findTopicsAccessibleToFrontendUser` (#4858)
 - Add `RegistrationRepository.findNonBindingReservationsByEvent` (#4854)
 - Add `Registration.registrationDate` (#4829)
