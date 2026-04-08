@@ -1,5 +1,7 @@
 <?php
 
+use TYPO3\CMS\Core\Information\Typo3Version;
+
 $tca = [
     'ctrl' => [
         'title' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_timeslots',
@@ -25,8 +27,9 @@ $tca = [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'size' => 12,
-                'eval' => 'datetime, required, int',
+                'eval' => 'datetime,int',
                 'default' => 0,
+                'required' => true,
             ],
         ],
         'end_date' => [
@@ -70,5 +73,19 @@ $tca = [
         '0' => ['showitem' => 'begin_date, end_date, place, room'],
     ],
 ];
+
+if ((new Typo3Version())->getMajorVersion() < 12) {
+    $legacyTca = [
+        'columns' => [
+            'begin_date' => [
+                'config' => [
+                    'eval' => 'datetime,required,int',
+                ],
+            ],
+        ],
+    ];
+
+    $tca = \array_replace_recursive($tca, $legacyTca);
+}
 
 return $tca;
