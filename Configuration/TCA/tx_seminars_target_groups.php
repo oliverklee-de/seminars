@@ -1,8 +1,6 @@
 <?php
 
-defined('TYPO3') or die();
-
-return [
+$tca = [
     'ctrl' => [
         'title' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_target_groups',
         'label' => 'title',
@@ -54,3 +52,5 @@ return [
         '0' => ['showitem' => 'title, minimum_age, maximum_age'],
     ],
 ];
+
+return $tca;

@@ -1,8 +1,6 @@
 <?php
 
-defined('TYPO3') or die();
-
-return [
+$tca = [
     'ctrl' => [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -48,3 +46,5 @@ return [
         ],
     ],
 ];
+
+return $tca;

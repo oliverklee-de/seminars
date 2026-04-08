@@ -5,8 +5,6 @@ use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Seo\SlugGenerator;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-defined('TYPO3') or die();
-
 ExtensionManagementUtility::addToInsertRecords('tx_seminars_seminars');
 
 $tca = [
