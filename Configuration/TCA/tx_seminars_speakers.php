@@ -1,5 +1,6 @@
 <?php
 
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 ExtensionManagementUtility::addToInsertRecords('tx_seminars_speakers');
@@ -33,7 +34,8 @@ $tca = [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'organization' => [
@@ -175,5 +177,19 @@ $tca = [
         ],
     ],
 ];
+
+if ((new Typo3Version())->getMajorVersion() < 12) {
+    $legacyTca = [
+        'columns' => [
+            'title' => [
+                'config' => [
+                    'eval' => 'required,trim',
+                ],
+            ],
+        ],
+    ];
+
+    $tca = \array_replace_recursive($tca, $legacyTca);
+}
 
 return $tca;

@@ -1,5 +1,7 @@
 <?php
 
+use TYPO3\CMS\Core\Information\Typo3Version;
+
 $tca = [
     'ctrl' => [
         'title' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_target_groups',
@@ -18,7 +20,8 @@ $tca = [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'minimum_age' => [
@@ -52,5 +55,19 @@ $tca = [
         '0' => ['showitem' => 'title, minimum_age, maximum_age'],
     ],
 ];
+
+if ((new Typo3Version())->getMajorVersion() < 12) {
+    $legacyTca = [
+        'columns' => [
+            'title' => [
+                'config' => [
+                    'eval' => 'required,trim',
+                ],
+            ],
+        ],
+    ];
+
+    $tca = \array_replace_recursive($tca, $legacyTca);
+}
 
 return $tca;

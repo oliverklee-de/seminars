@@ -1,5 +1,7 @@
 <?php
 
+use TYPO3\CMS\Core\Information\Typo3Version;
+
 $tca = [
     'ctrl' => [
         'tstamp' => 'tstamp',
@@ -41,10 +43,24 @@ $tca = [
             'exclude' => 0,
             'config' => [
                 'type' => 'input',
-                'eval' => 'required',
+                'required' => true,
             ],
         ],
     ],
 ];
+
+if ((new Typo3Version())->getMajorVersion() < 12) {
+    $legacyTca = [
+        'columns' => [
+            'title' => [
+                'config' => [
+                    'eval' => 'required',
+                ],
+            ],
+        ],
+    ];
+
+    $tca = \array_replace_recursive($tca, $legacyTca);
+}
 
 return $tca;

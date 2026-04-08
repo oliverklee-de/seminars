@@ -1,5 +1,7 @@
 <?php
 
+use TYPO3\CMS\Core\Information\Typo3Version;
+
 $tca = [
     'ctrl' => [
         'title' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_sites',
@@ -18,7 +20,8 @@ $tca = [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'address' => [
@@ -37,7 +40,8 @@ $tca = [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'homepage' => [
@@ -107,5 +111,24 @@ $tca = [
         ],
     ],
 ];
+
+if ((new Typo3Version())->getMajorVersion() < 12) {
+    $legacyTca = [
+        'columns' => [
+            'title' => [
+                'config' => [
+                    'eval' => 'required,trim',
+                ],
+            ],
+            'city' => [
+                'config' => [
+                    'eval' => 'required,trim',
+                ],
+            ],
+        ],
+    ];
+
+    $tca = \array_replace_recursive($tca, $legacyTca);
+}
 
 return $tca;
