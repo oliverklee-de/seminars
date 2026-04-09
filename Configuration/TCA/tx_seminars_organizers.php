@@ -38,20 +38,18 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_organizers.homepage',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
+                'type' => 'link',
+                'allowedTypes' => ['page', 'url'],
                 'size' => 15,
                 'max' => 255,
-                'eval' => 'trim',
             ],
         ],
         'email' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_organizers.email',
             'config' => [
-                'type' => 'input',
+                'type' => 'email',
                 'size' => 30,
-                'eval' => 'email,trim',
                 'required' => true,
             ],
         ],
@@ -78,9 +76,17 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'eval' => 'required,trim',
                 ],
             ],
+            'homepage' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputLink',
+                    'eval' => 'trim',
+                ],
+            ],
             'email' => [
                 'config' => [
-                    'eval' => 'email,required,trim',
+                    'type' => 'input',
+                    'eval' => 'email, required, trim',
                 ],
             ],
         ],

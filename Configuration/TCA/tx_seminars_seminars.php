@@ -329,11 +329,10 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.details_page',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
+                'type' => 'link',
+                'allowedTypes' => ['page', 'url'],
                 'size' => 15,
                 'max' => 255,
-                'eval' => 'trim',
             ],
         ],
         'place' => [
@@ -370,18 +369,10 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.webinar_url',
             'displayCond' => 'FIELD:event_format:IN:1,2',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
+                'type' => 'link',
+                'allowedTypes' => ['url'],
                 'size' => 15,
                 'max' => 255,
-                'eval' => 'trim',
-                'fieldControl' => [
-                    'linkPopup' => [
-                        'options' => [
-                            'blindLinkOptions' => ' file, folder, mail, page, telephone',
-                        ],
-                    ],
-                ],
             ],
         ],
         'lodgings' => [
@@ -1082,6 +1073,20 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'eval' => 'date, int',
                 ],
             ],
+            'details_page' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputLink',
+                    'fieldControl' => [
+                        'linkPopup' => [
+                            'options' => [
+                                'blindLinkOptions' => 'file, folder, mail, telephone',
+                            ],
+                        ],
+                    ],
+                    'eval' => 'trim',
+                ],
+            ],
             'download_start_date' => [
                 'config' => [
                     'type' => 'input',
@@ -1152,6 +1157,20 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                         ],
                     ],
                 ),
+            ],
+            'webinar_url' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputLink',
+                    'eval' => 'trim',
+                    'fieldControl' => [
+                        'linkPopup' => [
+                            'options' => [
+                                'blindLinkOptions' => 'file, folder, mail, page, telephone',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ],
     ];
