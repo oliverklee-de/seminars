@@ -41,6 +41,7 @@ $tca = [
                 'size' => 12,
                 'eval' => 'datetime, int',
                 'default' => 0,
+                'required' => true,
             ],
         ],
         'place' => [
@@ -79,7 +80,12 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
         'columns' => [
             'begin_date' => [
                 'config' => [
-                    'eval' => 'datetime,required,int',
+                    'eval' => 'datetime, required, int',
+                ],
+            ],
+            'end_date' => [
+                'config' => [
+                    'eval' => 'datetime, required, int',
                 ],
             ],
         ],

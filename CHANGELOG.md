@@ -89,6 +89,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- !!! Make the end time of timeslots required (#4866)
 - Polish the FE editor table markup (#4827)
 - Allow feuserextrafields 7.x (#4821)
 - Make the room in the BE for `company` a one-line input (#4721)
