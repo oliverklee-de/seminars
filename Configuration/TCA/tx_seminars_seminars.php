@@ -868,22 +868,10 @@ $tca = [
         'attached_files' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.attached_files',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'attached_files',
-                [
-                    'maxitems' => 50,
-                    'appearance' => [
-                        'collapseAll' => true,
-                        'expandSingle' => true,
-                        'useSortable' => true,
-                        'enabledControls' => [
-                            'sort' => true,
-                            'hide' => false,
-                        ],
-                        'fileUploadAllowed' => true,
-                    ],
-                ],
-            ),
+            'config' => [
+                'type' => 'file',
+                'maxitems' => 50,
+            ],
         ],
         'download_start_date' => [
             'exclude' => true,
@@ -943,22 +931,11 @@ $tca = [
         'image' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.image',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'image',
-                [
-                    'maxitems' => 1,
-                    'appearance' => [
-                        'collapseAll' => true,
-                        'expandSingle' => true,
-                        'useSortable' => false,
-                        'enabledControls' => [
-                            'sort' => false,
-                            'hide' => false,
-                        ],
-                        'fileUploadAllowed' => true,
-                    ],
-                ],
-            ),
+            'config' => [
+                'type' => 'file',
+                'allowed' => 'common-image-types',
+                'maxitems' => 1,
+            ],
         ],
         'price_on_request' => [
             'exclude' => 1,
@@ -1044,6 +1021,11 @@ $tca = [
 ];
 
 if ((new Typo3Version())->getMajorVersion() < 12) {
+    unset(
+        $tca['columns']['attached_files']['config'],
+        $tca['columns']['image']['config'],
+    );
+
     $legacyTca = [
         'columns' => [
             'title' => [
@@ -1134,6 +1116,42 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'renderType' => 'inputDateTime',
                     'eval' => 'datetime, int',
                 ],
+            ],
+            'attached_files' => [
+                'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
+                    'attached_files',
+                    [
+                        'maxitems' => 50,
+                        'appearance' => [
+                            'collapseAll' => true,
+                            'expandSingle' => true,
+                            'useSortable' => true,
+                            'enabledControls' => [
+                                'sort' => true,
+                                'hide' => false,
+                            ],
+                            'fileUploadAllowed' => true,
+                        ],
+                    ],
+                ),
+            ],
+            'image' => [
+                'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
+                    'image',
+                    [
+                        'maxitems' => 1,
+                        'appearance' => [
+                            'collapseAll' => true,
+                            'expandSingle' => true,
+                            'useSortable' => false,
+                            'enabledControls' => [
+                                'sort' => false,
+                                'hide' => false,
+                            ],
+                            'fileUploadAllowed' => true,
+                        ],
+                    ],
+                ),
             ],
         ],
     ];

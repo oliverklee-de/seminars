@@ -71,21 +71,11 @@ $tca = [
         'image' => [
             'exclude' => true,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_speakers.image',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'image',
-                [
-                    'maxitems' => 1,
-                    'appearance' => [
-                        'collapseAll' => true,
-                        'expandSingle' => true,
-                        'useSortable' => false,
-                        'enabledControls' => [
-                            'hide' => false,
-                        ],
-                        'fileUploadAllowed' => true,
-                    ],
-                ],
-            ),
+            'config' => [
+                'type' => 'file',
+                'allowed' => 'common-image-types',
+                'maxitems' => 1,
+            ],
         ],
         'skills' => [
             'exclude' => 1,
@@ -179,12 +169,31 @@ $tca = [
 ];
 
 if ((new Typo3Version())->getMajorVersion() < 12) {
+    unset($tca['columns']['image']['config']);
+
     $legacyTca = [
         'columns' => [
             'title' => [
                 'config' => [
                     'eval' => 'required,trim',
                 ],
+            ],
+            'image' => [
+                'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
+                    'image',
+                    [
+                        'maxitems' => 1,
+                        'appearance' => [
+                            'collapseAll' => true,
+                            'expandSingle' => true,
+                            'useSortable' => false,
+                            'enabledControls' => [
+                                'hide' => false,
+                            ],
+                            'fileUploadAllowed' => true,
+                        ],
+                    ],
+                ),
             ],
         ],
     ];
