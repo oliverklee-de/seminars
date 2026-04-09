@@ -2,6 +2,7 @@
 
 use OliverKlee\Seminars\Domain\Model\Price;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
+use TYPO3\CMS\Core\Information\Typo3Version;
 
 $tca = [
     'ctrl' => [
@@ -32,11 +33,7 @@ $tca = [
             'exclude' => true,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.crdate',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 8,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
                 'readOnly' => true,
             ],
         ],
@@ -369,22 +366,14 @@ $tca = [
             'exclude' => true,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.invoice_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime, int',
-                'size' => 12,
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'datepaid' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.datepaid',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 8,
-                'eval' => 'date, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'invoice_number' => [
@@ -545,5 +534,35 @@ $tca = [
         ],
     ],
 ];
+
+if ((new Typo3Version())->getMajorVersion() < 12) {
+    $legacyTca = [
+        'columns' => [
+            'crdate' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'invoice_date' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'datepaid' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'date, int',
+                ],
+            ],
+        ],
+    ];
+
+    $tca = \array_replace_recursive($tca, $legacyTca);
+}
 
 return $tca;
