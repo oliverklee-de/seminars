@@ -260,22 +260,14 @@ $tca = [
             'exclude' => 0,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.begin_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'end_date' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.end_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'timeslots' => [
@@ -298,11 +290,7 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.begin_date_registration',
             'displayCond' => 'FIELD:needs_registration:REQ:true',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'deadline_registration' => [
@@ -310,11 +298,7 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.deadline_registration',
             'displayCond' => 'FIELD:needs_registration:REQ:true',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'deadline_early_bird' => [
@@ -322,11 +306,7 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.deadline_early_bird',
             'displayCond' => 'FIELD:needs_registration:REQ:true',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'deadline_unregistration' => [
@@ -334,22 +314,15 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.deadline_unregistration',
             'displayCond' => 'FIELD:needs_registration:REQ:true',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'expiry' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.expiry',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 10,
-                'eval' => 'date, int',
-                'default' => 0,
+                'type' => 'datetime',
+                'format' => 'date',
             ],
         ],
         'details_page' => [
@@ -916,11 +889,7 @@ $tca = [
             'exclude' => true,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.download_start_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'hidden' => [
@@ -935,26 +904,16 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:LGL.starttime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 8,
-                'eval' => 'date, int',
-                'default' => 0,
+                'type' => 'datetime',
+                'format' => 'date',
             ],
         ],
         'endtime' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 8,
-                'eval' => 'date, int',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                    'lower' => mktime(0, 0, 0, date('m') - 1, date('d'), date('Y')),
-                ],
+                'type' => 'datetime',
+                'format' => 'date',
             ],
         ],
         'owner_feuser' => [
@@ -1015,22 +974,14 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.date_of_last_registration_digest',
             'displayCond' => 'FIELD:needs_registration:REQ:true',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
         'billing_start' => [
             'exclude' => true,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.billing_start',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
             ],
         ],
     ],
@@ -1098,6 +1049,90 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
             'title' => [
                 'config' => [
                     'eval' => 'required,trim',
+                ],
+            ],
+            'begin_date' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'end_date' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'begin_date_registration' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'deadline_registration' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'deadline_early_bird' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'deadline_unregistration' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'expiry' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'date, int',
+                ],
+            ],
+            'download_start_date' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'starttime' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'date, int',
+                ],
+            ],
+            'endtime' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'date, int',
+                ],
+            ],
+            'date_of_last_registration_digest' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
+                ],
+            ],
+            'billing_start' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'datetime, int',
                 ],
             ],
         ],

@@ -26,17 +26,15 @@ $tca = [
         'starttime' => [
             'exclude' => 1,
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'date, int',
+                'type' => 'datetime',
+                'format' => 'date',
             ],
         ],
         'endtime' => [
             'exclude' => 1,
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'date, int',
+                'type' => 'datetime',
+                'format' => 'date',
             ],
         ],
         'title' => [
@@ -52,6 +50,20 @@ $tca = [
 if ((new Typo3Version())->getMajorVersion() < 12) {
     $legacyTca = [
         'columns' => [
+            'starttime' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'date, int',
+                ],
+            ],
+            'endtime' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
+                    'eval' => 'date, int',
+                ],
+            ],
             'title' => [
                 'config' => [
                     'eval' => 'required',

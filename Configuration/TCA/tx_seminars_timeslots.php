@@ -24,11 +24,7 @@ $tca = [
             'exclude' => 0,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_timeslots.begin_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime,int',
-                'default' => 0,
+                'type' => 'datetime',
                 'required' => true,
             ],
         ],
@@ -36,11 +32,7 @@ $tca = [
             'exclude' => 0,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_timeslots.end_date',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'size' => 12,
-                'eval' => 'datetime, int',
-                'default' => 0,
+                'type' => 'datetime',
                 'required' => true,
             ],
         ],
@@ -80,11 +72,15 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
         'columns' => [
             'begin_date' => [
                 'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
                     'eval' => 'datetime, required, int',
                 ],
             ],
             'end_date' => [
                 'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputDateTime',
                     'eval' => 'datetime, required, int',
                 ],
             ],
