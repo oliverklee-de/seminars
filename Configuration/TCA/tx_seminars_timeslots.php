@@ -48,7 +48,12 @@ $tca = [
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
-                'items' => [['', '0']],
+                'items' => [
+                    [
+                        'label' => '',
+                        'value' => 0,
+                    ],
+                ],
             ],
         ],
         'room' => [
@@ -68,6 +73,10 @@ $tca = [
 ];
 
 if ((new Typo3Version())->getMajorVersion() < 12) {
+    unset(
+        $tca['columns']['place']['config']['items'],
+    );
+
     $legacyTca = [
         'columns' => [
             'begin_date' => [
@@ -82,6 +91,16 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'type' => 'input',
                     'renderType' => 'inputDateTime',
                     'eval' => 'datetime, required, int',
+                ],
+            ],
+            'place' => [
+                'config' => [
+                    'items' => [
+                        [
+                            '',
+                            0,
+                        ],
+                    ],
                 ],
             ],
         ],
