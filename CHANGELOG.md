@@ -225,7 +225,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
-- Fix TCA migrations in TYPO3 12LTS (#4865, #4867, #4868, #4870)
+- Fix TCA migrations in TYPO3 12LTS (#4865, #4867, #4868, #4870, #4872)
 - Fix a bogus label in the FE editor flexforms (#4846, #4847)
 - Drop nonsensical `NULL` from `ext_tables.sql` (#4834)
 - Avoid using deprecated feuserextrafields API (#4786)

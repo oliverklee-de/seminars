@@ -28,9 +28,8 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_target_groups.minimum_age',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 3,
-                'eval' => 'int',
                 'range' => [
                     'lower' => 0,
                     'upper' => 199,
@@ -41,9 +40,8 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_target_groups.maximum_age',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 3,
-                'eval' => 'int',
                 'range' => [
                     'lower' => 0,
                     'upper' => 199,
@@ -62,6 +60,18 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
             'title' => [
                 'config' => [
                     'eval' => 'required,trim',
+                ],
+            ],
+            'minimum_age' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'int',
+                ],
+            ],
+            'maximum_age' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'int',
                 ],
             ],
         ],

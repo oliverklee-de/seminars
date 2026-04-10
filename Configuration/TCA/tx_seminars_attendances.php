@@ -138,13 +138,12 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.seats',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 3,
                 'max' => 3,
-                'eval' => 'int',
                 'range' => [
+                    'lower' => 1,
                     'upper' => 999,
-                    'lower' => 0,
                 ],
                 'default' => 1,
             ],
@@ -197,10 +196,10 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.total_price',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
+                'format' => 'decimal',
                 'size' => 10,
                 'max' => 10,
-                'eval' => 'double2',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -236,10 +235,9 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.kids',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 3,
                 'max' => 3,
-                'eval' => 'int',
                 'range' => [
                     'upper' => 999,
                     'lower' => 0,
@@ -542,6 +540,25 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'type' => 'input',
                     'renderType' => 'inputDateTime',
                     'eval' => 'datetime, int',
+                ],
+            ],
+            'seats' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'int',
+                ],
+            ],
+            'total_price' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'double2',
+                ],
+            ],
+            'kids' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'int',
+                    'default' => 0,
                 ],
             ],
             'invoice_date' => [
