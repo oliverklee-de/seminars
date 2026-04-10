@@ -221,10 +221,9 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.credit_points',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 3,
                 'max' => 3,
-                'eval' => 'int',
                 'range' => [
                     'upper' => 999,
                     'lower' => 0,
@@ -494,10 +493,10 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.price_regular',
             'displayCond' => 'FIELD:price_on_request:REQ:false',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
+                'format' => 'decimal',
                 'size' => 10,
                 'max' => 10,
-                'eval' => 'double2',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -515,10 +514,10 @@ $tca = [
                 ],
             ],
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
+                'format' => 'decimal',
                 'size' => 10,
                 'max' => 10,
-                'eval' => 'double2',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -531,10 +530,10 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.price_special',
             'displayCond' => 'FIELD:price_on_request:REQ:false',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
+                'format' => 'decimal',
                 'size' => 10,
                 'max' => 10,
-                'eval' => 'double2',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -552,10 +551,10 @@ $tca = [
                 ],
             ],
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
+                'format' => 'decimal',
                 'size' => 10,
                 'max' => 10,
-                'eval' => 'double2',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -693,10 +692,9 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.attendees_min',
             'displayCond' => 'FIELD:needs_registration:REQ:true',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 4,
                 'max' => 4,
-                'eval' => 'int',
                 'range' => [
                     'upper' => 9999,
                     'lower' => 0,
@@ -709,10 +707,9 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.attendees_max',
             'displayCond' => 'FIELD:needs_registration:REQ:true',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 4,
                 'max' => 4,
-                'eval' => 'int',
                 'range' => [
                     'upper' => 9999,
                     'lower' => 0,
@@ -734,10 +731,9 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.offline_attendees',
             'displayCond' => 'FIELD:needs_registration:REQ:true',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 3,
                 'max' => 3,
-                'eval' => 'int',
                 'range' => [
                     'upper' => 999,
                     'lower' => 0,
@@ -1024,6 +1020,12 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'eval' => 'required,trim',
                 ],
             ],
+            'credit_points' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'int',
+                ],
+            ],
             'begin_date' => [
                 'config' => [
                     'type' => 'input',
@@ -1085,6 +1087,48 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                         ],
                     ],
                     'eval' => 'trim',
+                ],
+            ],
+            'price_regular' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'double2',
+                ],
+            ],
+            'price_regular_early' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'double2',
+                ],
+            ],
+            'price_special' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'double2',
+                ],
+            ],
+            'price_special_early' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'double2',
+                ],
+            ],
+            'attendees_min' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'int',
+                ],
+            ],
+            'attendees_max' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'int',
+                ],
+            ],
+            'offline_attendees' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'int',
                 ],
             ],
             'download_start_date' => [

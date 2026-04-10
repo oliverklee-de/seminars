@@ -147,10 +147,9 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_speakers.cancelation_period',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 3,
                 'max' => 3,
-                'eval' => 'int',
                 'range' => [
                     'upper' => 999,
                     'lower' => 0,
@@ -204,6 +203,12 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                 'config' => [
                     'type' => 'input',
                     'eval' => 'email, trim',
+                ],
+            ],
+            'cancelation_period' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'int',
                 ],
             ],
         ],
