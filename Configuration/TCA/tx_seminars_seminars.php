@@ -43,16 +43,16 @@ $tca = [
                 'default' => EventInterface::TYPE_SINGLE_EVENT,
                 'items' => [
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.0',
-                        EventInterface::TYPE_SINGLE_EVENT,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.0',
+                        'value' => EventInterface::TYPE_SINGLE_EVENT,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.1',
-                        EventInterface::TYPE_EVENT_TOPIC,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.1',
+                        'value' => EventInterface::TYPE_EVENT_TOPIC,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.2',
-                        EventInterface::TYPE_EVENT_DATE,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.2',
+                        'value' => EventInterface::TYPE_EVENT_DATE,
                     ],
                 ],
             ],
@@ -200,7 +200,12 @@ $tca = [
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
-                'items' => [['', '0']],
+                'items' => [
+                    [
+                        'label' => '',
+                        'value' => 0,
+                    ],
+                ],
                 'fieldControl' => [
                     'editPopup' => ['disabled' => false],
                     'addRecord' => ['disabled' => false],
@@ -241,16 +246,16 @@ $tca = [
                 'default' => EventDateInterface::EVENT_FORMAT_ON_SITE,
                 'items' => [
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.event_format.on-site',
-                        EventDateInterface::EVENT_FORMAT_ON_SITE,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.event_format.on-site',
+                        'value' => EventDateInterface::EVENT_FORMAT_ON_SITE,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.event_format.hybrid',
-                        EventDateInterface::EVENT_FORMAT_HYBRID,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.event_format.hybrid',
+                        'value' => EventDateInterface::EVENT_FORMAT_HYBRID,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.event_format.online',
-                        EventDateInterface::EVENT_FORMAT_ONLINE,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.event_format.online',
+                        'value' => EventDateInterface::EVENT_FORMAT_ONLINE,
                     ],
                 ],
             ],
@@ -816,22 +821,21 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'default' => 0,
+                'default' => EventInterface::STATUS_PLANNED,
                 'items' => [
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_planned',
-                        EventInterface::STATUS_PLANNED,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_planned',
+                        'value' => EventInterface::STATUS_PLANNED,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_canceled',
-                        EventInterface::STATUS_CANCELED,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_canceled',
+                        'value' => EventInterface::STATUS_CANCELED,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_confirmed',
-                        EventInterface::STATUS_CONFIRMED,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_confirmed',
+                        'value' => EventInterface::STATUS_CONFIRMED,
                     ],
                 ],
-
             ],
         ],
         'automatic_confirmation_cancelation' => [
@@ -1011,19 +1015,69 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
     unset(
         $tca['columns']['attached_files']['config'],
         $tca['columns']['image']['config'],
+        $tca['columns']['object_type']['config']['items'],
+        $tca['columns']['event_type']['config']['items'],
+        $tca['columns']['event_format']['config']['items'],
+        $tca['columns']['cancelled']['config']['items'],
     );
 
     $legacyTca = [
         'columns' => [
+            'object_type' => [
+                'config' => [
+                    'items' => [
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.0',
+                            EventInterface::TYPE_SINGLE_EVENT,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.1',
+                            EventInterface::TYPE_EVENT_TOPIC,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.2',
+                            EventInterface::TYPE_EVENT_DATE,
+                        ],
+                    ],
+                ],
+            ],
             'title' => [
                 'config' => [
                     'eval' => 'required,trim',
+                ],
+            ],
+            'event_type' => [
+                'config' => [
+                    'items' => [
+                        [
+                            '',
+                            0,
+                        ],
+                    ],
                 ],
             ],
             'credit_points' => [
                 'config' => [
                     'type' => 'input',
                     'eval' => 'int',
+                ],
+            ],
+            'event_format' => [
+                'config' => [
+                    'items' => [
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.event_format.on-site',
+                            EventDateInterface::EVENT_FORMAT_ON_SITE,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.event_format.hybrid',
+                            EventDateInterface::EVENT_FORMAT_HYBRID,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.event_format.online',
+                            EventDateInterface::EVENT_FORMAT_ONLINE,
+                        ],
+                    ],
                 ],
             ],
             'begin_date' => [
@@ -1164,6 +1218,24 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'type' => 'input',
                     'renderType' => 'inputDateTime',
                     'eval' => 'datetime, int',
+                ],
+            ],
+            'cancelled' => [
+                'config' => [
+                    'items' => [
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_planned',
+                            EventInterface::STATUS_PLANNED,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_canceled',
+                            EventInterface::STATUS_CANCELED,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_confirmed',
+                            EventInterface::STATUS_CONFIRMED,
+                        ],
+                    ],
                 ],
             ],
             'attached_files' => [

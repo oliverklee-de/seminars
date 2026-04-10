@@ -94,18 +94,21 @@ $tca = [
                 'renderType' => 'selectSingle',
                 'default' => Registration::ATTENDANCE_MODE_NOT_SET,
                 'items' => [
-                    ['', Registration::ATTENDANCE_MODE_NOT_SET],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.attendance_mode.onSite',
-                        Registration::ATTENDANCE_MODE_ON_SITE,
+                        'label' => '',
+                        'value' => Registration::ATTENDANCE_MODE_NOT_SET,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.attendance_mode.online',
-                        Registration::ATTENDANCE_MODE_ONLINE,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.attendance_mode.onSite',
+                        'value' => Registration::ATTENDANCE_MODE_ON_SITE,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.attendance_mode.hybrid',
-                        Registration::ATTENDANCE_MODE_HYBRID,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.attendance_mode.online',
+                        'value' => Registration::ATTENDANCE_MODE_ONLINE,
+                    ],
+                    [
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.attendance_mode.hybrid',
+                        'value' => Registration::ATTENDANCE_MODE_HYBRID,
                     ],
                 ],
             ],
@@ -120,16 +123,16 @@ $tca = [
                 'default' => Registration::STATUS_REGULAR,
                 'items' => [
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue.regular',
-                        Registration::STATUS_REGULAR,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue.regular',
+                        'value' => Registration::STATUS_REGULAR,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue.waitingList',
-                        Registration::STATUS_WAITING_LIST,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue.waitingList',
+                        'value' => Registration::STATUS_WAITING_LIST,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue.nonbindingReservation',
-                        Registration::STATUS_NONBINDING_RESERVATION,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue.nonbindingReservation',
+                        'value' => Registration::STATUS_NONBINDING_RESERVATION,
                     ],
                 ],
             ],
@@ -172,22 +175,25 @@ $tca = [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', ''],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.standard',
-                        Price::PRICE_STANDARD,
+                        'label' => '',
+                        'value' => '',
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.special',
-                        Price::PRICE_SPECIAL,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.standard',
+                        'value' => Price::PRICE_STANDARD,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.earlyBird',
-                        Price::PRICE_EARLY_BIRD,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.special',
+                        'value' => Price::PRICE_SPECIAL,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.specialEarlyBird',
-                        Price::PRICE_SPECIAL_EARLY_BIRD,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.earlyBird',
+                        'value' => Price::PRICE_EARLY_BIRD,
+                    ],
+                    [
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.specialEarlyBird',
+                        'value' => Price::PRICE_SPECIAL_EARLY_BIRD,
                     ],
                 ],
             ],
@@ -406,7 +412,12 @@ $tca = [
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
-                'items' => [['', '0']],
+                'items' => [
+                    [
+                        'label' => '',
+                        'value' => 0,
+                    ],
+                ],
             ],
         ],
         'company' => [
@@ -427,16 +438,16 @@ $tca = [
                 'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.gender.I.0',
-                        0,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.gender.I.0',
+                        'value' => 0,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.gender.I.1',
-                        1,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.gender.I.1',
+                        'value' => 1,
                     ],
                     [
-                        'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.gender.I.2',
-                        2,
+                        'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.gender.I.2',
+                        'value' => 2,
                     ],
                 ],
                 'size' => 1,
@@ -533,6 +544,14 @@ $tca = [
 ];
 
 if ((new Typo3Version())->getMajorVersion() < 12) {
+    unset(
+        $tca['columns']['attendance_mode']['config']['items'],
+        $tca['columns']['registration_queue']['config']['items'],
+        $tca['columns']['price_code']['config']['items'],
+        $tca['columns']['method_of_payment']['config']['items'],
+        $tca['columns']['gender']['config']['items'],
+    );
+
     $legacyTca = [
         'columns' => [
             'crdate' => [
@@ -542,10 +561,76 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'eval' => 'datetime, int',
                 ],
             ],
+            'attendance_mode' => [
+                'config' => [
+                    'items' => [
+                        [
+                            '',
+                            Registration::ATTENDANCE_MODE_NOT_SET,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.attendance_mode.onSite',
+                            Registration::ATTENDANCE_MODE_ON_SITE,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.attendance_mode.online',
+                            Registration::ATTENDANCE_MODE_ONLINE,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.attendance_mode.hybrid',
+                            Registration::ATTENDANCE_MODE_HYBRID,
+                        ],
+                    ],
+                ],
+            ],
+            'registration_queue' => [
+                'config' => [
+                    'items' => [
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue.regular',
+                            Registration::STATUS_REGULAR,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue.waitingList',
+                            Registration::STATUS_WAITING_LIST,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.registration_queue.nonbindingReservation',
+                            Registration::STATUS_NONBINDING_RESERVATION,
+                        ],
+                    ],
+                ],
+            ],
             'seats' => [
                 'config' => [
                     'type' => 'input',
                     'eval' => 'int',
+                ],
+            ],
+            'price_code' => [
+                'config' => [
+                    'items' => [
+                        [
+                            '',
+                            '',
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.standard',
+                            Price::PRICE_STANDARD,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.special',
+                            Price::PRICE_SPECIAL,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.earlyBird',
+                            Price::PRICE_EARLY_BIRD,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.price_code.specialEarlyBird',
+                            Price::PRICE_SPECIAL_EARLY_BIRD,
+                        ],
+                    ],
                 ],
             ],
             'total_price' => [
@@ -573,6 +658,34 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'type' => 'input',
                     'renderType' => 'inputDateTime',
                     'eval' => 'date, int',
+                ],
+            ],
+            'method_of_payment' => [
+                'config' => [
+                    'items' => [
+                        [
+                            '',
+                            0,
+                        ],
+                    ],
+                ],
+            ],
+            'gender' => [
+                'config' => [
+                    'items' => [
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.gender.I.0',
+                            0,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.gender.I.1',
+                            1,
+                        ],
+                        [
+                            'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.gender.I.2',
+                            2,
+                        ],
+                    ],
                 ],
             ],
             'email' => [
