@@ -1008,7 +1008,7 @@ class EventBagBuilder extends AbstractBagBuilder
                     'minimum_age',
                     $queryBuilder->createNamedParameter($age, Connection::PARAM_INT),
                 ),
-                $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->or(
                     $queryBuilder->expr()->eq(
                         'maximum_age',
                         $queryBuilder->createNamedParameter(0, Connection::PARAM_INT),
@@ -1029,7 +1029,7 @@ class EventBagBuilder extends AbstractBagBuilder
             ->select('uid')
             ->from($table)
             ->where(
-                $queryBuilder->expr()->orX(
+                $queryBuilder->expr()->or(
                     $queryBuilder->expr()->eq(
                         'object_type',
                         $queryBuilder->createNamedParameter(EventInterface::TYPE_SINGLE_EVENT, Connection::PARAM_INT),

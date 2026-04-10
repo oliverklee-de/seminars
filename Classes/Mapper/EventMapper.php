@@ -43,7 +43,7 @@ class EventMapper extends AbstractDataMapper
             ->select('*')
             ->from($this->getTableName())
             ->where(
-                $queryBuilder->expr()->andX(
+                $queryBuilder->expr()->and(
                     $queryBuilder->expr()->eq(
                         'cancelled',
                         $queryBuilder->createNamedParameter(EventInterface::STATUS_PLANNED, Connection::PARAM_INT),
