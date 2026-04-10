@@ -51,11 +51,10 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_speakers.homepage',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
+                'type' => 'link',
+                'allowedTypes' => ['page', 'url'],
                 'size' => 15,
                 'max' => 255,
-                'eval' => 'trim',
             ],
         ],
         'description' => [
@@ -140,9 +139,8 @@ $tca = [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_speakers.email',
             'config' => [
-                'type' => 'input',
+                'type' => 'email',
                 'size' => 30,
-                'eval' => 'email, trim',
             ],
         ],
         'cancelation_period' => [
@@ -178,6 +176,13 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'eval' => 'required,trim',
                 ],
             ],
+            'homepage' => [
+                'config' => [
+                    'type' => 'input',
+                    'renderType' => 'inputLink',
+                    'eval' => 'trim',
+                ],
+            ],
             'image' => [
                 'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
                     'image',
@@ -194,6 +199,12 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                         ],
                     ],
                 ),
+            ],
+            'email' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'email, trim',
+                ],
             ],
         ],
     ];

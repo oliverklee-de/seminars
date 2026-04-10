@@ -510,10 +510,9 @@ $tca = [
             'exclude' => true,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.email',
             'config' => [
-                'type' => 'input',
+                'type' => 'email',
                 'size' => 20,
                 'max' => 50,
-                'eval' => 'email, trim',
             ],
         ],
     ],
@@ -557,6 +556,12 @@ if ((new Typo3Version())->getMajorVersion() < 12) {
                     'type' => 'input',
                     'renderType' => 'inputDateTime',
                     'eval' => 'date, int',
+                ],
+            ],
+            'email' => [
+                'config' => [
+                    'type' => 'input',
+                    'eval' => 'email, trim',
                 ],
             ],
         ],
