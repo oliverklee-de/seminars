@@ -361,10 +361,6 @@
         <source>Sorry, there are no more vacancies.</source>
         <target state="final">Spiacente, non ci sono posti liberi.</target>
       </trans-unit>
-      <trans-unit id="message_willBeAnnounced" approved="yes">
-        <source>will be announced</source>
-        <target state="final">verrà annunciato</target>
-      </trans-unit>
       <trans-unit id="message_forFree" approved="yes">
         <source>free</source>
         <target state="final">libero</target>
