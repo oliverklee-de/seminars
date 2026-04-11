@@ -7,3 +7,12 @@ services:
   OliverKlee\Seminars\:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*,../Classes/Model/*,../Classes/OldModel/*,../Classes/Service/SingleViewLinkBuilder.php'
+
+  OliverKlee\Seminars\UpgradeWizards\CopyBillingAddressToRegistrationsUpgradeWizard:
+    public: true
+
+  OliverKlee\Seminars\UpgradeWizards\GenerateEventSlugsUpgradeWizard:
+    public: true
+
+  OliverKlee\Seminars\UpgradeWizards\RemoveDuplicateEventVenueRelationsUpgradeWizard:
+    public: true
