@@ -1,0 +1,11 @@
+"tx_seminars_seminars"
+,"uid","pid","title","subtitle","organizers","room","accreditation_number"
+,1,2,"event & organizer","subtitle & more",1,"Rooms 2 & 3","4 & 5"
+
+"tx_seminars_organizers"
+,"uid","pid","title","description","homepage"
+,1,2,"Rupf & Knack Deckendienste","Best organizer!","https://www.example.com"
+
+"tx_seminars_seminars_organizers_mm"
+,"uid_local","uid_foreign","sorting"
+,1,1,1

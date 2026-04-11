@@ -8,7 +8,6 @@ use OliverKlee\Oelib\Configuration\ConfigurationProxy;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Tests\Functional\FrontEnd\Fixtures\TestingDefaultController;
-use OliverKlee\Seminars\Tests\Support\LanguageHelper;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -18,8 +17,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class ListViewTest extends FunctionalTestCase
 {
-    use LanguageHelper;
-
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -37,28 +34,15 @@ final class ListViewTest extends FunctionalTestCase
         $extensionConfiguration = new DummyConfiguration();
         $extensionConfiguration->setAsBoolean('enableConfigCheck', false);
         ConfigurationProxy::setInstance('seminars', $extensionConfiguration);
-
-        $this->initializeBackEndLanguage();
-    }
-
-    protected function tearDown(): void
-    {
-        $this->testingFramework->cleanUpWithoutDatabase();
-
-        parent::tearDown();
-    }
-
-    private function getFrontEndController(): TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'];
     }
 
     private function buildSubjectForListView(string $fixtureFileName): TestingDefaultController
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/' . $fixtureFileName . '.xml');
+        $this->importDataSet(__DIR__ . '/Fixtures/ListView/' . $fixtureFileName . '.xml');
         $this->testingFramework->createFakeFrontEnd(1);
 
-        $frontEndController = $this->getFrontEndController();
+        $frontEndController = $GLOBALS['TSFE'] ?? null;
+        self::assertInstanceOf(TypoScriptFrontendController::class, $frontEndController);
         $subject = new TestingDefaultController();
         $subject->setContentObjectRenderer($frontEndController->cObj);
         $subject->init(
@@ -81,8 +65,6 @@ final class ListViewTest extends FunctionalTestCase
 
         return $subject;
     }
-
-    // Tests concerning the list view
 
     /**
      * @test
