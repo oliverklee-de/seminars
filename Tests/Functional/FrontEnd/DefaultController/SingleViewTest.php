@@ -50,7 +50,7 @@ final class SingleViewTest extends FunctionalTestCase
 
     private function buildSubjectForSingleView(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventSingleView.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/EventSingleView.csv');
         $this->testingFramework->createFakeFrontEnd(1);
 
         $frontEndController = $this->getFrontEndController();
