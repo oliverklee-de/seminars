@@ -225,7 +225,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
-- Avoid calling the deprecated `LanguageServer->getLL` (#4876)
+- Avoid calling the deprecated `LanguageServer->getLL` (#4876, #4877)
 - Avoid deprecated `ExpressionBuilder` methods (#4874)
 - Fix TCA migrations in TYPO3 12LTS (#4865, #4867, #4868, #4870, #4872, #4873)
 - Fix a bogus label in the FE editor flexforms (#4846, #4847)
