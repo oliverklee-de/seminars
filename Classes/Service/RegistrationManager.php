@@ -238,13 +238,13 @@ class RegistrationManager implements SingletonInterface
     /**
      * Sends the emails for a new registration.
      */
-    public function sendEmailsForNewRegistration(TemplateHelper $plugin, LegacyRegistration $registration): void
+    public function sendEmailsForNewRegistration(LegacyRegistration $registration): void
     {
         if ($registration->isOnRegistrationQueue()) {
-            $this->notifyAttendee($registration, $plugin, 'confirmationOnRegistrationForQueue');
+            $this->notifyAttendee($registration, 'confirmationOnRegistrationForQueue');
             $this->notifyOrganizers($registration, 'notificationOnRegistrationForQueue');
         } else {
-            $this->notifyAttendee($registration, $plugin);
+            $this->notifyAttendee($registration);
             $this->notifyOrganizers($registration);
         }
 
@@ -259,7 +259,7 @@ class RegistrationManager implements SingletonInterface
      *
      * @param positive-int $uid the UID of the registration that should be removed
      */
-    public function removeRegistration(int $uid, TemplateHelper $plugin): void
+    public function removeRegistration(int $uid): void
     {
         $unregistration = LegacyRegistration::fromUid($uid);
         if (!($unregistration instanceof LegacyRegistration)) {
@@ -276,16 +276,16 @@ class RegistrationManager implements SingletonInterface
             ['uid' => $uid],
         );
 
-        $this->notifyAttendee($unregistration, $plugin, 'confirmationOnUnregistration');
+        $this->notifyAttendee($unregistration, 'confirmationOnUnregistration');
         $this->notifyOrganizers($unregistration, 'notificationOnUnregistration');
 
-        $this->fillVacancies($plugin, $unregistration);
+        $this->fillVacancies($unregistration);
     }
 
     /**
      * Fills vacancies created through a unregistration with attendees from the registration queue.
      */
-    private function fillVacancies(TemplateHelper $plugin, LegacyRegistration $unregistration): void
+    private function fillVacancies(LegacyRegistration $unregistration): void
     {
         if (!$this->getSharedConfiguration()->getAsBoolean('automaticallyFillVacanciesOnUnregistration')) {
             return;
@@ -318,7 +318,7 @@ class RegistrationManager implements SingletonInterface
                 );
                 $vacancies -= $registration->getSeats();
 
-                $this->notifyAttendee($registration, $plugin, 'confirmationOnQueueUpdate');
+                $this->notifyAttendee($registration, 'confirmationOnQueueUpdate');
                 $this->notifyOrganizers($registration, 'notificationOnQueueUpdate');
 
                 if ($configuration->getAsBoolean('sendAdditionalNotificationEmails')) {
@@ -336,7 +336,6 @@ class RegistrationManager implements SingletonInterface
      */
     public function notifyAttendee(
         LegacyRegistration $oldRegistration,
-        TemplateHelper $plugin,
         string $helloSubjectPrefix = 'confirmation'
     ): void {
         if (!$this->getSharedConfiguration()->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {

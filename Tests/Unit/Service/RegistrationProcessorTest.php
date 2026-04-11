@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Unit\Service;
 
-use OliverKlee\Seminars\Configuration\LegacyConfiguration;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Price;
@@ -585,12 +584,10 @@ final class RegistrationProcessorTest extends UnitTestCase
 
         $legacyRegistrationMock = $this->createMock(LegacyRegistration::class);
         GeneralUtility::addInstance(LegacyRegistration::class, $legacyRegistrationMock);
-        $configurationMock = $this->createMock(LegacyConfiguration::class);
-        GeneralUtility::addInstance(LegacyConfiguration::class, $configurationMock);
 
         $this->registrationManagerMock
             ->expects(self::once())->method('sendEmailsForNewRegistration')
-            ->with($configurationMock, $legacyRegistrationMock);
+            ->with($legacyRegistrationMock);
 
         $this->subject->sendEmails($registration);
     }

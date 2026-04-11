@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Controller;
 
-use OliverKlee\Seminars\Configuration\LegacyConfiguration;
 use OliverKlee\Seminars\Domain\Model\Event\Event;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
@@ -111,8 +110,7 @@ class EventUnregistrationController extends ActionController
     {
         $uid = $registration->getUid();
         if (\is_int($uid) && $uid > 0) {
-            $configuration = GeneralUtility::makeInstance(LegacyConfiguration::class);
-            $this->registrationManager->removeRegistration($uid, $configuration);
+            $this->registrationManager->removeRegistration($uid);
         }
 
         return $this->redirect('thankYou', null, null, ['event' => $registration->getEvent()]);

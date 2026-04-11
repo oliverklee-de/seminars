@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Service;
 
-use OliverKlee\Seminars\Configuration\LegacyConfiguration;
 use OliverKlee\Seminars\Domain\Model\Event\Event;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
@@ -207,9 +206,8 @@ class RegistrationProcessor implements SingletonInterface
             throw new \RuntimeException('The registration has not been persisted yet.', 1668939288);
         }
 
-        $configuration = GeneralUtility::makeInstance(LegacyConfiguration::class);
         $legacyRegistration = GeneralUtility::makeInstance(LegacyRegistration::class, $registrationUid);
 
-        $this->registrationManager->sendEmailsForNewRegistration($configuration, $legacyRegistration);
+        $this->registrationManager->sendEmailsForNewRegistration($legacyRegistration);
     }
 }

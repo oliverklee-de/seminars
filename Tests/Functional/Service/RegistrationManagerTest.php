@@ -11,7 +11,6 @@ use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
-use OliverKlee\Seminars\FrontEnd\DefaultController;
 use OliverKlee\Seminars\Hooks\Interfaces\RegistrationEmail;
 use OliverKlee\Seminars\Mapper\RegistrationMapper;
 use OliverKlee\Seminars\Model\FrontEndUser;
@@ -118,25 +117,18 @@ final class RegistrationManagerTest extends FunctionalTestCase
         parent::tearDown();
     }
 
-    private function getFrontEndController(): TypoScriptFrontendController
-    {
-        $controller = $GLOBALS['TSFE'];
-        if (!$controller instanceof TypoScriptFrontendController) {
-            throw new \RuntimeException('No FE present!', 1645868170);
-        }
-
-        return $controller;
-    }
-
     private function setUpFakeFrontEnd(): TestingDefaultController
     {
         $this->importDataSet(__DIR__ . '/Fixtures/RegistrationPage.xml');
         $this->testingFramework->createFakeFrontEnd(1);
-        $controller = new TestingDefaultController();
-        $controller->setContentObjectRenderer($this->getFrontEndController()->cObj);
-        $controller->conf = ['registerPID' => '3'];
+        $frontendController = $GLOBALS['TSFE'] ?? null;
+        self::assertInstanceOf(TypoScriptFrontendController::class, $frontendController);
 
-        return $controller;
+        $defaultController = new TestingDefaultController();
+        $defaultController->setContentObjectRenderer($frontendController->cObj);
+        $defaultController->conf = ['registerPID' => '3'];
+
+        return $defaultController;
     }
 
     /**
@@ -459,11 +451,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->setUpFakeFrontEnd();
         $this->createEventWithOrganizer();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertArrayHasKey('foo@bar.com', $this->getToOfEmail($this->email));
     }
@@ -476,8 +466,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->setUpFakeFrontEnd();
         $this->createEventWithOrganizer();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $registrationUid = $this->testingFramework->createRecord(
             'tx_seminars_attendances',
@@ -490,7 +478,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->email->expects(self::never())->method('send');
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
     }
 
     /**
@@ -525,10 +513,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationEmail::class][] = $hookClass;
         $this->addMockedInstance($hookClass, $hook);
 
-        $controller = new DefaultController();
-        $controller->init();
-
-        $this->subject->notifyAttendee($registrationOld, $controller);
+        $this->subject->notifyAttendee($registrationOld);
     }
 
     /**
@@ -568,10 +553,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationEmail::class][] = $hookClass;
         $this->addMockedInstance($hookClass, $hook);
 
-        $controller = new DefaultController();
-        $controller->init();
-
-        $this->subject->notifyAttendee($registrationOld, $controller);
+        $this->subject->notifyAttendee($registrationOld);
     }
 
     /**
@@ -581,12 +563,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString(
             $this->translate('email_confirmationSubject'),
@@ -601,12 +581,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('test event', $this->extractTextBodyFromEmail($this->email));
     }
@@ -618,12 +596,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertNotContainsRawLabelKey($this->extractTextBodyFromEmail($this->email));
     }
@@ -635,12 +611,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringNotContainsString(' ,', $this->extractTextBodyFromEmail($this->email));
     }
@@ -652,12 +626,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('something nice to eat', $this->extractTextBodyFromEmail($this->email));
     }
@@ -669,12 +641,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('a nice, dry place', $this->extractTextBodyFromEmail($this->email));
     }
@@ -686,12 +656,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('learning Ruby on Rails', $this->extractTextBodyFromEmail($this->email));
     }
@@ -703,12 +671,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString(
             'test event',
@@ -723,8 +689,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
@@ -734,7 +698,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] = $defaultMailFromAddress;
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = $defaultMailFromName;
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertSame([$defaultMailFromAddress => $defaultMailFromName], $this->getFromOfEmail($this->email));
     }
@@ -746,8 +710,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
@@ -755,7 +717,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] = 'system-foo@example.com';
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = 'Mr. Default';
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertSame(['mail@example.com' => 'test organizer'], $this->getReplyToOfEmail($this->email));
     }
@@ -767,8 +729,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
@@ -776,7 +736,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] = '';
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = '';
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertSame(['mail@example.com' => 'test organizer'], $this->getFromOfEmail($this->email));
     }
@@ -788,12 +748,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('<html', $this->extractHtmlBodyFromEmail($this->email));
     }
@@ -825,12 +783,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringNotContainsString('###', $this->extractTextBodyFromEmail($this->email));
     }
@@ -842,12 +798,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringNotContainsString('###', $this->extractHtmlBodyFromEmail($this->email));
     }
@@ -871,10 +825,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             $userUid,
             ['email' => 'foo@bar.com'],
         );
-        $controller = new DefaultController();
-        $controller->init();
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('Harry Callagan', $this->extractHtmlBodyFromEmail($this->email));
     }
@@ -886,8 +838,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
@@ -899,7 +849,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ['email_footer' => $footer],
         );
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
         $result = $this->extractTextBodyFromEmail($this->email);
 
         self::assertStringContainsString("\n-- \n" . $footer, $result);
@@ -913,9 +863,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
 
@@ -926,7 +873,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ['email_footer' => $footer],
         );
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
         $result = $this->extractTextBodyFromEmail($this->email);
 
         self::assertStringContainsString("\n-- \n" . $footer, $result);
@@ -939,8 +886,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
@@ -952,7 +897,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ['email_footer' => $footer],
         );
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
         $result = $this->extractHtmlBodyFromEmail($this->email);
 
         self::assertStringContainsString($footer, $result);
@@ -966,9 +911,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
 
@@ -979,7 +921,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ['email_footer' => $footer],
         );
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
         $result = $this->extractHtmlBodyFromEmail($this->email);
 
         self::assertStringContainsString("organizer<br />\nfooter", $result);
@@ -992,15 +934,13 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
 
         $this->testingFramework->changeRecord('tx_seminars_organizers', $this->organizerUid, ['email_footer' => '']);
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
         $result = $this->extractHtmlBodyFromEmail($this->email);
 
         self::assertStringNotContainsString('<p></p>', $result);
@@ -1019,10 +959,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             EventInterface::STATUS_CONFIRMED,
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringNotContainsString(
             $this->translate('label_planned_disclaimer'),
@@ -1043,10 +980,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             EventInterface::STATUS_CANCELED,
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringNotContainsString(
             $this->translate('label_planned_disclaimer'),
@@ -1067,10 +1001,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             EventInterface::STATUS_PLANNED,
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString(
             $this->translate('label_planned_disclaimer'),
@@ -1092,10 +1023,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             EventInterface::STATUS_PLANNED,
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringNotContainsString(
             $this->translate('label_planned_disclaimer'),
@@ -1115,12 +1043,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'EXT:seminars/Resources/Private/CSS/thankYouMail.css',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('style=', $this->extractHtmlBodyFromEmail($this->email));
     }
@@ -1132,13 +1057,11 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
         $registration->setAttendeesNames('foo1 foo2');
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('foo1 foo2', $this->extractTextBodyFromEmail($this->email));
     }
@@ -1150,13 +1073,11 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
         $registration->setAttendeesNames("foo1\nfoo2");
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString("1. foo1\n2. foo2", $this->extractTextBodyFromEmail($this->email));
     }
@@ -1173,13 +1094,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'EXT:seminars/Resources/Private/CSS/thankYouMail.css',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $this->createEventWithOrganizer();
         $registration = $this->createRegistration();
         $registration->setAttendeesNames("foo1\nfoo2");
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $emailBody = $this->extractHtmlBodyFromEmail($this->email);
 
@@ -1207,11 +1125,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('foo_place', $this->extractTextBodyFromEmail($this->email));
     }
@@ -1236,11 +1151,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('foo_street', $this->extractTextBodyFromEmail($this->email));
     }
@@ -1264,11 +1176,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString("place_title\nplace_address", $this->extractTextBodyFromEmail($this->email));
     }
@@ -1297,11 +1206,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $emailBody = $this->extractHtmlBodyFromEmail($this->email);
 
@@ -1328,11 +1234,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString("place_title\nplace_address", $this->extractTextBodyFromEmail($this->email));
     }
@@ -1356,11 +1259,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('address1 address2', $this->extractTextBodyFromEmail($this->email));
     }
@@ -1384,11 +1284,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('address1 address2', $this->extractTextBodyFromEmail($this->email));
     }
@@ -1412,11 +1309,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('address1 address2', $this->extractTextBodyFromEmail($this->email));
     }
@@ -1440,11 +1334,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('address1 address2', $this->extractTextBodyFromEmail($this->email));
     }
@@ -1468,11 +1359,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('address1 address2', $this->extractTextBodyFromEmail($this->email));
     }
@@ -1501,11 +1389,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('address1 address2', $this->extractHtmlBodyFromEmail($this->email));
     }
@@ -1534,11 +1419,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString('address1 address2 address3', $this->extractTextBodyFromEmail($this->email));
     }
@@ -1562,11 +1444,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $textBody = $this->extractTextBodyFromEmail($this->email);
         self::assertSame(1, \substr_count($textBody, 'Footown'));
@@ -1596,11 +1475,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $htmlBody = $this->extractHtmlBodyFromEmail($this->email);
         self::assertSame(1, \substr_count($htmlBody, 'Footown'));
@@ -1627,11 +1503,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer();
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
 
@@ -1651,11 +1524,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer();
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller, 'confirmation');
+        $this->subject->notifyAttendee($registration, 'confirmation');
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
 
@@ -1675,11 +1545,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer();
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller, 'confirmationOnUnregistration');
+        $this->subject->notifyAttendee($registration, 'confirmationOnUnregistration');
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
 
@@ -1695,11 +1562,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer();
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -1719,11 +1583,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $beginDate = $this->now + 1000;
         $this->createEventWithOrganizer(['begin_date' => $beginDate]);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -1742,11 +1603,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer(['begin_date' => 0]);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         self::assertSame([], $icsAttachments);
@@ -1762,11 +1620,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $endDate = $this->now + 2000;
         $this->createEventWithOrganizer(['end_date' => $endDate]);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -1785,11 +1640,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer(['end_date' => 0]);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         self::assertSame([], $icsAttachments);
@@ -1804,11 +1656,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer();
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -1827,11 +1676,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer(['webinar_url' => 'https://example.com']);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -1862,11 +1708,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -1897,11 +1740,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'place',
         );
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -1939,11 +1779,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             $venueUid2,
             'place',
         );
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -1962,11 +1800,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer(['event_format' => EventDateInterface::EVENT_FORMAT_HYBRID]);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -1996,11 +1831,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             $venueUid,
             'place',
         );
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2023,11 +1856,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'webinar_url' => $webinarUrl,
         ]);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2060,11 +1890,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             $venueUid,
             'place',
         );
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2087,11 +1915,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'webinar_url' => $webinarUrl,
         ]);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2110,11 +1935,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer(['event_format' => EventDateInterface::EVENT_FORMAT_ONLINE]);
 
-        $controller = new DefaultController();
-        $controller->init();
-
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2148,11 +1970,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             $venueUid,
             'place',
         );
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2174,11 +1994,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'event_format' => EventDateInterface::EVENT_FORMAT_ON_SITE,
             'webinar_url' => $webinarUrl,
         ]);
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2200,11 +2018,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'event_format' => EventDateInterface::EVENT_FORMAT_ON_SITE,
             'webinar_url' => $webinarUrl,
         ]);
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2226,11 +2042,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'event_format' => EventDateInterface::EVENT_FORMAT_HYBRID,
             'webinar_url' => $webinarUrl,
         ]);
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2262,11 +2076,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             $venueUid,
             'place',
         );
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2284,11 +2096,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer(['event_format' => EventDateInterface::EVENT_FORMAT_HYBRID]);
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2310,11 +2120,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'event_format' => EventDateInterface::EVENT_FORMAT_ONLINE,
             'webinar_url' => $webinarUrl,
         ]);
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2332,11 +2140,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
         $this->createEventWithOrganizer(['event_format' => EventDateInterface::EVENT_FORMAT_ONLINE]);
-        $controller = new DefaultController();
-        $controller->init();
 
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $icsAttachments = $this->filterEmailAttachmentsByType($this->email, 'text/calendar');
         $firstIcsAttachment = $icsAttachments[0] ?? null;
@@ -2353,8 +2159,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $webinarUrl = 'https://example.com';
         $this->createEventWithOrganizer([
@@ -2362,7 +2166,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'webinar_url' => $webinarUrl,
         ]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringNotContainsString($webinarUrl, $this->extractTextBodyFromEmail($this->email));
     }
@@ -2374,8 +2178,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $webinarUrl = 'https://example.com';
         $this->createEventWithOrganizer([
@@ -2383,7 +2185,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'webinar_url' => $webinarUrl,
         ]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringNotContainsString($webinarUrl, $this->extractHtmlBodyFromEmail($this->email));
     }
@@ -2395,8 +2197,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $webinarUrl = 'https://example.com';
         $this->createEventWithOrganizer([
@@ -2404,7 +2204,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'webinar_url' => $webinarUrl,
         ]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString($webinarUrl, $this->extractTextBodyFromEmail($this->email));
     }
@@ -2416,8 +2216,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $webinarUrl = 'https://example.com';
         $this->createEventWithOrganizer([
@@ -2425,7 +2223,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'webinar_url' => $webinarUrl,
         ]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString(
             '<a href="' . $webinarUrl . '">' . $webinarUrl . '</a>',
@@ -2440,8 +2238,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $webinarUrl = 'https://example.com';
         $this->createEventWithOrganizer([
@@ -2449,7 +2245,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'webinar_url' => $webinarUrl,
         ]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString($webinarUrl, $this->extractTextBodyFromEmail($this->email));
     }
@@ -2461,8 +2257,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $webinarUrl = 'https://example.com';
         $this->createEventWithOrganizer([
@@ -2470,7 +2264,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'webinar_url' => $webinarUrl,
         ]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString(
             '<a href="' . $webinarUrl . '">' . $webinarUrl . '</a>',
@@ -2485,13 +2279,11 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $additionalEmailText = 'Welcome!';
         $this->createEventWithOrganizer(['additional_email_text' => $additionalEmailText]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString($additionalEmailText, $this->extractTextBodyFromEmail($this->email));
     }
@@ -2503,13 +2295,11 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $additionalEmailText = 'Welcome!';
         $this->createEventWithOrganizer(['additional_email_text' => $additionalEmailText]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString($additionalEmailText, $this->extractHtmlBodyFromEmail($this->email));
     }
@@ -2521,13 +2311,11 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $additionalEmailText = 'Welcome!';
         $this->createEventWithOrganizer(['additional_email_text' => $additionalEmailText]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString(
             '<p>' . $additionalEmailText . '</p>',
@@ -2542,13 +2330,11 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $additionalEmailText = 'a & b < c';
         $this->createEventWithOrganizer(['additional_email_text' => $additionalEmailText]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString(
             \htmlspecialchars($additionalEmailText, ENT_QUOTES | ENT_HTML5),
@@ -2563,13 +2349,11 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $additionalEmailText = "a\nb";
         $this->createEventWithOrganizer(['additional_email_text' => $additionalEmailText]);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringContainsString(\nl2br($additionalEmailText), $this->extractHtmlBodyFromEmail($this->email));
     }
@@ -2581,12 +2365,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer(['additional_email_text' => '']);
         $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         self::assertStringNotContainsString('<p></p>', $this->extractHtmlBodyFromEmail($this->email));
     }
@@ -2598,14 +2380,12 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationManager/notifyAttendee/OnSiteRegistration.csv');
         $registration = new LegacyRegistration(1);
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $label = $this->translate('label_attendance_mode.onSite');
         $textBody = $this->extractTextBodyFromEmail($this->email);
@@ -2619,14 +2399,12 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationManager/notifyAttendee/OnSiteRegistration.csv');
         $registration = new LegacyRegistration(1);
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $label = $this->translate('label_attendance_mode.onSite');
         $htmlBody = $this->extractHtmlBodyFromEmail($this->email);
@@ -2640,14 +2418,12 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationManager/notifyAttendee/OnlineRegistration.csv');
         $registration = new LegacyRegistration(1);
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $label = $this->translate('label_attendance_mode.online');
         $textBody = $this->extractTextBodyFromEmail($this->email);
@@ -2661,14 +2437,12 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
 
         $this->createEventWithOrganizer();
         $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationManager/notifyAttendee/OnlineRegistration.csv');
         $registration = new LegacyRegistration(1);
 
-        $this->subject->notifyAttendee($registration, $controller);
+        $this->subject->notifyAttendee($registration);
 
         $label = $this->translate('label_attendance_mode.online');
         $htmlBody = $this->extractHtmlBodyFromEmail($this->email);

@@ -11,7 +11,6 @@ use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
-use OliverKlee\Seminars\FrontEnd\DefaultController;
 use OliverKlee\Seminars\Hooks\Interfaces\RegistrationEmail;
 use OliverKlee\Seminars\Mapper\RegistrationMapper;
 use OliverKlee\Seminars\Model\FrontEndUser;
@@ -67,8 +66,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     private int $loginPageUid = 0;
 
     private int $registrationPageUid = 0;
-
-    private DefaultController $pi1;
 
     private TestingLegacyEvent $fullyBookedSeminar;
 
@@ -170,16 +167,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->testingFramework->changeRecord('pages', $this->loginPageUid, ['slug' => '/login']);
         $this->registrationPageUid = $this->testingFramework->createFrontEndPage($this->rootPageUid);
         $this->testingFramework->changeRecord('pages', $this->registrationPageUid, ['slug' => '/eventRegistration']);
-
-        $this->pi1 = new DefaultController();
-
-        $this->pi1->init(
-            [
-                'isStaticTemplateLoaded' => 1,
-                'loginPID' => $this->loginPageUid,
-                'registerPID' => $this->registrationPageUid,
-            ],
-        );
     }
 
     /**
@@ -298,22 +285,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         self::assertGreaterThan(
             0,
             $this->registrationPageUid,
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function createFrontEndPagesCreatesPi1(): void
-    {
-        $this->createFrontEndPages();
-
-        self::assertNotNull(
-            $this->pi1,
-        );
-        self::assertInstanceOf(
-            DefaultController::class,
-            $this->pi1,
         );
     }
 
@@ -816,7 +787,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ],
         );
 
-        $this->subject->removeRegistration($registrationUid, $this->pi1);
+        $this->subject->removeRegistration($registrationUid);
         $query = $this->getConnectionPool()->getQueryBuilderForTable('tx_seminars_attendances');
         $query->getRestrictions()->removeAll();
         $queryResult = $query
@@ -861,7 +832,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ],
         );
 
-        $this->subject->removeRegistration($registrationUid, $this->pi1);
+        $this->subject->removeRegistration($registrationUid);
         $connection = $this->getConnectionForTable('tx_seminars_attendances');
 
         self::assertSame(
@@ -902,7 +873,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ],
         );
 
-        $this->subject->removeRegistration($registrationUid, $this->pi1);
+        $this->subject->removeRegistration($registrationUid);
         $connection = $this->getConnectionForTable('tx_seminars_attendances');
 
         self::assertSame(
@@ -941,7 +912,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ],
         );
 
-        $this->subject->removeRegistration($registrationUid, $this->pi1);
+        $this->subject->removeRegistration($registrationUid);
         $connection = $this->getConnectionForTable('tx_seminars_attendances');
 
         self::assertSame(
@@ -975,12 +946,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
                 'deadline_unregistration' => $this->now + Time::SECONDS_PER_DAY,
             ],
         );
-        $pi1 = new DefaultController();
-        $pi1->init();
 
         $subject->notifyAttendee(
             $registration,
-            $pi1,
             'confirmationOnUnregistration',
         );
     }
@@ -1003,10 +971,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ['deadline_unregistration' => $this->now - Time::SECONDS_PER_DAY],
         );
 
-        $pi1 = new DefaultController();
-        $pi1->init();
-
-        $subject->notifyAttendee($registration, $pi1);
+        $subject->notifyAttendee($registration);
     }
 
     /**
@@ -1032,10 +997,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ['deadline_unregistration' => $this->now + Time::SECONDS_PER_DAY],
         );
 
-        $pi1 = new DefaultController();
-        $pi1->init();
-
-        $subject->notifyAttendee($registration, $pi1);
+        $subject->notifyAttendee($registration);
     }
 
     /**
@@ -1068,12 +1030,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ['registration_queue' => 1],
         );
 
-        $pi1 = new DefaultController();
-        $pi1->init();
-
         $subject->notifyAttendee(
             $registration,
-            $pi1,
             'confirmationOnRegistrationForQueue',
         );
     }
@@ -1108,12 +1066,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ['registration_queue' => 1],
         );
 
-        $pi1 = new DefaultController();
-        $pi1->init();
-
         $subject->notifyAttendee(
             $registration,
-            $pi1,
             'confirmationOnQueueUpdate',
         );
     }
@@ -1140,10 +1094,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationEmail::class][] = $hookClass;
         $this->addMockedInstance($hookClass, $hook);
 
-        $controller = new DefaultController();
-        $controller->init();
-
-        $this->subject->notifyAttendee($registrationOld, $controller);
+        $this->subject->notifyAttendee($registrationOld);
     }
 
     // Tests regarding the notification of organizers
