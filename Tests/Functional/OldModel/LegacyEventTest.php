@@ -509,7 +509,7 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getPlaceWithDetailsReturnsWillBeAnnouncedForNoPlace(): void
+    public function getPlaceWithDetailsForEventWithoutVenusReturnsEmptyString(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
         $plugin = $this->buildFrontEndAndPlugin();
@@ -517,8 +517,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $result = $subject->getPlaceWithDetails($plugin);
 
-        $expected = $this->translate('message_willBeAnnounced');
-        self::assertStringContainsString($expected, $result);
+        self::assertSame('', $result);
     }
 
     /**
@@ -611,7 +610,7 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getPlaceWithDetailsRawReturnsWillBeAnnouncedForNoPlace(): void
+    public function getPlaceWithDetailsRawForEventWithoutVenuesReturnsEmptyString(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
         $subject = TestingLegacyEvent::fromUid(1);
@@ -619,8 +618,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $result = $subject->getPlaceWithDetailsRaw();
 
-        $expected = $this->translate('message_willBeAnnounced');
-        self::assertStringContainsString($expected, $result);
+        self::assertSame('', $result);
     }
 
     /**
@@ -707,7 +705,7 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getPlaceShortReturnsWillBeAnnouncedForNoPlaces(): void
+    public function getPlaceShortForEventWithoutVenuesReturnsEmptyString(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
         $subject = TestingLegacyEvent::fromUid(1);
@@ -715,8 +713,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $result = $subject->getPlaceShort();
 
-        $expected = $this->translate('message_willBeAnnounced');
-        self::assertStringContainsString($expected, $result);
+        self::assertSame('', $result);
     }
 
     /**

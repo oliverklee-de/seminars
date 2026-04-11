@@ -267,9 +267,6 @@
       <trans-unit id="message_noVacancies">
         <source>Sorry, there are no more vacancies.</source>
       </trans-unit>
-      <trans-unit id="message_willBeAnnounced">
-        <source>will be announced</source>
-      </trans-unit>
       <trans-unit id="message_forFree">
         <source>free</source>
       </trans-unit>

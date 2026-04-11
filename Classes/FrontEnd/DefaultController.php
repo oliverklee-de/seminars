@@ -361,6 +361,7 @@ class DefaultController extends TemplateHelper
         $result = '';
         $targetPageId = 0;
 
+        \assert($this->seminar instanceof LegacyEvent);
         if (
             $this->seminar->canViewRegistrationsList(
                 $this->whatToDisplay,
@@ -696,12 +697,16 @@ class DefaultController extends TemplateHelper
      */
     private function setPlaceMarker(): void
     {
-        $this->setMarker(
-            'place',
-            $this->getConfValueBoolean('showSiteDetails', 's_template_special')
-                ? $this->seminar->getPlaceWithDetails($this)
-                : \htmlspecialchars($this->seminar->getPlaceShort(), ENT_QUOTES | ENT_HTML5),
-        );
+        \assert($this->seminar instanceof LegacyEvent);
+        if (!$this->seminar->hasPlace()) {
+            $this->hideSubparts('place', 'field_wrapper');
+            return;
+        }
+
+        $renderedPlaces = $this->getConfValueBoolean('showSiteDetails', 's_template_special')
+            ? $this->seminar->getPlaceWithDetails($this)
+            : \htmlspecialchars($this->seminar->getPlaceShort(), ENT_QUOTES | ENT_HTML5);
+        $this->setMarker('place', $renderedPlaces);
     }
 
     /**
@@ -1588,6 +1593,7 @@ class DefaultController extends TemplateHelper
     {
         $result = '';
 
+        \assert($this->seminar instanceof LegacyEvent);
         $eventUid = $this->seminar->getUid();
         if ($eventUid > 0) {
             $event = MapperRegistry::get(EventMapper::class)->find($eventUid);

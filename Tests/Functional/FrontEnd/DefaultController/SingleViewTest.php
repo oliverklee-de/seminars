@@ -137,6 +137,21 @@ final class SingleViewTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function singleViewForEventWithoutVenuesDoesNotHaveVenueHeading(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithoutVenue.csv');
+        $this->subject->piVars['showUid'] = '1';
+
+        $result = $this->subject->main('', []);
+
+        $expected = LocalizationUtility::translate('label_place', 'seminars');
+        self::assertIsString($expected);
+        self::assertStringNotContainsString($expected, $result);
+    }
+
+    /**
+     * @test
+     */
     public function singleViewForEventWithVenueHasVenueHeading(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOneVenue.csv');

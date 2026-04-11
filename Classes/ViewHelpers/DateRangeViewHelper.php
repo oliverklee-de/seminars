@@ -32,7 +32,7 @@ class DateRangeViewHelper
     public function render(AbstractTimeSpan $timeSpan, string $dash = '&#8211;'): string
     {
         if (!$timeSpan->hasBeginDate()) {
-            return LocalizationUtility::translate('message_willBeAnnounced', 'seminars');
+            return '';
         }
 
         $beginDate = $timeSpan->getBeginDateAsUnixTimeStamp();

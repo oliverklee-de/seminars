@@ -472,7 +472,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method canViewRegistrationsList\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 3
+			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -592,11 +592,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method getPlaceShort\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 2
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Cannot call method getPlaceWithDetails\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -702,7 +697,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 5
+			count: 3
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -846,11 +841,6 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Cannot call method isCanceled\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Cannot call method isEarlyBirdDeadlineOver\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
 			path: ../../Classes/FrontEnd/DefaultController.php
@@ -867,11 +857,6 @@ parameters:
 
 		-
 			message: "#^Cannot call method isHidden\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Cannot call method isOwnerFeUser\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -1001,6 +986,11 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
+			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'list_vip…'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
+			count: 2
+			path: ../../Classes/FrontEnd/DefaultController.php
+
+		-
 			message: "#^Parameter \\#2 \\$event of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getLinkToRegistrationPage\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
@@ -1016,8 +1006,23 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
+			message: "#^Parameter \\#2 \\$registrationsListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
+			count: 1
+			path: ../../Classes/FrontEnd/DefaultController.php
+
+		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, array\\|float\\|int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
 			count: 1
+			path: ../../Classes/FrontEnd/DefaultController.php
+
+		-
+			message: "#^Parameter \\#3 \\$registrationsVipListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
+			count: 1
+			path: ../../Classes/FrontEnd/DefaultController.php
+
+		-
+			message: "#^Parameter \\#4 \\$accessLevel of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'attendees_and…'\\|'login', string given\\.$#"
+			count: 2
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -1629,11 +1634,6 @@ parameters:
 			message: "#^PHPDoc tag @var with type array\\<string, int\\<0, max\\>\\|string\\> is not subtype of type array\\<string, string\\>\\.$#"
 			count: 1
 			path: ../../Classes/UpgradeWizards/GenerateEventSlugsUpgradeWizard.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\ViewHelpers\\\\DateRangeViewHelper\\:\\:render\\(\\) should return string but returns string\\|null\\.$#"
-			count: 1
-			path: ../../Classes/ViewHelpers/DateRangeViewHelper.php
 
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
