@@ -10,7 +10,6 @@ use OliverKlee\Seminars\Model\AbstractTimeSpan;
 use OliverKlee\Seminars\ViewHelpers\DateRangeViewHelper;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -50,15 +49,12 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function renderWithNoDatesReturnsWillBeAnnounced(): void
+    public function renderWithNoDatesReturnsEmptyString(): void
     {
         $timeSpan = $this->getMockForAbstractClass(AbstractTimeSpan::class);
         $timeSpan->setData([]);
 
-        self::assertSame(
-            LocalizationUtility::translate('message_willBeAnnounced', 'seminars'),
-            $this->subject->render($timeSpan),
-        );
+        self::assertSame('', $this->subject->render($timeSpan));
     }
 
     /**

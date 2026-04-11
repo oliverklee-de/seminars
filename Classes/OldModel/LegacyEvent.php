@@ -215,9 +215,8 @@ class LegacyEvent extends AbstractTimeSpan
     }
 
     /**
-     * Gets our place (or places), complete as RTE'ed HTML with address and
-     * links. Returns a localized string "will be announced" if the seminar has
-     * no places set.
+     * Gets our venue(s), complete as RTE'ed HTML with address and
+     * links.
      *
      * @param TemplateHelper $plugin the current FE plugin
      *
@@ -226,8 +225,7 @@ class LegacyEvent extends AbstractTimeSpan
     public function getPlaceWithDetails(TemplateHelper $plugin): string
     {
         if (!$this->hasPlace()) {
-            $plugin->setMarker('message_will_be_announced', $this->translate('message_willBeAnnounced'));
-            return $plugin->getSubpart('PLACE_LIST_EMPTY');
+            return '';
         }
 
         $result = '';
@@ -312,18 +310,15 @@ class LegacyEvent extends AbstractTimeSpan
     }
 
     /**
-     * Gets our place (or places) with address and links as HTML, not RTE'ed yet,
+     * Gets our venue(s) with address and links as HTML, not RTE'ed yet,
      * separated by LF.
-     *
-     * Returns a localized string "will be announced" if the seminar has no
-     * places set.
      *
      * @return string our places description (or '' if there is an error)
      */
     protected function getPlaceWithDetailsRaw(): string
     {
         if (!$this->hasPlace()) {
-            return $this->translate('message_willBeAnnounced');
+            return '';
         }
 
         $placeTexts = [];
@@ -386,9 +381,7 @@ class LegacyEvent extends AbstractTimeSpan
     }
 
     /**
-     * Gets our place (or places) as a plain text list (just the names).
-     * Returns a localized string "will be announced" if the seminar has no
-     * places set.
+     * Gets our venue(s) as a plain text list (just the names).
      *
      * Note: This function does not htmlspecialchar the place titles.
      *
@@ -397,7 +390,7 @@ class LegacyEvent extends AbstractTimeSpan
     public function getPlaceShort(): string
     {
         if (!$this->hasPlace()) {
-            return $this->translate('message_willBeAnnounced');
+            return '';
         }
 
         $places = $this->getPlacesAsArray();

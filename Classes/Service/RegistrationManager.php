@@ -1006,7 +1006,7 @@ class RegistrationManager implements SingletonInterface
     {
         $template = $this->getInitializedEmailTemplate();
         if (!$event->hasPlace()) {
-            $template->setMarker('place', $this->translate('message_willBeAnnounced'));
+            $template->setMarker('place', '');
             return;
         }
 

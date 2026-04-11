@@ -1248,26 +1248,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function notifyAttendeeForEventWithNoPlaceSendsWillBeAnnouncedMessage(): void
-    {
-        $this->setUpFakeFrontEnd();
-        $this->configuration->setAsBoolean('sendConfirmation', true);
-        $controller = new DefaultController();
-        $controller->init();
-
-        $this->createEventWithOrganizer();
-        $registration = $this->createRegistration();
-        $this->subject->notifyAttendee($registration, $controller);
-
-        self::assertStringContainsString(
-            $this->translate('message_willBeAnnounced'),
-            $this->extractTextBodyFromEmail($this->email),
-        );
-    }
-
-    /**
-     * @test
-     */
     public function notifyAttendeeForPlainTextMailSeparatesPlacesTitleAndAddressWithLinefeed(): void
     {
         $this->setUpFakeFrontEnd();
