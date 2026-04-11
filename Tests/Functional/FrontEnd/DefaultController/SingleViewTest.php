@@ -10,6 +10,7 @@ use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Seo\SingleViewPageTitleProvider;
 use OliverKlee\Seminars\Tests\Functional\FrontEnd\Fixtures\TestingDefaultController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -79,7 +80,7 @@ final class SingleViewTest extends FunctionalTestCase
      *
      * @dataProvider eventDataDataProvider
      */
-    public function singleViewContainsHtmlspecialcharedEventData(string $expected): void
+    public function singleViewContainsEncodedEventData(string $expected): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOrganizer.csv');
         $this->subject->piVars['showUid'] = '1';
@@ -106,7 +107,7 @@ final class SingleViewTest extends FunctionalTestCase
      *
      * @dataProvider organizerDataDataProvider
      */
-    public function singleViewContainsHtmlspecialcharedOrganizerData(string $expected): void
+    public function singleViewContainsEncodedOrganizerData(string $expected): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOrganizer.csv');
         $this->subject->piVars['showUid'] = '1';
@@ -131,5 +132,62 @@ final class SingleViewTest extends FunctionalTestCase
         $this->subject->main('', []);
 
         self::assertSame('event & organizer', $pageTitleProvider->getTitle());
+    }
+
+    /**
+     * @test
+     */
+    public function singleViewForEventWithVenueHasVenueHeading(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOneVenue.csv');
+        $this->subject->piVars['showUid'] = '1';
+
+        $result = $this->subject->main('', []);
+
+        $expected = LocalizationUtility::translate('label_place', 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function singleViewForEventWithVenueAndVenueDetailsEnabledHasEncodedVenueTitle(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOneVenue.csv');
+        $this->subject->setConfigurationValue('showSiteDetails', true);
+        $this->subject->piVars['showUid'] = '1';
+
+        $result = $this->subject->main('', []);
+
+        self::assertStringContainsString('The great &amp; calm hotel', $result);
+    }
+
+    /**
+     * @test
+     */
+    public function singleViewForEventWithVenueAndVenueDetailsDisabledHasEncodedVenueTitle(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOneVenue.csv');
+        $this->subject->setConfigurationValue('showSiteDetails', false);
+        $this->subject->piVars['showUid'] = '1';
+
+        $result = $this->subject->main('', []);
+
+        self::assertStringContainsString('The great &amp; calm hotel', $result);
+    }
+
+    /**
+     * @test
+     */
+    public function singleViewForEventWithVenueAndVenueDetailsEnabledHasEncodedVenueAddress(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOneVenue.csv');
+        $this->subject->setConfigurationValue('showSiteDetails', true);
+        $this->subject->piVars['showUid'] = '1';
+
+        $result = $this->subject->main('', []);
+
+        self::assertStringContainsString('over &amp; the rainbow', $result);
     }
 }

@@ -1,0 +1,11 @@
+"tx_seminars_seminars"
+,"uid","pid","title","place"
+,1,2,"some event",1
+
+"tx_seminars_sites"
+,"uid","pid","title","address"
+,1,2,"The great & calm hotel","over & the rainbow"
+
+"tx_seminars_seminars_place_mm"
+,"uid_local","uid_foreign"
+,1,1
