@@ -33,27 +33,21 @@ final class SingleViewTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
-        $this->buildSubjectForSingleView();
-
         $extensionConfiguration = new DummyConfiguration();
         $extensionConfiguration->setAsBoolean('enableConfigCheck', false);
         ConfigurationProxy::setInstance('seminars', $extensionConfiguration);
-    }
 
-    protected function tearDown(): void
-    {
-        $this->testingFramework->cleanUpWithoutDatabase();
-
-        parent::tearDown();
+        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->buildSubjectForSingleView();
     }
 
     private function buildSubjectForSingleView(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/EventSingleView.csv');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/PageStructure.csv');
         $this->testingFramework->createFakeFrontEnd(1);
 
-        $frontEndController = $this->getFrontEndController();
+        $frontEndController = $GLOBALS['TSFE'] ?? null;
+        self::assertInstanceOf(TypoScriptFrontendController::class, $frontEndController);
         $subject = new TestingDefaultController();
         $subject->setContentObjectRenderer($frontEndController->cObj);
         $subject->init(
@@ -67,37 +61,55 @@ final class SingleViewTest extends FunctionalTestCase
         $this->subject = $subject;
     }
 
-    private function getFrontEndController(): TypoScriptFrontendController
-    {
-        return $GLOBALS['TSFE'];
-    }
-
-    // Tests concerning the single view
-
     /**
-     * @return array<string, array{0: positive-int, 1: non-empty-string}>
+     * @return array<non-empty-string, array{0: non-empty-string}>
      */
-    public function singleViewDataDataProvider(): array
+    public function eventDataDataProvider(): array
     {
         return [
-            'title' => [1, 'test &amp; event'],
-            'subtitle' => [1, 'subtitle &amp; more'],
-            'room' => [1, 'Rooms 2 &amp; 3'],
-            'accreditation number' => [1, '4 &amp; 5'],
-            'organizer name' => [2, 'Rupf &amp; Knack Deckendienste'],
-            'organizer description' => [2, 'Best organizer!'],
-            'linked organizer homepage' => [2, 'href="https://www.example.com"'],
+            'title' => ['event &amp; organizer'],
+            'subtitle' => ['subtitle &amp; more'],
+            'room' => ['Rooms 2 &amp; 3'],
+            'accreditation number' => ['4 &amp; 5'],
         ];
     }
 
     /**
      * @test
      *
-     * @dataProvider singleViewDataDataProvider
+     * @dataProvider eventDataDataProvider
      */
-    public function singleViewContainsHtmlspecialcharedEventData(int $uid, string $expected): void
+    public function singleViewContainsHtmlspecialcharedEventData(string $expected): void
     {
-        $this->subject->piVars['showUid'] = (string)$uid;
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOrganizer.csv');
+        $this->subject->piVars['showUid'] = '1';
+
+        $result = $this->subject->main('', []);
+
+        self::assertStringContainsString($expected, $result);
+    }
+
+    /**
+     * @return array<non-empty-string, array{0: non-empty-string}>
+     */
+    public function organizerDataDataProvider(): array
+    {
+        return [
+            'organizer name' => ['Rupf &amp; Knack Deckendienste'],
+            'organizer description' => ['Best organizer!'],
+            'linked organizer homepage' => ['href="https://www.example.com"'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider organizerDataDataProvider
+     */
+    public function singleViewContainsHtmlspecialcharedOrganizerData(string $expected): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOrganizer.csv');
+        $this->subject->piVars['showUid'] = '1';
 
         $result = $this->subject->main('', []);
 
@@ -109,6 +121,8 @@ final class SingleViewTest extends FunctionalTestCase
      */
     public function singleViewProvidesPageTitleProviderWithEventTitleAsTitle(): void
     {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleView/SingleEventWithOrganizer.csv');
+
         $pageTitleProvider = new SingleViewPageTitleProvider();
         GeneralUtility::setSingletonInstance(SingleViewPageTitleProvider::class, $pageTitleProvider);
 
@@ -116,6 +130,6 @@ final class SingleViewTest extends FunctionalTestCase
 
         $this->subject->main('', []);
 
-        self::assertSame('test & event', $pageTitleProvider->getTitle());
+        self::assertSame('event & organizer', $pageTitleProvider->getTitle());
     }
 }

@@ -20,13 +20,14 @@ final class PluginDefinitionTest extends FunctionalTestCase
 
     private function getContentRenderingConfiguration(): string
     {
-        return (string)$GLOBALS['TYPO3_CONF_VARS']['FE']['defaultTypoScript_setup.']['defaultContentRendering'];
+        \assert(isset($GLOBALS['TYPO3_CONF_VARS']['FE']['defaultTypoScript_setup.']['defaultContentRendering']));
+        \assert(is_string($GLOBALS['TYPO3_CONF_VARS']['FE']['defaultTypoScript_setup.']['defaultContentRendering']));
+
+        return $GLOBALS['TYPO3_CONF_VARS']['FE']['defaultTypoScript_setup.']['defaultContentRendering'];
     }
 
     /**
      * Extracts the class name from something like '...->foo'.
-     *
-     * @return class-string
      */
     private function extractClassNameFromUserFunction(string $reference): string
     {
@@ -37,8 +38,6 @@ final class PluginDefinitionTest extends FunctionalTestCase
 
     /**
      * Extracts the method name from something like '...->foo'.
-     *
-     * @return string method name
      */
     private function extractMethodNameFromUserFunction(string $reference): string
     {

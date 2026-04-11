@@ -1801,11 +1801,6 @@ parameters:
 			path: ../../Tests/Functional/FrontEnd/CategoryListTest.php
 
 		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\FrontEnd\\\\DefaultController\\\\ListViewTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
-			count: 1
-			path: ../../Tests/Functional/FrontEnd/DefaultController/ListViewTest.php
-
-		-
 			message: "#^Cannot access offset 'FE' on mixed\\.$#"
 			count: 1
 			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
@@ -1821,24 +1816,9 @@ parameters:
 			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
-			count: 1
-			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\FrontEnd\\\\DefaultController\\\\PluginDefinitionTest\\:\\:extractClassNameFromUserFunction\\(\\) should return class\\-string but returns string\\.$#"
-			count: 1
-			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
-
-		-
 			message: "#^Offset 1 might not exist on array\\{0\\?\\: string, 1\\?\\: non\\-empty\\-string\\}\\.$#"
 			count: 2
 			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\FrontEnd\\\\DefaultController\\\\SingleViewTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
-			count: 1
-			path: ../../Tests/Functional/FrontEnd/DefaultController/SingleViewTest.php
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
