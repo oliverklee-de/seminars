@@ -16,6 +16,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\HttpUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -1031,10 +1032,8 @@ abstract class TemplateHelper
         $this->pi_loadLL();
         if ($this->getFrontEndController() instanceof TypoScriptFrontendController) {
             $result = $this->translateInFrontEnd($key);
-        } elseif ($this->getLanguageService() instanceof LanguageService) {
-            $result = $this->translateInBackEnd($key);
         } else {
-            $result = $key;
+            $result = $this->translateInBackEnd($key);
         }
 
         $this->translationCache[$key] = $result;
@@ -1052,13 +1051,10 @@ abstract class TemplateHelper
      */
     private function translateInBackEnd(string $key): string
     {
-        $languageService = $this->getLanguageService();
+        $label = LocalizationUtility::translate($key, 'seminars');
+        \assert(is_string($label));
 
-        if (!$languageService instanceof LanguageService) {
-            throw new \RuntimeException('No initialized language service.', 1646321243);
-        }
-
-        return $languageService->getLL($key);
+        return $label;
     }
 
     /**

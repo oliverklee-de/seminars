@@ -9,7 +9,6 @@ use OliverKlee\Oelib\Configuration\PageFinder;
 use OliverKlee\Oelib\Email\SystemEmailFromBuilder;
 use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Oelib\Interfaces\MailRole;
-use OliverKlee\Oelib\Mapper\BackEndUserMapper;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\BagBuilder\EventBagBuilder;
 use OliverKlee\Seminars\Csv\EmailRegistrationListView;
@@ -21,7 +20,6 @@ use OliverKlee\Seminars\OldModel\LegacyOrganizer;
 use OliverKlee\Seminars\Service\EmailService;
 use OliverKlee\Seminars\Service\EventStatusService;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
@@ -63,9 +61,6 @@ class MailNotifier extends AbstractTask
         $this->emailService = GeneralUtility::makeInstance(EmailService::class);
         $this->eventMapper = MapperRegistry::get(EventMapper::class);
         $this->registrationDigest = GeneralUtility::makeInstance(RegistrationDigest::class);
-
-        $this->useUserConfiguredLanguage();
-        $this->getLanguageService()->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
 
         $this->dependenciesAreSetUp = true;
     }
@@ -308,7 +303,8 @@ class MailNotifier extends AbstractTask
      */
     private function customizeMessage(string $locallangKey, LegacyEvent $event, string $organizerName = ''): string
     {
-        $result = $this->getLanguageService()->getLL($locallangKey);
+        $result = LocalizationUtility::translate($locallangKey, 'seminars');
+        \assert(is_string($result));
 
         foreach (
             [
@@ -359,8 +355,6 @@ class MailNotifier extends AbstractTask
     {
         $this->constituteDependencies();
 
-        $languageService = $this->getLanguageService();
-
         foreach ($this->eventMapper->findForAutomaticStatusChange() as $event) {
             $statusWasChanged = $this->eventStatusService->updateStatusAndSave($event);
             if (!$statusWasChanged) {
@@ -368,43 +362,22 @@ class MailNotifier extends AbstractTask
             }
 
             if ($event->isConfirmed()) {
-                $subject = $languageService->getLL('email-event-confirmed-subject');
-                $body = $languageService->getLL('email-event-confirmed-body');
+                $subject = LocalizationUtility::translate('email-event-confirmed-subject', 'seminars');
+                $body = LocalizationUtility::translate('email-event-confirmed-body', 'seminars');
             } elseif ($event->isCanceled()) {
-                $subject = $languageService->getLL('email-event-canceled-subject');
-                $body = $languageService->getLL('email-event-canceled-body');
+                $subject = LocalizationUtility::translate('email-event-canceled-subject', 'seminars');
+                $body = LocalizationUtility::translate('email-event-canceled-body', 'seminars');
             } else {
                 throw new \UnexpectedValueException(
                     'Event status for event #' . $event->getUid() . ' was still "planned" after the status change.',
                     1457982810,
                 );
             }
+            \assert(\is_string($subject));
+            \assert(\is_string($body));
 
             $this->emailService->sendEmailToAttendees($event, $subject, $body);
         }
-    }
-
-    protected function getLanguageService(): LanguageService
-    {
-        $languageService = $GLOBALS['LANG'];
-        \assert($languageService instanceof LanguageService);
-
-        return $languageService;
-    }
-
-    /**
-     * Uses the language configured in the current BE user.
-     */
-    private function useUserConfiguredLanguage(): void
-    {
-        $uid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('backend.user', 'id');
-        \assert(\is_int($uid));
-        if ($uid <= 0) {
-            return;
-        }
-
-        $user = MapperRegistry::get(BackEndUserMapper::class)->find($uid);
-        $this->getLanguageService()->init($user->getLanguage());
     }
 
     protected function getConfiguration(): Configuration
