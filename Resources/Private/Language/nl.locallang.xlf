@@ -361,10 +361,6 @@
         <source>Sorry, there are no more vacancies.</source>
         <target state="final">Helaas, er zijn geen vrije plaatsen meer beschikbaar.</target>
       </trans-unit>
-      <trans-unit id="message_willBeAnnounced" approved="yes">
-        <source>will be announced</source>
-        <target state="final">zal worden aangekondigd</target>
-      </trans-unit>
       <trans-unit id="message_forFree" approved="yes">
         <source>free</source>
         <target state="final">vrij</target>
