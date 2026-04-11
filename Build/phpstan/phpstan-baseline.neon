@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Access to constant OK on an unknown class TYPO3\\\\CMS\\\\Core\\\\Type\\\\ContextualFeedbackSeverity\\.$#"
+			count: 1
+			path: ../../Classes/BackEnd/EmailService.php
+
+		-
 			message: "#^Cannot access an offset on mixed\\.$#"
 			count: 2
 			path: ../../Classes/BackEnd/FlexForms.php
@@ -2359,6 +2364,11 @@ parameters:
 			message: "#^Cannot call method hasSkills\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 2
 			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
+
+		-
+			message: "#^Access to constant ERROR on an unknown class TYPO3\\\\CMS\\\\Core\\\\Type\\\\ContextualFeedbackSeverity\\.$#"
+			count: 2
+			path: ../../Tests/Functional/SchedulerTasks/MailNotifierConfigurationTest.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"

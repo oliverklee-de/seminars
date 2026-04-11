@@ -7,10 +7,12 @@ namespace OliverKlee\Seminars\Tests\Functional\SchedulerTasks;
 use OliverKlee\Seminars\SchedulerTasks\MailNotifier;
 use OliverKlee\Seminars\SchedulerTasks\MailNotifierConfiguration;
 use PHPUnit\Framework\MockObject\MockObject;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageQueue;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -146,7 +148,12 @@ final class MailNotifierConfigurationTest extends FunctionalTestCase
 
         $this->subject->validateAdditionalFields($submittedData, $this->moduleController);
 
-        self::assertCount(1, $this->getFlashMessageQueue()->getAllMessages(FlashMessage::ERROR));
+        if ((new Typo3Version())->getMajorVersion() >= 12) {
+            $severity = ContextualFeedbackSeverity::ERROR;
+        } else {
+            $severity = FlashMessage::ERROR;
+        }
+        self::assertCount(1, $this->getFlashMessageQueue()->getAllMessages($severity));
     }
 
     /**
@@ -170,7 +177,12 @@ final class MailNotifierConfigurationTest extends FunctionalTestCase
 
         $this->subject->validateAdditionalFields($submittedData, $this->moduleController);
 
-        self::assertCount(1, $this->getFlashMessageQueue()->getAllMessages(FlashMessage::ERROR));
+        if ((new Typo3Version())->getMajorVersion() >= 12) {
+            $severity = ContextualFeedbackSeverity::ERROR;
+        } else {
+            $severity = FlashMessage::ERROR;
+        }
+        self::assertCount(1, $this->getFlashMessageQueue()->getAllMessages($severity));
     }
 
     /**
