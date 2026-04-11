@@ -355,10 +355,6 @@ Eine Veranstaltung mit dieser Nummer existiert nicht. Wenn du diese Fehlermeldun
         <source>Sorry, there are no more vacancies.</source>
         <target state="final">Es sind leider keine Plätze mehr frei.</target>
       </trans-unit>
-      <trans-unit id="message_willBeAnnounced" approved="yes">
-        <source>will be announced</source>
-        <target state="final">wird noch bekannt gegeben</target>
-      </trans-unit>
       <trans-unit id="message_forFree" approved="yes">
         <source>free</source>
         <target state="final">kostenlos</target>
