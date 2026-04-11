@@ -1411,6 +1411,11 @@ parameters:
 			path: ../../Classes/SchedulerTasks/MailNotifier.php
 
 		-
+			message: "#^Access to constant ERROR on an unknown class TYPO3\\\\CMS\\\\Core\\\\Type\\\\ContextualFeedbackSeverity\\.$#"
+			count: 1
+			path: ../../Classes/SchedulerTasks/MailNotifierConfiguration.php
+
+		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\SchedulerTasks\\\\MailNotifierConfiguration\\:\\:getLanguageService\\(\\) should return TYPO3\\\\CMS\\\\Core\\\\Localization\\\\LanguageService but returns mixed\\.$#"
 			count: 1
 			path: ../../Classes/SchedulerTasks/MailNotifierConfiguration.php

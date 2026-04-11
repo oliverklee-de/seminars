@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\SchedulerTasks;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Scheduler\AbstractAdditionalFieldProvider;
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
@@ -65,8 +67,13 @@ class MailNotifierConfiguration extends AbstractAdditionalFieldProvider
             return true;
         }
 
+        if ((new Typo3Version())->getMajorVersion() >= 12) {
+            $severity = ContextualFeedbackSeverity::ERROR;
+        } else {
+            $severity = AbstractMessage::ERROR;
+        }
         $message = $this->getLanguageService()->sL(self::LABEL_PREFIX . 'schedulerTasks.errors.page-uid');
-        $this->addMessage($message, AbstractMessage::ERROR);
+        $this->addMessage($message, $severity);
 
         return false;
     }
