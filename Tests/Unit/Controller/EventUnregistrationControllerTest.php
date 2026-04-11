@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Unit\Controller;
 
-use OliverKlee\Seminars\Configuration\LegacyConfiguration;
 use OliverKlee\Seminars\Controller\EventUnregistrationController;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
@@ -57,11 +56,6 @@ final class EventUnregistrationControllerTest extends UnitTestCase
      */
     private LegacyRegistration $legacyRegistrationMock;
 
-    /**
-     * @var LegacyConfiguration&MockObject
-     */
-    private LegacyConfiguration $legacyConfigurationMock;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -85,8 +79,6 @@ final class EventUnregistrationControllerTest extends UnitTestCase
 
         $this->legacyRegistrationMock = $this->createMock(LegacyRegistration::class);
         GeneralUtility::addInstance(LegacyRegistration::class, $this->legacyRegistrationMock);
-        $this->legacyConfigurationMock = $this->createMock(LegacyConfiguration::class);
-        GeneralUtility::addInstance(LegacyConfiguration::class, $this->legacyConfigurationMock);
     }
 
     protected function tearDown(): void
@@ -289,7 +281,7 @@ final class EventUnregistrationControllerTest extends UnitTestCase
 
         $this->registrationManagerMock
             ->expects(self::once())
-            ->method('removeRegistration')->with($registrationUid, $this->legacyConfigurationMock);
+            ->method('removeRegistration')->with($registrationUid);
 
         $this->subject->unregisterAction($registration);
     }

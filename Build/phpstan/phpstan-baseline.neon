@@ -1526,11 +1526,6 @@ parameters:
 			path: ../../Classes/Service/RegistrationManager.php
 
 		-
-			message: "#^Parameters should have \"OliverKlee\\\\Seminars\\\\Configuration\\\\LegacyConfiguration\\|OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Service/RegistrationManager.php
-
-		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
 			path: ../../Classes/Service/RegistrationProcessor.php
@@ -3084,11 +3079,6 @@ parameters:
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
 			path: ../../Tests/LegacyFunctional/Service/EventStatusServiceTest.php
-
-		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController will always evaluate to true\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&TYPO3\\\\CMS\\\\Core\\\\Mail\\\\MailMessage will always evaluate to true\\.$#"
