@@ -14,6 +14,7 @@ use OliverKlee\Seminars\Domain\Model\Organizer;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\SingletonInterface;
@@ -69,16 +70,13 @@ class EmailService implements SingletonInterface
         if ((new Typo3Version())->getMajorVersion() >= 12) {
             $severity = ContextualFeedbackSeverity::OK;
         } else {
-            $severity = FlashMessage::OK;
+            $severity = AbstractMessage::OK;
         }
-        $message = GeneralUtility::makeInstance(
-            FlashMessage::class,
-            LocalizationUtility::translate('message_emailToAttendeesSent', 'seminars'),
-            '',
-            $severity,
-            true,
-        );
-        $this->addFlashMessage($message);
+
+        $message = LocalizationUtility::translate('message_emailToAttendeesSent', 'seminars');
+        \assert(\is_string($message));
+        $flashMessage = GeneralUtility::makeInstance(FlashMessage::class, $message, '', $severity, true);
+        $this->addFlashMessage($flashMessage);
     }
 
     /**
