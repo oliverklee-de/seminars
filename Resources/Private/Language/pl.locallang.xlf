@@ -361,10 +361,6 @@
         <source>Sorry, there are no more vacancies.</source>
         <target state="needs-translation">Sorry, there are no more vacancies.</target>
       </trans-unit>
-      <trans-unit id="message_willBeAnnounced">
-        <source>will be announced</source>
-        <target state="needs-translation">will be announced</target>
-      </trans-unit>
       <trans-unit id="message_forFree">
         <source>free</source>
         <target state="needs-translation">free</target>
