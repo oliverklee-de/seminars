@@ -281,7 +281,7 @@ final class MailNotifierTest extends FunctionalTestCase
     public function sendEventTakesPlaceRemindersSendsReminderWithEventTakesPlaceSubject(): void
     {
         $this->getLanguageService()->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-        $emailSubject = $this->getLanguageService()->getLL('email_eventTakesPlaceReminderSubject');
+        $emailSubject = $this->translate('email_eventTakesPlaceReminderSubject');
         $emailSubject = str_replace(['%event', '%days'], ['', 2], $emailSubject);
 
         $this->createSeminarWithOrganizer(
@@ -305,7 +305,7 @@ final class MailNotifierTest extends FunctionalTestCase
     public function sendEventTakesPlaceRemindersSendsReminderWithEventTakesPlaceMessage(): void
     {
         $this->getLanguageService()->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-        $message = $this->getLanguageService()->getLL('email_eventTakesPlaceReminder');
+        $message = $this->translate('email_eventTakesPlaceReminder');
         $message = str_replace(['%event', '%organizer'], ['', 'Mr. Test'], $message);
 
         $this->createSeminarWithOrganizer(
@@ -538,7 +538,7 @@ final class MailNotifierTest extends FunctionalTestCase
     public function sendCancellationDeadlineRemindersSendsReminderWithCancelationDeadlineSubject(): void
     {
         $this->getLanguageService()->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-        $emailSubject = $this->getLanguageService()->getLL('email_cancelationDeadlineReminderSubject');
+        $emailSubject = $this->translate('email_cancelationDeadlineReminderSubject');
         $emailSubject = str_replace('%event', '', $emailSubject);
 
         $this->addSpeaker(
@@ -564,7 +564,7 @@ final class MailNotifierTest extends FunctionalTestCase
     public function sendCancellationDeadlineRemindersSendsReminderWithCancelationDeadlineMessage(): void
     {
         $this->getLanguageService()->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-        $message = $this->getLanguageService()->getLL('email_cancelationDeadlineReminder');
+        $message = $this->translate('email_cancelationDeadlineReminder');
         $message = str_replace(['%event', '%organizer'], ['', 'Mr. Test'], $message);
 
         $this->addSpeaker(
@@ -1481,7 +1481,7 @@ final class MailNotifierTest extends FunctionalTestCase
 
         $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
 
-        $emailSubject = $this->getLanguageService()->getLL('email-event-confirmed-subject');
+        $emailSubject = $this->translate('email-event-confirmed-subject');
         $this->emailService
             ->expects(self::once())->method('sendEmailToAttendees')
             ->with(self::anything(), $emailSubject, self::anything());
@@ -1504,7 +1504,7 @@ final class MailNotifierTest extends FunctionalTestCase
 
         $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
 
-        $emailBody = $this->getLanguageService()->getLL('email-event-confirmed-body');
+        $emailBody = $this->translate('email-event-confirmed-body');
         $this->emailService
             ->expects(self::once())->method('sendEmailToAttendees')
             ->with(self::anything(), self::anything(), $emailBody);
@@ -1572,7 +1572,7 @@ final class MailNotifierTest extends FunctionalTestCase
 
         $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
 
-        $emailSubject = $this->getLanguageService()->getLL('email-event-canceled-subject');
+        $emailSubject = $this->translate('email-event-canceled-subject');
         $this->emailService
             ->expects(self::once())->method('sendEmailToAttendees')
             ->with(self::anything(), $emailSubject, self::anything());
@@ -1595,7 +1595,7 @@ final class MailNotifierTest extends FunctionalTestCase
 
         $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
 
-        $emailBody = $this->getLanguageService()->getLL('email-event-canceled-body');
+        $emailBody = $this->translate('email-event-canceled-body');
         $this->emailService
             ->expects(self::once())->method('sendEmailToAttendees')
             ->with(self::anything(), self::anything(), $emailBody);

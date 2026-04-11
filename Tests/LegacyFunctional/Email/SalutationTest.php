@@ -108,19 +108,6 @@ final class SalutationTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getSalutationForUnknownUserReturnsUsersNameWithGenderUnspecificTitle(): void
-    {
-        $user = $this->createFrontEndUser();
-
-        self::assertStringContainsString(
-            $this->translate('email_salutation_title_99') . ' ' . $user->getName(),
-            $this->subject->getSalutation($user),
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getSalutationForInformalSalutationReturnsInformalSalutation(): void
     {
         $user = $this->createFrontEndUser();

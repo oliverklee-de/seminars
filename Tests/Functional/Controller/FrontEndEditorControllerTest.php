@@ -2039,6 +2039,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString($title, $html);
     }
+
     /**
      * @test
      */

@@ -11,6 +11,7 @@ use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -146,12 +147,13 @@ trait BackEndTestsTrait
     }
 
     /**
-     * Convenience function for `$this->getLanguageService()->getLL()`
-     *
      * @param non-empty-string $key
      */
     private function translate(string $key): string
     {
-        return $this->getLanguageService()->getLL($key);
+        $label = LocalizationUtility::translate($key, 'seminars');
+        \assert(is_string($label));
+
+        return $label;
     }
 }
