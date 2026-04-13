@@ -548,7 +548,9 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countRegularSeatsByEventSumsUpSingleSeatRegistrations(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/countRegularSeatsByEvent/TwoRegistrationsWithSameEventAndUser.xml');
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/countRegularSeatsByEvent/TwoRegistrationsWithSameEventAndUser.csv',
+        );
 
         self::assertSame(2, $this->subject->countRegularSeatsByEvent(1));
     }
@@ -558,8 +560,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countRegularSeatsByEventIgnoresSeatFromOtherEvents(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/countRegularSeatsByEvent/RegistrationWithEventAndAdditionalEvent.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/countRegularSeatsByEvent/RegistrationWithEventAndAdditionalEvent.csv',
         );
 
         self::assertSame(0, $this->subject->countRegularSeatsByEvent(2));
@@ -570,7 +572,9 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countRegularSeatsByEventSumsUpMultiSeatRegistrations(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/countRegularSeatsByEvent/TwoMultiSeatRegistrationsWithSameEvent.xml');
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/countRegularSeatsByEvent/TwoMultiSeatRegistrationsWithSameEvent.csv',
+        );
 
         self::assertSame(5, $this->subject->countRegularSeatsByEvent(1));
     }
@@ -580,7 +584,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countRegularSeatsByEventIgnoresHiddenRegistration(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/HiddenRegistrationWithEvent.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/countRegularSeatsByEvent/HiddenRegistrationWithEvent.csv');
 
         self::assertSame(0, $this->subject->countRegularSeatsByEvent(1));
     }
@@ -590,7 +594,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countRegularSeatsByEventIgnoresDeletedRegistration(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DeletedRegistrationWithEvent.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/countRegularSeatsByEvent/DeletedRegistrationWithEvent.csv');
 
         self::assertSame(0, $this->subject->countRegularSeatsByEvent(1));
     }
@@ -600,7 +604,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countRegularSeatsByEventIgnoresRegistrationOnWaitingList(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/countRegularSeatsByEvent/WaitingListRegistrationWithEvent.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/countRegularSeatsByEvent/WaitingListRegistrationWithEvent.csv');
 
         self::assertSame(0, $this->subject->countRegularSeatsByEvent(1));
     }
@@ -618,7 +622,9 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countWaitingListSeatsByEventIgnoresRegistrationsWithZeroSeats(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/WaitingListRegistrationWithZeroSeats.xml');
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/WaitingListRegistrationWithZeroSeats.csv',
+        );
 
         self::assertSame(0, $this->subject->countWaitingListSeatsByEvent(1));
     }
@@ -628,8 +634,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countWaitingListSeatsByEventSumsUpSingleSeatRegistrations(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/TwoWaitingListRegistrationsWithSameEventAndUser.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/TwoWaitingListRegistrationsWithSameEventAndUser.csv',
         );
 
         self::assertSame(2, $this->subject->countWaitingListSeatsByEvent(1));
@@ -640,8 +646,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countWaitingListSeatsByEventIgnoresSeatFromOtherEvents(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/TwoWaitingListRegistrationsWithSameEventAndUser.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/TwoWaitingListRegistrationsWithSameEventAndUser.csv',
         );
 
         self::assertSame(0, $this->subject->countWaitingListSeatsByEvent(2));
@@ -652,8 +658,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countWaitingListSeatsByEventSumsUpMultiSeatRegistrations(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/TwoMultiSeatWaitingListRegistrationsWithSameEvent.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/TwoMultiSeatWaitingListRegistrationsWithSameEvent.csv',
         );
 
         self::assertSame(5, $this->subject->countWaitingListSeatsByEvent(1));
@@ -664,8 +670,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countWaitingListSeatsByEventIgnoresHiddenRegistration(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/HiddenWaitingListRegistrationWithEvent.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/HiddenWaitingListRegistrationWithEvent.csv',
         );
 
         self::assertSame(0, $this->subject->countWaitingListSeatsByEvent(1));
@@ -676,8 +682,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function countWaitingListSeatsByEventIgnoresDeletedRegistration(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/DeletedWaitingListRegistrationWithEvent.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/countWaitingListSeatsByEvent/DeletedWaitingListRegistrationWithEvent.csv',
         );
 
         self::assertSame(0, $this->subject->countWaitingListSeatsByEvent(1));
