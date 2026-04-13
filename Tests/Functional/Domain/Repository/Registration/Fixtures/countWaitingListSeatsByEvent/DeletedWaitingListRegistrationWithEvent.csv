@@ -2,10 +2,6 @@
 ,"uid","registrations"
 ,1,1
 
-"fe_users"
-,"uid"
-,1
-
 "tx_seminars_attendances"
-,"uid","seminar","user","seats"
-,1,1,1,1
+,"uid","deleted","seminar","registration_queue","seats"
+,1,1,1,1,1
