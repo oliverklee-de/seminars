@@ -311,10 +311,10 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function indexActionRendersNonBindingReserverationRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
+    public function indexActionRendersNonbindingReserverationRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/indexAction/NonBindingReservation.csv');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/indexAction/NonbindingReservation.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -807,10 +807,10 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionRendersNonBindingReserverationRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
+    public function showActionRendersNonbindingReserverationRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/NonBindingReservation.csv');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/NonbindingReservation.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -979,11 +979,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionForNonBindingReservationWithDownloadsDoesNotRendersDownload(): void
+    public function showActionForNonbindingReservationWithDownloadsDoesNotRendersDownload(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/NonBindingReservationWithDownload.csv',
+            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/NonbindingReservationWithDownload.csv',
         );
 
         $request = (new InternalRequest())
