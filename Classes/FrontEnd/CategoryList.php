@@ -8,6 +8,8 @@ use OliverKlee\Seminars\BagBuilder\CategoryBagBuilder;
 use OliverKlee\Seminars\BagBuilder\EventBagBuilder;
 use OliverKlee\Seminars\OldModel\LegacyCategory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\HttpUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * This class creates a category list.
@@ -85,11 +87,14 @@ class CategoryList extends AbstractView
         if ($title === '') {
             throw new \InvalidArgumentException('$title must not be empty.', 1333293044);
         }
+        \assert($this->cObj instanceof ContentObjectRenderer);
 
-        return $this->cObj->getTypoLink(
+        return $this->cObj->typoLink(
             $title,
-            (string)$this->getConfValueInteger('listPID'),
-            ['tx_seminars_pi1[category]' => $categoryUid],
+            [
+                'parameter' => (string)$this->getConfValueInteger('listPID'),
+                'additionalParams' => HttpUtility::buildQueryString(['tx_seminars_pi1[category]' => $categoryUid], '&'),
+            ],
         );
     }
 
