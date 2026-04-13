@@ -602,9 +602,19 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function countRegularSeatsByEventIgnoresRegistrationOnWaitingList(): void
+    public function countRegularSeatsByEventIgnoresWaitingListRegistration(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/countRegularSeatsByEvent/WaitingListRegistrationWithEvent.csv');
+
+        self::assertSame(0, $this->subject->countRegularSeatsByEvent(1));
+    }
+
+    /**
+     * @test
+     */
+    public function countRegularSeatsByEventIgnoresNonbindingReservation(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/countRegularSeatsByEvent/NonbindingReservationWithEvent.csv');
 
         self::assertSame(0, $this->subject->countRegularSeatsByEvent(1));
     }
@@ -692,9 +702,19 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function countWaitingListSeatsByEventIgnoresRegularRegistrationWithOneSeat(): void
+    public function countWaitingListSeatsByEventIgnoresRegularRegistration(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/countWaitingListSeatsByEvent/RegularRegistrationWithOneSeat.csv');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/countWaitingListSeatsByEvent/RegularRegistration.csv');
+
+        self::assertSame(0, $this->subject->countWaitingListSeatsByEvent(1));
+    }
+
+    /**
+     * @test
+     */
+    public function countWaitingListSeatsByEventIgnoresNonbindingReservation(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/countWaitingListSeatsByEvent/NonbindingReservationWithEvent.csv');
 
         self::assertSame(0, $this->subject->countWaitingListSeatsByEvent(1));
     }
@@ -714,7 +734,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function findRegularRegistrationsByEventFindsRegularRegistrationsForTheGivenEvent(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/countWaitingListSeatsByEvent/RegularRegistrationWithOneSeat.csv');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findRegularRegistrationsByEvent/RegularRegistrationWithEventAndUser.csv');
 
         $result = $this->subject->findRegularRegistrationsByEvent(1);
 
@@ -773,7 +793,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     public function findRegularRegistrationsByEventIgnoresRegistrationsForDifferentEvent(): void
     {
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/RegularRegistrationWithOneSeat.csv',
+            __DIR__ . '/Fixtures/findRegularRegistrationsByEvent/RegularRegistrationWithEventAndUser.csv',
         );
 
         $result = $this->subject->findRegularRegistrationsByEvent(2);
