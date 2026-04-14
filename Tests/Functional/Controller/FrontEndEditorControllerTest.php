@@ -417,6 +417,21 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function indexActionForFullyBookedEventRendersZeroVacancies(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/FullyBookedSingleEvent.csv');
+
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $body = (string)$response->getBody();
+
+        self::assertMatchesRegularExpression('#<td[^>]*>\\s*0\\s*</td>#', $body);
+    }
+
+    /**
+     * @test
+     */
     public function indexActionWithSingleEventHasEditSingleEventLink(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithOwner.csv');
