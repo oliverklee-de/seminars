@@ -659,6 +659,9 @@
       <trans-unit id="fe_users.available_topics">
         <source>Available topics in the FE editor</source>
       </trans-unit>
+      <trans-unit id="fe_users.available_venues">
+        <source>Available venues in the FE editor</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>

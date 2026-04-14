@@ -19,7 +19,15 @@ class FrontendUser extends ExtraFieldsFrontendUser
      */
     protected int $defaultOrganizerUid = 0;
 
+    /**
+     * @Validate("StringLength", options={"maximum": 65535})
+     */
     protected string $concatenatedUidsOfAvailableTopicsForFrontEndEditor = '';
+
+    /**
+     * @Validate("StringLength", options={"maximum": 65535})
+     */
+    protected string $concatenatedUidsOfAvailableVenuesForFrontEndEditor = '';
 
     /**
      * @return int<0, max>
@@ -53,6 +61,26 @@ class FrontendUser extends ExtraFieldsFrontendUser
     public function getUidsOfAvailableTopicsForFrontEndEditor(): array
     {
         $concatenatedUids = $this->getConcatenatedUidsOfAvailableTopicsForFrontEndEditor();
+
+        return GeneralUtility::intExplode(',', $concatenatedUids, true);
+    }
+
+    public function getConcatenatedUidsOfAvailableVenuesForFrontEndEditor(): string
+    {
+        return $this->concatenatedUidsOfAvailableVenuesForFrontEndEditor;
+    }
+
+    public function setConcatenatedUidsOfAvailableVenuesForFrontEndEditor(string $concatenatedUids): void
+    {
+        $this->concatenatedUidsOfAvailableVenuesForFrontEndEditor = $concatenatedUids;
+    }
+
+    /**
+     * @return array<int>
+     */
+    public function getUidsOfAvailableVenuesForFrontEndEditor(): array
+    {
+        $concatenatedUids = $this->getConcatenatedUidsOfAvailableVenuesForFrontEndEditor();
 
         return GeneralUtility::intExplode(',', $concatenatedUids, true);
     }

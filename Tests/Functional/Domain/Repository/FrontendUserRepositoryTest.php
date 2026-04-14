@@ -82,5 +82,6 @@ final class FrontendUserRepositoryTest extends FunctionalTestCase
         self::assertSame('Here we go!', $model->getComments());
         self::assertSame(17, $model->getDefaultOrganizerUid());
         self::assertSame([1, 2], $model->getUidsOfAvailableTopicsForFrontEndEditor());
+        self::assertSame([2, 3], $model->getUidsOfAvailableVenuesForFrontEndEditor());
     }
 }
