@@ -957,9 +957,9 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findNonBindingReservationsByEventForNoDataReturnsEmptyArray(): void
+    public function findNonbindingReservationsByEventForNoDataReturnsEmptyArray(): void
     {
-        $result = $this->subject->findNonBindingReservationsByEvent(1);
+        $result = $this->subject->findNonbindingReservationsByEvent(1);
 
         self::assertSame([], $result);
     }
@@ -967,13 +967,13 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findNonBindingReservationsByEventFindsNonBindingReservationForTheGivenEvent(): void
+    public function findNonbindingReservationsByEventFindsNonbindingReservationForTheGivenEvent(): void
     {
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/NonBindingReservationWithEvent.csv',
+            __DIR__ . '/Fixtures/findNonbindingReservationsByEvent/NonbindingReservationWithEvent.csv',
         );
 
-        $result = $this->subject->findNonBindingReservationsByEvent(1);
+        $result = $this->subject->findNonbindingReservationsByEvent(1);
 
         self::assertCount(1, $result);
         $firstRegistration = $result[0];
@@ -983,13 +983,13 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findNonBindingReservationsByEventIgnoresRegularRegistrationsForTheGivenEvent(): void
+    public function findNonbindingReservationsByEventIgnoresRegularRegistrationsForTheGivenEvent(): void
     {
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/RegularRegistrationWithEventAndUser.csv',
+            __DIR__ . '/Fixtures/findNonbindingReservationsByEvent/RegularRegistrationWithEventAndUser.csv',
         );
 
-        $result = $this->subject->findNonBindingReservationsByEvent(1);
+        $result = $this->subject->findNonbindingReservationsByEvent(1);
 
         self::assertSame([], $result);
     }
@@ -997,13 +997,13 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findNonBindingReservationsByEventIgnoresWaitingListRegistrationForTheGivenEvent(): void
+    public function findNonbindingReservationsByEventIgnoresWaitingListRegistrationForTheGivenEvent(): void
     {
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/WaitingListRegistrationWithEvent.csv',
+            __DIR__ . '/Fixtures/findNonbindingReservationsByEvent/WaitingListRegistrationWithEvent.csv',
         );
 
-        $result = $this->subject->findNonBindingReservationsByEvent(1);
+        $result = $this->subject->findNonbindingReservationsByEvent(1);
 
         self::assertSame([], $result);
     }
@@ -1011,13 +1011,13 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findNonBindingReservationsByEventFindsReservationOnAnyPage(): void
+    public function findNonbindingReservationsByEventFindsReservationOnAnyPage(): void
     {
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/NonBindingReservationWithEventAndUserOnPage.csv',
+            __DIR__ . '/Fixtures/findNonbindingReservationsByEvent/NonbindingReservationWithEventAndUserOnPage.csv',
         );
 
-        $result = $this->subject->findNonBindingReservationsByEvent(1);
+        $result = $this->subject->findNonbindingReservationsByEvent(1);
 
         self::assertCount(1, $result);
         $firstRegistration = $result[0];
@@ -1027,13 +1027,13 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findNonBindingReservationsByEventIgnoresNonBindingReservationForDifferentEvent(): void
+    public function findNonbindingReservationsByEventIgnoresNonbindingReservationForDifferentEvent(): void
     {
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/NonBindingReservationWithEvent.csv',
+            __DIR__ . '/Fixtures/findNonbindingReservationsByEvent/NonbindingReservationWithEvent.csv',
         );
 
-        $result = $this->subject->findNonBindingReservationsByEvent(2);
+        $result = $this->subject->findNonbindingReservationsByEvent(2);
 
         self::assertSame([], $result);
     }
@@ -1041,13 +1041,13 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findNonBindingReservationsByEventIgnoresHiddenReservation(): void
+    public function findNonbindingReservationsByEventIgnoresHiddenReservation(): void
     {
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/HiddenNonBindingReservationWithEventAndUser.csv',
+            __DIR__ . '/Fixtures/findNonbindingReservationsByEvent/HiddenNonbindingReservationWithEventAndUser.csv',
         );
 
-        $result = $this->subject->findNonBindingReservationsByEvent(1);
+        $result = $this->subject->findNonbindingReservationsByEvent(1);
 
         self::assertSame([], $result);
     }
@@ -1055,13 +1055,13 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findNonBindingReservationsByEventIgnoresDeletedReservation(): void
+    public function findNonbindingReservationsByEventIgnoresDeletedReservation(): void
     {
         $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/findNonBindingReservationsByEvent/DeletedNonBindingReservationWithEvent.csv',
+            __DIR__ . '/Fixtures/findNonbindingReservationsByEvent/DeletedNonbindingReservationWithEvent.csv',
         );
 
-        $result = $this->subject->findNonBindingReservationsByEvent(1);
+        $result = $this->subject->findNonbindingReservationsByEvent(1);
 
         self::assertSame([], $result);
     }
@@ -1069,14 +1069,14 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findNonBindingReservationsByEventOrdersByCreationDateNewestFirst(): void
+    public function findNonbindingReservationsByEventOrdersByCreationDateNewestFirst(): void
     {
         $this->importCSVDataSet(
             __DIR__
-            . '/Fixtures/findNonBindingReservationsByEvent/TwoNonBindingReservationsWithSameEventAndUser.csv',
+            . '/Fixtures/findNonbindingReservationsByEvent/TwoNonbindingReservationsWithSameEventAndUser.csv',
         );
 
-        $result = $this->subject->findNonBindingReservationsByEvent(1);
+        $result = $this->subject->findNonbindingReservationsByEvent(1);
 
         $firstRegistration = $result[0];
         self::assertInstanceOf(Registration::class, $firstRegistration);
@@ -1255,9 +1255,9 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findActiveRegistrationsByUserFindsNonBindingReservations(): void
+    public function findActiveRegistrationsByUserFindsNonbindingReservations(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/findActiveRegistrationsByUser/NonBindingReservation.csv');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/findActiveRegistrationsByUser/NonbindingReservation.csv');
 
         $result = $this->subject->findActiveRegistrationsByUser(1);
 

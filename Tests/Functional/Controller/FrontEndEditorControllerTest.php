@@ -387,9 +387,9 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function indexActionForEventWithZeroRegistrationsDoesDisplayCountOfNonBindingReservations(): void
+    public function indexActionForEventWithZeroRegistrationsDoesDisplayCountOfNonbindingReservations(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithNonBindingReservations.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/SingleEventWithNonbindingReservations.csv');
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -2563,10 +2563,10 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function listRegistrationsActionForEventWithNonBindingReservationHasNoRegularRegistrationsHeading(): void
+    public function listRegistrationsActionForEventWithNonbindingReservationHasNoRegularRegistrationsHeading(): void
     {
         $this->importCSVDataSet(
-            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithNonBindingReservation.csv',
+            self::FIXTURES_PATH . '/listRegistrationsAction/SingleEventWithNonbindingReservation.csv',
         );
 
         $request = (new InternalRequest())->withPageId(self::PAGE_UID)->withQueryParameters([

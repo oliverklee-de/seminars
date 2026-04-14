@@ -9,7 +9,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - Allow limiting FE editor topic access for FE users (#4860)
 - Add `EventRepository.findTopicsAccessibleToFrontendUser` (#4858)
-- Add `RegistrationRepository.findNonBindingReservationsByEvent` (#4854)
+- Add `RegistrationRepository.findNonbindingReservationsByEvent` (#4854)
 - Add `Registration.registrationDate` (#4829)
 - Add a registration list to the FE editor
   (#4812, #4824, #4825, #4828, #4836, #4837, #4843, #4845, #4848, #4849)
@@ -61,7 +61,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Allow selecting the attendance mode when registering for hybrid events (#4128)
 - Add an order reference input to the registration form (#4122, #4596)
 - Add `Registration.orderReference` (#4121)
-- Also show non-binding reservations in the "my events" list (#4120)
+- Also show nonbinding reservations in the "my events" list (#4120)
 - Add a configuration whether to automatically succeed waiting list
   registrations when a vacancy opens up (#4119)
 - Add a registration status "nonbinding reservation" (#4104)
