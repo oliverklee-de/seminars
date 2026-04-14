@@ -74,7 +74,8 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
     }
 
     /**
-     * Sums up the regular (i.e., non-waiting-list) seats of all registrations for the given event UID.
+     * Sums up the seats of all regular (i.e., non-waiting-list and non-nonbinding-reservation) registrations
+     * for the given event UID.
      *
      * Registrations with 0 seats will be ignored.
      *
@@ -88,7 +89,7 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
     }
 
     /**
-     * Sums up the waiting-list seats of all registrations for the given event UID.
+     * Sums up the seats of all waiting-list registrations for the given event UID.
      *
      * Registrations with 0 seats will be ignored.
      *
@@ -99,6 +100,20 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
     public function countWaitingListSeatsByEvent(int $eventUid): int
     {
         return $this->countSeatsByEvent($eventUid, Registration::STATUS_WAITING_LIST);
+    }
+
+    /**
+     * Sums up the seats of all nonbinding-reservations for the given event UID.
+     *
+     * Reservations with 0 seats will be ignored.
+     *
+     * @param positive-int $eventUid
+     *
+     * @return int<0, max>
+     */
+    public function countNonbindingReservationSeatsByEvent(int $eventUid): int
+    {
+        return $this->countSeatsByEvent($eventUid, Registration::STATUS_NONBINDING_RESERVATION);
     }
 
     /**

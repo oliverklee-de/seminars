@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Add `RegistrationRepository.countNonbindingReservationSeatsByEvent` (#4898)
 - Allow limiting FE editor topic access for FE users (#4860)
 - Add `EventRepository.findTopicsAccessibleToFrontendUser` (#4858)
 - Add `RegistrationRepository.findNonbindingReservationsByEvent` (#4854)

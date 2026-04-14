@@ -3,6 +3,6 @@
 ,1,2
 
 "tx_seminars_attendances"
-,"uid","seminar","user","seats"
-,1,1,0,2
-,2,1,1,3
+,"uid","seminar","user","registration_queue","seats"
+,1,1,0,0,2
+,2,1,1,0,3
