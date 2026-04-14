@@ -4,5 +4,5 @@
 ,2,0
 
 "tx_seminars_attendances"
-,"uid","seminar","seats"
-,1,1,1
+,"uid","seminar","registration_queue","seats"
+,1,1,0,1
