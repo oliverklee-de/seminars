@@ -111,7 +111,6 @@
 		"preferred-install": {
 			"*": "dist"
 		},
-		"process-timeout": 1000,
 		"sort-packages": true,
 		"vendor-dir": ".Build/vendor"
 	},
