@@ -47,7 +47,7 @@
 		"typo3fluid/fluid": "^2.7.4 || ^4.0"
 	},
 	"require-dev": {
-		"ergebnis/composer-normalize": "2.50.0",
+		"ergebnis/composer-normalize": "2.51.0",
 		"friendsofphp/php-cs-fixer": "3.95.1",
 		"helmich/typo3-typoscript-lint": "2.5.2 || 3.3.0",
 		"php-parallel-lint/php-parallel-lint": "1.4.0",
