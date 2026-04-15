@@ -32,6 +32,7 @@ use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\HttpUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
@@ -158,10 +159,15 @@ class RegistrationManager implements SingletonInterface
      */
     public function getLinkToRegistrationPage(DefaultController $plugin, LegacyEvent $event): string
     {
-        return $this->getContentObjectRendererFromPlugin($plugin)->getTypoLink(
+        return $this->getContentObjectRendererFromPlugin($plugin)->typoLink(
             $this->getRegistrationLabel($event),
-            (string)$plugin->getConfValueInteger('registerPID'),
-            ['tx_seminars_eventregistration[event]' => $event->getUid()],
+            [
+                'parameter' => (string)$plugin->getConfValueInteger('registerPID'),
+                'additionalParams' => HttpUtility::buildQueryString(
+                    ['tx_seminars_eventregistration[event]' => $event->getUid()],
+                    '&',
+                ),
+            ],
         );
     }
 
@@ -207,14 +213,19 @@ class RegistrationManager implements SingletonInterface
      */
     public function getLinkToUnregistrationPage(TemplateHelper $plugin, LegacyRegistration $registration): string
     {
-        return $this->getContentObjectRendererFromPlugin($plugin)->getTypoLink(
+        return $this->getContentObjectRendererFromPlugin($plugin)->typoLink(
             $this->translate('label_onlineUnregistration'),
-            (string)$plugin->getConfValueInteger('registerPID'),
             [
-                'tx_seminars_eventregistration' => [
-                    'controller' => 'EventUnregistration',
-                    'registration' => $registration->getUid(),
-                ],
+                'parameter' => (string)$plugin->getConfValueInteger('registerPID'),
+                'additionalParams' => HttpUtility::buildQueryString(
+                    [
+                        'tx_seminars_eventregistration' => [
+                            'controller' => 'EventUnregistration',
+                            'registration' => $registration->getUid(),
+                        ],
+                    ],
+                    '&',
+                ),
             ],
         );
     }
