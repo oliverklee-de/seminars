@@ -6,10 +6,6 @@
             <f:then>
                 <f:translate key="plugin.{viewName}.events.property.vacancies.unlimited"/>
             </f:then>
-            <f:else if="{statistics.fullyBooked}">
-                <f:translate key="plugin.{viewName}.events.property.vacancies.fullyBooked"/>
-                🔴
-            </f:else>
             <f:else>
                 {statistics.vacancies}
             </f:else>
