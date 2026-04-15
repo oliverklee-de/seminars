@@ -73,7 +73,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
     /**
      * @test
      */
-    public function updateNecessaryForTwoUniqueRelationsFromOneEventToTwoVenusReturnsFalse(): void
+    public function updateNecessaryForTwoUniqueRelationsFromOneEventToTwoVenuesReturnsFalse(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PREFIX . 'TwoUniqueRelationsFromOneEventToTwoVenues.csv');
 

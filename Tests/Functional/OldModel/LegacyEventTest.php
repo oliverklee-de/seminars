@@ -509,7 +509,7 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getPlaceWithDetailsForEventWithoutVenusReturnsEmptyString(): void
+    public function getPlaceWithDetailsForEventWithoutVenuesReturnsEmptyString(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
         $plugin = $this->buildFrontEndAndPlugin();
