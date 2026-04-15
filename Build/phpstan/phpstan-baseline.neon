@@ -1256,11 +1256,6 @@ parameters:
 			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
-			message: "#^Cannot call method getTypoLink\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
-			count: 1
-			path: ../../Classes/OldModel/LegacyEvent.php
-
-		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyCategory\\|null\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/LegacyEvent.php
@@ -1357,11 +1352,6 @@ parameters:
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:\\$registrations \\(array\\<array\\<string, int\\|string\\>\\>\\) does not accept array\\<int, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: ../../Classes/OldModel/LegacyEvent.php
-
-		-
-			message: "#^Right side of && is always true\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/LegacyEvent.php
 
