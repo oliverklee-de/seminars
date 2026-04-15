@@ -183,8 +183,7 @@ class LegacySpeaker extends AbstractModel
      * Creates a link to this speaker's homepage, with the title as link text.
      *
      * @return string this speaker's title wrapped in a link tag, or if the
-     *                speaker has no homepage just the speaker name, will not
-     *                be empty
+     *                speaker has no homepage just the speaker name
      */
     public function getLinkedTitle(): string
     {
@@ -192,7 +191,7 @@ class LegacySpeaker extends AbstractModel
         $frontEndController = $GLOBALS['TSFE'] ?? null;
         $contentObject = $frontEndController instanceof TypoScriptFrontendController ? $frontEndController->cObj : null;
         if ($contentObject instanceof ContentObjectRenderer && $this->hasHomepage()) {
-            $result = $contentObject->getTypoLink($encodedTitle, $this->getHomepage());
+            $result = $contentObject->typoLink($encodedTitle, ['parameter' => $this->getHomepage()]);
         } else {
             $result = $encodedTitle;
         }
