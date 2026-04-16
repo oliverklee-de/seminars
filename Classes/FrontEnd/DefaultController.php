@@ -40,6 +40,7 @@ use OliverKlee\Seminars\ViewHelpers\RichTextViewHelper;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\HttpUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
@@ -385,10 +386,16 @@ class DefaultController extends TemplateHelper
         }
 
         if ($targetPageId) {
-            $result = $this->cObj->getTypoLink(
+            \assert($this->cObj instanceof ContentObjectRenderer);
+            $result = $this->cObj->typoLink(
                 $this->translate('label_listRegistrationsLink'),
-                (string)$targetPageId,
-                ['tx_seminars_pi1[seminar]' => $this->seminar->getUid()],
+                [
+                    'parameter' => (string)$targetPageId,
+                    'additionalParams' => HttpUtility::buildQueryString(
+                        ['tx_seminars_pi1[seminar]' => $this->seminar->getUid()],
+                        '&',
+                    ),
+                ],
             );
         }
 
@@ -2140,7 +2147,8 @@ class DefaultController extends TemplateHelper
         foreach ($this->seminar->getOrganizerBag() as $organizer) {
             $encodedName = \htmlspecialchars($organizer->getName(), ENT_QUOTES | ENT_HTML5);
             if ($organizer->hasHomepage()) {
-                $organizerHtml = $this->cObj->getTypoLink($encodedName, $organizer->getHomepage());
+                \assert($this->cObj instanceof ContentObjectRenderer);
+                $organizerHtml = $this->cObj->typoLink($encodedName, ['parameter' => $organizer->getHomepage()]);
             } else {
                 $organizerHtml = $encodedName;
             }
