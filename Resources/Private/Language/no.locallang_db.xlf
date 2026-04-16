@@ -879,6 +879,10 @@
         <source>Available topics in the FE editor</source>
         <target state="needs-translation">Available topics in the FE editor</target>
       </trans-unit>
+      <trans-unit id="fe_users.available_venues">
+        <source>Available venues in the FE editor</source>
+        <target state="needs-translation">Available venues in the FE editor</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
