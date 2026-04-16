@@ -877,9 +877,9 @@
         <source>Available topics in the FE editor</source>
         <target state="final">Verfügbare Themen im FE-Editor</target>
       </trans-unit>
-      <trans-unit id="fe_users.available_venues">
+      <trans-unit id="fe_users.available_venues" approved="yes">
         <source>Available venues in the FE editor</source>
-        <target state="needs-translation">Available venues in the FE editor</target>
+        <target state="final">Verfügbare Veranstaltungsorte im FE-Editor</target>
       </trans-unit>
     </body>
   </file>
