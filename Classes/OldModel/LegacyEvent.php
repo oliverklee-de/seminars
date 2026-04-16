@@ -229,12 +229,12 @@ class LegacyEvent extends AbstractTimeSpan
         }
 
         $result = '';
-        $contentObjectRenderer = $plugin->getContentObjectRenderer();
+        $contentObject = $plugin->getContentObjectRenderer();
         foreach ($this->getPlacesAsArray() as $place) {
             $encodedPlaceTitle = \htmlspecialchars((string)$place['title'], ENT_QUOTES | ENT_HTML5);
             $homepage = (string)($place['homepage'] ?? '');
-            if ($contentObjectRenderer instanceof ContentObjectRenderer && $homepage !== '') {
-                $placeTitleHtml = $contentObjectRenderer->typoLink($encodedPlaceTitle, ['parameter' => $homepage]);
+            if ($contentObject instanceof ContentObjectRenderer && $homepage !== '') {
+                $placeTitleHtml = $contentObject->typoLink($encodedPlaceTitle, ['parameter' => $homepage]);
             } else {
                 $placeTitleHtml = $encodedPlaceTitle;
             }
