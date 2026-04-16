@@ -120,4 +120,67 @@ final class FrontendUserTest extends UnitTestCase
 
         self::assertSame([1, 0, 2], \array_values($result));
     }
+
+    /**
+     * @test
+     */
+    public function getConcatenatedUidsOfAvailableVenuesForFrontEndEditorInitiallyReturnsEmptyString(): void
+    {
+        self::assertSame('', $this->subject->getConcatenatedUidsOfAvailableVenuesForFrontEndEditor());
+    }
+
+    /**
+     * @test
+     */
+    public function setConcatenatedUidsOfAvailableVenuesForFrontEndEditorSetsValue(): void
+    {
+        $value = '1,2,3';
+        $this->subject->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor($value);
+
+        self::assertSame($value, $this->subject->getConcatenatedUidsOfAvailableVenuesForFrontEndEditor());
+    }
+
+    /**
+     * @test
+     */
+    public function getUidsOfAvailableVenuesForFrontEndEditorForEmptyValueReturnsEmptyArray(): void
+    {
+        $this->subject->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('');
+
+        self::assertSame([], $this->subject->getUidsOfAvailableVenuesForFrontEndEditor());
+    }
+
+    /**
+     * @test
+     */
+    public function getUidsOfAvailableVenuesForFrontEndEditorReturnsExplodedValues(): void
+    {
+        $this->subject->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('1,2,3');
+
+        self::assertSame([1, 2, 3], $this->subject->getUidsOfAvailableVenuesForFrontEndEditor());
+    }
+
+    /**
+     * @test
+     */
+    public function getUidsOfAvailableVenuesForFrontEndEditorDropsEmptyValues(): void
+    {
+        $this->subject->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('1,,2');
+
+        $result = $this->subject->getUidsOfAvailableVenuesForFrontEndEditor();
+
+        self::assertSame([1, 2], \array_values($result));
+    }
+
+    /**
+     * @test
+     */
+    public function getUidsOfAvailableVenuesForFrontEndEditorCastsNonIntegerValuesToZero(): void
+    {
+        $this->subject->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('1,bla,2');
+
+        $result = $this->subject->getUidsOfAvailableVenuesForFrontEndEditor();
+
+        self::assertSame([1, 0, 2], \array_values($result));
+    }
 }

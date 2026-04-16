@@ -48,13 +48,31 @@ ExtensionManagementUtility::addTCAcolumns(
                 ],
             ],
         ],
+        'available_venues' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:fe_users.available_venues',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_seminars_sites',
+                'foreign_table_where' => 'ORDER BY title',
+                'size' => 10,
+                'minitems' => 0,
+                'maxitems' => 999,
+                'fieldControl' => [
+                    'editPopup' => ['disabled' => false],
+                    'addRecord' => ['disabled' => false],
+                    'listModule' => ['disabled' => false],
+                ],
+            ],
+        ],
     ],
 );
 
 ExtensionManagementUtility::addToAllTCAtypes(
     'fe_users',
     '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:fe_users.divLabel.seminars, '
-    . 'default_organizer, available_topics',
+    . 'default_organizer, available_topics, available_venues',
     '',
     'after:image',
 );
