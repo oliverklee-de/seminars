@@ -84,4 +84,108 @@ final class VenueRepositoryTest extends FunctionalTestCase
         self::assertInstanceOf(Venue::class, $first);
         self::assertSame('Earlier', $first->getTitle());
     }
+
+    /**
+     * @test
+     */
+    public function findVenuesByUidsWithoutVenuesReturnsEmptyResult(): void
+    {
+        $result = $this->subject->findVenuesByUids([1]);
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesByUidsFindsVenueWithMatchingOnlyUid(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesByUids/Venue.csv');
+
+        $result = $this->subject->findVenuesByUids([1]);
+
+        self::assertCount(1, $result);
+        self::assertInstanceOf(Venue::class, $result->getFirst());
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesByUidsFindsVenueWithMatchingFirstUidOfTwo(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesByUids/Venue.csv');
+
+        $result = $this->subject->findVenuesByUids([1, 2]);
+
+        self::assertCount(1, $result);
+        self::assertInstanceOf(Venue::class, $result->getFirst());
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesByUidsFindsVenueWithMatchingLastUidOfTwo(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesByUids/Venue.csv');
+
+        $result = $this->subject->findVenuesByUids([2, 1]);
+
+        self::assertCount(1, $result);
+        self::assertInstanceOf(Venue::class, $result->getFirst());
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesByUidsIgnoresVenueWithNonMatchingUid(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesByUids/Venue.csv');
+
+        $result = $this->subject->findVenuesByUids([2]);
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesByUidsFindsVenuesOnPage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesByUids/VenueOnPage.csv');
+
+        $result = $this->subject->findVenuesByUids([1]);
+
+        self::assertCount(1, $result);
+        self::assertInstanceOf(Venue::class, $result->getFirst());
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesByUidsIgnoresDeletedVenue(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesByUids/DeletedVenue.csv');
+
+        $result = $this->subject->findVenuesByUids([1]);
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesByUidsOrdersInAscendingOrderByInternalTitle(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesByUids/TwoVenuesInReverseOrder.csv');
+
+        $result = $this->subject->findVenuesByUids([1, 2])->toArray();
+
+        self::assertCount(2, $result);
+        $firstMatch = $result[0];
+        self::assertInstanceOf(Venue::class, $firstMatch);
+        self::assertSame('Betahaus', $firstMatch->getTitle());
+        $secondMatch = $result[1];
+        self::assertInstanceOf(Venue::class, $secondMatch);
+        self::assertSame('Domani Venlo', $secondMatch->getTitle());
+    }
 }
