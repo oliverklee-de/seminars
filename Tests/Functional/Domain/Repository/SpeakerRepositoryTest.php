@@ -15,6 +15,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class SpeakerRepositoryTest extends FunctionalTestCase
 {
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures/SpeakerRepository';
+
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -43,7 +45,7 @@ final class SpeakerRepositoryTest extends FunctionalTestCase
      */
     public function mapsAllModelFields(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/SpeakerRepository/SpeakerWithAllFields.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/propertyMapping/SpeakerWithAllFields.csv');
 
         $result = $this->subject->findByUid(1);
 
@@ -59,7 +61,7 @@ final class SpeakerRepositoryTest extends FunctionalTestCase
      */
     public function findsRecordOnPages(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SpeakerRepository/SpeakerOnPage.xml');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findAll/SpeakerOnPage.csv');
 
         $result = $this->subject->findAll();
 
@@ -71,7 +73,7 @@ final class SpeakerRepositoryTest extends FunctionalTestCase
      */
     public function sortsRecordsByNameInAscendingOrder(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SpeakerRepository/TwoSpeakersInReverseOrder.xml');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findAll/TwoSpeakersInReverseOrder.csv');
 
         $result = $this->subject->findAll();
 
