@@ -15,6 +15,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class VenueRepositoryTest extends FunctionalTestCase
 {
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures/VenueRepository';
+
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -43,7 +45,7 @@ final class VenueRepositoryTest extends FunctionalTestCase
      */
     public function mapsAllModelFields(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/VenueRepository/VenueWithAllFields.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/propertyMapping/VenueWithAllFields.csv');
 
         $result = $this->subject->findByUid(1);
 
@@ -61,7 +63,7 @@ final class VenueRepositoryTest extends FunctionalTestCase
      */
     public function findsRecordOnPages(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/VenueRepository/VenueOnPage.xml');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findAll/VenueOnPage.csv');
 
         $result = $this->subject->findAll();
 
@@ -73,7 +75,7 @@ final class VenueRepositoryTest extends FunctionalTestCase
      */
     public function sortsRecordsByTitleInAscendingOrder(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/VenueRepository/TwoVenuesInReverseOrder.xml');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findAll/TwoVenuesInReverseOrder.csv');
 
         $result = $this->subject->findAll();
 
