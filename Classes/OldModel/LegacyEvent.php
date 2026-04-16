@@ -229,11 +229,12 @@ class LegacyEvent extends AbstractTimeSpan
         }
 
         $result = '';
+        $contentObject = $plugin->getContentObjectRenderer();
         foreach ($this->getPlacesAsArray() as $place) {
             $encodedPlaceTitle = \htmlspecialchars((string)$place['title'], ENT_QUOTES | ENT_HTML5);
             $homepage = (string)($place['homepage'] ?? '');
-            if ($homepage !== '') {
-                $placeTitleHtml = $plugin->getContentObjectRenderer()->getTypoLink($encodedPlaceTitle, $homepage);
+            if ($contentObject instanceof ContentObjectRenderer && $homepage !== '') {
+                $placeTitleHtml = $contentObject->typoLink($encodedPlaceTitle, ['parameter' => $homepage]);
             } else {
                 $placeTitleHtml = $encodedPlaceTitle;
             }
@@ -556,7 +557,7 @@ class LegacyEvent extends AbstractTimeSpan
             $encodedTitle = \htmlspecialchars($speaker->getTitle(), ENT_QUOTES | ENT_HTML5);
 
             if ($contentObject instanceof ContentObjectRenderer && $speaker->hasHomepage()) {
-                $result[] = $contentObject->getTypoLink($encodedTitle, $speaker->getHomepage());
+                $result[] = $contentObject->typoLink($encodedTitle, ['parameter' => $speaker->getHomepage()]);
             } else {
                 $result[] = $encodedTitle;
             }
@@ -1450,8 +1451,8 @@ class LegacyEvent extends AbstractTimeSpan
 
         $frontEndController = $GLOBALS['TSFE'] ?? null;
         $contentObject = $frontEndController instanceof TypoScriptFrontendController ? $frontEndController->cObj : null;
-        if ($contentObject instanceof ContentObjectRenderer && $organizer->hasHomepage()) {
-            $html = $contentObject->getTypoLink($encodedName, $organizer->getHomepage());
+        if ($contentObject instanceof ContentObjectRenderer) {
+            $html = $contentObject->typoLink($encodedName, ['parameter' => $organizer->getHomepage()]);
         } else {
             $html = $encodedName;
         }
