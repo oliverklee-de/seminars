@@ -105,9 +105,13 @@ class RegistrationsList extends AbstractView
             $this->setMarker('registrations_list_view_content', '');
         }
 
+        \assert($this->cObj instanceof ContentObjectRenderer);
         $this->setMarker(
             'backlink',
-            $this->cObj->getTypoLink($this->translate('label_back'), (string)$this->getConfValueInteger('listPID')),
+            $this->cObj->typoLink(
+                $this->translate('label_back'),
+                ['parameter' => (string)$this->getConfValueInteger('listPID')],
+            ),
         );
 
         return $this->getSubpart('REGISTRATIONS_LIST_VIEW');
