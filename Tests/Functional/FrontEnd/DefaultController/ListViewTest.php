@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\FrontEnd\DefaultController;
 
-use OliverKlee\Oelib\Configuration\ConfigurationProxy;
-use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Tests\Functional\FrontEnd\Fixtures\TestingDefaultController;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
@@ -30,10 +28,6 @@ final class ListViewTest extends FunctionalTestCase
         parent::setUp();
 
         $this->testingFramework = new TestingFramework('tx_seminars');
-
-        $extensionConfiguration = new DummyConfiguration();
-        $extensionConfiguration->setAsBoolean('enableConfigCheck', false);
-        ConfigurationProxy::setInstance('seminars', $extensionConfiguration);
     }
 
     private function buildSubjectForListView(string $fixtureFileName): TestingDefaultController

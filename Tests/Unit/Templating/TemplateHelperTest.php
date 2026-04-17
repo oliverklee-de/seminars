@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Unit\Templating;
 
-use OliverKlee\Oelib\Configuration\ConfigurationProxy;
 use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Seminars\Tests\Unit\Templating\Fixtures\TestingContentObjectRenderer;
 use OliverKlee\Seminars\Tests\Unit\Templating\Fixtures\TestingTemplateHelper;
@@ -38,7 +37,6 @@ final class TemplateHelperTest extends UnitTestCase
 
     protected function tearDown(): void
     {
-        ConfigurationProxy::purgeInstances();
         GeneralUtility::purgeInstances();
 
         unset($GLOBALS['TSFE']);

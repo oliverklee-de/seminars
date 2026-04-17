@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\Templating;
 
-use OliverKlee\Oelib\Configuration\ConfigurationProxy;
-use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Exception\NotFoundException;
 use OliverKlee\Seminars\Tests\Unit\Templating\Fixtures\TestingTemplateHelper;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -35,16 +33,7 @@ final class TemplateHelperTest extends FunctionalTestCase
         $frontEndControllerMock->cObj = $this->createMock(ContentObjectRenderer::class);
         $GLOBALS['TSFE'] = $frontEndControllerMock;
 
-        $configuration = new DummyConfiguration(['enableConfigCheck' => true]);
-        ConfigurationProxy::setInstance('seminars', $configuration);
-
         $this->subject = new TestingTemplateHelper([]);
-    }
-
-    protected function tearDown(): void
-    {
-        ConfigurationProxy::purgeInstances();
-        parent::tearDown();
     }
 
     ///////////////////////////////
