@@ -1383,7 +1383,7 @@ final class SingleEventTest extends UnitTestCase
      */
     public function setStatisticsSetsStatistics(): void
     {
-        $model = new EventStatistics(0, 0, 0, 0, 0, false);
+        $model = new EventStatistics(0, 0, 0, 0, 0, 0, false);
         $this->subject->setStatistics($model);
 
         self::assertSame($model, $this->subject->getStatistics());

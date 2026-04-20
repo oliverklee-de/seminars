@@ -29,6 +29,11 @@ class EventStatistics
     /**
      * @phpstan-var int<0, max>
      */
+    private int $nonbindingReservationSeatsCount;
+
+    /**
+     * @phpstan-var int<0, max>
+     */
     private int $minimumRequiredSeats;
 
     /**
@@ -42,6 +47,7 @@ class EventStatistics
      * @param int<0, max> $regularSeatsCountFromRegistrations
      * @param int<0, max> $offlineRegistrationsCount
      * @param int<0, max> $waitingListSeatsCount
+     * @param int<0, max> $nonbindingReservationSeatsCount
      * @param int<0, max> $minimumRequiredSeats
      * @param int<0, max> $seatsLimit
      */
@@ -49,6 +55,7 @@ class EventStatistics
         int $regularSeatsCountFromRegistrations,
         int $offlineRegistrationsCount,
         int $waitingListSeatsCount,
+        int $nonbindingReservationSeatsCount,
         int $minimumRequiredSeats,
         int $seatsLimit,
         bool $waitingList
@@ -56,6 +63,7 @@ class EventStatistics
         $this->regularSeatsCountFromRegistrations = $regularSeatsCountFromRegistrations;
         $this->offlineRegistrationsCount = $offlineRegistrationsCount;
         $this->waitingListSeatsCount = $waitingListSeatsCount;
+        $this->nonbindingReservationSeatsCount = $nonbindingReservationSeatsCount;
         $this->minimumRequiredSeats = $minimumRequiredSeats;
         $this->seatsLimit = $seatsLimit;
         $this->waitingList = $waitingList;
@@ -80,6 +88,14 @@ class EventStatistics
     public function getWaitingListSeatsCount(): int
     {
         return $this->waitingListSeatsCount;
+    }
+
+    /**
+     * @return int<0, max>
+     */
+    public function getNonbindingReservationSeatsCount(): int
+    {
+        return $this->nonbindingReservationSeatsCount;
     }
 
     /**

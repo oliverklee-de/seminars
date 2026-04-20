@@ -242,6 +242,28 @@ final class EventStatisticsCalculatorTest extends UnitTestCase
     /**
      * @test
      */
+    public function enrichWithStatisticsRetrievesNonbindingReservationSeatsFromRegistrations(): void
+    {
+        $eventUid = 9;
+        $event = $this->getMockBuilder(SingleEvent::class)->onlyMethods(['getUid'])->getMock();
+        $event->method('getUid')->willReturn($eventUid);
+        $event->setRegistrationRequired(true);
+
+        $nonbindingReservationSeats = 8;
+        $this->registrationRepositoryMock
+            ->expects(self::once())->method('countNonbindingReservationSeatsByEvent')
+            ->with($eventUid)->willReturn($nonbindingReservationSeats);
+
+        $this->subject->enrichWithStatistics($event);
+
+        $statistics = $event->getStatistics();
+        self::assertInstanceOf(EventStatistics::class, $statistics);
+        self::assertSame($nonbindingReservationSeats, $statistics->getNonbindingReservationSeatsCount());
+    }
+
+    /**
+     * @test
+     */
     public function enrichWithStatisticsRetrievesWaitingListSeatsFromRegistrationsEvenWithDisabledWaitingList(): void
     {
         $eventUid = 9;

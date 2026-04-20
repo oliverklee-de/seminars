@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Add nonbinding reservation seats to the event statistics (#4918)
 - Allow limiting FE editor venue access for FE users (#4900, #4910)
 - Add `RegistrationRepository.countNonbindingReservationSeatsByEvent` (#4898)
 - Allow limiting FE editor topic access for FE users (#4860)

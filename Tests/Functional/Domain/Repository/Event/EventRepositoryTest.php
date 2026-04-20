@@ -250,7 +250,7 @@ final class EventRepositoryTest extends FunctionalTestCase
     public function canPersistSingleEventWithStatistics(): void
     {
         $event = new SingleEvent();
-        $event->setStatistics(new EventStatistics(0, 0, 0, 0, 0, false));
+        $event->setStatistics(new EventStatistics(0, 0, 0, 0, 0, 0, false));
         $this->subject->add($event);
         $this->subject->persistAll();
 
