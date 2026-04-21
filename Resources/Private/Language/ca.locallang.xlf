@@ -2245,6 +2245,10 @@
         <source>Registrations on the waiting list (%u)</source>
         <target state="needs-translation">Registrations on the waiting list (%u)</target>
       </trans-unit>
+      <trans-unit id="backEndModule.heading.nonbindingReservations">
+        <source>Nonbinding reservations</source>
+        <target state="needs-translation">Nonbinding reservations</target>
+      </trans-unit>
       <trans-unit id="backEndModule.heading.email">
         <source>Send an email to all registered persons</source>
         <target state="needs-translation">Send an email to all registered persons</target>
@@ -2264,6 +2268,10 @@
       <trans-unit id="backEndModule.message.noRegistrationsForEvent">
         <source>This event does not have any registrations yet.</source>
         <target state="needs-translation">This event does not have any registrations yet.</target>
+      </trans-unit>
+      <trans-unit id="backEndModule.message.noNonbindingReservationsForEvent">
+        <source>This event does not have any nonbinding reservations yet.</source>
+        <target state="needs-translation">This event does not have any nonbinding reservations yet.</target>
       </trans-unit>
       <trans-unit id="backEndModule.message.numberOfEventsFound">
         <source>%u event(s) found.</source>
