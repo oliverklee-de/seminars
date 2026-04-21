@@ -125,7 +125,8 @@
                         </td>
                         <td class="nowrap">
                             <f:if condition="{statistics}">
-                                <f:if condition="{statistics.regularSeatsCount} || {statistics.waitingListSeatsCount}">
+                                <f:if
+                                    condition="{statistics.regularSeatsCount} || {statistics.waitingListSeatsCount} || {statistics.nonbindingReservationSeatsCount}">
                                     <f:link.action
                                         controller="BackEnd\Registration" action="showForEvent"
                                         arguments="{eventUid: event.uid}"
@@ -139,7 +140,7 @@
                         </td>
                         <f:if condition="{permissions.readAccessToRegistrations}">
                             <td class="col-icon nowrap">
-                                <f:if condition="{visible} && {statistics} && {statistics.regularSeatsCount}">
+                                <f:if condition="{visible} && {statistics.regularSeatsCount}">
                                     <f:link.action controller="BackEnd\Email" action="compose"
                                                    title="{f:translate(key: '{actionLabelPrefix}.email.long')}"
                                                    arguments="{event: event, pageUid: pageUid}"

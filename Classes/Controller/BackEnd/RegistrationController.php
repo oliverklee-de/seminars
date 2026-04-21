@@ -88,6 +88,10 @@ class RegistrationController extends ActionController
             $waitingListRegistrations = $this->registrationRepository->findWaitingListRegistrationsByEvent($eventUid);
             $this->registrationRepository->enrichWithRawData($waitingListRegistrations);
             $this->view->assign('waitingListRegistrations', $waitingListRegistrations);
+
+            $nonbindingReservations = $this->registrationRepository->findNonbindingReservationsByEvent($eventUid);
+            $this->registrationRepository->enrichWithRawData($nonbindingReservations);
+            $this->view->assign('nonbindingReservations', $nonbindingReservations);
         }
 
         $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Seminars/BackEnd/DeleteConfirmation');
