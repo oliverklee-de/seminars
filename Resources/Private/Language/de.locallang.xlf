@@ -2212,6 +2212,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Registrations on the waiting list (%u)</source>
         <target state="final">Anmeldungen auf der Warteliste (%u)</target>
       </trans-unit>
+      <trans-unit id="backEndModule.heading.nonbindingReservations">
+        <source>Nonbinding reservations</source>
+        <target state="needs-translation">Nonbinding reservations</target>
+      </trans-unit>
       <trans-unit id="backEndModule.heading.email" approved="yes">
         <source>Send an email to all registered persons</source>
         <target state="final">E-Mail an alle angemeldeten Personen schicken</target>
@@ -2231,6 +2235,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="backEndModule.message.noRegistrationsForEvent" approved="yes">
         <source>This event does not have any registrations yet.</source>
         <target state="final">Für diese Veranstaltung gibt es noch keine Anmeldungen.</target>
+      </trans-unit>
+      <trans-unit id="backEndModule.message.noNonbindingReservationsForEvent">
+        <source>This event does not have any nonbinding reservations yet.</source>
+        <target state="needs-translation">This event does not have any nonbinding reservations yet.</target>
       </trans-unit>
       <trans-unit id="backEndModule.message.numberOfEventsFound" approved="yes">
         <source>%u event(s) found.</source>
