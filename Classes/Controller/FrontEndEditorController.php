@@ -198,7 +198,7 @@ class FrontEndEditorController extends ActionController
     public function updateSingleEventAction(SingleEvent $event): ResponseInterface
     {
         $this->checkEventOwner($event);
-        $this->updateAndSlaveSlugForSingleEvent($event);
+        $this->updateAndSaveSlugForSingleEvent($event);
 
         return $this->redirect('index');
     }
@@ -218,7 +218,7 @@ class FrontEndEditorController extends ActionController
     public function createSingleEventAction(SingleEvent $event): ResponseInterface
     {
         $this->createEvent($event);
-        $this->updateAndSlaveSlugForSingleEvent($event);
+        $this->updateAndSaveSlugForSingleEvent($event);
 
         return $this->redirect('index');
     }
@@ -247,7 +247,7 @@ class FrontEndEditorController extends ActionController
         $this->eventRepository->persistAll();
     }
 
-    private function updateAndSlaveSlugForSingleEvent(SingleEvent $event): void
+    private function updateAndSaveSlugForSingleEvent(SingleEvent $event): void
     {
         $uid = $event->getUid();
         \assert(\is_int($uid) && $uid > 0);
