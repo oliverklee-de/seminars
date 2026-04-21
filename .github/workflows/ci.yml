@@ -105,7 +105,7 @@ jobs:
           - "php:rector"
           - "php:sniff"
           - "php:stan"
-          - "ts:lint"
+          - "typoscript:lint"
           - "xliff:lint"
         php-version:
           - "8.3"
