@@ -687,7 +687,7 @@ final class RegistrationGuardTest extends UnitTestCase
 
         $this->eventStatisticsCalculatorMock->expects(self::once())->method('enrichWithStatistics')->willReturnCallback(
             static function (SingleEvent $event) use ($offlineRegistrations, $seatsLimit): void {
-                $statistics = new EventStatistics(0, $offlineRegistrations, 0, 0, $seatsLimit, false);
+                $statistics = new EventStatistics(0, $offlineRegistrations, 0, 0, 0, $seatsLimit, false);
                 $event->setStatistics($statistics);
             },
         );
@@ -709,7 +709,7 @@ final class RegistrationGuardTest extends UnitTestCase
 
         $this->eventStatisticsCalculatorMock->expects(self::once())->method('enrichWithStatistics')->willReturnCallback(
             static function (SingleEvent $event) use ($offlineRegistrations, $seatsLimit): void {
-                $statistics = new EventStatistics(0, $offlineRegistrations, 0, 0, $seatsLimit, false);
+                $statistics = new EventStatistics(0, $offlineRegistrations, 0, 0, 0, $seatsLimit, false);
                 $event->setStatistics($statistics);
             },
         );

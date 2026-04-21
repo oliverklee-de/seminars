@@ -1426,16 +1426,6 @@ parameters:
 			path: ../../Classes/SchedulerTasks/RegistrationDigest.php
 
 		-
-			message: "#^Parameter \\#1 \\$eventUid of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepository\\:\\:countRegularSeatsByEvent\\(\\) expects int\\<1, max\\>, int given\\.$#"
-			count: 1
-			path: ../../Classes/Service/EventStatisticsCalculator.php
-
-		-
-			message: "#^Parameter \\#1 \\$eventUid of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepository\\:\\:countWaitingListSeatsByEvent\\(\\) expects int\\<1, max\\>, int given\\.$#"
-			count: 1
-			path: ../../Classes/Service/EventStatisticsCalculator.php
-
-		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: ../../Classes/Service/EventStatusService.php
