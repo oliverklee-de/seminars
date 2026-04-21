@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Domain\Repository;
 
+use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Venue;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
@@ -37,5 +38,21 @@ class VenueRepository extends Repository
         return $query
             ->matching($query->in('uid', $uids))
             ->execute();
+    }
+
+    /**
+     * Finds the venues the given user has access to in the FE editor.
+     *
+     * If the user has no venue access restriction, returns all venues.
+     *
+     * @return QueryResultInterface<Venue>
+     */
+    public function findVenuesAccessibleToFrontendUser(FrontendUser $user): QueryResultInterface
+    {
+        $accessibleVenueUids = $user->getUidsOfAvailableVenuesForFrontEndEditor();
+
+        return ($accessibleVenueUids !== [])
+            ? $this->findVenuesByUids($accessibleVenueUids)
+            : $this->findAll();
     }
 }

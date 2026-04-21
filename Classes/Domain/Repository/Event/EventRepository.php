@@ -449,7 +449,7 @@ class EventRepository extends AbstractRawDataCapableRepository
     }
 
     /**
-     * Finds the topics the given user has access to.
+     * Finds the topics the given user has access to in the FE editor.
      *
      * If the user has no topic access restriction, returns all topics.
      *

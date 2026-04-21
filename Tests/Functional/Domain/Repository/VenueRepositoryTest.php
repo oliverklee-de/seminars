@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\Domain\Repository;
 
+use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Venue;
 use OliverKlee\Seminars\Domain\Repository\VenueRepository;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -174,17 +175,186 @@ final class VenueRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function findVenuesByUidsOrdersInAscendingOrderByInternalTitle(): void
+    public function findVenuesByUidsOrdersInAscendingOrderByTitle(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesByUids/TwoVenuesInReverseOrder.csv');
 
-        $result = $this->subject->findVenuesByUids([1, 2])->toArray();
+        $result = $this->subject->findVenuesByUids([1, 2]);
 
         self::assertCount(2, $result);
-        $firstMatch = $result[0];
+        $firstMatch = $result->offsetGet('0');
         self::assertInstanceOf(Venue::class, $firstMatch);
         self::assertSame('Betahaus', $firstMatch->getTitle());
-        $secondMatch = $result[1];
+        $secondMatch = $result->offsetGet('1');
+        self::assertInstanceOf(Venue::class, $secondMatch);
+        self::assertSame('Domani Venlo', $secondMatch->getTitle());
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForNoVenuesAndUserWithoutLimitReturnsEmptyResult(): void
+    {
+        $user = new FrontendUser();
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForUserWithoutLimitFindsVenue(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesAccessibleToFrontendUser/Venue.csv');
+        $user = new FrontendUser();
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+        self::assertInstanceOf(Venue::class, $result->getFirst());
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForUserWithoutLimitFindsVenueOnPage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesAccessibleToFrontendUser/VenueOnPage.csv');
+        $user = new FrontendUser();
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+        self::assertInstanceOf(Venue::class, $result->getFirst());
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForUserWithoutLimitIgnoresDeletedVenue(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesAccessibleToFrontendUser/DeletedVenue.csv');
+        $user = new FrontendUser();
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForUserWithoutLimitOrdersInAscendingOrderByTitle(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/findVenuesAccessibleToFrontendUser/TwoVenuesInReverseOrder.csv',
+        );
+        $user = new FrontendUser();
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(2, $result);
+        $firstMatch = $result->offsetGet('0');
+        self::assertInstanceOf(Venue::class, $firstMatch);
+        self::assertSame('Betahaus', $firstMatch->getTitle());
+        $secondMatch = $result->offsetGet('1');
+        self::assertInstanceOf(Venue::class, $secondMatch);
+        self::assertSame('Domani Venlo', $secondMatch->getTitle());
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForNoVenuesAndUserWithLimitReturnsEmptyResult(): void
+    {
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('1');
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForUserWithLimitFindsVenueWithMatchingUid(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesAccessibleToFrontendUser/Venue.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('1');
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+        $firstMatch = $result->getFirst();
+        self::assertInstanceOf(Venue::class, $firstMatch);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForUserWithLimitIgnoresVenueWithNonMatchingUid(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesAccessibleToFrontendUser/Venue.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('2');
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForUserWithLimitFindsVenueOnPage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesAccessibleToFrontendUser/VenueOnPage.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('1');
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(1, $result);
+        $firstMatch = $result->getFirst();
+        self::assertInstanceOf(Venue::class, $firstMatch);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForUserWithLimitIgnoresDeletedVenue(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findVenuesAccessibleToFrontendUser/DeletedVenue.csv');
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('1');
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(0, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findVenuesAccessibleToFrontendUserForUserWithLimitOrdersInAscendingOrderByTitle(): void
+    {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/findVenuesAccessibleToFrontendUser/TwoVenuesInReverseOrder.csv',
+        );
+        $user = new FrontendUser();
+        $user->setConcatenatedUidsOfAvailableVenuesForFrontEndEditor('1,2');
+
+        $result = $this->subject->findVenuesAccessibleToFrontendUser($user);
+
+        self::assertCount(2, $result);
+        $firstMatch = $result->offsetGet('0');
+        self::assertInstanceOf(Venue::class, $firstMatch);
+        self::assertSame('Betahaus', $firstMatch->getTitle());
+        $secondMatch = $result->offsetGet('1');
         self::assertInstanceOf(Venue::class, $secondMatch);
         self::assertSame('Domani Venlo', $secondMatch->getTitle());
     }
