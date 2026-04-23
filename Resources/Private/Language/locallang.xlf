@@ -1983,14 +1983,32 @@
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.unlimited">
         <source>∞</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fewLeft">
+        <source>few tickets left</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.available">
+        <source>available</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration">
         <source>Registration</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.register">
         <source>registration</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.registration.register.ariaLabel">
+        <source>Register for</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList">
         <source>waiting list</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList.ariaLabel">
+        <source>Subscribe to waiting list for</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.registration.details">
+        <source>details</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.registration.details.ariaLabel">
+        <source>Show details of the event</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView">
         <source>Event single view</source>
