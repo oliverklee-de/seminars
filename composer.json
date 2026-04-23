@@ -147,9 +147,9 @@
 			"phpunit -c Build/phpunit/UnitTests.xml --whitelist Classes --coverage-php=.Build/coverage/unit.cov Tests/Unit"
 		],
 		"check:php": [
-			"@check:php:cs-fixer",
 			"@check:php:lint",
 			"@check:php:sniff",
+			"@check:php:cs-fixer",
 			"@check:php:stan"
 		],
 		"check:php:cs-fixer": "php-cs-fixer fix --config ./Build/php-cs-fixer/config.php -v --dry-run --diff",
