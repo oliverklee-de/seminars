@@ -1,10 +1,50 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2086,SC2046,SC2128,SC2178,SC2206
+
+# Uncomment for debugging
+# set -x
 
 #
 # TYPO3 extension tea test runner based on docker.
 #
 
-trap 'cleanUp;exit 2' SIGINT
+if [ "${CI}" != "true" ]; then
+    trap 'echo "runTests.sh SIGINT signal emitted";cleanUp;exit 2' SIGINT
+fi
+
+printSummary() {
+    cleanUp
+
+    echo "" >&2
+    echo "###########################################################################" >&2
+    echo "Result of ${TEST_SUITE}" >&2
+    echo "Container runtime: ${CONTAINER_BIN}" >&2
+    echo "Container suffix: ${SUFFIX}"
+    if [[ ${TEST_SUITE} =~ ^(npm|lintCss|lintJs)$ ]]; then
+        echo "NODE: ${IMAGE_NODEJS}" >&2
+    else
+        echo "PHP: ${PHP_VERSION}" >&2
+        echo "TYPO3: ${CORE_VERSION}" >&2
+    fi
+    if [[ ${TEST_SUITE} =~ ^functional$ ]]; then
+        case "${DBMS}" in
+            mariadb|mysql|postgres)
+                echo "DBMS: ${DBMS}  version ${DBMS_VERSION}  driver ${DATABASE_DRIVER}" >&2
+                ;;
+            sqlite)
+                echo "DBMS: ${DBMS}  driver pdo_sqlite" >&2
+                ;;
+        esac
+    fi
+    if [[ ${SUITE_EXIT_CODE} -eq 0 ]]; then
+        echo "SUCCESS" >&2
+    else
+        echo "FAILURE" >&2
+    fi
+    echo "###########################################################################" >&2
+    echo "" >&2
+    exit ${SUITE_EXIT_CODE}
+}
 
 waitFor() {
     local HOST=${1}
@@ -20,7 +60,7 @@ waitFor() {
             COUNT=\$((COUNT + 1));
         done;
     "
-    ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name wait-for-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${IMAGE_ALPINE} /bin/sh -c "${TESTCOMMAND}"
+    ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name wait-for-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${IMAGE_PHP} /bin/sh -c "${TESTCOMMAND}"
     # shellcheck disable=SC2181 # Disabled because we don‘t want to move the long line between the brackets
     if [[ $? -gt 0 ]]; then
         kill -SIGINT -$$
@@ -144,6 +184,7 @@ Options:
     -s <...>
         Specifies which test suite to run
             - cgl: Fixes the code style with the PHP Coding Standards Fixer (PHP-CS-Fixer).
+            - checkComposerNormalize: Checks the order of the composer.json entries.
             - clean: clean up build, cache and testing related files and folders
             - cleanCache: clean up cache related files and folders
             - cleanRenderedDocumentation: clean up rendered documentation files and folders (Documentation-GENERATED-temp)
@@ -154,16 +195,23 @@ Options:
             - composerUpdateMax: "composer update", with no platform.php config.
             - composerUpdateMin: "composer update --prefer-lowest", with platform.php set to PHP version x.x.0.
             - docsGenerate: Renders the extension ReST documentation.
+            - fix: Runs all automatic code style fixes.
+            - fixComposerNormalize: Normalizes the composer.json.
             - functional: PHP functional tests
             - lintCss: CSS file linting. Set -n for dry-run.
             - lintJs: JavaScript file linting. Set -n for dry-run.
             - lintJson: JSON linting
             - lintPhp: PHP linting
             - lintTypoScript: TypoScript linting
+            - lintXliff: XLIFF linting
             - lintYaml: YAML linting
             - npm: "npm" with all remaining arguments dispatched.
+            - phpCsFixer fixes code to follow the standards.
+            - phpmd: Checks code metrics in the PHP code using PHPMD.
             - phpstan: PHPStan tests
             - phpstanGenerateBaseline: regenerate PHPStan baseline, handy after PHPStan updates
+            - psr-verify: Verifies PSR-4 namespace correctness.
+            - rector: Fixes and upgrades the PHP code using Rector
             - shellcheck: check runTests.sh for shell issues
             - unit (default): PHP unit tests
             - unitRandom: PHP unit tests in random order, add -o <number> to use specific seed
@@ -181,8 +229,8 @@ Options:
 
     -b <docker|podman>
         Container environment:
-            - docker (default)
-            - podman
+            - docker
+            - podman (default)
 
     -d <sqlite|mariadb|mysql|postgres>
         Only with -s functional|functionalDeprecated
@@ -195,8 +243,7 @@ Options:
     -i version
         Specify a specific database version
         With "-d mariadb":
-            - 10.3   short-term, maintained until 2023-05-25 (default)
-            - 10.4   short-term, maintained until 2024-06-18
+            - 10.4   short-term, maintained until 2024-06-18 (default)
             - 10.5   short-term, maintained until 2025-06-24
             - 10.6   long-term, maintained until 2026-06
             - 10.7   short-term, no longer maintained
@@ -205,12 +252,16 @@ Options:
             - 10.10  short-term, maintained until 2023-11
             - 10.11  long-term, maintained until 2028-02
             - 11.0   development series
-            - 11.1   short-term development series
+            - 11.1   short-term development series, maintained until 2024-08
+            - 11.2   short-term development series, maintained until 2024-11
+            - 11.3   short-term development series, rolling release
+            - 11.4   long-term, maintained until 2029-05
         With "-d mysql":
-            - 5.5   unmaintained since 2018-12
-            - 5.6   unmaintained since 2021-02
-            - 5.7   maintained until 2023-10
-            - 8.0   maintained until 2026-04 (default)
+            - 8.0   maintained until 2026-04 (default) LTS
+            - 8.1   unmaintained since 2023-10
+            - 8.2   unmaintained since 2024-01
+            - 8.3   maintained until 2024-04
+            - 8.4   maintained until 2032-04 LTS
         With "-d postgres":
             - 10    unmaintained since 2022-11-10 (default)
             - 11    unmaintained since 2023-11-09
@@ -220,27 +271,34 @@ Options:
             - 15    maintained until 2027-11-11
             - 16    maintained until 2028-11-09
 
-    -t <11.5|12.4>
+    -t <11.5|12.4|13.4|14.3>
         Only with -s composerUpdateMin|composerUpdateMax
         Specifies the TYPO3 CORE Version to be used
-            - 11.5: use TYPO3 v11 with typo3/cms-composer-installers ^3
-            - 12.4: (default) use TYPO3 v12 with typo3/cms-composer-installers ^5
+            - 11.5: use TYPO3 v11
+            - 12.4: use TYPO3 v12 (default)
+            - 13.4: use TYPO3 v13
+            - 14.3: use TYPO3 v14
 
-    -p <7.4|8.0|8.1|8.2|8.3|8.4>
+    -p <7.4|8.0|8.1|8.2|8.3|8.4|8.5>
         Specifies the PHP minor version to be used
             - 7.4: use PHP 7.4
             - 8.0: use PHP 8.0
             - 8.1: use PHP 8.1
-            - 8.2: use PHP 8.2
-            - 8.3: (default) use PHP 8.3
+            - 8.2: (default) use PHP 8.2
+            - 8.3: use PHP 8.3
             - 8.4: use PHP 8.4
+            - 8.5: use PHP 8.5
 
-    -e "<phpunit options>"
+    -e "<phpunit options>" (DEPRECATED).
         Only with -s functional|functionalDeprecated|unit|unitDeprecated|unitRandom
         Additional options to send to phpunit (unit & functional tests). For phpunit,
         options starting with "--" must be added after options starting with "-".
-        Example -e "-v --filter canRetrieveValueWithGP" to enable verbose output AND filter tests
+        Example -e "-d memory_limit=-1 --filter filterByValueRecursiveCorrectlyFiltersArray" to enable verbose output AND filter tests
         named "canRetrieveValueWithGP"
+        DEPRECATED - pass arguments after the -- separator directly. For example, instead of
+            Build/Scripts/runTests.sh -s unit -e "--filter filterByValueRecursiveCorrectlyFiltersArray"
+        use
+            Build/Scripts/runTests.sh -s unit -- --filter filterByValueRecursiveCorrectlyFiltersArray
 
     -x
         Only with -s functional|functionalDeprecated|unit|unitDeprecated|unitRandom
@@ -271,19 +329,21 @@ Options:
         Show this help.
 
 Examples:
-    # Run all core unit tests using PHP 8.3
+    # Run all core unit tests using PHP 8.2
     ./Build/Scripts/runTests.sh
     ./Build/Scripts/runTests.sh -s unit
 
     # Run all core units tests and enable xdebug (have a PhpStorm listening on port 9003!)
     ./Build/Scripts/runTests.sh -x
 
-    # Run unit tests in phpunit verbose mode with xdebug on PHP 8.1 and filter for test canRetrieveValueWithGP
-    ./Build/Scripts/runTests.sh -x -p 8.1 -e "-v --filter canRetrieveValueWithGP"
+    # Run unit tests in phpunit with xdebug on PHP 8.1 and filter for test filterByValueRecursiveCorrectlyFiltersArray
+    ./Build/Scripts/runTests.sh -x -p 8.1 -- --filter filterByValueRecursiveCorrectlyFiltersArray
 
     # Run functional tests in phpunit with a filtered test method name in a specified file
     # example will currently execute two tests, both of which start with the search term
-    ./Build/Scripts/runTests.sh -s functional -e "--filter deleteContent" typo3/sysext/core/Tests/Functional/DataHandling/Regular/Modify/ActionTest.php
+    ./Build/Scripts/runTests.sh -s functional -- \
+          --filter datetimeInstanceCanBePersistedToDatabaseIfTypeIsExplicitlySpecified \
+          typo3/sysext/core/Tests/Functional/Database/ConnectionTest.php
 
     # Run functional tests on postgres with xdebug, php 8.1 and execute a restricted set of tests
     ./Build/Scripts/runTests.sh -x -p 8.1 -s functional -d postgres typo3/sysext/core/Tests/Functional/Authentication
@@ -311,17 +371,15 @@ TEST_SUITE="unit"
 CORE_VERSION="12.4"
 DBMS="sqlite"
 DBMS_VERSION=""
-PHP_VERSION="8.3"
+PHP_VERSION="8.2"
 PHP_XDEBUG_ON=0
 PHP_XDEBUG_PORT=9003
-EXTRA_TEST_OPTIONS=""
 PHPUNIT_RANDOM=""
 # CGLCHECK_DRY_RUN is a more generic dry-run switch not limited to CGL
 CGLCHECK_DRY_RUN=0
 DATABASE_DRIVER=""
 CONTAINER_BIN=""
 COMPOSER_ROOT_VERSION="3.0.x-dev"
-NODE_VERSION=22
 HELP_TEXT_NPM_CI="Now running \'npm ci --silent\'."
 HELP_TEXT_NPM_FAILURE="npm clean-install has failed. Please run \'${0} -s npm ci\' to explore."
 CONTAINER_INTERACTIVE="-it --init"
@@ -329,12 +387,11 @@ HOST_UID=$(id -u)
 HOST_PID=$(id -g)
 USERSET=""
 SUFFIX="$RANDOM"
-NETWORK="friendsoftypo3-tea-${SUFFIX}"
+NETWORK="oliverklee-seminars-${SUFFIX}"
 CI_PARAMS="${CI_PARAMS:-}"
 CONTAINER_HOST="host.docker.internal"
 # shellcheck disable=SC2034 # This variable will be needed when we try to clean up the root folder
 PHPSTAN_CONFIG_FILE="Build/phpstan/phpstan.neon"
-IS_CORE_CI=0
 
 # Option parsing updates above default vars
 # Reset in case getopts has been used previously in the shell
@@ -342,7 +399,7 @@ OPTIND=1
 # Array for invalid options
 INVALID_OPTIONS=()
 # Simple option parsing based on getopts (! not getopt)
-while getopts "a:b:s:d:i:p:e:t:xy:o:nhu" OPT; do
+while getopts "a:b:s:d:i:p:t:xy:o:nhu" OPT; do
     case ${OPT} in
         s)
             TEST_SUITE=${OPTARG}
@@ -364,16 +421,13 @@ while getopts "a:b:s:d:i:p:e:t:xy:o:nhu" OPT; do
             ;;
         p)
             PHP_VERSION=${OPTARG}
-            if ! [[ ${PHP_VERSION} =~ ^(7.4|8.0|8.1|8.2|8.3|8.4)$ ]]; then
+            if ! [[ ${PHP_VERSION} =~ ^(7.4|8.0|8.1|8.2|8.3|8.4|8.5)$ ]]; then
                 INVALID_OPTIONS+=("-p ${OPTARG}")
             fi
             ;;
-        e)
-            EXTRA_TEST_OPTIONS=${OPTARG}
-            ;;
         t)
             CORE_VERSION=${OPTARG}
-            if ! [[ ${CORE_VERSION} =~ ^(11.5|12.4)$ ]]; then
+            if ! [[ ${CORE_VERSION} =~ ^(11.5|12.4|13.4|14.3)$ ]]; then
                 INVALID_OPTIONS+=("-t ${OPTARG}")
             fi
             ;;
@@ -421,7 +475,6 @@ handleDbmsOptions
 
 # ENV var "CI" is set by gitlab-ci. Use it to force some CI details.
 if [ "${CI}" == "true" ]; then
-    IS_CORE_CI=1
     CONTAINER_INTERACTIVE=""
 fi
 
@@ -434,7 +487,7 @@ if [[ -z "${CONTAINER_BIN}" ]]; then
     fi
 fi
 
-if [ "$(uname)" != "Darwin" ] && [ "${CONTAINER_BIN}" == "docker" ]; then
+if [ $(uname) != "Darwin" ] && [ ${CONTAINER_BIN} = "docker" ]; then
     # Run docker jobs as current user to prevent permission issues. Not needed with podman.
     USERSET="--user $HOST_UID"
 fi
@@ -449,21 +502,19 @@ mkdir -p .cache
 mkdir -p .Build/public/typo3temp/var/tests
 
 IMAGE_PHP="ghcr.io/typo3/core-testing-$(echo "php${PHP_VERSION}" | sed -e 's/\.//'):latest"
-IMAGE_NODE="docker.io/node:${NODE_VERSION}-alpine"
-IMAGE_ALPINE="docker.io/alpine:3.8"
-IMAGE_SHELLCHECK="docker.io/koalaman/shellcheck:v0.10.0"
-IMAGE_DOCS="ghcr.io/typo3-documentation/render-guides:latest"
+IMAGE_NODEJS="ghcr.io/typo3/core-testing-nodejs24:1.1"
+IMAGE_SHELLCHECK="docker.io/koalaman/shellcheck:v0.11.0"
+IMAGE_DOCS="ghcr.io/typo3-documentation/render-guides:0.37.1"
 IMAGE_MARIADB="docker.io/mariadb:${DBMS_VERSION}"
 IMAGE_MYSQL="docker.io/mysql:${DBMS_VERSION}"
 IMAGE_POSTGRES="docker.io/postgres:${DBMS_VERSION}-alpine"
 
-# Set $1 to first mass argument, this is the optional test file or test directory to execute
+# Remove handled options and leaving the rest in the line, so it can be passed raw to commands
 shift $((OPTIND - 1))
-TEST_FILE=${1}
 
 ${CONTAINER_BIN} network create ${NETWORK} >/dev/null
 
-if [ "${CONTAINER_BIN}" == "docker" ]; then
+if [ ${CONTAINER_BIN} = "docker" ]; then
     CONTAINER_COMMON_PARAMS="${CONTAINER_INTERACTIVE} --rm --network ${NETWORK} --add-host "${CONTAINER_HOST}:host-gateway" ${USERSET} -v ${ROOT_DIR}:${ROOT_DIR} -w ${ROOT_DIR}"
 else
     # podman
@@ -490,6 +541,11 @@ case ${TEST_SUITE} in
         ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-command-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
         SUITE_EXIT_CODE=$?
         ;;
+    checkComposerNormalize)
+        COMMAND="composer normalize --no-check-lock --dry-run"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-normalize-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
+        SUITE_EXIT_CODE=$?
+        ;;
     clean)
         cleanCacheFiles
         cleanRenderedDocumentationFiles
@@ -505,33 +561,25 @@ case ${TEST_SUITE} in
         cleanTestFiles
         ;;
     composer)
-        COMMAND_PARTS=(composer "$@")
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-command-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} "${COMMAND_PARTS[@]}"
-        SUITE_EXIT_CODE=$?
-        ;;
-    composerUpdateMax)
-        COMMAND="composer config --unset platform.php; composer require --no-ansi --no-interaction --no-progress --no-install typo3/cms-core:"^${CORE_VERSION}"; composer update --no-progress --no-interaction; composer dumpautoload; composer show"
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-install-max-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
-        SUITE_EXIT_CODE=$?
-        ;;
-    composerUpdateMin)
-        COMMAND="composer config platform.php ${PHP_VERSION}.0; composer require --no-ansi --no-interaction --no-progress --no-install typo3/cms-core:"^${CORE_VERSION}"; composer update --prefer-lowest --no-progress --no-interaction; composer dumpautoload; composer show"
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-install-min-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
-        SUITE_EXIT_CODE=$?
-        ;;
-    composerNormalize)
-        COMMAND="composer check:composer:normalize"
-        if [ "${CGLCHECK_DRY_RUN}" -eq 1 ]; then
-            COMMAND="composer check:composer:normalize"
-        else
-            COMMAND="composer fix:composer:normalize"
-        fi
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-normalize-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_DOCS} /bin/sh -c "${COMMAND}"
+        COMMAND=(composer "$@")
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} "${COMMAND[@]}"
         SUITE_EXIT_CODE=$?
         ;;
     composerUnused)
         COMMAND="composer check:composer:unused"
         ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-unused-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
+        SUITE_EXIT_CODE=$?
+        ;;
+    composerUpdateMax)
+        # `dumpautoload` removed due to error with missing `composer.lock` file on publishing public assets.
+        COMMAND="composer config --unset platform.php; composer require --no-ansi --no-interaction --no-progress --no-install typo3/minimal:"^${CORE_VERSION}"; composer update --no-progress --no-interaction; composer show"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-install-max-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
+        SUITE_EXIT_CODE=$?
+        ;;
+    composerUpdateMin)
+        # `dumpautoload` removed due to error with missing `composer.lock` file on publishing public assets.
+        COMMAND="composer config platform.php ${PHP_VERSION}.0; composer require --no-ansi --no-interaction --no-progress --no-install typo3/minimal:"^${CORE_VERSION}"; composer update --prefer-lowest --no-progress --no-interaction; composer show"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-install-min-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
         SUITE_EXIT_CODE=$?
         ;;
     docsGenerate)
@@ -540,20 +588,29 @@ case ${TEST_SUITE} in
         ${CONTAINER_BIN} run ${CONTAINER_INTERACTIVE} --rm --pull always ${USERSET} -v "${ROOT_DIR}":/project ${IMAGE_DOCS} --config=Documentation --fail-on-log
         SUITE_EXIT_CODE=$?
         ;;
-    shellcheck)
-        ${CONTAINER_BIN} run ${CONTAINER_INTERACTIVE} --rm --pull always ${USERSET} -v "${ROOT_DIR}":/project:ro -e SHELLCHECK_OPTS="-e SC2086" ${IMAGE_SHELLCHECK} /project/Build/Scripts/runTests.sh
+    fix)
+        COMMAND="composer fix"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-command-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
+        COMMAND="echo ${HELP_TEXT_NPM_CI}; npm ci --silent || { echo ${HELP_TEXT_NPM_FAILURE}; exit 1; } && npm run fix:lint:js"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name npm-command-${SUFFIX} ${IMAGE_NODEJS} /bin/sh -c "${COMMAND}"
+        COMMAND="echo ${HELP_TEXT_NPM_CI}; npm ci --silent || { echo ${HELP_TEXT_NPM_FAILURE}; exit 1; } && npm run fix:lint:css"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name npm-command-${SUFFIX} ${IMAGE_NODEJS} /bin/sh -c "${COMMAND}"
+        SUITE_EXIT_CODE=$?
+        ;;
+    fixComposerNormalize)
+        COMMAND="composer normalize --no-check-lock"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-normalize-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
         SUITE_EXIT_CODE=$?
         ;;
     functional)
-        [ -z "${TEST_FILE}" ] && TEST_FILE="Tests/Functional"
-        COMMAND=".Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml --exclude-group not-${DBMS} ${EXTRA_TEST_OPTIONS} ${TEST_FILE}"
+        COMMAND=(.Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml --exclude-group not-${DBMS} "$@")
         case ${DBMS} in
             mariadb)
                 echo "Using driver: ${DATABASE_DRIVER}"
                 ${CONTAINER_BIN} run --rm ${CI_PARAMS} --name mariadb-func-${SUFFIX} --network ${NETWORK} -d -e MYSQL_ROOT_PASSWORD=funcp --tmpfs /var/lib/mysql/:rw,noexec,nosuid ${IMAGE_MARIADB} >/dev/null
                 waitFor mariadb-func-${SUFFIX} 3306
                 CONTAINERPARAMS="-e typo3DatabaseDriver=${DATABASE_DRIVER} -e typo3DatabaseName=func_test -e typo3DatabaseUsername=root -e typo3DatabaseHost=mariadb-func-${SUFFIX} -e typo3DatabasePassword=funcp"
-                ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name functional-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${CONTAINERPARAMS} ${IMAGE_PHP} ${COMMAND}
+                ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name functional-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${CONTAINERPARAMS} ${IMAGE_PHP} "${COMMAND[@]}"
                 SUITE_EXIT_CODE=$?
                 ;;
             mysql)
@@ -561,31 +618,30 @@ case ${TEST_SUITE} in
                 ${CONTAINER_BIN} run --rm ${CI_PARAMS} --name mysql-func-${SUFFIX} --network ${NETWORK} -d -e MYSQL_ROOT_PASSWORD=funcp --tmpfs /var/lib/mysql/:rw,noexec,nosuid ${IMAGE_MYSQL} >/dev/null
                 waitFor mysql-func-${SUFFIX} 3306
                 CONTAINERPARAMS="-e typo3DatabaseDriver=${DATABASE_DRIVER} -e typo3DatabaseName=func_test -e typo3DatabaseUsername=root -e typo3DatabaseHost=mysql-func-${SUFFIX} -e typo3DatabasePassword=funcp"
-                ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name functional-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${CONTAINERPARAMS} ${IMAGE_PHP} ${COMMAND}
+                ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name functional-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${CONTAINERPARAMS} ${IMAGE_PHP} "${COMMAND[@]}"
                 SUITE_EXIT_CODE=$?
                 ;;
             postgres)
                 ${CONTAINER_BIN} run --rm ${CI_PARAMS} --name postgres-func-${SUFFIX} --network ${NETWORK} -d -e POSTGRES_PASSWORD=funcp -e POSTGRES_USER=funcu --tmpfs /var/lib/postgresql/data:rw,noexec,nosuid ${IMAGE_POSTGRES} >/dev/null
                 waitFor postgres-func-${SUFFIX} 5432
                 CONTAINERPARAMS="-e typo3DatabaseDriver=pdo_pgsql -e typo3DatabaseName=bamboo -e typo3DatabaseUsername=funcu -e typo3DatabaseHost=postgres-func-${SUFFIX} -e typo3DatabasePassword=funcp"
-                ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name functional-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${CONTAINERPARAMS} ${IMAGE_PHP} ${COMMAND}
+                ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name functional-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${CONTAINERPARAMS} ${IMAGE_PHP} "${COMMAND[@]}"
                 SUITE_EXIT_CODE=$?
                 ;;
             sqlite)
                 CONTAINERPARAMS="-e typo3DatabaseDriver=pdo_sqlite"
-                ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name functional-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${CONTAINERPARAMS} ${IMAGE_PHP} ${COMMAND}
+                ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name functional-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${CONTAINERPARAMS} ${IMAGE_PHP} "${COMMAND[@]}"
                 SUITE_EXIT_CODE=$?
                 ;;
         esac
         ;;
-    lintTypoScript)
-        COMMAND="composer check:typoscript:lint"
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-command-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
-        SUITE_EXIT_CODE=$?
-        ;;
-    lintPhp)
-        COMMAND="composer check:php:lint"
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-command-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
+    lintCss)
+        if [ "${CGLCHECK_DRY_RUN}" -eq 1 ]; then
+            COMMAND="echo ${HELP_TEXT_NPM_CI}; npm ci --silent || { echo ${HELP_TEXT_NPM_FAILURE}; exit 1; } && npm run check:lint:css"
+        else
+            COMMAND="echo ${HELP_TEXT_NPM_CI}; npm ci --silent || { echo ${HELP_TEXT_NPM_FAILURE}; exit 1; } && npm run fix:lint:css"
+        fi
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name npm-command-${SUFFIX} ${IMAGE_NODEJS} /bin/sh -c "${COMMAND}"
         SUITE_EXIT_CODE=$?
         ;;
     lintJs)
@@ -594,21 +650,27 @@ case ${TEST_SUITE} in
         else
             COMMAND="echo ${HELP_TEXT_NPM_CI}; npm ci --silent || { echo ${HELP_TEXT_NPM_FAILURE}; exit 1; } && npm run fix:lint:js"
         fi
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name npm-command-${SUFFIX} ${IMAGE_NODE} /bin/sh -c "${COMMAND}"
-        SUITE_EXIT_CODE=$?
-        ;;
-    lintCss)
-        if [ "${CGLCHECK_DRY_RUN}" -eq 1 ]; then
-            COMMAND="echo ${HELP_TEXT_NPM_CI}; npm ci --silent || { echo ${HELP_TEXT_NPM_FAILURE}; exit 1; } && npm run check:lint:css"
-        else
-            COMMAND="echo ${HELP_TEXT_NPM_CI}; npm ci --silent || { echo ${HELP_TEXT_NPM_FAILURE}; exit 1; } && npm run fix:lint:css"
-        fi
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name npm-command-${SUFFIX} ${IMAGE_NODE} /bin/sh -c "${COMMAND}"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name npm-command-${SUFFIX} ${IMAGE_NODEJS} /bin/sh -c "${COMMAND}"
         SUITE_EXIT_CODE=$?
         ;;
     lintJson)
         COMMAND="composer check:json:lint"
         ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-command-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
+        SUITE_EXIT_CODE=$?
+        ;;
+    lintPhp)
+        COMMAND="composer check:php:lint"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-command-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
+        SUITE_EXIT_CODE=$?
+        ;;
+    lintTypoScript)
+        COMMAND="composer check:typoscript:lint"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-command-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
+        SUITE_EXIT_CODE=$?
+        ;;
+    lintXliff)
+        COMMAND="php Build/Scripts/xliffLint.sh lint:xliff Resources/Private/Language"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name lintxliff-${SUFFIX} ${IMAGE_PHP} ${COMMAND}
         SUITE_EXIT_CODE=$?
         ;;
     lintYaml)
@@ -617,8 +679,21 @@ case ${TEST_SUITE} in
         SUITE_EXIT_CODE=$?
         ;;
     npm)
-        COMMAND_PARTS=(npm "$@")
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name npm-command-${SUFFIX} ${IMAGE_NODE} "${COMMAND_PARTS[@]}"
+        COMMAND=(npm "$@")
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name npm-command-${SUFFIX} ${IMAGE_NODEJS} "${COMMAND[@]}"
+        SUITE_EXIT_CODE=$?
+        ;;
+    phpCsFixer)
+        if [ -n "${CGLCHECK_DRY_RUN}" ]; then
+            CGLCHECK_DRY_RUN="--dry-run --diff"
+        fi
+        COMMAND="php .Build/bin/php-cs-fixer fix -v ${CGLCHECK_DRY_RUN} --config=Build/php-cs-fixer/config.php"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name phpcsfixer-${SUFFIX} ${IMAGE_PHP} ${COMMAND}
+        SUITE_EXIT_CODE=$?
+        ;;
+    phpmd)
+        COMMAND=".Build/bin/phpmd Classes text Build/phpmd/config.xml"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name phpmd-${SUFFIX} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
         SUITE_EXIT_CODE=$?
         ;;
     phpstan)
@@ -631,14 +706,21 @@ case ${TEST_SUITE} in
         ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name composer-command-${SUFFIX} -e COMPOSER_CACHE_DIR=.cache/composer -e COMPOSER_ROOT_VERSION=${COMPOSER_ROOT_VERSION} ${IMAGE_PHP} /bin/sh -c "${COMMAND}"
         SUITE_EXIT_CODE=$?
         ;;
+    psr-verify)
+            COMMAND="composer dumpautoload --optimize --strict-psr --no-plugins"
+            ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name psr-verify-${SUFFIX} ${IMAGE_PHP} ${COMMAND}
+            SUITE_EXIT_CODE=$?
+            ;;
+    shellcheck)
+        ${CONTAINER_BIN} run ${CONTAINER_INTERACTIVE} --rm --pull always ${USERSET} -v "${ROOT_DIR}":/project:ro ${IMAGE_SHELLCHECK} /project/Build/Scripts/runTests.sh
+        SUITE_EXIT_CODE=$?
+        ;;
     unit)
-        [ -z "${TEST_FILE}" ] && TEST_FILE="Tests/Unit"
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name unit-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${IMAGE_PHP} .Build/bin/phpunit -c Build/phpunit/UnitTests.xml ${EXTRA_TEST_OPTIONS} ${TEST_FILE}
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name unit-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${IMAGE_PHP} .Build/bin/phpunit -c Build/phpunit/UnitTests.xml "$@"
         SUITE_EXIT_CODE=$?
         ;;
     unitRandom)
-        [ -z "${TEST_FILE}" ] && TEST_FILE="Tests/Unit"
-        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name unit-random-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${IMAGE_PHP} .Build/bin/phpunit -c Build/phpunit/UnitTests.xml --order-by=random ${EXTRA_TEST_OPTIONS} ${PHPUNIT_RANDOM} ${TEST_FILE}
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name unit-random-${SUFFIX} ${XDEBUG_MODE} -e XDEBUG_CONFIG="${XDEBUG_CONFIG}" ${IMAGE_PHP} .Build/bin/phpunit -c Build/phpunit/UnitTests.xml --order-by=random ${PHPUNIT_RANDOM} "$@"
         SUITE_EXIT_CODE=$?
         ;;
     update)
@@ -650,6 +732,14 @@ case ${TEST_SUITE} in
         echo "> remove \"dangling\" ghcr.io/typo3/core-testing-* images (those tagged as <none>)"
         ${CONTAINER_BIN} images --filter "reference=ghcr.io/typo3/core-testing-*" --filter "dangling=true" --format "{{.ID}}" | xargs -I {} ${CONTAINER_BIN} rmi {}
         echo ""
+        ;;
+     rector)
+        if [ -n "${CGLCHECK_DRY_RUN}" ]; then
+            CGLCHECK_DRY_RUN="--dry-run"
+        fi
+        COMMAND=".Build/bin/rector process ${CGLCHECK_DRY_RUN} --config=Build/rector/config.php"
+        ${CONTAINER_BIN} run ${CONTAINER_COMMON_PARAMS} --name cgl-${SUFFIX} ${IMAGE_PHP} ${COMMAND}
+        SUITE_EXIT_CODE=$?
         ;;
     *)
         loadHelp
@@ -665,44 +755,5 @@ case ${TEST_SUITE} in
         ;;
 esac
 
-cleanUp
-
-# Print summary
-echo "" >&2
-echo "###########################################################################" >&2
-echo "Result of ${TEST_SUITE}" >&2
-if [[ ${IS_CORE_CI} -eq 1 ]]; then
-    echo "Environment: CI" >&2
-else
-    echo "Environment: local" >&2
-fi
-if [[ ${TEST_SUITE} =~ ^(npm|lintCss|lintJs)$ ]]; then
-    echo "NODE: ${NODE_VERSION}" >&2
-else
-    echo "PHP: ${PHP_VERSION}" >&2
-    echo "TYPO3: ${CORE_VERSION}" >&2
-fi
-echo "CONTAINER_BIN: ${CONTAINER_BIN}"
-if [[ ${TEST_SUITE} =~ ^functional$ ]]; then
-    case "${DBMS}" in
-        mariadb|mysql)
-            echo "DBMS: ${DBMS}  version ${DBMS_VERSION}  driver ${DATABASE_DRIVER}" >&2
-            ;;
-        postgres)
-            echo "DBMS: ${DBMS}  version ${DBMS_VERSION}  driver pdo_pgsql" >&2
-            ;;
-        sqlite)
-            echo "DBMS: ${DBMS}  driver pdo_sqlite" >&2
-            ;;
-    esac
-fi
-if [[ ${SUITE_EXIT_CODE} -eq 0 ]]; then
-    echo "SUCCESS" >&2
-else
-    echo "FAILURE" >&2
-fi
-echo "###########################################################################" >&2
-echo "" >&2
-
-# Exit with code of test suite - This script return non-zero if the executed test failed.
-exit $SUITE_EXIT_CODE
+# Cleanup, print summary && exit with exitcode
+printSummary
