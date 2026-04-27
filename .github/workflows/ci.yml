@@ -59,18 +59,6 @@ jobs:
           - typo3-version: "11.5"
             php-version: "8.4"
             composer-dependencies: Max
-  prepare-release:
-    name: Check prepare release script
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      - name: Run prepare release
-        run: Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -s composer prepare-release
-    strategy:
-      matrix:
-        php-version:
-          - "8.2"
   code-quality:
     name: Code quality checks
     runs-on: ubuntu-24.04
@@ -123,6 +111,18 @@ jobs:
           - "11.5"
         composer-dependencies:
           - Max
+  prepare-release:
+    name: Check prepare release script
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Run prepare release
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -s composer prepare-release
+    strategy:
+      matrix:
+        php-version:
+          - "8.2"
   unit-tests:
     name: Unit tests
     runs-on: ubuntu-24.04
