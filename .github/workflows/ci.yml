@@ -7,6 +7,8 @@ on:
   pull_request:
   schedule:
     - cron: '15 3 * * 1'
+permissions:
+  contents: read
 jobs:
   php-lint:
     name: PHP linter
@@ -22,30 +24,41 @@ jobs:
           ini-file: development
           tools: composer:v2
           coverage: none
-      - name: Show Composer version
-        run: composer --version
+      - name: Show the Composer version
+        run: ./Build/Scripts/runTests.sh -s composer -- --version
       - name: Show the Composer configuration
-        run: composer config --global --list
+        run: ./Build/Scripts/runTests.sh -s composer config --global --list
       - name: Cache dependencies installed with composer
         uses: actions/cache@v5
         with:
-          key: "php${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.json') }}"
+          key: "php-${{ matrix.php-version }}-typo3-${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-${{ hashFiles('**/composer.json') }}"
           path: ~/.cache/composer
-          restore-keys: "php${{ matrix.php-version }}-composer-\n"
-      - name: Install Composer dependencies
-        run: "composer update --no-ansi --no-progress"
-      - name: Run PHP lint
-        run: "composer check:php:lint"
+          restore-keys: "php-${{ matrix.php-version }}-typo3-${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-\n"
+      - name: Install composer dependencies
+        run: |
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
+      - name: Lint PHP
+        run: |
+          Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -s lintPhp
     strategy:
       fail-fast: false
       matrix:
-        php-version:
-          - "7.4"
-          - "8.0"
-          - "8.1"
-          - "8.2"
-          - "8.3"
-          - "8.4"
+        include:
+          - typo3-version: "11.5"
+            php-version: "8.0"
+            composer-dependencies: Max
+          - typo3-version: "11.5"
+            php-version: "8.1"
+            composer-dependencies: Max
+          - typo3-version: "11.5"
+            php-version: "8.2"
+            composer-dependencies: Max
+          - typo3-version: "11.5"
+            php-version: "8.3"
+            composer-dependencies: Max
+          - typo3-version: "11.5"
+            php-version: "8.4"
+            composer-dependencies: Max
   prepare-release:
     name: Check prepare release script
     runs-on: ubuntu-24.04
