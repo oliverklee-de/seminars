@@ -208,78 +208,45 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 7
     needs: php-lint
-    env:
-      DB_DATABASE: typo3
-      DB_USER: root
-      DB_PASSWORD: root
-      DB_HOST: localhost
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Install PHP
-        uses: shivammathur/setup-php@v2
-        env:
-          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          php-version: "${{ matrix.php-version }}"
-          ini-file: development
-          tools: composer:v2
-          extensions: dom, json, libxml, mysqli, zip
-          coverage: none
-          ini-values: error_reporting=E_ALL
-      - name: Show Composer version
-        run: composer --version
+      - name: Show the Composer version
+        run: ./Build/Scripts/runTests.sh -s composer -- --version
       - name: Show the Composer configuration
-        run: composer config --global --list
+        run: ./Build/Scripts/runTests.sh -s composer config --global --list
       - name: Cache dependencies installed with composer
         uses: actions/cache@v5
         with:
-          key: "php${{ matrix.php-version }}-typo3${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-${{ hashFiles('**/composer.json') }}"
+          key: "php-${{ matrix.php-version }}-typo3-${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-${{ hashFiles('**/composer.json') }}"
           path: ~/.cache/composer
-          restore-keys: "php${{ matrix.php-version }}-typo3${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-\n"
-      - name: Install TYPO3 Core
-        env:
-          TYPO3: "${{ matrix.typo3-version }}"
+          restore-keys: "php-${{ matrix.php-version }}-typo3-${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-\n"
+      - name: Install composer dependencies
         run: |
-          composer require --no-ansi --no-interaction --no-progress --no-install typo3/cms-core:"$TYPO3"
-          composer show
-      - name: Install lowest dependencies with composer
-        if: "matrix.composer-dependencies == 'lowest'"
-        run: |
-          composer update --no-ansi --no-interaction --no-progress --with-dependencies --prefer-lowest
-          composer show
-      - name: Install highest dependencies with composer
-        if: "matrix.composer-dependencies == 'highest'"
-        run: |
-          composer update --no-ansi --no-interaction --no-progress --with-dependencies
-          composer show
-      - name: Start MySQL
-        run: "sudo /etc/init.d/mysql start"
-      - name: Create the tests directory
-        run: "mkdir -p .Build/public/typo3temp/var/tests"
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
       - name: Run legacy functional tests
         run: |
-          export typo3DatabaseName="$DB_DATABASE";
-          export typo3DatabaseHost="$DB_HOST";
-          export typo3DatabaseUsername="$DB_USER";
-          export typo3DatabasePassword="$DB_PASSWORD";
-          composer check:tests:legacy-functional
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -d ${{ matrix.dbms }} -s functional Tests/LegacyFunctional/
     strategy:
       fail-fast: false
       matrix:
         include:
-          - typo3-version: "^11.5"
+          - typo3-version: "11.5"
             php-version: "7.4"
-            composer-dependencies: lowest
-          - typo3-version: "^11.5"
+            dbms: "mysql"
+            composer-dependencies: Min
+          - typo3-version: "11.5"
             php-version: "7.4"
-            composer-dependencies: highest
-          - typo3-version: "^11.5"
+            dbms: "mysql"
+            composer-dependencies: Max
+          - typo3-version: "11.5"
             php-version: "8.3"
-            composer-dependencies: lowest
-          - typo3-version: "^11.5"
+            dbms: "mysql"
+            composer-dependencies: Min
+          - typo3-version: "11.5"
             php-version: "8.3"
-            composer-dependencies: highest
+            dbms: "mysql"
+            composer-dependencies: Max
   shellcheck:
     name: Check shell scripts
     runs-on: ubuntu-24.04
