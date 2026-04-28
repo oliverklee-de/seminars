@@ -25,4 +25,12 @@
         <ini name="display_errors" value="1"/>
         <env name="TYPO3_CONTEXT" value="Testing"/>
     </php>
+    <testsuites>
+        <testsuite name="Functional">
+            <directory>../../Tests/Functional</directory>
+        </testsuite>
+        <testsuite name="LegacyFunctional">
+            <directory>../../Tests/LegacyFunctional</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>

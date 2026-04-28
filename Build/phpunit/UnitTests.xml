@@ -19,4 +19,9 @@
         <ini name="display_errors" value="1"/>
         <env name="TYPO3_CONTEXT" value="Testing"/>
     </php>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>../../Tests/Unit</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
