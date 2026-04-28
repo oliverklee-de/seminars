@@ -41,7 +41,6 @@ final class DefaultControllerTest extends FunctionalTestCase
     ];
 
     protected array $testExtensionsToLoad = [
-        'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
         'oliverklee/seminars',
