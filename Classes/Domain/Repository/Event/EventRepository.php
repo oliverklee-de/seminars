@@ -18,6 +18,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\Qom\ConstraintInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * @extends AbstractRawDataCapableRepository<Event>
@@ -140,8 +141,8 @@ class EventRepository extends AbstractRawDataCapableRepository
                     $registrationQueryBuilder->createNamedParameter($eventUid, Connection::PARAM_INT),
                 ),
             );
-        $registrationCountQueryResult = $registrationCountQuery->executeQuery();
-        $registrationCount = (int)$registrationCountQueryResult->fetchOne();
+        $registrationCount = $registrationCountQuery->executeQuery()->fetchOne();
+        \assert(\is_int($registrationCount));
 
         $eventQueryBuilder = $this->connectionPool->getQueryBuilderForTable('tx_seminars_seminars');
         $eventUpdateQuery = $eventQueryBuilder
@@ -398,29 +399,47 @@ class EventRepository extends AbstractRawDataCapableRepository
 
     private function now(): \DateTimeInterface
     {
-        return $this->context->getPropertyFromAspect('date', 'full');
+        $now = $this->context->getPropertyFromAspect('date', 'full');
+        \assert($now instanceof \DateTimeInterface);
+
+        return $now;
     }
 
     /**
-     * @return array<EventTopicInterface>
+     * @return list<EventTopicInterface>
      */
     public function findAllTopicsPlusNullTopic(): array
     {
         $query = $this->createQuery();
         $this->setQuerySettingsForFindingTopics($query);
 
-        /** @var array<EventTopicInterface> $result */
-        $result = $query
+        $queryResult = $query
             ->matching($query->equals('objectType', EventInterface::TYPE_EVENT_TOPIC))
-            ->execute()->toArray();
+            ->execute();
 
-        return \array_merge([new NullEventTopic()], $result);
+        return $this->convertQueryResultToTopicsPlusNullTopic($queryResult);
+    }
+
+    /**
+     * @param QueryResultInterface<Event> $queryResult
+     *
+     * @return list<EventTopicInterface>
+     */
+    private function convertQueryResultToTopicsPlusNullTopic(QueryResultInterface $queryResult)
+    {
+        $topics = [new NullEventTopic()];
+        foreach ($queryResult as $event) {
+            \assert($event instanceof EventTopicInterface);
+            $topics[] = $event;
+        }
+
+        return $topics;
     }
 
     /**
      * @param non-empty-array<int> $uids
      *
-     * @return array<EventTopicInterface>
+     * @return list<EventTopicInterface>
      */
     public function findTopicsPlusNullTopicByUids(array $uids): array
     {
@@ -430,12 +449,11 @@ class EventRepository extends AbstractRawDataCapableRepository
         $objectTypeMatcher = $query->equals('objectType', EventInterface::TYPE_EVENT_TOPIC);
         $uidMatcher = $query->in('uid', $uids);
 
-        /** @var array<EventTopicInterface> $result */
-        $result = $query
+        $queryResult = $query
             ->matching($query->logicalAnd($uidMatcher, $objectTypeMatcher))
-            ->execute()->toArray();
+            ->execute();
 
-        return \array_merge([new NullEventTopic()], $result);
+        return $this->convertQueryResultToTopicsPlusNullTopic($queryResult);
     }
 
     /**
@@ -453,7 +471,7 @@ class EventRepository extends AbstractRawDataCapableRepository
      *
      * If the user has no topic access restriction, returns all topics.
      *
-     * @return array<EventTopicInterface>
+     * @return list<EventTopicInterface>
      */
     public function findTopicsAccessibleToFrontendUser(FrontendUser $user): array
     {
