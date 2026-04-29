@@ -70,7 +70,13 @@ final class LegacyEventTest extends FunctionalTestCase
         $this->testingFramework->createFakeFrontEnd(1);
 
         $plugin = new DefaultController();
-        $plugin->main('', ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html']);
+        $plugin->main(
+            '',
+            [
+                'templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html',
+                'timeframeInList' => 'currentAndUpcoming',
+            ]
+        );
 
         return $plugin;
     }

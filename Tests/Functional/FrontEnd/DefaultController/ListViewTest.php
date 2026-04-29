@@ -59,6 +59,7 @@ final class ListViewTest extends FunctionalTestCase
                     'results_at_a_time' => 999,
                     'maxPages' => 5,
                 ],
+                'timeframeInList' => 'currentAndUpcoming',
                 'linkToSingleView' => 'always',
             ],
         );

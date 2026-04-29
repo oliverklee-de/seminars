@@ -46,6 +46,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'isStaticTemplateLoaded' => 1,
                 'templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html',
+                'timeframeInList' => 'currentAndUpcoming',
             ],
             $this->getFrontEndController()->cObj,
         );
