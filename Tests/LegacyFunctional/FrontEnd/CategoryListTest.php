@@ -54,6 +54,7 @@ final class CategoryListTest extends FunctionalTestCase
                 'pages' => $this->systemFolderPid,
                 'pidList' => $this->systemFolderPid,
                 'recursive' => 1,
+                'timeframeInList' => 'currentAndUpcoming',
             ],
             $this->getFrontEndController()->cObj,
         );
