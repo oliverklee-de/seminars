@@ -25,7 +25,7 @@
 		"source": "https://github.com/oliverklee-de/seminars"
 	},
 	"require": {
-		"php": "^7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+		"php": "^7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
 		"ext-json": "*",
 		"doctrine/dbal": "^2.13.8 || ^3.9",
 		"oliverklee/feuserextrafields": "^6.7.1 || ^7.0",
