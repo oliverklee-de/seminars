@@ -49,7 +49,6 @@ final class CategoryListTest extends FunctionalTestCase
         $this->systemFolderPid = $this->testingFramework->createSystemFolder();
         $this->subject = new CategoryList(
             [
-                'isStaticTemplateLoaded' => 1,
                 'templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html',
                 'pages' => $this->systemFolderPid,
                 'pidList' => $this->systemFolderPid,

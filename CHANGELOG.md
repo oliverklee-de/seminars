@@ -172,6 +172,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+- Drop the automatic configuration check (#4942)
 - Drop `Registration.hasNecessaryAssociations` (#4686)
 - Drop the optional `product-name` attribute from XLIFF files (#4581)
 - !!! Drop the checkbox for the separate billing address (#4495)

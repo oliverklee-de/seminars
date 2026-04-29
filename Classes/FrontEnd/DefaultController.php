@@ -14,12 +14,6 @@ use OliverKlee\Seminars\Bag\EventBag;
 use OliverKlee\Seminars\Bag\RegistrationBag;
 use OliverKlee\Seminars\BagBuilder\EventBagBuilder;
 use OliverKlee\Seminars\BagBuilder\RegistrationBagBuilder;
-use OliverKlee\Seminars\Configuration\CategoryListConfigurationCheck;
-use OliverKlee\Seminars\Configuration\ListViewConfigurationCheck;
-use OliverKlee\Seminars\Configuration\MyVipEventsConfigurationCheck;
-use OliverKlee\Seminars\Configuration\RegistrationListConfigurationCheck;
-use OliverKlee\Seminars\Configuration\SharedConfigurationCheck;
-use OliverKlee\Seminars\Configuration\SingleViewConfigurationCheck;
 use OliverKlee\Seminars\Configuration\Traits\SharedPluginConfiguration;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Hooks\HookProvider;
@@ -223,14 +217,6 @@ class DefaultController extends TemplateHelper
                     $this->cObj,
                 );
                 $result = $registrationsList->render();
-                if ($this->isConfigurationCheckEnabled()) {
-                    $configurationCheck = new RegistrationListConfigurationCheck(
-                        $this->getConfigurationWithFlexForms(),
-                        'plugin.tx_seminars_pi1',
-                    );
-                    $configurationCheck->check();
-                    $result .= \implode("\n", $configurationCheck->getWarningsAsHtml());
-                }
                 break;
             case 'category_list':
                 $categoryList = GeneralUtility::makeInstance(
@@ -239,14 +225,6 @@ class DefaultController extends TemplateHelper
                     $this->cObj,
                 );
                 $result = $categoryList->render();
-                if ($this->isConfigurationCheckEnabled()) {
-                    $configurationCheck = new CategoryListConfigurationCheck(
-                        $this->getConfigurationWithFlexForms(),
-                        'plugin.tx_seminars_pi1',
-                    );
-                    $configurationCheck->check();
-                    $result .= \implode("\n", $configurationCheck->getWarningsAsHtml());
-                }
                 break;
             case 'my_vip_events':
                 // The fallthrough is intended
@@ -262,13 +240,6 @@ class DefaultController extends TemplateHelper
                 // because createListView() will differentiate later.
             default:
                 $result = $this->createListView($this->whatToDisplay);
-        }
-
-        if ($this->isConfigurationCheckEnabled()) {
-            $configuration = ConfigurationRegistry::get('plugin.tx_seminars');
-            $configurationCheck = new SharedConfigurationCheck($configuration, 'plugin.tx_seminars');
-            $configurationCheck->check();
-            $result .= \implode("\n", $configurationCheck->getWarningsAsHtml());
         }
 
         return $this->pi_wrapInBaseClass($result);
@@ -486,15 +457,6 @@ class DefaultController extends TemplateHelper
         $listPid = \max(0, $this->getConfValueInteger('listPID'));
         $this->setMarker('backlink', $this->pi_linkTP($this->translate('label_back'), [], true, $listPid));
         $result .= $this->getSubpart('BACK_VIEW');
-
-        if ($this->isConfigurationCheckEnabled()) {
-            $configurationCheck = new SingleViewConfigurationCheck(
-                $this->getConfigurationWithFlexForms(),
-                'plugin.tx_seminars_pi1',
-            );
-            $configurationCheck->check();
-            $result .= \implode("\n", $configurationCheck->getWarningsAsHtml());
-        }
 
         return $result;
     }
@@ -1204,27 +1166,8 @@ class DefaultController extends TemplateHelper
 
             $result = $this->getSubpart('EVENTSNEXTDAY_VIEW');
         }
-        $result .= $this->checkListViewConfiguration();
 
         return $result;
-    }
-
-    /**
-     * @return string error messages as HTML; will be empty if there are none of if the configuration check is disabled
-     */
-    private function checkListViewConfiguration(): string
-    {
-        if (!$this->isConfigurationCheckEnabled()) {
-            return '';
-        }
-
-        $configurationCheck = new ListViewConfigurationCheck(
-            $this->getConfigurationWithFlexForms(),
-            'plugin.tx_seminars_pi1',
-        );
-        $configurationCheck->check();
-
-        return \implode("\n", $configurationCheck->getWarningsAsHtml());
     }
 
     /**
@@ -1268,7 +1211,6 @@ class DefaultController extends TemplateHelper
             // Un-hides the previously hidden columns.
             $this->unhideColumns($temporaryHiddenColumns);
         }
-        $result .= $this->checkListViewConfiguration();
 
         return $result;
     }
@@ -1289,13 +1231,6 @@ class DefaultController extends TemplateHelper
      */
     protected function createListView(string $whatToDisplay): string
     {
-        $configurationCheckResult = $this->checkListViewConfiguration();
-        if ($configurationCheckResult !== '') {
-            // There are configuration check errors. As some of those detected configuration problems
-            // could cause exceptions, we'd rather display the (more helpful) warnings than crash.
-            return $configurationCheckResult;
-        }
-
         $result = '';
         $isOkay = true;
         $this->ensureIntegerPiVars(
@@ -1337,15 +1272,6 @@ class DefaultController extends TemplateHelper
                         (int)$this->getFrontEndController()->id,
                     );
                     $isOkay = false;
-                }
-
-                if ($this->isConfigurationCheckEnabled()) {
-                    $configurationCheck = new MyVipEventsConfigurationCheck(
-                        $this->getConfigurationWithFlexForms(),
-                        'plugin.tx_seminars_pi1',
-                    );
-                    $configurationCheck->check();
-                    $result .= \implode("\n", $configurationCheck->getWarningsAsHtml());
                 }
 
                 break;
@@ -2388,9 +2314,7 @@ class DefaultController extends TemplateHelper
         try {
             // @phpstan-ignore-next-line We're allowing invalid values to be passed and rely on the exception for this.
             $builder->setTimeFrame($this->getConfValueString('timeframeInList', 's_template_special'));
-        } catch (\Exception $exception) {
-            // Ignores the exception because the user will be warned of the
-            // problem by the configuration check.
+        } catch (\InvalidArgumentException $exception) {
         }
     }
 

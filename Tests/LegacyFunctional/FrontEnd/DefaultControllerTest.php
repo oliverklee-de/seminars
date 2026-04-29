@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\FrontEnd;
 
-use OliverKlee\Oelib\Configuration\ConfigurationProxy;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Interfaces\Time;
@@ -89,8 +88,6 @@ final class DefaultControllerTest extends FunctionalTestCase
 
     private DummyConfiguration $sharedConfiguration;
 
-    private DummyConfiguration $extensionConfiguration;
-
     private DummyConfiguration $pluginConfiguration;
 
     /**
@@ -115,9 +112,6 @@ final class DefaultControllerTest extends FunctionalTestCase
 
         $this->getLanguageService();
 
-        $this->extensionConfiguration = new DummyConfiguration();
-        $this->extensionConfiguration->setAsBoolean('enableConfigCheck', false);
-        ConfigurationProxy::setInstance('seminars', $this->extensionConfiguration);
         $this->sharedConfiguration = new DummyConfiguration(self::CONFIGURATION);
         ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', $this->sharedConfiguration);
         $this->pluginConfiguration = new DummyConfiguration(self::CONFIGURATION);
@@ -139,7 +133,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $this->subject = new TestingDefaultController();
         $this->subject->init(
             [
-                'isStaticTemplateLoaded' => 1,
                 'enableRegistration' => 1,
                 'templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html',
                 'what_to_display' => 'seminar_list',
@@ -172,7 +165,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $this->testingFramework->cleanUpWithoutDatabase();
 
         ConfigurationRegistry::purgeInstance();
-        ConfigurationProxy::purgeInstances();
 
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'] = $this->extConfBackup;
 
@@ -3112,21 +3104,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         self::assertTrue(
             strpos($output, 'Event B') < strpos($output, 'Event A'),
         );
-    }
-
-    /**
-     * @test
-     *
-     * @doesNotPerformAssertions
-     */
-    public function listViewSortedByCategoryWithoutStaticTemplateAndEnabledConfigurationCheckDoesNotCrash(): void
-    {
-        $this->extensionConfiguration->setAsBoolean('enableConfigCheck', true);
-
-        $subject = new TestingDefaultController();
-        $subject->init(['sortListViewByCategory' => 1]);
-
-        $subject->main('', []);
     }
 
     /**

@@ -31,8 +31,7 @@ only be configured using your TypoScript setup, but not via flexforms.
          boolean
 
    Description
-         Set this to 0 if you don't use the registration feature for this site
-         and would like to disable the configuration check for this.
+         Set this to 0 if you don't use the registration feature for this site.
 
    Default
          1

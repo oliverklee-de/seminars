@@ -19,4 +19,3 @@ Installation
    SettingUpAListOfCategories/Index
    SettingUpTheFront-endRegistrationLists/Index
    SettingUpTheSchedulerTask/Index
-   TestingTheConfiguration/Index
