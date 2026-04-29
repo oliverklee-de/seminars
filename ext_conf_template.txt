@@ -1,5 +1,2 @@
 # cat=basic/enable; type=boolean; label=Enable configuration check.        This automatic configuration check checks the FE and BE settings of this extension for common problems and inconsistencies and will be helpful in getting to a working configuration quickly.
 enableConfigCheck = 1
-
-# cat=Backend Module; type=int+; label=PID for registrations created in the backend module
-pidForRegistrationsCreatedInTheBackendModule = 0
