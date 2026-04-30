@@ -331,16 +331,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/AbstractRawDataCapableRepository.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Repository/Event/EventRepository.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Event\\\\EventRepository\\:\\:now\\(\\) should return DateTimeInterface but returns mixed\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Repository/Event/EventRepository.php
-
-		-
 			message: "#^Method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\>\\:\\:logicalAnd\\(\\) invoked with 2 parameters, 1 required\\.$#"
 			count: 4
 			path: ../../Classes/Domain/Repository/Event/EventRepository.php
@@ -348,11 +338,6 @@ parameters:
 		-
 			message: "#^Method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\>\\:\\:logicalOr\\(\\) invoked with 2 parameters, 1 required\\.$#"
 			count: 1
-			path: ../../Classes/Domain/Repository/Event/EventRepository.php
-
-		-
-			message: "#^PHPDoc tag @var with type array\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventTopicInterface\\> is not subtype of type array\\<int, OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\>\\.$#"
-			count: 2
 			path: ../../Classes/Domain/Repository/Event/EventRepository.php
 
 		-
