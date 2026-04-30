@@ -274,8 +274,8 @@ Options:
     -t <11.5|12.4|13.4|14.3>
         Only with -s composerUpdateMin|composerUpdateMax
         Specifies the TYPO3 CORE Version to be used
-            - 11.5: use TYPO3 v11
-            - 12.4: use TYPO3 v12 (default)
+            - 11.5: use TYPO3 v11 (default)
+            - 12.4: use TYPO3 v12
             - 13.4: use TYPO3 v13
             - 14.3: use TYPO3 v14
 
@@ -368,7 +368,7 @@ ROOT_DIR="${PWD}"
 
 # Option defaults
 TEST_SUITE="unit"
-CORE_VERSION="12.4"
+CORE_VERSION="11.5"
 DBMS="sqlite"
 DBMS_VERSION=""
 PHP_VERSION="8.2"
