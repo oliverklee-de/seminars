@@ -1,8 +1,5 @@
 plugin.tx_seminars_pi1 {
-  # Do not copy this variable into your TS setup! This is needed for checking whether this static template has been included correctly.
-  isStaticTemplateLoaded = 1
-
-  # Set this to 0 if you don't use the registration feature for this site and would like to disable the configuration check for this.
+  # Set this to 0 if you don't use the registration feature for this site.
   enableRegistration = 1
 
   # location of the HTML template file

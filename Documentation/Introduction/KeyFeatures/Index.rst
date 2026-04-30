@@ -45,9 +45,6 @@ Key features
 
 - the front-end plug-in can be configured via TypoScript and Flexforms
 
-- automatic configuration check that quickly leads to a working
-  configuration
-
 - the code follows the TYPO3 coding guidelines
 
 - the extension is actively developed

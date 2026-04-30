@@ -33,9 +33,3 @@ The following steps are necessary to upgrade from seminars 5.x to 6.x:
 #.  Update the database schema and run all upgrade wizards.
 #.  If you are using the selector widget (the search form) in the frontend,
     open the corresponding content element in the backend and save it again.
-#.  Enable the automatic configuration check for the seminars extension in the
-    extension manager.
-#.  Open all seminars content elements in the frontend, check for configuration
-    check warnings and fix them.
-#.  Disable the automatic configuration check for the seminars extension in the
-    extension manager again.

@@ -1,9 +1,6 @@
 # Non-frontend specific configuration, e.g., for emails, the CSV export or the BE.
 plugin.tx_seminars {
-  # Do not copy this variable into your TS setup! This is needed for checking whether this static template has been included correctly.
-  isStaticTemplateLoaded = 1
-
-  # Set this to 0 if you don't use the registration feature for this site and would like to disable the configuration check for this.
+  # Set this to 0 if you don't use the registration feature for this site.
   enableRegistration = 1
 
   # location of the template file

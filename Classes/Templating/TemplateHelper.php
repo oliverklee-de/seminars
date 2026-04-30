@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Templating;
 
-use OliverKlee\Oelib\Configuration\ConfigurationProxy;
 use OliverKlee\Oelib\Exception\NotFoundException;
 use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Oelib\Templating\TemplateRegistry;
@@ -270,11 +269,6 @@ abstract class TemplateHelper
     public function getContentObjectRenderer(): ?ContentObjectRenderer
     {
         return $this->cObj;
-    }
-
-    protected function isConfigurationCheckEnabled(): bool
-    {
-        return ConfigurationProxy::getInstance($this->extKey)->getAsBoolean('enableConfigCheck');
     }
 
     /**

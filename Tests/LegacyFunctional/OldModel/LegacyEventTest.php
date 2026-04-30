@@ -135,7 +135,6 @@ final class LegacyEventTest extends FunctionalTestCase
         $this->pi1 = new DefaultController();
         $this->pi1->init(
             [
-                'isStaticTemplateLoaded' => 1,
                 'templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html',
             ],
         );

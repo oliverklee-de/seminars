@@ -44,7 +44,6 @@ final class SelectorWidgetTest extends FunctionalTestCase
 
         $this->subject = new SelectorWidget(
             [
-                'isStaticTemplateLoaded' => 1,
                 'templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html',
             ],
             $this->getFrontEndController()->cObj,
@@ -453,7 +452,6 @@ final class SelectorWidgetTest extends FunctionalTestCase
             )->setConstructorArgs(
                 [
                     [
-                        'isStaticTemplateLoaded' => 1,
                         'templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html',
                         'displaySearchFormFields' => 'event_type',
                     ],

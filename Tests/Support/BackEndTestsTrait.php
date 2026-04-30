@@ -48,8 +48,7 @@ trait BackEndTestsTrait
 
     /**
      * Replaces the current BE user with a mocked user, sets "default" as the current BE language, clears the
-     * seminars extension settings, disables the automatic configuration check, sets the header proxy to test mode,
-     * and sets a fixed `SIM_EXEC_TIME`.
+     * seminars extension settings, sets the header proxy to test mode, and sets a fixed `SIM_EXEC_TIME`.
      *
      * If you use this method, make sure to call `restoreOriginalEnvironment()` in `tearDown()`.
      */
