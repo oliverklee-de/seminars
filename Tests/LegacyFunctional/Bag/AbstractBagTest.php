@@ -31,7 +31,7 @@ final class AbstractBagTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
 
         $this->uidOfFirstRecord = $this->testingFramework->createRecord(
             'tx_seminars_test',

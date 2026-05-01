@@ -29,7 +29,7 @@ final class AbstractViewTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
         $rootPageUid = $this->testingFramework->createFrontEndPage();
         $this->testingFramework->changeRecord('pages', $rootPageUid, ['slug' => '/home']);
         $this->testingFramework->createFakeFrontEnd($rootPageUid);

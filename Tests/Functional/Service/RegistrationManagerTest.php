@@ -95,7 +95,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $configurationRegistry->set('config', new DummyConfiguration());
         $configurationRegistry->set('page.config', new DummyConfiguration());
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
 
         $this->email = $this->createEmailMock();
         $this->secondEmail = $this->createEmailMock();

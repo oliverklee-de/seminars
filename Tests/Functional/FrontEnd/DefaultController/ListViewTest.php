@@ -27,7 +27,7 @@ final class ListViewTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
     }
 
     private function buildSubjectForListView(string $fixtureFileName): TestingDefaultController
