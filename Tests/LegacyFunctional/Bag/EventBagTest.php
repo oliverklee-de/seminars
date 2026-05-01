@@ -27,7 +27,7 @@ final class EventBagTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
 
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',

@@ -33,7 +33,7 @@ final class CategoryListTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
         $this->testingFramework->createFakeFrontEnd($this->testingFramework->createFrontEndPage());
 
         $this->subject = new CategoryList(

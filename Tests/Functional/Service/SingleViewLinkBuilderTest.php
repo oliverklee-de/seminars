@@ -36,7 +36,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
 
         $this->importDataSet(__DIR__ . '/Fixtures/SingleViewLinkBuilder.xml');
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
         $this->testingFramework->createFakeFrontEnd(1);
         $this->configuration = new DummyConfiguration();
 

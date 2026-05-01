@@ -49,7 +49,7 @@ final class EmailServiceTest extends FunctionalTestCase
 
         $this->unifyTestingEnvironment();
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
 
         $this->email = $this->createEmailMock();
 

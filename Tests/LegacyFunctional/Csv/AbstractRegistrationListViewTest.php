@@ -77,7 +77,7 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
         $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'];
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'] = [];
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
 
         $configurationRegistry = ConfigurationRegistry::getInstance();
         $configurationRegistry->set('plugin', new DummyConfiguration());
