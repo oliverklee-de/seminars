@@ -1727,7 +1727,7 @@ final class SingleEventTest extends UnitTestCase
     public function isRegistrationPossibleByDateInitiallyThrowsException(): void
     {
         $this->expectException(\BadMethodCallException::class);
-        $this->expectExceptionMessage('registrationPossibleByDate has not been set set.');
+        $this->expectExceptionMessage('registrationPossibleByDate has not been set yet.');
         $this->expectExceptionCode(1736269500);
 
         $this->subject->isRegistrationPossibleByDate();

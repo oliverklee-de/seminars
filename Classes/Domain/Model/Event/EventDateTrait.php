@@ -287,7 +287,7 @@ trait EventDateTrait
     {
         $possible = $this->registrationPossibleByDate;
         if (!\is_bool($possible)) {
-            throw new \BadMethodCallException('registrationPossibleByDate has not been set set.', 1736269500);
+            throw new \BadMethodCallException('registrationPossibleByDate has not been set yet.', 1736269500);
         }
 
         return $possible;
