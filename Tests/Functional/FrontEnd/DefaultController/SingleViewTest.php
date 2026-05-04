@@ -32,7 +32,7 @@ final class SingleViewTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
         $this->buildSubjectForSingleView();
     }
 

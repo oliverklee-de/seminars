@@ -71,7 +71,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $this->unregistrationDeadline = ($this->now + Time::SECONDS_PER_WEEK);
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
         $this->connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
 
         $currenciesConnection = $this->connectionPool->getConnectionForTable('static_currencies');

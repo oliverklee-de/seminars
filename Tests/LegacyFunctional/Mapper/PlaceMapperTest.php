@@ -28,7 +28,7 @@ final class PlaceMapperTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
 
         $this->subject = new PlaceMapper();
     }

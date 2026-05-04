@@ -31,7 +31,7 @@ final class FrontEndUserTest extends FunctionalTestCase
         parent::setUp();
 
         $this->subject = new FrontEndUser();
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
     }
 
     protected function tearDown(): void

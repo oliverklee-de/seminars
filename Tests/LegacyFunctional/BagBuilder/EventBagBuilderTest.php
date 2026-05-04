@@ -52,7 +52,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->past = (int)GeneralUtility::makeInstance(Context::class)
                 ->getPropertyFromAspect('date', 'timestamp') - 50;
 
-        $this->testingFramework = new TestingFramework('tx_seminars');
+        $this->testingFramework = new TestingFramework();
 
         $this->subject = new EventBagBuilder();
     }
