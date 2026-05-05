@@ -41,7 +41,6 @@ EventTopicInterface --|> EventInterface
 ' =========
 ' Interface
 ' =========
-Category ..|> EventTypeInterface
 Event ..|> EventInterface
 EventDate ..|> EventDateInterface
 EventTopic ..|> EventTopicInterface
