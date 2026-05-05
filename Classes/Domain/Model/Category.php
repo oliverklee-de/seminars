@@ -10,7 +10,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  * This class represents an event category, e.g., "cooking", "sports", etc.
  */
-class Category extends AbstractEntity implements EventTypeInterface
+class Category extends AbstractEntity
 {
     /**
      * @Validate("StringLength", options={"maximum": 255})
