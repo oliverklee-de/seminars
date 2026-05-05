@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\FrontEnd;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Oelib\Interfaces\Time;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
@@ -38,6 +37,9 @@ final class DefaultControllerTest extends FunctionalTestCase
     private const CONFIGURATION = [
         'currency' => 'EUR',
     ];
+
+    private const SECONDS_PER_DAY = 86400;
+    private const SECONDS_PER_WEEK = 604800;
 
     protected array $testExtensionsToLoad = [
         'sjbr/static-info-tables',
@@ -554,11 +556,11 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK,
+                ) + self::SECONDS_PER_WEEK,
                 'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
             ],
         );
         $this->testingFramework->createRecord(
@@ -571,11 +573,11 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + 2 * Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
                 'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + 3 * Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
             ],
         );
 
@@ -618,11 +620,11 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK,
+                ) + self::SECONDS_PER_WEEK,
                 'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
             ],
         );
         $singleEventUid = $this->testingFramework->createRecord(
@@ -635,11 +637,11 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + 2 * Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
                 'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + 3 * Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
             ],
         );
 
@@ -680,11 +682,11 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK,
+                ) + self::SECONDS_PER_WEEK,
                 'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
             ],
         );
         $this->testingFramework->createRecord(
@@ -697,11 +699,11 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + 2 * Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
                 'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + 3 * Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
                 'needs_registration' => 1,
                 'attendees_max' => 5,
                 'offline_attendees' => 5,
@@ -745,11 +747,11 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK,
+                ) + self::SECONDS_PER_WEEK,
                 'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
             ],
         );
         $dateUid2 = $this->testingFramework->createRecord(
@@ -762,11 +764,11 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + 2 * Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
                 'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_WEEK + 3 * Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
                 'needs_registration' => 1,
                 'attendees_max' => 5,
                 'offline_attendees' => 5,
@@ -3446,7 +3448,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'Event with category',
-                'end_date' => Time::SECONDS_PER_WEEK,
+                'end_date' => self::SECONDS_PER_WEEK,
                 // the number of categories
                 'categories' => 1,
             ],

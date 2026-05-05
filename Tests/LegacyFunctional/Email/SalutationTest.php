@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\Email;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
-use OliverKlee\Oelib\Interfaces\Time;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Email\Salutation;
@@ -26,6 +25,7 @@ final class SalutationTest extends FunctionalTestCase
 
     private const DATE_FORMAT = 'Y-m-d';
     private const TIME_FORMAT = 'H:i';
+    private const SECONDS_PER_DAY = 86400;
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
@@ -291,13 +291,13 @@ final class SalutationTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => $this->now,
-                'end_date' => $this->now + Time::SECONDS_PER_DAY,
+                'end_date' => $this->now + self::SECONDS_PER_DAY,
             ],
         );
         $event = new TestingLegacyEvent($eventUid);
 
         self::assertStringContainsString(
-            \date(self::DATE_FORMAT, $this->now) . '-' . \date(self::DATE_FORMAT, $this->now + Time::SECONDS_PER_DAY),
+            \date(self::DATE_FORMAT, $this->now) . '-' . \date(self::DATE_FORMAT, $this->now + self::SECONDS_PER_DAY),
             $this->subject->createIntroduction('%s', $event),
         );
     }

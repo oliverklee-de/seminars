@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\BagBuilder;
 
-use OliverKlee\Oelib\Interfaces\Time;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Bag\AbstractBag;
 use OliverKlee\Seminars\Bag\EventBag;
@@ -21,6 +20,9 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class EventBagBuilderTest extends FunctionalTestCase
 {
+    private const SECONDS_PER_DAY = 86400;
+    private const SECONDS_PER_WEEK = 604800;
+
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -521,9 +523,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -545,7 +547,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -568,9 +570,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -591,9 +593,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -614,7 +616,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -663,9 +665,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -687,7 +689,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -710,9 +712,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -734,9 +736,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -757,7 +759,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -806,9 +808,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -829,7 +831,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -851,9 +853,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -875,9 +877,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -898,7 +900,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -947,9 +949,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -970,7 +972,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -992,9 +994,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1016,9 +1018,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1040,7 +1042,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -1091,9 +1093,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1114,7 +1116,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -1136,9 +1138,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1159,9 +1161,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1183,7 +1185,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -1234,9 +1236,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1257,7 +1259,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -1279,9 +1281,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1302,9 +1304,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1326,7 +1328,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -1377,9 +1379,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'deadline_registration' => 0,
             ],
         );
@@ -1401,7 +1403,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
                 'deadline_registration' => 0,
             ],
@@ -1424,9 +1426,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'deadline_registration' => 0,
             ],
         );
@@ -1448,9 +1450,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
                 'deadline_registration' => 0,
             ],
         );
@@ -1473,11 +1475,11 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + 2 * Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + 2 * self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
                 'deadline_registration' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1499,11 +1501,11 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
                 'deadline_registration' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1524,7 +1526,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => 0,
                 'deadline_registration' => 0,
             ],
@@ -1600,7 +1602,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -1624,7 +1626,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1646,7 +1648,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
             ],
@@ -1670,9 +1672,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1694,9 +1696,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1717,9 +1719,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1767,9 +1769,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1791,7 +1793,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -1814,9 +1816,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1838,9 +1840,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_WEEK,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1862,7 +1864,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -2903,13 +2905,13 @@ final class EventBagBuilderTest extends FunctionalTestCase
     {
         $eventUid1 = $this->testingFramework->createRecord(
             'tx_seminars_seminars',
-            ['begin_date' => Time::SECONDS_PER_DAY, 'end_date' => Time::SECONDS_PER_DAY + 60 * 60],
+            ['begin_date' => self::SECONDS_PER_DAY, 'end_date' => self::SECONDS_PER_DAY + 60 * 60],
         );
         $eventUid2 = $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => 2 * Time::SECONDS_PER_DAY,
-                'end_date' => 60 * 60 + 2 * Time::SECONDS_PER_DAY,
+                'begin_date' => 2 * self::SECONDS_PER_DAY,
+                'end_date' => 60 * 60 + 2 * self::SECONDS_PER_DAY,
             ],
         );
         $event = new LegacyEvent($eventUid1);
@@ -2933,7 +2935,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
     {
         $eventUid = $this->testingFramework->createRecord(
             'tx_seminars_seminars',
-            ['begin_date' => Time::SECONDS_PER_DAY, 'end_date' => Time::SECONDS_PER_DAY + 60 * 60],
+            ['begin_date' => self::SECONDS_PER_DAY, 'end_date' => self::SECONDS_PER_DAY + 60 * 60],
         );
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
@@ -2958,13 +2960,13 @@ final class EventBagBuilderTest extends FunctionalTestCase
     {
         $eventUid = $this->testingFramework->createRecord(
             'tx_seminars_seminars',
-            ['begin_date' => Time::SECONDS_PER_DAY, 'end_date' => Time::SECONDS_PER_DAY + 60 * 60],
+            ['begin_date' => self::SECONDS_PER_DAY, 'end_date' => self::SECONDS_PER_DAY + 60 * 60],
         );
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => 3 * Time::SECONDS_PER_DAY,
-                'end_date' => 60 * 60 + 3 * Time::SECONDS_PER_DAY,
+                'begin_date' => 3 * self::SECONDS_PER_DAY,
+                'end_date' => 60 * 60 + 3 * self::SECONDS_PER_DAY,
             ],
         );
         $event = new LegacyEvent($eventUid);
@@ -4956,7 +4958,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -4978,7 +4980,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - Time::SECONDS_PER_DAY,
+                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -5000,7 +5002,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + (2 * Time::SECONDS_PER_DAY),
+                        ->getPropertyFromAspect('date', 'timestamp') + (2 * self::SECONDS_PER_DAY),
             ],
         );
 
@@ -5022,7 +5024,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - (2 * Time::SECONDS_PER_DAY),
+                        ->getPropertyFromAspect('date', 'timestamp') - (2 * self::SECONDS_PER_DAY),
             ],
         );
 

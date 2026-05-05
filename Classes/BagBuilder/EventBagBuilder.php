@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\BagBuilder;
 
-use OliverKlee\Oelib\Interfaces\Time;
 use OliverKlee\Seminars\Bag\EventBag;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
@@ -43,6 +42,8 @@ class EventBagBuilder extends AbstractBagBuilder
         'all',
         'today',
     ];
+
+    private const SECONDS_PER_DAY = 86400;
 
     /**
      * @var array<string, list<non-empty-string>> a list of field names of m:n associations in which we can search,
@@ -429,8 +430,8 @@ class EventBagBuilder extends AbstractBagBuilder
         }
 
         $endDate = $event->getEndDateAsTimestamp();
-        $midnightBeforeEndDate = $endDate - ($endDate % Time::SECONDS_PER_DAY);
-        $secondMidnightAfterEndDate = $midnightBeforeEndDate + 2 * Time::SECONDS_PER_DAY;
+        $midnightBeforeEndDate = $endDate - ($endDate % self::SECONDS_PER_DAY);
+        $secondMidnightAfterEndDate = $midnightBeforeEndDate + 2 * self::SECONDS_PER_DAY;
 
         $this->whereClauseParts['next_day'] = 'begin_date>=' . $endDate .
             ' AND begin_date<' . $secondMidnightAfterEndDate;
@@ -556,7 +557,7 @@ class EventBagBuilder extends AbstractBagBuilder
     public function limitToDaysBeforeBeginDate(int $days): void
     {
         $nowPlusDays = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp')
-            + $days * Time::SECONDS_PER_DAY;
+            + $days * self::SECONDS_PER_DAY;
 
         $this->whereClauseParts['days_before_begin_date'] = 'tx_seminars_seminars.begin_date < ' . $nowPlusDays;
     }
