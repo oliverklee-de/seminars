@@ -41,7 +41,7 @@ interface EventDateInterface extends EventInterface
 
     public function getBillingStart(): ?\DateTime;
 
-    public function isDownloadsPossibleByDate(): bool;
+    public function isDownloadPossibleByDate(): bool;
 
     public function isRegistrationRequired(): bool;
 

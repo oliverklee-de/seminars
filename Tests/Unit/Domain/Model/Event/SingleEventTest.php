@@ -1796,33 +1796,33 @@ final class SingleEventTest extends UnitTestCase
     /**
      * @test
      */
-    public function isDownloadsPossibleByDateForNoDownloadStartDateReturnsTrue(): void
+    public function isDownloadPossibleByDateForNoDownloadStartDateReturnsTrue(): void
     {
-        self::assertTrue($this->subject->isDownloadsPossibleByDate());
+        self::assertTrue($this->subject->isDownloadPossibleByDate());
     }
 
     /**
      * @test
      */
-    public function isDownloadsPossibleByDateForDownloadStartInPastReturnsTrue(): void
+    public function isDownloadPossibleByDateForDownloadStartInPastReturnsTrue(): void
     {
         $context = GeneralUtility::makeInstance(Context::class);
         $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('now')));
         $this->subject->setDownloadStartDate(new \DateTime('now -1 day'));
 
-        self::assertTrue($this->subject->isDownloadsPossibleByDate());
+        self::assertTrue($this->subject->isDownloadPossibleByDate());
     }
 
     /**
      * @test
      */
-    public function isDownloadsPossibleByDateForDownloadStartInFutureReturnsFalse(): void
+    public function isDownloadPossibleByDateForDownloadStartInFutureReturnsFalse(): void
     {
         $context = GeneralUtility::makeInstance(Context::class);
         $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('now')));
         $this->subject->setDownloadStartDate(new \DateTime('now +1 day'));
 
-        self::assertFalse($this->subject->isDownloadsPossibleByDate());
+        self::assertFalse($this->subject->isDownloadPossibleByDate());
     }
 
     /**

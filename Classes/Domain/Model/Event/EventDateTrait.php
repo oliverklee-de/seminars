@@ -257,7 +257,7 @@ trait EventDateTrait
         $this->downloadStartDate = $startDate;
     }
 
-    public function isDownloadsPossibleByDate(): bool
+    public function isDownloadPossibleByDate(): bool
     {
         $downloadStartDate = $this->getDownloadStartDate();
         if (!($downloadStartDate instanceof \DateTimeInterface)) {
