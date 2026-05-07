@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\OldModel;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\DataStructures\Collection;
-use OliverKlee\Oelib\Interfaces\Time;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\ViewHelpers\PriceViewHelper;
 use OliverKlee\Seminars\Bag\EventBag;
@@ -36,6 +35,8 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  */
 class LegacyEvent extends AbstractTimeSpan
 {
+    private const SECONDS_PER_DAY = 86400;
+
     /**
      * @var string the name of the SQL table this class corresponds to
      */
@@ -2951,7 +2952,7 @@ class LegacyEvent extends AbstractTimeSpan
         $deadline = $beginDate;
         /** @var LegacySpeaker $speaker */
         foreach ($this->getSpeakerBag() as $speaker) {
-            $speakerDeadline = $beginDate - ($speaker->getCancelationPeriodInDays() * Time::SECONDS_PER_DAY);
+            $speakerDeadline = $beginDate - ($speaker->getCancelationPeriodInDays() * self::SECONDS_PER_DAY);
             $deadline = \max(0, \min($speakerDeadline, $deadline));
         }
 

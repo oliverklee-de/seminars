@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\BagBuilder;
 
-use OliverKlee\Oelib\Interfaces\Time;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Bag\RegistrationBag;
@@ -22,6 +21,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class RegistrationBagBuilderTest extends FunctionalTestCase
 {
+    private const SECONDS_PER_DAY = 86400;
+
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -75,7 +76,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
                 'crdate' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
-                ) + Time::SECONDS_PER_DAY,
+                ) + self::SECONDS_PER_DAY,
             ],
         );
         $this->testingFramework->createRecord(

@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\Service;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Oelib\Interfaces\Time;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
@@ -38,6 +37,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
     use LanguageHelper;
     use EmailTrait;
     use MakeInstanceTrait;
+
+    private const SECONDS_PER_DAY = 86400;
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
@@ -943,7 +944,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'tx_seminars_seminars',
             $this->seminarUid,
             [
-                'deadline_unregistration' => $this->now + Time::SECONDS_PER_DAY,
+                'deadline_unregistration' => $this->now + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -968,7 +969,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->testingFramework->changeRecord(
             'tx_seminars_seminars',
             $this->seminarUid,
-            ['deadline_unregistration' => $this->now - Time::SECONDS_PER_DAY],
+            ['deadline_unregistration' => $this->now - self::SECONDS_PER_DAY],
         );
 
         $subject->notifyAttendee($registration);
@@ -994,7 +995,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->testingFramework->changeRecord(
             'tx_seminars_seminars',
             $this->seminarUid,
-            ['deadline_unregistration' => $this->now + Time::SECONDS_PER_DAY],
+            ['deadline_unregistration' => $this->now + self::SECONDS_PER_DAY],
         );
 
         $subject->notifyAttendee($registration);
@@ -1020,7 +1021,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'tx_seminars_seminars',
             $this->seminarUid,
             [
-                'deadline_unregistration' => $this->now + Time::SECONDS_PER_DAY,
+                'deadline_unregistration' => $this->now + self::SECONDS_PER_DAY,
                 'queue_size' => 1,
             ],
         );
@@ -1056,7 +1057,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             'tx_seminars_seminars',
             $this->seminarUid,
             [
-                'deadline_unregistration' => $this->now + Time::SECONDS_PER_DAY,
+                'deadline_unregistration' => $this->now + self::SECONDS_PER_DAY,
                 'queue_size' => 1,
             ],
         );
