@@ -64,7 +64,9 @@ $tca = [
         ],
     ],
     'types' => [
-        '0' => ['showitem' => 'title, description, homepage, email, email_footer'],
+        [
+            'showitem' => 'title, description, homepage, email, email_footer',
+        ],
     ],
 ];
 

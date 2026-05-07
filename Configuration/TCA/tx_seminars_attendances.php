@@ -526,7 +526,7 @@ $tca = [
         ],
     ],
     'types' => [
-        '0' => [
+        [
             'showitem' => '' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.divLabelOverview, title, crdate, uid, seminar, user, hidden, '
                 .

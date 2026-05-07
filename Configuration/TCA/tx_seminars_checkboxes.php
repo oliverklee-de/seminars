@@ -26,7 +26,9 @@ $tca = [
         ],
     ],
     'types' => [
-        '0' => ['showitem' => 'title'],
+        [
+            'showitem' => 'title',
+        ],
     ],
 ];
 

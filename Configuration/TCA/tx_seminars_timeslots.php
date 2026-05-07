@@ -68,7 +68,9 @@ $tca = [
         ],
     ],
     'types' => [
-        '0' => ['showitem' => 'begin_date, end_date, place, room'],
+        [
+            'showitem' => 'begin_date, end_date, place, room',
+        ],
     ],
 ];
 
