@@ -105,7 +105,7 @@ $tca = [
         ],
     ],
     'types' => [
-        '0' => [
+        [
             'showitem' => 'title, address, city, homepage, directions, '
                 . 'contact_person, email_address, phone_number, notes',
         ],

@@ -50,7 +50,9 @@ $tca = [
         ],
     ],
     'types' => [
-        '0' => ['showitem' => 'title, minimum_age, maximum_age'],
+        [
+            'showitem' => 'title, minimum_age, maximum_age',
+        ],
     ],
 ];
 

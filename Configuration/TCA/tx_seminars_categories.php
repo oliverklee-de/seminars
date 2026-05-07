@@ -38,7 +38,9 @@ $tca = [
         ],
     ],
     'types' => [
-        '0' => ['showitem' => 'title, single_view_page'],
+        [
+            'showitem' => 'title, single_view_page',
+        ],
     ],
 ];
 
