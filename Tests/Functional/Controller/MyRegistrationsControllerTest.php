@@ -14,6 +14,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class MyRegistrationsControllerTest extends FunctionalTestCase
 {
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures/MyRegistrationsController';
+
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -43,7 +45,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
         parent::setUp();
 
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Sites/SiteStructure.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/MyRegistrationsContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/MyRegistrationsContentElement.csv');
         $this->setUpFrontendRootPage(1, [
             'constants' => [
                 'EXT:fluid_styled_content/Configuration/TypoScript/constants.typoscript',
@@ -90,7 +92,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserReturnsStatus200(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -104,7 +106,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserForNoRegistrationsReturnsNoRegistrationsMessage(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -123,10 +125,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserForRegistrationsOfOtherUsersReturnsNoRegistrationsMessage(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/indexAction/RegistrationOfOtherUser.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationOfOtherUser.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -145,10 +145,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserForRegistrationsOfOtherUsersDoesNotRenderEventTitle(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/indexAction/RegistrationOfOtherUser.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationOfOtherUser.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -164,10 +162,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionWithLoggedInUserForRegistrationsWithDeletedEventDoesNotCrash(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/indexAction/RegistrationForDeletedEvent.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationForDeletedEvent.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -179,10 +175,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersDateOfSingleDaySingleEventRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/indexAction/RegistrationForSingleDayEvent.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationForSingleDayEvent.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -196,10 +190,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersDateOfMultiDaySingleEventRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/indexAction/RegistrationForMultiDayEvent.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationForMultiDayEvent.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -213,10 +205,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersEventTypeOfSingleEventRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/indexAction/RegistrationWithEventType.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithEventType.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -230,8 +220,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersTitleOfSingleEventRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/indexAction/Registration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/Registration.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -245,8 +235,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionDoesNotRenderHiddenRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/indexAction/HiddenRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/HiddenRegistration.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -260,10 +250,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersTopicTitleOfEventDateRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/indexAction/RegistrationForEventDate.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationForEventDate.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -277,8 +265,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersRegularRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/indexAction/RegularRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegularRegistration.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -294,10 +282,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersWaitingListRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/indexAction/WaitingListRegistration.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/WaitingListRegistration.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -313,8 +299,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionRendersNonbindingReserverationRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/indexAction/NonbindingReservation.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/NonbindingReservation.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -330,8 +316,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function indexActionLinksEventTitleToShowAction(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/indexAction/Registration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/Registration.csv');
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -352,8 +338,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForNoUserLoggedInShowsPleaseLogInMessage(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/Registration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/Registration.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -376,8 +362,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         self::markTestSkipped('Currently, the HTTP status code gets lost when using executeFrontendSubRequest.');
 
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/Registration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/Registration.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -395,8 +381,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionWithRegistrationOfLoggedInUserReturnsStatus200(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/Registration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/Registration.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -416,8 +402,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         self::markTestSkipped('Currently, the HTTP status code gets lost when using executeFrontendSubRequest.');
 
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/Registration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/Registration.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -435,8 +421,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionWithRegistrationOfOtherUserRendersNotFoundMessage(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationOfOtherUser.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationOfOtherUser.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -456,8 +442,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersTitleOfSingleEvent(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/Registration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/Registration.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -476,10 +462,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersDisplayTitleOfEventDate(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationForEventDate.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForEventDate.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -499,10 +483,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersEventType(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationWithEventType.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithEventType.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -521,10 +503,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersDateOfSingleDayEvent(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationForSingleDayEvent.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForSingleDayEvent.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -543,10 +523,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersDateOfSingleDayEventOnlyOnce(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationForSingleDayEvent.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForSingleDayEvent.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -565,10 +543,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersStartAndEndOfMultiDayEvent(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationForMultiDayEvent.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForMultiDayEvent.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -587,10 +563,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersStartAndEndTimeOfSingleDayEvent(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationForSingleDayEvent.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForSingleDayEvent.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -609,10 +583,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersStartDateAndTimeOfMultiDayEvent(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationForMultiDayEvent.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForMultiDayEvent.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -631,10 +603,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersEndDateAndTimeOfMultiDayEvent(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationForMultiDayEvent.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForMultiDayEvent.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -653,10 +623,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersTitleOfVenue(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationWithOneVenue.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithOneVenue.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -674,10 +642,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersAddressOfVenue(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationWithOneVenue.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithOneVenue.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -696,10 +662,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionConvertsNewlinesToBreakInVenuAddress(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationWithOneVenue.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithOneVenue.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -718,10 +682,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionCanRenderMultipleVenues(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationWithTwoVenuesInSameCity.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithTwoVenuesInSameCity.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -741,10 +703,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersRoom(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/Registration.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/Registration.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -763,8 +723,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersRegularRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegularRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegularRegistration.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -785,10 +745,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersWaitingListRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/WaitingListRegistration.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/WaitingListRegistration.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -809,8 +767,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionRendersNonbindingReserverationRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/showAction/NonbindingReservation.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/NonbindingReservation.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -831,11 +789,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForRegistrationWithUnregistrationPossibleShowsLinkToUnregistration(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/showAction/RegularRegistrationWithUnregistrationPossible.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegularRegistrationWithUnregistrationPossible.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -862,10 +817,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForRegistrationWithUnregistrationNotPossibleDoesNotShowLinkToUnregistration(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/showAction/RegularRegistrationWithUnregistrationDeadlineOver.csv',
+            self::FIXTURES_PATH . '/showAction/RegularRegistrationWithUnregistrationDeadlineOver.csv',
         );
 
         $request = (new InternalRequest())
@@ -888,10 +842,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForRegularRegistrationWithDownloadsRendersLinkToAttachmentDownload(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegularRegistrationWithDownloadWithoutTitle.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegularRegistrationWithDownloadWithoutTitle.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -915,10 +867,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForRegularRegistrationWithDownloadWithoutTitleUsesFilenameAsLinkText(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegularRegistrationWithDownloadWithoutTitle.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegularRegistrationWithDownloadWithoutTitle.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -937,10 +887,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForRegularRegistrationWithDownloadWithTitleUsesTitleAsLinkText(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegularRegistrationWithDownloadWithTitle.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegularRegistrationWithDownloadWithTitle.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -959,10 +907,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForWaitingListRegistrationWithDownloadsDoesNotRendersDownload(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/WaitingListRegistrationWithDownload.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/WaitingListRegistrationWithDownload.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -981,10 +927,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForNonbindingReservationWithDownloadsDoesNotRendersDownload(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/NonbindingReservationWithDownload.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/NonbindingReservationWithDownload.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -1003,10 +947,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForRegularRegistrationWithDownloadStartDateInPastRendersDownload(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationWithDownloadStartInPast.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithDownloadStartInPast.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -1025,10 +967,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function showActionForRegularRegistrationWithDownloadStartDateInFuturesDoesNotRenderDownload(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__ . '/Fixtures/MyRegistrationsController/showAction/RegistrationWithDownloadStartInFuture.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithDownloadStartInFuture.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -1047,10 +987,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function downloadAttendeeAttachmentActionForRegistrationWithoutEventThrowsRuntimeException(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationWithoutEvent.csv',
+            self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/RegistrationWithoutEvent.csv',
         );
 
         $request = (new InternalRequest())
@@ -1073,10 +1012,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function downloadAttendeeAttachmentActionWithUidOfInexistentFileThrowsRuntimeException(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationWithoutDownload.csv',
+            self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/RegistrationWithoutDownload.csv',
         );
 
         $request = (new InternalRequest())
@@ -1099,10 +1037,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function downloadAttendeeAttachmentActionWithUidOfFileFromOtherEventThrowsRuntimeException(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownloadFromOtherEvent.csv',
+            self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/RegistrationAndDownloadFromOtherEvent.csv',
         );
 
         $request = (new InternalRequest())
@@ -1125,11 +1062,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function downloadAttendeeAttachmentActionWithValidFileUidReturnsStatusOkay(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -1149,11 +1083,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function downloadAttendeeAttachmentActionWithValidFileUidReturnsCacheControlPrivateHeader(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -1173,11 +1104,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function downloadAttendeeAttachmentActionWithValidFileUidReturnsContentDispositionHeaderWithFilename(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -1197,11 +1125,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function downloadAttendeeAttachmentActionWithValidFileUidReturnsContentLengthHeader(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -1221,11 +1146,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function downloadAttendeeAttachmentActionWithValidFileUidReturnsContentTypeHeaderWithFileMimeType(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -1245,11 +1167,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
      */
     public function downloadAttendeeAttachmentActionWithValidFileUidReturnsFileContents(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/MyRegistrationsController/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(
-            __DIR__
-            . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv',
-        );
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/RegistrationAndDownload.csv');
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -1262,7 +1181,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
         $response = $this->executeFrontendSubRequest($request, $requestContext);
 
         $expectedFileContents = \file_get_contents(
-            __DIR__ . '/Fixtures/MyRegistrationsController/downloadAttendeeAttachmentAction/fileadmin/speaker.txt',
+            self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/fileadmin/speaker.txt',
         );
         self::assertSame($expectedFileContents, (string)$response->getBody());
     }
