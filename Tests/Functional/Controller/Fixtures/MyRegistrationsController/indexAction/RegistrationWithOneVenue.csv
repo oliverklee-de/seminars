@@ -1,0 +1,15 @@
+"tx_seminars_seminars"
+,"uid","pid","title","place","registrations"
+,1,1,"the event title",1,1
+
+"tx_seminars_sites"
+,"uid","pid","title","address","city"
+,1,2,"Maritim Hotel","Kurt-Georg-Kiesinger-Allee 1, 53175 Bonn","Bonn"
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,1,1,1
+
+"tx_seminars_seminars_place_mm"
+,"uid_local","uid_foreign"
+,1,1
