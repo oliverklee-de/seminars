@@ -1760,18 +1760,6 @@ class LegacyEvent extends AbstractTimeSpan
     }
 
     /**
-     * Checks whether a certain user already is registered for this seminar.
-     *
-     * @param positive-int $feUserUid UID of the FE user to check
-     *
-     * @return string empty string if everything is OK, else a localized error message
-     */
-    public function isUserRegisteredMessage(int $feUserUid): string
-    {
-        return $this->isUserRegistered($feUserUid) ? $this->translate('message_alreadyRegistered') : '';
-    }
-
-    /**
      * Checks whether a certain user is entered as a default VIP for all events
      * but also checks whether this user is entered as a VIP for this event,
      * i.e., he/she is allowed to view the list of registrations for this event.
