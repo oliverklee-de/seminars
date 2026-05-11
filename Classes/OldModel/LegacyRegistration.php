@@ -10,6 +10,7 @@ use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Mapper\FrontEndUserMapper;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * This class represents an event registration.
@@ -182,7 +183,9 @@ class LegacyRegistration extends AbstractModel
                 // The fallthrough is intended.
             case 'been_there':
                 $result = $this->getRecordPropertyBoolean($trimmedKey)
-                    ? $this->translate('label_yes') : $this->translate('label_no');
+                    ? LocalizationUtility::translate('label_yes', 'seminars')
+                    : LocalizationUtility::translate('label_no', 'seminars');
+                \assert(\is_string($result));
                 break;
             case 'method_of_payment':
                 $uid = $this->getRecordPropertyInteger($trimmedKey);
@@ -211,10 +214,12 @@ class LegacyRegistration extends AbstractModel
                 $value = $this->getRecordPropertyInteger($trimmedKey);
                 switch ($value) {
                     case Registration::ATTENDANCE_MODE_ON_SITE:
-                        $result = $this->translate('label_attendance_mode.onSite');
+                        $result = LocalizationUtility::translate('label_attendance_mode.onSite', 'seminars');
+                        \assert(\is_string($result));
                         break;
                     case Registration::ATTENDANCE_MODE_ONLINE:
-                        $result = $this->translate('label_attendance_mode.online');
+                        $result = LocalizationUtility::translate('label_attendance_mode.online', 'seminars');
+                        \assert(\is_string($result));
                         break;
                     default:
                         $result = '';
@@ -255,10 +260,14 @@ class LegacyRegistration extends AbstractModel
         $rawData = \trim((string)$this->userData[$trimmedKey]);
         switch ($trimmedKey) {
             case 'gender':
-                $result = $this->translate('label_gender.I.' . $rawData);
+                $result = LocalizationUtility::translate('label_gender.I.' . $rawData, 'seminars');
+                \assert(\is_string($result));
                 break;
             case 'status':
-                $result = (int)$rawData !== 0 ? $this->translate('label_status.I.' . $rawData) : '';
+                $result = (int)$rawData !== 0
+                    ? LocalizationUtility::translate('label_status.I.' . $rawData, 'seminars')
+                    : '';
+                \assert(\is_string($result));
                 break;
             case 'crdate':
                 // The fallthrough is intended.
@@ -520,14 +529,15 @@ class LegacyRegistration extends AbstractModel
         $maximumLabelLength = 0;
         foreach ($keys as $key) {
             $frontEndUserLabelKey = 'label_feuser_' . $key;
-            $frontEndUserLabel = $this->translate($frontEndUserLabelKey);
+            $frontEndUserLabel = LocalizationUtility::translate($frontEndUserLabelKey, 'seminars');
 
             $defaultLabelKey = 'label_' . $key;
-            $defaultLabel = $this->translate($defaultLabelKey);
+            $defaultLabel = LocalizationUtility::translate($defaultLabelKey, 'seminars');
 
-            if ($frontEndUserLabel !== '' && $frontEndUserLabel !== $frontEndUserLabelKey) {
+            if (\is_string($frontEndUserLabel) && ($frontEndUserLabel !== '')
+                && ($frontEndUserLabel !== $frontEndUserLabelKey)) {
                 $label = $frontEndUserLabel;
-            } elseif ($defaultLabel !== '' && $defaultLabel !== $defaultLabelKey) {
+            } elseif (\is_string($defaultLabel) && ($defaultLabel !== '') && ($defaultLabel !== $defaultLabelKey)) {
                 $label = $defaultLabel;
             } else {
                 $label = \ucfirst($key);
@@ -574,10 +584,11 @@ class LegacyRegistration extends AbstractModel
         foreach ($keys as $key) {
             if ($key === 'uid') {
                 // The UID label is a special case as we also have a UID label for events.
-                $currentLabel = $this->translate('label_registration_uid');
+                $currentLabel = LocalizationUtility::translate('label_registration_uid', 'seminars');
             } else {
-                $currentLabel = $this->translate('label_' . $key);
+                $currentLabel = LocalizationUtility::translate('label_' . $key, 'seminars');
             }
+            $currentLabel = \is_string($currentLabel) ? $currentLabel : \ucfirst($key);
             $currentLabel = \rtrim($currentLabel, ':');
             $labels[$key] = $currentLabel;
             $maximumLabelLength = \max($maximumLabelLength, \mb_strlen($currentLabel, 'utf-8'));
@@ -618,7 +629,7 @@ class LegacyRegistration extends AbstractModel
             }
 
             if (isset($options['labelKey'])) {
-                $result .= $this->translate($options['labelKey']) . ': ';
+                $result .= LocalizationUtility::translate($options['labelKey'], 'seminars') . ': ';
             }
             $result .= $this->getRegistrationData($key) . $options['separator'];
         }
@@ -633,7 +644,13 @@ class LegacyRegistration extends AbstractModel
      */
     public function getGender(): string
     {
-        return $this->translate('label_gender.I.' . $this->getRecordPropertyInteger('gender'));
+        $result = LocalizationUtility::translate(
+            'label_gender.I.' . $this->getRecordPropertyInteger('gender'),
+            'seminars',
+        );
+        \assert(\is_string($result));
+
+        return $result;
     }
 
     /**
@@ -788,7 +805,10 @@ class LegacyRegistration extends AbstractModel
                 $languageKey = 'status_regular';
         }
 
-        return $this->translate($languageKey);
+        $result = LocalizationUtility::translate($languageKey, 'seminars');
+        \assert(\is_string($result));
+
+        return $result;
     }
 
     /**

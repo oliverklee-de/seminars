@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\OldModel;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Interfaces\Configuration;
-use OliverKlee\Seminars\Localization\TranslateTrait;
 use OliverKlee\Seminars\ViewHelpers\RichTextViewHelper;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\Connection;
@@ -28,8 +27,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 abstract class AbstractModel
 {
-    use TranslateTrait;
-
     private ?Configuration $sharedPluginConfiguration = null;
 
     protected static string $tableName;

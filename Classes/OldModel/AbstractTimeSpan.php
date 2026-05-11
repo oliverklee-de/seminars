@@ -8,6 +8,7 @@ use OliverKlee\Seminars\Hooks\HookProvider;
 use OliverKlee\Seminars\Hooks\Interfaces\DateTimeSpan;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * This class offers timespan-related methods for the time slot and seminar classes.
@@ -121,7 +122,8 @@ abstract class AbstractTimeSpan extends AbstractModel
                 $dash,
             );
         }
-        $hours = $this->translate('label_hours');
+        $hours = LocalizationUtility::translate('label_hours', 'seminars');
+        \assert(\is_string($hours));
         $result .= ' ' . $hours;
 
         return $result;

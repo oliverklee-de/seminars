@@ -27,6 +27,7 @@ use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -685,8 +686,9 @@ class LegacyEvent extends AbstractTimeSpan
         if ($this->hasPriceRegular()) {
             $result = $this->formatPrice($this->getPriceRegularAmount());
         } else {
-            $result = $this->translate('message_forFree');
+            $result = LocalizationUtility::translate('message_forFree', 'seminars');
         }
+        \assert(\is_string($result));
 
         return $result;
     }
@@ -728,7 +730,9 @@ class LegacyEvent extends AbstractTimeSpan
     public function getCurrentPriceRegular(): string
     {
         if ($this->getPriceOnRequest()) {
-            return $this->translate('message_onRequest');
+            $result = LocalizationUtility::translate('message_onRequest', 'seminars');
+            \assert(\is_string($result));
+            return $result;
         }
 
         return $this->earlyBirdApplies() ? $this->getEarlyBirdPriceRegular() : $this->getPriceRegular();
@@ -744,7 +748,9 @@ class LegacyEvent extends AbstractTimeSpan
     public function getCurrentPriceSpecial(): string
     {
         if ($this->getPriceOnRequest()) {
-            return $this->translate('message_onRequest');
+            $result = LocalizationUtility::translate('message_onRequest', 'seminars');
+            \assert(\is_string($result));
+            return $result;
         }
 
         return $this->earlyBirdApplies() ? $this->getEarlyBirdPriceSpecial() : $this->getPriceSpecial();
@@ -1160,19 +1166,22 @@ class LegacyEvent extends AbstractTimeSpan
         }
 
         if ($this->hasUnlimitedVacancies()) {
-            return $this->translate('message_enough');
+            $result = LocalizationUtility::translate('message_enough', 'seminars');
+            \assert(\is_string($result));
+            return $result;
         }
 
         $vacancies = $this->getVacancies();
         $vacanciesThreshold = $this->getSharedConfiguration()->getAsNonNegativeInteger('showVacanciesThreshold');
 
         if ($vacancies === 0) {
-            $result = $this->translate('message_fullyBooked');
+            $result = LocalizationUtility::translate('message_fullyBooked', 'seminars');
         } elseif ($vacancies >= $vacanciesThreshold) {
-            $result = $this->translate('message_enough');
+            $result = LocalizationUtility::translate('message_enough', 'seminars');
         } else {
             $result = (string)$vacancies;
         }
+        \assert(\is_string($result));
 
         return $result;
     }
@@ -1666,7 +1675,9 @@ class LegacyEvent extends AbstractTimeSpan
         $maxLength = 0;
         foreach ($keys as $currentKey) {
             $loweredKey = \strtolower($currentKey);
-            $currentLabel = \rtrim($this->translate('label_' . $currentKey), ':');
+            $rawLabel = LocalizationUtility::translate('label_' . $currentKey, 'seminars');
+            \assert(\is_string($rawLabel));
+            $currentLabel = \rtrim($rawLabel, ':');
             $keysWithLabels[$loweredKey] = $currentLabel;
             $maxLength = \max($maxLength, \mb_strlen($currentLabel, 'utf-8'));
         }
@@ -1705,7 +1716,7 @@ class LegacyEvent extends AbstractTimeSpan
                     break;
                 case 'vacancies':
                     if ($this->hasUnlimitedVacancies()) {
-                        $value = $this->translate('label_unlimited');
+                        $value = LocalizationUtility::translate('label_unlimited', 'seminars');
                     } else {
                         $value = (string)$this->getVacancies();
                     }
@@ -1718,17 +1729,18 @@ class LegacyEvent extends AbstractTimeSpan
                     break;
                 case 'enough_attendees':
                     $value = $this->hasEnoughAttendances()
-                        ? $this->translate('label_yes')
-                        : $this->translate('label_no');
+                        ? LocalizationUtility::translate('label_yes', 'seminars')
+                        : LocalizationUtility::translate('label_no', 'seminars');
                     break;
                 case 'is_full':
                     $value = $this->isFull()
-                        ? $this->translate('label_yes')
-                        : $this->translate('label_no');
+                        ? LocalizationUtility::translate('label_yes', 'seminars')
+                        : LocalizationUtility::translate('label_no', 'seminars');
                     break;
                 default:
                     $value = $this->getRecordPropertyString($currentKey);
             }
+            \assert(\is_string($value));
 
             // Check whether there is a value to display.
             // If not, we will not use the padding and break the line directly after the label.
@@ -1958,10 +1970,14 @@ class LegacyEvent extends AbstractTimeSpan
         string $accessLevel = 'attendees_and_managers'
     ): string {
         if (!$this->needsRegistration()) {
-            return $this->translate('message_noRegistrationNecessary');
+            $result = LocalizationUtility::translate('message_noRegistrationNecessary', 'seminars');
+            \assert(\is_string($result));
+            return $result;
         }
         if (!GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user')->isLoggedIn()) {
-            return $this->translate('message_notLoggedIn');
+            $result = LocalizationUtility::translate('message_notLoggedIn', 'seminars');
+            \assert(\is_string($result));
+            return $result;
         }
         if (
             !$this->canViewRegistrationsList(
@@ -1971,7 +1987,9 @@ class LegacyEvent extends AbstractTimeSpan
                 $accessLevel,
             )
         ) {
-            return $this->translate('message_accessDenied');
+            $result = LocalizationUtility::translate('message_accessDenied', 'seminars');
+            \assert(\is_string($result));
+            return $result;
         }
 
         return '';
@@ -2019,16 +2037,19 @@ class LegacyEvent extends AbstractTimeSpan
         $registrationManager = GeneralUtility::makeInstance(RegistrationManager::class);
 
         if (!$this->needsRegistration()) {
-            $message = $this->translate('message_noRegistrationNecessary');
+            $message = LocalizationUtility::translate('message_noRegistrationNecessary', 'seminars');
         } elseif ($this->isCanceled()) {
-            $message = $this->translate('message_seminarCancelled');
+            $message = LocalizationUtility::translate('message_seminarCancelled', 'seminars');
         } elseif ($this->hasDate() && $this->isRegistrationDeadlineOver()) {
-            $message = $this->translate('message_seminarRegistrationIsClosed');
+            $message = LocalizationUtility::translate('message_seminarRegistrationIsClosed', 'seminars');
         } elseif (!$registrationManager->allowsRegistrationBySeats($this)) {
-            $message = $this->translate('message_noVacancies');
+            $message = LocalizationUtility::translate('message_noVacancies', 'seminars');
         } elseif (!$registrationManager->registrationHasStarted($this)) {
-            $message = \sprintf($this->translate('message_registrationOpensOn'), $this->getRegistrationBegin());
+            $messageWithPlaceholder = LocalizationUtility::translate('message_registrationOpensOn', 'seminars');
+            \assert(\is_string($messageWithPlaceholder));
+            $message = \sprintf($messageWithPlaceholder, $this->getRegistrationBegin());
         }
+        \assert(\is_string($message));
 
         return $message;
     }
@@ -2592,17 +2613,24 @@ class LegacyEvent extends AbstractTimeSpan
                 $result = (string)$this->getVacancies();
                 break;
             case 'enough_attendees':
-                $result = $this->hasEnoughAttendances() ? $this->translate('label_yes') : $this->translate('label_no');
+                $result = $this->hasEnoughAttendances()
+                    ? LocalizationUtility::translate('label_yes', 'seminars')
+                    : LocalizationUtility::translate('label_no', 'seminars');
                 break;
             case 'is_full':
-                $result = $this->isFull() ? $this->translate('label_yes') : $this->translate('label_no');
+                $result = $this->isFull()
+                    ? LocalizationUtility::translate('label_yes', 'seminars')
+                    : LocalizationUtility::translate('label_no', 'seminars');
                 break;
             case 'cancelled':
-                $result = $this->isCanceled() ? $this->translate('label_yes') : $this->translate('label_no');
+                $result = $this->isCanceled()
+                    ? LocalizationUtility::translate('label_yes', 'seminars')
+                    : LocalizationUtility::translate('label_no', 'seminars');
                 break;
             default:
                 $result = '';
         }
+        \assert(\is_string($result));
 
         $carriageReturnRemoved = !str_contains($result, "\r")
             ? $result
