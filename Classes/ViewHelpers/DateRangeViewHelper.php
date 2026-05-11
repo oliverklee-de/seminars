@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\ViewHelpers;
 
-use OliverKlee\Seminars\Configuration\Traits\SharedPluginConfiguration;
 use OliverKlee\Seminars\Model\AbstractTimeSpan;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -15,8 +14,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class DateRangeViewHelper
 {
-    use SharedPluginConfiguration;
-
     /**
      * Renders the time span in a human-readable way.
      *

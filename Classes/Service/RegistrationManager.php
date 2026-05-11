@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Service;
 
+use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Email\SystemEmailFromBuilder;
+use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Oelib\Templating\TemplateRegistry;
 use OliverKlee\Seminars\BagBuilder\RegistrationBagBuilder;
-use OliverKlee\Seminars\Configuration\Traits\SharedPluginConfiguration;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
@@ -43,7 +44,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 class RegistrationManager implements SingletonInterface
 {
-    use SharedPluginConfiguration;
+    private ?Configuration $sharedPluginConfiguration = null;
 
     private ?Template $emailTemplate = null;
 
@@ -1194,5 +1195,14 @@ class RegistrationManager implements SingletonInterface
         \assert($now > 0);
 
         return $now;
+    }
+
+    private function getSharedConfiguration(): Configuration
+    {
+        if (!$this->sharedPluginConfiguration instanceof Configuration) {
+            $this->sharedPluginConfiguration = ConfigurationRegistry::get('plugin.tx_seminars');
+        }
+
+        return $this->sharedPluginConfiguration;
     }
 }
