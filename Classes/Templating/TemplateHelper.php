@@ -7,7 +7,6 @@ namespace OliverKlee\Seminars\Templating;
 use OliverKlee\Oelib\Exception\NotFoundException;
 use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Oelib\Templating\TemplateRegistry;
-use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Localization\Locales;
 use TYPO3\CMS\Core\Localization\LocalizationFactory;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
@@ -1151,16 +1150,6 @@ abstract class TemplateHelper
         $controller = $GLOBALS['TSFE'] ?? null;
 
         return $controller instanceof TypoScriptFrontendController ? $controller : null;
-    }
-
-    /**
-     * Returns $GLOBALS['LANG'].
-     */
-    protected function getLanguageService(): ?LanguageService
-    {
-        $languageService = $GLOBALS['LANG'] ?? null;
-
-        return $languageService instanceof LanguageService ? $languageService : null;
     }
 
     /**
