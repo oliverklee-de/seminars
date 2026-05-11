@@ -25,11 +25,11 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * The most recommended way to design a hook method is passing objects to manipulate. Use `executeHook()`
  * for these methods. By passing an object to the hooked-in methods, the object content can be manipulated,
- * and by this change the behaviour of `seminars`.
+ * and by this change the behavior of `seminars`.
  *
  * In some cases, when a return value is required, you may use `executeHookReturningMergedArray()` for returning complex
  * results while all hooked-in methods process the same parameters. Use `executeHookReturningModifiedValue()`, if your
- * hook shall pass the already manipulated value to the next hook (e.g. for a gating condition check).
+ * hook shall pass the already manipulated value to the next hook (e.g., for a gating condition check).
  *
  * There is an optional index to `$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars']`, provided
  * for easier conversion of existing hooks to this class.
