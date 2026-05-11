@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\OldModel;
 
-use OliverKlee\Seminars\Configuration\Traits\SharedPluginConfiguration;
+use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
+use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Seminars\Localization\TranslateTrait;
 use OliverKlee\Seminars\ViewHelpers\RichTextViewHelper;
 use TYPO3\CMS\Core\Context\Context;
@@ -27,8 +28,9 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 abstract class AbstractModel
 {
-    use SharedPluginConfiguration;
     use TranslateTrait;
+
+    private ?Configuration $sharedPluginConfiguration = null;
 
     protected static string $tableName;
 
@@ -548,5 +550,14 @@ abstract class AbstractModel
         \assert(\is_string($format));
 
         return $format;
+    }
+
+    protected function getSharedConfiguration(): Configuration
+    {
+        if (!$this->sharedPluginConfiguration instanceof Configuration) {
+            $this->sharedPluginConfiguration = ConfigurationRegistry::get('plugin.tx_seminars');
+        }
+
+        return $this->sharedPluginConfiguration;
     }
 }
