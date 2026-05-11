@@ -24,6 +24,11 @@
                             <f:translate key="plugin.myRegistrations.index.heading.city"/>
                         </th>
                     </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="venue">
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.index.heading.venue"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="registrationStatus">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.registrationStatus"/>
@@ -64,6 +69,13 @@
                                 <td>
                                     <f:for each="{event.cityNames}" as="cityName" iteration="iteration">
                                         {cityName}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                    </f:for>
+                                </td>
+                            </oelib:isFieldEnabled>
+                            <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="venue">
+                                <td>
+                                    <f:for each="{event.venues}" as="venue" iteration="iteration">
+                                        {venue.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
                                     </f:for>
                                 </td>
                             </oelib:isFieldEnabled>

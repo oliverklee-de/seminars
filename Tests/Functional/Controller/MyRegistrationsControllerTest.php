@@ -294,6 +294,37 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function indexActionRendersSingleVenueOfRegistrationOfTheLoggedInUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithOneVenue.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+
+        self::assertStringContainsString('Maritim Hotel', (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function indexActionRendersMultipleVenuesOfRegistrationOfTheLoggedInUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithTwoVenuesInDifferentCities.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+
+        self::assertStringContainsString('Maritim Hotel', (string)$response->getBody());
+        self::assertStringContainsString('Premier Inn', (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
     public function indexActionRendersRegularRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
