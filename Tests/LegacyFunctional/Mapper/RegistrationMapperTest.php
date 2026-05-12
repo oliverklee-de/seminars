@@ -32,7 +32,7 @@ final class RegistrationMapperTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
 
         $this->subject = new RegistrationMapper();
     }

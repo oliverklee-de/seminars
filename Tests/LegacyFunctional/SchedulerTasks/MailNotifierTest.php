@@ -91,7 +91,7 @@ final class MailNotifierTest extends FunctionalTestCase
 
         $this->subject = new MailNotifier();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
         $configurationPageUid = $this->testingFramework->createFrontEndPage();
         $this->subject->setConfigurationPageUid($configurationPageUid);
     }

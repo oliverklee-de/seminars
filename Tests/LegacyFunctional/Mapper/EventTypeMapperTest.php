@@ -28,7 +28,7 @@ final class EventTypeMapperTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
 
         $this->subject = new EventTypeMapper();
     }

@@ -30,7 +30,7 @@ final class LegacyOrganizerTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
         $subjectUid = $this->testingFramework->createRecord(
             'tx_seminars_organizers',
             [

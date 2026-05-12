@@ -43,7 +43,7 @@ final class SalutationTest extends FunctionalTestCase
 
         $this->unifyTestingEnvironment();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
         $this->configuration->setAsString('salutation', 'formal');
 
         $this->subject = new Salutation();

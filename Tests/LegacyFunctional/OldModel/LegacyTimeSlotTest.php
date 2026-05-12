@@ -38,7 +38,7 @@ final class LegacyTimeSlotTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
         $this->configuration = new DummyConfiguration();
         ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', $this->configuration);
 
