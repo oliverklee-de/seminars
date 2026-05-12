@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Unit\Csv;
 
-use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
-use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Seminars\Csv\CsvResponse;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -15,23 +13,6 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 final class CsvResponseTest extends UnitTestCase
 {
-    private DummyConfiguration $configuration;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->configuration = new DummyConfiguration();
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', $this->configuration);
-    }
-
-    protected function tearDown(): void
-    {
-        ConfigurationRegistry::purgeInstance();
-
-        parent::tearDown();
-    }
-
     /**
      * @test
      */

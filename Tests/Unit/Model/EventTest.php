@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Unit\Model;
 
-use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
-use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Model\Category;
@@ -29,8 +27,6 @@ final class EventTest extends UnitTestCase
 
     private Event $subject;
 
-    private DummyConfiguration $configuration;
-
     protected int $now = 1424751343;
 
     protected function setUp(): void
@@ -40,17 +36,7 @@ final class EventTest extends UnitTestCase
         GeneralUtility::makeInstance(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
-        $configurationRegistry = ConfigurationRegistry::getInstance();
-        $this->configuration = new DummyConfiguration();
-        $configurationRegistry->set('plugin.tx_seminars', $this->configuration);
-
         $this->subject = new Event();
-    }
-
-    protected function tearDown(): void
-    {
-        ConfigurationRegistry::purgeInstance();
-        parent::tearDown();
     }
 
     ///////////////////////////////////
