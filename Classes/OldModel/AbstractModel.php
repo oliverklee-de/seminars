@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\OldModel;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Interfaces\Configuration;
-use OliverKlee\Seminars\Localization\TranslateTrait;
 use OliverKlee\Seminars\ViewHelpers\RichTextViewHelper;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\Connection;
@@ -28,8 +27,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 abstract class AbstractModel
 {
-    use TranslateTrait;
-
     private ?Configuration $sharedPluginConfiguration = null;
 
     protected static string $tableName;
@@ -559,5 +556,21 @@ abstract class AbstractModel
         }
 
         return $this->sharedPluginConfiguration;
+    }
+
+    /**
+     * Retrieves the localized string for the given key within the `seminars` extension.
+     *
+     * Note: This method does not take the salutation mode (formal/informal) nor its suffixes into account.
+     *
+     * @param non-empty-string $key
+     *
+     * @return non-empty-string the provided label, or the given key if there is no label with that key
+     */
+    protected function translate(string $key): string
+    {
+        $label = LocalizationUtility::translate($key, 'seminars');
+
+        return (\is_string($label) && $label !== '') ? $label : $key;
     }
 }
