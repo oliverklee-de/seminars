@@ -525,9 +525,9 @@ class LegacyRegistration extends AbstractModel
             $defaultLabelKey = 'label_' . $key;
             $defaultLabel = $this->translate($defaultLabelKey);
 
-            if ($frontEndUserLabel !== '' && $frontEndUserLabel !== $frontEndUserLabelKey) {
+            if ($frontEndUserLabel !== $frontEndUserLabelKey) {
                 $label = $frontEndUserLabel;
-            } elseif ($defaultLabel !== '' && $defaultLabel !== $defaultLabelKey) {
+            } elseif ($defaultLabel !== $defaultLabelKey) {
                 $label = $defaultLabel;
             } else {
                 $label = \ucfirst($key);
