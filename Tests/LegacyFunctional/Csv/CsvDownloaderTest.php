@@ -48,7 +48,7 @@ final class CsvDownloaderTest extends FunctionalTestCase
 
         $this->unifyTestingEnvironment();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
 
         $this->pid = $this->testingFramework->createSystemFolder();
         $this->eventUid = $this->testingFramework->createRecord(

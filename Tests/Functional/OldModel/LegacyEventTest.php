@@ -51,7 +51,7 @@ final class LegacyEventTest extends FunctionalTestCase
         $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
 
         ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', new DummyConfiguration());
     }

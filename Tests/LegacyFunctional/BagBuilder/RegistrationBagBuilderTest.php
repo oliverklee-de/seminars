@@ -40,7 +40,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
         GeneralUtility::makeInstance(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
 
         $this->subject = new RegistrationBagBuilder();
     }

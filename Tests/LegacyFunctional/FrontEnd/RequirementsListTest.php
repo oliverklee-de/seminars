@@ -43,7 +43,7 @@ final class RequirementsListTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
         $this->rootPageUid = $this->testingFramework->createFrontEndPage();
         $this->testingFramework->changeRecord('pages', $this->rootPageUid, ['slug' => '/home']);
         $this->testingFramework->createFakeFrontEnd($this->rootPageUid);

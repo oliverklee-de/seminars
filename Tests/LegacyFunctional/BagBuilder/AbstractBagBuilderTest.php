@@ -30,7 +30,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
 
         $this->subject = new TestingBagBuilder();
 

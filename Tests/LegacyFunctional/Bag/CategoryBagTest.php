@@ -27,7 +27,7 @@ final class CategoryBagTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->testingFramework = new TestingFramework();
+        $this->testingFramework = $this->get(TestingFramework::class);
 
         $this->testingFramework->createRecord('tx_seminars_categories');
 
