@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\Domain\Repository\Event;
 
+use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Seminars\Domain\Model\AccommodationOption;
 use OliverKlee\Seminars\Domain\Model\Category;
 use OliverKlee\Seminars\Domain\Model\Event\EventDate;
@@ -57,6 +58,13 @@ final class EventRepositoryTest extends FunctionalTestCase
         parent::setUp();
 
         $this->subject = $this->get(EventRepository::class);
+    }
+
+    protected function tearDown(): void
+    {
+        ConfigurationRegistry::purgeInstance();
+
+        parent::tearDown();
     }
 
     private function initializeBackEndUser(): void

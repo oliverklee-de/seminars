@@ -6,6 +6,7 @@ namespace OliverKlee\Seminars\Tests\LegacyUnit\Csv;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
+use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Csv\AbstractRegistrationListView;
 use OliverKlee\Seminars\Hooks\Interfaces\RegistrationListCsv;
@@ -118,7 +119,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
     {
         $this->purgeMockedInstances();
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'] = $this->extConfBackup;
-
+        ConfigurationRegistry::purgeInstance();
+        MapperRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();

@@ -46,6 +46,7 @@ final class EventTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
+        MapperRegistry::purgeInstance();
         ConfigurationRegistry::purgeInstance();
 
         parent::tearDown();
