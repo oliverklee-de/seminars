@@ -56,6 +56,78 @@ final class SingleViewTest extends FunctionalTestCase
     }
 
     /**
+     * @test
+     */
+    public function singleViewFlavorWithUidCreatesSingleView(): void
+    {
+        $controller = $this->createPartialMock(
+            TestingDefaultController::class,
+            [
+                'createListView',
+                'createSingleView',
+                'pi_initPIflexForm',
+                'getTemplateCode',
+                'setLabels',
+                'createHelperObjects',
+            ],
+        );
+        $controller->expects(self::once())->method('createSingleView');
+        $controller->expects(self::never())->method('createListView');
+
+        $controller->piVars = ['showUid' => '42'];
+
+        $controller->main('', ['what_to_display' => 'single_view']);
+    }
+
+    /**
+     * @test
+     */
+    public function singleViewFlavorWithUidFromShowSingleEventConfigurationCreatesSingleView(): void
+    {
+        $controller = $this->createPartialMock(
+            TestingDefaultController::class,
+            [
+                'createListView',
+                'createSingleView',
+                'pi_initPIflexForm',
+                'getTemplateCode',
+                'setLabels',
+                'createHelperObjects',
+            ],
+        );
+        $controller->expects(self::once())->method('createSingleView');
+        $controller->expects(self::never())->method('createListView');
+
+        $controller->piVars = [];
+
+        $controller->main('', ['what_to_display' => 'single_view', 'showSingleEvent' => 42]);
+    }
+
+    /**
+     * @test
+     */
+    public function singleViewFlavorWithoutUidCreatesSingleView(): void
+    {
+        $controller = $this->createPartialMock(
+            TestingDefaultController::class,
+            [
+                'createListView',
+                'createSingleView',
+                'pi_initPIflexForm',
+                'getTemplateCode',
+                'setLabels',
+                'createHelperObjects',
+            ],
+        );
+        $controller->expects(self::once())->method('createSingleView');
+        $controller->expects(self::never())->method('createListView');
+
+        $controller->piVars = [];
+
+        $controller->main('', ['what_to_display' => 'single_view']);
+    }
+
+    /**
      * @return array<non-empty-string, array{0: non-empty-string}>
      */
     public function eventDataDataProvider(): array
