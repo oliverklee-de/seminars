@@ -68,7 +68,6 @@ final class SingleViewTest extends FunctionalTestCase
                 'pi_initPIflexForm',
                 'getTemplateCode',
                 'setLabels',
-                'createHelperObjects',
             ],
         );
         $controller->expects(self::once())->method('createSingleView');
@@ -92,7 +91,6 @@ final class SingleViewTest extends FunctionalTestCase
                 'pi_initPIflexForm',
                 'getTemplateCode',
                 'setLabels',
-                'createHelperObjects',
             ],
         );
         $controller->expects(self::once())->method('createSingleView');
@@ -116,7 +114,6 @@ final class SingleViewTest extends FunctionalTestCase
                 'pi_initPIflexForm',
                 'getTemplateCode',
                 'setLabels',
-                'createHelperObjects',
             ],
         );
         $controller->expects(self::once())->method('createSingleView');

@@ -14,7 +14,6 @@ use OliverKlee\Seminars\Hooks\Interfaces\SeminarListView;
 use OliverKlee\Seminars\Hooks\Interfaces\SeminarSingleView;
 use OliverKlee\Seminars\Mapper\EventMapper;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
-use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Tests\Functional\FrontEnd\Fixtures\TestingDefaultController;
 use OliverKlee\Seminars\Tests\Support\LanguageHelper;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
@@ -150,9 +149,9 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'linkToSingleView' => 'always',
             ],
         );
+        $this->subject->setUpDependencies();
         $this->subject->getTemplateCode();
         $this->subject->setLabels();
-        $this->subject->createHelperObjects();
 
         $contentObject = $this->createPartialMock(ContentObjectRenderer::class, ['cObjGetSingle']);
         $contentObject->setLogger(new NullLogger());
@@ -514,17 +513,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         self::assertInstanceOf(
             LegacyEvent::class,
             $this->subject->getSeminar(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getRegistrationManagerReturnsRegistrationManager(): void
-    {
-        self::assertInstanceOf(
-            RegistrationManager::class,
-            $this->subject->getRegistrationManager(),
         );
     }
 
@@ -5392,6 +5380,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             TestingDefaultController::class,
             ['limitForAdditionalParameters'],
         );
+        $subject->setUpDependencies();
         $subject->setContentObjectRenderer($this->createMock(ContentObjectRenderer::class));
         $subject->expects(self::once())->method('limitForAdditionalParameters');
 
@@ -5407,6 +5396,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             TestingDefaultController::class,
             ['limitForAdditionalParameters'],
         );
+        $subject->setUpDependencies();
         $subject->setContentObjectRenderer($this->createMock(ContentObjectRenderer::class));
         $subject->expects(self::once())->method('limitForAdditionalParameters');
 
@@ -5422,6 +5412,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             TestingDefaultController::class,
             ['limitForAdditionalParameters'],
         );
+        $subject->setUpDependencies();
         $subject->setContentObjectRenderer($this->createMock(ContentObjectRenderer::class));
         $subject->expects(self::never())->method('limitForAdditionalParameters');
 

@@ -44,7 +44,15 @@ class DefaultController extends TemplateHelper
 {
     private const VALID_SPEAKER_TYPES = ['speakers', 'partners', 'tutors', 'leaders'];
 
-    protected ?EventMapper $eventMapper = null;
+    private Context $context;
+
+    private ConfigurationRegistry $configurationRegistry;
+
+    private EventMapper $eventMapper;
+
+    private FrontEndUserMapper $frontEndUserMapper;
+
+    private RegistrationManager $registrationManager;
 
     /**
      * @var LegacyEvent|null the seminar which we want to list/show or for which the user wants to register
@@ -181,13 +189,11 @@ class DefaultController extends TemplateHelper
     public function main(string $unused, array $conf): string
     {
         $this->init($conf);
+        $this->setUpDependencies();
         $this->pi_initPIflexForm();
-
-        $this->responseHeadersModifier = GeneralUtility::makeInstance(ResponseHeadersModifier::class);
 
         $this->getTemplateCode();
         $this->setLabels();
-        $this->createHelperObjects();
 
         // Sets the UID of a single event that is requested (either by the
         // configuration in the flexform or by a parameter in the URL).
@@ -240,6 +246,20 @@ class DefaultController extends TemplateHelper
         }
 
         return $this->pi_wrapInBaseClass($result);
+    }
+
+    /**
+     * @internal
+     */
+    public function setUpDependencies(): void
+    {
+        $this->context = GeneralUtility::makeInstance(Context::class);
+        $this->configurationRegistry = GeneralUtility::makeInstance(ConfigurationRegistry::class);
+        $mapperRegistry = GeneralUtility::makeInstance(MapperRegistry::class);
+        $this->eventMapper = $mapperRegistry->getByClassName(EventMapper::class);
+        $this->frontEndUserMapper = $mapperRegistry->getByClassName(FrontEndUserMapper::class);
+        $this->registrationManager = GeneralUtility::makeInstance(RegistrationManager::class);
+        $this->responseHeadersModifier = GeneralUtility::makeInstance(ResponseHeadersModifier::class);
     }
 
     ///////////////////////
@@ -299,21 +319,9 @@ class DefaultController extends TemplateHelper
         $this->seminar = $event;
     }
 
-    public function createHelperObjects(): void
-    {
-        if (!$this->eventMapper instanceof EventMapper) {
-            $this->eventMapper = GeneralUtility::makeInstance(EventMapper::class);
-        }
-    }
-
     public function getSeminar(): ?LegacyEvent
     {
         return $this->seminar;
-    }
-
-    public function getRegistrationManager(): RegistrationManager
-    {
-        return GeneralUtility::makeInstance(RegistrationManager::class);
     }
 
     /**
@@ -1000,12 +1008,10 @@ class DefaultController extends TemplateHelper
 
         $output = '';
 
-        $eventMapper = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
-
         foreach ($this->seminar->getDependencies() as $dependency) {
             $dependencyUid = $dependency->getUid();
             \assert($dependencyUid > 0);
-            $event = $eventMapper->find($dependencyUid);
+            $event = $this->eventMapper->find($dependencyUid);
             $this->setMarker(
                 'dependency_title',
                 $this->createSingleViewLink($event, $event->getTitle()),
@@ -1070,7 +1076,7 @@ class DefaultController extends TemplateHelper
      */
     public function isLoggedIn(): bool
     {
-        return GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user')->isLoggedIn();
+        return $this->context->getAspect('frontend.user')->isLoggedIn();
     }
 
     /**
@@ -1078,7 +1084,7 @@ class DefaultController extends TemplateHelper
      */
     protected function getLoggedInFrontEndUserUid(): int
     {
-        return GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
+        return $this->context->getPropertyFromAspect('frontend.user', 'id');
     }
 
     /**
@@ -1094,9 +1100,9 @@ class DefaultController extends TemplateHelper
 
         $this->setMarker(
             'registration',
-            $this->getRegistrationManager()->canRegisterIfLoggedIn($this->seminar)
-                ? $this->getRegistrationManager()->getLinkToRegistrationPage($this, $this->seminar)
-                : $this->getRegistrationManager()->canRegisterIfLoggedInMessage($this->seminar),
+            $this->registrationManager->canRegisterIfLoggedIn($this->seminar)
+                ? $this->registrationManager->getLinkToRegistrationPage($this, $this->seminar)
+                : $this->registrationManager->canRegisterIfLoggedInMessage($this->seminar),
         );
     }
 
@@ -1361,10 +1367,8 @@ class DefaultController extends TemplateHelper
             $this->limitToTimeFrameSetting($builder);
         }
 
-        $userUid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
-        $user = $userUid > 0
-            ? MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($userUid)
-            : null;
+        $userUid = $this->getLoggedInFrontEndUserUid();
+        $user = ($userUid > 0) ? $this->frontEndUserMapper->find($userUid) : null;
 
         switch ($whatToDisplay) {
             case 'topic_list':
@@ -1528,7 +1532,7 @@ class DefaultController extends TemplateHelper
         \assert($this->seminar instanceof LegacyEvent);
         $eventUid = $this->seminar->getUid();
         if ($eventUid > 0) {
-            $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find($eventUid);
+            $event = $this->eventMapper->find($eventUid);
 
             $cssClasses = [];
 
@@ -1662,10 +1666,8 @@ class DefaultController extends TemplateHelper
     {
         $registrationBagBuilder = GeneralUtility::makeInstance(RegistrationBagBuilder::class);
 
-        $userUid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
-        $user = $userUid > 0
-            ? MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($userUid)
-            : null;
+        $userUid = $this->getLoggedInFrontEndUserUid();
+        $user = ($userUid > 0) ? $this->frontEndUserMapper->find($userUid) : null;
         $registrationBagBuilder->limitToAttendee($user);
         $registrationBagBuilder->setOrderByEventColumn($this->getOrderByForListView());
 
@@ -2109,15 +2111,15 @@ class DefaultController extends TemplateHelper
             $this->setMarker(
                 'registration',
                 $this->seminar->isUnregistrationPossible()
-                    ? $this->getRegistrationManager()->getLinkToUnregistrationPage($this, $this->registration) : '',
+                    ? $this->registrationManager->getLinkToUnregistrationPage($this, $this->registration) : '',
             );
 
             return;
         }
 
-        $registrationLink = $this->getRegistrationManager()->getRegistrationLink($this, $this->seminar);
+        $registrationLink = $this->registrationManager->getRegistrationLink($this, $this->seminar);
 
-        if ($registrationLink === '' && !$this->getRegistrationManager()->registrationHasStarted($this->seminar)) {
+        if ($registrationLink === '' && !$this->registrationManager->registrationHasStarted($this->seminar)) {
             $registrationLink = sprintf(
                 $this->translate('message_registrationOpensOn'),
                 $this->seminar->getRegistrationBegin(),
@@ -2182,7 +2184,7 @@ class DefaultController extends TemplateHelper
             ? (int)($this->piVars['from_year'] ?? 0)
             : (int)date(
                 'Y',
-                (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp'),
+                (int)($this->context->getPropertyFromAspect('date', 'timestamp')),
             );
 
         return mktime(0, 0, 0, $month, $day, $year);
@@ -2206,7 +2208,7 @@ class DefaultController extends TemplateHelper
             ? (int)($this->piVars['to_year'] ?? 0)
             : (int)date(
                 'Y',
-                (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp'),
+                (int)($this->context->getPropertyFromAspect('date', 'timestamp')),
             );
 
         $day = (int)($this->piVars['to_day'] ?? 0);
@@ -2366,7 +2368,7 @@ class DefaultController extends TemplateHelper
             return $this->configuration;
         }
 
-        $typoScriptConfiguration = ConfigurationRegistry::getInstance()->getByNamespace('plugin.tx_seminars_pi1');
+        $typoScriptConfiguration = $this->configurationRegistry->getByNamespace('plugin.tx_seminars_pi1');
         if (!$this->cObj instanceof ContentObjectRenderer) {
             $this->configuration = $typoScriptConfiguration;
             return $typoScriptConfiguration;

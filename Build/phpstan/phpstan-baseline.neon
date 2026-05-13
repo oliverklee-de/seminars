@@ -956,11 +956,6 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Parameter \\#1 \\$uid of method OliverKlee\\\\Oelib\\\\Mapper\\\\AbstractDataMapper\\<OliverKlee\\\\Seminars\\\\Model\\\\FrontEndUser\\>\\:\\:find\\(\\) expects int\\<1, max\\>, mixed given\\.$#"
-			count: 2
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'list_vip…'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
 			count: 2
 			path: ../../Classes/FrontEnd/DefaultController.php
