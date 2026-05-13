@@ -42,7 +42,7 @@ abstract class AbstractRegistrationListView
 
     public function __construct()
     {
-        $this->configuration = ConfigurationRegistry::get('plugin.tx_seminars');
+        $this->configuration = ConfigurationRegistry::getInstance()->getByNamespace('plugin.tx_seminars');
     }
 
     /**

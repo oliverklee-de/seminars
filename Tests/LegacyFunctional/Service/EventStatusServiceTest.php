@@ -53,7 +53,7 @@ final class EventStatusServiceTest extends FunctionalTestCase
                 ->getPropertyFromAspect('date', 'timestamp') + 1;
 
         $this->eventMapper = $this->createMock(EventMapper::class);
-        MapperRegistry::set(EventMapper::class, $this->eventMapper);
+        MapperRegistry::getInstance()->setByClassName(EventMapper::class, $this->eventMapper);
 
         $this->subject = new EventStatusService();
     }

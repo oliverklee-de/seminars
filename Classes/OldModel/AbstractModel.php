@@ -552,7 +552,8 @@ abstract class AbstractModel
     protected function getSharedConfiguration(): Configuration
     {
         if (!$this->sharedPluginConfiguration instanceof Configuration) {
-            $this->sharedPluginConfiguration = ConfigurationRegistry::get('plugin.tx_seminars');
+            $this->sharedPluginConfiguration = ConfigurationRegistry::getInstance()
+                ->getByNamespace('plugin.tx_seminars');
         }
 
         return $this->sharedPluginConfiguration;

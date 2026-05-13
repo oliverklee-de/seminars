@@ -79,7 +79,7 @@ final class RegistrationMapperTest extends FunctionalTestCase
      */
     public function getEventWithEventReturnsEventInstance(): void
     {
-        $event = MapperRegistry::get(EventMapper::class)
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
             ->getNewGhost();
         $testingModel = $this->subject->getLoadedTestingModel(['seminar' => $event->getUid()]);
 
@@ -91,7 +91,7 @@ final class RegistrationMapperTest extends FunctionalTestCase
      */
     public function getSeminarWithEventReturnsEventInstance(): void
     {
-        $event = MapperRegistry::get(EventMapper::class)
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
             ->getNewGhost();
         $testingModel = $this->subject->getLoadedTestingModel(['seminar' => $event->getUid()]);
 
@@ -105,7 +105,7 @@ final class RegistrationMapperTest extends FunctionalTestCase
      */
     public function getFrontEndUserWithFrontEndUserReturnsSameFrontEndUser(): void
     {
-        $frontEndUser = MapperRegistry::get(FrontEndUserMapper::class)->getNewGhost();
+        $frontEndUser = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->getNewGhost();
         $testingModel = $this->subject->getLoadedTestingModel(['user' => $frontEndUser->getUid()]);
 
         self::assertSame($frontEndUser, $testingModel->getFrontEndUser());

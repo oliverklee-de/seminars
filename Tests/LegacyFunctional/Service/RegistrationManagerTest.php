@@ -1084,7 +1084,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        MapperRegistry::get(RegistrationMapper::class)->find($registrationUid);
+        MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::never())->method('modifyAttendeeEmail');
@@ -1306,7 +1306,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        $registration = MapperRegistry::get(RegistrationMapper::class)->find($registrationUid);
+        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
+            ->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::never())->method('modifyAttendeeEmail');
@@ -1336,7 +1337,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        MapperRegistry::get(RegistrationMapper::class)->find($registrationUid);
+        MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::never())->method('modifyAttendeeEmail');
@@ -1860,7 +1861,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        $registration = MapperRegistry::get(RegistrationMapper::class)->find($registrationUid);
+        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
+            ->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::never())->method('modifyAttendeeEmail');

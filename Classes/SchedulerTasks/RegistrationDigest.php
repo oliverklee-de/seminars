@@ -30,8 +30,9 @@ class RegistrationDigest implements SingletonInterface
 
     public function __construct()
     {
-        $this->configuration = ConfigurationRegistry::get('plugin.tx_seminars.registrationDigestEmail');
-        $this->eventMapper = MapperRegistry::get(EventMapper::class);
+        $this->configuration = ConfigurationRegistry::getInstance()
+            ->getByNamespace('plugin.tx_seminars.registrationDigestEmail');
+        $this->eventMapper = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
     }
 
     /**

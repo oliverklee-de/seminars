@@ -223,7 +223,7 @@ class SelectorWidget extends AbstractView
             ->executeQuery();
         $dataOfPlaces = $dataOfPlacesQueryResult->fetchAllAssociative();
 
-        $mapper = MapperRegistry::get(PlaceMapper::class);
+        $mapper = MapperRegistry::getInstance()->getByClassName(PlaceMapper::class);
         $this->places = $mapper->getListOfModels($dataOfPlaces);
     }
 

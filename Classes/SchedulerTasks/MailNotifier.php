@@ -59,7 +59,7 @@ class MailNotifier extends AbstractTask
         $this->getConfiguration();
         $this->eventStatusService = GeneralUtility::makeInstance(EventStatusService::class);
         $this->emailService = GeneralUtility::makeInstance(EmailService::class);
-        $this->eventMapper = MapperRegistry::get(EventMapper::class);
+        $this->eventMapper = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
         $this->registrationDigest = GeneralUtility::makeInstance(RegistrationDigest::class);
 
         $this->dependenciesAreSetUp = true;
@@ -387,6 +387,6 @@ class MailNotifier extends AbstractTask
             PageFinder::getInstance()->setPageUid($pageUid);
         }
 
-        return ConfigurationRegistry::get('plugin.tx_seminars');
+        return ConfigurationRegistry::getInstance()->getByNamespace('plugin.tx_seminars');
     }
 }

@@ -1000,7 +1000,7 @@ class DefaultController extends TemplateHelper
 
         $output = '';
 
-        $eventMapper = MapperRegistry::get(EventMapper::class);
+        $eventMapper = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
 
         foreach ($this->seminar->getDependencies() as $dependency) {
             $dependencyUid = $dependency->getUid();
@@ -1362,7 +1362,9 @@ class DefaultController extends TemplateHelper
         }
 
         $userUid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
-        $user = $userUid > 0 ? MapperRegistry::get(FrontEndUserMapper::class)->find($userUid) : null;
+        $user = $userUid > 0
+            ? MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($userUid)
+            : null;
 
         switch ($whatToDisplay) {
             case 'topic_list':
@@ -1526,7 +1528,7 @@ class DefaultController extends TemplateHelper
         \assert($this->seminar instanceof LegacyEvent);
         $eventUid = $this->seminar->getUid();
         if ($eventUid > 0) {
-            $event = MapperRegistry::get(EventMapper::class)->find($eventUid);
+            $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find($eventUid);
 
             $cssClasses = [];
 
@@ -1661,7 +1663,9 @@ class DefaultController extends TemplateHelper
         $registrationBagBuilder = GeneralUtility::makeInstance(RegistrationBagBuilder::class);
 
         $userUid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
-        $user = $userUid > 0 ? MapperRegistry::get(FrontEndUserMapper::class)->find($userUid) : null;
+        $user = $userUid > 0
+            ? MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($userUid)
+            : null;
         $registrationBagBuilder->limitToAttendee($user);
         $registrationBagBuilder->setOrderByEventColumn($this->getOrderByForListView());
 
@@ -2362,7 +2366,7 @@ class DefaultController extends TemplateHelper
             return $this->configuration;
         }
 
-        $typoScriptConfiguration = ConfigurationRegistry::get('plugin.tx_seminars_pi1');
+        $typoScriptConfiguration = ConfigurationRegistry::getInstance()->getByNamespace('plugin.tx_seminars_pi1');
         if (!$this->cObj instanceof ContentObjectRenderer) {
             $this->configuration = $typoScriptConfiguration;
             return $typoScriptConfiguration;

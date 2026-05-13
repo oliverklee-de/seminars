@@ -28,7 +28,8 @@ class Salutation
     {
         $salutationParts = [];
 
-        $salutationMode = ConfigurationRegistry::get('plugin.tx_seminars')->getAsString('salutation');
+        $salutationMode = ConfigurationRegistry::getInstance()
+            ->getByNamespace('plugin.tx_seminars')->getAsString('salutation');
         switch ($salutationMode) {
             case 'informal':
                 $salutationParts['dear'] = LocalizationUtility::translate('email_hello_informal', 'seminars');

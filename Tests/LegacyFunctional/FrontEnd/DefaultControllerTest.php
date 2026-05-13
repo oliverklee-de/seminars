@@ -5869,7 +5869,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         self::markTestIncomplete('Fix this test to work without a mocked SingleView.');
 
         // @phpstan-ignore-next-line Yes, this code is unreachable, and we know it.
-        $event = MapperRegistry::get(EventMapper::class)->getLoadedTestingModel([]);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->getLoadedTestingModel([]);
 
         self::assertStringContainsString(
             'href="index.php?id=42&amp;tx_seminars_pi1%5BshowUid%5D=1337"',
@@ -5883,7 +5883,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     public function createSingleViewForEventWithoutDescriptionWithAlwaysLinkSettingLinkUsesLinkText(): void
     {
         $this->subject->setConfigurationValue('linkToSingleView', 'always');
-        $event = MapperRegistry::get(EventMapper::class)->getLoadedTestingModel(['description' => '']);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
+            ->getLoadedTestingModel(['description' => '']);
 
         self::assertStringContainsString(
             '>foo</a>',
@@ -5897,7 +5898,7 @@ final class DefaultControllerTest extends FunctionalTestCase
     public function createSingleViewForEventWithDescriptionWithAlwaysLinkSettingLinkUsesLinkText(): void
     {
         $this->subject->setConfigurationValue('linkToSingleView', 'always');
-        $event = MapperRegistry::get(EventMapper::class)
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
             ->getLoadedTestingModel(['description' => 'Hello world!']);
 
         self::assertStringContainsString(
@@ -5912,7 +5913,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     public function createSingleViewForEventWithoutDescriptionWithNeverLinkSettingReturnsOnlyLabel(): void
     {
         $this->subject->setConfigurationValue('linkToSingleView', 'never');
-        $event = MapperRegistry::get(EventMapper::class)->getLoadedTestingModel(['description' => '']);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
+            ->getLoadedTestingModel(['description' => '']);
 
         self::assertSame(
             'foo &amp; bar',
@@ -5926,7 +5928,7 @@ final class DefaultControllerTest extends FunctionalTestCase
     public function createSingleViewForEventWithDescriptionWithConditionalLinkSettingLinkUsesLinkText(): void
     {
         $this->subject->setConfigurationValue('linkToSingleView', 'onlyForNonEmptyDescription');
-        $event = MapperRegistry::get(EventMapper::class)
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
             ->getLoadedTestingModel(['description' => 'Hello world!']);
 
         self::assertStringContainsString(
@@ -5941,7 +5943,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     public function createSingleViewForEventWithoutDescriptionWithConditionalLinkSettingReturnsOnlyLabel(): void
     {
         $this->subject->setConfigurationValue('linkToSingleView', 'onlyForNonEmptyDescription');
-        $event = MapperRegistry::get(EventMapper::class)->getLoadedTestingModel(['description' => '']);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
+            ->getLoadedTestingModel(['description' => '']);
 
         self::assertSame(
             'foo &amp; bar',
@@ -5955,7 +5958,7 @@ final class DefaultControllerTest extends FunctionalTestCase
     public function createSingleViewForEventWithDescriptionWithNeverLinkSettingReturnsOnlyLabel(): void
     {
         $this->subject->setConfigurationValue('linkToSingleView', 'never');
-        $event = MapperRegistry::get(EventMapper::class)
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
             ->getLoadedTestingModel(['description' => 'Hello world!']);
 
         self::assertSame(
@@ -5969,7 +5972,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function createSingleViewLinkByDefaultHtmlSpecialCharsLinkText(): void
     {
-        $event = MapperRegistry::get(EventMapper::class)->getLoadedTestingModel([]);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->getLoadedTestingModel([]);
 
         self::assertStringContainsString(
             'Chaos &amp; Confusion',
@@ -5982,7 +5985,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function createSingleViewLinkByWithHtmlSpecialCharsTrueHtmlSpecialCharsLinkText(): void
     {
-        $event = MapperRegistry::get(EventMapper::class)->getLoadedTestingModel([]);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->getLoadedTestingModel([]);
 
         self::assertStringContainsString(
             'Chaos &amp; Confusion',
@@ -5995,7 +5998,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function createSingleViewLinkByWithHtmlSpecialCharsFalseNotHtmlSpecialCharsLinkText(): void
     {
-        $event = MapperRegistry::get(EventMapper::class)->getLoadedTestingModel([]);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->getLoadedTestingModel([]);
 
         self::assertStringContainsString(
             'Chaos & Confusion',

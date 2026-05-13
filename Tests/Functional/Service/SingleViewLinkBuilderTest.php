@@ -56,7 +56,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
      */
     public function createRelativeUrlForEventWithoutAnyConfigurationReturnsEmptyString(): void
     {
-        $event = MapperRegistry::get(EventMapper::class)->find(1);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(1);
 
         $result = $this->subject->createRelativeUrlForEvent($event);
 
@@ -69,7 +69,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createRelativeUrlForEventWithConfiguredSingleViewPageReturnsLinkToItWithEventUid(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(1);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(1);
 
         $result = $this->subject->createRelativeUrlForEvent($event);
 
@@ -82,7 +82,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createRelativeUrlForEventWithExternalSingleViewPageReturnsLinkToExternalUrl(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(2);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(2);
 
         $result = $this->subject->createRelativeUrlForEvent($event);
 
@@ -95,7 +95,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createRelativeUrlWithEventTypeAndCategoryWithoutSingleViewPageUsesPageFromConfiguration(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(3);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(3);
 
         $result = $this->subject->createRelativeUrlForEvent($event);
 
@@ -109,7 +109,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createRelativeUrlWithEventTypeWithSingleViewPageUsesPageFromEventType(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(4);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(4);
 
         $result = $this->subject->createRelativeUrlForEvent($event);
 
@@ -122,7 +122,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createRelativeUrlWithCategoryWithSingleViewPageUsesPageFromCategory(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(5);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(5);
 
         $result = $this->subject->createRelativeUrlForEvent($event);
 
@@ -135,7 +135,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createRelativeUrlWithCategoryAndEventTypeWithSingleViewPageUsesPageFromEventType(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(6);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(6);
 
         $result = $this->subject->createRelativeUrlForEvent($event);
 
@@ -148,7 +148,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createRelativeUrlWithIndividualUrlAndEventTypeWithSingleViewPageUsesIndividualUrl(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(7);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(7);
 
         $result = $this->subject->createRelativeUrlForEvent($event);
 
@@ -160,7 +160,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
      */
     public function createAbsoluteUrlForEventWithoutAnyConfigurationReturnsBaseUrl(): void
     {
-        $event = MapperRegistry::get(EventMapper::class)->find(1);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(1);
 
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 
@@ -173,7 +173,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createAbsoluteUrlWithConfiguredSingleViewPageReturnsLinkToItWithEventUid(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(1);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(1);
 
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 
@@ -187,7 +187,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createAbsoluteUrlWithExternalSingleViewPageReturnsLinkToExternalUrl(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(2);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(2);
 
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 
@@ -200,7 +200,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createAbsoluteUrlWithEventTypeAndCategoryWithoutSingleViewPageUsesPageFromConfiguration(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(3);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(3);
 
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 
@@ -214,7 +214,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createAbsoluteUrlWithEventTypeWithSingleViewPageUsesPageFromEventType(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(4);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(4);
 
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 
@@ -228,7 +228,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createAbsoluteUrlWithCategoryWithSingleViewPageUsesPageFromCategory(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(5);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(5);
 
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 
@@ -242,7 +242,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createAbsoluteUrlWithCategoryAndEventTypeWithSingleViewPageUsesPageFromEventType(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(6);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(6);
 
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 
@@ -256,7 +256,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     public function createAbsoluteUrlWithIndividualUrlAndEventTypeWithSingleViewPageUsesIndividualUrl(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = MapperRegistry::get(EventMapper::class)->find(7);
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->find(7);
 
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 

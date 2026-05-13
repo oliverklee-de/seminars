@@ -57,7 +57,7 @@ abstract class AbstractView extends TemplateHelper
             return $this->configuration;
         }
 
-        $typoScriptConfiguration = ConfigurationRegistry::get('plugin.tx_seminars_pi1');
+        $typoScriptConfiguration = ConfigurationRegistry::getInstance()->getByNamespace('plugin.tx_seminars_pi1');
         if (!$this->cObj instanceof ContentObjectRenderer) {
             $this->configuration = $typoScriptConfiguration;
             return $this->configuration;
