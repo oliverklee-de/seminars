@@ -72,7 +72,6 @@ final class ListViewTest extends FunctionalTestCase
                 'pi_initPIflexForm',
                 'getTemplateCode',
                 'setLabels',
-                'createHelperObjects',
             ],
         );
         $controller->expects(self::once())->method('createListView')->with('seminar_list');
@@ -96,7 +95,6 @@ final class ListViewTest extends FunctionalTestCase
                 'pi_initPIflexForm',
                 'getTemplateCode',
                 'setLabels',
-                'createHelperObjects',
             ],
         );
         $controller->expects(self::once())->method('createListView')->with('seminar_list');
