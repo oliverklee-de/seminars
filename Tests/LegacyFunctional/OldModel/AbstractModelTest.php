@@ -40,9 +40,10 @@ final class AbstractModelTest extends FunctionalTestCase
 
         $this->testingFramework = $this->get(TestingFramework::class);
         $systemFolderUid = $this->testingFramework->createSystemFolder();
-        $this->testingFramework->createTemplate(
-            $systemFolderUid,
+        $this->testingFramework->createRecord(
+            'sys_template',
             [
+                'pid' => $systemFolderUid,
                 'tstamp' => (int)GeneralUtility::makeInstance(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'sorting' => 256,
