@@ -37,6 +37,13 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
         $this->subject = new DownloadRegistrationListView();
     }
 
+    protected function tearDown(): void
+    {
+        ConfigurationRegistry::purgeInstance();
+
+        parent::tearDown();
+    }
+
     /**
      * @test
      */

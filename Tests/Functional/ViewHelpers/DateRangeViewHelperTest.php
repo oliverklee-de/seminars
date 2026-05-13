@@ -46,6 +46,13 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
         $this->subject = new DateRangeViewHelper();
     }
 
+    protected function tearDown(): void
+    {
+        ConfigurationRegistry::purgeInstance();
+
+        parent::tearDown();
+    }
+
     /**
      * @test
      */

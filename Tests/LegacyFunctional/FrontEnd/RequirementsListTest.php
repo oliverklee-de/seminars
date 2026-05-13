@@ -70,7 +70,6 @@ final class RequirementsListTest extends FunctionalTestCase
     protected function tearDown(): void
     {
         $this->testingFramework->cleanUpWithoutDatabase();
-
         ConfigurationRegistry::purgeInstance();
 
         parent::tearDown();

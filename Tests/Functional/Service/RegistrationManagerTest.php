@@ -110,6 +110,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->testingFramework->cleanUpWithoutDatabase();
 
         ConfigurationRegistry::purgeInstance();
+        MapperRegistry::purgeInstance();
         // Purge the FIFO buffer of mocks
         GeneralUtility::makeInstance(MailMessage::class);
         GeneralUtility::makeInstance(MailMessage::class);

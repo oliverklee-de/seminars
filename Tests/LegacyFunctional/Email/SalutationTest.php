@@ -54,6 +54,7 @@ final class SalutationTest extends FunctionalTestCase
         $this->restoreOriginalEnvironment();
 
         ConfigurationRegistry::purgeInstance();
+        MapperRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();
