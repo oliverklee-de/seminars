@@ -377,7 +377,8 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $oldRegistration->getUid();
         \assert($registrationUid > 0);
-        $registration = MapperRegistry::get(RegistrationMapper::class)->find($registrationUid);
+        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
+            ->find($registrationUid);
         $this->addCalendarAttachment($emailBuilder, $event->getUid());
         $email = $emailBuilder->build();
 
@@ -546,7 +547,8 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $registration->getUid();
         \assert($registrationUid > 0);
-        $registrationNew = MapperRegistry::get(RegistrationMapper::class)->find($registrationUid);
+        $registrationNew = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
+            ->find($registrationUid);
 
         $email = $emailBuilder->build();
         $this
@@ -604,7 +606,8 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $registration->getUid();
         \assert($registrationUid > 0);
-        $registrationNew = MapperRegistry::get(RegistrationMapper::class)->find($registrationUid);
+        $registrationNew = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
+            ->find($registrationUid);
 
         $email = $emailBuilder->build();
         $this
@@ -691,7 +694,7 @@ class RegistrationManager implements SingletonInterface
         }
 
         $templateFileName = $this->getSharedConfiguration()->getAsString('templateFile');
-        $template = TemplateRegistry::get($templateFileName);
+        $template = TemplateRegistry::getInstance()->getByFileName($templateFileName);
         foreach ($template->getLabelMarkerNames() as $label) {
             $template->setMarker($label, $this->translate($label));
         }
@@ -895,7 +898,8 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $registration->getUid();
         \assert($registrationUid > 0);
-        $registrationNew = MapperRegistry::get(RegistrationMapper::class)->find($registrationUid);
+        $registrationNew = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
+            ->find($registrationUid);
 
         $this->getRegistrationEmailHookProvider()->executeHook(
             $useHtml ? 'modifyAttendeeEmailBodyHtml' : 'modifyAttendeeEmailBodyPlainText',
@@ -1200,7 +1204,8 @@ class RegistrationManager implements SingletonInterface
     private function getSharedConfiguration(): Configuration
     {
         if (!$this->sharedPluginConfiguration instanceof Configuration) {
-            $this->sharedPluginConfiguration = ConfigurationRegistry::get('plugin.tx_seminars');
+            $this->sharedPluginConfiguration = ConfigurationRegistry::getInstance()
+                ->getByNamespace('plugin.tx_seminars');
         }
 
         return $this->sharedPluginConfiguration;

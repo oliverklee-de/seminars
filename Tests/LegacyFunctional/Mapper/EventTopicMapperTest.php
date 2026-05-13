@@ -38,7 +38,7 @@ final class EventTopicMapperTest extends FunctionalTestCase
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
-        $this->subject = MapperRegistry::get(EventMapper::class);
+        $this->subject = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
     }
 
     protected function tearDown(): void
@@ -95,7 +95,7 @@ final class EventTopicMapperTest extends FunctionalTestCase
             'tx_seminars_seminars',
             ['object_type' => EventInterface::TYPE_EVENT_TOPIC],
         );
-        $categoryUid = MapperRegistry::get(CategoryMapper::class)->getNewGhost()->getUid();
+        $categoryUid = MapperRegistry::getInstance()->getByClassName(CategoryMapper::class)->getNewGhost()->getUid();
         \assert($categoryUid > 0);
         $this->testingFramework->createRelationAndUpdateCounter(
             'tx_seminars_seminars',
@@ -117,7 +117,7 @@ final class EventTopicMapperTest extends FunctionalTestCase
             'tx_seminars_seminars',
             ['object_type' => EventInterface::TYPE_EVENT_TOPIC],
         );
-        $categoryUid = MapperRegistry::get(CategoryMapper::class)->getNewGhost()->getUid();
+        $categoryUid = MapperRegistry::getInstance()->getByClassName(CategoryMapper::class)->getNewGhost()->getUid();
         \assert($categoryUid > 0);
         $this->testingFramework->createRelationAndUpdateCounter(
             'tx_seminars_seminars',
@@ -152,7 +152,7 @@ final class EventTopicMapperTest extends FunctionalTestCase
      */
     public function getEventTypeForEventTopicWithEventTypeReturnsEventTypeInstance(): void
     {
-        $eventType = MapperRegistry::get(EventTypeMapper::class)
+        $eventType = MapperRegistry::getInstance()->getByClassName(EventTypeMapper::class)
             ->getLoadedTestingModel([]);
         $testingModel = $this->subject->getLoadedTestingModel(
             [

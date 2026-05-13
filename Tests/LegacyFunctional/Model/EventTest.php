@@ -59,7 +59,7 @@ final class EventTest extends FunctionalTestCase
     {
         /** @var Collection<Registration> $registrations */
         $registrations = new Collection();
-        $registration = MapperRegistry::get(RegistrationMapper::class)
+        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
             ->getLoadedTestingModel(['registration_queue' => 0]);
         $registrations->add($registration);
         $this->subject->setRegistrations($registrations);
@@ -77,7 +77,7 @@ final class EventTest extends FunctionalTestCase
     {
         /** @var Collection<Registration> $registrations */
         $registrations = new Collection();
-        $registration = MapperRegistry::get(RegistrationMapper::class)
+        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
             ->getLoadedTestingModel(['registration_queue' => 1]);
         $registrations->add($registration);
         $this->subject->setRegistrations($registrations);
@@ -93,7 +93,7 @@ final class EventTest extends FunctionalTestCase
     public function getRegisteredSeatsCountsSingleSeatRegularRegistrations(): void
     {
         $registrations = new Collection();
-        $registration = MapperRegistry::get(RegistrationMapper::class)
+        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
             ->getLoadedTestingModel(['seats' => 1]);
         $registrations->add($registration);
         $event = $this->createPartialMock(
@@ -117,7 +117,7 @@ final class EventTest extends FunctionalTestCase
     public function getRegisteredSeatsCountsMultiSeatRegularRegistrations(): void
     {
         $registrations = new Collection();
-        $registration = MapperRegistry::get(RegistrationMapper::class)
+        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
             ->getLoadedTestingModel(['seats' => 2]);
         $registrations->add($registration);
         $event = $this->createPartialMock(
@@ -141,7 +141,8 @@ final class EventTest extends FunctionalTestCase
     public function getRegisteredSeatsNotCountsQueueRegistrations(): void
     {
         $queueRegistrations = new Collection();
-        $registration = MapperRegistry::get(RegistrationMapper::class)->getLoadedTestingModel(['seats' => 1]);
+        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
+            ->getLoadedTestingModel(['seats' => 1]);
         $queueRegistrations->add($registration);
         $event = $this->createPartialMock(Event::class, ['getRegularRegistrations']);
         $event->setData([]);

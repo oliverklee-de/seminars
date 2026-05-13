@@ -39,7 +39,7 @@ final class EventDateMapperTest extends FunctionalTestCase
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
-        $this->subject = MapperRegistry::get(EventMapper::class);
+        $this->subject = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
     }
 
     protected function tearDown(): void
@@ -119,7 +119,7 @@ final class EventDateMapperTest extends FunctionalTestCase
                 'topic' => $topicUid,
             ],
         );
-        $categoryUid = MapperRegistry::get(CategoryMapper::class)->getNewGhost()->getUid();
+        $categoryUid = MapperRegistry::getInstance()->getByClassName(CategoryMapper::class)->getNewGhost()->getUid();
         \assert($categoryUid > 0);
         $this->testingFramework->createRelationAndUpdateCounter(
             'tx_seminars_seminars',
@@ -145,7 +145,7 @@ final class EventDateMapperTest extends FunctionalTestCase
                 'topic' => $topicUid,
             ],
         );
-        $categoryUid = MapperRegistry::get(CategoryMapper::class)->getNewGhost()->getUid();
+        $categoryUid = MapperRegistry::getInstance()->getByClassName(CategoryMapper::class)->getNewGhost()->getUid();
         \assert($categoryUid > 0);
         $this->testingFramework->createRelationAndUpdateCounter(
             'tx_seminars_seminars',
@@ -168,7 +168,8 @@ final class EventDateMapperTest extends FunctionalTestCase
      */
     public function getEventTypeForEventDateWithoutEventTypeReturnsNull(): void
     {
-        $topicUid = MapperRegistry::get(EventMapper::class)->getLoadedTestingModel([])->getUid();
+        $topicUid = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
+            ->getLoadedTestingModel([])->getUid();
         \assert($topicUid > 0);
         $testingModel = $this->subject->getLoadedTestingModel(
             [
@@ -185,8 +186,8 @@ final class EventDateMapperTest extends FunctionalTestCase
      */
     public function getEventTypeForEventDateWithEventTypeReturnsEventTypeInstance(): void
     {
-        $eventType = MapperRegistry::get(EventTypeMapper::class)->getLoadedTestingModel([]);
-        $topicUid = MapperRegistry::get(EventMapper::class)
+        $eventType = MapperRegistry::getInstance()->getByClassName(EventTypeMapper::class)->getLoadedTestingModel([]);
+        $topicUid = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
             ->getLoadedTestingModel(['event_type' => $eventType->getUid()])->getUid();
         \assert($topicUid > 0);
         $testingModel = $this->subject->getLoadedTestingModel(

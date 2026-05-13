@@ -488,7 +488,7 @@ abstract class TemplateHelper
     protected function getTemplate(): Template
     {
         if (!$this->template instanceof Template) {
-            $this->template = TemplateRegistry::get($this->templateFileName);
+            $this->template = TemplateRegistry::getInstance()->getByFileName($this->templateFileName);
         }
 
         return $this->template;

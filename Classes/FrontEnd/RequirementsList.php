@@ -46,7 +46,7 @@ class RequirementsList extends AbstractView
 
         $output = '';
 
-        $eventMapper = MapperRegistry::get(EventMapper::class);
+        $eventMapper = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
         /** @var LegacyEvent $requirement */
         foreach ($this->getRequirements() as $requirement) {
             $requirementUid = $requirement->getUid();

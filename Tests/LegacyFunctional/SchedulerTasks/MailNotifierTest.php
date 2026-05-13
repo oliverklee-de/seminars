@@ -77,7 +77,7 @@ final class MailNotifierTest extends FunctionalTestCase
         $this->configuration->setAsString('fieldsFromAttendanceForEmailCsv', 'title');
 
         $this->eventMapper = $this->createMock(EventMapper::class);
-        MapperRegistry::set(EventMapper::class, $this->eventMapper);
+        MapperRegistry::getInstance()->setByClassName(EventMapper::class, $this->eventMapper);
 
         $this->eventStatusService = $this->createMock(EventStatusService::class);
         GeneralUtility::setSingletonInstance(EventStatusService::class, $this->eventStatusService);

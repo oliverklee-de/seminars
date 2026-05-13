@@ -67,7 +67,8 @@ final class SalutationTest extends FunctionalTestCase
      */
     private function createFrontEndUser(): FrontEndUser
     {
-        return MapperRegistry::get(FrontEndUserMapper::class)->getLoadedTestingModel(['name' => 'Foo']);
+        return MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)
+            ->getLoadedTestingModel(['name' => 'Foo']);
     }
 
     // Tests concerning the utility functions

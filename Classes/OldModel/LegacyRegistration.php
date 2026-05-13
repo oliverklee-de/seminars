@@ -303,7 +303,7 @@ class LegacyRegistration extends AbstractModel
             return null;
         }
 
-        $this->user = MapperRegistry::get(FrontEndUserMapper::class)->find($uid);
+        $this->user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($uid);
 
         return $this->user;
     }
@@ -327,7 +327,7 @@ class LegacyRegistration extends AbstractModel
             return false;
         }
 
-        $mapper = MapperRegistry::get(FrontEndUserMapper::class);
+        $mapper = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class);
 
         return $mapper->existsModel($this->getUser());
     }

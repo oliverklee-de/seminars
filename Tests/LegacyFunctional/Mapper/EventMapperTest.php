@@ -36,7 +36,7 @@ final class EventMapperTest extends FunctionalTestCase
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
-        $this->subject = MapperRegistry::get(EventMapper::class);
+        $this->subject = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
     }
 
     protected function tearDown(): void
@@ -68,7 +68,7 @@ final class EventMapperTest extends FunctionalTestCase
             'tx_seminars_seminars',
             ['organizers' => 1],
         );
-        $organizerUid = MapperRegistry::get(OrganizerMapper::class)->getNewGhost()->getUid();
+        $organizerUid = MapperRegistry::getInstance()->getByClassName(OrganizerMapper::class)->getNewGhost()->getUid();
         \assert($organizerUid > 0);
         $this->testingFramework->createRelation(
             'tx_seminars_seminars_organizers_mm',
@@ -89,7 +89,7 @@ final class EventMapperTest extends FunctionalTestCase
             'tx_seminars_seminars',
             ['organizers' => 1],
         );
-        $organizerUid = MapperRegistry::get(OrganizerMapper::class)->getNewGhost()->getUid();
+        $organizerUid = MapperRegistry::getInstance()->getByClassName(OrganizerMapper::class)->getNewGhost()->getUid();
         \assert($organizerUid > 0);
         $this->testingFramework->createRelation(
             'tx_seminars_seminars_organizers_mm',
@@ -121,7 +121,8 @@ final class EventMapperTest extends FunctionalTestCase
      */
     public function getOwnerWithOwnerReturnsOwnerInstance(): void
     {
-        $frontEndUserUid = MapperRegistry::get(FrontEndUserMapper::class)->getNewGhost()->getUid();
+        $frontEndUserUid = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)
+            ->getNewGhost()->getUid();
         \assert($frontEndUserUid > 0);
         $testingModel = $this->subject->getLoadedTestingModel(['owner_feuser' => $frontEndUserUid]);
 

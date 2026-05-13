@@ -20,7 +20,7 @@ class EventStatusService implements SingletonInterface
 
     public function __construct()
     {
-        $this->eventMapper = MapperRegistry::get(EventMapper::class);
+        $this->eventMapper = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
     }
 
     /**

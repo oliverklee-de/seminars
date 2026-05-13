@@ -706,7 +706,7 @@ class LegacyEvent extends AbstractTimeSpan
      */
     public function formatPrice(string $value): string
     {
-        $currency = ConfigurationRegistry::get('plugin.tx_seminars')->getAsString('currency');
+        $currency = ConfigurationRegistry::getInstance()->getByNamespace('plugin.tx_seminars')->getAsString('currency');
         if ($currency === '') {
             $currency = 'EUR';
         }
@@ -2422,7 +2422,7 @@ class LegacyEvent extends AbstractTimeSpan
         $ownerUid = $this->getRecordPropertyInteger('owner_feuser');
         \assert($ownerUid > 0);
 
-        return MapperRegistry::get(FrontEndUserMapper::class)->find($ownerUid);
+        return MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($ownerUid);
     }
 
     /**

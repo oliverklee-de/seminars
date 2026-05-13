@@ -600,7 +600,8 @@ final class LegacyRegistrationTest extends FunctionalTestCase
     public function getEnumeratedAttendeeNamesForSelfRegisteredUserAndNoAttendeeNamesReturnsUsersName(): void
     {
         $subject = LegacyRegistration::fromData(['attendees_names' => '']);
-        $user = MapperRegistry::get(FrontEndUserMapper::class)->getLoadedTestingModel(['name' => 'foo_user']);
+        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)
+            ->getLoadedTestingModel(['name' => 'foo_user']);
         $subject->setFrontEndUser($user);
         $subject->setRegisteredThemselves(true);
 
@@ -616,7 +617,8 @@ final class LegacyRegistrationTest extends FunctionalTestCase
     public function getEnumeratedAttendeeNamesForSelfRegisteredUserAndAttendeeNamesReturnsUserInFirstPosition(): void
     {
         $subject = LegacyRegistration::fromData(['attendees_names' => 'foo']);
-        $user = MapperRegistry::get(FrontEndUserMapper::class)->getLoadedTestingModel(['name' => 'foo_user']);
+        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)
+            ->getLoadedTestingModel(['name' => 'foo_user']);
         $subject->setFrontEndUser($user);
         $subject->setRegisteredThemselves(true);
 

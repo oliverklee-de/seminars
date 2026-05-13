@@ -92,7 +92,7 @@ final class RegistrationTest extends FunctionalTestCase
      */
     public function getEventReturnsEvent(): void
     {
-        $event = MapperRegistry::get(EventMapper::class)
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
             ->getNewGhost();
         $this->subject->setData(['seminar' => $event]);
 
@@ -107,7 +107,7 @@ final class RegistrationTest extends FunctionalTestCase
      */
     public function getSeminarReturnsEvent(): void
     {
-        $event = MapperRegistry::get(EventMapper::class)
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
             ->getNewGhost();
         $this->subject->setData(['seminar' => $event]);
 
@@ -123,7 +123,7 @@ final class RegistrationTest extends FunctionalTestCase
     public function setEventSetsEvent(): void
     {
         /** @var Event $event */
-        $event = MapperRegistry::get(EventMapper::class)->getNewGhost();
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->getNewGhost();
         $this->subject->setEvent($event);
 
         self::assertSame(
@@ -138,7 +138,7 @@ final class RegistrationTest extends FunctionalTestCase
     public function setSeminarSetsEvent(): void
     {
         /** @var Event $event */
-        $event = MapperRegistry::get(EventMapper::class)->getNewGhost();
+        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->getNewGhost();
         $this->subject->setSeminar($event);
 
         self::assertSame(

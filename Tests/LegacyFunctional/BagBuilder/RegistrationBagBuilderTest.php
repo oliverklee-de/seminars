@@ -405,7 +405,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             ['seminar' => $eventUid, 'user' => $feUserUid],
         );
 
-        $user = MapperRegistry::get(FrontEndUserMapper::class)->find($feUserUid);
+        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $bag = $this->subject->build();
 
@@ -432,7 +432,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             ['tx_seminars_registration' => $registrationUid],
         );
 
-        $user = MapperRegistry::get(FrontEndUserMapper::class)->find($feUserUid);
+        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $bag = $this->subject->build();
 
@@ -450,7 +450,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
         $feUserUid = $this->testingFramework->createFrontEndUser();
         $this->testingFramework->createRecord('tx_seminars_seminars');
 
-        $user = MapperRegistry::get(FrontEndUserMapper::class)->find($feUserUid);
+        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $bag = $this->subject->build();
 
@@ -473,7 +473,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             ['seminar' => $eventUid, 'user' => $feUserUid2],
         );
 
-        $user = MapperRegistry::get(FrontEndUserMapper::class)->find($feUserUid);
+        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $bag = $this->subject->build();
 
@@ -496,7 +496,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             ['seminar' => $eventUid, 'user' => $feUserUid2],
         );
 
-        $user = MapperRegistry::get(FrontEndUserMapper::class)->find($feUserUid);
+        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $this->subject->limitToAttendee();
         $bag = $this->subject->build();
