@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\Mapper;
 
+use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\Mapper\EventMapper;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\Tests\Functional\Traits\CollectionHelper;
@@ -30,6 +31,13 @@ final class EventMapperTest extends FunctionalTestCase
         parent::setUp();
 
         $this->subject = new EventMapper();
+    }
+
+    protected function tearDown(): void
+    {
+        MapperRegistry::purgeInstance();
+
+        parent::tearDown();
     }
 
     /**
