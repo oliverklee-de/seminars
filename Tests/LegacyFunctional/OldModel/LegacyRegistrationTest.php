@@ -56,7 +56,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
-        $this->frontEndUserMapper = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class);
+        $this->frontEndUserMapper = $this->get(MapperRegistry::class)->getByClassName(FrontEndUserMapper::class);
 
         $rootPageUid = $this->testingFramework->createFrontEndPage();
         $this->testingFramework->changeRecord('pages', $rootPageUid, ['slug' => '/home']);
