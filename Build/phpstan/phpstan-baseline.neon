@@ -111,11 +111,6 @@ parameters:
 			path: ../../Classes/Configuration/EventRegistrationFlexForms.php
 
 		-
-			message: "#^Provide more specific return type \"OliverKlee\\\\Seminars\\\\Csv\\\\CsvResponse\" over abstract one$#"
-			count: 1
-			path: ../../Classes/Controller/BackEnd/RegistrationController.php
-
-		-
 			message: "#^Parameter \\#2 \\$storageFolderUid of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationProcessor\\:\\:createAdditionalPersons\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
 			path: ../../Classes/Controller/EventRegistrationController.php
@@ -124,16 +119,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$userUid of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationGuard\\:\\:isFreeFromRegistrationConflicts\\(\\) expects int, int\\<1, max\\>\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/Controller/EventRegistrationController.php
-
-		-
-			message: "#^Provide more specific return type \"TYPO3\\\\CMS\\\\Extbase\\\\Http\\\\ForwardResponse\" over abstract one$#"
-			count: 1
-			path: ../../Classes/Controller/EventRegistrationController.php
-
-		-
-			message: "#^Provide more specific return type \"TYPO3\\\\CMS\\\\Extbase\\\\Http\\\\ForwardResponse\" over abstract one$#"
-			count: 1
-			path: ../../Classes/Controller/EventUnregistrationController.php
 
 		-
 			message: "#^Function str_contains not found\\.$#"
@@ -181,102 +166,12 @@ parameters:
 			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\AccommodationOption\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventDate.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FoodOption\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventDate.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Organizer\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventDate.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\RegistrationCheckbox\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventDate.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Speaker\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventDate.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Venue\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventDate.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<TYPO3\\\\CMS\\\\Extbase\\\\Domain\\\\Model\\\\FileReference\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventDate.php
-
-		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventTopic\\:\\:getEventType\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\EventType\\|null but returns object\\|null\\.$#"
 			count: 1
 			path: ../../Classes/Domain/Model/Event/EventTopic.php
 
 		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Category\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventTopic.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\PaymentMethod\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventTopic.php
-
-		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\SingleEvent\\:\\:getEventType\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\EventType\\|null but returns object\\|null\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\AccommodationOption\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Category\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FoodOption\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Organizer\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\PaymentMethod\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\RegistrationCheckbox\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Speaker\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Venue\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<TYPO3\\\\CMS\\\\Extbase\\\\Domain\\\\Model\\\\FileReference\\>\" types as the only types passed to this method$#"
 			count: 1
 			path: ../../Classes/Domain/Model/Event/SingleEvent.php
 
@@ -297,26 +192,6 @@ parameters:
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:getUser\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FrontendUser\\|null but returns object\\|null\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Registration/Registration.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\AccommodationOption\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Registration/Registration.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FoodOption\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Registration/Registration.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FrontendUser\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Registration/Registration.php
-
-		-
-			message: "#^Parameters should have \"TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\RegistrationCheckbox\\>\" types as the only types passed to this method$#"
 			count: 1
 			path: ../../Classes/Domain/Model/Registration/Registration.php
 
@@ -996,11 +871,6 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Parameters should have \"string\\|int\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$internal \\(array\\{descFlag\\: bool, maxPages\\: int, orderBy\\?\\: string, res_count\\: int\\<0, max\\>, results_at_a_time\\: int\\}\\) does not accept array\\{descFlag\\: string, maxPages\\: int, orderBy\\?\\: string, res_count\\: int\\<0, max\\>, results_at_a_time\\: int\\}\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
@@ -1186,11 +1056,6 @@ parameters:
 			path: ../../Classes/Model/Event.php
 
 		-
-			message: "#^Parameters should have \"OliverKlee\\\\Oelib\\\\DataStructures\\\\Collection\\<OliverKlee\\\\Seminars\\\\Model\\\\Registration\\>\" types as the only types passed to this method$#"
-			count: 1
-			path: ../../Classes/Model/Event.php
-
-		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/AbstractModel.php
@@ -1323,11 +1188,6 @@ parameters:
 		-
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, int\\|string given\\.$#"
 			count: 2
-			path: ../../Classes/OldModel/LegacyEvent.php
-
-		-
-			message: "#^Parameters should have \"OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\" types as the only types passed to this method$#"
-			count: 1
 			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
@@ -1522,11 +1382,6 @@ parameters:
 
 		-
 			message: "#^PHPDoc tag @var with type non\\-falsy\\-string is not subtype of native type lowercase\\-string\\.$#"
-			count: 1
-			path: ../../Classes/Templating/TemplateHelper.php
-
-		-
-			message: "#^Parameters should have \"string\\|string\" types as the only types passed to this method$#"
 			count: 1
 			path: ../../Classes/Templating/TemplateHelper.php
 
