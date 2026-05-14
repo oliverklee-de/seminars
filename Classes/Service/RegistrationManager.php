@@ -694,7 +694,7 @@ class RegistrationManager implements SingletonInterface
         }
 
         $templateFileName = $this->getSharedConfiguration()->getAsString('templateFile');
-        $template = TemplateRegistry::getInstance()->getByFileName($templateFileName);
+        $template = GeneralUtility::makeInstance(TemplateRegistry::class)->getByFileName($templateFileName);
         foreach ($template->getLabelMarkerNames() as $label) {
             $template->setMarker($label, $this->translate($label));
         }
