@@ -47,7 +47,7 @@ final class EmailServiceTest extends FunctionalTestCase
         $languageService = GeneralUtility::makeInstance(LanguageServiceFactory::class)->create('default');
         $GLOBALS['LANG'] = $languageService;
 
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', new DummyConfiguration());
+        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
 
         $this->email = $this->createEmailMock();
 

@@ -83,7 +83,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $this->configuration = new DummyConfiguration();
         $this->configuration->setAsString('templateFile', 'EXT:seminars/Resources/Private/Templates/Mail/e-mail.html');
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', $this->configuration);
+        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', $this->configuration);
 
         $this->getLanguageService();
 

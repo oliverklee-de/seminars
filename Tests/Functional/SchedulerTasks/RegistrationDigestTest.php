@@ -56,7 +56,7 @@ final class RegistrationDigestTest extends FunctionalTestCase
             'enable' => '1',
         ];
         $this->configuration = new DummyConfiguration($configurationData);
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars.registrationDigestEmail', $this->configuration);
+        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars.registrationDigestEmail', $this->configuration);
 
         $this->email = $this->createEmailMock();
         GeneralUtility::addInstance(MailMessage::class, $this->email);

@@ -116,10 +116,11 @@ final class DefaultControllerTest extends FunctionalTestCase
 
         $this->getLanguageService();
 
+        $configurationRegistry = $this->get(ConfigurationRegistry::class);
         $this->sharedConfiguration = new DummyConfiguration(self::CONFIGURATION);
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', $this->sharedConfiguration);
+        $configurationRegistry->set('plugin.tx_seminars', $this->sharedConfiguration);
         $this->pluginConfiguration = new DummyConfiguration(self::CONFIGURATION);
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars_pi1', $this->pluginConfiguration);
+        $configurationRegistry->set('plugin.tx_seminars_pi1', $this->pluginConfiguration);
 
         $this->systemFolderPid = $this->testingFramework->createSystemFolder();
         $this->seminarUid = $this->testingFramework->createRecord(

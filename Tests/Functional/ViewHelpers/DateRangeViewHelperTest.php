@@ -41,7 +41,7 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
         // Make sure that the test results do not depend on the machine's PHP time zone.
         \date_default_timezone_set('UTC');
 
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', new DummyConfiguration());
+        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
 
         $this->subject = new DateRangeViewHelper();
     }
