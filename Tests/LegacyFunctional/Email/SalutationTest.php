@@ -35,6 +35,8 @@ final class SalutationTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private FrontEndUserMapper $frontEndUserMapper;
+
     private Salutation $subject;
 
     protected function setUp(): void
@@ -45,6 +47,7 @@ final class SalutationTest extends FunctionalTestCase
 
         $this->testingFramework = $this->get(TestingFramework::class);
         $this->configuration->setAsString('salutation', 'formal');
+        $this->frontEndUserMapper = $this->get(MapperRegistry::class)->getByClassName(FrontEndUserMapper::class);
 
         $this->subject = new Salutation();
     }
@@ -67,8 +70,7 @@ final class SalutationTest extends FunctionalTestCase
      */
     private function createFrontEndUser(): FrontEndUser
     {
-        return MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)
-            ->getLoadedTestingModel(['name' => 'Foo']);
+        return $this->frontEndUserMapper->getLoadedTestingModel(['name' => 'Foo']);
     }
 
     // Tests concerning the utility functions

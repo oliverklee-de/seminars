@@ -7,7 +7,6 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\Model;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Mapper\EventMapper;
-use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Registration;
 use TYPO3\CMS\Core\Context\Context;
@@ -32,6 +31,8 @@ final class RegistrationTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private EventMapper $eventMapper;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,6 +41,8 @@ final class RegistrationTest extends FunctionalTestCase
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->testingFramework = $this->get(TestingFramework::class);
+        $this->eventMapper = $this->get(MapperRegistry::class)->getByClassName(EventMapper::class);
+
         $this->subject = new Registration();
     }
 
@@ -92,8 +95,7 @@ final class RegistrationTest extends FunctionalTestCase
      */
     public function getEventReturnsEvent(): void
     {
-        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getNewGhost();
+        $event = $this->eventMapper->getNewGhost();
         $this->subject->setData(['seminar' => $event]);
 
         self::assertSame(
@@ -107,8 +109,7 @@ final class RegistrationTest extends FunctionalTestCase
      */
     public function getSeminarReturnsEvent(): void
     {
-        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getNewGhost();
+        $event = $this->eventMapper->getNewGhost();
         $this->subject->setData(['seminar' => $event]);
 
         self::assertSame(
@@ -122,8 +123,7 @@ final class RegistrationTest extends FunctionalTestCase
      */
     public function setEventSetsEvent(): void
     {
-        /** @var Event $event */
-        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->getNewGhost();
+        $event = $this->eventMapper->getNewGhost();
         $this->subject->setEvent($event);
 
         self::assertSame(
@@ -137,8 +137,7 @@ final class RegistrationTest extends FunctionalTestCase
      */
     public function setSeminarSetsEvent(): void
     {
-        /** @var Event $event */
-        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)->getNewGhost();
+        $event = $this->eventMapper->getNewGhost();
         $this->subject->setSeminar($event);
 
         self::assertSame(

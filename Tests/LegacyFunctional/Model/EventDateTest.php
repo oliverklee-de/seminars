@@ -26,11 +26,15 @@ final class EventDateTest extends FunctionalTestCase
 
     protected bool $initializeDatabase = false;
 
+    private EventMapper $eventMapper;
+
     private Event $subject;
 
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->eventMapper = $this->get(MapperRegistry::class)->getByClassName(EventMapper::class);
 
         $this->subject = new Event();
     }
@@ -49,8 +53,7 @@ final class EventDateTest extends FunctionalTestCase
      */
     public function getTitleWithNonEmptyTopicTitleReturnsTopicTitle(): void
     {
-        $topic = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getLoadedTestingModel(['title' => 'Superhero']);
+        $topic = $this->eventMapper->getLoadedTestingModel(['title' => 'Superhero']);
         $this->subject->setData(
             [
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
@@ -70,8 +73,7 @@ final class EventDateTest extends FunctionalTestCase
      */
     public function getRawTitleWithNonEmptyTopicTitleReturnsDateTitle(): void
     {
-        $topic = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getLoadedTestingModel(['title' => 'Superhero']);
+        $topic = $this->eventMapper->getLoadedTestingModel(['title' => 'Superhero']);
         $this->subject->setData(
             [
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
@@ -93,8 +95,7 @@ final class EventDateTest extends FunctionalTestCase
      */
     public function getTeaserForEventDateWithoutTeaserReturnsAnEmptyString(): void
     {
-        $topic = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getLoadedTestingModel([]);
+        $topic = $this->eventMapper->getLoadedTestingModel([]);
         $this->subject->setData(
             [
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
@@ -113,8 +114,7 @@ final class EventDateTest extends FunctionalTestCase
      */
     public function getTeaserForEventDateWithTeaserReturnsTeaser(): void
     {
-        $topic = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getLoadedTestingModel(['teaser' => 'wow, this is teasing']);
+        $topic = $this->eventMapper->getLoadedTestingModel(['teaser' => 'wow, this is teasing']);
         $this->subject->setData(
             [
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
@@ -135,8 +135,7 @@ final class EventDateTest extends FunctionalTestCase
      */
     public function hasDescriptionForEventDateWithoutDescriptionReturnsFalse(): void
     {
-        $topic = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getLoadedTestingModel([]);
+        $topic = $this->eventMapper->getLoadedTestingModel([]);
         $this->subject->setData(
             [
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
@@ -154,10 +153,7 @@ final class EventDateTest extends FunctionalTestCase
      */
     public function hasDescriptionForEventDateWithDescriptionReturnsTrue(): void
     {
-        $topic = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getLoadedTestingModel(
-                ['description' => 'this is a great event.'],
-            );
+        $topic = $this->eventMapper->getLoadedTestingModel(['description' => 'this is a great event.']);
         $this->subject->setData(
             [
                 'object_type' => EventInterface::TYPE_EVENT_DATE,

@@ -57,6 +57,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     private RegistrationManager $subject;
 
+    private RegistrationMapper $registrationMapper;
+
     private DummyConfiguration $configuration;
 
     /**
@@ -83,6 +85,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
 
         $this->initializeBackEndLanguage();
+
+        $this->registrationMapper = $this->get(MapperRegistry::class)->getByClassName(RegistrationMapper::class);
 
         $configurationRegistry = ConfigurationRegistry::getInstance();
         $this->configuration = new DummyConfiguration(
@@ -494,8 +498,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
-            ->find($registrationUid);
+        $registration = $this->registrationMapper->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::once())->method('modifyAttendeeEmail')->with(
@@ -530,8 +533,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
-            ->find($registrationUid);
+        $registration = $this->registrationMapper->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::once())->method('modifyAttendeeEmail')->with(

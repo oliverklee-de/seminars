@@ -39,6 +39,8 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private FrontEndUserMapper $frontEndUserMapper;
+
     private int $seminarUid = 0;
 
     private ConnectionPool $connectionPool;
@@ -53,6 +55,9 @@ final class LegacyRegistrationTest extends FunctionalTestCase
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->testingFramework = $this->get(TestingFramework::class);
+
+        $this->frontEndUserMapper = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class);
+
         $rootPageUid = $this->testingFramework->createFrontEndPage();
         $this->testingFramework->changeRecord('pages', $rootPageUid, ['slug' => '/home']);
         $this->testingFramework->createFakeFrontEnd($rootPageUid);
@@ -600,8 +605,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
     public function getEnumeratedAttendeeNamesForSelfRegisteredUserAndNoAttendeeNamesReturnsUsersName(): void
     {
         $subject = LegacyRegistration::fromData(['attendees_names' => '']);
-        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)
-            ->getLoadedTestingModel(['name' => 'foo_user']);
+        $user = $this->frontEndUserMapper->getLoadedTestingModel(['name' => 'foo_user']);
         $subject->setFrontEndUser($user);
         $subject->setRegisteredThemselves(true);
 
@@ -617,8 +621,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
     public function getEnumeratedAttendeeNamesForSelfRegisteredUserAndAttendeeNamesReturnsUserInFirstPosition(): void
     {
         $subject = LegacyRegistration::fromData(['attendees_names' => 'foo']);
-        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)
-            ->getLoadedTestingModel(['name' => 'foo_user']);
+        $user = $this->frontEndUserMapper->getLoadedTestingModel(['name' => 'foo_user']);
         $subject->setFrontEndUser($user);
         $subject->setRegisteredThemselves(true);
 

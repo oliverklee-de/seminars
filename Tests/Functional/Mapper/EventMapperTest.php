@@ -30,7 +30,7 @@ final class EventMapperTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->subject = new EventMapper();
+        $this->subject = $this->get(MapperRegistry::class)->getByClassName(EventMapper::class);
     }
 
     protected function tearDown(): void

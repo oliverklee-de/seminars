@@ -55,6 +55,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private RegistrationMapper $registrationMapper;
+
     /**
      * @var positive-int
      */
@@ -97,6 +99,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'];
 
         $this->testingFramework = $this->get(TestingFramework::class);
+        $this->registrationMapper = $this->get(MapperRegistry::class)->getByClassName(RegistrationMapper::class);
+
         $this->rootPageUid = $this->testingFramework->createFrontEndPage();
         $this->testingFramework->changeRecord('pages', $this->rootPageUid, ['slug' => '/home']);
         $this->testingFramework->createFakeFrontEnd($this->rootPageUid);
@@ -1084,7 +1088,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)->find($registrationUid);
+        $this->registrationMapper->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::never())->method('modifyAttendeeEmail');
@@ -1306,8 +1310,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
-            ->find($registrationUid);
+        $registration = $this->registrationMapper->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::never())->method('modifyAttendeeEmail');
@@ -1337,7 +1340,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)->find($registrationUid);
+        $this->registrationMapper->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::never())->method('modifyAttendeeEmail');
@@ -1861,8 +1864,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registrationOld = $this->createRegistration();
         $registrationUid = $registrationOld->getUid();
         \assert($registrationUid > 0);
-        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
-            ->find($registrationUid);
+        $registration = $this->registrationMapper->find($registrationUid);
 
         $hook = $this->createMock(RegistrationEmail::class);
         $hook->expects(self::never())->method('modifyAttendeeEmail');
