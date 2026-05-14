@@ -2321,7 +2321,7 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyUnit\\\\Csv\\\\AbstractRegistrationListViewTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
+			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Csv\\\\AbstractRegistrationListViewTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
@@ -2346,17 +2346,17 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyUnit\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
+			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyUnit\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
+			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyUnit\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
+			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
