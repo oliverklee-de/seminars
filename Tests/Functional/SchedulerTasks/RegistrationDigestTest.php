@@ -7,7 +7,6 @@ namespace OliverKlee\Seminars\Tests\Functional\SchedulerTasks;
 use DateTimeZone;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\SchedulerTasks\RegistrationDigest;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use TYPO3\CMS\Core\Context\Context;
@@ -72,9 +71,6 @@ final class RegistrationDigestTest extends FunctionalTestCase
     {
         // Manually purge the TYPO3 FIFO queue
         GeneralUtility::makeInstance(MailMessage::class);
-
-        ConfigurationRegistry::purgeInstance();
-        MapperRegistry::purgeInstance();
 
         parent::tearDown();
     }

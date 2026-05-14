@@ -38,13 +38,6 @@ final class CsvDownloaderTest extends FunctionalTestCase
         $this->subject = new CsvDownloader();
     }
 
-    protected function tearDown(): void
-    {
-        ConfigurationRegistry::purgeInstance();
-
-        parent::tearDown();
-    }
-
     private function setUpExtensionConfiguration(): void
     {
         $configurationRegistry = $this->get(ConfigurationRegistry::class);

@@ -38,13 +38,6 @@ final class AbstractTimeSpanTest extends FunctionalTestCase
         $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
     }
 
-    protected function tearDown(): void
-    {
-        ConfigurationRegistry::purgeInstance();
-
-        parent::tearDown();
-    }
-
     // Test for getting the time.
 
     /**

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\Email;
 
-use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Email\Salutation;
@@ -56,8 +55,6 @@ final class SalutationTest extends FunctionalTestCase
     {
         $this->restoreOriginalEnvironment();
 
-        ConfigurationRegistry::purgeInstance();
-        MapperRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();

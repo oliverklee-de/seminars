@@ -131,8 +131,6 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        MapperRegistry::purgeInstance();
-        ConfigurationRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();

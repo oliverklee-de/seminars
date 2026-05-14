@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\SchedulerTasks;
 
-use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\PageFinder;
 use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
@@ -105,8 +104,6 @@ final class MailNotifierTest extends FunctionalTestCase
             $this->testingFramework->cleanUpWithoutDatabase();
         }
 
-        MapperRegistry::purgeInstance();
-        ConfigurationRegistry::purgeInstance();
         PageFinder::purgeInstance();
         GeneralUtility::resetSingletonInstances([]);
 

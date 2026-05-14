@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\Service;
 
-use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Model\Event;
@@ -89,7 +88,6 @@ final class EmailServiceTest extends FunctionalTestCase
     protected function tearDown(): void
     {
         $this->restoreOriginalEnvironment();
-        ConfigurationRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();

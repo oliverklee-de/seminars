@@ -151,8 +151,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        MapperRegistry::purgeInstance();
-        ConfigurationRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         $this->purgeMockedInstances();

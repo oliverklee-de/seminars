@@ -39,13 +39,6 @@ final class EventDateTest extends FunctionalTestCase
         $this->subject = new Event();
     }
 
-    protected function tearDown(): void
-    {
-        MapperRegistry::purgeInstance();
-
-        parent::tearDown();
-    }
-
     // Tests concerning the title.
 
     /**

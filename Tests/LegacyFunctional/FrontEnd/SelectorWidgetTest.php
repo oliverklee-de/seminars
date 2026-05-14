@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\FrontEnd;
 
-use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\FrontEnd\SelectorWidget;
 use OliverKlee\Seminars\Hooks\Interfaces\SeminarSelectorWidget;
@@ -53,7 +52,6 @@ final class SelectorWidgetTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        MapperRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();

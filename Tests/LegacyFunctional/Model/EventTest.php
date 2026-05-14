@@ -46,14 +46,6 @@ final class EventTest extends FunctionalTestCase
         $this->subject = new Event();
     }
 
-    protected function tearDown(): void
-    {
-        MapperRegistry::purgeInstance();
-        ConfigurationRegistry::purgeInstance();
-
-        parent::tearDown();
-    }
-
     /**
      * @test
      */

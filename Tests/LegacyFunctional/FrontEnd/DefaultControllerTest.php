@@ -168,8 +168,6 @@ final class DefaultControllerTest extends FunctionalTestCase
     protected function tearDown(): void
     {
         $this->testingFramework->cleanUpWithoutDatabase();
-        MapperRegistry::purgeInstance();
-        ConfigurationRegistry::purgeInstance();
 
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'] = $this->extConfBackup;
 
