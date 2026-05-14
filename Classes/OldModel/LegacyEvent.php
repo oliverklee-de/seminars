@@ -2422,7 +2422,8 @@ class LegacyEvent extends AbstractTimeSpan
         $ownerUid = $this->getRecordPropertyInteger('owner_feuser');
         \assert($ownerUid > 0);
 
-        return MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($ownerUid);
+        return GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(FrontEndUserMapper::class)
+            ->find($ownerUid);
     }
 
     /**

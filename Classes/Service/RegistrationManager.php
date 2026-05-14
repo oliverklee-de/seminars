@@ -377,7 +377,7 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $oldRegistration->getUid();
         \assert($registrationUid > 0);
-        $registration = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
+        $registration = GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(RegistrationMapper::class)
             ->find($registrationUid);
         $this->addCalendarAttachment($emailBuilder, $event->getUid());
         $email = $emailBuilder->build();
@@ -547,8 +547,8 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $registration->getUid();
         \assert($registrationUid > 0);
-        $registrationNew = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
-            ->find($registrationUid);
+        $registrationNew = GeneralUtility::makeInstance(MapperRegistry::class)
+            ->getByClassName(RegistrationMapper::class)->find($registrationUid);
 
         $email = $emailBuilder->build();
         $this
@@ -606,8 +606,8 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $registration->getUid();
         \assert($registrationUid > 0);
-        $registrationNew = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
-            ->find($registrationUid);
+        $registrationNew = GeneralUtility::makeInstance(MapperRegistry::class)
+            ->getByClassName(RegistrationMapper::class)->find($registrationUid);
 
         $email = $emailBuilder->build();
         $this
@@ -898,8 +898,8 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $registration->getUid();
         \assert($registrationUid > 0);
-        $registrationNew = MapperRegistry::getInstance()->getByClassName(RegistrationMapper::class)
-            ->find($registrationUid);
+        $registrationNew = GeneralUtility::makeInstance(MapperRegistry::class)
+            ->getByClassName(RegistrationMapper::class)->find($registrationUid);
 
         $this->getRegistrationEmailHookProvider()->executeHook(
             $useHtml ? 'modifyAttendeeEmailBodyHtml' : 'modifyAttendeeEmailBodyPlainText',

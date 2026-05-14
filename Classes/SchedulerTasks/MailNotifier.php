@@ -59,7 +59,7 @@ class MailNotifier extends AbstractTask
         $this->getConfiguration();
         $this->eventStatusService = GeneralUtility::makeInstance(EventStatusService::class);
         $this->emailService = GeneralUtility::makeInstance(EmailService::class);
-        $this->eventMapper = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
+        $this->eventMapper = GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(EventMapper::class);
         $this->registrationDigest = GeneralUtility::makeInstance(RegistrationDigest::class);
 
         $this->dependenciesAreSetUp = true;
