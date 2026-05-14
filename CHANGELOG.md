@@ -237,7 +237,8 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - Avoid the deprecated static `TemplateRegistry` methods (#5013)
 - Avoid the deprecated static `ConfigurationRegistry` methods (#5009, #5010)
-- Avoid using the deprecated `MapperRegistry::getInstance()` (#5006, #5008)
+- Avoid using the deprecated `MapperRegistry::getInstance()`
+  (#5006, #5008, #5014)
 - Avoid the deprecated `->getTypoLink()`
   (#4895, #4903, #4904, #4905, #4906, #4907)
 - Avoid accessing the deprecated flash message severity constants (#4878, #4884)
