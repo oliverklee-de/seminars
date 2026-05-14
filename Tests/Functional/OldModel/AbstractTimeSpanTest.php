@@ -35,7 +35,7 @@ final class AbstractTimeSpanTest extends FunctionalTestCase
         $this->initializeBackEndLanguage();
 
         $this->subject = new TestingTimeSpan();
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', new DummyConfiguration());
+        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
     }
 
     protected function tearDown(): void

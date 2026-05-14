@@ -111,7 +111,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->addMockedInstance(MailMessage::class, $this->email);
         $this->addMockedInstance(MailMessage::class, $secondEmail);
 
-        $configurationRegistry = ConfigurationRegistry::getInstance();
+        $configurationRegistry = $this->get(ConfigurationRegistry::class);
         $this->configuration = new DummyConfiguration(
             [
                 'templateFile' => 'EXT:seminars/Resources/Private/Templates/Mail/e-mail.html',

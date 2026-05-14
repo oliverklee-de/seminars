@@ -119,7 +119,7 @@ trait BackEndTestsTrait
 
     private function setUpExtensionConfiguration(): void
     {
-        $configurationRegistry = ConfigurationRegistry::getInstance();
+        $configurationRegistry = $this->get(ConfigurationRegistry::class);
         $configurationRegistry->set('plugin', new DummyConfiguration());
         $this->configuration = new DummyConfiguration();
         $configurationRegistry->set('plugin.tx_seminars', $this->configuration);

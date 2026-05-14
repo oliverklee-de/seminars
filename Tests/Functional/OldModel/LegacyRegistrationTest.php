@@ -35,7 +35,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
         parent::setUp();
 
         $this->initializeBackEndLanguage();
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', new DummyConfiguration());
+        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
 
         $this->subject = new LegacyRegistration();
     }

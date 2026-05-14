@@ -50,7 +50,7 @@ final class EmailRegistrationListViewTest extends FunctionalTestCase
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
-        $configurationRegistry = ConfigurationRegistry::getInstance();
+        $configurationRegistry = $this->get(ConfigurationRegistry::class);
         $configurationRegistry->set('plugin', new DummyConfiguration());
         $this->configuration = new DummyConfiguration();
         $configurationRegistry->set('plugin.tx_seminars', $this->configuration);

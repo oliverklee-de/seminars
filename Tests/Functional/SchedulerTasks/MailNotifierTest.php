@@ -44,8 +44,9 @@ final class MailNotifierTest extends FunctionalTestCase
         $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
-        ConfigurationRegistry::getInstance()->set('plugin', new DummyConfiguration());
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars', new DummyConfiguration());
+        $configurationRegistry = $this->get(ConfigurationRegistry::class);
+        $configurationRegistry->set('plugin', new DummyConfiguration());
+        $configurationRegistry->set('plugin.tx_seminars', new DummyConfiguration());
 
         $this->registrationDigestMock = $this->createMock(RegistrationDigest::class);
         GeneralUtility::setSingletonInstance(RegistrationDigest::class, $this->registrationDigestMock);

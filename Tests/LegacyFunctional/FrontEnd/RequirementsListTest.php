@@ -60,7 +60,7 @@ final class RequirementsListTest extends FunctionalTestCase
         );
 
         $this->pluginConfiguration = new DummyConfiguration();
-        ConfigurationRegistry::getInstance()->set('plugin.tx_seminars_pi1', $this->pluginConfiguration);
+        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars_pi1', $this->pluginConfiguration);
 
         $this->subject = new RequirementsList(
             ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html'],

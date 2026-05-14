@@ -39,9 +39,7 @@ final class EventTest extends FunctionalTestCase
         GeneralUtility::makeInstance(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
-        $configurationRegistry = ConfigurationRegistry::getInstance();
-        $configuration = new DummyConfiguration();
-        $configurationRegistry->set('plugin.tx_seminars', $configuration);
+        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
 
         $this->registrationMapper = $this->get(MapperRegistry::class)->getByClassName(RegistrationMapper::class);
 
