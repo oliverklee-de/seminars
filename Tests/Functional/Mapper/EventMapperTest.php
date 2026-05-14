@@ -33,13 +33,6 @@ final class EventMapperTest extends FunctionalTestCase
         $this->subject = $this->get(MapperRegistry::class)->getByClassName(EventMapper::class);
     }
 
-    protected function tearDown(): void
-    {
-        MapperRegistry::purgeInstance();
-
-        parent::tearDown();
-    }
-
     /**
      * @test
      */

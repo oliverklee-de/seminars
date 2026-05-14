@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\Hooks;
 
-use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Seminars\Hooks\DataHandlerHook;
 use OliverKlee\Seminars\Hooks\Interfaces\DataSanitization;
 use OliverKlee\Seminars\Tests\Support\BackEndTestsTrait;
@@ -39,13 +38,6 @@ final class DataHandlerHookTest extends FunctionalTestCase
         $this->dataHandler = new DataHandler();
 
         $this->subject = $this->get(DataHandlerHook::class);
-    }
-
-    protected function tearDown(): void
-    {
-        ConfigurationRegistry::purgeInstance();
-
-        parent::tearDown();
     }
 
     private function initializeBackEndUser(): void

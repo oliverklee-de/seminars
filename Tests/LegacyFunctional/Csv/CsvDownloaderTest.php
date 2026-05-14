@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyUnit\Csv;
 
-use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Csv\CsvDownloader;
 use OliverKlee\Seminars\Tests\Support\BackEndTestsTrait;
@@ -66,7 +65,6 @@ final class CsvDownloaderTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        ConfigurationRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
         $this->restoreOriginalEnvironment();
 

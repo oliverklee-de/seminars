@@ -47,7 +47,6 @@ final class RegistrationMapperTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        MapperRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();

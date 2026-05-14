@@ -7,7 +7,6 @@ namespace OliverKlee\Seminars\Tests\Functional\SchedulerTasks;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Configuration\PageFinder;
-use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\SchedulerTasks\MailNotifier;
 use OliverKlee\Seminars\SchedulerTasks\RegistrationDigest;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -56,8 +55,6 @@ final class MailNotifierTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        ConfigurationRegistry::purgeInstance();
-        MapperRegistry::purgeInstance();
         PageFinder::purgeInstance();
         GeneralUtility::resetSingletonInstances([]);
 

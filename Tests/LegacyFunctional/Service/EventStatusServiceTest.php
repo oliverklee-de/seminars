@@ -58,13 +58,6 @@ final class EventStatusServiceTest extends FunctionalTestCase
         $this->subject = new EventStatusService();
     }
 
-    protected function tearDown(): void
-    {
-        MapperRegistry::purgeInstance();
-
-        parent::tearDown();
-    }
-
     /**
      * @test
      */

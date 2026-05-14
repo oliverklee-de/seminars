@@ -73,7 +73,6 @@ final class EmailRegistrationListViewTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        ConfigurationRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();

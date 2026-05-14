@@ -52,7 +52,6 @@ final class EventDateMapperTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        MapperRegistry::purgeInstance();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();

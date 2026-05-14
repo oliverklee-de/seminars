@@ -82,13 +82,6 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->subject = new EmailService();
     }
 
-    protected function tearDown(): void
-    {
-        ConfigurationRegistry::purgeInstance();
-
-        parent::tearDown();
-    }
-
     /**
      * @test
      */

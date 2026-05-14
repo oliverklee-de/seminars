@@ -40,13 +40,6 @@ final class LegacyRegistrationTest extends FunctionalTestCase
         $this->subject = new LegacyRegistration();
     }
 
-    protected function tearDown(): void
-    {
-        ConfigurationRegistry::purgeInstance();
-
-        parent::tearDown();
-    }
-
     /**
      * @test
      */

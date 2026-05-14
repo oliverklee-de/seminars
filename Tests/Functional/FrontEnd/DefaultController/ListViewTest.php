@@ -104,6 +104,7 @@ final class ListViewTest extends FunctionalTestCase
 
         $controller->main('', ['what_to_display' => 'seminar_list']);
     }
+
     /**
      * @test
      */
