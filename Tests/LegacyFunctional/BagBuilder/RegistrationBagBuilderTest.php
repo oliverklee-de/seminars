@@ -33,6 +33,8 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private FrontEndUserMapper $frontEndUserMapper;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -41,6 +43,8 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->testingFramework = $this->get(TestingFramework::class);
+
+        $this->frontEndUserMapper = $this->get(MapperRegistry::class)->getByClassName(FrontEndUserMapper::class);
 
         $this->subject = new RegistrationBagBuilder();
     }
@@ -405,7 +409,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             ['seminar' => $eventUid, 'user' => $feUserUid],
         );
 
-        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
+        $user = $this->frontEndUserMapper->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $bag = $this->subject->build();
 
@@ -432,7 +436,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             ['tx_seminars_registration' => $registrationUid],
         );
 
-        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
+        $user = $this->frontEndUserMapper->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $bag = $this->subject->build();
 
@@ -450,7 +454,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
         $feUserUid = $this->testingFramework->createFrontEndUser();
         $this->testingFramework->createRecord('tx_seminars_seminars');
 
-        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
+        $user = $this->frontEndUserMapper->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $bag = $this->subject->build();
 
@@ -473,7 +477,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             ['seminar' => $eventUid, 'user' => $feUserUid2],
         );
 
-        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
+        $user = $this->frontEndUserMapper->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $bag = $this->subject->build();
 
@@ -496,7 +500,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             ['seminar' => $eventUid, 'user' => $feUserUid2],
         );
 
-        $user = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->find($feUserUid);
+        $user = $this->frontEndUserMapper->find($feUserUid);
         $this->subject->limitToAttendee($user);
         $this->subject->limitToAttendee();
         $bag = $this->subject->build();

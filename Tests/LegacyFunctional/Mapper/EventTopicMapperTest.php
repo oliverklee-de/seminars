@@ -30,6 +30,10 @@ final class EventTopicMapperTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private CategoryMapper $categoryMapper;
+
+    private EventTypeMapper $eventTypeMapper;
+
     private EventMapper $subject;
 
     protected function setUp(): void
@@ -38,7 +42,11 @@ final class EventTopicMapperTest extends FunctionalTestCase
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
-        $this->subject = MapperRegistry::getInstance()->getByClassName(EventMapper::class);
+        $mapperRegistry = $this->get(MapperRegistry::class);
+        $this->eventTypeMapper = $mapperRegistry->getByClassName(EventTypeMapper::class);
+        $this->categoryMapper = $mapperRegistry->getByClassName(CategoryMapper::class);
+
+        $this->subject = $mapperRegistry->getByClassName(EventMapper::class);
     }
 
     protected function tearDown(): void
@@ -95,7 +103,7 @@ final class EventTopicMapperTest extends FunctionalTestCase
             'tx_seminars_seminars',
             ['object_type' => EventInterface::TYPE_EVENT_TOPIC],
         );
-        $categoryUid = MapperRegistry::getInstance()->getByClassName(CategoryMapper::class)->getNewGhost()->getUid();
+        $categoryUid = $this->categoryMapper->getNewGhost()->getUid();
         \assert($categoryUid > 0);
         $this->testingFramework->createRelationAndUpdateCounter(
             'tx_seminars_seminars',
@@ -117,7 +125,7 @@ final class EventTopicMapperTest extends FunctionalTestCase
             'tx_seminars_seminars',
             ['object_type' => EventInterface::TYPE_EVENT_TOPIC],
         );
-        $categoryUid = MapperRegistry::getInstance()->getByClassName(CategoryMapper::class)->getNewGhost()->getUid();
+        $categoryUid = $this->categoryMapper->getNewGhost()->getUid();
         \assert($categoryUid > 0);
         $this->testingFramework->createRelationAndUpdateCounter(
             'tx_seminars_seminars',
@@ -152,8 +160,7 @@ final class EventTopicMapperTest extends FunctionalTestCase
      */
     public function getEventTypeForEventTopicWithEventTypeReturnsEventTypeInstance(): void
     {
-        $eventType = MapperRegistry::getInstance()->getByClassName(EventTypeMapper::class)
-            ->getLoadedTestingModel([]);
+        $eventType = $this->eventTypeMapper->getLoadedTestingModel([]);
         $testingModel = $this->subject->getLoadedTestingModel(
             [
                 'object_type' => EventInterface::TYPE_EVENT_TOPIC,

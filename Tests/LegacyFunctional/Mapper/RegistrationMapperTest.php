@@ -26,6 +26,10 @@ final class RegistrationMapperTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private EventMapper $eventMapper;
+
+    private FrontEndUserMapper $frontEndUserMapper;
+
     private RegistrationMapper $subject;
 
     protected function setUp(): void
@@ -34,7 +38,11 @@ final class RegistrationMapperTest extends FunctionalTestCase
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
-        $this->subject = new RegistrationMapper();
+        $mapperRegistry = $this->get(MapperRegistry::class);
+        $this->eventMapper = $mapperRegistry->getByClassName(EventMapper::class);
+        $this->frontEndUserMapper = $mapperRegistry->getByClassName(FrontEndUserMapper::class);
+
+        $this->subject = $mapperRegistry->getByClassName(RegistrationMapper::class);
     }
 
     protected function tearDown(): void
@@ -79,8 +87,7 @@ final class RegistrationMapperTest extends FunctionalTestCase
      */
     public function getEventWithEventReturnsEventInstance(): void
     {
-        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getNewGhost();
+        $event = $this->eventMapper->getNewGhost();
         $testingModel = $this->subject->getLoadedTestingModel(['seminar' => $event->getUid()]);
 
         self::assertInstanceOf(Event::class, $testingModel->getEvent());
@@ -91,8 +98,7 @@ final class RegistrationMapperTest extends FunctionalTestCase
      */
     public function getSeminarWithEventReturnsEventInstance(): void
     {
-        $event = MapperRegistry::getInstance()->getByClassName(EventMapper::class)
-            ->getNewGhost();
+        $event = $this->eventMapper->getNewGhost();
         $testingModel = $this->subject->getLoadedTestingModel(['seminar' => $event->getUid()]);
 
         self::assertInstanceOf(Event::class, $testingModel->getSeminar());
@@ -105,7 +111,7 @@ final class RegistrationMapperTest extends FunctionalTestCase
      */
     public function getFrontEndUserWithFrontEndUserReturnsSameFrontEndUser(): void
     {
-        $frontEndUser = MapperRegistry::getInstance()->getByClassName(FrontEndUserMapper::class)->getNewGhost();
+        $frontEndUser = $this->frontEndUserMapper->getNewGhost();
         $testingModel = $this->subject->getLoadedTestingModel(['user' => $frontEndUser->getUid()]);
 
         self::assertSame($frontEndUser, $testingModel->getFrontEndUser());
