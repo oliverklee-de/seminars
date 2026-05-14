@@ -706,7 +706,8 @@ class LegacyEvent extends AbstractTimeSpan
      */
     public function formatPrice(string $value): string
     {
-        $currency = ConfigurationRegistry::getInstance()->getByNamespace('plugin.tx_seminars')->getAsString('currency');
+        $currency = GeneralUtility::makeInstance(ConfigurationRegistry::class)
+            ->getByNamespace('plugin.tx_seminars')->getAsString('currency');
         if ($currency === '') {
             $currency = 'EUR';
         }

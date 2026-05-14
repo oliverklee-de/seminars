@@ -387,6 +387,6 @@ class MailNotifier extends AbstractTask
             PageFinder::getInstance()->setPageUid($pageUid);
         }
 
-        return ConfigurationRegistry::getInstance()->getByNamespace('plugin.tx_seminars');
+        return GeneralUtility::makeInstance(ConfigurationRegistry::class)->getByNamespace('plugin.tx_seminars');
     }
 }
