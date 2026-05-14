@@ -28,7 +28,7 @@ class Salutation
     {
         $salutationParts = [];
 
-        $salutationMode = ConfigurationRegistry::getInstance()
+        $salutationMode = GeneralUtility::makeInstance(ConfigurationRegistry::class)
             ->getByNamespace('plugin.tx_seminars')->getAsString('salutation');
         switch ($salutationMode) {
             case 'informal':

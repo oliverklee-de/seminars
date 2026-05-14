@@ -235,6 +235,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Avoid the deprecated static `ConfigurationRegistry` methods (#5009)
 - Avoid using the deprecated `MapperRegistry::getInstance()` (#5006, #5008)
 - Avoid the deprecated `->getTypoLink()`
   (#4895, #4903, #4904, #4905, #4906, #4907)

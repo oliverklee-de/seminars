@@ -9,6 +9,7 @@ use OliverKlee\Oelib\Configuration\FallbackConfiguration;
 use OliverKlee\Oelib\Configuration\FlexformsConfiguration;
 use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Seminars\Templating\TemplateHelper;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
@@ -57,7 +58,8 @@ abstract class AbstractView extends TemplateHelper
             return $this->configuration;
         }
 
-        $typoScriptConfiguration = ConfigurationRegistry::getInstance()->getByNamespace('plugin.tx_seminars_pi1');
+        $typoScriptConfiguration = GeneralUtility::makeInstance(ConfigurationRegistry::class)
+            ->getByNamespace('plugin.tx_seminars_pi1');
         if (!$this->cObj instanceof ContentObjectRenderer) {
             $this->configuration = $typoScriptConfiguration;
             return $this->configuration;
