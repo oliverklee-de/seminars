@@ -6,9 +6,8 @@ namespace OliverKlee\Seminars\SchedulerTasks;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\PageFinder;
-use OliverKlee\Oelib\Email\SystemEmailFromBuilder;
+use OliverKlee\Oelib\Email\SystemEmailBuilder;
 use OliverKlee\Oelib\Interfaces\Configuration;
-use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\BagBuilder\EventBagBuilder;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
@@ -41,6 +40,8 @@ class MailNotifier extends AbstractTask
 
     protected RegistrationDigest $registrationDigest;
 
+    private SystemEmailBuilder $systemEmailBuilder;
+
     private bool $dependenciesAreSetUp = false;
 
     /**
@@ -58,6 +59,7 @@ class MailNotifier extends AbstractTask
         $this->emailService = GeneralUtility::makeInstance(EmailService::class);
         $this->eventMapper = GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(EventMapper::class);
         $this->registrationDigest = GeneralUtility::makeInstance(RegistrationDigest::class);
+        $this->systemEmailBuilder = GeneralUtility::makeInstance(SystemEmailBuilder::class);
 
         $this->dependenciesAreSetUp = true;
     }
@@ -144,7 +146,7 @@ class MailNotifier extends AbstractTask
     private function sendRemindersToOrganizers(LegacyEvent $event, string $messageKey): void
     {
         $replyTo = $event->getFirstOrganizer();
-        $sender = $this->determineEmailSenderForEvent($event);
+        $sender = $this->systemEmailBuilder->build();
         $subject = $this->customizeMessage($messageKey . 'Subject', $event);
 
         /** @var LegacyOrganizer $organizer */
@@ -158,23 +160,6 @@ class MailNotifier extends AbstractTask
             $emailBuilder->replyTo($replyTo);
             $emailBuilder->build()->send();
         }
-    }
-
-    /**
-     * Returns a `MailRole` with the default email data from the TYPO3 configuration if possible.
-     *
-     * Otherwise, returns the first organizer of the given event.
-     */
-    private function determineEmailSenderForEvent(LegacyEvent $event): MailRole
-    {
-        $systemEmailFromBuilder = GeneralUtility::makeInstance(SystemEmailFromBuilder::class);
-        if ($systemEmailFromBuilder->canBuild()) {
-            $sender = $systemEmailFromBuilder->build();
-        } else {
-            $sender = $event->getFirstOrganizer();
-        }
-
-        return $sender;
     }
 
     /**

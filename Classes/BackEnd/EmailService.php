@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\BackEnd;
 
-use OliverKlee\Oelib\Email\SystemEmailFromBuilder;
+use OliverKlee\Oelib\Email\SystemEmailBuilder;
 use OliverKlee\Oelib\Exception\NotFoundException;
-use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Seminars\Domain\Model\Event\Event;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
@@ -31,9 +30,12 @@ class EmailService implements SingletonInterface
 {
     private RegistrationRepository $registrationRepository;
 
-    public function __construct(RegistrationRepository $registrationRepository)
+    private SystemEmailBuilder $systemEmailBuilder;
+
+    public function __construct(RegistrationRepository $registrationRepository, SystemEmailBuilder $systemEmailBuilder)
     {
         $this->registrationRepository = $registrationRepository;
+        $this->systemEmailBuilder = $systemEmailBuilder;
     }
 
     /**
@@ -47,7 +49,7 @@ class EmailService implements SingletonInterface
     public function sendPlainTextEmailToRegularAttendees($event, string $subject, string $rawBody): void
     {
         $organizer = $event->getFirstOrganizer();
-        $sender = $this->determineEmailSenderForEvent($event);
+        $sender = $this->systemEmailBuilder->build();
         $eventUid = $event->getUid();
         \assert(\is_int($eventUid) && $eventUid > 0);
 
@@ -77,23 +79,6 @@ class EmailService implements SingletonInterface
         \assert(\is_string($message));
         $flashMessage = GeneralUtility::makeInstance(FlashMessage::class, $message, '', $severity, true);
         $this->addFlashMessage($flashMessage);
-    }
-
-    /**
-     * Returns a `MailRole` with the default email data from the TYPO3 configuration if possible.
-     *
-     * Otherwise, returns the first organizer of the given event.
-     */
-    private function determineEmailSenderForEvent(EventDateInterface $event): MailRole
-    {
-        $systemEmailFromBuilder = GeneralUtility::makeInstance(SystemEmailFromBuilder::class);
-        if ($systemEmailFromBuilder->canBuild()) {
-            $sender = $systemEmailFromBuilder->build();
-        } else {
-            $sender = $event->getFirstOrganizer();
-        }
-
-        return $sender;
     }
 
     private function addFlashMessage(FlashMessage $flashMessage): void
