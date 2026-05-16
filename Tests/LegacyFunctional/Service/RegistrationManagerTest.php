@@ -92,7 +92,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $context = GeneralUtility::makeInstance(Context::class);
+        $context = $this->get(Context::class);
         $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
         $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
 
@@ -236,7 +236,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     }
 
     /**
-     * Adds an instance to the Typo3 instance FIFO buffer used by `GeneralUtility::makeInstance()`
+     * Adds an instance to the TYPO3 instance FIFO buffer used by `GeneralUtility::makeInstance()`
      * and registers it for purging in `tearDown()`.
      *
      * In case of a failing test or an exception in the test before the instance is taken
@@ -313,7 +313,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->createAndLogInFrontEndUser();
 
-        self::assertTrue(GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user')->isLoggedIn());
+        self::assertTrue($this->get(Context::class)->getAspect('frontend.user')->isLoggedIn());
     }
 
     /**

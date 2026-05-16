@@ -9,7 +9,6 @@ use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\FrontEnd\CategoryList;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -38,7 +37,8 @@ final class CategoryListTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        GeneralUtility::makeInstance(Context::class)
+        $this
+            ->get(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->testingFramework = $this->get(TestingFramework::class);
@@ -90,7 +90,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1000,
@@ -137,7 +137,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1000,
@@ -178,7 +178,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $systemSubFolderUid,
                 'title' => 'my title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1000,
@@ -212,7 +212,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $otherSystemFolderUid,
                 'title' => 'my title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1000,
@@ -248,7 +248,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $otherSystemFolderUid,
                 'title' => 'my title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1000,
@@ -281,7 +281,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1000,
@@ -315,7 +315,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my_title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1000,
@@ -354,11 +354,11 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1000,
-                'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 2000,
@@ -396,11 +396,11 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) - 2000,
-                'end_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) - 1000,
@@ -437,7 +437,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1000,

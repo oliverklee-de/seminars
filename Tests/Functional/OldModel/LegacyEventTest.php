@@ -18,7 +18,6 @@ use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Resource\FileReference;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -48,7 +47,8 @@ final class LegacyEventTest extends FunctionalTestCase
         parent::setUp();
 
         $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
-        $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageServiceFactory::class)
+        $GLOBALS['LANG'] = $this
+            ->get(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
         $this->testingFramework = $this->get(TestingFramework::class);
@@ -204,7 +204,8 @@ final class LegacyEventTest extends FunctionalTestCase
         $subject = TestingLegacyEvent::fromUid($eventUid);
         self::assertSame(3, $subject->getAttendances());
 
-        GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_seminars_attendances')
+        $this
+            ->get(ConnectionPool::class)->getConnectionForTable('tx_seminars_attendances')
             ->insert(
                 'tx_seminars_attendances',
                 ['seminar' => $eventUid, 'seats' => 2, 'registration_queue' => ExtbaseRegistration::STATUS_REGULAR],
@@ -225,7 +226,8 @@ final class LegacyEventTest extends FunctionalTestCase
         $subject = TestingLegacyEvent::fromUid($eventUid);
         self::assertSame(3, $subject->getAttendances());
 
-        GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_seminars_attendances')
+        $this
+            ->get(ConnectionPool::class)->getConnectionForTable('tx_seminars_attendances')
             ->insert(
                 'tx_seminars_attendances',
                 [

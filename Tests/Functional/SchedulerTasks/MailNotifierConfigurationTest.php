@@ -13,7 +13,6 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageQueue;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -44,7 +43,8 @@ final class MailNotifierConfigurationTest extends FunctionalTestCase
         parent::setUp();
 
         $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
-        $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageServiceFactory::class)
+        $GLOBALS['LANG'] = $this
+            ->get(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
         $this->moduleController = $this->createMock(SchedulerModuleController::class);
@@ -54,7 +54,7 @@ final class MailNotifierConfigurationTest extends FunctionalTestCase
 
     private function getFlashMessageQueue(): FlashMessageQueue
     {
-        return GeneralUtility::makeInstance(FlashMessageService::class)->getMessageQueueByIdentifier();
+        return $this->get(FlashMessageService::class)->getMessageQueueByIdentifier();
     }
 
     /**

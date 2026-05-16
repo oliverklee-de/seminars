@@ -11,7 +11,6 @@ use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Registration;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -37,7 +36,8 @@ final class RegistrationTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        GeneralUtility::makeInstance(Context::class)
+        $this
+            ->get(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->testingFramework = $this->get(TestingFramework::class);

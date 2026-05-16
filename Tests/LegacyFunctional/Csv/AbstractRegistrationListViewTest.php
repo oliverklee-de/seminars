@@ -71,7 +71,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        GeneralUtility::makeInstance(Context::class)
+        $this
+            ->get(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'];
@@ -89,7 +90,7 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'pid' => $this->pageUid,
-                'begin_date' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ),
@@ -126,7 +127,7 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
     // Utility functions
 
     /**
-     * Adds an instance to the Typo3 instance FIFO buffer used by `GeneralUtility::makeInstance()`
+     * Adds an instance to the TYPO3 instance FIFO buffer used by `GeneralUtility::makeInstance()`
      * and registers it for purging in `tearDown()`.
      *
      * In case of a failing test or an exception in the test before the instance is taken
@@ -254,7 +255,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -277,7 +279,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -286,7 +289,7 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'crdate' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + 1,
@@ -317,7 +320,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $frontEndUserUid,
             ],
@@ -341,7 +345,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $frontEndUserUid,
             ],
@@ -364,7 +369,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => 9999,
             ],
@@ -418,7 +424,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -427,7 +434,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -450,7 +458,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo " bar',
@@ -474,7 +483,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo " bar',
@@ -498,7 +508,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo ; bar',
@@ -522,7 +533,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => "foo\nbar",
@@ -546,7 +558,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo " bar',
@@ -570,7 +583,8 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo',

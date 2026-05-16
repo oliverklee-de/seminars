@@ -56,7 +56,8 @@ final class RegistrationsListTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        GeneralUtility::makeInstance(Context::class)
+        $this
+            ->get(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->testingFramework = $this->get(TestingFramework::class);
@@ -138,7 +139,7 @@ final class RegistrationsListTest extends FunctionalTestCase
     {
         $this->createLogInAndRegisterFrontEndUser();
 
-        self::assertTrue(GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user')->isLoggedIn());
+        self::assertTrue($this->get(Context::class)->getAspect('frontend.user')->isLoggedIn());
     }
 
     /**
@@ -147,7 +148,8 @@ final class RegistrationsListTest extends FunctionalTestCase
     public function createLogInAndRegisterFrontEndUserCreatesRegistrationRecord(): void
     {
         $this->createLogInAndRegisterFrontEndUser();
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+        $connection = $this
+            ->get(ConnectionPool::class)
             ->getConnectionForTable('tx_seminars_attendances');
 
         self::assertSame(
@@ -502,7 +504,8 @@ final class RegistrationsListTest extends FunctionalTestCase
         $this->createLogInAndRegisterFrontEndUser();
 
         $feUserUid = $this->testingFramework->createFrontEndUser();
-        $now = GeneralUtility::makeInstance(Context::class)
+        $now = $this
+            ->get(Context::class)
             ->getPropertyFromAspect('date', 'timestamp');
         $secondRegistration = $this->testingFramework->createRecord(
             'tx_seminars_attendances',

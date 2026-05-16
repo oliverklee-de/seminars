@@ -9,7 +9,6 @@ use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Seminars\Model\AbstractTimeSpan;
 use OliverKlee\Seminars\ViewHelpers\DateRangeViewHelper;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -35,7 +34,8 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
         parent::setUp();
 
         $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
-        $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageServiceFactory::class)
+        $GLOBALS['LANG'] = $this
+            ->get(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
         // Make sure that the test results do not depend on the machine's PHP time zone.

@@ -1442,6 +1442,6 @@ final class MailNotifierTest extends FunctionalTestCase
 
     private function getConnectionForTable(string $table): Connection
     {
-        return GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
+        return $this->get(ConnectionPool::class)->getConnectionForTable($table);
     }
 }

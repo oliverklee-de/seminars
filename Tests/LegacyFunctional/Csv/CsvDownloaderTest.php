@@ -8,7 +8,6 @@ use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Csv\CsvDownloader;
 use OliverKlee\Seminars\Tests\Support\BackEndTestsTrait;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -55,7 +54,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'pid' => $this->pid,
-                'begin_date' => (int)GeneralUtility::makeInstance(Context::class)
+                'begin_date' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
             ],
         );
@@ -128,7 +128,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             $this->eventUid,
             [
-                'endtime' => (int)GeneralUtility::makeInstance(Context::class)
+                'endtime' => (int)$this
+                        ->get(Context::class)
                         ->getPropertyFromAspect('date', 'timestamp') - 1000,
             ],
         );
@@ -257,7 +258,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -266,7 +268,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                        ->get(Context::class)
                         ->getPropertyFromAspect('date', 'timestamp') + 1,
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -324,7 +327,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -333,7 +337,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                        ->get(Context::class)
                         ->getPropertyFromAspect('date', 'timestamp') + 1,
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -364,7 +369,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $frontEndUserUid,
             ],
@@ -389,7 +395,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $frontEndUserUid,
             ],
@@ -413,7 +420,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => 9999,
             ],
@@ -469,7 +477,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -478,7 +487,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
             ],
@@ -501,7 +511,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo " bar',
@@ -525,7 +536,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo " bar',
@@ -549,7 +561,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo ; bar',
@@ -573,7 +586,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => "foo\nbar",
@@ -597,7 +611,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo " bar',
@@ -621,7 +636,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'seminar' => $this->eventUid,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'user' => $this->testingFramework->createFrontEndUser(),
                 'address' => 'foo',

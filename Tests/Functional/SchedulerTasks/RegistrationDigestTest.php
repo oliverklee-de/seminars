@@ -42,7 +42,8 @@ final class RegistrationDigestTest extends FunctionalTestCase
         parent::setUp();
 
         $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
-        $GLOBALS['LANG'] = GeneralUtility::makeInstance(LanguageServiceFactory::class)
+        $GLOBALS['LANG'] = $this
+            ->get(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
         $configurationData = [
@@ -55,13 +56,16 @@ final class RegistrationDigestTest extends FunctionalTestCase
             'enable' => '1',
         ];
         $this->configuration = new DummyConfiguration($configurationData);
-        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars.registrationDigestEmail', $this->configuration);
+        $this->get(ConfigurationRegistry::class)->set(
+            'plugin.tx_seminars.registrationDigestEmail',
+            $this->configuration,
+        );
 
         $this->email = $this->createEmailMock();
         GeneralUtility::addInstance(MailMessage::class, $this->email);
 
         $now = new \DateTimeImmutable('2018-04-26 12:42:23', new DateTimeZone('UTC'));
-        $context = GeneralUtility::makeInstance(Context::class);
+        $context = $this->get(Context::class);
         $context->setAspect('date', new DateTimeAspect($now));
 
         $this->subject = $this->get(RegistrationDigest::class);
