@@ -14,7 +14,6 @@ use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -45,11 +44,14 @@ final class EventStatusServiceTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        GeneralUtility::makeInstance(Context::class)
+        $this
+            ->get(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
-        $this->past = (int)GeneralUtility::makeInstance(Context::class)
+        $this->past = (int)$this
+                ->get(Context::class)
                 ->getPropertyFromAspect('date', 'timestamp') - 1;
-        $this->future = (int)GeneralUtility::makeInstance(Context::class)
+        $this->future = (int)$this
+                ->get(Context::class)
                 ->getPropertyFromAspect('date', 'timestamp') + 1;
 
         $this->eventMapper = $this->createMock(EventMapper::class);

@@ -13,7 +13,6 @@ use OliverKlee\Seminars\Mapper\FrontEndUserMapper;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -39,7 +38,8 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        GeneralUtility::makeInstance(Context::class)
+        $this
+            ->get(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->testingFramework = $this->get(TestingFramework::class);
@@ -77,7 +77,7 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'title' => 'Title 2',
-                'crdate' => GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
+                'crdate' => $this->get(Context::class)->getPropertyFromAspect(
                     'date',
                     'timestamp',
                 ) + self::SECONDS_PER_DAY,
@@ -87,7 +87,8 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'title' => 'Title 1',
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
             ],
         );

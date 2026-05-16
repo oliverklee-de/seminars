@@ -8,7 +8,6 @@ use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingModel;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -35,7 +34,8 @@ final class AbstractModelTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        GeneralUtility::makeInstance(Context::class)
+        $this
+            ->get(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->testingFramework = $this->get(TestingFramework::class);
@@ -44,10 +44,12 @@ final class AbstractModelTest extends FunctionalTestCase
             'sys_template',
             [
                 'pid' => $systemFolderUid,
-                'tstamp' => (int)GeneralUtility::makeInstance(Context::class)
+                'tstamp' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'sorting' => 256,
-                'crdate' => (int)GeneralUtility::makeInstance(Context::class)
+                'crdate' => (int)$this
+                    ->get(Context::class)
                     ->getPropertyFromAspect('date', 'timestamp'),
                 'title' => 'TEST',
                 'root' => 1,

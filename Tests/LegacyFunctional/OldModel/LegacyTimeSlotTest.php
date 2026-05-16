@@ -10,7 +10,6 @@ use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Tests\Support\LanguageHelper;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyTimeSlot;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -167,7 +166,8 @@ final class LegacyTimeSlotTest extends FunctionalTestCase
     {
         $placeUid = $this->testingFramework->createRecord('tx_seminars_sites');
         $this->subject->setPlace($placeUid);
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+        $connection = $this
+            ->get(ConnectionPool::class)
             ->getConnectionForTable('tx_seminars_attendances');
         $connection->delete('tx_seminars_sites', ['uid' => $placeUid]);
 

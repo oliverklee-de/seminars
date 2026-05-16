@@ -17,7 +17,6 @@ use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
 use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Mail\MailMessage;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -44,7 +43,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $languageService = GeneralUtility::makeInstance(LanguageServiceFactory::class)->create('default');
+        $languageService = $this->get(LanguageServiceFactory::class)->create('default');
         $GLOBALS['LANG'] = $languageService;
 
         $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());

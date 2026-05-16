@@ -8,7 +8,6 @@ use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingModel;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -31,7 +30,7 @@ final class AbstractModelTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $context = GeneralUtility::makeInstance(Context::class);
+        $context = $this->get(Context::class);
         $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
         $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
     }
@@ -289,7 +288,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         self::assertSame(
             1,
-            GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_seminars_test')
+            $this
+                ->get(ConnectionPool::class)->getConnectionForTable('tx_seminars_test')
                 ->count('*', 'tx_seminars_test', ['title' => $title]),
         );
     }
@@ -331,7 +331,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         $model->commitToDatabase();
 
-        $result = GeneralUtility::makeInstance(ConnectionPool::class)
+        $result = $this
+            ->get(ConnectionPool::class)
             ->getConnectionForTable('tx_seminars_test')
             ->select(['*'], 'tx_seminars_test', ['uid' => $model->getUid()]);
         $recordInDatabase = $result->fetchAssociative();
@@ -348,7 +349,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         $model->commitToDatabase();
 
-        $result = GeneralUtility::makeInstance(ConnectionPool::class)
+        $result = $this
+            ->get(ConnectionPool::class)
             ->getConnectionForTable('tx_seminars_test')
             ->select(['*'], 'tx_seminars_test', ['uid' => $model->getUid()]);
         $recordInDatabase = $result->fetchAssociative();
@@ -367,7 +369,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         self::assertSame(
             0,
-            GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_seminars_test')
+            $this
+                ->get(ConnectionPool::class)->getConnectionForTable('tx_seminars_test')
                 ->count('*', 'tx_seminars_test', []),
         );
     }
@@ -399,7 +402,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         self::assertSame(
             1,
-            GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_seminars_test')
+            $this
+                ->get(ConnectionPool::class)->getConnectionForTable('tx_seminars_test')
                 ->count('*', 'tx_seminars_test', ['title' => $newTitle]),
         );
     }
@@ -434,7 +438,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         $model->commitToDatabase();
 
-        $result = GeneralUtility::makeInstance(ConnectionPool::class)
+        $result = $this
+            ->get(ConnectionPool::class)
             ->getConnectionForTable('tx_seminars_test')
             ->select(['*'], 'tx_seminars_test', ['uid' => $model->getUid()]);
         $recordInDatabase = $result->fetchAssociative();
@@ -451,7 +456,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         $model->commitToDatabase();
 
-        $result = GeneralUtility::makeInstance(ConnectionPool::class)
+        $result = $this
+            ->get(ConnectionPool::class)
             ->getConnectionForTable('tx_seminars_test')
             ->select(['*'], 'tx_seminars_test', ['uid' => $model->getUid()]);
         $recordInDatabase = $result->fetchAssociative();
@@ -520,7 +526,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         $subject->createMmRecords('tx_seminars_test_test_mm', [42]);
 
-        $recordCount = GeneralUtility::makeInstance(ConnectionPool::class)
+        $recordCount = $this
+            ->get(ConnectionPool::class)
             ->getConnectionForTable('tx_seminars_test_test_mm')
             ->count('*', 'tx_seminars_test_test_mm', ['uid_local' => 1, 'uid_foreign' => 42]);
         self::assertSame(1, $recordCount);
@@ -536,7 +543,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         $subject->createMmRecords('tx_seminars_test_test_mm', [0]);
 
-        $recordCount = GeneralUtility::makeInstance(ConnectionPool::class)
+        $recordCount = $this
+            ->get(ConnectionPool::class)
             ->getConnectionForTable('tx_seminars_test_test_mm')
             ->count('*', 'tx_seminars_test_test_mm', ['uid_local' => 1]);
         self::assertSame(0, $recordCount);
@@ -552,7 +560,8 @@ final class AbstractModelTest extends FunctionalTestCase
 
         $subject->createMmRecords('tx_seminars_test_test_mm', [42, 31]);
 
-        $statement = GeneralUtility::makeInstance(ConnectionPool::class)
+        $statement = $this
+            ->get(ConnectionPool::class)
             ->getConnectionForTable('tx_seminars_test_test_mm')
             ->select(['sorting'], 'tx_seminars_test_test_mm', ['uid_local' => 1]);
         $recordInDatabase = $statement->fetchAllAssociative();

@@ -15,7 +15,6 @@ use OliverKlee\Seminars\Tests\Support\LanguageHelper;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -51,7 +50,8 @@ final class LegacyRegistrationTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        GeneralUtility::makeInstance(Context::class)
+        $this
+            ->get(Context::class)
             ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->testingFramework = $this->get(TestingFramework::class);
@@ -62,7 +62,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
         $this->testingFramework->changeRecord('pages', $rootPageUid, ['slug' => '/home']);
         $this->testingFramework->createFakeFrontEnd($rootPageUid);
 
-        $this->connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
+        $this->connectionPool = $this->get(ConnectionPool::class);
         $currenciesConnection = $this->connectionPool->getConnectionForTable('static_currencies');
         if ($currenciesConnection->count('*', 'static_currencies', []) === 0) {
             $currenciesConnection->insert(

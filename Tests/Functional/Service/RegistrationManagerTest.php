@@ -80,7 +80,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $context = GeneralUtility::makeInstance(Context::class);
+        $context = $this->get(Context::class);
         $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
         $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
 
@@ -209,7 +209,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
      */
     public function canBeCreatedWithMakeInstance(): void
     {
-        $instance = GeneralUtility::makeInstance(RegistrationManager::class);
+        $instance = $this->get(RegistrationManager::class);
 
         self::assertInstanceOf(RegistrationManager::class, $instance);
     }
