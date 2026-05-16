@@ -57,9 +57,6 @@ plugin.tx_seminars {
   # Whether to send a confirmation to the user if the queue has been updated.
   sendConfirmationOnQueueUpdate = 1
 
-  # Whether to add the CSV file of the registrations when sending the reminder emails to the organizers.
-  addRegistrationCsvToOrganizerReminderMail = 0
-
   # ISO 4217 alpha 3 code of the currency to be used, must be valid
   currency = EUR
 
@@ -75,12 +72,6 @@ plugin.tx_seminars {
 
   # comma-separated list of field names from tx_seminars_attendances that will be used for CSV export
   fieldsFromAttendanceForCsv = uid,crdate,price,total_price,method_of_payment,interests,expectations,background_knowledge,known_from,notes
-
-  # comma-separated list of field names from fe_users that will be used for CLI CSV export
-  fieldsFromFeUserForEmailCsv = name,company,address,zip,city,country,telephone,email
-
-  # comma-separated list of field names from tx_seminars_attendances that will be used for CLI CSV export
-  fieldsFromAttendanceForEmailCsv = uid,crdate,price,total_price,method_of_payment,interests,expectations,background_knowledge,known_from,notes
 
   # whether to add the Excel-specific "sep=;" line to the CSV
   addExcelSpecificSeparatorLineToCsv = 0

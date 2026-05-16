@@ -87,7 +87,6 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
         $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'first_name');
-        $this->configuration->setAsString('fieldsFromFeUserForEmailCsv', 'last_name');
 
         self::assertStringNotContainsString('Doe', $this->subject->render());
     }
@@ -101,7 +100,6 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
         $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'known_from');
-        $this->configuration->setAsString('fieldsFromAttendanceForEmailCsv', 'notes');
 
         self::assertStringContainsString('Google', $this->subject->render());
     }
@@ -115,7 +113,6 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
         $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'known_from');
-        $this->configuration->setAsString('fieldsFromAttendanceForEmailCsv', 'notes');
 
         self::assertStringNotContainsString('Looking forward to the event!', $this->subject->render());
     }
@@ -129,7 +126,6 @@ final class DownloadRegistrationListViewTest extends FunctionalTestCase
         $this->subject->setPageUid(1);
 
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'uid');
-        $this->configuration->setAsString('fieldsFromAttendanceForEmailCsv', 'uid');
 
         self::assertStringNotContainsString('1', $this->subject->render());
     }

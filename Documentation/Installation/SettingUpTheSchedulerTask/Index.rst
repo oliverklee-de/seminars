@@ -32,29 +32,7 @@ To setup the CLI, do the following:
   reminder to the organizers. Setting zero will disable this reminder
   about an event taking place.
 
-- In order to customize the appended CSV, the options
-  *fieldsFromFeUserForEmailCsv* and
-  *fieldsFromAttendanceForEmailCsv*
-  are relevant. Please
-  consider the corresponding section about CSV file attachment for more
-  details.
-
 #. Add a seminars Scheduler task and provide UID of the page with the configuration.
-
-
-**CSV-File Attachment**
-"""""""""""""""""""""""
-
-The mails send via Scheduler can contain a CSV file with the registrations
-to the event the mail is sent for. To customize the contents of the
-CSV file use the following options:
-
-- *fieldsFromAttendanceForEmailCsv* and
-  *fieldsFromFeUserForEmailCsv* customize the fields which are
-  exported in the CSV file. Please note that the CSV files always
-  contains the columns for the data from the registration records first
-  and then data from the corresponding FE user record.
-
 
 ** Daily digest of new registrations **
 """""""""""""""""""""""""""""""""""""""

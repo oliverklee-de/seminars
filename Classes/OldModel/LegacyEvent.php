@@ -1126,16 +1126,6 @@ class LegacyEvent extends AbstractTimeSpan
     }
 
     /**
-     * Checks whether there is at least one registration for this event.
-     *
-     * @return bool true if there is at least one registration for this event, false otherwise
-     */
-    public function hasAttendances(): bool
-    {
-        return $this->getAttendances() > 0;
-    }
-
-    /**
      * @return int<0, max> the number of vacancies (will be 0 if the seminar is overbooked)
      */
     public function getVacancies(): int
