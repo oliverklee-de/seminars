@@ -175,6 +175,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+- Drop the CSV attachment from the scheduler task emails (#5028)
 - Drop `LegacyEvent::isUserRegisteredMessage()` (#4985)
 - Drop the automatic configuration check (#4942)
 - Drop `Registration.hasNecessaryAssociations` (#4686)

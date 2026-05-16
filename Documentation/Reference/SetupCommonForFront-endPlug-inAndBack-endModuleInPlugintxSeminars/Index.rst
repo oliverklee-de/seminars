@@ -366,22 +366,6 @@ only be configured using your TypoScript setup, but not via flexforms.
 .. container:: table-row
 
    Property
-         addRegistrationCsvToOrganizerReminderMail
-
-   Data type
-         boolean
-
-   Description
-         Whether to add the CSV file of the registrations when sending the
-         reminder email to the organizers.
-
-   Default
-         0 (=inactive)
-
-
-.. container:: table-row
-
-   Property
          currency
 
    Data type
@@ -456,39 +440,6 @@ only be configured using your TypoScript setup, but not via flexforms.
    Description
          comma-separated list of field names from tx\_seminars\_attendances
          that will be used for CSV export
-
-   Default
-         uid,crdate,price,total\_price,method\_of\_payment,interests,expectations,back
-         ground\_knowledge,known\_from,notes
-
-
-.. container:: table-row
-
-   Property
-         fieldsFromFeUserForEmailCsv
-
-   Data type
-         string
-
-   Description
-         comma-separated list of field names from fe\_users that will be used
-         for CLI CSV export
-
-   Default
-         name,company,address,zip,city,country,telephone,email
-
-
-.. container:: table-row
-
-   Property
-         fieldsFromAttendanceForEmailCsv
-
-   Data type
-         string
-
-   Description
-         comma-separated list of field names from tx\_seminars\_attendances
-         that will be used for CLI CSV export
 
    Default
          uid,crdate,price,total\_price,method\_of\_payment,interests,expectations,back

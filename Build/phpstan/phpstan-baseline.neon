@@ -2361,16 +2361,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 6
-			path: ../../Tests/LegacyFunctional/Csv/EmailRegistrationListViewTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$recordData of method OliverKlee\\\\Oelib\\\\Testing\\\\TestingFramework\\:\\:createRecord\\(\\) expects array\\<string, bool\\|int\\|string\\>, array\\<string, mixed\\> given\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/EmailRegistrationListViewTest.php
-
-		-
 			message: "#^Cannot access offset 'AnEmailSalutationHo…' on mixed\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php

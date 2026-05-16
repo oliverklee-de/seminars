@@ -11,7 +11,6 @@ use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\BagBuilder\EventBagBuilder;
-use OliverKlee\Seminars\Csv\EmailRegistrationListView;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use OliverKlee\Seminars\Mapper\EventMapper;
@@ -29,8 +28,6 @@ use TYPO3\CMS\Scheduler\Task\AbstractTask;
  */
 class MailNotifier extends AbstractTask
 {
-    private const CSV_FILENAME = 'registrations.csv';
-
     /**
      * @var int<0, max>
      */
@@ -149,13 +146,6 @@ class MailNotifier extends AbstractTask
         $replyTo = $event->getFirstOrganizer();
         $sender = $this->determineEmailSenderForEvent($event);
         $subject = $this->customizeMessage($messageKey . 'Subject', $event);
-        /** @var string|null $attachmentBody */
-        $attachmentBody = null;
-        if ($this->shouldCsvFileBeAdded($event)) {
-            $eventUid = $event->getUid();
-            \assert($eventUid > 0);
-            $attachmentBody = $this->getCsv($eventUid);
-        }
 
         /** @var LegacyOrganizer $organizer */
         foreach ($event->getOrganizerBag() as $organizer) {
@@ -166,10 +156,6 @@ class MailNotifier extends AbstractTask
                 ->subject($subject)
                 ->text($this->customizeMessage($messageKey, $event, $organizer->getName()));
             $emailBuilder->replyTo($replyTo);
-            if (\is_string($attachmentBody)) {
-                $emailBuilder->attach($attachmentBody, 'text/csv', self::CSV_FILENAME);
-            }
-
             $emailBuilder->build()->send();
         }
     }
@@ -276,19 +262,6 @@ class MailNotifier extends AbstractTask
     }
 
     /**
-     * Returns the CSV output for the list of registrations for the event with the provided UID.
-     *
-     * @param positive-int $eventUid UID of the event to create the output for
-     */
-    private function getCsv(int $eventUid): string
-    {
-        $csvCreator = GeneralUtility::makeInstance(EmailRegistrationListView::class);
-        $csvCreator->setEventUid($eventUid);
-
-        return $csvCreator->render();
-    }
-
-    /**
      * Returns localized email content customized for the provided event and
      * the provided organizer.
      *
@@ -333,17 +306,6 @@ class MailNotifier extends AbstractTask
         \assert(\is_string($format));
 
         return \date($format, $timestamp);
-    }
-
-    /**
-     * Checks whether the CSV file should be added to the email.
-     *
-     * @param LegacyEvent $event the event to send the email for
-     */
-    private function shouldCsvFileBeAdded(LegacyEvent $event): bool
-    {
-        return $this->getConfiguration()->getAsBoolean('addRegistrationCsvToOrganizerReminderMail')
-            && $event->hasAttendances();
     }
 
     /**

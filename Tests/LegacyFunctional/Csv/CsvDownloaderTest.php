@@ -721,7 +721,6 @@ final class CsvDownloaderTest extends FunctionalTestCase
      */
     public function createAndOutputListOfRegistrationsForWebModeNotUsesUserFieldsFromEmailConfiguration(): void
     {
-        $this->configuration->setAsString('fieldsFromFeUserForEmailCsv', 'email');
         $this->configuration->setAsString('fieldsFromFeUserForCsv', 'name');
 
         $frontEndUserUid = $this->testingFramework->createFrontEndUser('', ['email' => 'foo@bar.com']);
@@ -741,7 +740,6 @@ final class CsvDownloaderTest extends FunctionalTestCase
      */
     public function createAndOutputListOfRegistrationsForWebModeDoesNotExportWaitingListRegistrations(): void
     {
-        $this->configuration->setAsString('fieldsFromAttendanceForEmailCsv', 'uid');
         $this->configuration->setAsString('fieldsFromAttendanceForCsv', 'uid');
 
         $this->testingFramework->createRecord(
