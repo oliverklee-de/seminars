@@ -6,9 +6,7 @@ namespace OliverKlee\Seminars\BagBuilder;
 
 use OliverKlee\Seminars\Bag\AbstractBag;
 use OliverKlee\Seminars\Domain\Repository\PageRepository as SeminarsPageRepository;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -63,12 +61,15 @@ abstract class AbstractBagBuilder
 
     protected PageRepository $pageRepository;
 
+    protected ConnectionPool $connectionPool;
+
     /**
      * The constructor. Checks that $this->tableName is not empty.
      */
     public function __construct()
     {
         $this->pageRepository = GeneralUtility::makeInstance(PageRepository::class);
+        $this->connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
     }
 
     /**
@@ -239,20 +240,5 @@ abstract class AbstractBagBuilder
     public function showHiddenRecords(): void
     {
         $this->showHiddenRecords = true;
-    }
-
-    protected function getQueryBuilderForTable(string $table): QueryBuilder
-    {
-        return $this->getConnectionPool()->getQueryBuilderForTable($table);
-    }
-
-    protected function getConnectionForTable(string $table): Connection
-    {
-        return $this->getConnectionPool()->getConnectionForTable($table);
-    }
-
-    private function getConnectionPool(): ConnectionPool
-    {
-        return GeneralUtility::makeInstance(ConnectionPool::class);
     }
 }

@@ -7,6 +7,7 @@ namespace OliverKlee\Seminars\Tests\Functional\Seo;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Seo\SlugGenerator;
 use OliverKlee\Seminars\Tests\Unit\Seo\Fixtures\TestingSlugEventDispatcher;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -31,7 +32,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
 
         $this->eventDispatcher = new TestingSlugEventDispatcher();
 
-        $this->subject = new SlugGenerator($this->eventDispatcher);
+        $this->subject = new SlugGenerator($this->eventDispatcher, $this->get(ConnectionPool::class));
     }
 
     /**

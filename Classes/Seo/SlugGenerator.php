@@ -11,7 +11,6 @@ use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\DataHandling\SlugHelper;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Builds the slug for event records.
@@ -25,9 +24,12 @@ class SlugGenerator implements SingletonInterface
 
     private EventDispatcherInterface $eventDispatcher;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher)
+    private ConnectionPool $connectionPool;
+
+    public function __construct(EventDispatcherInterface $eventDispatcher, ConnectionPool $connectionPool)
     {
         $this->eventDispatcher = $eventDispatcher;
+        $this->connectionPool = $connectionPool;
     }
 
     public function getPrefix(): string
@@ -82,14 +84,9 @@ class SlugGenerator implements SingletonInterface
         return $event->getSlug();
     }
 
-    private function getConnectionPool(): ConnectionPool
-    {
-        return GeneralUtility::makeInstance(ConnectionPool::class);
-    }
-
     private function getQueryBuilder(): QueryBuilder
     {
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE_NAME_EVENTS);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME_EVENTS);
         $queryBuilder->getRestrictions()->removeAll();
 
         return $queryBuilder;

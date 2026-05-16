@@ -21,6 +21,13 @@ class MailNotifierConfiguration extends AbstractAdditionalFieldProvider
 {
     private const LABEL_PREFIX = 'LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:';
 
+    private ConnectionPool $connectionPool;
+
+    public function __construct()
+    {
+        $this->connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
+    }
+
     /**
      * Gets additional fields to render in the form to add/edit a task
      *
@@ -60,7 +67,7 @@ class MailNotifierConfiguration extends AbstractAdditionalFieldProvider
         $pageUid = (int)$submittedData['seminars_configurationPageUid'];
         $submittedData['seminars_configurationPageUid'] = $pageUid;
 
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('pages');
+        $connection = $this->connectionPool->getConnectionForTable('pages');
         $pageWithUidExist = $connection->count('*', 'pages', ['uid' => $pageUid]) > 0;
         $hasPageUid = $pageUid > 0 && $pageWithUidExist;
         if ($hasPageUid) {

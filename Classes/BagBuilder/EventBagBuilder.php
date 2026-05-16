@@ -81,7 +81,7 @@ class EventBagBuilder extends AbstractBagBuilder
         }
 
         $categoryUids = GeneralUtility::intExplode(',', $concatenatedCategoryUids, true);
-        $queryBuilder = $this->getQueryBuilderForTable('tx_seminars_seminars_categories_mm');
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable('tx_seminars_seminars_categories_mm');
         $categoryUidsParameter = $queryBuilder->createNamedParameter($categoryUids, Connection::PARAM_INT_ARRAY);
         $queryResult = $queryBuilder
             ->select('uid_local')
@@ -342,7 +342,7 @@ class EventBagBuilder extends AbstractBagBuilder
      */
     private function quoteAndImplodeForDatabaseQuery(array $array): string
     {
-        $connection = $this->getConnectionForTable('tx_seminars_sites');
+        $connection = $this->connectionPool->getConnectionForTable('tx_seminars_sites');
         $quoted = [];
 
         foreach ($array as $value) {
@@ -648,7 +648,7 @@ class EventBagBuilder extends AbstractBagBuilder
      */
     private function getSearchWherePartForEventTopics(string $quotedSearchWord): array
     {
-        $queryBuilder = $this->getQueryBuilderForTable('tx_seminars_seminars');
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable('tx_seminars_seminars');
         $queryResult = $queryBuilder
             ->select('uid')
             ->from('tx_seminars_seminars')
@@ -772,7 +772,7 @@ class EventBagBuilder extends AbstractBagBuilder
             $quotedSearchWord,
         );
 
-        $queryBuilder = $this->getQueryBuilderForTable($foreignTable);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($foreignTable);
         $queryResult = $queryBuilder
             ->select('uid')
             ->from($foreignTable)
@@ -785,7 +785,7 @@ class EventBagBuilder extends AbstractBagBuilder
             return [];
         }
 
-        $queryBuilder = $this->getQueryBuilderForTable($mmTable);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($mmTable);
         $foreignUidsParameter = $queryBuilder->createNamedParameter($foreignUids, Connection::PARAM_INT_ARRAY);
         $queryResult = $queryBuilder
             ->select('uid_local')
@@ -811,7 +811,9 @@ class EventBagBuilder extends AbstractBagBuilder
      */
     private function prepareSearchWord(string $searchWord): string
     {
-        return $this->getConnectionForTable($this->tableName)->quote(\trim($searchWord, self::TRIM_CHARACTER_LIST));
+        return $this->connectionPool
+            ->getConnectionForTable($this->tableName)
+            ->quote(\trim($searchWord, self::TRIM_CHARACTER_LIST));
     }
 
     /**
@@ -963,7 +965,7 @@ class EventBagBuilder extends AbstractBagBuilder
 
         $table = 'tx_seminars_seminars_organizers_mm';
         $organizerUids = GeneralUtility::intExplode(',', $concatenatedOrganizerUids, true);
-        $queryBuilder = $this->getQueryBuilderForTable($table);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);
         $organizersParameter = $queryBuilder->createNamedParameter($organizerUids, Connection::PARAM_INT_ARRAY);
         $queryResult = $queryBuilder
             ->select('uid_local')
@@ -1000,7 +1002,7 @@ class EventBagBuilder extends AbstractBagBuilder
         }
 
         $table = 'tx_seminars_target_groups';
-        $queryBuilder = $this->getQueryBuilderForTable($table);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);
         $queryResultWithTargetGroups = $queryBuilder
             ->select('uid')
             ->from($table)
@@ -1025,7 +1027,7 @@ class EventBagBuilder extends AbstractBagBuilder
         $matchingTargetGroups = \array_column($resultWithTargetGroups, 'uid');
 
         $table = 'tx_seminars_seminars';
-        $queryBuilder = $this->getQueryBuilderForTable($table);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);
         $queryResultWithoutTargetGroups = $queryBuilder
             ->select('uid')
             ->from($table)
@@ -1051,7 +1053,7 @@ class EventBagBuilder extends AbstractBagBuilder
 
         if ($matchingTargetGroups !== []) {
             $table = 'tx_seminars_seminars_target_groups_mm';
-            $queryBuilder = $this->getQueryBuilderForTable($table);
+            $queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);
             $targetGroupsParameter = $queryBuilder
                 ->createNamedParameter($matchingTargetGroups, Connection::PARAM_INT_ARRAY);
             $queryResult = $queryBuilder
@@ -1116,7 +1118,7 @@ class EventBagBuilder extends AbstractBagBuilder
             ')';
 
         $table = 'tx_seminars_seminars';
-        $queryBuilder = $this->getQueryBuilderForTable($table);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);
         $queryResult = $queryBuilder
             ->select('uid')
             ->from($table)
@@ -1167,7 +1169,7 @@ class EventBagBuilder extends AbstractBagBuilder
             ') ';
 
         $table = 'tx_seminars_seminars';
-        $queryBuilder = $this->getQueryBuilderForTable($table);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);
         $queryResult = $queryBuilder
             ->select('uid')
             ->from($table)

@@ -6,9 +6,7 @@ namespace OliverKlee\Seminars\Hooks;
 
 use OliverKlee\Seminars\Hooks\Interfaces\DataSanitization;
 use OliverKlee\Seminars\Seo\SlugGenerator;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -28,9 +26,12 @@ class DataHandlerHook implements SingletonInterface
 
     private SlugGenerator $slugGenerator;
 
-    public function __construct(SlugGenerator $slugGenerator)
+    private ConnectionPool $connectionPool;
+
+    public function __construct(SlugGenerator $slugGenerator, ConnectionPool $connectionPool)
     {
         $this->slugGenerator = $slugGenerator;
+        $this->connectionPool = $connectionPool;
     }
 
     /**
@@ -79,7 +80,7 @@ class DataHandlerHook implements SingletonInterface
      */
     private function processSingleEvent(int $uid): void
     {
-        $originalData = $this
+        $originalData = $this->connectionPool
             ->getConnectionForTable(self::TABLE_EVENTS)
             ->select(['*'], self::TABLE_EVENTS, ['uid' => $uid])->fetchAssociative();
         if (!\is_array($originalData)) {
@@ -102,7 +103,11 @@ class DataHandlerHook implements SingletonInterface
         );
 
         if ($updatedData !== $originalData) {
-            $this->getConnectionForTable(self::TABLE_EVENTS)->update(self::TABLE_EVENTS, $updatedData, ['uid' => $uid]);
+            $this->connectionPool->getConnectionForTable(self::TABLE_EVENTS)->update(
+                self::TABLE_EVENTS,
+                $updatedData,
+                ['uid' => $uid],
+            );
         }
     }
 
@@ -118,7 +123,7 @@ class DataHandlerHook implements SingletonInterface
 
     private function copyBeginDateFromTimeSlots(int $uid, array &$data): void
     {
-        $query = $this->getQueryBuilderForTable(self::TABLE_TIME_SLOTS);
+        $query = $this->connectionPool->getQueryBuilderForTable(self::TABLE_TIME_SLOTS);
         $queryResult = $query
             ->addSelectLiteral($query->expr()->min('begin_date', 'begin_date'))
             ->from(self::TABLE_TIME_SLOTS)
@@ -133,7 +138,7 @@ class DataHandlerHook implements SingletonInterface
 
     private function copyEndDateFromTimeSlots(int $uid, array &$data): void
     {
-        $query = $this->getQueryBuilderForTable(self::TABLE_TIME_SLOTS);
+        $query = $this->connectionPool->getQueryBuilderForTable(self::TABLE_TIME_SLOTS);
         $queryResult = $query
             ->addSelectLiteral($query->expr()->max('end_date', 'end_date'))
             ->from(self::TABLE_TIME_SLOTS)
@@ -182,20 +187,5 @@ class DataHandlerHook implements SingletonInterface
         if (\in_array($command, ['copy', 'move', 'localize'], true) && $table === self::TABLE_EVENTS) {
             $GLOBALS['TCA'][self::TABLE_EVENTS]['columns']['registrations']['config']['type'] = 'inline';
         }
-    }
-
-    protected function getQueryBuilderForTable(string $table): QueryBuilder
-    {
-        return $this->getConnectionPool()->getQueryBuilderForTable($table);
-    }
-
-    protected function getConnectionForTable(string $table): Connection
-    {
-        return $this->getConnectionPool()->getConnectionForTable($table);
-    }
-
-    private function getConnectionPool(): ConnectionPool
-    {
-        return GeneralUtility::makeInstance(ConnectionPool::class);
     }
 }

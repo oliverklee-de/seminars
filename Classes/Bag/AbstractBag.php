@@ -91,6 +91,8 @@ abstract class AbstractBag implements \Iterator
 
     protected PageRepository $pageRepository;
 
+    private ConnectionPool $connectionPool;
+
     /**
      * Creates a bag that contains test records and allows iterating over them.
      *
@@ -117,6 +119,7 @@ abstract class AbstractBag implements \Iterator
         int $showHiddenRecords = -1
     ) {
         $this->pageRepository = GeneralUtility::makeInstance(PageRepository::class);
+        $this->connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
         $this->allTableNames = static::$tableName . (!empty($additionalTableNames) ? ', ' . $additionalTableNames : '');
         $this->queryParameters = \trim($queryParameters);
         $this->createEnabledFieldsQuery($showHiddenRecords);
@@ -207,8 +210,8 @@ abstract class AbstractBag implements \Iterator
         $sql .= $this->orderBy !== '' ? ' ORDER BY ' . $this->orderBy : '';
         $sql .= $this->limit !== '' ? ' LIMIT ' . $this->limit : '';
 
-        $this->queryResult = $this
-            ->getConnectionPool()->getConnectionForTable($this->allTableNames)
+        $this->queryResult = $this->connectionPool
+            ->getConnectionForTable($this->allTableNames)
             ->query($sql)->fetchAll();
 
         $this->queryHasBeenExecuted = true;
@@ -280,7 +283,7 @@ abstract class AbstractBag implements \Iterator
             return $this->countWithoutLimit;
         }
 
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable($this->allTableNames);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable($this->allTableNames);
         if ($this->showHiddenRecords) {
             $queryBuilder
                 ->getRestrictions()
@@ -327,10 +330,5 @@ abstract class AbstractBag implements \Iterator
         \sort($uids, SORT_NUMERIC);
 
         return \implode(',', $uids);
-    }
-
-    private function getConnectionPool(): ConnectionPool
-    {
-        return GeneralUtility::makeInstance(ConnectionPool::class);
     }
 }
