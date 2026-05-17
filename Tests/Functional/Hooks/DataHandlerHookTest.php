@@ -35,7 +35,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->dataHandler = new DataHandler();
+        $this->dataHandler = GeneralUtility::makeInstance(DataHandler::class);
 
         $this->subject = $this->get(DataHandlerHook::class);
     }
