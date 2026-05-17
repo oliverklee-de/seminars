@@ -75,7 +75,10 @@ final class RegistrationGuardTest extends UnitTestCase
      */
     private function createFromImmutable(\DateTimeInterface $dateTime): \DateTime
     {
-        return \DateTime::createFromFormat(\DateTimeInterface::ATOM, $dateTime->format(\DateTime::ATOM));
+        $result = \DateTime::createFromFormat(\DateTimeInterface::ATOM, $dateTime->format(\DateTime::ATOM));
+        self::assertInstanceOf(\DateTime::class, $result);
+
+        return $result;
     }
 
     /**
