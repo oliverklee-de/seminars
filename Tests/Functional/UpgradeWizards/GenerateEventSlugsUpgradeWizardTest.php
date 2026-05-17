@@ -6,6 +6,8 @@ namespace OliverKlee\Seminars\Tests\Functional\UpgradeWizards;
 
 use OliverKlee\Seminars\UpgradeWizards\GenerateEventSlugsUpgradeWizard;
 use Psr\Log\NullLogger;
+use TYPO3\CMS\Core\Database\Connection;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -21,11 +23,15 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
         'oliverklee/seminars',
     ];
 
+    private Connection $eventsTableConnection;
+
     private GenerateEventSlugsUpgradeWizard $subject;
 
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->eventsTableConnection = $this->get(ConnectionPool::class)->getConnectionForTable('tx_seminars_seminars');
 
         $this->subject = $this->get(GenerateEventSlugsUpgradeWizard::class);
         $this->subject->setLogger(new NullLogger());
@@ -108,8 +114,10 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
 
         $wizardResult = $this->subject->executeUpdate();
 
-        $connection = $this->getConnectionPool()->getConnectionForTable('tx_seminars_seminars');
-        $result = $connection->executeQuery('SELECT * FROM tx_seminars_seminars WHERE uid = :uid', ['uid' => 1]);
+        $result = $this->eventsTableConnection->executeQuery(
+            'SELECT * FROM tx_seminars_seminars WHERE uid = :uid',
+            ['uid' => 1],
+        );
         $databaseRow = $result->fetchAssociative();
 
         self::assertIsArray($databaseRow);
@@ -126,8 +134,10 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
 
         $wizardResult = $this->subject->executeUpdate();
 
-        $connection = $this->getConnectionPool()->getConnectionForTable('tx_seminars_seminars');
-        $result = $connection->executeQuery('SELECT * FROM tx_seminars_seminars WHERE uid = :uid', ['uid' => 2]);
+        $result = $this->eventsTableConnection->executeQuery(
+            'SELECT * FROM tx_seminars_seminars WHERE uid = :uid',
+            ['uid' => 2],
+        );
         $databaseRow = $result->fetchAssociative();
 
         self::assertIsArray($databaseRow);
@@ -144,8 +154,10 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
 
         $wizardResult = $this->subject->executeUpdate();
 
-        $connection = $this->getConnectionPool()->getConnectionForTable('tx_seminars_seminars');
-        $result = $connection->executeQuery('SELECT * FROM tx_seminars_seminars WHERE uid = :uid', ['uid' => 1]);
+        $result = $this->eventsTableConnection->executeQuery(
+            'SELECT * FROM tx_seminars_seminars WHERE uid = :uid',
+            ['uid' => 1],
+        );
         $databaseRow = $result->fetchAssociative();
 
         self::assertIsArray($databaseRow);
@@ -162,8 +174,10 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
 
         $wizardResult = $this->subject->executeUpdate();
 
-        $connection = $this->getConnectionPool()->getConnectionForTable('tx_seminars_seminars');
-        $result = $connection->executeQuery('SELECT * FROM tx_seminars_seminars WHERE uid = :uid', ['uid' => 1]);
+        $result = $this->eventsTableConnection->executeQuery(
+            'SELECT * FROM tx_seminars_seminars WHERE uid = :uid',
+            ['uid' => 1],
+        );
         $databaseRow = $result->fetchAssociative();
 
         self::assertIsArray($databaseRow);
@@ -180,8 +194,10 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
 
         $wizardResult = $this->subject->executeUpdate();
 
-        $connection = $this->getConnectionPool()->getConnectionForTable('tx_seminars_seminars');
-        $result = $connection->executeQuery('SELECT * FROM tx_seminars_seminars WHERE uid = :uid', ['uid' => 1]);
+        $result = $this->eventsTableConnection->executeQuery(
+            'SELECT * FROM tx_seminars_seminars WHERE uid = :uid',
+            ['uid' => 1],
+        );
         $databaseRow = $result->fetchAssociative();
 
         self::assertIsArray($databaseRow);
@@ -198,8 +214,10 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
 
         $wizardResult = $this->subject->executeUpdate();
 
-        $connection = $this->getConnectionPool()->getConnectionForTable('tx_seminars_seminars');
-        $result = $connection->executeQuery('SELECT * FROM tx_seminars_seminars WHERE uid = :uid', ['uid' => 1]);
+        $result = $this->eventsTableConnection->executeQuery(
+            'SELECT * FROM tx_seminars_seminars WHERE uid = :uid',
+            ['uid' => 1],
+        );
         $databaseRow = $result->fetchAssociative();
 
         self::assertIsArray($databaseRow);

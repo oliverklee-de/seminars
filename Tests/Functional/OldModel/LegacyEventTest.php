@@ -15,6 +15,7 @@ use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\Tests\Functional\Traits\FalHelper;
 use OliverKlee\Seminars\Tests\Support\LanguageHelper;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Resource\FileReference;
@@ -42,6 +43,8 @@ final class LegacyEventTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private Connection $registrationsConnection;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -50,6 +53,10 @@ final class LegacyEventTest extends FunctionalTestCase
         $GLOBALS['LANG'] = $this
             ->get(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
+
+        $this->registrationsConnection = $this
+            ->get(ConnectionPool::class)
+            ->getConnectionForTable('tx_seminars_attendances');
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
@@ -204,12 +211,10 @@ final class LegacyEventTest extends FunctionalTestCase
         $subject = TestingLegacyEvent::fromUid($eventUid);
         self::assertSame(3, $subject->getAttendances());
 
-        $this
-            ->get(ConnectionPool::class)->getConnectionForTable('tx_seminars_attendances')
-            ->insert(
-                'tx_seminars_attendances',
-                ['seminar' => $eventUid, 'seats' => 2, 'registration_queue' => ExtbaseRegistration::STATUS_REGULAR],
-            );
+        $this->registrationsConnection->insert(
+            'tx_seminars_attendances',
+            ['seminar' => $eventUid, 'seats' => 2, 'registration_queue' => ExtbaseRegistration::STATUS_REGULAR],
+        );
         $subject->calculateStatistics();
 
         self::assertSame(5, $subject->getAttendances());
@@ -226,16 +231,14 @@ final class LegacyEventTest extends FunctionalTestCase
         $subject = TestingLegacyEvent::fromUid($eventUid);
         self::assertSame(3, $subject->getAttendances());
 
-        $this
-            ->get(ConnectionPool::class)->getConnectionForTable('tx_seminars_attendances')
-            ->insert(
-                'tx_seminars_attendances',
-                [
-                    'seminar' => $eventUid,
-                    'seats' => 1,
-                    'registration_queue' => ExtbaseRegistration::STATUS_NONBINDING_RESERVATION,
-                ],
-            );
+        $this->registrationsConnection->insert(
+            'tx_seminars_attendances',
+            [
+                'seminar' => $eventUid,
+                'seats' => 1,
+                'registration_queue' => ExtbaseRegistration::STATUS_NONBINDING_RESERVATION,
+            ],
+        );
         $subject->calculateStatistics();
 
         self::assertSame(3, $subject->getAttendances());

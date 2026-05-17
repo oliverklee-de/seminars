@@ -24,6 +24,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Database\Connection;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -793,7 +794,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         );
 
         $this->subject->removeRegistration($registrationUid);
-        $query = $this->getConnectionPool()->getQueryBuilderForTable('tx_seminars_attendances');
+        $query = $this->get(ConnectionPool::class)->getQueryBuilderForTable('tx_seminars_attendances');
         $query->getRestrictions()->removeAll();
         $queryResult = $query
             ->count('*')
