@@ -3061,16 +3061,6 @@ parameters:
 			path: ../../Tests/Unit/OldModel/LegacyRegistrationTest.php
 
 		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Service\\\\PriceFinderTest\\:\\:createFromImmutable\\(\\) should return DateTime but returns DateTime\\|false\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Service/PriceFinderTest.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Service\\\\RegistrationGuardTest\\:\\:createFromImmutable\\(\\) should return DateTime but returns DateTime\\|false\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Service/RegistrationGuardTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$json of method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:setJsonEncodedAdditionAttendees\\(\\) expects string, string\\|false given\\.$#"
 			count: 15
 			path: ../../Tests/Unit/Service/RegistrationProcessorTest.php

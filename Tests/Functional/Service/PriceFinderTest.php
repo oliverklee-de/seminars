@@ -2,22 +2,27 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Tests\Unit\Service;
+namespace OliverKlee\Seminars\Tests\Functional\Service;
 
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Model\Price;
 use OliverKlee\Seminars\Service\PriceFinder;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
  * @covers \OliverKlee\Seminars\Service\PriceFinder
  */
-final class PriceFinderTest extends UnitTestCase
+final class PriceFinderTest extends FunctionalTestCase
 {
+    protected bool $initializeDatabase = false;
+
+    protected array $testExtensionsToLoad = [
+        'oliverklee/feuserextrafields',
+        'oliverklee/oelib',
+        'oliverklee/seminars',
+    ];
+
     private PriceFinder $subject;
 
     private \DateTimeImmutable $now;
@@ -26,18 +31,11 @@ final class PriceFinderTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->now = new \DateTimeImmutable('2022-04-01 10:00:00');
-        $context = GeneralUtility::makeInstance(Context::class);
-        $context->setAspect('date', new DateTimeAspect($this->now));
+        $now = $this->get(Context::class)->getPropertyFromAspect('date', 'full');
+        self::assertInstanceOf(\DateTimeImmutable::class, $now);
+        $this->now = $now;
 
-        $this->subject = new PriceFinder();
-    }
-
-    protected function tearDown(): void
-    {
-        GeneralUtility::purgeInstances();
-
-        parent::tearDown();
+        $this->subject = $this->get(PriceFinder::class);
     }
 
     /**
@@ -45,15 +43,18 @@ final class PriceFinderTest extends UnitTestCase
      */
     private function createFromImmutable(\DateTimeInterface $dateTime): \DateTime
     {
-        return \DateTime::createFromFormat(\DateTimeInterface::ATOM, $dateTime->format(\DateTime::ATOM));
+        $result = \DateTime::createFromFormat(\DateTimeInterface::ATOM, $dateTime->format(\DateTime::ATOM));
+        self::assertInstanceOf(\DateTime::class, $result);
+
+        return $result;
     }
 
     /**
      * @test
      */
-    public function isSingleton(): void
+    public function isAvailableViaContainer(): void
     {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
+        self::assertInstanceOf(PriceFinder::class, $this->get(PriceFinder::class));
     }
 
     /**
