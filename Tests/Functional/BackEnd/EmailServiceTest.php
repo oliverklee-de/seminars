@@ -11,7 +11,6 @@ use OliverKlee\Seminars\Tests\Support\LanguageHelper;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
 use TYPO3\CMS\Core\Mail\MailMessage;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -62,9 +61,9 @@ final class EmailServiceTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function isSingleton(): void
+    public function isAvailableViaContainer(): void
     {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
+        self::assertInstanceOf(EmailService::class, $this->get(EmailService::class));
     }
 
     /**

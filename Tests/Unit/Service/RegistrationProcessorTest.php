@@ -16,7 +16,6 @@ use OliverKlee\Seminars\Service\RegistrationGuard;
 use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Service\RegistrationProcessor;
 use PHPUnit\Framework\MockObject\MockObject;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -76,14 +75,6 @@ final class RegistrationProcessorTest extends UnitTestCase
         GeneralUtility::purgeInstances();
 
         parent::tearDown();
-    }
-
-    /**
-     * @test
-     */
-    public function isSingleton(): void
-    {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
     }
 
     /**

@@ -46,11 +46,17 @@ final class SlugGeneratorTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canBeConstructedUsingTheContainer(): void
+    public function isAvailableViaContainer(): void
     {
-        $subject = $this->get(SlugGenerator::class);
+        self::assertInstanceOf(SlugGenerator::class, $this->get(SlugGenerator::class));
+    }
 
-        self::assertInstanceOf(SlugGenerator::class, $subject);
+    /**
+     * @test
+     */
+    public function getPrefixAlwaysReturnsAnEmptyString(): void
+    {
+        self::assertSame('', $this->subject->getPrefix());
     }
 
     /**

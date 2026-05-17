@@ -7,14 +7,12 @@ namespace OliverKlee\Seminars\Tests\Functional\Service;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
-use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
-use OliverKlee\Seminars\Domain\Repository\FrontendUserRepository;
-use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
-use OliverKlee\Seminars\Service\RegistrationGuard;
-use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Service\RegistrationProcessor;
-use OliverKlee\Seminars\Tests\Support\LanguageHelper;
+use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
+use TYPO3\CMS\Core\Http\ServerRequestFactory;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -22,7 +20,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class RegistrationProcessorTest extends FunctionalTestCase
 {
-    use LanguageHelper;
+    protected bool $initializeDatabase = false;
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
@@ -36,15 +34,21 @@ final class RegistrationProcessorTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->initializeBackEndLanguage();
+        GeneralUtility::setIndpEnv('TYPO3_REQUEST_URL', 'https://www.example.com/');
+        $request = ServerRequestFactory::fromGlobals()
+            ->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_FE)
+            ->withAttribute('frontend.user', $this->createStub(FrontendUserAuthentication::class));
+        $GLOBALS['TYPO3_REQUEST'] = $request;
 
-        $this->subject = new RegistrationProcessor(
-            $this->createStub(RegistrationRepository::class),
-            $this->createStub(EventRepository::class),
-            $this->createStub(FrontendUserRepository::class),
-            $this->createStub(RegistrationGuard::class),
-            $this->createStub(RegistrationManager::class),
-        );
+        $this->subject = $this->get(RegistrationProcessor::class);
+    }
+
+    /**
+     * @test
+     */
+    public function isAvailableViaContainer(): void
+    {
+        self::assertInstanceOf(RegistrationProcessor::class, $this->get(RegistrationProcessor::class));
     }
 
     /**

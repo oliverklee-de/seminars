@@ -13,7 +13,6 @@ use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Mail\MailMessage;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -82,9 +81,9 @@ final class RegistrationDigestTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function isSingleton(): void
+    public function isAvailableViaContainer(): void
     {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
+        self::assertInstanceOf(RegistrationDigest::class, $this->get(RegistrationDigest::class));
     }
 
     /**

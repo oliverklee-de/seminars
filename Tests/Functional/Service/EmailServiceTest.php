@@ -78,7 +78,15 @@ final class EmailServiceTest extends FunctionalTestCase
         $registration->setEvent($this->event);
         $this->event->getRegistrations()->add($registration);
 
-        $this->subject = new EmailService();
+        $this->subject = $this->get(EmailService::class);
+    }
+
+    /**
+     * @test
+     */
+    public function isAvailableViaContainer(): void
+    {
+        self::assertInstanceOf(EmailService::class, $this->get(EmailService::class));
     }
 
     /**

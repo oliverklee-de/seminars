@@ -13,7 +13,6 @@ use OliverKlee\Seminars\Service\EventStatusService;
 use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -57,15 +56,15 @@ final class EventStatusServiceTest extends FunctionalTestCase
         $this->eventMapper = $this->createMock(EventMapper::class);
         $this->get(MapperRegistry::class)->setByClassName(EventMapper::class, $this->eventMapper);
 
-        $this->subject = new EventStatusService();
+        $this->subject = $this->get(EventStatusService::class);
     }
 
     /**
      * @test
      */
-    public function classIsSingleton(): void
+    public function isAvailableViaContainer(): void
     {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
+        self::assertInstanceOf(EventStatusService::class, $this->get(EventStatusService::class));
     }
 
     /**

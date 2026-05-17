@@ -23,6 +23,14 @@ final class ResponseHeadersModifierTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function isAvailableViaContainer(): void
+    {
+        self::assertInstanceOf(ResponseHeadersModifier::class, $this->get(ResponseHeadersModifier::class));
+    }
+
+    /**
+     * @test
+     */
     public function isRegisteredAsBackendMiddleware(): void
     {
         $middlewares = $this->get('backend.middlewares');

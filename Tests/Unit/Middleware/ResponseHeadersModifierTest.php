@@ -10,7 +10,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Http\Response;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -55,14 +54,6 @@ final class ResponseHeadersModifierTest extends UnitTestCase
     public function isMiddleware(): void
     {
         self::assertInstanceOf(MiddlewareInterface::class, $this->subject);
-    }
-
-    /**
-     * @test
-     */
-    public function isSingleton(): void
-    {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
     }
 
     /**
