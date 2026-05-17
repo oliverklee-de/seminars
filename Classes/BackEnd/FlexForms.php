@@ -15,6 +15,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class FlexForms
 {
+    private ConnectionPool $connectionPool;
+
+    public function __construct()
+    {
+        $this->connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
+    }
+
     /**
      * Returns the configuration for the flex forms field
      * "showFeUserFieldsInRegistrationsList" with the selectable database columns.
@@ -64,8 +71,9 @@ class FlexForms
             throw new \InvalidArgumentException('$table must not be empty.', 1333291708);
         }
 
-        $connection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
-        $statement = $connection->query('SHOW FULL COLUMNS FROM `' . $table . '`');
+        $statement = $this->connectionPool
+            ->getConnectionForTable($table)
+            ->query('SHOW FULL COLUMNS FROM `' . $table . '`');
         $columns = [];
         foreach ($statement->fetchAll() as $row) {
             $field = $row['Field'];

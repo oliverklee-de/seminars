@@ -29,7 +29,6 @@ use OliverKlee\Seminars\OldModel\LegacyRegistration;
 use OliverKlee\Seminars\Templating\TemplateHelper;
 use Pelago\Emogrifier\CssInliner;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -44,11 +43,18 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 class RegistrationManager implements SingletonInterface
 {
+    private ConnectionPool $connectionPool;
+
     private ?Configuration $sharedPluginConfiguration = null;
 
     private ?Template $emailTemplate = null;
 
     protected ?HookProvider $registrationEmailHookProvider = null;
+
+    public function __construct(ConnectionPool $connectionPool)
+    {
+        $this->connectionPool = $connectionPool;
+    }
 
     /**
      * Checks whether is possible to register for a given event at all:
@@ -282,7 +288,7 @@ class RegistrationManager implements SingletonInterface
             return;
         }
 
-        $this->getConnectionForTable('tx_seminars_attendances')->update(
+        $this->connectionPool->getConnectionForTable('tx_seminars_attendances')->update(
             'tx_seminars_attendances',
             ['hidden' => 1, 'tstamp' => $this->nowAsTimestamp()],
             ['uid' => $uid],
@@ -323,7 +329,7 @@ class RegistrationManager implements SingletonInterface
             }
 
             if ($registration->getSeats() <= $vacancies) {
-                $this->getConnectionForTable('tx_seminars_attendances')->update(
+                $this->connectionPool->getConnectionForTable('tx_seminars_attendances')->update(
                     'tx_seminars_attendances',
                     ['registration_queue' => Registration::STATUS_REGULAR],
                     ['uid' => $registration->getUid()],
@@ -1162,11 +1168,6 @@ class RegistrationManager implements SingletonInterface
         \assert($userUid >= 0);
 
         return $userUid;
-    }
-
-    private function getConnectionForTable(string $table): Connection
-    {
-        return GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable($table);
     }
 
     /**

@@ -82,7 +82,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizard implements
 
     public function executeUpdate(): bool
     {
-        $registrationConnection = $this->getConnectionPool()->getConnectionForTable(self::TABLE_NAME_REGISTRATIONS);
+        $registrationConnection = $this->connectionPool->getConnectionForTable(self::TABLE_NAME_REGISTRATIONS);
         $registrationQueryBuilder = $this->getRegistrationQueryBuilder();
         $userQueryBuilder = $this->getUserQueryBuilder();
 
@@ -151,14 +151,9 @@ class CopyBillingAddressToRegistrationsUpgradeWizard implements
         return true;
     }
 
-    private function getConnectionPool(): ConnectionPool
-    {
-        return $this->connectionPool;
-    }
-
     private function getRegistrationQueryBuilder(): QueryBuilder
     {
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE_NAME_REGISTRATIONS);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME_REGISTRATIONS);
         $queryBuilder->getRestrictions()->removeAll();
 
         return $queryBuilder;
@@ -166,7 +161,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizard implements
 
     private function getUserQueryBuilder(): QueryBuilder
     {
-        $queryBuilder = $this->getConnectionPool()->getQueryBuilderForTable(self::TABLE_NAME_USERS);
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(self::TABLE_NAME_USERS);
         $queryBuilder->getRestrictions()->removeAll();
 
         return $queryBuilder;

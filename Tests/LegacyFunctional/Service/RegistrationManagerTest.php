@@ -939,6 +939,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
+            ->disableOriginalConstructor()
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::never())->method('getUnregistrationNotice');
 
@@ -965,6 +966,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
+            ->disableOriginalConstructor()
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::never())->method('getUnregistrationNotice');
         $this->configuration->setAsBoolean('sendConfirmation', true);
@@ -986,6 +988,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
+            ->disableOriginalConstructor()
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::atLeast(1))->method('getUnregistrationNotice');
         $this->configuration->setAsBoolean('sendConfirmation', true);
@@ -1014,6 +1017,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
+            ->disableOriginalConstructor()
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::atLeast(1))->method('getUnregistrationNotice');
 
@@ -1050,6 +1054,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
+            ->disableOriginalConstructor()
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::atLeast(1))->method('getUnregistrationNotice');
 
@@ -1767,7 +1772,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ['attendees_min' => 5, 'attendees_max' => 5],
         );
 
-        $subject = new RegistrationManager();
+        $subject = $this->get(RegistrationManager::class);
         $this->configuration->setAsString('templateFile', 'EXT:seminars/Resources/Private/Templates/Mail/e-mail.html');
 
         $this->email->expects(self::never())->method('send');
