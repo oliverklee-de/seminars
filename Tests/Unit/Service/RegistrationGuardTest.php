@@ -69,29 +69,6 @@ final class RegistrationGuardTest extends UnitTestCase
         );
     }
 
-    /**
-     * @deprecated #1960 will be removed in seminars 6.0, use `DateTime::createFromImmutable()` instead (PHP >= 7.3)
-     */
-    private function createFromImmutable(\DateTimeInterface $dateTime): \DateTime
-    {
-        $result = \DateTime::createFromFormat(\DateTimeInterface::ATOM, $dateTime->format(\DateTime::ATOM));
-        self::assertInstanceOf(\DateTime::class, $result);
-
-        return $result;
-    }
-
-    /**
-     * @test
-     */
-    public function createFromImmutableKeepsDatesComparable(): void
-    {
-        $dateTimeImmutable = new \DateTimeImmutable($this->now);
-        $dateTime = $this->createFromImmutable($dateTimeImmutable);
-
-        self::assertFalse($dateTimeImmutable < $dateTime);
-        self::assertFalse($dateTimeImmutable > $dateTime);
-    }
-
     private function now(): \DateTimeImmutable
     {
         return new \DateTimeImmutable($this->now);
@@ -200,7 +177,7 @@ final class RegistrationGuardTest extends UnitTestCase
      */
     public function registrationPossibleDataProvider(): array
     {
-        $now = $this->createFromImmutable($this->now());
+        $now = \DateTime::createFromImmutable($this->now());
         // We need the clone because `modify` on `DateTime` modifies the original object instead of returning a new one
         // (which would be the case for `DateTimeImmutable`.
         $future = (clone $now)->modify('+1 day');
@@ -259,7 +236,7 @@ final class RegistrationGuardTest extends UnitTestCase
      */
     public function registrationNotPossibleDataProvider(): array
     {
-        $now = $this->createFromImmutable($this->now());
+        $now = \DateTime::createFromImmutable($this->now());
         // We need the clone because `modify` on `DateTime` modifies the original object instead of returning a new one
         // (which would be the case for `DateTimeImmutable`.
         $future = (clone $now)->modify('+1 day');
