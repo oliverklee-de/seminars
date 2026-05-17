@@ -39,17 +39,6 @@ final class PriceFinderTest extends FunctionalTestCase
     }
 
     /**
-     * @deprecated #1960 will be removed in seminars 6.0, use `DateTime::createFromImmutable()` instead (PHP >= 7.3)
-     */
-    private function createFromImmutable(\DateTimeInterface $dateTime): \DateTime
-    {
-        $result = \DateTime::createFromFormat(\DateTimeInterface::ATOM, $dateTime->format(\DateTime::ATOM));
-        self::assertInstanceOf(\DateTime::class, $result);
-
-        return $result;
-    }
-
-    /**
      * @test
      */
     public function isAvailableViaContainer(): void
@@ -79,7 +68,7 @@ final class PriceFinderTest extends FunctionalTestCase
         $event = new SingleEvent();
         $event->setStandardPrice(0.0);
         $earlyBirdDeadline = $this->now->modify('-1 day');
-        $event->setEarlyBirdDeadline($this->createFromImmutable($earlyBirdDeadline));
+        $event->setEarlyBirdDeadline(\DateTime::createFromImmutable($earlyBirdDeadline));
 
         $result = $this->subject->findApplicablePrices($event);
 
@@ -95,7 +84,7 @@ final class PriceFinderTest extends FunctionalTestCase
         $event = new SingleEvent();
         $event->setStandardPrice(0.0);
         $earlyBirdDeadline = $this->now->modify('+1 day');
-        $event->setEarlyBirdDeadline($this->createFromImmutable($earlyBirdDeadline));
+        $event->setEarlyBirdDeadline(\DateTime::createFromImmutable($earlyBirdDeadline));
 
         $result = $this->subject->findApplicablePrices($event);
 
@@ -111,7 +100,7 @@ final class PriceFinderTest extends FunctionalTestCase
         $event = new SingleEvent();
         $event->setStandardPrice(0.0);
         $earlyBirdDeadline = $this->now->modify('+1 day');
-        $event->setEarlyBirdDeadline($this->createFromImmutable($earlyBirdDeadline));
+        $event->setEarlyBirdDeadline(\DateTime::createFromImmutable($earlyBirdDeadline));
         $event->setEarlyBirdPrice(14.5);
 
         $result = $this->subject->findApplicablePrices($event);
@@ -153,7 +142,7 @@ final class PriceFinderTest extends FunctionalTestCase
     {
         $event = new SingleEvent();
         $earlyBirdDeadline = $this->now->modify('-1 day');
-        $event->setEarlyBirdDeadline($this->createFromImmutable($earlyBirdDeadline));
+        $event->setEarlyBirdDeadline(\DateTime::createFromImmutable($earlyBirdDeadline));
 
         $standardPriceAmount = 1.0;
         $earlyBirdPriceAmount = 2.0;
@@ -180,7 +169,7 @@ final class PriceFinderTest extends FunctionalTestCase
     public function findApplicablePricesForAllPricesAndEarlyBirdDeadlineNowReturnsNonEarlyBirdPrices(): void
     {
         $event = new SingleEvent();
-        $event->setEarlyBirdDeadline($this->createFromImmutable($this->now));
+        $event->setEarlyBirdDeadline(\DateTime::createFromImmutable($this->now));
 
         $standardPriceAmount = 1.0;
         $earlyBirdPriceAmount = 2.0;
@@ -208,7 +197,7 @@ final class PriceFinderTest extends FunctionalTestCase
     {
         $event = new SingleEvent();
         $earlyBirdDeadline = $this->now->modify('+1 day');
-        $event->setEarlyBirdDeadline($this->createFromImmutable($earlyBirdDeadline));
+        $event->setEarlyBirdDeadline(\DateTime::createFromImmutable($earlyBirdDeadline));
 
         $standardPriceAmount = 1.0;
         $earlyBirdPriceAmount = 2.0;
@@ -240,7 +229,7 @@ final class PriceFinderTest extends FunctionalTestCase
     {
         $event = new SingleEvent();
         $earlyBirdDeadline = $this->now->modify('+1 day');
-        $event->setEarlyBirdDeadline($this->createFromImmutable($earlyBirdDeadline));
+        $event->setEarlyBirdDeadline(\DateTime::createFromImmutable($earlyBirdDeadline));
 
         $standardPriceAmount = 1.0;
         $earlyBirdPriceAmount = 2.0;
@@ -263,7 +252,7 @@ final class PriceFinderTest extends FunctionalTestCase
     {
         $event = new SingleEvent();
         $earlyBirdDeadline = $this->now->modify('+1 day');
-        $event->setEarlyBirdDeadline($this->createFromImmutable($earlyBirdDeadline));
+        $event->setEarlyBirdDeadline(\DateTime::createFromImmutable($earlyBirdDeadline));
 
         $standardPriceAmount = 1.0;
         $specialPriceAmount = 3.0;
@@ -293,7 +282,7 @@ final class PriceFinderTest extends FunctionalTestCase
     {
         $event = new SingleEvent();
         $earlyBirdDeadline = $this->now->modify('+1 day');
-        $event->setEarlyBirdDeadline($this->createFromImmutable($earlyBirdDeadline));
+        $event->setEarlyBirdDeadline(\DateTime::createFromImmutable($earlyBirdDeadline));
 
         $standardPriceAmount = 1.0;
         $earlyBirdPriceAmount = 2.0;
