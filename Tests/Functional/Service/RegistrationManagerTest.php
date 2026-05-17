@@ -209,7 +209,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
      */
     public function canBeCreatedWithMakeInstance(): void
     {
-        $instance = $this->get(RegistrationManager::class);
+        $instance = GeneralUtility::makeInstance(RegistrationManager::class);
 
         self::assertInstanceOf(RegistrationManager::class, $instance);
     }
