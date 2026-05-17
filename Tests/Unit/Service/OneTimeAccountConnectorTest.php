@@ -7,7 +7,6 @@ namespace OliverKlee\Seminars\Tests\Unit\Service;
 use OliverKlee\Seminars\Service\OneTimeAccountConnector;
 use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Http\ServerRequest;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -42,14 +41,6 @@ final class OneTimeAccountConnectorTest extends UnitTestCase
     {
         unset($GLOBALS['TYPO3_REQUEST']);
         parent::tearDown();
-    }
-
-    /**
-     * @test
-     */
-    public function isSingleton(): void
-    {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
     }
 
     /**

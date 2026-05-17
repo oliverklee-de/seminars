@@ -214,6 +214,13 @@ final class RegistrationManagerTest extends FunctionalTestCase
         self::assertInstanceOf(RegistrationManager::class, $instance);
     }
 
+    /**
+     * @test
+     */
+    public function isAvailableViaContainer(): void
+    {
+        self::assertInstanceOf(RegistrationManager::class, $this->get(RegistrationManager::class));
+    }
     // Tests concerning notifyOrganizers
 
     /**

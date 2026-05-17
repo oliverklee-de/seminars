@@ -17,7 +17,6 @@ use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Context\UserAspect;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -96,14 +95,6 @@ final class RegistrationGuardTest extends UnitTestCase
     private function now(): \DateTimeImmutable
     {
         return new \DateTimeImmutable($this->now);
-    }
-
-    /**
-     * @test
-     */
-    public function isSingleton(): void
-    {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
     }
 
     /**

@@ -47,6 +47,14 @@ final class DataHandlerHookTest extends FunctionalTestCase
         $this->unifyBackEndLanguage();
     }
 
+    /**
+     * @test
+     */
+    public function isAvailableViaContainer(): void
+    {
+        self::assertInstanceOf(DataHandlerHook::class, $this->get(DataHandlerHook::class));
+    }
+
     private function getProcessDataMapConfigurationForSeminars(): string
     {
         $dataMapperConfiguration = (array)$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php'];

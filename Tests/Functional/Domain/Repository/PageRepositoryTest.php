@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\Functional\Domain\Repository;
 
 use OliverKlee\Seminars\Domain\Repository\PageRepository;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -33,9 +32,9 @@ final class PageRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function isSingleton(): void
+    public function isAvailableViaContainer(): void
     {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
+        self::assertInstanceOf(PageRepository::class, $this->get(PageRepository::class));
     }
 
     /**
