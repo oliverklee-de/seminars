@@ -2693,9 +2693,13 @@
         <source>fully booked</source>
         <target state="needs-translation">fully booked</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies.unlimited">
-        <source>∞</source>
-        <target state="needs-translation">∞</target>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fewLeft">
+        <source>few left</source>
+        <target state="needs-translation">few left</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.available">
+        <source>available</source>
+        <target state="needs-translation">available</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration">
         <source>Registration</source>
@@ -2801,9 +2805,13 @@
         <source>fully booked</source>
         <target state="needs-translation">fully booked</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.vacancies.unlimited">
-        <source>unlimited</source>
-        <target state="needs-translation">unlimited</target>
+      <trans-unit id="plugin.eventSingleView.events.property.vacancies.fewLeft">
+        <source>few tickets left</source>
+        <target state="needs-translation">few tickets left</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.vacancies.available">
+        <source>tickets available</source>
+        <target state="needs-translation">tickets available</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.venue">
         <source>Venue</source>
