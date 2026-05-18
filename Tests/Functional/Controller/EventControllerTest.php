@@ -527,7 +527,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionForEventWithUnlimitedSeatsRendersUnlimitedSeats(): void
+    public function outlookActionForEventWithUnlimitedSeatsRendersAvailable(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/outlookAction/FutureEventWithUnlimitedSeats.csv');
@@ -536,19 +536,18 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        $unlimited = LocalizationUtility::translate(
-            'plugin.eventOutlook.events.property.vacancies.unlimited',
+        $available = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.vacancies.available',
             'seminars',
         );
-        self::assertIsString($unlimited);
-        self::assertStringContainsString($unlimited, $html);
-        self::assertStringContainsString('🟢', $html);
+        self::assertIsString($available);
+        self::assertStringContainsString($available, $html);
     }
 
     /**
      * @test
      */
-    public function outlookActionForEventWithMoreThanEnoughVacanciesRendersThreshold(): void
+    public function outlookActionForEventWithMoreThanEnoughVacanciesRendersAvailable(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(
@@ -559,13 +558,18 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('≥ 5 🟢', $html);
+        $available = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.vacancies.available',
+            'seminars',
+        );
+        self::assertIsString($available);
+        self::assertStringContainsString($available, $html);
     }
 
     /**
      * @test
      */
-    public function outlookActionForEventWithExactlyEnoughVacanciesRendersRendersThreshold(): void
+    public function outlookActionForEventWithExactlyEnoughVacanciesRendersAvailable(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(
@@ -576,13 +580,18 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('≥ 5 🟢', $html);
+        $available = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.vacancies.available',
+            'seminars',
+        );
+        self::assertIsString($available);
+        self::assertStringContainsString($available, $html);
     }
 
     /**
      * @test
      */
-    public function outlookActionForEventWithLessThanEnoughVacanciesRendersExactVacancies(): void
+    public function outlookActionForEventWithLessThanEnoughVacanciesRendersFewLeft(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(
@@ -593,13 +602,18 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('4 🟡', $html);
+        $fewLeft = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.vacancies.fewLeft',
+            'seminars',
+        );
+        self::assertIsString($fewLeft);
+        self::assertStringContainsString($fewLeft, $html);
     }
 
     /**
      * @test
      */
-    public function outlookActionForEventWithOneVacancyRendersExactVacancies(): void
+    public function outlookActionForEventWithOneVacancyRendersFewLeft(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/outlookAction/FutureEventWithOneVacancy.csv');
@@ -608,7 +622,12 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('1 🟡', $html);
+        $fewLeft = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.vacancies.fewLeft',
+            'seminars',
+        );
+        self::assertIsString($fewLeft);
+        self::assertStringContainsString($fewLeft, $html);
     }
 
     /**
@@ -629,7 +648,6 @@ final class EventControllerTest extends FunctionalTestCase
         );
         self::assertIsString($fullyBooked);
         self::assertStringContainsString($fullyBooked, $html);
-        self::assertStringContainsString('🔴', $html);
     }
 
     /**
@@ -1091,7 +1109,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionForEventWithUnlimitedSeatsRendersUnlimitedSeats(): void
+    public function showActionForEventWithUnlimitedSeatsRendersAvailable(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/showAction/EventSingleViewContentElement.csv');
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/showAction/FutureEventWithUnlimitedSeats.csv');
@@ -1102,19 +1120,18 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        $unlimited = LocalizationUtility::translate(
-            'plugin.eventSingleView.events.property.vacancies.unlimited',
+        $available = LocalizationUtility::translate(
+            'plugin.eventSingleView.events.property.vacancies.available',
             'seminars',
         );
-        self::assertIsString($unlimited);
-        self::assertStringContainsString($unlimited, $html);
-        self::assertStringContainsString('🟢', $html);
+        self::assertIsString($available);
+        self::assertStringContainsString($available, $html);
     }
 
     /**
      * @test
      */
-    public function showActionForEventWithMoreThanEnoughVacanciesRendersThreshold(): void
+    public function showActionForEventWithMoreThanEnoughVacanciesRendersAvailable(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/showAction/EventSingleViewContentElement.csv');
         $this->importCSVDataSet(
@@ -1127,13 +1144,18 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('≥ 5 🟢', $html);
+        $available = LocalizationUtility::translate(
+            'plugin.eventSingleView.events.property.vacancies.available',
+            'seminars',
+        );
+        self::assertIsString($available);
+        self::assertStringContainsString($available, $html);
     }
 
     /**
      * @test
      */
-    public function showActionForEventWithExactlyEnoughVacanciesRendersRendersThreshold(): void
+    public function showActionForEventWithExactlyEnoughVacanciesRendersAvailable(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/showAction/EventSingleViewContentElement.csv');
         $this->importCSVDataSet(
@@ -1146,13 +1168,18 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('≥ 5 🟢', $html);
+        $available = LocalizationUtility::translate(
+            'plugin.eventSingleView.events.property.vacancies.available',
+            'seminars',
+        );
+        self::assertIsString($available);
+        self::assertStringContainsString($available, $html);
     }
 
     /**
      * @test
      */
-    public function showActionForEventWithLessThanEnoughVacanciesRendersExactVacancies(): void
+    public function showActionForEventWithLessThanEnoughVacanciesRendersFewLeft(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/showAction/EventSingleViewContentElement.csv');
         $this->importCSVDataSet(
@@ -1165,13 +1192,18 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('4 🟡', $html);
+        $fewLeft = LocalizationUtility::translate(
+            'plugin.eventSingleView.events.property.vacancies.fewLeft',
+            'seminars',
+        );
+        self::assertIsString($fewLeft);
+        self::assertStringContainsString($fewLeft, $html);
     }
 
     /**
      * @test
      */
-    public function showActionForEventWithOneVacancyRendersExactVacancies(): void
+    public function showActionForEventWithOneVacancyRendersFewLeft(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/showAction/EventSingleViewContentElement.csv');
         $this->importCSVDataSet(__DIR__ . '/Fixtures/EventController/showAction/FutureEventWithOneVacancy.csv');
@@ -1182,7 +1214,12 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('1 🟡', $html);
+        $fewLeft = LocalizationUtility::translate(
+            'plugin.eventSingleView.events.property.vacancies.fewLeft',
+            'seminars',
+        );
+        self::assertIsString($fewLeft);
+        self::assertStringContainsString($fewLeft, $html);
     }
 
     /**
@@ -1205,7 +1242,6 @@ final class EventControllerTest extends FunctionalTestCase
         );
         self::assertIsString($fullyBooked);
         self::assertStringContainsString($fullyBooked, $html);
-        self::assertStringContainsString('🔴', $html);
     }
 
     /**
