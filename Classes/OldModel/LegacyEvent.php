@@ -23,7 +23,6 @@ use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Place;
 use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Templating\TemplateHelper;
-use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -1845,9 +1844,8 @@ class LegacyEvent extends AbstractTimeSpan
         int $registrationsListPID = 0,
         int $registrationsVipListPID = 0
     ): bool {
-        $currentUserUid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
-        \assert(\is_int($currentUserUid) && $currentUserUid >= 0);
-        if ($currentUserUid <= 0) {
+        $currentUserUid = $this->getLoggedInFrontEndUserUid();
+        if ($currentUserUid === 0) {
             return false;
         }
 
@@ -1907,8 +1905,8 @@ class LegacyEvent extends AbstractTimeSpan
         int $registrationsListPID = 0,
         int $registrationsVipListPID = 0
     ): bool {
-        $currentUserUid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
-        if ($currentUserUid <= 0) {
+        $currentUserUid = $this->getLoggedInFrontEndUserUid();
+        if ($currentUserUid === 0) {
             return false;
         }
 
@@ -1951,7 +1949,7 @@ class LegacyEvent extends AbstractTimeSpan
         if (!$this->needsRegistration()) {
             return $this->translate('message_noRegistrationNecessary');
         }
-        if (!GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user')->isLoggedIn()) {
+        if (!$this->isLoggedIn()) {
             return $this->translate('message_notLoggedIn');
         }
         if (
@@ -2043,9 +2041,7 @@ class LegacyEvent extends AbstractTimeSpan
             return false;
         }
 
-        $now = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
-
-        return $now >= $registrationDeadline;
+        return $this->getNowAsUnixTimestamp() >= $registrationDeadline;
     }
 
     /**
@@ -2055,9 +2051,7 @@ class LegacyEvent extends AbstractTimeSpan
      */
     public function isEarlyBirdDeadlineOver(): bool
     {
-        $now = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
-
-        return $now >= $this->getLatestPossibleEarlyBirdRegistrationTime();
+        return $this->getNowAsUnixTimestamp() >= $this->getLatestPossibleEarlyBirdRegistrationTime();
     }
 
     /**
@@ -2435,7 +2429,7 @@ class LegacyEvent extends AbstractTimeSpan
      */
     public function isOwnerFeUser(): bool
     {
-        $loggedInUserUid = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
+        $loggedInUserUid = $this->getLoggedInFrontEndUserUid();
 
         return $loggedInUserUid > 0 && ($this->getRecordPropertyInteger('owner_feuser') === $loggedInUserUid);
     }
@@ -2647,8 +2641,7 @@ class LegacyEvent extends AbstractTimeSpan
 
         $deadline = $this->getEffectiveUnregistrationDeadline();
         if (\is_int($deadline)) {
-            $now = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
-            $canUnregisterByDate = $now < $deadline;
+            $canUnregisterByDate = $this->getNowAsUnixTimestamp() < $deadline;
         } else {
             $canUnregisterByDate = true;
         }

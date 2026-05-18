@@ -14,6 +14,8 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 final class LegacyOrganizerTest extends UnitTestCase
 {
+    protected bool $resetSingletonInstances = true;
+
     private LegacyOrganizer $subject;
 
     protected function setUp(): void

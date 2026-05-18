@@ -41,12 +41,16 @@ class MailNotifier extends AbstractTask
 
     protected RegistrationDigest $registrationDigest;
 
+    private Context $context;
+
     private bool $dependenciesAreSetUp = false;
 
     /**
      * Sets up the dependencies (as we cannot use dependency injection on scheduler tasks).
+     *
+     * @internal
      */
-    protected function constituteDependencies(): void
+    public function constituteDependencies(): void
     {
         if ($this->dependenciesAreSetUp) {
             return;
@@ -58,6 +62,7 @@ class MailNotifier extends AbstractTask
         $this->emailService = GeneralUtility::makeInstance(EmailService::class);
         $this->eventMapper = GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(EventMapper::class);
         $this->registrationDigest = GeneralUtility::makeInstance(RegistrationDigest::class);
+        $this->context = GeneralUtility::makeInstance(Context::class);
 
         $this->dependenciesAreSetUp = true;
     }
@@ -220,7 +225,9 @@ class MailNotifier extends AbstractTask
 
         $result = [];
 
-        $now = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
+        $now = $this->context->getPropertyFromAspect('date', 'timestamp');
+        \assert(\is_int($now));
+        \assert($now > 0);
         $builder = $this->getSeminarBagBuilder(EventInterface::STATUS_PLANNED);
         $builder->limitToCancelationDeadlineReminderNotSent();
         foreach ($builder->build() as $event) {

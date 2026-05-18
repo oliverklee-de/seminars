@@ -16,11 +16,14 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class EventStatusService implements SingletonInterface
 {
-    protected EventMapper $eventMapper;
+    private EventMapper $eventMapper;
+
+    private Context $context;
 
     public function __construct()
     {
         $this->eventMapper = GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(EventMapper::class);
+        $this->context = GeneralUtility::makeInstance(Context::class);
     }
 
     /**
@@ -38,14 +41,13 @@ class EventStatusService implements SingletonInterface
         }
 
         $eventWasUpdated = false;
+        $now = $this->context->getPropertyFromAspect('date', 'timestamp');
+        \assert(\is_int($now));
+        \assert($now > 0);
         if ($event->hasEnoughRegistrations()) {
             $this->confirmAndSave($event);
             $eventWasUpdated = true;
-        } elseif (
-            $event->hasRegistrationDeadline()
-            && $event->getRegistrationDeadlineAsUnixTimeStamp()
-            < (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp')
-        ) {
+        } elseif ($event->hasRegistrationDeadline() && ($event->getRegistrationDeadlineAsUnixTimeStamp() < $now)) {
             $this->cancelAndSave($event);
             $eventWasUpdated = true;
         }

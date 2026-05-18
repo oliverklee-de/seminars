@@ -45,15 +45,23 @@ class RegistrationManager implements SingletonInterface
 {
     private ConnectionPool $connectionPool;
 
+    private Context $context;
+
     private ?Configuration $sharedPluginConfiguration = null;
 
     private ?Template $emailTemplate = null;
 
     protected ?HookProvider $registrationEmailHookProvider = null;
 
-    public function __construct(ConnectionPool $connectionPool)
+    public function __construct(ConnectionPool $connectionPool, Context $context)
     {
         $this->connectionPool = $connectionPool;
+        $this->context = $context;
+    }
+
+    private function isLoggedIn(): bool
+    {
+        return $this->context->getAspect('frontend.user')->isLoggedIn();
     }
 
     /**
@@ -75,7 +83,7 @@ class RegistrationManager implements SingletonInterface
         if ($event->getPriceOnRequest() || !$event->canSomebodyRegister()) {
             return false;
         }
-        if (!GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user')->isLoggedIn()) {
+        if (!$this->isLoggedIn()) {
             return true;
         }
 
@@ -104,8 +112,7 @@ class RegistrationManager implements SingletonInterface
     {
         $message = '';
 
-        $isLoggedIn = GeneralUtility::makeInstance(Context::class)->getAspect('frontend.user')->isLoggedIn();
-        if ($isLoggedIn && !$this->couldThisUserRegister($event)) {
+        if ($this->isLoggedIn() && !$this->couldThisUserRegister($event)) {
             $message = $this->translate('message_alreadyRegistered');
         } elseif (!$event->canSomebodyRegister()) {
             $message = $event->canSomebodyRegisterMessage();
@@ -1164,7 +1171,8 @@ class RegistrationManager implements SingletonInterface
      */
     protected function getLoggedInFrontEndUserUid(): int
     {
-        $userUid = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
+        $userUid = $this->context->getPropertyFromAspect('frontend.user', 'id');
+        \assert(\is_int($userUid));
         \assert($userUid >= 0);
 
         return $userUid;
@@ -1196,7 +1204,8 @@ class RegistrationManager implements SingletonInterface
      */
     private function nowAsTimestamp(): int
     {
-        $now = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
+        $now = $this->context->getPropertyFromAspect('date', 'timestamp');
+        \assert(\is_int($now));
         \assert($now > 0);
 
         return $now;

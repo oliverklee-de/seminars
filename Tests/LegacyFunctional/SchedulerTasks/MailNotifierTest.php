@@ -93,6 +93,7 @@ final class MailNotifierTest extends FunctionalTestCase
         $this->testingFramework = $this->get(TestingFramework::class);
         $configurationPageUid = $this->testingFramework->createFrontEndPage();
         $this->subject->setConfigurationPageUid($configurationPageUid);
+        $this->subject->constituteDependencies();
     }
 
     protected function tearDown(): void
