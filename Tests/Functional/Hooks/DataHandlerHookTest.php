@@ -610,7 +610,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
         $dataHandler->start([], [self::EVENTS_TABLE => [1 => ['copy' => -1]]]);
         $dataHandler->process_cmdmap();
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/copy/SingleEventOnPageAndDuplicate.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/DataHandlerHook/copy/SingleEventOnPageAndDuplicate.csv');
     }
 
     /**
@@ -626,7 +626,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
         $dataHandler->process_cmdmap();
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/DataHandlerHook/copy/SingleEventWithOneRegistrationAndDuplicateWithRegistrations.csv',
+            __DIR__ . '/Assertions/DataHandlerHook/copy/SingleEventWithOneRegistrationAndDuplicateWithRegistrations.csv',
         );
     }
 
@@ -643,7 +643,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
         $dataHandler->process_cmdmap();
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/DataHandlerHook/move/SingleEventOnPageAfterMoving.csv',
+            __DIR__ . '/Assertions/DataHandlerHook/move/SingleEventOnPageAfterMoving.csv',
         );
     }
 
@@ -660,7 +660,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
         $dataHandler->process_cmdmap();
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/DataHandlerHook/move/SingleEventWithOneRegistrationOnPageAfterMoving.csv',
+            __DIR__ . '/Assertions/DataHandlerHook/move/SingleEventWithOneRegistrationOnPageAfterMoving.csv',
         );
     }
 }

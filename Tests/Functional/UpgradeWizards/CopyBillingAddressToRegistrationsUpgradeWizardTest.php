@@ -14,6 +14,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestCase
 {
     private const FIXTURES_PREFIX = __DIR__ . '/Fixtures/CopyBillingAddressToRegistrationsUpgradeWizard/';
+    private const ASSERTIONS_PATH = __DIR__ . '/Assertions/CopyBillingAddressToRegistrationsUpgradeWizard/';
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
@@ -136,7 +137,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddress.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddress.csv');
     }
 
     /**
@@ -151,7 +152,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
         $this->subject->executeUpdate();
 
         $this->assertCSVDataSet(
-            self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressAndUserAndDifferentEmails.csv',
+            self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressAndUserAndDifferentEmails.csv',
         );
     }
 
@@ -164,7 +165,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithUser.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithUser.csv');
     }
 
     /**
@@ -179,7 +180,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
         $this->subject->executeUpdate();
 
         $this->assertCSVDataSet(
-            self::FIXTURES_PREFIX . 'DeletedRegistrationWithoutSeparateBillingAddressWithoutUser.csv',
+            self::ASSERTIONS_PATH . 'DeletedRegistrationWithoutSeparateBillingAddressWithoutUser.csv',
         );
     }
 
@@ -192,7 +193,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithoutUser.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithoutUser.csv');
     }
 
     /**
@@ -204,7 +205,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithCompany.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithCompany.csv');
     }
 
     /**
@@ -216,7 +217,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithFullName.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithFullName.csv');
     }
 
     /**
@@ -230,7 +231,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithFullName.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithFullName.csv');
     }
 
     /**
@@ -244,7 +245,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithStreetAddress.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithStreetAddress.csv');
     }
 
     /**
@@ -256,7 +257,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithZipCode.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithZipCode.csv');
     }
 
     /**
@@ -268,7 +269,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithCity.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithCity.csv');
     }
 
     /**
@@ -280,7 +281,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithCountry.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithCountry.csv');
     }
 
     /**
@@ -292,7 +293,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithPhoneNumber.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithPhoneNumber.csv');
     }
 
     /**
@@ -306,7 +307,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithEmailAddress.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithEmailAddress.csv');
     }
 
     /**
@@ -320,7 +321,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithEmailAddress.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithEmailAddress.csv');
     }
 
     /**
@@ -428,7 +429,7 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'RegistrationWithSeparateBillingAddressWithCroppedCity.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'RegistrationWithSeparateBillingAddressWithCroppedCity.csv');
     }
 
     /**

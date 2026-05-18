@@ -15,6 +15,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTestCase
 {
     private const FIXTURES_PREFIX = __DIR__ . '/Fixtures/RemoveDuplicateEventVenueRelationsUpgradeWizard/';
+    private const ASSERTIONS_PATH = __DIR__ . '/Assertions/RemoveDuplicateEventVenueRelationsUpgradeWizard/';
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
@@ -117,7 +118,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'NoRelations.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'NoRelations.csv');
     }
 
     /**
@@ -129,7 +130,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'OneUniqueRelation.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'OneUniqueRelation.csv');
     }
 
     /**
@@ -141,7 +142,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'TwoUniqueRelationsFromTwoEventsToTheSameVenue.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'TwoUniqueRelationsFromTwoEventsToTheSameVenue.csv');
     }
 
     /**
@@ -157,7 +158,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'TwoUniqueRelationsFromOneEventToTwoVenues.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'TwoUniqueRelationsFromOneEventToTwoVenues.csv');
     }
 
     /**
@@ -173,7 +174,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'OneUniqueRelation.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'OneUniqueRelation.csv');
     }
 
     /**
@@ -189,7 +190,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'OneUniqueRelation.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'OneUniqueRelation.csv');
     }
 
     /**
@@ -205,6 +206,6 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
 
         $this->subject->executeUpdate();
 
-        $this->assertCSVDataSet(self::FIXTURES_PREFIX . 'TwoUniqueRelationsFromOneEventToTwoVenues.csv');
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . 'TwoUniqueRelationsFromOneEventToTwoVenues.csv');
     }
 }

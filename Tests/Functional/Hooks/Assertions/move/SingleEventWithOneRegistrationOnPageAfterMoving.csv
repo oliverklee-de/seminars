@@ -1,0 +1,17 @@
+"pages"
+,"uid","pid","doktype","title"
+,1,0,254,"record storage"
+,2,0,254,"another storage"
+,3,0,254,"registration storage"
+
+"tx_seminars_seminars"
+,"uid","pid","object_type","registrations"
+,1,2,0,1
+
+"fe_users"
+,"uid","pid"
+,1,1
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,3,1,1

@@ -1,0 +1,8 @@
+"pages"
+,"uid","pid","doktype","title"
+,1,0,254,"record storage"
+,2,0,254,"another storage"
+
+"tx_seminars_seminars"
+,"uid","pid","object_type"
+,1,2,0
