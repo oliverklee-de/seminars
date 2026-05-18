@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Restyle the FE list views (#4988)
+- Restyle the FE list views (#5043)
 - Add the venue to the "my registrations" list (#4982)
 - Add the city to the "my registrations" list (#4981)
 - Also show nonbinding reservations in the BE module (#4862)

@@ -1980,8 +1980,11 @@
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked">
         <source>fully booked</source>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies.unlimited">
-        <source>∞</source>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fewLeft">
+        <source>few left</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.available">
+        <source>available</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration">
         <source>Registration</source>
@@ -2061,8 +2064,11 @@
       <trans-unit id="plugin.eventSingleView.events.property.vacancies.fullyBooked">
         <source>fully booked</source>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.vacancies.unlimited">
-        <source>unlimited</source>
+      <trans-unit id="plugin.eventSingleView.events.property.vacancies.fewLeft">
+        <source>few tickets left</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.vacancies.available">
+        <source>tickets available</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.venue">
         <source>Venue</source>
