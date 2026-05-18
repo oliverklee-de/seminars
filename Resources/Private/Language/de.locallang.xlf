@@ -2660,9 +2660,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>fully booked</source>
         <target state="final">ausgebucht</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies.unlimited" approved="yes">
-        <source>∞</source>
-        <target state="final">∞</target>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fewLeft">
+        <source>few left</source>
+        <target state="needs-translation">few left</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.available">
+        <source>available</source>
+        <target state="needs-translation">available</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration" approved="yes">
         <source>Registration</source>
@@ -2768,9 +2772,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>fully booked</source>
         <target state="final">ausgebucht</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.vacancies.unlimited" approved="yes">
-        <source>unlimited</source>
-        <target state="final">unbegrenzt</target>
+      <trans-unit id="plugin.eventSingleView.events.property.vacancies.fewLeft">
+        <source>few tickets left</source>
+        <target state="needs-translation">few tickets left</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.vacancies.available">
+        <source>tickets available</source>
+        <target state="needs-translation">tickets available</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.venue" approved="yes">
         <source>Venue</source>
