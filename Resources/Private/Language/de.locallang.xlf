@@ -2660,13 +2660,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>fully booked</source>
         <target state="final">ausgebucht</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fewLeft">
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fewLeft" approved="yes">
         <source>few left</source>
-        <target state="needs-translation">few left</target>
+        <target state="final">wenige übrig</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies.available">
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.available" approved="yes">
         <source>available</source>
-        <target state="needs-translation">available</target>
+        <target state="final">verfügbar</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration" approved="yes">
         <source>Registration</source>
@@ -2772,13 +2772,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>fully booked</source>
         <target state="final">ausgebucht</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.vacancies.fewLeft">
+      <trans-unit id="plugin.eventSingleView.events.property.vacancies.fewLeft" approved="yes">
         <source>few tickets left</source>
-        <target state="needs-translation">few tickets left</target>
+        <target state="final">wenige Tickets übrig</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.vacancies.available">
+      <trans-unit id="plugin.eventSingleView.events.property.vacancies.available" approved="yes">
         <source>tickets available</source>
-        <target state="needs-translation">tickets available</target>
+        <target state="final">Tickets verfügbar</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.venue" approved="yes">
         <source>Venue</source>
