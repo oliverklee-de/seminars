@@ -206,7 +206,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
         $this->subject->add($registration);
         $this->persistenceManager->persistAll();
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/persistence/Registration.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/persistence/Registration.csv');
     }
 
     /**
@@ -1254,7 +1254,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
 
         $this->subject->deleteViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/deleteViaDataHandler/DeletedRegistrationOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/deleteViaDataHandler/DeletedRegistrationOnPage.csv');
     }
 
     /**
@@ -1267,7 +1267,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
 
         $this->subject->deleteViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/deleteViaDataHandler/DeletedHiddenRegistrationOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/deleteViaDataHandler/DeletedHiddenRegistrationOnPage.csv');
     }
 
     /**
@@ -1280,7 +1280,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
 
         $this->subject->deleteViaDataHandler(2);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/deleteViaDataHandler/RegistrationOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/deleteViaDataHandler/RegistrationOnPage.csv');
     }
 
     /**
@@ -1293,7 +1293,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
 
         $this->subject->deleteViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/deleteViaDataHandler/DeletedRegistrationOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/deleteViaDataHandler/DeletedRegistrationOnPage.csv');
     }
 
     /**

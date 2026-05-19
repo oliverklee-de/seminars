@@ -1,0 +1,15 @@
+"pages"
+,"uid","pid","doktype","title"
+,1,0,254,"Record for pages"
+
+"tx_seminars_seminars"
+,"uid","pid","object_type"
+,1,1,0
+
+"fe_users"
+,"uid","pid"
+,1,1
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user","deleted","hidden"
+,1,1,1,1,1,0
