@@ -158,7 +158,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $this->subject->getTemplateCode();
         $this->subject->setLabels();
 
-        $contentObject = $this->createPartialMock(ContentObjectRenderer::class, ['cObjGetSingle']);
+        $contentObject = $this->getMockBuilder(ContentObjectRenderer::class)->onlyMethods(['cObjGetSingle'])->getMock();
         $contentObject->setLogger(new NullLogger());
         $contentObject->method('cObjGetSingle')->willReturn('<img src="foo.jpg" alt="bar"/>');
         $this->subject->setContentObjectRenderer($contentObject);
@@ -5396,7 +5396,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     public function initListViewForDefaultListLimitsListByAdditionalParameters(): void
     {
         $subject =
-            $this->getMockBuilder(TestingDefaultController::class)
+            $this
+                ->getMockBuilder(TestingDefaultController::class)
                 ->onlyMethods(['limitForAdditionalParameters'])
                 ->getMock();
         $subject->setUpDependencies();
@@ -5412,7 +5413,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     public function initListViewForTopicListLimitsListByAdditionalParameters(): void
     {
         $subject =
-            $this->getMockBuilder(TestingDefaultController::class)
+            $this
+                ->getMockBuilder(TestingDefaultController::class)
                 ->onlyMethods(['limitForAdditionalParameters'])
                 ->getMock();
         $subject->setUpDependencies();
@@ -5428,7 +5430,8 @@ final class DefaultControllerTest extends FunctionalTestCase
     public function initListViewForMyEventsListNotLimitsListByAdditionalParameters(): void
     {
         $subject =
-            $this->getMockBuilder(TestingDefaultController::class)
+            $this
+                ->getMockBuilder(TestingDefaultController::class)
                 ->onlyMethods(['limitForAdditionalParameters'])
                 ->getMock();
         $subject->setUpDependencies();
