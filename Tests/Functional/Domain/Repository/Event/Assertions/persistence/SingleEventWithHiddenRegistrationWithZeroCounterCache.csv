@@ -1,0 +1,7 @@
+"tx_seminars_seminars"
+,"uid","object_type","registrations"
+,1,0,0
+
+"tx_seminars_attendances"
+,"uid","seminar","hidden"
+,1,1,1

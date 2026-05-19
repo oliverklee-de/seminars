@@ -217,7 +217,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         $this->subject->add($event);
         $this->subject->persistAll();
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/persistence/SingleEvent.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/persistence/SingleEvent.csv');
     }
 
     /**
@@ -229,7 +229,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         $this->subject->add($event);
         $this->subject->persistAll();
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/persistence/EventTopic.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/persistence/EventTopic.csv');
     }
 
     /**
@@ -241,7 +241,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         $this->subject->add($event);
         $this->subject->persistAll();
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/persistence/EventDate.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/persistence/EventDate.csv');
     }
 
     /**
@@ -254,7 +254,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         $this->subject->add($event);
         $this->subject->persistAll();
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/persistence/SingleEvent.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/persistence/SingleEvent.csv');
     }
 
     /**
@@ -788,7 +788,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->updateRegistrationCounterCache($event);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/persistence/SingleEventWithZeroRegistrations.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/persistence/SingleEventWithZeroRegistrations.csv');
     }
 
     /**
@@ -804,7 +804,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         $this->subject->updateRegistrationCounterCache($event);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/persistence/SingleEventWithTwoRegistrationsWithTwoCounterCache.csv',
+            __DIR__ . '/Assertions/persistence/SingleEventWithTwoRegistrationsWithTwoCounterCache.csv',
         );
     }
 
@@ -821,7 +821,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         $this->subject->updateRegistrationCounterCache($event);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/persistence/SingleEventWithHiddenRegistrationWithZeroCounterCache.csv',
+            __DIR__ . '/Assertions/persistence/SingleEventWithHiddenRegistrationWithZeroCounterCache.csv',
         );
     }
 
@@ -838,7 +838,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         $this->subject->updateRegistrationCounterCache($event);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/persistence/SingleEventWithDeletedRegistrationWithZeroCounterCache.csv',
+            __DIR__ . '/Assertions/persistence/SingleEventWithDeletedRegistrationWithZeroCounterCache.csv',
         );
     }
 
@@ -1589,7 +1589,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->hideViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/HiddenSingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/HiddenSingleEventOnPage.csv');
     }
 
     /**
@@ -1602,7 +1602,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->hideViaDataHandler(2);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/SingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/SingleEventOnPage.csv');
     }
 
     /**
@@ -1615,7 +1615,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->hideViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/HiddenSingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/HiddenSingleEventOnPage.csv');
     }
 
     /**
@@ -1628,7 +1628,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->hideViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/DeletedSingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/DeletedSingleEventOnPage.csv');
     }
 
     /**
@@ -1641,7 +1641,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->unhideViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/SingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/SingleEventOnPage.csv');
     }
 
     /**
@@ -1654,7 +1654,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->unhideViaDataHandler(2);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/HiddenSingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/HiddenSingleEventOnPage.csv');
     }
 
     /**
@@ -1667,7 +1667,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->unhideViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/SingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/SingleEventOnPage.csv');
     }
 
     /**
@@ -1680,7 +1680,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->unhideViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/DeletedHiddenSingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/DeletedHiddenSingleEventOnPage.csv');
     }
 
     /**
@@ -1693,7 +1693,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->deleteViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/DeletedSingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/DeletedSingleEventOnPage.csv');
     }
 
     /**
@@ -1706,7 +1706,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->deleteViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/DeletedHiddenSingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/DeletedHiddenSingleEventOnPage.csv');
     }
 
     /**
@@ -1719,7 +1719,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->deleteViaDataHandler(2);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/SingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/SingleEventOnPage.csv');
     }
 
     /**
@@ -1732,7 +1732,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->deleteViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/DeletedSingleEventOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/DeletedSingleEventOnPage.csv');
     }
 
     /**
@@ -1745,7 +1745,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->duplicateViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/duplicateViaDataHandler/SingleEventAndDuplicateOnPage.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/duplicateViaDataHandler/SingleEventAndDuplicateOnPage.csv');
     }
 
     /**
@@ -1758,7 +1758,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->duplicateViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/duplicateViaDataHandler/VisibleSingleEventAndDuplicate.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/duplicateViaDataHandler/VisibleSingleEventAndDuplicate.csv');
     }
 
     /**
@@ -1771,7 +1771,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->duplicateViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/duplicateViaDataHandler/HiddenSingleEventAndDuplicate.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/duplicateViaDataHandler/HiddenSingleEventAndDuplicate.csv');
     }
 
     /**
@@ -1785,7 +1785,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         $this->subject->duplicateViaDataHandler(1);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/duplicateViaDataHandler/SingleEventWithScalarDataAndDuplicate.csv',
+            __DIR__ . '/Assertions/duplicateViaDataHandler/SingleEventWithScalarDataAndDuplicate.csv',
         );
     }
 
@@ -1800,7 +1800,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         $this->subject->duplicateViaDataHandler(1);
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Fixtures/duplicateViaDataHandler/SingleEventWithToOneRelationsAndDuplicate.csv',
+            __DIR__ . '/Assertions/duplicateViaDataHandler/SingleEventWithToOneRelationsAndDuplicate.csv',
         );
     }
 
@@ -1814,7 +1814,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->duplicateViaDataHandler(2);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/duplicateViaDataHandler/EventDateAndDuplicate.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/duplicateViaDataHandler/EventDateAndDuplicate.csv');
     }
 
     /**
@@ -1827,7 +1827,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->duplicateViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/duplicateViaDataHandler/SingleEventWithOrganizerAndDuplicate.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/duplicateViaDataHandler/SingleEventWithOrganizerAndDuplicate.csv');
     }
 
     /**
@@ -1840,7 +1840,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->duplicateViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/duplicateViaDataHandler/SingleEventAndDuplicateWithResetData.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/duplicateViaDataHandler/SingleEventAndDuplicateWithResetData.csv');
     }
 
     /**
@@ -1857,7 +1857,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->assertCSVDataSet(
             __DIR__
-            . '/Fixtures/duplicateViaDataHandler/SingleEventWithOneRegistrationAndDuplicateWithoutRegistrations.csv',
+            . '/Assertions/duplicateViaDataHandler/SingleEventWithOneRegistrationAndDuplicateWithoutRegistrations.csv',
         );
     }
 
@@ -1875,7 +1875,7 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->assertCSVDataSet(
             __DIR__
-            . '/Fixtures/duplicateViaDataHandler/SingleEventWithOneRegistrationAndDuplicateWithRegistrations.csv',
+            . '/Assertions/duplicateViaDataHandler/SingleEventWithOneRegistrationAndDuplicateWithRegistrations.csv',
         );
     }
 
