@@ -1,0 +1,7 @@
+"fe_users"
+,"uid","email"
+,1,"user@example.com"
+
+"tx_seminars_attendances"
+,"uid","user","separate_billing_address","email"
+,1,1,1,"billing@example.com"
