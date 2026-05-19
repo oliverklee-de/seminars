@@ -1,0 +1,11 @@
+"tx_seminars_seminars"
+,"uid","title","date_of_last_registration_digest","registrations"
+,1,"some event",2,1
+
+"fe_users"
+,"uid"
+,1
+
+"tx_seminars_attendances"
+,"uid","crdate","seminar","user"
+,1,1,1,1

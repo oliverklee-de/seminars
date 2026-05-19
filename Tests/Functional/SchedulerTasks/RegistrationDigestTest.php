@@ -285,7 +285,7 @@ final class RegistrationDigestTest extends FunctionalTestCase
 
         $this->subject->execute();
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/RegistrationDigest/EventWithOneNotifiedRegistration.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/RegistrationDigest/EventWithOneNotifiedRegistration.csv');
     }
 
     /**
@@ -297,6 +297,6 @@ final class RegistrationDigestTest extends FunctionalTestCase
 
         $this->subject->execute();
 
-        $this->assertCSVDataSet(__DIR__ . '/Fixtures/RegistrationDigest/EventWithLastDigestDateSetToNow.csv');
+        $this->assertCSVDataSet(__DIR__ . '/Assertions/RegistrationDigest/EventWithLastDigestDateSetToNow.csv');
     }
 }
