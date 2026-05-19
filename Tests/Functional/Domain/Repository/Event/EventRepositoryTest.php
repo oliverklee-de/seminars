@@ -1827,7 +1827,9 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->duplicateViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Assertions/duplicateViaDataHandler/SingleEventWithOrganizerAndDuplicate.csv');
+        $this->assertCSVDataSet(
+            __DIR__ . '/Assertions/duplicateViaDataHandler/SingleEventWithOrganizerAndDuplicate.csv',
+        );
     }
 
     /**
@@ -1840,7 +1842,9 @@ final class EventRepositoryTest extends FunctionalTestCase
 
         $this->subject->duplicateViaDataHandler(1);
 
-        $this->assertCSVDataSet(__DIR__ . '/Assertions/duplicateViaDataHandler/SingleEventAndDuplicateWithResetData.csv');
+        $this->assertCSVDataSet(
+            __DIR__ . '/Assertions/duplicateViaDataHandler/SingleEventAndDuplicateWithResetData.csv',
+        );
     }
 
     /**

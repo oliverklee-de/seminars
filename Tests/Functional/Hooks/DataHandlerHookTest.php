@@ -626,7 +626,8 @@ final class DataHandlerHookTest extends FunctionalTestCase
         $dataHandler->process_cmdmap();
 
         $this->assertCSVDataSet(
-            __DIR__ . '/Assertions/DataHandlerHook/copy/SingleEventWithOneRegistrationAndDuplicateWithRegistrations.csv',
+            __DIR__
+            . '/Assertions/DataHandlerHook/copy/SingleEventWithOneRegistrationAndDuplicateWithRegistrations.csv',
         );
     }
 
