@@ -14,6 +14,8 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 final class LegacySpeakerTest extends UnitTestCase
 {
+    protected bool $resetSingletonInstances = true;
+
     private LegacySpeaker $subject;
 
     protected function setUp(): void

@@ -16,6 +16,8 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 final class LegacyRegistrationTest extends UnitTestCase
 {
+    protected bool $resetSingletonInstances = true;
+
     private LegacyRegistration $subject;
 
     protected function setUp(): void

@@ -28,11 +28,14 @@ class RegistrationDigest implements SingletonInterface
 
     private EventMapper $eventMapper;
 
+    private Context $context;
+
     public function __construct()
     {
         $this->configuration = GeneralUtility::makeInstance(ConfigurationRegistry::class)
             ->getByNamespace('plugin.tx_seminars.registrationDigestEmail');
         $this->eventMapper = GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(EventMapper::class);
+        $this->context = GeneralUtility::makeInstance(Context::class);
     }
 
     /**
@@ -101,7 +104,9 @@ class RegistrationDigest implements SingletonInterface
      */
     private function updateDateOfLastDigest(Collection $events): void
     {
-        $now = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
+        $now = $this->context->getPropertyFromAspect('date', 'timestamp');
+        \assert(\is_int($now));
+        \assert($now > 0);
 
         /** @var Event $event */
         foreach ($events as $event) {

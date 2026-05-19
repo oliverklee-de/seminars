@@ -14,6 +14,8 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 final class LegacyTimeSlotTest extends UnitTestCase
 {
+    protected bool $resetSingletonInstances = true;
+
     private LegacyTimeSlot $subject;
 
     protected function setUp(): void

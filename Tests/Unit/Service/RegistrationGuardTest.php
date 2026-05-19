@@ -66,6 +66,7 @@ final class RegistrationGuardTest extends UnitTestCase
             $this->registrationRepositoryMock,
             $this->eventStatisticsCalculatorMock,
             $this->oneTimeAccountConnectorMock,
+            $this->context,
         );
     }
 

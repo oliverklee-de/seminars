@@ -168,7 +168,7 @@ class EventBagBuilder extends AbstractBagBuilder
             throw new \InvalidArgumentException('The time-frame key "' . $timeFrameKey . '" is not valid.', 1333292705);
         }
 
-        $now = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
+        $now = $this->getNowAsUnixTimestamp();
 
         // Works out from which time-frame we'll find event records.
         // We also need to deal with the case that an event has no end date set
@@ -556,8 +556,7 @@ class EventBagBuilder extends AbstractBagBuilder
      */
     public function limitToDaysBeforeBeginDate(int $days): void
     {
-        $nowPlusDays = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp')
-            + $days * self::SECONDS_PER_DAY;
+        $nowPlusDays = $this->getNowAsUnixTimestamp() + ($days * self::SECONDS_PER_DAY);
 
         $this->whereClauseParts['days_before_begin_date'] = 'tx_seminars_seminars.begin_date < ' . $nowPlusDays;
     }
@@ -1097,7 +1096,7 @@ class EventBagBuilder extends AbstractBagBuilder
         }
 
         $notZeroAndInRange = '(%1$s > 0 AND %1$s <= %2$u)';
-        $now = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
+        $now = $this->getNowAsUnixTimestamp();
 
         $whereClause = '(object_type = ' . EventInterface::TYPE_EVENT_TOPIC . ' OR ' .
             'object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ') AND (' .
@@ -1151,7 +1150,7 @@ class EventBagBuilder extends AbstractBagBuilder
             return;
         }
 
-        $now = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
+        $now = $this->getNowAsUnixTimestamp();
         $whereClause = '(object_type = ' . EventInterface::TYPE_EVENT_TOPIC . ' OR ' .
             'object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ') AND (' .
             '(deadline_early_bird < ' . $now . ' ' .
@@ -1189,5 +1188,17 @@ class EventBagBuilder extends AbstractBagBuilder
                 '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND ' .
                 'topic IN (' . $foundUids . ')))';
         }
+    }
+
+    /**
+     * @return int<1, max>
+     */
+    private function getNowAsUnixTimestamp(): int
+    {
+        $now = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
+        \assert(\is_int($now));
+        \assert($now > 0);
+
+        return $now;
     }
 }

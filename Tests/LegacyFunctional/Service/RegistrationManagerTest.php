@@ -47,6 +47,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
         'oliverklee/seminars',
     ];
 
+    private Context $context;
+
+    private ConnectionPool $connectionPool;
+
     /**
      * @var positive-int
      */
@@ -93,9 +97,12 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $context = $this->get(Context::class);
-        $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
-        $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
+        $this->connectionPool = $this->get(ConnectionPool::class);
+        $this->context = $this->get(Context::class);
+
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->context->setAspect('date', new DateTimeAspect($now));
+        $this->now = $now->getTimestamp();
 
         $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'];
 
@@ -940,8 +947,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
-            ->disableOriginalConstructor()
-            ->onlyMethods(['getUnregistrationNotice'])->getMock();
+            ->onlyMethods(['getUnregistrationNotice'])
+            ->setConstructorArgs([$this->connectionPool, $this->context])
+            ->getMock();
         $subject->expects(self::never())->method('getUnregistrationNotice');
 
         $this->configuration->setAsBoolean('sendConfirmationOnUnregistration', true);
@@ -967,7 +975,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
-            ->disableOriginalConstructor()
+            ->setConstructorArgs([$this->connectionPool, $this->context])
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::never())->method('getUnregistrationNotice');
         $this->configuration->setAsBoolean('sendConfirmation', true);
@@ -989,7 +997,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
-            ->disableOriginalConstructor()
+            ->setConstructorArgs([$this->connectionPool, $this->context])
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::atLeast(1))->method('getUnregistrationNotice');
         $this->configuration->setAsBoolean('sendConfirmation', true);
@@ -1018,7 +1026,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
-            ->disableOriginalConstructor()
+            ->setConstructorArgs([$this->connectionPool, $this->context])
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::atLeast(1))->method('getUnregistrationNotice');
 
@@ -1055,7 +1063,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
-            ->disableOriginalConstructor()
+            ->setConstructorArgs([$this->connectionPool, $this->context])
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::atLeast(1))->method('getUnregistrationNotice');
 

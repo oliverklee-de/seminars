@@ -14,6 +14,8 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 final class LegacyCategoryTest extends UnitTestCase
 {
+    protected bool $resetSingletonInstances = true;
+
     private LegacyCategory $subject;
 
     protected function setUp(): void

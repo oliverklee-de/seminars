@@ -14,7 +14,6 @@ use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * This class provides functions to check whether a registration for an event is possible.
@@ -27,6 +26,8 @@ class RegistrationGuard implements SingletonInterface
 
     private OneTimeAccountConnector $oneTimeAccountConnector;
 
+    private Context $context;
+
     /**
      * key: event UID, value: vacancies as returned by `getVacancies`
      *
@@ -37,16 +38,13 @@ class RegistrationGuard implements SingletonInterface
     public function __construct(
         RegistrationRepository $registrationRepository,
         EventStatisticsCalculator $eventStatisticsCalculator,
-        OneTimeAccountConnector $oneTimeAccountConnector
+        OneTimeAccountConnector $oneTimeAccountConnector,
+        Context $context
     ) {
         $this->registrationRepository = $registrationRepository;
         $this->eventStatisticsCalculator = $eventStatisticsCalculator;
         $this->oneTimeAccountConnector = $oneTimeAccountConnector;
-    }
-
-    private function getContext(): Context
-    {
-        return GeneralUtility::makeInstance(Context::class);
+        $this->context = $context;
     }
 
     /**
@@ -116,7 +114,10 @@ class RegistrationGuard implements SingletonInterface
 
     private function now(): \DateTimeImmutable
     {
-        return $this->getContext()->getPropertyFromAspect('date', 'full');
+        $now = $this->context->getPropertyFromAspect('date', 'full');
+        \assert($now instanceof \DateTimeImmutable);
+
+        return $now;
     }
 
     public function isFreeFromRegistrationConflicts(EventInterface $event, int $userUid): bool
@@ -127,8 +128,10 @@ class RegistrationGuard implements SingletonInterface
 
     public function existsFrontEndUserUidInSession(): bool
     {
-        return (bool)$this->getContext()->getPropertyFromAspect('frontend.user', 'isLoggedIn')
-            || \is_int($this->oneTimeAccountConnector->getOneTimeAccountUserUid());
+        $isLoggedIn = $this->context->getPropertyFromAspect('frontend.user', 'isLoggedIn');
+        \assert(\is_bool($isLoggedIn));
+
+        return $isLoggedIn || \is_int($this->oneTimeAccountConnector->getOneTimeAccountUserUid());
     }
 
     /**
@@ -136,8 +139,10 @@ class RegistrationGuard implements SingletonInterface
      */
     public function getFrontEndUserUidFromSession(): ?int
     {
-        $userUidFromLogin = (int)$this->getContext()->getPropertyFromAspect('frontend.user', 'id');
-        if ($userUidFromLogin <= 0) {
+        $userUidFromLogin = $this->context->getPropertyFromAspect('frontend.user', 'id');
+        \assert(\is_int($userUidFromLogin));
+        \assert($userUidFromLogin >= 0);
+        if ($userUidFromLogin === 0) {
             $userUidFromLogin = null;
         }
 

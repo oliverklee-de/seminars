@@ -31,6 +31,8 @@ abstract class AbstractModel
 
     protected static string $tableName;
 
+    private Context $context;
+
     /**
      * @var array<string, float|int|string|bool|null> the values from/for the DB
      */
@@ -43,6 +45,8 @@ abstract class AbstractModel
      */
     public function __construct(int $uid = 0, bool $allowHidden = false)
     {
+        $this->context = GeneralUtility::makeInstance(Context::class);
+
         if ($uid > 0) {
             $data = self::fetchDataByUid($uid, $allowHidden);
             if (\is_array($data)) {
@@ -307,7 +311,7 @@ abstract class AbstractModel
             return false;
         }
 
-        $now = (int)GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
+        $now = $this->getNowAsUnixTimestamp();
         $this->setRecordPropertyInteger('tstamp', $now);
 
         $connection = self::getConnectionForOwnTable();
@@ -573,5 +577,36 @@ abstract class AbstractModel
         $label = LocalizationUtility::translate($key, 'seminars');
 
         return (\is_string($label) && $label !== '') ? $label : $key;
+    }
+
+    /**
+     * @return int<1, max>
+     */
+    protected function getNowAsUnixTimestamp(): int
+    {
+        $now = $this->context->getPropertyFromAspect('date', 'timestamp');
+        \assert(\is_int($now));
+        \assert($now > 0);
+
+        return $now;
+    }
+
+    /**
+     * Returns the UID of the logged-in front-end user (or 0 if no user is logged in).
+     *
+     * @return int<0, max>
+     */
+    protected function getLoggedInFrontEndUserUid(): int
+    {
+        $userUid = $this->context->getPropertyFromAspect('frontend.user', 'id');
+        \assert(\is_int($userUid));
+        \assert($userUid >= 0);
+
+        return $userUid;
+    }
+
+    protected function isLoggedIn(): bool
+    {
+        return $this->context->getAspect('frontend.user')->isLoggedIn();
     }
 }
