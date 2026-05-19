@@ -5395,10 +5395,10 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function initListViewForDefaultListLimitsListByAdditionalParameters(): void
     {
-        $subject = $this->createPartialMock(
-            TestingDefaultController::class,
-            ['limitForAdditionalParameters'],
-        );
+        $subject =
+            $this->getMockBuilder(TestingDefaultController::class)
+                ->onlyMethods(['limitForAdditionalParameters'])
+                ->getMock();
         $subject->setUpDependencies();
         $subject->setContentObjectRenderer($this->createMock(ContentObjectRenderer::class));
         $subject->expects(self::once())->method('limitForAdditionalParameters');
@@ -5411,10 +5411,10 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function initListViewForTopicListLimitsListByAdditionalParameters(): void
     {
-        $subject = $this->createPartialMock(
-            TestingDefaultController::class,
-            ['limitForAdditionalParameters'],
-        );
+        $subject =
+            $this->getMockBuilder(TestingDefaultController::class)
+                ->onlyMethods(['limitForAdditionalParameters'])
+                ->getMock();
         $subject->setUpDependencies();
         $subject->setContentObjectRenderer($this->createMock(ContentObjectRenderer::class));
         $subject->expects(self::once())->method('limitForAdditionalParameters');
@@ -5427,10 +5427,10 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function initListViewForMyEventsListNotLimitsListByAdditionalParameters(): void
     {
-        $subject = $this->createPartialMock(
-            TestingDefaultController::class,
-            ['limitForAdditionalParameters'],
-        );
+        $subject =
+            $this->getMockBuilder(TestingDefaultController::class)
+                ->onlyMethods(['limitForAdditionalParameters'])
+                ->getMock();
         $subject->setUpDependencies();
         $subject->setContentObjectRenderer($this->createMock(ContentObjectRenderer::class));
         $subject->expects(self::never())->method('limitForAdditionalParameters');
@@ -5566,10 +5566,10 @@ final class DefaultControllerTest extends FunctionalTestCase
         int $listPid,
         int $vipListPid
     ): void {
-        $subject = $this->createPartialMock(
-            TestingDefaultController::class,
-            ['isRegistrationEnabled', 'isLoggedIn', 'hideColumns'],
-        );
+        $subject =
+            $this->getMockBuilder(TestingDefaultController::class)->onlyMethods(
+                ['isRegistrationEnabled', 'isLoggedIn', 'hideColumns'],
+            )->getMock();
         $subject
             ->method('isRegistrationEnabled')
             ->willReturn(true);
@@ -5611,10 +5611,10 @@ final class DefaultControllerTest extends FunctionalTestCase
         int $listPid,
         int $vipListPid
     ): void {
-        $subject = $this->createPartialMock(
-            TestingDefaultController::class,
-            ['isRegistrationEnabled', 'isLoggedIn', 'hideColumns'],
-        );
+        $subject =
+            $this->getMockBuilder(TestingDefaultController::class)->onlyMethods(
+                ['isRegistrationEnabled', 'isLoggedIn', 'hideColumns'],
+            )->getMock();
         $subject
             ->method('isRegistrationEnabled')
             ->willReturn(true);
@@ -5652,10 +5652,10 @@ final class DefaultControllerTest extends FunctionalTestCase
         int $listPid,
         int $vipListPid
     ): void {
-        $subject = $this->createPartialMock(
-            TestingDefaultController::class,
-            ['isRegistrationEnabled', 'isLoggedIn', 'hideColumns'],
-        );
+        $subject =
+            $this->getMockBuilder(TestingDefaultController::class)->onlyMethods(
+                ['isRegistrationEnabled', 'isLoggedIn', 'hideColumns'],
+            )->getMock();
         $subject
             ->method('isRegistrationEnabled')
             ->willReturn(false);

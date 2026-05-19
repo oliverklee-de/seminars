@@ -395,10 +395,7 @@ final class EventTest extends UnitTestCase
      */
     public function hasCombinedSingleViewPageForEmptySingleViewPageReturnsFalse(): void
     {
-        $subject = $this->createPartialMock(
-            Event::class,
-            ['getCombinedSingleViewPage'],
-        );
+        $subject = $this->getMockBuilder(Event::class)->onlyMethods(['getCombinedSingleViewPage'])->getMock();
         $subject
             ->expects(self::atLeastOnce())
             ->method('getCombinedSingleViewPage')->willReturn('');
@@ -413,10 +410,7 @@ final class EventTest extends UnitTestCase
      */
     public function hasCombinedSingleViewPageForNonEmptySingleViewPageReturnsTrue(): void
     {
-        $subject = $this->createPartialMock(
-            Event::class,
-            ['getCombinedSingleViewPage'],
-        );
+        $subject = $this->getMockBuilder(Event::class)->onlyMethods(['getCombinedSingleViewPage'])->getMock();
         $subject
             ->expects(self::atLeastOnce())
             ->method('getCombinedSingleViewPage')->willReturn('42');
@@ -910,10 +904,7 @@ final class EventTest extends UnitTestCase
      */
     public function getRegisteredSeatsForNoRegularRegistrationsReturnsZero(): void
     {
-        $event = $this->createPartialMock(
-            Event::class,
-            ['getRegularRegistrations'],
-        );
+        $event = $this->getMockBuilder(Event::class)->onlyMethods(['getRegularRegistrations'])->getMock();
         $event->setData([]);
         $event
             ->method('getRegularRegistrations')
@@ -930,10 +921,7 @@ final class EventTest extends UnitTestCase
      */
     public function getRegisteredSeatsCountsOfflineRegistrations(): void
     {
-        $event = $this->createPartialMock(
-            Event::class,
-            ['getRegularRegistrations'],
-        );
+        $event = $this->getMockBuilder(Event::class)->onlyMethods(['getRegularRegistrations'])->getMock();
         $event->setData(['offline_attendees' => 2]);
         $event
             ->method('getRegularRegistrations')
@@ -954,10 +942,7 @@ final class EventTest extends UnitTestCase
      */
     public function hasEnoughRegistrationsForZeroSeatsAndZeroNeededReturnsTrue(): void
     {
-        $event = $this->createPartialMock(
-            Event::class,
-            ['getRegisteredSeats'],
-        );
+        $event = $this->getMockBuilder(Event::class)->onlyMethods(['getRegisteredSeats'])->getMock();
         $event->setData(['attendees_min' => 0]);
         $event
             ->method('getRegisteredSeats')
@@ -973,10 +958,7 @@ final class EventTest extends UnitTestCase
      */
     public function hasEnoughRegistrationsForLessSeatsThanNeededReturnsFalse(): void
     {
-        $event = $this->createPartialMock(
-            Event::class,
-            ['getRegisteredSeats'],
-        );
+        $event = $this->getMockBuilder(Event::class)->onlyMethods(['getRegisteredSeats'])->getMock();
         $event->setData(['attendees_min' => 2]);
         $event
             ->method('getRegisteredSeats')
@@ -992,10 +974,7 @@ final class EventTest extends UnitTestCase
      */
     public function hasEnoughRegistrationsForAsManySeatsAsNeededReturnsTrue(): void
     {
-        $event = $this->createPartialMock(
-            Event::class,
-            ['getRegisteredSeats'],
-        );
+        $event = $this->getMockBuilder(Event::class)->onlyMethods(['getRegisteredSeats'])->getMock();
         $event->setData(['attendees_min' => 2]);
         $event
             ->method('getRegisteredSeats')
@@ -1011,10 +990,7 @@ final class EventTest extends UnitTestCase
      */
     public function hasEnoughRegistrationsForMoreSeatsThanNeededReturnsTrue(): void
     {
-        $event = $this->createPartialMock(
-            Event::class,
-            ['getRegisteredSeats'],
-        );
+        $event = $this->getMockBuilder(Event::class)->onlyMethods(['getRegisteredSeats'])->getMock();
         $event->setData(['attendees_min' => 1]);
         $event
             ->method('getRegisteredSeats')
