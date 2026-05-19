@@ -127,7 +127,7 @@ final class EventTest extends FunctionalTestCase
         $queueRegistrations = new Collection();
         $registration = $this->registrationMapper->getLoadedTestingModel(['seats' => 1]);
         $queueRegistrations->add($registration);
-        $event = $this->createPartialMock(Event::class, ['getRegularRegistrations']);
+        $event = $this->getMockBuilder(Event::class)->onlyMethods(['getRegularRegistrations'])->getMock();
         $event->setData([]);
         $event->method('getRegularRegistrations')->willReturn(new Collection());
 
