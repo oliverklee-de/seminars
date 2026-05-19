@@ -60,16 +60,13 @@ final class SingleViewTest extends FunctionalTestCase
      */
     public function singleViewFlavorWithUidCreatesSingleView(): void
     {
-        $controller = $this->createPartialMock(
-            TestingDefaultController::class,
-            [
-                'createListView',
-                'createSingleView',
-                'pi_initPIflexForm',
-                'getTemplateCode',
-                'setLabels',
-            ],
-        );
+        $controller = $this->getMockBuilder(TestingDefaultController::class)->onlyMethods([
+            'createListView',
+            'createSingleView',
+            'pi_initPIflexForm',
+            'getTemplateCode',
+            'setLabels',
+        ])->getMock();
         $controller->expects(self::once())->method('createSingleView');
         $controller->expects(self::never())->method('createListView');
 
@@ -83,16 +80,13 @@ final class SingleViewTest extends FunctionalTestCase
      */
     public function singleViewFlavorWithUidFromShowSingleEventConfigurationCreatesSingleView(): void
     {
-        $controller = $this->createPartialMock(
-            TestingDefaultController::class,
-            [
-                'createListView',
-                'createSingleView',
-                'pi_initPIflexForm',
-                'getTemplateCode',
-                'setLabels',
-            ],
-        );
+        $controller = $this->getMockBuilder(TestingDefaultController::class)->onlyMethods([
+            'createListView',
+            'createSingleView',
+            'pi_initPIflexForm',
+            'getTemplateCode',
+            'setLabels',
+        ])->getMock();
         $controller->expects(self::once())->method('createSingleView');
         $controller->expects(self::never())->method('createListView');
 
@@ -106,16 +100,13 @@ final class SingleViewTest extends FunctionalTestCase
      */
     public function singleViewFlavorWithoutUidCreatesSingleView(): void
     {
-        $controller = $this->createPartialMock(
-            TestingDefaultController::class,
-            [
-                'createListView',
-                'createSingleView',
-                'pi_initPIflexForm',
-                'getTemplateCode',
-                'setLabels',
-            ],
-        );
+        $controller = $this->getMockBuilder(TestingDefaultController::class)->onlyMethods([
+            'createListView',
+            'createSingleView',
+            'pi_initPIflexForm',
+            'getTemplateCode',
+            'setLabels',
+        ])->getMock();
         $controller->expects(self::once())->method('createSingleView');
         $controller->expects(self::never())->method('createListView');
 

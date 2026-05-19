@@ -64,16 +64,17 @@ final class ListViewTest extends FunctionalTestCase
      */
     public function eventListFlavorWithoutUidCreatesListView(): void
     {
-        $controller = $this->createPartialMock(
-            TestingDefaultController::class,
-            [
+        $controller = $this
+            ->getMockBuilder(TestingDefaultController::class)
+            ->onlyMethods([
                 'createListView',
                 'createSingleView',
                 'pi_initPIflexForm',
                 'getTemplateCode',
                 'setLabels',
-            ],
-        );
+            ])
+            ->disableOriginalConstructor()
+            ->getMock();
         $controller->expects(self::once())->method('createListView')->with('seminar_list');
         $controller->expects(self::never())->method('createSingleView');
 
@@ -87,16 +88,17 @@ final class ListViewTest extends FunctionalTestCase
      */
     public function eventListFlavorWithUidCreatesListView(): void
     {
-        $controller = $this->createPartialMock(
-            TestingDefaultController::class,
-            [
+        $controller = $this
+            ->getMockBuilder(TestingDefaultController::class)
+            ->onlyMethods([
                 'createListView',
                 'createSingleView',
                 'pi_initPIflexForm',
                 'getTemplateCode',
                 'setLabels',
-            ],
-        );
+            ])
+            ->disableOriginalConstructor()
+            ->getMock();
         $controller->expects(self::once())->method('createListView')->with('seminar_list');
         $controller->expects(self::never())->method('createSingleView');
 

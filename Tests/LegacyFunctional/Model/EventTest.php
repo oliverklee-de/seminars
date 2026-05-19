@@ -87,10 +87,7 @@ final class EventTest extends FunctionalTestCase
         $registrations = new Collection();
         $registration = $this->registrationMapper->getLoadedTestingModel(['seats' => 1]);
         $registrations->add($registration);
-        $event = $this->createPartialMock(
-            Event::class,
-            ['getRegularRegistrations'],
-        );
+        $event = $this->getMockBuilder(Event::class)->onlyMethods(['getRegularRegistrations'])->getMock();
         $event->setData([]);
         $event
             ->method('getRegularRegistrations')
@@ -110,10 +107,7 @@ final class EventTest extends FunctionalTestCase
         $registrations = new Collection();
         $registration = $this->registrationMapper->getLoadedTestingModel(['seats' => 2]);
         $registrations->add($registration);
-        $event = $this->createPartialMock(
-            Event::class,
-            ['getRegularRegistrations'],
-        );
+        $event = $this->getMockBuilder(Event::class)->onlyMethods(['getRegularRegistrations'])->getMock();
         $event->setData([]);
         $event
             ->method('getRegularRegistrations')

@@ -6114,10 +6114,10 @@ final class LegacyEventTest extends FunctionalTestCase
         int $registrationsListPID,
         int $registrationsVipListPID
     ): void {
-        $subject = $this->createPartialMock(
-            LegacyEvent::class,
-            ['needsRegistration', 'isUserRegistered', 'isUserVip'],
-        );
+        $subject =
+            $this->getMockBuilder(LegacyEvent::class)->onlyMethods(
+                ['needsRegistration', 'isUserRegistered', 'isUserVip'],
+            )->getMock();
         $subject
             ->method('needsRegistration')
             ->willReturn(true);
@@ -6159,10 +6159,10 @@ final class LegacyEventTest extends FunctionalTestCase
         int $registrationsListPID,
         int $registrationsVipListPID
     ): void {
-        $subject = $this->createPartialMock(
-            LegacyEvent::class,
-            ['needsRegistration', 'isUserRegistered', 'isUserVip'],
-        );
+        $subject =
+            $this->getMockBuilder(LegacyEvent::class)->onlyMethods(
+                ['needsRegistration', 'isUserRegistered', 'isUserVip'],
+            )->getMock();
         $subject
             ->method('needsRegistration')
             ->willReturn(true);
@@ -6361,10 +6361,10 @@ final class LegacyEventTest extends FunctionalTestCase
         int $registrationsListPID,
         int $registrationsVipListPID
     ): void {
-        $subject = $this->createPartialMock(
-            LegacyEvent::class,
-            ['needsRegistration', 'isUserRegistered', 'isUserVip'],
-        );
+        $subject =
+            $this->getMockBuilder(LegacyEvent::class)->onlyMethods(
+                ['needsRegistration', 'isUserRegistered', 'isUserVip'],
+            )->getMock();
         $subject
             ->method('needsRegistration')
             ->willReturn(true);
@@ -6495,10 +6495,10 @@ final class LegacyEventTest extends FunctionalTestCase
         string $whichPlugin,
         string $accessLevel
     ): void {
-        $subject = $this->createPartialMock(
-            LegacyEvent::class,
-            ['needsRegistration', 'canViewRegistrationsList'],
-        );
+        $subject =
+            $this->getMockBuilder(LegacyEvent::class)
+                ->onlyMethods(['needsRegistration', 'canViewRegistrationsList'])
+                ->getMock();
         $subject->method('needsRegistration')->willReturn(true);
         $subject
             ->method('canViewRegistrationsList')
@@ -6518,10 +6518,10 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canViewRegistrationsListMessageWithLoginAndAccessGrantedReturnsEmptyString(): void
     {
-        $subject = $this->createPartialMock(
-            LegacyEvent::class,
-            ['needsRegistration', 'canViewRegistrationsList'],
-        );
+        $subject =
+            $this->getMockBuilder(LegacyEvent::class)
+                ->onlyMethods(['needsRegistration', 'canViewRegistrationsList'])
+                ->getMock();
         $subject->method('needsRegistration')->willReturn(true);
         $subject->method('canViewRegistrationsList')->willReturn(true);
 
@@ -6541,10 +6541,10 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canViewRegistrationsListMessageWithLoginAndAccessDeniedReturnsAccessDeniedMessage(): void
     {
-        $subject = $this->createPartialMock(
-            LegacyEvent::class,
-            ['needsRegistration', 'canViewRegistrationsList'],
-        );
+        $subject =
+            $this->getMockBuilder(LegacyEvent::class)
+                ->onlyMethods(['needsRegistration', 'canViewRegistrationsList'])
+                ->getMock();
         $subject->method('needsRegistration')->willReturn(true);
         $subject->method('canViewRegistrationsList')->willReturn(false);
 

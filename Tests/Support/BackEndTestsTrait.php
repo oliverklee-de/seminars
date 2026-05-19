@@ -81,10 +81,10 @@ trait BackEndTestsTrait
         if ($currentBackEndUser instanceof BackendUserAuthentication) {
             $this->backEndUserBackup = $currentBackEndUser;
         }
-        $mockBackEndUser = $this->createPartialMock(
-            BackendUserAuthentication::class,
-            ['check', 'doesUserHaveAccess', 'setAndSaveSessionData', 'writeUC'],
-        );
+        $mockBackEndUser =
+            $this->getMockBuilder(BackendUserAuthentication::class)->onlyMethods(
+                ['check', 'doesUserHaveAccess', 'setAndSaveSessionData', 'writeUC'],
+            )->getMock();
         $mockBackEndUser->method('check')->willReturn(true);
         $mockBackEndUser->method('doesUserHaveAccess')->willReturn(true);
         $mockBackEndUser->user['uid'] = 1;
