@@ -1,0 +1,59 @@
+<?php
+
+declare(strict_types=1);
+
+namespace OliverKlee\Seminars\Tests\Functional\Domain\Repository;
+
+use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
+use OliverKlee\Seminars\Domain\Model\Venue;
+use OliverKlee\Seminars\Domain\Repository\Event\TimeSlotRepository;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
+
+/**
+ * @covers \OliverKlee\Seminars\Domain\Model\Event\TimeSlot
+ */
+final class TimeSlotRepositoryTest extends FunctionalTestCase
+{
+
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures';
+    protected array $testExtensionsToLoad = [
+        'oliverklee/feuserextrafields',
+        'oliverklee/oelib',
+        'oliverklee/seminars',
+    ];
+
+    private TimeSlotRepository $subject;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->subject = $this->get(TimeSlotRepository::class);
+    }
+
+    /**
+     * @test
+     */
+    public function isRepository(): void
+    {
+        self::assertInstanceOf(Repository::class, $this->subject);
+    }
+
+    /**
+     * @test
+     */
+    public function mapsAllModelFields(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/propertyMapping/TimeSlotWithAllFields.csv');
+
+        $result = $this->subject->findByUid(1);
+
+        self::assertInstanceOf(TimeSlot::class, $result);
+        self::assertEquals(new \DateTime('2025-04-02 10:00'), $result->getStart());
+        self::assertEquals(new \DateTime('2025-04-03 18:00'), $result->getEnd());
+        self::assertSame('Leuchtturm', $result->getRoom());
+        self::assertInstanceOf(Venue::class, $result->getVenue());
+    }
+
+}
