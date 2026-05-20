@@ -29,6 +29,8 @@ final class CategoryListTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private int $nowAsUnixTimestamp;
+
     private int $systemFolderPid = 0;
 
     private int $rootPageUid;
@@ -37,9 +39,11 @@ final class CategoryListTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this
-            ->get(Context::class)
-            ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->get(Context::class)->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        self::assertGreaterThan(0, $nowAsUnixTimestamp);
+        $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
 
         $this->testingFramework = $this->get(TestingFramework::class);
         $this->rootPageUid = $this->testingFramework->createFrontEndPage();
@@ -90,10 +94,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
                 'categories' => 2,
             ],
         );
@@ -137,10 +138,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
                 'categories' => 2,
             ],
         );
@@ -178,10 +176,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $systemSubFolderUid,
                 'title' => 'my title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
                 'categories' => 1,
             ],
         );
@@ -212,10 +207,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $otherSystemFolderUid,
                 'title' => 'my title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
                 'categories' => 1,
             ],
         );
@@ -248,10 +240,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $otherSystemFolderUid,
                 'title' => 'my title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
                 'categories' => 1,
             ],
         );
@@ -281,10 +270,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
                 'categories' => 1,
                 'cancelled' => 1,
             ],
@@ -315,10 +301,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my_title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
                 'categories' => 1,
                 'cancelled' => EventInterface::STATUS_CONFIRMED,
             ],
@@ -354,14 +337,8 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 2000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
+                'end_date' => $this->nowAsUnixTimestamp + 2000,
                 'categories' => 1,
             ],
         );
@@ -396,14 +373,8 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) - 2000,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) - 1000,
+                'begin_date' => $this->nowAsUnixTimestamp - 2000,
+                'end_date' => $this->nowAsUnixTimestamp - 1000,
                 'categories' => 1,
             ],
         );
@@ -437,10 +408,7 @@ final class CategoryListTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'my title',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
                 'categories' => 1,
             ],
         );

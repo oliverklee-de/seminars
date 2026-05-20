@@ -19,14 +19,22 @@ final class AbstractTimeSpanTest extends UnitTestCase
 {
     protected bool $resetSingletonInstances = true;
 
+    private Context $context;
+
     private TestingTimeSpan $subject;
+
+    private int $nowAsUnixTimestamp;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        GeneralUtility::makeInstance(Context::class)
-            ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
+        $this->context = GeneralUtility::makeInstance(Context::class);
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->context->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        self::assertGreaterThan(0, $nowAsUnixTimestamp);
+        $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
 
         $this->subject = new TestingTimeSpan();
     }
@@ -304,12 +312,7 @@ final class AbstractTimeSpanTest extends UnitTestCase
      */
     public function hasStartedForStartedEventReturnsTrue(): void
     {
-        $this->subject->setBeginDateAndTime(
-            GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) - 42,
-        );
+        $this->subject->setBeginDateAndTime($this->nowAsUnixTimestamp - 42);
 
         self::assertTrue($this->subject->hasStarted());
     }
@@ -319,12 +322,7 @@ final class AbstractTimeSpanTest extends UnitTestCase
      */
     public function hasStartedForUpcomingEventReturnsFalse(): void
     {
-        $this->subject->setBeginDateAndTime(
-            GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
-        );
+        $this->subject->setBeginDateAndTime($this->nowAsUnixTimestamp + 42);
 
         self::assertFalse($this->subject->hasStarted());
     }

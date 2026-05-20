@@ -53,6 +53,10 @@ final class DefaultControllerTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private Context $context;
+
+    private int $nowAsUnixTimestamp;
+
     private EventMapper $eventMapper;
 
     /**
@@ -102,9 +106,12 @@ final class DefaultControllerTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this
-            ->get(Context::class)
-            ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
+        $this->context = $this->get(Context::class);
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->context->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        self::assertGreaterThan(0, $nowAsUnixTimestamp);
+        $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
 
         $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'];
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'] = [];
@@ -402,7 +409,7 @@ final class DefaultControllerTest extends FunctionalTestCase
     {
         $this->createLogInAndAddFeUserAsVip();
 
-        self::assertTrue($this->get(Context::class)->getAspect('frontend.user')->isLoggedIn());
+        self::assertTrue($this->context->getAspect('frontend.user')->isLoggedIn());
     }
 
     /**
@@ -544,14 +551,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topicUid,
                 'title' => 'Test date',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
             ],
         );
         $this->testingFramework->createRecord(
@@ -561,14 +562,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topicUid,
                 'title' => 'Test date 2',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
             ],
         );
 
@@ -608,14 +603,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topicUid,
                 'title' => 'Test date',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
             ],
         );
         $singleEventUid = $this->testingFramework->createRecord(
@@ -625,14 +614,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'object_type' => EventInterface::TYPE_SINGLE_EVENT,
                 'topic' => $topicUid,
                 'title' => 'Test single 2',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
             ],
         );
 
@@ -670,14 +653,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topicUid,
                 'title' => 'Test date',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
             ],
         );
         $this->testingFramework->createRecord(
@@ -687,14 +664,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topicUid,
                 'title' => 'Test date 2',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
                 'needs_registration' => 1,
                 'attendees_max' => 5,
                 'offline_attendees' => 5,
@@ -735,14 +706,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topicUid,
                 'title' => 'Test date',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + self::SECONDS_PER_DAY,
             ],
         );
         $dateUid2 = $this->testingFramework->createRecord(
@@ -752,14 +717,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topicUid,
                 'title' => 'Test date 2',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + 2 * self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK + 3 * self::SECONDS_PER_DAY,
                 'needs_registration' => 1,
                 'attendees_max' => 5,
                 'offline_attendees' => 5,
@@ -2332,9 +2291,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromDateShowsEventWithBeginDateAfterFromDate(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $fromTime = $simTime - 86400;
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
@@ -2360,9 +2317,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromDateDoesNotShowEventWithBeginDateBeforeFromDate(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $fromTime = $simTime + 86400;
 
         $this->testingFramework->createRecord(
@@ -2389,9 +2344,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromDateWithMissingDayShowsEventWithBeginDateOnFirstDayOfMonth(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
 
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
@@ -2416,9 +2369,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromDateWithMissingYearShowsEventWithBeginDateInCurrentYearAfterFromDate(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $fromTime = $simTime - 86400;
 
         $this->testingFramework->createRecord(
@@ -2444,9 +2395,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromDateWithMissingMonthShowsEventWithBeginDateOnFirstMonthOfYear(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
 
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
@@ -2471,9 +2420,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromDateWithMissingMonthAndDayShowsEventWithBeginDateOnFirstDayOfGivenYear(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
 
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
@@ -2497,9 +2444,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenToDateShowsEventWithBeginDateBeforeToDate(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $toTime = $simTime + 86400;
 
         $this->testingFramework->createRecord(
@@ -2526,9 +2471,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenToDateHidesEventWithBeginDateAfterToDate(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $toTime = $simTime - 86400;
 
         $this->testingFramework->createRecord(
@@ -2555,9 +2498,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenToDateWithMissingDayShowsEventWithBeginDateOnEndOfGivenMonth(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
 
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
@@ -2582,9 +2523,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenToDateWithMissingYearShowsEventWithBeginDateOnThisYearBeforeToDate(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $toTime = $simTime + 86400;
 
         $this->testingFramework->createRecord(
@@ -2610,9 +2549,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenToDateWithMissingMonthShowsEventWithBeginDateOnDayOfLastMonthOfGivenYear(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -2636,9 +2573,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenToDateWithMissingMonthAndDayShowsEventWithBeginDateOnEndOfGivenYear(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
@@ -2661,9 +2596,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromAndToDatesShowsEventWithBeginDateWithinTimespan(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $fromTime = $simTime - 86400;
         $toTime = $simTime + 86400;
 
@@ -2694,9 +2627,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromAndToDatesCanShowTwoEventsWithBeginDateWithinTimespan(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $fromTime = $simTime - 86400;
         $toTime = $simTime + 86400;
 
@@ -2741,9 +2672,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromAndToDatesDoesNotShowEventWithBeginDateBeforeTimespan(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $toTime = $simTime + 86400;
 
         $this->testingFramework->createRecord(
@@ -2773,9 +2702,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForGivenFromAndToDatesDoesNotShowEventWithBeginDateAfterTimespan(): void
     {
-        $simTime = (int)$this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
+        $simTime = $this->nowAsUnixTimestamp;
         $fromTime = $simTime - 86400;
 
         $this->testingFramework->createRecord(
@@ -2844,10 +2771,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'Foo Event To',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 50,
+                'begin_date' => $this->nowAsUnixTimestamp + 50,
             ],
         );
         $this->testingFramework->createRelationAndUpdateCounter(
@@ -2879,10 +2803,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'pid' => $this->systemFolderPid,
                 'title' => 'Foo Event To',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 50,
+                'begin_date' => $this->nowAsUnixTimestamp + 50,
             ],
         );
         $this->testingFramework->createRelationAndUpdateCounter(
@@ -4035,10 +3956,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'needs_registration' => 1,
                 'attendees_max' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
             ],
         );
 
@@ -4061,10 +3979,7 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'needs_registration' => 1,
                 'attendees_max' => 1,
                 'queue_size' => 1,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
             ],
         );
         $this->testingFramework->createRecord(
@@ -4094,10 +4009,7 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'needs_registration' => 1,
                 'attendees_max' => 1,
                 'queue_size' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
             ],
         );
         $this->testingFramework->createRecord(
@@ -4148,14 +4060,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'needs_registration' => 1,
                 'attendees_max' => 0,
                 'queue_size' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
-                'begin_date_registration' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 20,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
+                'begin_date_registration' => $this->nowAsUnixTimestamp + 20,
             ],
         );
 
@@ -4170,10 +4076,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function listViewForEventWithRegistrationBeginInFutureShowsRegistrationOpenOnMessage(): void
     {
-        $registrationBegin = $this->get(Context::class)->getPropertyFromAspect(
-            'date',
-            'timestamp',
-        ) + 20;
+        $registrationBegin = $this->nowAsUnixTimestamp + 20;
         $this->subject->setConfigurationValue('enableRegistration', true);
         $this->testingFramework->changeRecord(
             'tx_seminars_seminars',
@@ -4182,10 +4085,7 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'needs_registration' => 1,
                 'attendees_max' => 0,
                 'queue_size' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
                 'begin_date_registration' => $registrationBegin,
             ],
         );
@@ -4209,14 +4109,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'needs_registration' => 1,
                 'attendees_max' => 0,
                 'queue_size' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
-                'begin_date_registration' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) - 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
+                'begin_date_registration' => $this->nowAsUnixTimestamp - 42,
             ],
         );
 
@@ -4238,10 +4132,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'needs_registration' => 1,
                 'attendees_max' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
                 'begin_date_registration' => 0,
             ],
         );
@@ -4380,14 +4271,8 @@ final class DefaultControllerTest extends FunctionalTestCase
             $this->seminarUid,
             [
                 'title' => 'currentEvent',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) - 20,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 20,
+                'begin_date' => $this->nowAsUnixTimestamp - 20,
+                'end_date' => $this->nowAsUnixTimestamp + 20,
             ],
         );
 
@@ -4410,14 +4295,8 @@ final class DefaultControllerTest extends FunctionalTestCase
             $this->seminarUid,
             [
                 'title' => 'futureEvent',
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 21,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 21,
+                'end_date' => $this->nowAsUnixTimestamp + 42,
             ],
         );
 
@@ -4816,10 +4695,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'needs_registration' => 1,
                 'attendees_max' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
             ],
         );
 
@@ -4845,10 +4721,7 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'needs_registration' => 1,
                 'attendees_max' => 1,
                 'queue_size' => 1,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
             ],
         );
         $this->testingFramework->createRecord(
@@ -4881,10 +4754,7 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'needs_registration' => 1,
                 'attendees_max' => 1,
                 'queue_size' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
             ],
         );
         $this->testingFramework->createRecord(
@@ -4940,14 +4810,8 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'needs_registration' => 1,
                 'attendees_max' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
-                'begin_date_registration' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 40,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
+                'begin_date_registration' => $this->nowAsUnixTimestamp + 40,
             ],
         );
 
@@ -4965,10 +4829,7 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     public function singleViewForEventWithRegistrationBeginInFutureShowsRegistrationOpensOnMessage(): void
     {
-        $registrationBegin = $this->get(Context::class)->getPropertyFromAspect(
-            'date',
-            'timestamp',
-        ) + 40;
+        $registrationBegin = $this->nowAsUnixTimestamp + 40;
         $this->subject->setConfigurationValue('enableRegistration', true);
         $this->testingFramework->changeRecord(
             'tx_seminars_seminars',
@@ -4976,10 +4837,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'needs_registration' => 1,
                 'attendees_max' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
                 'begin_date_registration' => $registrationBegin,
             ],
         );
@@ -5005,14 +4863,8 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'needs_registration' => 1,
                 'attendees_max' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
-                'begin_date_registration' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) - 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
+                'begin_date_registration' => $this->nowAsUnixTimestamp - 42,
             ],
         );
 
@@ -5037,10 +4889,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             [
                 'needs_registration' => 1,
                 'attendees_max' => 0,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 42,
+                'begin_date' => $this->nowAsUnixTimestamp + 42,
                 'begin_date_registration' => 0,
             ],
         );
@@ -5066,10 +4915,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event->setNumberOfAttendances(0);
         $event->setNeedsRegistration(true);
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
+            $this->nowAsUnixTimestamp + 42,
         );
 
         self::assertStringContainsString(
@@ -5088,10 +4934,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event->setNumberOfAttendances(9);
         $event->setNeedsRegistration(true);
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
+            $this->nowAsUnixTimestamp + 42,
         );
 
         self::assertStringContainsString(
@@ -5110,10 +4953,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event->setNumberOfAttendances(8);
         $event->setNeedsRegistration(true);
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
+            $this->nowAsUnixTimestamp + 42,
         );
 
         self::assertStringContainsString(
@@ -5132,10 +4972,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event->setNumberOfAttendances(10);
         $event->setNeedsRegistration(true);
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
+            $this->nowAsUnixTimestamp + 42,
         );
 
         self::assertStringContainsString(
@@ -5152,10 +4989,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event = new TestingLegacyEvent($this->seminarUid);
         $event->setUnlimitedVacancies();
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
+            $this->nowAsUnixTimestamp + 42,
         );
 
         self::assertStringContainsString(
@@ -5172,10 +5006,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event = new TestingLegacyEvent($this->seminarUid);
         $event->setUnlimitedVacancies();
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
+            $this->nowAsUnixTimestamp + 42,
         );
 
         self::assertStringNotContainsString(
@@ -5192,10 +5023,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event = new TestingLegacyEvent($this->seminarUid);
         $event->setUnlimitedVacancies();
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
+            $this->nowAsUnixTimestamp + 42,
         );
 
         self::assertStringContainsString(
@@ -5212,16 +5040,10 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event = new TestingLegacyEvent($this->seminarUid);
         $event->setNeedsRegistration(true);
         $event->setRegistrationDeadline(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) - 45,
+            $this->nowAsUnixTimestamp - 45,
         );
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 45,
+            $this->nowAsUnixTimestamp + 45,
         );
 
         self::assertStringContainsString(
@@ -5238,10 +5060,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event = new TestingLegacyEvent($this->seminarUid);
         $event->setNeedsRegistration(true);
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) - 45,
+            $this->nowAsUnixTimestamp - 45,
         );
 
         self::assertStringContainsString(
@@ -5261,10 +5080,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event->setNeedsRegistration(true);
         $event->setRegistrationQueue(true);
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
+            $this->nowAsUnixTimestamp + 42,
         );
 
         self::assertStringContainsString(
@@ -5284,10 +5100,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $event->setNeedsRegistration(true);
         $event->setRegistrationQueue(false);
         $event->setBeginDate(
-            $this->get(Context::class)->getPropertyFromAspect(
-                'date',
-                'timestamp',
-            ) + 42,
+            $this->nowAsUnixTimestamp + 42,
         );
 
         self::assertStringNotContainsString(
@@ -5700,14 +5513,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'pid' => $this->systemFolderPid,
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topic,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 2000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
+                'end_date' => $this->nowAsUnixTimestamp + 2000,
             ],
         );
         $this->subject->setConfigurationValue('what_to_display', 'topic_list');
@@ -5771,14 +5578,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'pid' => $this->systemFolderPid,
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topicUId,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 1000,
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 2000,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
+                'end_date' => $this->nowAsUnixTimestamp + 2000,
             ],
         );
         $this->testingFramework->createRecord(
@@ -5787,14 +5588,8 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'pid' => $this->systemFolderPid,
                 'object_type' => EventInterface::TYPE_EVENT_DATE,
                 'topic' => $topicUId,
-                'begin_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 11000, // > 1 day after first date
-                'end_date' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + 12000,
+                'begin_date' => $this->nowAsUnixTimestamp + 11000, // > 1 day after first date
+                'end_date' => $this->nowAsUnixTimestamp + 12000,
             ],
         );
         $this->subject->setConfigurationValue('what_to_display', 'single_view');

@@ -2191,19 +2191,9 @@ parameters:
 			path: ../../Tests/LegacyFunctional/BagBuilder/EventBagBuilderTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 90
-			path: ../../Tests/LegacyFunctional/BagBuilder/EventBagBuilderTest.php
-
-		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyOrganizer\\|null\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/BagBuilder/OrganizerBagBuilderTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 86400 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
 
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
@@ -2214,16 +2204,6 @@ parameters:
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 7
 			path: ../../Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
-
-		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 1 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
@@ -2246,18 +2226,8 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 13
-			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
-
-		-
 			message: "#^PHPDoc tag @var with type PHPUnit\\\\Framework\\\\MockObject\\\\MockObject is not subtype of type PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&stdClass\\.$#"
 			count: 4
-			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$recordData of method OliverKlee\\\\Oelib\\\\Testing\\\\TestingFramework\\:\\:createRecord\\(\\) expects array\\<string, bool\\|int\\|string\\>, array\\<string, mixed\\> given\\.$#"
-			count: 1
 			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
@@ -2282,7 +2252,7 @@ parameters:
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
-			count: 18
+			count: 1
 			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
@@ -2361,99 +2331,9 @@ parameters:
 			path: ../../Tests/LegacyFunctional/FrontEnd/AbstractViewTest.php
 
 		-
-			message: "#^Binary operation \"\\+\" between mixed and 1000 results in an error\\.$#"
-			count: 9
-			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 2000 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
-
-		-
-			message: "#^Binary operation \"\\-\" between mixed and 1000 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
-
-		-
-			message: "#^Binary operation \"\\-\" between mixed and 2000 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
-
-		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\CategoryListTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/FrontEnd/CategoryListTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 1000 results in an error\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 11000 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 12000 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 20 results in an error\\.$#"
-			count: 3
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 2000 results in an error\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 21 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 40 results in an error\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 42 results in an error\\.$#"
-			count: 24
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 45 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 50 results in an error\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 604800 results in an error\\.$#"
-			count: 8
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\-\" between mixed and 20 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\-\" between mixed and 42 results in an error\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\-\" between mixed and 45 results in an error\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\FrontEnd\\\\Fixtures\\\\TestingDefaultController will always evaluate to true\\.$#"
@@ -2491,11 +2371,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 16
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:addCategoryRelation\\(\\) has parameter \\$categoryData with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
@@ -2519,11 +2394,6 @@ parameters:
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 500 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/RegistrationsListTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\RegistrationsListTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
@@ -2566,11 +2436,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/FrontEnd/SelectorWidgetTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/OldModel/AbstractModelTest.php
-
-		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\Model\\\\FrontEndUser\\|null\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
@@ -2578,11 +2443,6 @@ parameters:
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 4
-			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
-
-		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
@@ -2653,11 +2513,6 @@ parameters:
 		-
 			message: "#^Parameter \\#3 \\$registrationsVipListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 3
-			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
-			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
@@ -2806,11 +2661,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/Service/EventStatusServiceTest.php
-
-		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&TYPO3\\\\CMS\\\\Core\\\\Mail\\\\MailMessage will always evaluate to true\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
@@ -2872,11 +2722,6 @@ parameters:
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\RegistrationManagerTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\RegistrationManagerTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
@@ -2979,16 +2824,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$interfaceName of class OliverKlee\\\\Seminars\\\\Hooks\\\\HookProvider constructor expects class\\-string\\<OliverKlee\\\\Seminars\\\\Hooks\\\\Interfaces\\\\Hook\\>, string given\\.$#"
 			count: 3
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 42 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
-
-		-
-			message: "#^Binary operation \"\\-\" between mixed and 42 results in an error\\.$#"
-			count: 1
-			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\LegacyRegistrationTest\\:\\:nameUserDataDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"

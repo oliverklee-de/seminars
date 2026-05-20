@@ -32,29 +32,23 @@ final class EventBagBuilderTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
-    /**
-     * @var int a UNIX timestamp in the past.
-     */
-    private int $past = 0;
+    private int $nowAsUnixTimestamp;
 
-    /**
-     * @var int a UNIX timestamp in the future.
-     */
-    private int $future = 0;
+    private int $pastAsUnixTimestamp;
+
+    private int $futureAsUnixTimestamp = 0;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this
-            ->get(Context::class)
-            ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
-        $this->future = (int)$this
-                ->get(Context::class)
-                ->getPropertyFromAspect('date', 'timestamp') + 50;
-        $this->past = (int)$this
-                ->get(Context::class)
-                ->getPropertyFromAspect('date', 'timestamp') - 50;
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->get(Context::class)->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        self::assertGreaterThan(0, $nowAsUnixTimestamp);
+        $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
+        $this->futureAsUnixTimestamp = $nowAsUnixTimestamp + 50;
+        $this->pastAsUnixTimestamp = $nowAsUnixTimestamp - 50;
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
@@ -106,9 +100,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'endtime' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - 1000,
+                'endtime' => $this->nowAsUnixTimestamp - 1000,
             ],
         );
         $bag = $this->subject->build();
@@ -126,9 +118,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'endtime' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - 1000,
+                'endtime' => $this->nowAsUnixTimestamp - 1000,
             ],
         );
 
@@ -526,12 +516,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -552,9 +538,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -576,12 +560,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -601,12 +581,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -626,9 +602,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -676,12 +650,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -702,9 +672,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -726,12 +694,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -752,12 +716,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -777,9 +737,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -827,12 +785,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -852,9 +806,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -875,12 +827,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -901,12 +849,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -926,9 +870,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -976,12 +918,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1001,9 +939,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -1024,12 +960,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1050,12 +982,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1076,9 +1004,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -1128,12 +1054,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1153,9 +1075,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -1176,12 +1096,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1201,12 +1117,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1227,9 +1139,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -1279,12 +1189,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1304,9 +1210,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -1327,12 +1231,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1352,12 +1252,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1378,9 +1274,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -1430,12 +1324,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
                 'deadline_registration' => 0,
             ],
         );
@@ -1456,9 +1346,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
                 'deadline_registration' => 0,
             ],
@@ -1480,12 +1368,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'deadline_registration' => 0,
             ],
         );
@@ -1506,12 +1390,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
                 'deadline_registration' => 0,
             ],
         );
@@ -1533,15 +1413,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + 2 * self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
-                'deadline_registration' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + 2 * self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
+                'deadline_registration' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1562,15 +1436,9 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
-                'deadline_registration' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
+                'deadline_registration' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1590,9 +1458,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'end_date' => 0,
                 'deadline_registration' => 0,
             ],
@@ -1644,9 +1510,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                    ->get(Context::class)
-                    ->getPropertyFromAspect('date', 'timestamp'),
+                'begin_date' => $this->nowAsUnixTimestamp,
                 'end_date' => 0,
             ],
         );
@@ -1668,9 +1532,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -1691,12 +1553,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                    ->get(Context::class)
-                    ->getPropertyFromAspect('date', 'timestamp'),
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1717,12 +1575,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                    ->get(Context::class)
-                    ->getPropertyFromAspect('date', 'timestamp'),
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp,
             ],
         );
 
@@ -1743,12 +1597,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1769,12 +1619,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1794,12 +1640,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1846,12 +1688,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
+                'end_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1872,9 +1710,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK,
                 'end_date' => 0,
             ],
         );
@@ -1896,12 +1732,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -1922,12 +1754,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
-                'end_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_WEEK,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
+                'end_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK,
             ],
         );
 
@@ -1948,9 +1776,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
                 'end_date' => 0,
             ],
         );
@@ -5043,9 +4869,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
 
@@ -5066,9 +4890,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - self::SECONDS_PER_DAY,
+                'begin_date' => $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             ],
         );
 
@@ -5089,9 +4911,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') + (2 * self::SECONDS_PER_DAY),
+                'begin_date' => $this->nowAsUnixTimestamp + (2 * self::SECONDS_PER_DAY),
             ],
         );
 
@@ -5112,9 +4932,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'begin_date' => (int)$this
-                        ->get(Context::class)
-                        ->getPropertyFromAspect('date', 'timestamp') - (2 * self::SECONDS_PER_DAY),
+                'begin_date' => $this->nowAsUnixTimestamp - (2 * self::SECONDS_PER_DAY),
             ],
         );
 
@@ -6422,7 +6240,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 51,
                 'price_regular_early' => 49,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6445,7 +6263,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 51,
                 'price_regular_early' => 50,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6468,7 +6286,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 51,
                 'price_regular_early' => 51,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6490,7 +6308,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 51,
                 'price_regular_early' => 49,
-                'deadline_early_bird' => $this->past,
+                'deadline_early_bird' => $this->pastAsUnixTimestamp,
             ],
         );
 
@@ -6512,7 +6330,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 51,
                 'price_special_early' => 49,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6535,7 +6353,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 51,
                 'price_special_early' => 50,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6558,7 +6376,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 51,
                 'price_special_early' => 51,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6579,7 +6397,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_regular' => 51,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6601,7 +6419,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 51,
                 'price_special_early' => 49,
-                'deadline_early_bird' => $this->past,
+                'deadline_early_bird' => $this->pastAsUnixTimestamp,
             ],
         );
 
@@ -6623,7 +6441,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 49,
                 'price_regular_early' => 51,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6644,7 +6462,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_regular' => 49,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6667,7 +6485,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             [
                 'price_regular' => 51,
                 'price_special' => 49,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6689,7 +6507,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_regular' => 49,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6863,7 +6681,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_regular' => 16,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6883,7 +6701,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
     {
         $this->testingFramework->createRecord(
             'tx_seminars_seminars',
-            ['deadline_early_bird' => $this->future],
+            ['deadline_early_bird' => $this->futureAsUnixTimestamp],
         );
 
         $this->subject->limitToMinimumPrice(15);
@@ -6903,7 +6721,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_regular_early' => 14,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6924,7 +6742,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_regular_early' => 15,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6946,7 +6764,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_regular_early' => 16,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6968,7 +6786,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_special' => 16,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -6990,7 +6808,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_special_early' => 14,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -7011,7 +6829,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_special_early' => 15,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -7033,7 +6851,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_special_early' => 16,
-                'deadline_early_bird' => $this->future,
+                'deadline_early_bird' => $this->futureAsUnixTimestamp,
             ],
         );
 
@@ -7055,7 +6873,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_regular_early' => 16,
-                'deadline_early_bird' => $this->past,
+                'deadline_early_bird' => $this->pastAsUnixTimestamp,
             ],
         );
 
@@ -7076,7 +6894,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
             'tx_seminars_seminars',
             [
                 'price_special_early' => 16,
-                'deadline_early_bird' => $this->past,
+                'deadline_early_bird' => $this->pastAsUnixTimestamp,
             ],
         );
 

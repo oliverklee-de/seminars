@@ -35,23 +35,20 @@ final class EventStatusServiceTest extends FunctionalTestCase
      */
     private EventMapper $eventMapper;
 
-    private int $past = 0;
+    private int $pastAsUnixTimestamp;
 
-    private int $future = 0;
+    private int $futureAsUnixTimestamp;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this
-            ->get(Context::class)
-            ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
-        $this->past = (int)$this
-                ->get(Context::class)
-                ->getPropertyFromAspect('date', 'timestamp') - 1;
-        $this->future = (int)$this
-                ->get(Context::class)
-                ->getPropertyFromAspect('date', 'timestamp') + 1;
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->get(Context::class)->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        self::assertGreaterThan(0, $nowAsUnixTimestamp);
+        $this->pastAsUnixTimestamp = $nowAsUnixTimestamp - 1;
+        $this->futureAsUnixTimestamp = $nowAsUnixTimestamp + 1;
 
         $this->eventMapper = $this->createMock(EventMapper::class);
         $this->get(MapperRegistry::class)->setByClassName(EventMapper::class, $this->eventMapper);
@@ -234,7 +231,7 @@ final class EventStatusServiceTest extends FunctionalTestCase
                 'automatic_confirmation_cancelation' => 1,
                 'attendees_min' => 1,
                 'offline_attendees' => 0,
-                'deadline_registration' => $this->future,
+                'deadline_registration' => $this->futureAsUnixTimestamp,
             ],
         );
         $event->setStatus(EventInterface::STATUS_PLANNED);
@@ -256,7 +253,7 @@ final class EventStatusServiceTest extends FunctionalTestCase
                 'automatic_confirmation_cancelation' => 1,
                 'attendees_min' => 1,
                 'offline_attendees' => 0,
-                'deadline_registration' => $this->past,
+                'deadline_registration' => $this->pastAsUnixTimestamp,
             ],
         );
         $event->setStatus(EventInterface::STATUS_PLANNED);
@@ -278,7 +275,7 @@ final class EventStatusServiceTest extends FunctionalTestCase
                 'automatic_confirmation_cancelation' => 1,
                 'attendees_min' => 1,
                 'offline_attendees' => 0,
-                'deadline_registration' => $this->past,
+                'deadline_registration' => $this->pastAsUnixTimestamp,
             ],
         );
         $event->setStatus(EventInterface::STATUS_PLANNED);
@@ -300,7 +297,7 @@ final class EventStatusServiceTest extends FunctionalTestCase
                 'automatic_confirmation_cancelation' => 1,
                 'attendees_min' => 1,
                 'offline_attendees' => 0,
-                'deadline_registration' => $this->past,
+                'deadline_registration' => $this->pastAsUnixTimestamp,
             ],
         );
         $event->setStatus(EventInterface::STATUS_PLANNED);
