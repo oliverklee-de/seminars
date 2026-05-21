@@ -1,0 +1,8 @@
+"tx_seminars_seminars"
+,"uid","title","needs_registration","attendees_max","offline_attendees","registrations"
+,1,"Event with offline registrations only and one vacancy left",1,10,9,0
+,2,"Event with one one-seat registration and one vacancy left",1,2,0,1
+
+"tx_seminars_attendances"
+,"uid","seminar","seats"
+,1,2,1

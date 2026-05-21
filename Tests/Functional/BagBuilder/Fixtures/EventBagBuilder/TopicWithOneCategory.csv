@@ -1,0 +1,13 @@
+"tx_seminars_seminars"
+,"uid","title","object_type","categories","topic"
+,1,"Topic with one category",1,1,0
+,2,"Date for the event with that category",2,0,1
+
+"tx_seminars_seminars_categories_mm"
+,"uid_local","uid_foreign"
+,1,1
+
+"tx_seminars_categories"
+,"uid","title"
+,1,"workshops with good coffee"
+,2,"workshops without coffee"

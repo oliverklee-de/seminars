@@ -40,7 +40,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToEventsWithVacanciesForEventWithVacanciesAndOnlyOfflineAttendeesFindsThisEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $this->subject->limitToEventsWithVacancies();
         $bag = $this->subject->build();
@@ -53,7 +53,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToEventsWithVacanciesForEventWithOneVacancyFindsThisEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $this->subject->limitToEventsWithVacancies();
         $bag = $this->subject->build();
@@ -68,7 +68,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithEmptyStringsFindsEventWithoutCategories(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithoutCategories.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithoutCategories.csv');
 
         $this->subject->limitToCategories('');
 
@@ -82,7 +82,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithEmptyStringsFindsEventWithCategory(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.csv');
 
         $this->subject->limitToCategories('');
 
@@ -96,7 +96,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithEmptyStringResetsPreviousCategoryFilter(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithoutCategories.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithoutCategories.csv');
 
         $this->subject->limitToCategories('2');
         $this->subject->limitToCategories('');
@@ -111,7 +111,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithUidOfExistingCategoryFindsEventWithTheGivenCategory(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.csv');
 
         $this->subject->limitToCategories('1');
 
@@ -125,7 +125,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithUidOfExistingAndInexistentCategoryFindsEventWithExistingCategory(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.csv');
 
         $this->subject->limitToCategories('1,999');
 
@@ -171,7 +171,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesSilentlyIgnoresInvalidUids($invalidUid): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.csv');
 
         $this->subject->limitToCategories('1,' . $invalidUid);
 
@@ -185,7 +185,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithUidOfExistingCategoryIgnoresEventOnlyWithOtherCategory(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.csv');
 
         $this->subject->limitToCategories('2');
 
@@ -199,7 +199,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithInexistentCategoryUidIgnoresWithCategory(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.csv');
 
         $this->subject->limitToCategories('15');
 
@@ -213,7 +213,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithUidOfExistingCategoryIgnoresEventWithoutCategories(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithoutCategories.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithoutCategories.csv');
 
         $this->subject->limitToCategories('2');
 
@@ -227,7 +227,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithUidOfTwoExistingCategoriesFindsEventWithOneGivenCategory(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithOneCategory.csv');
 
         $this->subject->limitToCategories('1,2');
 
@@ -241,7 +241,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesWithUidOfTwoExistingCategoriesFindsEventWithBothCategories(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithTwoCategories.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/EventWithTwoCategories.csv');
 
         $this->subject->limitToCategories('1,2');
 
@@ -255,7 +255,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesFindsMatchingTopic(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/TopicWithOneCategory.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/TopicWithOneCategory.csv');
 
         $this->subject->limitToCategories('1');
 
@@ -269,7 +269,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
      */
     public function limitToCategoriesFindsDateOfMatchingTopic(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventBagBuilder/TopicWithOneCategory.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventBagBuilder/TopicWithOneCategory.csv');
 
         $this->subject->limitToCategories('1');
 
