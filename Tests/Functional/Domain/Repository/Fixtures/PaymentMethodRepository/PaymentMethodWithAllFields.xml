@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<dataset>
-    <tx_seminars_payment_methods>
-        <uid>1</uid>
-        <title>invoice</title>
-    </tx_seminars_payment_methods>
-</dataset>

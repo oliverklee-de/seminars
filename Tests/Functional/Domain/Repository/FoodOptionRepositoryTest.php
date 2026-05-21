@@ -43,7 +43,7 @@ final class FoodOptionRepositoryTest extends FunctionalTestCase
      */
     public function mapsAllModelFields(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/FoodOptionRepository/FoodOptionWithAllFields.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/FoodOptionRepository/FoodOptionWithAllFields.csv');
 
         $result = $this->subject->findByUid(1);
 

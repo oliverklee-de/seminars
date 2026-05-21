@@ -43,8 +43,8 @@ final class RegistrationCheckboxRepositoryTest extends FunctionalTestCase
      */
     public function mapsAllModelFields(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/RegistrationCheckboxRepository/RegistrationCheckboxWithAllFields.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/RegistrationCheckboxRepository/RegistrationCheckboxWithAllFields.csv',
         );
 
         $result = $this->subject->findByUid(1);

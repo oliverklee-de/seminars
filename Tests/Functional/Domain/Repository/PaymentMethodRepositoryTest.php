@@ -43,7 +43,7 @@ final class PaymentMethodRepositoryTest extends FunctionalTestCase
      */
     public function mapsAllModelFields(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/PaymentMethodRepository/PaymentMethodWithAllFields.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/PaymentMethodRepository/PaymentMethodWithAllFields.csv');
 
         $result = $this->subject->findByUid(1);
 

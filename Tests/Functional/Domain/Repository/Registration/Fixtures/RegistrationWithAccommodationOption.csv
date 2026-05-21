@@ -1,0 +1,11 @@
+"tx_seminars_attendances"
+,"uid","lodgings"
+,1,1
+
+"tx_seminars_lodgings"
+,"uid"
+,2
+
+"tx_seminars_attendances_lodgings_mm"
+,"uid_local","uid_foreign"
+,1,2

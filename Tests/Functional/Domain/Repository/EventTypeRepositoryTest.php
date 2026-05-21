@@ -44,7 +44,7 @@ final class EventTypeRepositoryTest extends FunctionalTestCase
      */
     public function mapsAllModelFields(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventTypeRepository/EventTypeWithAllFields.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventTypeRepository/EventTypeWithAllFields.csv');
 
         $result = $this->subject->findByUid(1);
 
@@ -57,7 +57,7 @@ final class EventTypeRepositoryTest extends FunctionalTestCase
      */
     public function findsRecordOnPages(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventTypeRepository/EventTypeOnPage.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventTypeRepository/EventTypeOnPage.csv');
 
         $result = $this->subject->findAll();
 
@@ -69,7 +69,7 @@ final class EventTypeRepositoryTest extends FunctionalTestCase
      */
     public function sortsRecordsByTitleInAscendingOrder(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventTypeRepository/TwoEventTypesInReverseOrder.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventTypeRepository/TwoEventTypesInReverseOrder.csv');
 
         $result = $this->subject->findAll();
 
@@ -95,7 +95,7 @@ final class EventTypeRepositoryTest extends FunctionalTestCase
      */
     public function findAllPlusNullEventTypeReturnsNullEventTypeAndRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventTypeRepository/EventTypeWithAllFields.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventTypeRepository/EventTypeWithAllFields.csv');
 
         $result = $this->subject->findAllPlusNullEventType();
 
@@ -109,7 +109,7 @@ final class EventTypeRepositoryTest extends FunctionalTestCase
      */
     public function findAllPlusNullEventTypeAlsoFindsRecordsOnPages(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventTypeRepository/EventTypeOnPage.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventTypeRepository/EventTypeOnPage.csv');
 
         $result = $this->subject->findAllPlusNullEventType();
 

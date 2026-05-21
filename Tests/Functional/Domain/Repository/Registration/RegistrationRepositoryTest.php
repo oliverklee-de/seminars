@@ -214,7 +214,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function mapsEventAssociationWithSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationWithSingleEvent.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationWithSingleEvent.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(Registration::class, $result);
@@ -240,7 +240,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function mapsEventAssociationWithEventDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationWithEventDate.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationWithEventDate.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(Registration::class, $result);
@@ -253,7 +253,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function mapsUserAssociation(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationWithUser.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationWithUser.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(Registration::class, $result);
@@ -279,7 +279,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function mapsAdditionalPersonsAssociation(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationWithAdditionalPerson.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationWithAdditionalPerson.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(Registration::class, $result);
@@ -295,7 +295,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function mapsAccommodationOptionsAssociation(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationWithAccommodationOption.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationWithAccommodationOption.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(Registration::class, $result);
@@ -311,7 +311,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function mapsFoodOptionsAssociation(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationWithFoodOption.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationWithFoodOption.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(Registration::class, $result);
@@ -327,7 +327,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function mapsRegistrationCheckboxesAssociation(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationWithRegistrationCheckbox.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationWithRegistrationCheckbox.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(Registration::class, $result);
@@ -343,7 +343,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function mapsPaymentMethodAssociation(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationWithPaymentMethod.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationWithPaymentMethod.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(Registration::class, $result);
@@ -395,7 +395,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function existsRegistrationForOtherEventAndThisUserUidReturnsFalse(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationWithEventAndUserAndAdditionalEvent.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationWithEventAndUserAndAdditionalEvent.csv');
         $event = $this->eventRepository->findByUid(2);
 
         self::assertFalse($this->subject->existsRegistrationForEventAndUser($event, 1));
@@ -406,8 +406,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function existsRegistrationForHiddenMatchingRegistrationReturnsFalse(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/existsRegistrationForEventAndUser/HiddenRegistrationWithEventAndUser.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/existsRegistrationForEventAndUser/HiddenRegistrationWithEventAndUser.csv',
         );
         $event = $this->eventRepository->findByUid(1);
 
@@ -419,8 +419,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function existsRegistrationForDeletedMatchingRegistrationReturnsFalse(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/existsRegistrationForEventAndUser/DeletedRegistrationWithEventAndUser.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/existsRegistrationForEventAndUser/DeletedRegistrationWithEventAndUser.csv',
         );
         $event = $this->eventRepository->findByUid(1);
 
@@ -445,8 +445,8 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
      */
     public function existsRegistrationTwoMatchingRegistrationsReturnsTrue(): void
     {
-        $this->importDataSet(
-            __DIR__ . '/Fixtures/existsRegistrationForEventAndUser/TwoRegistrationsWithSameEventAndUser.xml',
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/existsRegistrationForEventAndUser/TwoRegistrationsWithSameEventAndUser.csv',
         );
         $event = $this->eventRepository->findByUid(1);
 
