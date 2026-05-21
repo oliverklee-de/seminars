@@ -43,7 +43,7 @@ final class AccommodationOptionRepositoryTest extends FunctionalTestCase
      */
     public function mapsAllModelFields(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/AccommodationOptionRepository/AccommodationOptionWithAllFields.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/AccommodationOptionRepository/AccommodationOptionWithAllFields.csv');
 
         $result = $this->subject->findByUid(1);
 

@@ -1,0 +1,12 @@
+"tx_seminars_attendances"
+,"uid","seminar","user"
+,1,1,1
+
+"tx_seminars_seminars"
+,"uid"
+,1
+,2
+
+"fe_users"
+,"uid"
+,1

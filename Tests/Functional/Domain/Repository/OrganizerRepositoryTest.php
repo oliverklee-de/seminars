@@ -58,7 +58,7 @@ final class OrganizerRepositoryTest extends FunctionalTestCase
      */
     public function findsRecordOnPages(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/OrganizerRepository/OrganizerOnPage.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/OrganizerRepository/OrganizerOnPage.csv');
 
         $result = $this->subject->findAll();
 
@@ -70,7 +70,7 @@ final class OrganizerRepositoryTest extends FunctionalTestCase
      */
     public function sortsRecordsByNameInAscendingOrder(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/OrganizerRepository/TwoOrganizersInReverseOrder.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/OrganizerRepository/TwoOrganizersInReverseOrder.csv');
 
         $result = $this->subject->findAll();
 
