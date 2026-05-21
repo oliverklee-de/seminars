@@ -1,0 +1,11 @@
+"tx_seminars_seminars"
+,"uid","object_type","foods"
+,1,0,1
+
+"tx_seminars_seminars_foods_mm"
+,"uid_local","uid_foreign"
+,1,2
+
+"tx_seminars_foods"
+,"uid"
+,2

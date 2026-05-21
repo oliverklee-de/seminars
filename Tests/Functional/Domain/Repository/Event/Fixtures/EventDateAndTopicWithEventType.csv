@@ -1,0 +1,8 @@
+"tx_seminars_seminars"
+,"uid","title","object_type","topic","event_type"
+,1,"Event date",2,2,0
+,2,"Event topic",1,0,1
+
+"tx_seminars_event_types"
+,"uid"
+,1
