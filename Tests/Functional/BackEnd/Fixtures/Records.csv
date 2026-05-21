@@ -1,0 +1,43 @@
+"pages"
+,"uid","slug","doktype","title"
+,1,"/folderWithoutEvents",254,"Folder without events"
+,2,"/folderWithEventWithoutRegistrations",254,"Folder with event without registrations"
+,3,"/folderWithEventWithRegistrations",254,"Folder with event with registrations"
+
+"tx_seminars_seminars"
+,"uid","pid","title","needs_registration","registrations","organizers"
+,1,3,"Event with one registration and one organizer",1,1,1
+,2,3,"Event with two registrations and two organizers",1,2,2
+,3,2,"Event with no registrations and one organizer",1,0,1
+,4,3,"Event with one registration without email address",1,0,1
+
+"tx_seminars_organizers"
+,"uid","title","email","email_footer"
+,1,"Oliver Klee",oliver@example.com,"The one and only"
+,2,"Max Payne",payne@example.com,"Video games etc."
+
+"tx_seminars_seminars_organizers_mm"
+,"uid_local","uid_foreign","sorting"
+,1,1,1
+,2,1,1
+,2,2,2
+,3,1,1
+,4,1,1
+
+"fe_users"
+,"uid","username","name","usergroup","email"
+,1,"max","","1","max@example.com"
+,2,"joe-johnson","Joe Johnson","1","joe@example.com"
+,3,"jane","Jane","1","jane@example.com"
+,4,"user without email address","","1",""
+
+"fe_groups"
+,"uid","title"
+,1,"visitors"
+
+"tx_seminars_attendances"
+,"uid","user","seminar"
+,1,2,1
+,2,2,2
+,3,3,2
+,4,4,4
