@@ -26,7 +26,7 @@ final class SpeakerBagTest extends FunctionalTestCase
      */
     public function canHaveAtLeastOneElement(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $bag = new SpeakerBag();
 
@@ -38,7 +38,7 @@ final class SpeakerBagTest extends FunctionalTestCase
      */
     public function containsVisibleSpeakers(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $bag = new SpeakerBag();
 
@@ -50,7 +50,7 @@ final class SpeakerBagTest extends FunctionalTestCase
      */
     public function byDefaultIgnoresHiddenSpeakers(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $bag = new SpeakerBag();
 
@@ -62,7 +62,7 @@ final class SpeakerBagTest extends FunctionalTestCase
      */
     public function withShowHiddenRecordsSetToMinusOneIgnoresHiddenSpeakers(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $bag = new SpeakerBag('1=1', '', '', '', '', -1);
 
@@ -74,7 +74,7 @@ final class SpeakerBagTest extends FunctionalTestCase
      */
     public function withShowHiddenRecordsSetToOneFindsHiddenSpeakers(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $bag = new SpeakerBag('1=1', '', '', '', '', 1);
 
