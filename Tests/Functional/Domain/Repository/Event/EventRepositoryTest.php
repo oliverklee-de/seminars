@@ -129,7 +129,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsNotSetDateTimesForSingleEventAsNull(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithoutData.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithoutData.csv');
 
         $result = $this->subject->findByUid(1);
 
@@ -197,7 +197,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsNotSetDateTimesForEventDateAsNull(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithoutData.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithoutData.csv');
 
         $result = $this->subject->findByUid(1);
 
@@ -330,7 +330,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsEventTypeAssociationForSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithEventType.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithEventType.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(SingleEvent::class, $result);
@@ -345,7 +345,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsEventTypeAssociationForEventTopic(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventTopicWithEventType.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventTopicWithEventType.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(EventTopic::class, $result);
@@ -360,7 +360,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsEventTypeAssociationForEventDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateAndTopicWithEventType.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateAndTopicWithEventType.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(EventDate::class, $result);
@@ -375,7 +375,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsVenuesAssociationForSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithVenue.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithVenue.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(SingleEvent::class, $result);
@@ -390,7 +390,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsVenuesAssociationForEventDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithVenue.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithVenue.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(EventDate::class, $result);
@@ -405,7 +405,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsSpeakersAssociationForSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithSpeaker.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithSpeaker.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(SingleEvent::class, $result);
@@ -420,7 +420,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsSpeakersAssociationForEventDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithSpeaker.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithSpeaker.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(EventDate::class, $result);
@@ -435,7 +435,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsOrganizersAssociationForSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithOrganizer.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithOrganizer.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(SingleEvent::class, $result);
@@ -450,7 +450,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsOrganizersAssociationForEventDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithOrganizer.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithOrganizer.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(EventDate::class, $result);
@@ -465,7 +465,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsAccommodationOptionsAssociationForSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithAccommodationOption.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithAccommodationOption.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(SingleEvent::class, $result);
@@ -480,7 +480,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsAccommodationOptionsAssociationForEventDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithAccommodationOption.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithAccommodationOption.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(EventDate::class, $result);
@@ -495,7 +495,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsFoodOptionsAssociationForSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithFoodOption.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithFoodOption.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(SingleEvent::class, $result);
@@ -510,7 +510,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsFoodOptionsAssociationForEventDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithFoodOption.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithFoodOption.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(EventDate::class, $result);
@@ -525,7 +525,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsRegistrationCheckboxesAssociationForSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithRegistrationCheckbox.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithRegistrationCheckbox.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(SingleEvent::class, $result);
@@ -540,7 +540,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsRegistrationCheckboxesAssociationForEventDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithRegistrationCheckbox.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithRegistrationCheckbox.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(EventDate::class, $result);
@@ -555,7 +555,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsPaymentMethodsAssociationForSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithPaymentMethod.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithPaymentMethod.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(SingleEvent::class, $result);
@@ -570,7 +570,7 @@ final class EventRepositoryTest extends FunctionalTestCase
      */
     public function mapsPaymentMethodsAssociationForEventTopic(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventTopicWithPaymentMethod.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventTopicWithPaymentMethod.csv');
 
         $result = $this->subject->findByUid(1);
         self::assertInstanceOf(EventTopic::class, $result);
