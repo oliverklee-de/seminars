@@ -35,7 +35,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
      */
     public function findsVisibleRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Testing.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Testing.csv');
 
         $bag = $this->subject->build();
 
@@ -47,7 +47,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
      */
     public function byDefaultIgnoresHiddenRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Testing.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Testing.csv');
 
         $bag = $this->subject->build();
 
@@ -59,7 +59,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
      */
     public function inBackEndModeFindsHiddenRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Testing.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Testing.csv');
 
         $this->subject->setBackEndMode();
         $bag = $this->subject->build();
@@ -72,7 +72,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
      */
     public function byDefaultIgnoresTimedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Testing.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Testing.csv');
 
         $bag = $this->subject->build();
 
@@ -84,7 +84,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
      */
     public function inBackEndModeFindsTimedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Testing.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Testing.csv');
 
         $this->subject->setBackEndMode();
         $bag = $this->subject->build();
@@ -97,7 +97,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
      */
     public function byDefaultIgnoresDeletedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Testing.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Testing.csv');
 
         $bag = $this->subject->build();
 
@@ -109,7 +109,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
      */
     public function inBackEndModeIgnoresDeletedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Testing.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Testing.csv');
 
         $this->subject->setBackEndMode();
         $bag = $this->subject->build();
@@ -122,7 +122,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
      */
     public function limitToTitleFindRecordWithMatchingTitle(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Testing.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Testing.csv');
 
         $this->subject->limitToTitle('visible');
         $bag = $this->subject->build();
@@ -135,7 +135,7 @@ final class AbstractBagBuilderTest extends FunctionalTestCase
      */
     public function limitToTitleIgnoresRecordWithNonMatchingTitle(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Testing.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Testing.csv');
 
         $this->subject->limitToTitle('some other title');
         $bag = $this->subject->build();

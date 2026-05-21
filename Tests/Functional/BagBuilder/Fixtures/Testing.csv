@@ -1,0 +1,6 @@
+"tx_seminars_test"
+,"uid","title","hidden","deleted","endtime"
+,1,"visible",0,0,0
+,2,"hidden",1,0,0
+,3,"deleted",0,1,0
+,4,"expired",0,0,1
