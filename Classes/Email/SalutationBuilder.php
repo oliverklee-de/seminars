@@ -13,7 +13,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 /**
  * This class creates a salutation for emails.
  */
-class Salutation
+class SalutationBuilder
 {
     /**
      * Creates the salutation for the given user.

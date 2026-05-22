@@ -15,7 +15,7 @@ use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
-use OliverKlee\Seminars\Email\Salutation;
+use OliverKlee\Seminars\Email\SalutationBuilder;
 use OliverKlee\Seminars\FrontEnd\DefaultController;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Place;
@@ -1045,10 +1045,10 @@ class RegistrationManager implements SingletonInterface
     private function setEmailIntroduction(string $helloSubjectPrefix, LegacyRegistration $registration): void
     {
         $template = $this->getInitializedEmailTemplate();
-        $salutation = GeneralUtility::makeInstance(Salutation::class);
+        $salutationBuilder = GeneralUtility::makeInstance(SalutationBuilder::class);
         $user = $registration->getFrontEndUser();
         if ($user instanceof FrontEndUser) {
-            $salutationText = $salutation->getSalutation($user);
+            $salutationText = $salutationBuilder->getSalutation($user);
         } else {
             $salutationText = '';
         }
@@ -1056,7 +1056,7 @@ class RegistrationManager implements SingletonInterface
 
         $event = $registration->getSeminarObject();
         $introductionTemplate = $this->translate('email_' . $helloSubjectPrefix . 'Hello');
-        $introduction = $salutation->createIntroduction($introductionTemplate, $event);
+        $introduction = $salutationBuilder->createIntroduction($introductionTemplate, $event);
 
         if ($registration->hasTotalPrice()) {
             $introduction .= ' ' . sprintf($this->translate('email_price'), $registration->getTotalPrice());

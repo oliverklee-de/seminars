@@ -6,7 +6,7 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\Email;
 
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
-use OliverKlee\Seminars\Email\Salutation;
+use OliverKlee\Seminars\Email\SalutationBuilder;
 use OliverKlee\Seminars\Mapper\FrontEndUserMapper;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Tests\Support\BackEndTestsTrait;
@@ -14,9 +14,9 @@ use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
- * @covers \OliverKlee\Seminars\Email\Salutation
+ * @covers \OliverKlee\Seminars\Email\SalutationBuilder
  */
-final class SalutationTest extends FunctionalTestCase
+final class SalutationBuilderTest extends FunctionalTestCase
 {
     use BackEndTestsTrait;
 
@@ -34,7 +34,7 @@ final class SalutationTest extends FunctionalTestCase
 
     private FrontEndUserMapper $frontEndUserMapper;
 
-    private Salutation $subject;
+    private SalutationBuilder $subject;
 
     protected function setUp(): void
     {
@@ -46,7 +46,7 @@ final class SalutationTest extends FunctionalTestCase
         $this->configuration->setAsString('salutation', 'formal');
         $this->frontEndUserMapper = $this->get(MapperRegistry::class)->getByClassName(FrontEndUserMapper::class);
 
-        $this->subject = new Salutation();
+        $this->subject = new SalutationBuilder();
     }
 
     protected function tearDown(): void

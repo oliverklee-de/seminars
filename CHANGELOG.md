@@ -95,6 +95,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Rename `Salutation` to `SalutationBuilder` (#5086)
 - Don't display "will be announced" for events without venues (#4883)
 - !!! Make the end time of timeslots required (#4866)
 - Polish the FE editor table markup (#4827)
