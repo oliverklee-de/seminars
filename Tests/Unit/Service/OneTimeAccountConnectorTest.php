@@ -7,6 +7,8 @@ namespace OliverKlee\Seminars\Tests\Unit\Service;
 use OliverKlee\Seminars\Service\OneTimeAccountConnector;
 use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Http\ServerRequest;
+use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
+use TYPO3\CMS\Extbase\Mvc\Request;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -17,6 +19,8 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 final class OneTimeAccountConnectorTest extends UnitTestCase
 {
     private OneTimeAccountConnector $subject;
+
+    private Request $extbaseRequest;
 
     /**
      * @var FrontendUserAuthentication&MockObject
@@ -31,16 +35,12 @@ final class OneTimeAccountConnectorTest extends UnitTestCase
         $this->frontEndUserAuthenticationMock = $this->createMock(FrontendUserAuthentication::class);
         $mockFrontEndController->fe_user = $this->frontEndUserAuthenticationMock;
 
-        $request = (new ServerRequest())->withAttribute('frontend.user', $this->frontEndUserAuthenticationMock);
-        $GLOBALS['TYPO3_REQUEST'] = $request;
+        $serverRequest = (new ServerRequest())
+            ->withAttribute('extbase', $this->createStub(ExtbaseRequestParameters::class));
+        $this->extbaseRequest = (new Request($serverRequest))
+            ->withAttribute('frontend.user', $this->frontEndUserAuthenticationMock);
 
         $this->subject = new OneTimeAccountConnector();
-    }
-
-    protected function tearDown(): void
-    {
-        unset($GLOBALS['TYPO3_REQUEST']);
-        parent::tearDown();
     }
 
     /**
@@ -52,7 +52,7 @@ final class OneTimeAccountConnectorTest extends UnitTestCase
             ->method('getSessionData')->with('onetimeaccountUserUid')
             ->willReturn(null);
 
-        self::assertNull($this->subject->getOneTimeAccountUserUid());
+        self::assertNull($this->subject->getOneTimeAccountUserUid($this->extbaseRequest));
     }
 
     /**
@@ -62,7 +62,7 @@ final class OneTimeAccountConnectorTest extends UnitTestCase
     {
         $this->frontEndUserAuthenticationMock->method('getSessionData')->with('onetimeaccountUserUid')->willReturn('');
 
-        self::assertNull($this->subject->getOneTimeAccountUserUid());
+        self::assertNull($this->subject->getOneTimeAccountUserUid($this->extbaseRequest));
     }
 
     /**
@@ -72,7 +72,7 @@ final class OneTimeAccountConnectorTest extends UnitTestCase
     {
         $this->frontEndUserAuthenticationMock->method('getSessionData')->with('onetimeaccountUserUid')->willReturn(0);
 
-        self::assertNull($this->subject->getOneTimeAccountUserUid());
+        self::assertNull($this->subject->getOneTimeAccountUserUid($this->extbaseRequest));
     }
 
     /**
@@ -85,7 +85,7 @@ final class OneTimeAccountConnectorTest extends UnitTestCase
             ->method('getSessionData')
             ->with('onetimeaccountUserUid')->willReturn($userUid);
 
-        self::assertSame($userUid, $this->subject->getOneTimeAccountUserUid());
+        self::assertSame($userUid, $this->subject->getOneTimeAccountUserUid($this->extbaseRequest));
     }
 
     /**
@@ -97,7 +97,7 @@ final class OneTimeAccountConnectorTest extends UnitTestCase
 
         $this->frontEndUserAuthenticationMock->expects(self::never())->method('setAndSaveSessionData');
 
-        $this->subject->destroyOneTimeSession();
+        $this->subject->destroyOneTimeSession($this->extbaseRequest);
     }
 
     /**
@@ -114,7 +114,7 @@ final class OneTimeAccountConnectorTest extends UnitTestCase
             ->expects(self::once())->method('setAndSaveSessionData')
             ->with('onetimeaccountUserUid', null);
 
-        $this->subject->destroyOneTimeSession();
+        $this->subject->destroyOneTimeSession($this->extbaseRequest);
     }
 
     /**
@@ -131,6 +131,6 @@ final class OneTimeAccountConnectorTest extends UnitTestCase
             ->expects(self::once())->method('setAndSaveSessionData')
             ->with('onetimeaccountUserUid', null);
 
-        $this->subject->destroyOneTimeSession();
+        $this->subject->destroyOneTimeSession($this->extbaseRequest);
     }
 }

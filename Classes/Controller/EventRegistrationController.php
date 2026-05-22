@@ -68,7 +68,7 @@ class EventRegistrationController extends ActionController
         if (!$this->registrationGuard->existsFrontEndUserUidInSession($this->request)) {
             return $this->redirectToLoginPage($event);
         }
-        $userUid = $this->registrationGuard->getFrontEndUserUidFromSession();
+        $userUid = $this->registrationGuard->getFrontEndUserUidFromSession($this->request);
         if (!$this->registrationGuard->isFreeFromRegistrationConflicts($event, $userUid)) {
             return $this->forwardToDenyAction('alreadyRegistered');
         }
@@ -144,7 +144,7 @@ class EventRegistrationController extends ActionController
             $firstPriceCode = $firstPrice instanceof Price ? $firstPrice->getPriceCode() : Price::PRICE_STANDARD;
             $newRegistration->setPriceCode($firstPriceCode);
         }
-        $this->registrationProcessor->enrichWithMetadata($newRegistration, $event, $this->settings);
+        $this->registrationProcessor->enrichWithMetadata($newRegistration, $event, $this->settings, $this->request);
         $this->view->assign('registration', $newRegistration);
 
         $maximumBookableSeats = (int)($this->settings['maximumBookableSeats'] ?? self::MAXIMUM_BOOKABLE_SEATS);
@@ -172,7 +172,7 @@ class EventRegistrationController extends ActionController
         $this->registrationGuard->assertBookableEventType($event);
         \assert($event instanceof EventDateInterface);
 
-        $this->registrationProcessor->enrichWithMetadata($registration, $event, $this->settings);
+        $this->registrationProcessor->enrichWithMetadata($registration, $event, $this->settings, $this->request);
         $this->registrationProcessor->calculateTotalPrice($registration);
 
         $this->view->assign('event', $event);
@@ -192,7 +192,7 @@ class EventRegistrationController extends ActionController
         $this->registrationGuard->assertBookableEventType($event);
         \assert($event instanceof EventDateInterface);
 
-        $this->registrationProcessor->enrichWithMetadata($registration, $event, $this->settings);
+        $this->registrationProcessor->enrichWithMetadata($registration, $event, $this->settings, $this->request);
         $this->registrationProcessor->calculateTotalPrice($registration);
         $this->registrationProcessor->createTitle($registration);
         $userStorageFolderUid = (int)($this->settings['additionalPersonsStorageFolder'] ?? 0);
@@ -200,7 +200,7 @@ class EventRegistrationController extends ActionController
         $this->registrationProcessor->persist($registration);
         $this->registrationProcessor->sendEmails($registration);
 
-        $this->oneTimeAccountConnector->destroyOneTimeSession();
+        $this->oneTimeAccountConnector->destroyOneTimeSession($this->request);
 
         return $this->redirect('thankYou', null, null, ['event' => $event, 'registration' => $registration]);
     }

@@ -16,6 +16,8 @@ use OliverKlee\Seminars\Service\RegistrationGuard;
 use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Service\RegistrationProcessor;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -51,6 +53,11 @@ final class RegistrationProcessorTest extends UnitTestCase
 
     private RegistrationProcessor $subject;
 
+    /**
+     * @var ServerRequestInterface&Stub
+     */
+    private ServerRequestInterface $requestStub;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -60,6 +67,7 @@ final class RegistrationProcessorTest extends UnitTestCase
         $this->frontendUserRepositoryMock = $this->createMock(FrontendUserRepository::class);
         $this->registrationGuardMock = $this->createMock(RegistrationGuard::class);
         $this->registrationManagerMock = $this->createMock(RegistrationManager::class);
+        $this->requestStub = $this->createStub(ServerRequestInterface::class);
 
         $this->subject = new RegistrationProcessor(
             $this->registrationRepositoryMock,
@@ -84,10 +92,10 @@ final class RegistrationProcessorTest extends UnitTestCase
     {
         $event = new SingleEvent();
         $registration = new Registration();
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn(15);
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestStub)->willReturn(15);
         $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
 
-        $this->subject->enrichWithMetadata($registration, $event, []);
+        $this->subject->enrichWithMetadata($registration, $event, [], $this->requestStub);
 
         self::assertSame($event, $registration->getEvent());
     }
@@ -102,12 +110,12 @@ final class RegistrationProcessorTest extends UnitTestCase
         $user = new FrontendUser();
         $this->registrationGuardMock
             ->expects(self::once())->method('getFrontEndUserUidFromSession')
-            ->willReturn($userUid);
+            ->with($this->requestStub)->willReturn($userUid);
         $this->frontendUserRepositoryMock
             ->expects(self::once())->method('findByUid')
             ->with($userUid)->willReturn($user);
 
-        $this->subject->enrichWithMetadata($registration, new SingleEvent(), []);
+        $this->subject->enrichWithMetadata($registration, new SingleEvent(), [], $this->requestStub);
 
         self::assertSame($user, $registration->getUser());
     }
@@ -120,13 +128,13 @@ final class RegistrationProcessorTest extends UnitTestCase
         $registration = new Registration();
         $this->registrationGuardMock
             ->expects(self::once())->method('getFrontEndUserUidFromSession')
-            ->willReturn(null);
+            ->with($this->requestStub)->willReturn(null);
 
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionCode(1668865776);
         $this->expectExceptionMessage('No user UID found in the session.');
 
-        $this->subject->enrichWithMetadata($registration, new SingleEvent(), []);
+        $this->subject->enrichWithMetadata($registration, new SingleEvent(), [], $this->requestStub);
     }
 
     /**
@@ -138,7 +146,7 @@ final class RegistrationProcessorTest extends UnitTestCase
         $registration = new Registration();
         $this->registrationGuardMock
             ->expects(self::once())->method('getFrontEndUserUidFromSession')
-            ->willReturn($userUid);
+            ->with($this->requestStub)->willReturn($userUid);
         $this->frontendUserRepositoryMock
             ->expects(self::once())->method('findByUid')
             ->with($userUid)->willReturn(null);
@@ -147,7 +155,7 @@ final class RegistrationProcessorTest extends UnitTestCase
         $this->expectExceptionCode(1668865839);
         $this->expectExceptionMessage('User with UID ' . $userUid . ' not found.');
 
-        $this->subject->enrichWithMetadata($registration, new SingleEvent(), []);
+        $this->subject->enrichWithMetadata($registration, new SingleEvent(), [], $this->requestStub);
     }
 
     /**
@@ -157,13 +165,14 @@ final class RegistrationProcessorTest extends UnitTestCase
     {
         $folderUid = 21;
         $registration = new Registration();
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn(15);
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestStub)->willReturn(15);
         $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
 
         $this->subject->enrichWithMetadata(
             $registration,
             new SingleEvent(),
             ['registrationRecordsStorageFolder' => (string)$folderUid],
+            $this->requestStub,
         );
 
         self::assertSame($folderUid, $registration->getPid());
@@ -586,16 +595,16 @@ final class RegistrationProcessorTest extends UnitTestCase
     /**
      * @test
      */
-    public function enrichWithForEventWithVacanciesWithoutWaitingListKeepsRegistrationRegular(): void
+    public function enrichWithMetadataForEventWithVacanciesWithoutWaitingListKeepsRegistrationRegular(): void
     {
         $event = new SingleEvent();
         $event->setWaitingList(false);
         $registration = new Registration();
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn(15);
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestStub)->willReturn(15);
         $this->registrationGuardMock->method('getVacancies')->with($event)->willReturn(1);
         $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
 
-        $this->subject->enrichWithMetadata($registration, $event, []);
+        $this->subject->enrichWithMetadata($registration, $event, [], $this->requestStub);
 
         self::assertFalse($registration->isOnWaitingList());
     }
@@ -603,16 +612,16 @@ final class RegistrationProcessorTest extends UnitTestCase
     /**
      * @test
      */
-    public function enrichWithForEventWithUnlimitedVacanciesWithoutWaitingListKeepsRegistrationRegular(): void
+    public function enrichWithMetadataForEventWithUnlimitedVacanciesWithoutWaitingListKeepsRegistrationRegular(): void
     {
         $event = new SingleEvent();
         $event->setWaitingList(false);
         $registration = new Registration();
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn(15);
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestStub)->willReturn(15);
         $this->registrationGuardMock->method('getVacancies')->with($event)->willReturn(null);
         $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
 
-        $this->subject->enrichWithMetadata($registration, $event, []);
+        $this->subject->enrichWithMetadata($registration, $event, [], $this->requestStub);
 
         self::assertFalse($registration->isOnWaitingList());
     }
@@ -622,16 +631,16 @@ final class RegistrationProcessorTest extends UnitTestCase
      *
      * In the future, we should catch this case and redirect to the previous page (or the error page).
      */
-    public function enrichWithForEventWithZeroVacanciesWithoutWaitingListKeepsRegistrationRegular(): void
+    public function enrichWithMetadataForEventWithZeroVacanciesWithoutWaitingListKeepsRegistrationRegular(): void
     {
         $event = new SingleEvent();
         $event->setWaitingList(false);
         $registration = new Registration();
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn(15);
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestStub)->willReturn(15);
         $this->registrationGuardMock->method('getVacancies')->with($event)->willReturn(0);
         $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
 
-        $this->subject->enrichWithMetadata($registration, $event, []);
+        $this->subject->enrichWithMetadata($registration, $event, [], $this->requestStub);
 
         self::assertFalse($registration->isOnWaitingList());
     }
@@ -639,16 +648,16 @@ final class RegistrationProcessorTest extends UnitTestCase
     /**
      * @test
      */
-    public function enrichWithForEventWithVacanciesWithWaitingListKeepsRegistrationRegular(): void
+    public function enrichWithMetadataForEventWithVacanciesWithWaitingListKeepsRegistrationRegular(): void
     {
         $event = new SingleEvent();
         $event->setWaitingList(true);
         $registration = new Registration();
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn(15);
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestStub)->willReturn(15);
         $this->registrationGuardMock->method('getVacancies')->with($event)->willReturn(1);
         $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
 
-        $this->subject->enrichWithMetadata($registration, $event, []);
+        $this->subject->enrichWithMetadata($registration, $event, [], $this->requestStub);
 
         self::assertFalse($registration->isOnWaitingList());
     }
@@ -656,16 +665,16 @@ final class RegistrationProcessorTest extends UnitTestCase
     /**
      * @test
      */
-    public function enrichWithForEventWithUnlimitedVacanciesWithWaitingListKeepsRegistrationRegular(): void
+    public function enrichWithMetadataForEventWithUnlimitedVacanciesWithWaitingListKeepsRegistrationRegular(): void
     {
         $event = new SingleEvent();
         $event->setWaitingList(true);
         $registration = new Registration();
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn(15);
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestStub)->willReturn(15);
         $this->registrationGuardMock->method('getVacancies')->with($event)->willReturn(null);
         $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
 
-        $this->subject->enrichWithMetadata($registration, $event, []);
+        $this->subject->enrichWithMetadata($registration, $event, [], $this->requestStub);
 
         self::assertFalse($registration->isOnWaitingList());
     }
@@ -675,16 +684,16 @@ final class RegistrationProcessorTest extends UnitTestCase
      *
      * In the future, we should catch this case and redirect to the previous page (or the error page).
      */
-    public function enrichWithForEventWithZeroVacanciesWithWaitingListMovesRegistrationToWaitingList(): void
+    public function enrichWithMetadataForEventWithZeroVacanciesWithWaitingListMovesRegistrationToWaitingList(): void
     {
         $event = new SingleEvent();
         $event->setWaitingList(true);
         $registration = new Registration();
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn(15);
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestStub)->willReturn(15);
         $this->registrationGuardMock->method('getVacancies')->with($event)->willReturn(0);
         $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
 
-        $this->subject->enrichWithMetadata($registration, $event, []);
+        $this->subject->enrichWithMetadata($registration, $event, [], $this->requestStub);
 
         self::assertTrue($registration->isOnWaitingList());
     }

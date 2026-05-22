@@ -201,7 +201,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
     public function checkPrerequisitesActionForUserAlreadyRegisteredForwardsToDenyAction(): void
     {
         $userUid = 17;
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn($userUid);
+        $this->registrationGuardMock
+            ->method('getFrontEndUserUidFromSession')
+            ->with($this->requestStub)->willReturn($userUid);
 
         $event = new SingleEvent();
         $this->registrationGuardMock->method('isRegistrationPossibleAtAnyTimeAtAll')->with($event)->willReturn(true);
@@ -226,7 +228,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
     public function checkPrerequisitesActionForFullyBookedEventWithoutWaitingListForwardsToDenyAction(): void
     {
         $userUid = 17;
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn($userUid);
+        $this->registrationGuardMock
+            ->method('getFrontEndUserUidFromSession')
+            ->with($this->requestStub)->willReturn($userUid);
 
         $event = new SingleEvent();
         $this->registrationGuardMock->method('isRegistrationPossibleAtAnyTimeAtAll')->with($event)->willReturn(true);
@@ -254,7 +258,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
     public function checkPrerequisitesActionForFullyBookedEventWithWaitingListRedirectsToNewActionAndPassesEvent(): void
     {
         $userUid = 17;
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn($userUid);
+        $this->registrationGuardMock
+            ->method('getFrontEndUserUidFromSession')
+            ->with($this->requestStub)->willReturn($userUid);
 
         $event = new SingleEvent();
         $event->setWaitingList(true);
@@ -286,7 +292,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
     public function checkPrerequisitesActionForNoProblemsAndInfiniteVacanciesRedirectsToNewActionAndPassesEvent(): void
     {
         $userUid = 17;
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn($userUid);
+        $this->registrationGuardMock
+            ->method('getFrontEndUserUidFromSession')
+            ->with($this->requestStub)->willReturn($userUid);
 
         $event = new SingleEvent();
         $this->registrationGuardMock
@@ -321,7 +329,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
     public function checkPrerequisitesActionForNoProblemsAndNonZeroVacanciesRedirectsToNewActionAndPassesEvent(): void
     {
         $userUid = 17;
-        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->willReturn($userUid);
+        $this->registrationGuardMock
+            ->method('getFrontEndUserUidFromSession')
+            ->with($this->requestStub)->willReturn($userUid);
 
         $event = new SingleEvent();
         $this->registrationGuardMock
@@ -782,7 +792,7 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $registration = new Registration();
         $this->registrationProcesserMock
             ->expects(self::once())->method('enrichWithMetadata')
-            ->with($registration, $event, $settings);
+            ->with($registration, $event, $settings, $this->requestStub);
 
         $this->subject->newAction($event, $registration);
     }
@@ -801,7 +811,7 @@ final class EventRegistrationControllerTest extends UnitTestCase
 
         $this->registrationProcesserMock
             ->expects(self::once())->method('enrichWithMetadata')
-            ->with($registration, $event, $settings);
+            ->with($registration, $event, $settings, $this->requestStub);
 
         $this->subject->newAction($event, null);
     }
@@ -820,7 +830,7 @@ final class EventRegistrationControllerTest extends UnitTestCase
 
         $this->registrationProcesserMock
             ->expects(self::once())->method('enrichWithMetadata')
-            ->with($registration, $event, $settings);
+            ->with($registration, $event, $settings, $this->requestStub);
 
         $this->subject->newAction($event);
     }
@@ -885,7 +895,7 @@ final class EventRegistrationControllerTest extends UnitTestCase
 
         $this->registrationProcesserMock
             ->expects(self::once())->method('enrichWithMetadata')
-            ->with($registration, $event, $settings);
+            ->with($registration, $event, $settings, $this->requestStub);
 
         $this->subject->confirmAction($event, $registration);
     }
@@ -997,7 +1007,7 @@ final class EventRegistrationControllerTest extends UnitTestCase
 
         $this->registrationProcesserMock
             ->expects(self::once())->method('enrichWithMetadata')
-            ->with($registration, $event, $settings);
+            ->with($registration, $event, $settings, $this->requestStub);
 
         $this->subject->createAction($event, $registration);
     }
@@ -1096,7 +1106,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $registration = new Registration();
         $this->stubRedirect();
 
-        $this->oneTimeAccountConnectorMock->expects(self::once())->method('destroyOneTimeSession');
+        $this->oneTimeAccountConnectorMock
+            ->expects(self::once())->method('destroyOneTimeSession')
+            ->with($this->requestStub);
 
         $this->subject->createAction(new SingleEvent(), $registration);
     }

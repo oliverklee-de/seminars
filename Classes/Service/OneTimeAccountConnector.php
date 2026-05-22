@@ -13,13 +13,13 @@ use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
  */
 class OneTimeAccountConnector implements SingletonInterface
 {
-    private FrontendUserAuthentication $frontEndUserAuthentication;
-
-    public function __construct()
-    {
-        $frontEndUserAuthentication = $this->getRequest()->getAttribute('frontend.user');
+    private function getFrontendUserAuthenticationFromRequest(
+        ServerRequestInterface $request
+    ): FrontendUserAuthentication {
+        $frontEndUserAuthentication = $request->getAttribute('frontend.user');
         \assert($frontEndUserAuthentication instanceof FrontendUserAuthentication);
-        $this->frontEndUserAuthentication = $frontEndUserAuthentication;
+
+        return $frontEndUserAuthentication;
     }
 
     /**
@@ -27,9 +27,11 @@ class OneTimeAccountConnector implements SingletonInterface
      *
      * @return positive-int|null
      */
-    public function getOneTimeAccountUserUid(): ?int
+    public function getOneTimeAccountUserUid(ServerRequestInterface $request): ?int
     {
-        $uid = $this->frontEndUserAuthentication->getSessionData('onetimeaccountUserUid');
+        $uid = $this
+            ->getFrontendUserAuthenticationFromRequest($request)
+            ->getSessionData('onetimeaccountUserUid');
         if (!\is_int($uid) || $uid <= 0) {
             return null;
         }
@@ -42,18 +44,12 @@ class OneTimeAccountConnector implements SingletonInterface
      *
      * If a onetimeaccount user UID is available in the session, it will be deleted.
      */
-    public function destroyOneTimeSession(): void
+    public function destroyOneTimeSession(ServerRequestInterface $request): void
     {
-        if (\is_int($this->getOneTimeAccountUserUid())) {
-            $this->frontEndUserAuthentication->setAndSaveSessionData('onetimeaccountUserUid', null);
+        if (\is_int($this->getOneTimeAccountUserUid($request))) {
+            $this
+                ->getFrontendUserAuthenticationFromRequest($request)
+                ->setAndSaveSessionData('onetimeaccountUserUid', null);
         }
-    }
-
-    private function getRequest(): ServerRequestInterface
-    {
-        $request = $GLOBALS['TYPO3_REQUEST'];
-        \assert($request instanceof ServerRequestInterface);
-
-        return $request;
     }
 }
