@@ -14,6 +14,7 @@ use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Extbase\Mvc\Request;
 
 /**
  * This class provides functions to check whether a registration for an event is possible.
@@ -126,7 +127,7 @@ class RegistrationGuard implements SingletonInterface
             || !$this->registrationRepository->existsRegistrationForEventAndUser($event, $userUid);
     }
 
-    public function existsFrontEndUserUidInSession(): bool
+    public function existsFrontEndUserUidInSession(Request $request): bool
     {
         $isLoggedIn = $this->context->getPropertyFromAspect('frontend.user', 'isLoggedIn');
         \assert(\is_bool($isLoggedIn));

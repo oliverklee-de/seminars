@@ -65,7 +65,7 @@ class EventRegistrationController extends ActionController
         if (!$this->registrationGuard->isRegistrationPossibleByDate($event)) {
             return $this->forwardToDenyAction('noRegistrationPossibleAtTheMoment');
         }
-        if (!$this->registrationGuard->existsFrontEndUserUidInSession()) {
+        if (!$this->registrationGuard->existsFrontEndUserUidInSession($this->request)) {
             return $this->redirectToLoginPage($event);
         }
         $userUid = $this->registrationGuard->getFrontEndUserUidFromSession();
