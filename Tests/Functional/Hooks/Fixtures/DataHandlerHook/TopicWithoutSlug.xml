@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<dataset>
-    <tx_seminars_seminars>
-        <uid>1</uid>
-        <title>topic without slug</title>
-        <object_type>1</object_type>
-        <slug></slug>
-    </tx_seminars_seminars>
-</dataset>

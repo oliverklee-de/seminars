@@ -1,0 +1,21 @@
+"pages"
+,"uid","pid","slug"
+,1,0,"/home"
+,2,1,"/afterSave"
+
+"fe_groups"
+,"uid","title"
+,1,"editors"
+,2,"FE editor settings: hide new"
+,4,"FE editor group"
+
+"fe_users"
+,"uid","description","usergroup"
+,1,"user without any special settings","1"
+,2,"user with FE editor settings: hide new, PID","2"
+,4,"user with FE editor settings","4"
+
+"tx_seminars_seminars"
+,"uid","title","hidden"
+,1,"visible event",0
+,2,"hidden event",1

@@ -1,0 +1,8 @@
+"tx_seminars_seminars"
+,"uid","title","timeslots"
+,1,"event without time slots",0
+,2,"event with 1 time slot without place",1
+
+"tx_seminars_timeslots"
+,"uid","seminar"
+,1,2

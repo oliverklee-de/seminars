@@ -119,7 +119,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnUpdateCallsSanitizeEventDataHook(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
         $uid = 1;
         $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
         $data = $result->fetchAssociative();
@@ -142,7 +142,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnUpdateSanitizeHookWillModifyData(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
         $uid = 1;
         $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
         $data = $result->fetchAssociative();
@@ -171,7 +171,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnNewCallsSanitizeEventDataHook(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
         $uid = 1;
         $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
         $data = $result->fetchAssociative();
@@ -194,7 +194,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnNewSanitizeHookWillModifyData(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
         $uid = 1;
         $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
         $data = $result->fetchAssociative();
@@ -237,7 +237,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnUpdateKeepsValidRegistrationDeadline(int $uid): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
         $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
         $data = $result->fetchAssociative();
         $expectedDeadline = $data['deadline_registration'];
@@ -267,7 +267,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnUpdateResetsInvalidRegistrationDeadline(int $uid): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
 
         $this->processUpdateActionForSeminarsTable($uid);
 
@@ -283,7 +283,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnNewResetsInvalidRegistrationDeadline(int $uid): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
 
         $this->processNewActionForSeminarsTable($uid);
 
@@ -312,7 +312,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnUpdateKeepsValidEarlyBirdDeadline(int $uid): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
         $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
         $data = $result->fetchAssociative();
         $expectedDeadline = $data['deadline_early_bird'];
@@ -343,7 +343,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnUpdateResetsInvalidEarlyBirdDeadline(int $uid): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
 
         $this->processUpdateActionForSeminarsTable($uid);
 
@@ -359,7 +359,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnNewResetsInvalidEarlyBirdDeadline(int $uid): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
 
         $this->processNewActionForSeminarsTable($uid);
 
@@ -374,7 +374,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
     public function afterDatabaseOperationsOnUpdateWithoutTimeSlotsKeepsBeginDate(): void
     {
         $uid = 1;
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.csv');
         $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
         $data = $result->fetchAssociative();
         $expectedDate = $data['begin_date'];
@@ -404,7 +404,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnUpdateWithTimeSlotsOverwritesBeginDate(int $uid, int $expectedDate): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.csv');
 
         $this->processUpdateActionForSeminarsTable($uid);
 
@@ -419,7 +419,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
     public function afterDatabaseOperationsOnNewWithoutTimeSlotsKeepsBeginDate(): void
     {
         $uid = 1;
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.csv');
         $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
         $data = $result->fetchAssociative();
         $expectedDate = $data['begin_date'];
@@ -438,7 +438,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnNewWithTimeSlotsOverwritesBeginDate(int $uid, int $expectedDate): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.csv');
 
         $this->processNewActionForSeminarsTable($uid);
 
@@ -465,7 +465,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnUpdateWithTimeSlotsOverwritesEndDate(int $uid, int $expectedDate): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.csv');
 
         $this->processUpdateActionForSeminarsTable($uid);
 
@@ -480,7 +480,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
     public function afterDatabaseOperationsOnNewWithoutTimeSlotsKeepsEndDate(): void
     {
         $uid = 1;
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.csv');
         $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
         $data = $result->fetchAssociative();
         $expectedDate = $data['end_date'];
@@ -499,7 +499,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsOnNewWithTimeSlotsOverwritesEndDate(int $uid, int $expectedDate): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TimeSlots.csv');
 
         $this->processNewActionForSeminarsTable($uid);
 
@@ -513,7 +513,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsForSingleEventWithSlugKeepsSlugUnchanged(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/SingleEventWithSlug.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/SingleEventWithSlug.csv');
         $uid = 1;
 
         $this->processUpdateActionForSeminarsTable($uid);
@@ -528,7 +528,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsForTopicWithSlugKeepsSlugUnchanged(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TopicWithSlug.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TopicWithSlug.csv');
         $uid = 1;
 
         $this->processUpdateActionForSeminarsTable($uid);
@@ -543,7 +543,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsForEventDateWithSlugKeepsSlugUnchanged(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/EventDateWithSlug.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/EventDateWithSlug.csv');
         $uid = 1;
 
         $this->processUpdateActionForSeminarsTable($uid);
@@ -558,7 +558,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsForSingleEventWithoutSlugSetsSlug(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/SingleEventWithoutSlug.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/SingleEventWithoutSlug.csv');
         $uid = 1;
 
         $this->processUpdateActionForSeminarsTable($uid);
@@ -573,7 +573,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsForTopicWithoutSlugSetsSlug(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TopicWithoutSlug.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/TopicWithoutSlug.csv');
         $uid = 1;
 
         $this->processUpdateActionForSeminarsTable($uid);
@@ -588,7 +588,7 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function afterDatabaseOperationsForEventDateWithoutSlugSetsSlug(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/DataHandlerHook/EventDateWithoutSlug.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/EventDateWithoutSlug.csv');
         $uid = 1;
 
         $this->processUpdateActionForSeminarsTable($uid);

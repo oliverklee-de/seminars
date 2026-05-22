@@ -1,0 +1,4 @@
+"tx_seminars_seminars"
+,"uid","title","object_type","topic","slug"
+,1,"date without slug",2,2,""
+,2,"topic with slug",1,0,"topic-slug/1"

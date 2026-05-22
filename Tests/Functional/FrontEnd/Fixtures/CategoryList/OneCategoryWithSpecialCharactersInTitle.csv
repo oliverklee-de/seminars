@@ -1,0 +1,11 @@
+"tx_seminars_seminars"
+,"uid","title"
+,1,"test event"
+
+"tx_seminars_categories"
+,"uid","title"
+,1,"category with ampersand &"
+
+"tx_seminars_seminars_categories_mm"
+,"uid_local","uid_foreign"
+,1,1
