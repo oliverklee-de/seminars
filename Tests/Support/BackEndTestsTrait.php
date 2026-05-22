@@ -54,9 +54,11 @@ trait BackEndTestsTrait
      */
     private function unifyTestingEnvironment(): void
     {
-        $context = GeneralUtility::makeInstance(Context::class);
-        $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
-        $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->get(Context::class)->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        \assert($nowAsUnixTimestamp > 0);
+        $this->now = $nowAsUnixTimestamp;
 
         $this->cleanRequestVariables();
         $this->replaceBackEndUserWithMock();
@@ -81,10 +83,10 @@ trait BackEndTestsTrait
         if ($currentBackEndUser instanceof BackendUserAuthentication) {
             $this->backEndUserBackup = $currentBackEndUser;
         }
-        $mockBackEndUser =
-            $this->getMockBuilder(BackendUserAuthentication::class)->onlyMethods(
-                ['check', 'doesUserHaveAccess', 'setAndSaveSessionData', 'writeUC'],
-            )->getMock();
+        $mockBackEndUser = $this
+            ->getMockBuilder(BackendUserAuthentication::class)
+            ->onlyMethods(['check', 'doesUserHaveAccess', 'setAndSaveSessionData', 'writeUC'])
+            ->getMock();
         $mockBackEndUser->method('check')->willReturn(true);
         $mockBackEndUser->method('doesUserHaveAccess')->willReturn(true);
         $mockBackEndUser->user['uid'] = 1;
@@ -152,6 +154,7 @@ trait BackEndTestsTrait
     {
         $label = LocalizationUtility::translate($key, 'seminars');
         \assert(is_string($label));
+        \assert($label !== '');
 
         return $label;
     }

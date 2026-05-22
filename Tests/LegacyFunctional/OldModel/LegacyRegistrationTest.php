@@ -42,8 +42,6 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
     private int $seminarUid = 0;
 
-    private ConnectionPool $connectionPool;
-
     private DummyConfiguration $configuration;
 
     protected function setUp(): void
@@ -62,8 +60,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
         $this->testingFramework->changeRecord('pages', $rootPageUid, ['slug' => '/home']);
         $this->testingFramework->createFakeFrontEnd($rootPageUid);
 
-        $this->connectionPool = $this->get(ConnectionPool::class);
-        $currenciesConnection = $this->connectionPool->getConnectionForTable('static_currencies');
+        $currenciesConnection = $this->get(ConnectionPool::class)->getConnectionForTable('static_currencies');
         if ($currenciesConnection->count('*', 'static_currencies', []) === 0) {
             $currenciesConnection->insert(
                 'static_currencies',

@@ -29,8 +29,6 @@ final class ResponseHeadersModifierTest extends UnitTestCase
      */
     private RequestHandlerInterface $requestHandlerMock;
 
-    private Response $response;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -44,8 +42,7 @@ final class ResponseHeadersModifierTest extends UnitTestCase
             'Content-Language' => 'de',
             'X-TYPO3-Parsetime' => '0ms',
         ];
-        $this->response = new Response('php://temp', 200, $headers);
-        $this->requestHandlerMock->method('handle')->willReturn($this->response);
+        $this->requestHandlerMock->method('handle')->willReturn(new Response('php://temp', 200, $headers));
     }
 
     /**

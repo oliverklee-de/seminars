@@ -93,8 +93,6 @@ final class DefaultControllerTest extends FunctionalTestCase
 
     private ConnectionPool $connectionPool;
 
-    private DummyConfiguration $sharedConfiguration;
-
     private DummyConfiguration $pluginConfiguration;
 
     /**
@@ -125,8 +123,8 @@ final class DefaultControllerTest extends FunctionalTestCase
         $this->getLanguageService();
 
         $configurationRegistry = $this->get(ConfigurationRegistry::class);
-        $this->sharedConfiguration = new DummyConfiguration(self::CONFIGURATION);
-        $configurationRegistry->set('plugin.tx_seminars', $this->sharedConfiguration);
+        $sharedConfiguration = new DummyConfiguration(self::CONFIGURATION);
+        $configurationRegistry->set('plugin.tx_seminars', $sharedConfiguration);
         $this->pluginConfiguration = new DummyConfiguration(self::CONFIGURATION);
         $configurationRegistry->set('plugin.tx_seminars_pi1', $this->pluginConfiguration);
 

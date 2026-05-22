@@ -21,7 +21,6 @@ use OliverKlee\Seminars\Tests\Functional\FrontEnd\Fixtures\TestingDefaultControl
 use OliverKlee\Seminars\Tests\Support\LanguageHelper;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
-use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Mime\Part\DataPart;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
@@ -71,11 +70,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
      */
     private int $organizerUid;
 
-    /**
-     * @var MailMessage&MockObject
-     */
-    private MailMessage $secondEmail;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -102,9 +96,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->testingFramework = $this->get(TestingFramework::class);
 
         $this->email = $this->createEmailMock();
-        $this->secondEmail = $this->createEmailMock();
+        $secondEmail = $this->createEmailMock();
         $this->addMockedInstance(MailMessage::class, $this->email);
-        $this->addMockedInstance(MailMessage::class, $this->secondEmail);
+        $this->addMockedInstance(MailMessage::class, $secondEmail);
 
         $this->subject = $this->get(RegistrationManager::class);
     }

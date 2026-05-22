@@ -19,8 +19,6 @@ final class AbstractTimeSpanTest extends UnitTestCase
 {
     protected bool $resetSingletonInstances = true;
 
-    private Context $context;
-
     private TestingTimeSpan $subject;
 
     private int $nowAsUnixTimestamp;
@@ -29,9 +27,8 @@ final class AbstractTimeSpanTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->context = GeneralUtility::makeInstance(Context::class);
         $now = new \DateTimeImmutable('2018-04-26 12:42:23');
-        $this->context->setAspect('date', new DateTimeAspect($now));
+        GeneralUtility::makeInstance(Context::class)->setAspect('date', new DateTimeAspect($now));
         $nowAsUnixTimestamp = $now->getTimestamp();
         self::assertGreaterThan(0, $nowAsUnixTimestamp);
         $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
