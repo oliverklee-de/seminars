@@ -8,11 +8,8 @@ use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Service\RegistrationProcessor;
-use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
-use TYPO3\CMS\Core\Http\ServerRequestFactory;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -20,8 +17,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class RegistrationProcessorTest extends FunctionalTestCase
 {
-    protected bool $initializeDatabase = false;
-
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -34,11 +29,10 @@ final class RegistrationProcessorTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        GeneralUtility::setIndpEnv('TYPO3_REQUEST_URL', 'https://www.example.com/');
-        $request = ServerRequestFactory::fromGlobals()
-            ->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_FE)
-            ->withAttribute('frontend.user', $this->createStub(FrontendUserAuthentication::class));
-        $GLOBALS['TYPO3_REQUEST'] = $request;
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationProcessor/AdminBackendUser.csv');
+        $GLOBALS['LANG'] = $this
+            ->get(LanguageServiceFactory::class)
+            ->createFromUserPreferences($this->setUpBackendUser(1));
 
         $this->subject = $this->get(RegistrationProcessor::class);
     }
