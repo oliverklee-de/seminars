@@ -6,14 +6,11 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\Service;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Templating\TemplateRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
-use OliverKlee\Seminars\Hooks\Interfaces\RegistrationEmail;
-use OliverKlee\Seminars\Mapper\RegistrationMapper;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
@@ -61,10 +58,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
-    private MapperRegistry $mapperRegistry;
-
-    private RegistrationMapper $registrationMapper;
-
     private TemplateRegistry $templateRegistry;
 
     private ConfigurationRegistry $configurationRegistry;
@@ -85,13 +78,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
     private TestingLegacyEvent $fullyBookedSeminar;
 
     /**
-     * backed-up extension configuration of the TYPO3 configuration variables
-     *
-     * @var array<string, mixed>
-     */
-    private array $extConfBackup = [];
-
-    /**
      * @var list<class-string>
      */
     private array $mockedClassNames = [];
@@ -107,7 +93,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->connectionPool = $this->get(ConnectionPool::class);
         $this->context = $this->get(Context::class);
         $this->eventRepository = $this->get(EventRepository::class);
-        $this->mapperRegistry = $this->get(MapperRegistry::class);
         $this->templateRegistry = $this->get(TemplateRegistry::class);
         $this->configurationRegistry = $this->get(ConfigurationRegistry::class);
 
@@ -117,10 +102,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         self::assertGreaterThan(0, $nowAsUnixTimestamp);
         $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
 
-        $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'];
-
         $this->testingFramework = $this->get(TestingFramework::class);
-        $this->registrationMapper = $this->mapperRegistry->getByClassName(RegistrationMapper::class);
 
         $this->rootPageUid = $this->testingFramework->createFrontEndPage();
         $this->testingFramework->changeRecord('pages', $this->rootPageUid, ['slug' => '/home']);
@@ -174,8 +156,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->testingFramework->cleanUpWithoutDatabase();
 
         $this->purgeMockedInstances();
-
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'] = $this->extConfBackup;
 
         parent::tearDown();
     }
@@ -965,7 +945,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
-                    $this->mapperRegistry,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                 ],
@@ -1001,7 +980,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
-                    $this->mapperRegistry,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                 ],
@@ -1032,7 +1010,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
-                    $this->mapperRegistry,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                 ],
@@ -1070,7 +1047,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
-                    $this->mapperRegistry,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                 ],
@@ -1116,7 +1092,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
-                    $this->mapperRegistry,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                 ],
@@ -1146,31 +1121,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
             $registration,
             'confirmationOnQueueUpdate',
         );
-    }
-
-    /**
-     * @test
-     */
-    public function notifyAttendeeForSendConfirmationFalseNeverCallsRegistrationEmailHookMethods(): void
-    {
-        $this->configuration->setAsBoolean('sendConfirmation', false);
-        $registrationOld = $this->createRegistration();
-        $registrationUid = $registrationOld->getUid();
-        \assert($registrationUid > 0);
-        $this->registrationMapper->find($registrationUid);
-
-        $hook = $this->createMock(RegistrationEmail::class);
-        $hook->expects(self::never())->method('modifyAttendeeEmail');
-        $hook->expects(self::never())->method('modifyAttendeeEmailBodyPlainText');
-        $hook->expects(self::never())->method('modifyAttendeeEmailBodyHtml');
-        $hook->expects(self::never())->method('modifyOrganizerEmail');
-        $hook->expects(self::never())->method('modifyAdditionalEmail');
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationEmail::class][] = $hookClass;
-        $this->addMockedInstance($hookClass, $hook);
-
-        $this->subject->notifyAttendee($registrationOld);
     }
 
     // Tests regarding the notification of organizers
@@ -1367,62 +1317,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->subject->notifyOrganizers($registration);
 
         self::assertStringContainsString('foo inc.', $this->email->getTextBody());
-    }
-
-    /**
-     * @test
-     */
-    public function notifyOrganizersForSendNotificationTrueCallsRegistrationEmailHookMethods(): void
-    {
-        $this->configuration->setAsBoolean('sendNotification', true);
-
-        $registrationOld = $this->createRegistration();
-        $registrationUid = $registrationOld->getUid();
-        \assert($registrationUid > 0);
-        $registration = $this->registrationMapper->find($registrationUid);
-
-        $hook = $this->createMock(RegistrationEmail::class);
-        $hook->expects(self::never())->method('modifyAttendeeEmail');
-        $hook->expects(self::never())->method('modifyAttendeeEmailBodyPlainText');
-        $hook->expects(self::never())->method('modifyAttendeeEmailBodyHtml');
-        $hook->expects(self::once())->method('modifyOrganizerEmail')->with(
-            self::isInstanceOf(MailMessage::class),
-            $registration,
-            'notification',
-        );
-        $hook->expects(self::never())->method('modifyAdditionalEmail');
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationEmail::class][] = $hookClass;
-        $this->addMockedInstance($hookClass, $hook);
-
-        $this->subject->notifyOrganizers($registrationOld);
-    }
-
-    /**
-     * @test
-     */
-    public function notifyOrganizersForSendNotificationFalseNeverCallsRegistrationEmailHookMethods(): void
-    {
-        $this->configuration->setAsBoolean('sendNotification', false);
-
-        $registrationOld = $this->createRegistration();
-        $registrationUid = $registrationOld->getUid();
-        \assert($registrationUid > 0);
-        $this->registrationMapper->find($registrationUid);
-
-        $hook = $this->createMock(RegistrationEmail::class);
-        $hook->expects(self::never())->method('modifyAttendeeEmail');
-        $hook->expects(self::never())->method('modifyAttendeeEmailBodyPlainText');
-        $hook->expects(self::never())->method('modifyAttendeeEmailBodyHtml');
-        $hook->expects(self::never())->method('modifyOrganizerEmail');
-        $hook->expects(self::never())->method('modifyAdditionalEmail');
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationEmail::class][] = $hookClass;
-        $this->addMockedInstance($hookClass, $hook);
-
-        $this->subject->notifyOrganizers($registrationOld);
     }
 
     // Tests concerning sendAdditionalNotification
@@ -1917,40 +1811,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
             . $this->translate('label_unlimited'),
             $this->email->getTextBody(),
         );
-    }
-
-    /**
-     * @test
-     */
-    public function sendAdditionalNotificationCallsRegistrationEmailHookMethods(): void
-    {
-        $this->testingFramework->changeRecord(
-            'tx_seminars_seminars',
-            $this->seminarUid,
-            ['attendees_max' => 1],
-        );
-
-        $registrationOld = $this->createRegistration();
-        $registrationUid = $registrationOld->getUid();
-        \assert($registrationUid > 0);
-        $registration = $this->registrationMapper->find($registrationUid);
-
-        $hook = $this->createMock(RegistrationEmail::class);
-        $hook->expects(self::never())->method('modifyAttendeeEmail');
-        $hook->expects(self::never())->method('modifyAttendeeEmailBodyPlainText');
-        $hook->expects(self::never())->method('modifyAttendeeEmailBodyHtml');
-        $hook->expects(self::never())->method('modifyOrganizerEmail');
-        $hook->expects(self::once())->method('modifyAdditionalEmail')->with(
-            self::isInstanceOf(MailMessage::class),
-            $registration,
-            'IsFull',
-        );
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationEmail::class][] = $hookClass;
-        $this->addMockedInstance($hookClass, $hook);
-
-        $this->subject->sendAdditionalNotification($registrationOld);
     }
 
     // Tests concerning allowsRegistrationByDate

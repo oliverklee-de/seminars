@@ -226,21 +226,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/Registration/RegistrationRepository.php
 
 		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 1
-			path: ../../Classes/Email/Salutation.php
-
-		-
-			message: "#^Cannot access offset 'modifyEmailSalutati…' on mixed\\.$#"
-			count: 1
-			path: ../../Classes/Email/Salutation.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 1
-			path: ../../Classes/Email/Salutation.php
-
-		-
 			message: "#^Parameter \\#1 \\$format of function sprintf expects string, string\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/Email/Salutation.php
@@ -2071,23 +2056,8 @@ parameters:
 			path: ../../Tests/Functional/Service/EmailServiceTest.php
 
 		-
-			message: "#^Cannot access an offset on mixed\\.$#"
-			count: 2
-			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 2
-			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
-
-		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 6
-			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\RegistrationEmail' on mixed\\.$#"
-			count: 2
 			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
@@ -2098,11 +2068,6 @@ parameters:
 		-
 			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
 			count: 3
-			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 2
 			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
 		-
@@ -2231,18 +2196,8 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
-			message: "#^Cannot access offset 'AnEmailSalutationHo…' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
-
-		-
-			message: "#^Cannot access offset 'AnotherEmailSalutat…' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
-
-		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 6
+			count: 3
 			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
@@ -2251,17 +2206,7 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
-			message: "#^Cannot access offset 'modifyEmailSalutati…' on mixed\\.$#"
-			count: 3
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
-
-		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 4
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
-
-		-
-			message: "#^Cannot access offset class\\-string\\<OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\Fixtures\\\\EmailSalutationHookInterface&PHPUnit\\\\Framework\\\\MockObject\\\\MockObject\\> on mixed\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
@@ -2596,23 +2541,8 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
-			message: "#^Cannot access an offset on mixed\\.$#"
-			count: 4
-			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 6
-			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
-
-		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 12
-			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\RegistrationEmail' on mixed\\.$#"
-			count: 4
 			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
@@ -2623,11 +2553,6 @@ parameters:
 		-
 			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
 			count: 6
-			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 4
 			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
@@ -2648,11 +2573,6 @@ parameters:
 		-
 			message: "#^Parameter \\#2 \\$string of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertMatchesRegularExpression\\(\\) expects string, resource\\|string\\|null given\\.$#"
 			count: 2
-			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\RegistrationManagerTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
-			count: 1
 			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-

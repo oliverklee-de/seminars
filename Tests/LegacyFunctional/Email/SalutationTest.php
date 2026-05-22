@@ -9,10 +9,8 @@ use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Email\Salutation;
 use OliverKlee\Seminars\Mapper\FrontEndUserMapper;
 use OliverKlee\Seminars\Model\FrontEndUser;
-use OliverKlee\Seminars\Tests\LegacyFunctional\Email\Fixtures\EmailSalutationHookInterface;
 use OliverKlee\Seminars\Tests\Support\BackEndTestsTrait;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -195,58 +193,6 @@ final class SalutationTest extends FunctionalTestCase
         self::assertStringNotContainsString('_', $string);
         self::assertStringNotContainsString('salutation', $string);
         self::assertStringNotContainsString('formal', $string);
-    }
-
-    // Tests concerning the hooks
-
-    /**
-     * @test
-     */
-    public function getSalutationForHookSetInConfigurationCallsThisHook(): void
-    {
-        $salutationHookMock = $this->createMock(EmailSalutationHookInterface::class);
-        $hookClassName = \get_class($salutationHookMock);
-        $frontendUser = $this->createFrontEndUser();
-        $salutationHookMock->expects(self::atLeastOnce())->method('modifySalutation')->with(
-            self::isType('array'),
-            self::identicalTo($frontendUser),
-        );
-
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars']['modifyEmailSalutation'][$hookClassName] = $hookClassName;
-        GeneralUtility::addInstance($hookClassName, $salutationHookMock);
-
-        $this->subject->getSalutation($frontendUser);
-    }
-
-    /**
-     * @test
-     */
-    public function getSalutationCanCallMultipleSetHooks(): void
-    {
-        $hookClassName1 = 'AnEmailSalutationHook';
-        $salutationHookMock1 = $this
-            ->getMockBuilder(EmailSalutationHookInterface::class)
-            ->setMockClassName($hookClassName1)->getMock();
-        $frontendUser = $this->createFrontEndUser();
-        $salutationHookMock1->expects(self::atLeastOnce())->method('modifySalutation')->with(
-            self::isType('array'),
-            self::identicalTo($frontendUser),
-        );
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars']['modifyEmailSalutation'][$hookClassName1] = $hookClassName1;
-        GeneralUtility::addInstance($hookClassName1, $salutationHookMock1);
-
-        $hookClassName2 = 'AnotherEmailSalutationHook';
-        $salutationHookMock2 = $this
-            ->getMockBuilder(EmailSalutationHookInterface::class)
-            ->setMockClassName($hookClassName2)->getMock();
-        $salutationHookMock2->expects(self::atLeastOnce())->method('modifySalutation')->with(
-            self::isType('array'),
-            self::identicalTo($frontendUser),
-        );
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars']['modifyEmailSalutation'][$hookClassName2] = $hookClassName2;
-        GeneralUtility::addInstance($hookClassName2, $salutationHookMock2);
-
-        $this->subject->getSalutation($frontendUser);
     }
 
     // Tests concerning createIntroduction
