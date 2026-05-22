@@ -7,7 +7,7 @@ namespace OliverKlee\Seminars\Service;
 use OliverKlee\Oelib\Email\SystemEmailFromBuilder;
 use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Seminars\Email\EmailBuilder;
-use OliverKlee\Seminars\Email\Salutation;
+use OliverKlee\Seminars\Email\SalutationBuilder;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Registration;
@@ -27,13 +27,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class EmailService implements SingletonInterface
 {
-    protected Salutation $salutationBuilder;
+    protected SalutationBuilder $salutationBuilder;
 
     protected DateRangeViewHelper $dateRangeViewHelper;
 
     public function __construct()
     {
-        $this->salutationBuilder = GeneralUtility::makeInstance(Salutation::class);
+        $this->salutationBuilder = GeneralUtility::makeInstance(SalutationBuilder::class);
         $this->dateRangeViewHelper = GeneralUtility::makeInstance(DateRangeViewHelper::class);
     }
 

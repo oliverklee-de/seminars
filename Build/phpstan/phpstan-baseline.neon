@@ -228,7 +228,7 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$format of function sprintf expects string, string\\|null given\\.$#"
 			count: 1
-			path: ../../Classes/Email/Salutation.php
+			path: ../../Classes/Email/SalutationBuilder.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Form\\\\Element\\\\EventDetailsElement\\:\\:render\\(\\) return type has no value type specified in iterable type array\\.$#"
@@ -2198,27 +2198,27 @@ parameters:
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
 			count: 3
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationBuilderTest.php
 
 		-
 			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
 			count: 2
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationBuilderTest.php
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 1
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationBuilderTest.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\SalutationTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
+			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\SalutationBuilderTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationBuilderTest.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\SalutationTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
+			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\SalutationBuilderTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
+			path: ../../Tests/LegacyFunctional/Email/SalutationBuilderTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\AbstractViewTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
