@@ -30,8 +30,6 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     private int $subjectUid;
 
-    private int $nowAsUnixTimestamp;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,7 +38,6 @@ final class AbstractModelTest extends FunctionalTestCase
         $this->get(Context::class)->setAspect('date', new DateTimeAspect($now));
         $nowAsUnixTimestamp = $now->getTimestamp();
         self::assertGreaterThan(0, $nowAsUnixTimestamp);
-        $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
 
         $this->testingFramework = $this->get(TestingFramework::class);
         $systemFolderUid = $this->testingFramework->createSystemFolder();
@@ -48,9 +45,9 @@ final class AbstractModelTest extends FunctionalTestCase
             'sys_template',
             [
                 'pid' => $systemFolderUid,
-                'tstamp' => $this->nowAsUnixTimestamp,
+                'tstamp' => $nowAsUnixTimestamp,
                 'sorting' => 256,
-                'crdate' => $this->nowAsUnixTimestamp,
+                'crdate' => $nowAsUnixTimestamp,
                 'title' => 'TEST',
                 'root' => 1,
                 'clear' => 3,

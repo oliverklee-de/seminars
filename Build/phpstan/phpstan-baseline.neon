@@ -1466,22 +1466,12 @@ parameters:
 			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Event\\\\EventRepository\\:\\:updateRegistrationCounterCache\\(\\) expects OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event, OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\|null given\\.$#"
 			count: 4
 			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Event\\\\EventRepositoryTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Event\\\\EventRepositoryTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
 			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
@@ -1511,22 +1501,12 @@ parameters:
 			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepository\\:\\:existsRegistrationForEventAndUser\\(\\) expects OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventInterface, OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\|null given\\.$#"
 			count: 7
 			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepositoryTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepositoryTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
 			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
@@ -1626,22 +1606,12 @@ parameters:
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
-
-		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 2
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Hooks\\\\DataHandlerHookTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Hooks\\\\DataHandlerHookTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
@@ -2251,17 +2221,7 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
-
-		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
@@ -2306,17 +2266,7 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
-
-		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\SalutationTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Email\\\\SalutationTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Email/SalutationTest.php
 
@@ -2551,11 +2501,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
@@ -2587,11 +2532,6 @@ parameters:
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\SchedulerTasks\\\\MailNotifierTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\SchedulerTasks\\\\MailNotifierTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
@@ -2631,11 +2571,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
@@ -2647,11 +2582,6 @@ parameters:
 
 		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\EmailServiceTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\EmailServiceTest\\:\\:\\$now \\(int\\<1, max\\>\\) does not accept int\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 

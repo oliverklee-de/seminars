@@ -38,11 +38,6 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
     private int $nowAsUnixTimestamp;
 
     /**
-     * PID of the system folder in which we store our test data
-     */
-    private int $pageUid = 0;
-
-    /**
      * UID of a test event record
      */
     private int $eventUid = 0;
@@ -89,11 +84,11 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
         $this->configuration = new DummyConfiguration();
         $configurationRegistry->set('plugin.tx_seminars', $this->configuration);
 
-        $this->pageUid = $this->testingFramework->createSystemFolder();
+        $pageUid = $this->testingFramework->createSystemFolder();
         $this->eventUid = $this->testingFramework->createRecord(
             'tx_seminars_seminars',
             [
-                'pid' => $this->pageUid,
+                'pid' => $pageUid,
                 'begin_date' => $this->nowAsUnixTimestamp,
             ],
         );

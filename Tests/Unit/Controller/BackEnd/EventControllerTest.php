@@ -63,11 +63,6 @@ final class EventControllerTest extends UnitTestCase
      */
     private PageRenderer $pageRendererMock;
 
-    /**
-     * @var CsvDownloader&MockObject
-     */
-    private CsvDownloader $csvDownloaderMock;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -107,8 +102,8 @@ final class EventControllerTest extends UnitTestCase
         $this->viewMock->method('render')->willReturn('rendered view');
         $this->subject->_set('view', $this->viewMock);
 
-        $this->csvDownloaderMock = $this->createMock(CsvDownloader::class);
-        GeneralUtility::addInstance(CsvDownloader::class, $this->csvDownloaderMock);
+        $csvDownloaderMock = $this->createMock(CsvDownloader::class);
+        GeneralUtility::addInstance(CsvDownloader::class, $csvDownloaderMock);
     }
 
     protected function tearDown(): void
