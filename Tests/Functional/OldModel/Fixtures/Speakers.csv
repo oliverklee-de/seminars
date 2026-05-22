@@ -1,0 +1,26 @@
+"tx_seminars_speakers"
+,"uid","title","organization","homepage","description","notes","address","phone_work","phone_home","phone_mobile","email","cancelation_period","image","skills"
+,1,"Max Delagio","Aperture Laboratories","https://www.example.com/","Lots of experience.","speaker with details, but without associations","down the road",123,456,789,"max@example.com",4,0,0
+,2,"","","","","","",0,0,0,"",0,1,0
+,3,"","","","","","",0,0,0,"",0,1,0
+,4,"","","","","speaker with one skill","",0,0,0,"",0,0,1
+,5,"","","","","speaker with two skills","",0,0,0,"",0,0,2
+
+"sys_file"
+,"uid","storage","type","folder_hash","identifier","identifier_hash","name","extension","mime_type"
+,1,1,0,"42099b4af021e53fd8fd4e056c2568d7c2e3ffa8","/speaker.jpg","f538498838e47c912a95d34187872e879f8285b6","speaker.jpg","jpg","image/jpeg"
+
+"sys_file_reference"
+,"uid","uid_local","uid_foreign","tablenames","fieldname"
+,1,1,3,"tx_seminars_speakers","image"
+
+"tx_seminars_speakers_skills_mm"
+,"uid_local","uid_foreign"
+,4,1
+,5,1
+,5,2
+
+"tx_seminars_skills"
+,"uid","title"
+,1,"Speaking"
+,2,"TYPO3 extension development"

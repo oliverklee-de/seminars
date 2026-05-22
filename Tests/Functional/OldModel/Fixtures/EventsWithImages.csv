@@ -1,0 +1,15 @@
+"tx_seminars_seminars"
+,"uid","title","image","topic","object_type"
+,1,"Event without image",0,0,0
+,2,"Event with image count without reference",1,0,0
+,3,"Event with image",1,0,0
+,4,"Event with non-migrated image",1,0,0
+,5,"Date for event with image",0,3,2
+
+"sys_file_reference"
+,"uid","uid_local","uid_foreign","tablenames","fieldname"
+,1,1,3,"tx_seminars_seminars","image"
+
+"sys_file"
+,"uid","storage","type","folder_hash","identifier","identifier_hash","name","extension","mime_type"
+,1,1,0,c1a406ab82b5588738d1587da2761746ec584a6c,/images/icon.png,43a8e2628978c99fde86fe9a946fb767e4313778,icon.png,png,image/png

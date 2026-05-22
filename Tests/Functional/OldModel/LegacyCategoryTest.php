@@ -24,7 +24,7 @@ final class LegacyCategoryTest extends FunctionalTestCase
      */
     public function fromUidMapsDataFromDatabase(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Categories.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Categories.csv');
 
         $subject = LegacyCategory::fromUid(1);
 

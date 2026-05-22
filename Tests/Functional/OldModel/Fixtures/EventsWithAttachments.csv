@@ -1,0 +1,18 @@
+"tx_seminars_seminars"
+,"uid","title","attached_files","topic","object_type"
+,1,"Event without attachments",0,0,0
+,2,"Event with non-migrated attachment",1,0,0
+,3,"Event with attachment count without reference",1,0,0
+,4,"Event with 1 attachment",1,0,0
+,5,"Date for event with attachment",0,4,2
+,6,"Date with attachment for event with attachment",0,4,2
+
+"sys_file_reference"
+,"uid","uid_local","uid_foreign","tablenames","fieldname"
+,1,1,4,"tx_seminars_seminars","attached_files"
+,2,2,6,"tx_seminars_seminars","attached_files"
+
+"sys_file"
+,"uid","storage","type","folder_hash","identifier","identifier_hash","name","extension","mime_type"
+,1,1,0,"fa6b2b62ac1c69e835949572c36f9ca533933383","/seminars/attachments/handout.pdf","d3645aa8f8dc9521203dd22b8dbcb11819ae8fee","handout.pdf","pdf","application/pdf"
+,2,1,0,"fa6b2b62ac1c69e835949572c36f9ca533933383","/seminars/attachments/exercises.pdf","bcc6286ae61af97d7e12a378387491fe4978cce1","exercises.pdf","pdf","application/pdf"

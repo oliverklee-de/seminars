@@ -25,7 +25,7 @@ final class LegacySpeakerTest extends FunctionalTestCase
      */
     public function fromUidMapsDataFromDatabase(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $subject = LegacySpeaker::fromUid(1);
 
@@ -47,7 +47,7 @@ final class LegacySpeakerTest extends FunctionalTestCase
      */
     public function canHaveOneSkill(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $subject = LegacySpeaker::fromUid(4);
 
@@ -59,7 +59,7 @@ final class LegacySpeakerTest extends FunctionalTestCase
      */
     public function getSkillsShortWithSingleSkillReturnsSingleSkill(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $subject = LegacySpeaker::fromUid(4);
 
@@ -72,7 +72,7 @@ final class LegacySpeakerTest extends FunctionalTestCase
      */
     public function getSkillsShortWithMultipleSkillsReturnsMultipleSkills(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $subject = LegacySpeaker::fromUid(5);
 
@@ -84,7 +84,7 @@ final class LegacySpeakerTest extends FunctionalTestCase
      */
     public function getImageWithoutImageReturnsNull(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $subject = new LegacySpeaker(1);
 
@@ -96,7 +96,7 @@ final class LegacySpeakerTest extends FunctionalTestCase
      */
     public function getImageWithPositiveImageCountWithoutFileReferenceReturnsNull(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $subject = new LegacySpeaker(2);
 
@@ -108,7 +108,7 @@ final class LegacySpeakerTest extends FunctionalTestCase
      */
     public function getImageWithFileReferenceReturnsFileReference(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Speakers.csv');
 
         $subject = new LegacySpeaker(3);
 
