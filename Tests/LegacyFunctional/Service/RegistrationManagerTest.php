@@ -7,9 +7,11 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\Service;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
+use OliverKlee\Oelib\Templating\TemplateRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
+use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Hooks\Interfaces\RegistrationEmail;
 use OliverKlee\Seminars\Mapper\RegistrationMapper;
 use OliverKlee\Seminars\Model\FrontEndUser;
@@ -51,13 +53,21 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     private ConnectionPool $connectionPool;
 
+    private EventRepository $eventRepository;
+
     private int $nowAsUnixTimestamp;
 
     private RegistrationManager $subject;
 
     private TestingFramework $testingFramework;
 
+    private MapperRegistry $mapperRegistry;
+
     private RegistrationMapper $registrationMapper;
+
+    private TemplateRegistry $templateRegistry;
+
+    private ConfigurationRegistry $configurationRegistry;
 
     /**
      * @var positive-int
@@ -96,6 +106,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->connectionPool = $this->get(ConnectionPool::class);
         $this->context = $this->get(Context::class);
+        $this->eventRepository = $this->get(EventRepository::class);
+        $this->mapperRegistry = $this->get(MapperRegistry::class);
+        $this->templateRegistry = $this->get(TemplateRegistry::class);
+        $this->configurationRegistry = $this->get(ConfigurationRegistry::class);
 
         $now = new \DateTimeImmutable('2018-04-26 12:42:23');
         $this->context->setAspect('date', new DateTimeAspect($now));
@@ -106,7 +120,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'];
 
         $this->testingFramework = $this->get(TestingFramework::class);
-        $this->registrationMapper = $this->get(MapperRegistry::class)->getByClassName(RegistrationMapper::class);
+        $this->registrationMapper = $this->mapperRegistry->getByClassName(RegistrationMapper::class);
 
         $this->rootPageUid = $this->testingFramework->createFrontEndPage();
         $this->testingFramework->changeRecord('pages', $this->rootPageUid, ['slug' => '/home']);
@@ -118,16 +132,15 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->addMockedInstance(MailMessage::class, $this->email);
         $this->addMockedInstance(MailMessage::class, $secondEmail);
 
-        $configurationRegistry = $this->get(ConfigurationRegistry::class);
         $this->configuration = new DummyConfiguration(
             [
                 'templateFile' => 'EXT:seminars/Resources/Private/Templates/Mail/e-mail.html',
             ],
         );
-        $configurationRegistry->set('plugin.tx_seminars', $this->configuration);
-        $configurationRegistry->set('plugin.tx_seminars._LOCAL_LANG.default', new DummyConfiguration());
-        $configurationRegistry->set('config', new DummyConfiguration());
-        $configurationRegistry->set('page.config', new DummyConfiguration());
+        $this->configurationRegistry->set('plugin.tx_seminars', $this->configuration);
+        $this->configurationRegistry->set('plugin.tx_seminars._LOCAL_LANG.default', new DummyConfiguration());
+        $this->configurationRegistry->set('config', new DummyConfiguration());
+        $this->configurationRegistry->set('page.config', new DummyConfiguration());
 
         $organizerUid = $this->testingFramework->createRecord(
             'tx_seminars_organizers',
@@ -947,7 +960,16 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
             ->onlyMethods(['getUnregistrationNotice'])
-            ->setConstructorArgs([$this->connectionPool, $this->context])
+            ->setConstructorArgs(
+                [
+                    $this->connectionPool,
+                    $this->context,
+                    $this->eventRepository,
+                    $this->mapperRegistry,
+                    $this->templateRegistry,
+                    $this->configurationRegistry,
+                ],
+            )
             ->getMock();
         $subject->expects(self::never())->method('getUnregistrationNotice');
 
@@ -974,7 +996,16 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
-            ->setConstructorArgs([$this->connectionPool, $this->context])
+            ->setConstructorArgs(
+                [
+                    $this->connectionPool,
+                    $this->context,
+                    $this->eventRepository,
+                    $this->mapperRegistry,
+                    $this->templateRegistry,
+                    $this->configurationRegistry,
+                ],
+            )
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::never())->method('getUnregistrationNotice');
         $this->configuration->setAsBoolean('sendConfirmation', true);
@@ -996,7 +1027,16 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
-            ->setConstructorArgs([$this->connectionPool, $this->context])
+            ->setConstructorArgs(
+                [
+                    $this->connectionPool,
+                    $this->context,
+                    $this->eventRepository,
+                    $this->mapperRegistry,
+                    $this->templateRegistry,
+                    $this->configurationRegistry,
+                ],
+            )
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::atLeast(1))->method('getUnregistrationNotice');
         $this->configuration->setAsBoolean('sendConfirmation', true);
@@ -1025,7 +1065,16 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
-            ->setConstructorArgs([$this->connectionPool, $this->context])
+            ->setConstructorArgs(
+                [
+                    $this->connectionPool,
+                    $this->context,
+                    $this->eventRepository,
+                    $this->mapperRegistry,
+                    $this->templateRegistry,
+                    $this->configurationRegistry,
+                ],
+            )
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::atLeast(1))->method('getUnregistrationNotice');
 
@@ -1062,7 +1111,16 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $subject = $this
             ->getMockBuilder(RegistrationManager::class)
-            ->setConstructorArgs([$this->connectionPool, $this->context])
+            ->setConstructorArgs(
+                [
+                    $this->connectionPool,
+                    $this->context,
+                    $this->eventRepository,
+                    $this->mapperRegistry,
+                    $this->templateRegistry,
+                    $this->configurationRegistry,
+                ],
+            )
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
         $subject->expects(self::atLeast(1))->method('getUnregistrationNotice');
 
