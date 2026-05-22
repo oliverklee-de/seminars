@@ -32,7 +32,7 @@ final class ListViewTest extends FunctionalTestCase
 
     private function buildSubjectForListView(string $fixtureFileName): TestingDefaultController
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/ListView/' . $fixtureFileName . '.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/ListView/' . $fixtureFileName . '.csv');
         $this->testingFramework->createFakeFrontEnd(1);
 
         $frontEndController = $GLOBALS['TSFE'] ?? null;

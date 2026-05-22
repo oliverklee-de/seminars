@@ -1,0 +1,11 @@
+"tx_seminars_seminars"
+,"uid","title","slug","begin_date","deadline_registration","deadline_early_bird"
+,1,"event with no begin date, no registration deadline and no early-bird deadline","some-slug/1",0,0,0
+,2,"event with a begin date, no registration deadline and no early-bird deadline","some-slug/2",1000,0,0
+,3,"event with a begin date and equal registration and early-bird deadlines","some-slug/3",1000,1000,1000
+,4,"event with a begin date, an earlier registration deadline and an even earlier early-bird deadline","some-slug/4",1000,999,998
+,5,"event with a begin date and a later registration deadline","some-slug/5",1000,1001,0
+,6,"event with no begin date and a registration deadline","some-slug/6",0,1000,0
+,7,"event with a begin date and a later early-bird deadline","some-slug/7",1000,0,1001
+,8,"event with no begin date and an early-bird deadline","some-slug/8",0,0,1000
+,9,"event with a begin date and an early-bird deadline between registration deadline and begin","some-slug/9",1000,998,999

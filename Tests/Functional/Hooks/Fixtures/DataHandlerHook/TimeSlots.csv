@@ -1,0 +1,11 @@
+"tx_seminars_seminars"
+,"uid","title","begin_date","end_date","timeslots"
+,1,"event with a begin and end date, but no time slots",1000,2000,0
+,2,"event with an outdated begin and end date and 1 time slot",1000,2000,1
+,3,"event with an outdated begin and end date and 2 time slots",1000,2000,1
+
+"tx_seminars_timeslots"
+,"uid","seminar","begin_date","end_date"
+,1,2,3000,3500
+,2,3,500,600
+,3,3,3000,3500

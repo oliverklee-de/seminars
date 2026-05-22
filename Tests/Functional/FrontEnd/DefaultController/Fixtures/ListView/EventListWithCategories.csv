@@ -1,0 +1,22 @@
+"pages"
+,"uid","slug","title","doktype"
+,1,"/fePage","FE page",1
+,2,"/folder","folder",254
+
+"tx_seminars_categories"
+,"uid","title"
+,1,"a category"
+,2,"another category"
+
+"tx_seminars_seminars"
+,"uid","pid","title","categories","hidden","deleted"
+,1,2,"visible event with category",1,0,0
+,2,2,"hidden event with category",1,1,0
+,3,2,"deleted event with category",1,0,1
+,4,2,"visible event without category",0,0,0
+
+"tx_seminars_seminars_categories_mm"
+,"uid_local","uid_foreign"
+,1,1
+,2,1
+,3,1

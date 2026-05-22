@@ -1,0 +1,15 @@
+"pages"
+,"uid","slug","title","doktype"
+,1,"/fePage","FE page",1
+,2,"/folder","folder",254
+
+"tx_seminars_seminars"
+,"uid","pid","title","object_type","topic","hidden","deleted"
+,1,2,"test event",0,0,0,0
+,2,2,"test & event",0,0,0,0
+,3,2,"hidden single event",0,0,1,0
+,4,2,"deleted single event",0,0,0,1
+,5,2,"test topic",1,0,0,0
+,6,2,"test date",2,5,0,0
+,7,2,"another topic",1,0,0,0
+,8,2,"hidden date",2,7,1,0

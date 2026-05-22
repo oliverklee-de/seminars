@@ -85,7 +85,7 @@ final class CategoryListTest extends FunctionalTestCase
      */
     public function renderIncludesTitleOfCategoryWithEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/CategoryList/OneCategoryWithAsciiTitle.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/CategoryList/OneCategoryWithAsciiTitle.csv');
 
         $result = $this->subject->render();
 
@@ -97,7 +97,7 @@ final class CategoryListTest extends FunctionalTestCase
      */
     public function renderEncodesCategoryTitles(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/CategoryList/OneCategoryWithSpecialCharactersInTitle.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/CategoryList/OneCategoryWithSpecialCharactersInTitle.csv');
 
         $result = $this->subject->render();
 

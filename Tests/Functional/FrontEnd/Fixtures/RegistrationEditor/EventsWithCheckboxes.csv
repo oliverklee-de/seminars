@@ -1,0 +1,16 @@
+"tx_seminars_checkboxes"
+,"uid","title"
+,1,"Checkbox 1"
+,2,"Checkbox 2"
+
+"tx_seminars_seminars"
+,"uid","title","checkboxes"
+,1,"event without checkboxes",0
+,2,"event with 1 checkbox",1
+,3,"event with 2 checkbox",2
+
+"tx_seminars_seminars_checkboxes_mm"
+,"uid_local","uid_foreign","sorting"
+,2,1,0
+,3,1,2
+,3,2,1

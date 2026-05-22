@@ -1,0 +1,17 @@
+"pages"
+,"uid","slug","title","doktype"
+,1,"/fePage","FE page",1
+,2,"/folder","folder",254
+
+"tx_seminars_event_types"
+,"uid","title"
+,1,"workshops"
+,2,"talks"
+
+"tx_seminars_seminars"
+,"uid","pid","title","event_type","hidden","deleted"
+,1,2,"visible event with first type",1,0,0
+,2,2,"visible event with second type",2,0,0
+,3,2,"hidden event with first type",1,1,0
+,4,2,"deleted event with first type",1,0,1
+,5,2,"visible event without type",0,0,0
