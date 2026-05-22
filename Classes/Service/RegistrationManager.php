@@ -47,16 +47,32 @@ class RegistrationManager implements SingletonInterface
 
     private Context $context;
 
-    private ?Configuration $sharedPluginConfiguration = null;
+    private EventRepository $eventRepository;
+
+    private RegistrationMapper $registrationMapper;
+
+    private TemplateRegistry $templateRegistry;
+
+    private Configuration $sharedPluginConfiguration;
 
     private ?Template $emailTemplate = null;
 
     protected ?HookProvider $registrationEmailHookProvider = null;
 
-    public function __construct(ConnectionPool $connectionPool, Context $context)
-    {
+    public function __construct(
+        ConnectionPool $connectionPool,
+        Context $context,
+        EventRepository $eventRepository,
+        MapperRegistry $mapperRegistry,
+        TemplateRegistry $templateRegistry,
+        ConfigurationRegistry $configurationRegistry
+    ) {
         $this->connectionPool = $connectionPool;
         $this->context = $context;
+        $this->eventRepository = $eventRepository;
+        $this->registrationMapper = $mapperRegistry->getByClassName(RegistrationMapper::class);
+        $this->templateRegistry = $templateRegistry;
+        $this->sharedPluginConfiguration = $configurationRegistry->getByNamespace('plugin.tx_seminars');
     }
 
     private function isLoggedIn(): bool
@@ -273,7 +289,7 @@ class RegistrationManager implements SingletonInterface
             $this->notifyOrganizers($registration);
         }
 
-        if ($this->getSharedConfiguration()->getAsBoolean('sendAdditionalNotificationEmails')) {
+        if ($this->sharedPluginConfiguration->getAsBoolean('sendAdditionalNotificationEmails')) {
             $this->sendAdditionalNotification($registration);
         }
     }
@@ -312,7 +328,7 @@ class RegistrationManager implements SingletonInterface
      */
     private function fillVacancies(LegacyRegistration $unregistration): void
     {
-        if (!$this->getSharedConfiguration()->getAsBoolean('automaticallyFillVacanciesOnUnregistration')) {
+        if (!$this->sharedPluginConfiguration->getAsBoolean('automaticallyFillVacanciesOnUnregistration')) {
             return;
         }
         $seminar = $unregistration->getSeminarObject();
@@ -329,7 +345,6 @@ class RegistrationManager implements SingletonInterface
         $registrationBagBuilder->limitToOnQueue();
         $registrationBagBuilder->limitToSeatsAtMost($vacancies);
 
-        $configuration = $this->getSharedConfiguration();
         foreach ($registrationBagBuilder->build() as $registration) {
             if ($vacancies <= 0) {
                 break;
@@ -346,7 +361,7 @@ class RegistrationManager implements SingletonInterface
                 $this->notifyAttendee($registration, 'confirmationOnQueueUpdate');
                 $this->notifyOrganizers($registration, 'notificationOnQueueUpdate');
 
-                if ($configuration->getAsBoolean('sendAdditionalNotificationEmails')) {
+                if ($this->sharedPluginConfiguration->getAsBoolean('sendAdditionalNotificationEmails')) {
                     $this->sendAdditionalNotification($registration);
                 }
             }
@@ -363,7 +378,7 @@ class RegistrationManager implements SingletonInterface
         LegacyRegistration $oldRegistration,
         string $helloSubjectPrefix = 'confirmation'
     ): void {
-        if (!$this->getSharedConfiguration()->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {
+        if (!$this->sharedPluginConfiguration->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {
             return;
         }
 
@@ -390,8 +405,7 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $oldRegistration->getUid();
         \assert($registrationUid > 0);
-        $registration = GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(RegistrationMapper::class)
-            ->find($registrationUid);
+        $registration = $this->registrationMapper->find($registrationUid);
         $this->addCalendarAttachment($emailBuilder, $event->getUid());
         $email = $emailBuilder->build();
 
@@ -424,7 +438,7 @@ class RegistrationManager implements SingletonInterface
      */
     private function addCalendarAttachment(EmailBuilder $emailBuilder, int $eventUid): void
     {
-        $event = $this->getEventRepository()->findByUid($eventUid);
+        $event = $this->eventRepository->findByUid($eventUid);
         if (!$event instanceof EventDateInterface) {
             return;
         }
@@ -468,11 +482,6 @@ class RegistrationManager implements SingletonInterface
         $emailBuilder->attach($content, 'text/calendar; charset="utf-8"; component="vevent"; method="publish"');
     }
 
-    private function getEventRepository(): EventRepository
-    {
-        return GeneralUtility::makeInstance(EventRepository::class);
-    }
-
     /**
      * @return non-empty-string
      */
@@ -493,8 +502,7 @@ class RegistrationManager implements SingletonInterface
         LegacyRegistration $registration,
         string $helloSubjectPrefix = 'notification'
     ): void {
-        $configuration = $this->getSharedConfiguration();
-        if (!$configuration->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {
+        if (!$this->sharedPluginConfiguration->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {
             return;
         }
         if (!$registration->hasExistingFrontEndUser()) {
@@ -522,34 +530,41 @@ class RegistrationManager implements SingletonInterface
         $emailBuilder->to(...$recipients);
 
         $template = $this->getInitializedEmailTemplate();
-        $template->hideSubparts($configuration->getAsString('hideFieldsInNotificationMail'), 'field_wrapper');
+        $template->hideSubparts(
+            $this->sharedPluginConfiguration->getAsString('hideFieldsInNotificationMail'),
+            'field_wrapper',
+        );
 
         $template->setMarker('hello', $this->translate('email_' . $helloSubjectPrefix . 'Hello'));
         $template->setMarker('summary', $registration->getTitle());
 
-        if ($configuration->hasString('showSeminarFieldsInNotificationMail')) {
+        if ($this->sharedPluginConfiguration->hasString('showSeminarFieldsInNotificationMail')) {
             $template->setMarker(
                 'seminardata',
-                $event->dumpSeminarValues($configuration->getAsString('showSeminarFieldsInNotificationMail')),
+                $event->dumpSeminarValues(
+                    $this->sharedPluginConfiguration->getAsString('showSeminarFieldsInNotificationMail'),
+                ),
             );
         } else {
             $template->hideSubparts('seminardata', 'field_wrapper');
         }
 
-        if ($configuration->hasString('showFeUserFieldsInNotificationMail')) {
+        if ($this->sharedPluginConfiguration->hasString('showFeUserFieldsInNotificationMail')) {
             $template->setMarker(
                 'feuserdata',
-                $registration->dumpUserValues($configuration->getAsString('showFeUserFieldsInNotificationMail')),
+                $registration->dumpUserValues(
+                    $this->sharedPluginConfiguration->getAsString('showFeUserFieldsInNotificationMail'),
+                ),
             );
         } else {
             $template->hideSubparts('feuserdata', 'field_wrapper');
         }
 
-        if ($configuration->hasString('showAttendanceFieldsInNotificationMail')) {
+        if ($this->sharedPluginConfiguration->hasString('showAttendanceFieldsInNotificationMail')) {
             $template->setMarker(
                 'attendancedata',
                 $registration->dumpAttendanceValues(
-                    $configuration->getAsString('showAttendanceFieldsInNotificationMail'),
+                    $this->sharedPluginConfiguration->getAsString('showAttendanceFieldsInNotificationMail'),
                 ),
             );
         } else {
@@ -560,8 +575,7 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $registration->getUid();
         \assert($registrationUid > 0);
-        $registrationNew = GeneralUtility::makeInstance(MapperRegistry::class)
-            ->getByClassName(RegistrationMapper::class)->find($registrationUid);
+        $registrationNew = $this->registrationMapper->find($registrationUid);
 
         $email = $emailBuilder->build();
         $this
@@ -619,8 +633,7 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $registration->getUid();
         \assert($registrationUid > 0);
-        $registrationNew = GeneralUtility::makeInstance(MapperRegistry::class)
-            ->getByClassName(RegistrationMapper::class)->find($registrationUid);
+        $registrationNew = $this->registrationMapper->find($registrationUid);
 
         $email = $emailBuilder->build();
         $this
@@ -680,7 +693,7 @@ class RegistrationManager implements SingletonInterface
         $template = $this->getInitializedEmailTemplate();
 
         $template->setMarker('message', $this->translate($localLanguageKey));
-        $showSeminarFields = $this->getSharedConfiguration()->getAsString('showSeminarFieldsInNotificationMail');
+        $showSeminarFields = $this->sharedPluginConfiguration->getAsString('showSeminarFieldsInNotificationMail');
         if ($showSeminarFields !== '') {
             $template->setMarker(
                 'seminardata',
@@ -706,8 +719,8 @@ class RegistrationManager implements SingletonInterface
             return $this->emailTemplate;
         }
 
-        $templateFileName = $this->getSharedConfiguration()->getAsString('templateFile');
-        $template = GeneralUtility::makeInstance(TemplateRegistry::class)->getByFileName($templateFileName);
+        $templateFileName = $this->sharedPluginConfiguration->getAsString('templateFile');
+        $template = $this->templateRegistry->getByFileName($templateFileName);
         foreach ($template->getLabelMarkerNames() as $label) {
             $template->setMarker($label, $this->translate($label));
         }
@@ -741,7 +754,7 @@ class RegistrationManager implements SingletonInterface
         $template = $this->getInitializedEmailTemplate();
         $template->setMarker('html_mail_charset', 'utf-8');
         $template->hideSubparts(
-            $this->getSharedConfiguration()->getAsString('hideFieldsInThankYouMail'),
+            $this->sharedPluginConfiguration->getAsString('hideFieldsInThankYouMail'),
             $wrapperPrefix,
         );
 
@@ -864,7 +877,7 @@ class RegistrationManager implements SingletonInterface
 
         $eventUid = $event->getUid();
         \assert($eventUid > 0);
-        $newEvent = $this->getEventRepository()->findByUid($eventUid);
+        $newEvent = $this->eventRepository->findByUid($eventUid);
         \assert($newEvent instanceof EventDateInterface);
         if ($newEvent->hasUsableWebinarUrl()) {
             $template->unhideSubparts('webinar_url', $wrapperPrefix);
@@ -911,8 +924,7 @@ class RegistrationManager implements SingletonInterface
 
         $registrationUid = $registration->getUid();
         \assert($registrationUid > 0);
-        $registrationNew = GeneralUtility::makeInstance(MapperRegistry::class)
-            ->getByClassName(RegistrationMapper::class)->find($registrationUid);
+        $registrationNew = $this->registrationMapper->find($registrationUid);
 
         $this->getRegistrationEmailHookProvider()->executeHook(
             $useHtml ? 'modifyAttendeeEmailBodyHtml' : 'modifyAttendeeEmailBodyPlainText',
@@ -943,13 +955,13 @@ class RegistrationManager implements SingletonInterface
     {
         // The CSS inlining uses a Composer-provided library and hence is a Composer-only feature.
         if (
-            !$this->getSharedConfiguration()->hasString('cssFileForAttendeeMail')
+            !$this->sharedPluginConfiguration->hasString('cssFileForAttendeeMail')
             || !\class_exists(CssInliner::class)
         ) {
             return $emailBody;
         }
 
-        $cssFile = $this->getSharedConfiguration()->getAsString('cssFileForAttendeeMail');
+        $cssFile = $this->sharedPluginConfiguration->getAsString('cssFileForAttendeeMail');
         $absolutePath = GeneralUtility::getFileAbsFileName($cssFile);
         if (\is_readable($absolutePath)) {
             $css = \file_get_contents($absolutePath);
@@ -1189,7 +1201,7 @@ class RegistrationManager implements SingletonInterface
      */
     private function translate(string $key): string
     {
-        $salutationSuffix = '_' . $this->getSharedConfiguration()->getAsString('salutation');
+        $salutationSuffix = '_' . $this->sharedPluginConfiguration->getAsString('salutation');
         $labelWithSalutation = LocalizationUtility::translate($key . $salutationSuffix, 'seminars');
         $labelWithoutSalutation = LocalizationUtility::translate($key, 'seminars');
 
@@ -1209,15 +1221,5 @@ class RegistrationManager implements SingletonInterface
         \assert($now > 0);
 
         return $now;
-    }
-
-    private function getSharedConfiguration(): Configuration
-    {
-        if (!$this->sharedPluginConfiguration instanceof Configuration) {
-            $this->sharedPluginConfiguration = GeneralUtility::makeInstance(ConfigurationRegistry::class)
-                ->getByNamespace('plugin.tx_seminars');
-        }
-
-        return $this->sharedPluginConfiguration;
     }
 }
