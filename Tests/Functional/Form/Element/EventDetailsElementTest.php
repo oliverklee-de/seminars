@@ -29,8 +29,9 @@ final class EventDetailsElementTest extends FunctionalTestCase
         parent::setUp();
 
         $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
-        $backendUser = $this->setUpBackendUser(1);
-        $GLOBALS['LANG'] = $this->get(LanguageServiceFactory::class)->createFromUserPreferences($backendUser);
+        $GLOBALS['LANG'] = $this
+            ->get(LanguageServiceFactory::class)
+            ->createFromUserPreferences($this->setUpBackendUser(1));
     }
 
     private function getDateFormat(): string
