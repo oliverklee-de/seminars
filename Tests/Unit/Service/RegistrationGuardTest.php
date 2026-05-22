@@ -18,6 +18,7 @@ use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Context\UserAspect;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Request;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -484,7 +485,7 @@ final class RegistrationGuardTest extends UnitTestCase
         $this->context->setAspect('frontend.user', new UserAspect());
         $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(null);
 
-        self::assertFalse($this->subject->existsFrontEndUserUidInSession());
+        self::assertFalse($this->subject->existsFrontEndUserUidInSession($this->createStub(Request::class)));
     }
 
     /**
@@ -497,7 +498,7 @@ final class RegistrationGuardTest extends UnitTestCase
         $this->context->setAspect('frontend.user', new UserAspect($userAuthentication));
         $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(null);
 
-        self::assertTrue($this->subject->existsFrontEndUserUidInSession());
+        self::assertTrue($this->subject->existsFrontEndUserUidInSession($this->createStub(Request::class)));
     }
 
     /**
@@ -508,7 +509,7 @@ final class RegistrationGuardTest extends UnitTestCase
         $this->context->setAspect('frontend.user', new UserAspect());
         $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(5);
 
-        self::assertTrue($this->subject->existsFrontEndUserUidInSession());
+        self::assertTrue($this->subject->existsFrontEndUserUidInSession($this->createStub(Request::class)));
     }
 
     /**
@@ -521,7 +522,7 @@ final class RegistrationGuardTest extends UnitTestCase
         $this->context->setAspect('frontend.user', new UserAspect($userAuthentication));
         $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(5);
 
-        self::assertTrue($this->subject->existsFrontEndUserUidInSession());
+        self::assertTrue($this->subject->existsFrontEndUserUidInSession($this->createStub(Request::class)));
     }
 
     /**

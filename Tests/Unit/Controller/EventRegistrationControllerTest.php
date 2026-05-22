@@ -14,12 +14,14 @@ use OliverKlee\Seminars\Service\PriceFinder;
 use OliverKlee\Seminars\Service\RegistrationGuard;
 use OliverKlee\Seminars\Service\RegistrationProcessor;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\RedirectResponse;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Mvc\Request;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Fluid\View\TemplateView;
 use TYPO3\TestingFramework\Core\AccessibleObjectInterface;
@@ -67,6 +69,11 @@ final class EventRegistrationControllerTest extends UnitTestCase
      */
     private UriBuilder $uriBuilderMock;
 
+    /**
+     * @var Request&Stub
+     */
+    private Request $requestStub;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -75,6 +82,7 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $this->registrationProcesserMock = $this->createMock(RegistrationProcessor::class);
         $this->oneTimeAccountConnectorMock = $this->createMock(OneTimeAccountConnector::class);
         $this->priceFinderMock = $this->createMock(PriceFinder::class);
+        $this->requestStub = $this->createStub(Request::class);
 
         /** @var EventRegistrationController&AccessibleObjectInterface&MockObject $subject */
         $subject = $this->getAccessibleMock(
@@ -96,6 +104,7 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $this->subject->_set('view', $this->viewMock);
         $this->uriBuilderMock = $this->createMock(UriBuilder::class);
         $this->subject->_set('uriBuilder', $this->uriBuilderMock);
+        $this->subject->_set('request', $this->requestStub);
         $this->subject->_set('settings', []);
     }
 
@@ -197,7 +206,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $event = new SingleEvent();
         $this->registrationGuardMock->method('isRegistrationPossibleAtAnyTimeAtAll')->with($event)->willReturn(true);
         $this->registrationGuardMock->method('isRegistrationPossibleByDate')->with($event)->willReturn(true);
-        $this->registrationGuardMock->method('existsFrontEndUserUidInSession')->willReturn(true);
+        $this->registrationGuardMock
+            ->method('existsFrontEndUserUidInSession')
+            ->with($this->requestStub)->willReturn(true);
         $this->registrationGuardMock
             ->expects(self::once())
             ->method('isFreeFromRegistrationConflicts')->with($event, $userUid)->willReturn(false);
@@ -220,7 +231,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $event = new SingleEvent();
         $this->registrationGuardMock->method('isRegistrationPossibleAtAnyTimeAtAll')->with($event)->willReturn(true);
         $this->registrationGuardMock->method('isRegistrationPossibleByDate')->with($event)->willReturn(true);
-        $this->registrationGuardMock->method('existsFrontEndUserUidInSession')->willReturn(true);
+        $this->registrationGuardMock
+            ->method('existsFrontEndUserUidInSession')
+            ->with($this->requestStub)->willReturn(true);
         $this->registrationGuardMock
             ->method('isFreeFromRegistrationConflicts')
             ->with($event, $userUid)->willReturn(true);
@@ -247,7 +260,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $event->setWaitingList(true);
         $this->registrationGuardMock->method('isRegistrationPossibleAtAnyTimeAtAll')->with($event)->willReturn(true);
         $this->registrationGuardMock->method('isRegistrationPossibleByDate')->with($event)->willReturn(true);
-        $this->registrationGuardMock->method('existsFrontEndUserUidInSession')->willReturn(true);
+        $this->registrationGuardMock
+            ->method('existsFrontEndUserUidInSession')
+            ->with($this->requestStub)->willReturn(true);
         $this->registrationGuardMock
             ->method('isFreeFromRegistrationConflicts')
             ->with($event, $userUid)->willReturn(true);
@@ -280,7 +295,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $this->registrationGuardMock
             ->expects(self::once())->method('isRegistrationPossibleByDate')
             ->with($event)->willReturn(true);
-        $this->registrationGuardMock->expects(self::once())->method('existsFrontEndUserUidInSession')->willReturn(true);
+        $this->registrationGuardMock
+            ->expects(self::once())->method('existsFrontEndUserUidInSession')
+            ->with($this->requestStub)->willReturn(true);
         $this->registrationGuardMock
             ->expects(self::once())->method('isFreeFromRegistrationConflicts')
             ->with($event, $userUid)->willReturn(true);
@@ -313,7 +330,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $this->registrationGuardMock
             ->expects(self::once())->method('isRegistrationPossibleByDate')
             ->with($event)->willReturn(true);
-        $this->registrationGuardMock->expects(self::once())->method('existsFrontEndUserUidInSession')->willReturn(true);
+        $this->registrationGuardMock
+            ->expects(self::once())->method('existsFrontEndUserUidInSession')
+            ->with($this->requestStub)->willReturn(true);
         $this->registrationGuardMock
             ->expects(self::once())->method('isFreeFromRegistrationConflicts')
             ->with($event, $userUid)->willReturn(true);
@@ -341,7 +360,9 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $event->method('getUid')->willReturn($eventUid);
         $this->registrationGuardMock->method('isRegistrationPossibleAtAnyTimeAtAll')->with($event)->willReturn(true);
         $this->registrationGuardMock->method('isRegistrationPossibleByDate')->with($event)->willReturn(true);
-        $this->registrationGuardMock->method('existsFrontEndUserUidInSession')->willReturn(false);
+        $this->registrationGuardMock
+            ->method('existsFrontEndUserUidInSession')
+            ->with($this->requestStub)->willReturn(false);
 
         $redirectUrl = 'https://example.com/current-page';
         $loginPageUrl = 'https://example.com/login-with-event-uid';
