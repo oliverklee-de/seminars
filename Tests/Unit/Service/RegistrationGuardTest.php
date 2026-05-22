@@ -14,11 +14,12 @@ use OliverKlee\Seminars\Service\EventStatisticsCalculator;
 use OliverKlee\Seminars\Service\OneTimeAccountConnector;
 use OliverKlee\Seminars\Service\RegistrationGuard;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Context\UserAspect;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\Request;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -35,6 +36,11 @@ final class RegistrationGuardTest extends UnitTestCase
     private string $now = '2022-04-01 10:00:00';
 
     private Context $context;
+
+    /**
+     * @var ServerRequestInterface&Stub
+     */
+    private ServerRequestInterface $requestStub;
 
     /**
      * @var RegistrationRepository&MockObject
@@ -58,6 +64,8 @@ final class RegistrationGuardTest extends UnitTestCase
         parent::setUp();
 
         $this->context = GeneralUtility::makeInstance(Context::class);
+
+        $this->requestStub = $this->createStub(ServerRequestInterface::class);
 
         $this->registrationRepositoryMock = $this->createMock(RegistrationRepository::class);
         $this->eventStatisticsCalculatorMock = $this->createMock(EventStatisticsCalculator::class);
@@ -483,9 +491,11 @@ final class RegistrationGuardTest extends UnitTestCase
     public function existsFrontEndUserUidInSessionForNoLoginAndNoOneTimeAccountDataReturnsFalse(): void
     {
         $this->context->setAspect('frontend.user', new UserAspect());
-        $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(null);
+        $this->oneTimeAccountConnectorMock
+            ->method('getOneTimeAccountUserUid')
+            ->with($this->requestStub)->willReturn(null);
 
-        self::assertFalse($this->subject->existsFrontEndUserUidInSession($this->createStub(Request::class)));
+        self::assertFalse($this->subject->existsFrontEndUserUidInSession($this->requestStub));
     }
 
     /**
@@ -496,9 +506,11 @@ final class RegistrationGuardTest extends UnitTestCase
         $userAuthentication = new FrontendUserAuthentication();
         $userAuthentication->user = ['uid' => 5];
         $this->context->setAspect('frontend.user', new UserAspect($userAuthentication));
-        $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(null);
+        $this->oneTimeAccountConnectorMock
+            ->method('getOneTimeAccountUserUid')
+            ->with($this->requestStub)->willReturn(null);
 
-        self::assertTrue($this->subject->existsFrontEndUserUidInSession($this->createStub(Request::class)));
+        self::assertTrue($this->subject->existsFrontEndUserUidInSession($this->requestStub));
     }
 
     /**
@@ -507,9 +519,11 @@ final class RegistrationGuardTest extends UnitTestCase
     public function existsFrontEndUserUidInSessionForNoLoginAndOneTimeAccountDataReturnsTrue(): void
     {
         $this->context->setAspect('frontend.user', new UserAspect());
-        $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(5);
+        $this->oneTimeAccountConnectorMock
+            ->method('getOneTimeAccountUserUid')
+            ->with($this->requestStub)->willReturn(5);
 
-        self::assertTrue($this->subject->existsFrontEndUserUidInSession($this->createStub(Request::class)));
+        self::assertTrue($this->subject->existsFrontEndUserUidInSession($this->requestStub));
     }
 
     /**
@@ -520,9 +534,11 @@ final class RegistrationGuardTest extends UnitTestCase
         $userAuthentication = new FrontendUserAuthentication();
         $userAuthentication->user = ['uid' => 3];
         $this->context->setAspect('frontend.user', new UserAspect($userAuthentication));
-        $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(5);
+        $this->oneTimeAccountConnectorMock
+            ->method('getOneTimeAccountUserUid')
+            ->with($this->requestStub)->willReturn(5);
 
-        self::assertTrue($this->subject->existsFrontEndUserUidInSession($this->createStub(Request::class)));
+        self::assertTrue($this->subject->existsFrontEndUserUidInSession($this->requestStub));
     }
 
     /**
@@ -531,9 +547,11 @@ final class RegistrationGuardTest extends UnitTestCase
     public function getFrontEndUserUidFromSessionForNoLoginAndNoOneTimeAccountDataReturnsNull(): void
     {
         $this->context->setAspect('frontend.user', new UserAspect());
-        $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(null);
+        $this->oneTimeAccountConnectorMock
+            ->method('getOneTimeAccountUserUid')
+            ->with($this->requestStub)->willReturn(null);
 
-        self::assertNull($this->subject->getFrontEndUserUidFromSession());
+        self::assertNull($this->subject->getFrontEndUserUidFromSession($this->requestStub));
     }
 
     /**
@@ -546,9 +564,11 @@ final class RegistrationGuardTest extends UnitTestCase
         $userAuthentication->user = ['uid' => $userUidFromLogin];
         $this->context->setAspect('frontend.user', new UserAspect($userAuthentication));
 
-        $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn(null);
+        $this->oneTimeAccountConnectorMock
+            ->method('getOneTimeAccountUserUid')
+            ->with($this->requestStub)->willReturn(null);
 
-        self::assertSame($userUidFromLogin, $this->subject->getFrontEndUserUidFromSession());
+        self::assertSame($userUidFromLogin, $this->subject->getFrontEndUserUidFromSession($this->requestStub));
     }
 
     /**
@@ -558,9 +578,11 @@ final class RegistrationGuardTest extends UnitTestCase
     {
         $userUidFromOneTimeAccount = 12;
         $this->context->setAspect('frontend.user', new UserAspect());
-        $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn($userUidFromOneTimeAccount);
+        $this->oneTimeAccountConnectorMock
+            ->method('getOneTimeAccountUserUid')
+            ->with($this->requestStub)->willReturn($userUidFromOneTimeAccount);
 
-        self::assertSame($userUidFromOneTimeAccount, $this->subject->getFrontEndUserUidFromSession());
+        self::assertSame($userUidFromOneTimeAccount, $this->subject->getFrontEndUserUidFromSession($this->requestStub));
     }
 
     /**
@@ -574,9 +596,11 @@ final class RegistrationGuardTest extends UnitTestCase
         $this->context->setAspect('frontend.user', new UserAspect($userAuthentication));
 
         $userUidFromOneTimeAccount = 9;
-        $this->oneTimeAccountConnectorMock->method('getOneTimeAccountUserUid')->willReturn($userUidFromOneTimeAccount);
+        $this->oneTimeAccountConnectorMock
+            ->method('getOneTimeAccountUserUid')
+            ->with($this->requestStub)->willReturn($userUidFromOneTimeAccount);
 
-        self::assertSame($userUidFromLogin, $this->subject->getFrontEndUserUidFromSession());
+        self::assertSame($userUidFromLogin, $this->subject->getFrontEndUserUidFromSession($this->requestStub));
     }
 
     /**

@@ -13,6 +13,7 @@ use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Domain\Repository\FrontendUserRepository;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -62,12 +63,16 @@ class RegistrationProcessor implements SingletonInterface
      *
      * @param array{registrationRecordsStorageFolder?: numeric-string} $settings
      */
-    public function enrichWithMetadata(Registration $registration, Event $event, array $settings): void
-    {
+    public function enrichWithMetadata(
+        Registration $registration,
+        Event $event,
+        array $settings,
+        ServerRequestInterface $request
+    ): void {
         \assert($event instanceof EventDateInterface);
         $registration->setEvent($event);
 
-        $userUid = $this->registrationGuard->getFrontEndUserUidFromSession();
+        $userUid = $this->registrationGuard->getFrontEndUserUidFromSession($request);
         if (!\is_int($userUid)) {
             throw new \RuntimeException('No user UID found in the session.', 1668865776);
         }

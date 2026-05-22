@@ -12,9 +12,9 @@ use OliverKlee\Seminars\Domain\Model\Event\EventStatistics;
 use OliverKlee\Seminars\Domain\Model\Event\EventTopic;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Extbase\Mvc\Request;
 
 /**
  * This class provides functions to check whether a registration for an event is possible.
@@ -127,18 +127,18 @@ class RegistrationGuard implements SingletonInterface
             || !$this->registrationRepository->existsRegistrationForEventAndUser($event, $userUid);
     }
 
-    public function existsFrontEndUserUidInSession(Request $request): bool
+    public function existsFrontEndUserUidInSession(ServerRequestInterface $request): bool
     {
         $isLoggedIn = $this->context->getPropertyFromAspect('frontend.user', 'isLoggedIn');
         \assert(\is_bool($isLoggedIn));
 
-        return $isLoggedIn || \is_int($this->oneTimeAccountConnector->getOneTimeAccountUserUid());
+        return $isLoggedIn || \is_int($this->oneTimeAccountConnector->getOneTimeAccountUserUid($request));
     }
 
     /**
      * @return positive-int|null
      */
-    public function getFrontEndUserUidFromSession(): ?int
+    public function getFrontEndUserUidFromSession(ServerRequestInterface $request): ?int
     {
         $userUidFromLogin = $this->context->getPropertyFromAspect('frontend.user', 'id');
         \assert(\is_int($userUidFromLogin));
@@ -147,7 +147,7 @@ class RegistrationGuard implements SingletonInterface
             $userUidFromLogin = null;
         }
 
-        $userUidFromOneTimeAccount = $this->oneTimeAccountConnector->getOneTimeAccountUserUid();
+        $userUidFromOneTimeAccount = $this->oneTimeAccountConnector->getOneTimeAccountUserUid($request);
 
         return \is_int($userUidFromLogin) ? $userUidFromLogin : $userUidFromOneTimeAccount;
     }
