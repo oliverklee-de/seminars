@@ -16,4 +16,3 @@ extension without blocking others to do the same.
     :maxdepth: 1
 
     Events/Index
-    Hooks

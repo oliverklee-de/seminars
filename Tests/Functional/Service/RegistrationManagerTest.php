@@ -6,13 +6,9 @@ namespace OliverKlee\Seminars\Tests\Functional\Service;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Oelib\Mapper\MapperRegistry;
-use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
-use OliverKlee\Seminars\Hooks\Interfaces\RegistrationEmail;
-use OliverKlee\Seminars\Mapper\RegistrationMapper;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
@@ -56,8 +52,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     private RegistrationManager $subject;
 
-    private RegistrationMapper $registrationMapper;
-
     private DummyConfiguration $configuration;
 
     /**
@@ -79,8 +73,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
 
         $this->initializeBackEndLanguage();
-
-        $this->registrationMapper = $this->get(MapperRegistry::class)->getByClassName(RegistrationMapper::class);
 
         $configurationRegistry = $this->get(ConfigurationRegistry::class);
         $this->configuration = new DummyConfiguration(
@@ -483,81 +475,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->email->expects(self::never())->method('send');
 
         $this->subject->notifyAttendee($registration);
-    }
-
-    /**
-     * @test
-     */
-    public function notifyAttendeeForSendConfirmationTrueCallsRegistrationEmailHookMethodsForPlainTextEmail(): void
-    {
-        $this->setUpFakeFrontEnd();
-        $this->createEventWithOrganizer();
-        $this->configuration->setAsBoolean('sendConfirmation', true);
-
-        $registrationOld = $this->createRegistration();
-        $registrationUid = $registrationOld->getUid();
-        \assert($registrationUid > 0);
-        $registration = $this->registrationMapper->find($registrationUid);
-
-        $hook = $this->createMock(RegistrationEmail::class);
-        $hook->expects(self::once())->method('modifyAttendeeEmail')->with(
-            self::isInstanceOf(MailMessage::class),
-            $registration,
-            'confirmation',
-        );
-        $hook->expects(self::once())->method('modifyAttendeeEmailBodyPlainText')->with(
-            self::isInstanceOf(Template::class),
-            $registration,
-            'confirmation',
-        );
-        $hook->expects(self::never())->method('modifyOrganizerEmail');
-        $hook->expects(self::never())->method('modifyAdditionalEmail');
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationEmail::class][] = $hookClass;
-        $this->addMockedInstance($hookClass, $hook);
-
-        $this->subject->notifyAttendee($registrationOld);
-    }
-
-    /**
-     * @test
-     */
-    public function notifyAttendeeForSendConfirmationTrueCallsRegistrationEmailHookMethodsForHtmlEmail(): void
-    {
-        $this->setUpFakeFrontEnd();
-        $this->createEventWithOrganizer();
-        $this->configuration->setAsBoolean('sendConfirmation', true);
-
-        $registrationOld = $this->createRegistration();
-        $registrationUid = $registrationOld->getUid();
-        \assert($registrationUid > 0);
-        $registration = $this->registrationMapper->find($registrationUid);
-
-        $hook = $this->createMock(RegistrationEmail::class);
-        $hook->expects(self::once())->method('modifyAttendeeEmail')->with(
-            self::isInstanceOf(MailMessage::class),
-            $registration,
-            'confirmation',
-        );
-        $hook->expects(self::once())->method('modifyAttendeeEmailBodyPlainText')->with(
-            self::isInstanceOf(Template::class),
-            $registration,
-            'confirmation',
-        );
-        $hook->expects(self::once())->method('modifyAttendeeEmailBodyHtml')->with(
-            self::isInstanceOf(Template::class),
-            $registration,
-            'confirmation',
-        );
-        $hook->expects(self::never())->method('modifyOrganizerEmail');
-        $hook->expects(self::never())->method('modifyAdditionalEmail');
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationEmail::class][] = $hookClass;
-        $this->addMockedInstance($hookClass, $hook);
-
-        $this->subject->notifyAttendee($registrationOld);
     }
 
     /**

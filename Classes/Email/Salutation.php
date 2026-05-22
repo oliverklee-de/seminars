@@ -40,33 +40,7 @@ class Salutation
                 $salutationParts['name'] = $user->getName();
         }
 
-        foreach ($this->getHooks() as $hook) {
-            if (method_exists($hook, 'modifySalutation')) {
-                $hook->modifySalutation($salutationParts, $user);
-            }
-        }
-
         return \implode(' ', $salutationParts) . ',';
-    }
-
-    /**
-     * Gets all hooks for this class.
-     *
-     * @return list<object> the hook objects in an array, will be empty if no hooks have been set
-     */
-    private function getHooks(): array
-    {
-        $result = [];
-
-        $hooks = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars']['modifyEmailSalutation'] ?? null;
-        if (\is_array($hooks)) {
-            /** @var array<array-key, class-string> $hooks */
-            foreach ($hooks as $classReference) {
-                $result[] = GeneralUtility::makeInstance($classReference);
-            }
-        }
-
-        return $result;
     }
 
     /**

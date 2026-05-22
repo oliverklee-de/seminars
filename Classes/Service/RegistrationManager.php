@@ -8,7 +8,6 @@ use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Email\SystemEmailFromBuilder;
 use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Oelib\Interfaces\MailRole;
-use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Oelib\Templating\TemplateRegistry;
 use OliverKlee\Seminars\BagBuilder\RegistrationBagBuilder;
@@ -18,9 +17,6 @@ use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use OliverKlee\Seminars\Email\Salutation;
 use OliverKlee\Seminars\FrontEnd\DefaultController;
-use OliverKlee\Seminars\Hooks\HookProvider;
-use OliverKlee\Seminars\Hooks\Interfaces\RegistrationEmail;
-use OliverKlee\Seminars\Mapper\RegistrationMapper;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Place;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
@@ -49,28 +45,22 @@ class RegistrationManager implements SingletonInterface
 
     private EventRepository $eventRepository;
 
-    private RegistrationMapper $registrationMapper;
-
     private TemplateRegistry $templateRegistry;
 
     private Configuration $sharedPluginConfiguration;
 
     private ?Template $emailTemplate = null;
 
-    protected ?HookProvider $registrationEmailHookProvider = null;
-
     public function __construct(
         ConnectionPool $connectionPool,
         Context $context,
         EventRepository $eventRepository,
-        MapperRegistry $mapperRegistry,
         TemplateRegistry $templateRegistry,
         ConfigurationRegistry $configurationRegistry
     ) {
         $this->connectionPool = $connectionPool;
         $this->context = $context;
         $this->eventRepository = $eventRepository;
-        $this->registrationMapper = $mapperRegistry->getByClassName(RegistrationMapper::class);
         $this->templateRegistry = $templateRegistry;
         $this->sharedPluginConfiguration = $configurationRegistry->getByNamespace('plugin.tx_seminars');
     }
@@ -403,17 +393,9 @@ class RegistrationManager implements SingletonInterface
             ->text($this->buildEmailContent($oldRegistration, $helloSubjectPrefix));
         $emailBuilder->html($this->buildEmailContent($oldRegistration, $helloSubjectPrefix, true));
 
-        $registrationUid = $oldRegistration->getUid();
-        \assert($registrationUid > 0);
-        $registration = $this->registrationMapper->find($registrationUid);
         $this->addCalendarAttachment($emailBuilder, $event->getUid());
-        $email = $emailBuilder->build();
 
-        $this
-            ->getRegistrationEmailHookProvider()
-            ->executeHook('modifyAttendeeEmail', $email, $registration, $helloSubjectPrefix);
-
-        $email->send();
+        $emailBuilder->build()->send();
     }
 
     /**
@@ -573,16 +555,7 @@ class RegistrationManager implements SingletonInterface
 
         $emailBuilder->text($template->getSubpart('MAIL_NOTIFICATION'));
 
-        $registrationUid = $registration->getUid();
-        \assert($registrationUid > 0);
-        $registrationNew = $this->registrationMapper->find($registrationUid);
-
-        $email = $emailBuilder->build();
-        $this
-            ->getRegistrationEmailHookProvider()
-            ->executeHook('modifyOrganizerEmail', $email, $registrationNew, $helloSubjectPrefix);
-
-        $email->send();
+        $emailBuilder->build()->send();
     }
 
     /**
@@ -630,17 +603,7 @@ class RegistrationManager implements SingletonInterface
             $recipients[] = $organizer;
         }
         $emailBuilder->to(...$recipients);
-
-        $registrationUid = $registration->getUid();
-        \assert($registrationUid > 0);
-        $registrationNew = $this->registrationMapper->find($registrationUid);
-
-        $email = $emailBuilder->build();
-        $this
-            ->getRegistrationEmailHookProvider()
-            ->executeHook('modifyAdditionalEmail', $email, $registrationNew, $emailReason);
-
-        $email->send();
+        $emailBuilder->build()->send();
 
         if ($event->hasEnoughAttendances() && !$event->haveOrganizersBeenNotifiedAboutEnoughAttendees()) {
             $event->setOrganizersBeenNotifiedAboutEnoughAttendees();
@@ -922,17 +885,6 @@ class RegistrationManager implements SingletonInterface
             $template->hideSubparts('footer', $wrapperPrefix);
         }
 
-        $registrationUid = $registration->getUid();
-        \assert($registrationUid > 0);
-        $registrationNew = $this->registrationMapper->find($registrationUid);
-
-        $this->getRegistrationEmailHookProvider()->executeHook(
-            $useHtml ? 'modifyAttendeeEmailBodyHtml' : 'modifyAttendeeEmailBodyPlainText',
-            $template,
-            $registrationNew,
-            $helloSubjectPrefix,
-        );
-
         if ($useHtml) {
             $html = $template->getSubpart('MAIL_THANKYOU_HTML');
             $emailBody = ($html !== '') ? $this->addCssToHtmlEmail($html) : '';
@@ -1161,19 +1113,6 @@ class RegistrationManager implements SingletonInterface
             $this->translate('email_unregistrationNotice'),
             \date($format, $unregistrationDeadline),
         );
-    }
-
-    /**
-     * Gets the hook provider for the registration emails.
-     */
-    protected function getRegistrationEmailHookProvider(): HookProvider
-    {
-        if (!$this->registrationEmailHookProvider instanceof HookProvider) {
-            $provider = GeneralUtility::makeInstance(HookProvider::class, RegistrationEmail::class);
-            $this->registrationEmailHookProvider = $provider;
-        }
-
-        return $this->registrationEmailHookProvider;
     }
 
     /**
