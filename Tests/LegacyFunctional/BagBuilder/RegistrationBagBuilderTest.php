@@ -34,13 +34,17 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
 
     private FrontEndUserMapper $frontEndUserMapper;
 
+    private int $nowAsUnixTimestamp;
+
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this
-            ->get(Context::class)
-            ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->get(Context::class)->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        self::assertGreaterThan(0, $nowAsUnixTimestamp);
+        $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
@@ -77,19 +81,14 @@ final class RegistrationBagBuilderTest extends FunctionalTestCase
             'tx_seminars_attendances',
             [
                 'title' => 'Title 2',
-                'crdate' => $this->get(Context::class)->getPropertyFromAspect(
-                    'date',
-                    'timestamp',
-                ) + self::SECONDS_PER_DAY,
+                'crdate' => $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY,
             ],
         );
         $this->testingFramework->createRecord(
             'tx_seminars_attendances',
             [
                 'title' => 'Title 1',
-                'crdate' => (int)$this
-                    ->get(Context::class)
-                    ->getPropertyFromAspect('date', 'timestamp'),
+                'crdate' => $this->nowAsUnixTimestamp,
             ],
         );
 

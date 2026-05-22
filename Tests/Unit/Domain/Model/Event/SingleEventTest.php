@@ -42,11 +42,15 @@ final class SingleEventTest extends UnitTestCase
 {
     protected bool $resetSingletonInstances = true;
 
+    private Context $context;
+
     private SingleEvent $subject;
 
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->context = GeneralUtility::makeInstance(Context::class);
 
         $this->subject = new SingleEvent();
     }
@@ -1806,8 +1810,7 @@ final class SingleEventTest extends UnitTestCase
      */
     public function isDownloadPossibleByDateForDownloadStartInPastReturnsTrue(): void
     {
-        $context = GeneralUtility::makeInstance(Context::class);
-        $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('now')));
+        $this->context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('now')));
         $this->subject->setDownloadStartDate(new \DateTime('now -1 day'));
 
         self::assertTrue($this->subject->isDownloadPossibleByDate());
@@ -1818,8 +1821,7 @@ final class SingleEventTest extends UnitTestCase
      */
     public function isDownloadPossibleByDateForDownloadStartInFutureReturnsFalse(): void
     {
-        $context = GeneralUtility::makeInstance(Context::class);
-        $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('now')));
+        $this->context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('now')));
         $this->subject->setDownloadStartDate(new \DateTime('now +1 day'));
 
         self::assertFalse($this->subject->isDownloadPossibleByDate());

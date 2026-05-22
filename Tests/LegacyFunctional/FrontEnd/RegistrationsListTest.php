@@ -35,6 +35,10 @@ final class RegistrationsListTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
+    private Context $context;
+
+    private int $nowAsUnixTimestamp;
+
     /**
      * @var positive-int the UID of a seminar to which the fixture relates
      */
@@ -56,9 +60,12 @@ final class RegistrationsListTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this
-            ->get(Context::class)
-            ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
+        $this->context = $this->get(Context::class);
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->context->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        \assert($nowAsUnixTimestamp > 0);
+        $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
 
         $this->testingFramework = $this->get(TestingFramework::class);
         $rootPageUid = $this->testingFramework->createFrontEndPage();
@@ -139,7 +146,7 @@ final class RegistrationsListTest extends FunctionalTestCase
     {
         $this->createLogInAndRegisterFrontEndUser();
 
-        self::assertTrue($this->get(Context::class)->getAspect('frontend.user')->isLoggedIn());
+        self::assertTrue($this->context->getAspect('frontend.user')->isLoggedIn());
     }
 
     /**
@@ -504,15 +511,12 @@ final class RegistrationsListTest extends FunctionalTestCase
         $this->createLogInAndRegisterFrontEndUser();
 
         $feUserUid = $this->testingFramework->createFrontEndUser();
-        $now = $this
-            ->get(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
         $secondRegistration = $this->testingFramework->createRecord(
             'tx_seminars_attendances',
             [
                 'seminar' => $this->seminarUid,
                 'user' => $feUserUid,
-                'crdate' => $now + 500,
+                'crdate' => $this->nowAsUnixTimestamp + 500,
             ],
         );
 

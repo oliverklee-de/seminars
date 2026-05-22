@@ -50,10 +50,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
     private int $unregistrationDeadline = 0;
 
-    /**
-     * @var positive-int
-     */
-    private int $now = 1524751343;
+    private int $nowAsUnixTimestamp;
 
     private ?DefaultController $pi1 = null;
 
@@ -66,11 +63,13 @@ final class LegacyEventTest extends FunctionalTestCase
         // Make sure that the test results do not depend on the machine's PHP time zone.
         \date_default_timezone_set('UTC');
 
-        $context = $this->get(Context::class);
-        $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
-        $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->get(Context::class)->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        \assert($nowAsUnixTimestamp > 0);
+        $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
 
-        $this->unregistrationDeadline = ($this->now + self::SECONDS_PER_WEEK);
+        $this->unregistrationDeadline = ($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
 
         $this->testingFramework = $this->get(TestingFramework::class);
         $this->connectionPool = $this->get(ConnectionPool::class);
@@ -1066,7 +1065,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterIsTrueForEventWithFutureDate(): void
     {
-        $this->subject->setBeginDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 3600);
         self::assertTrue(
             $this->subject->canSomebodyRegister(),
         );
@@ -1077,7 +1076,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForEventWithFutureDateReturnsTrue(): void
     {
-        $this->subject->setBeginDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 3600);
         self::assertTrue(
             $this->subject->canSomebodyRegister(),
         );
@@ -1088,8 +1087,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterIsFalseForPastEvent(): void
     {
-        $this->subject->setBeginDate($this->now - 7200);
-        $this->subject->setEndDate($this->now - 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp - 7200);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp - 3600);
         self::assertFalse(
             $this->subject->canSomebodyRegister(),
         );
@@ -1100,8 +1099,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForPastEventReturnsFalse(): void
     {
-        $this->subject->setBeginDate($this->now - 7200);
-        $this->subject->setEndDate($this->now - 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp - 7200);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp - 3600);
         self::assertFalse(
             $this->subject->canSomebodyRegister(),
         );
@@ -1112,8 +1111,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterIsFalseForCurrentlyRunningEvent(): void
     {
-        $this->subject->setBeginDate($this->now - 3600);
-        $this->subject->setEndDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp - 3600);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp + 3600);
         self::assertFalse(
             $this->subject->canSomebodyRegister(),
         );
@@ -1124,8 +1123,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForCurrentlyRunningEventReturnsFalse(): void
     {
-        $this->subject->setBeginDate($this->now - 3600);
-        $this->subject->setEndDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp - 3600);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp + 3600);
         self::assertFalse(
             $this->subject->canSomebodyRegister(),
         );
@@ -1158,7 +1157,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForEventWithUnlimitedVacanciesReturnsTrue(): void
     {
-        $this->subject->setBeginDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 3600);
         $this->subject->setUnlimitedVacancies();
 
         self::assertTrue(
@@ -1183,7 +1182,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForEventWithoutNeedeRegistrationReturnsFalse(): void
     {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setNeedsRegistration(false);
 
         self::assertFalse(
@@ -1196,7 +1195,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForFullyBookedEventReturnsFalse(): void
     {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setNeedsRegistration(true);
         $this->subject->setAttendancesMax(10);
         $this->subject->setNumberOfAttendances(10);
@@ -1211,7 +1210,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForEventWithRegistrationQueueAndNoRegularVacanciesReturnsTrue(): void
     {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setNeedsRegistration(true);
         $this->subject->setAttendancesMax(10);
         $this->subject->setNumberOfAttendances(10);
@@ -1227,7 +1226,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForEventWithRegistrationQueueAndRegularVacanciesReturnsTrue(): void
     {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setNeedsRegistration(true);
         $this->subject->setAttendancesMax(10);
         $this->subject->setNumberOfAttendances(5);
@@ -1243,10 +1242,10 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForEventWithRegistrationBeginInFutureReturnsFalse(): void
     {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setUnlimitedVacancies();
         $this->subject->setRegistrationBeginDate(
-            $this->now + 20,
+            $this->nowAsUnixTimestamp + 20,
         );
 
         self::assertFalse(
@@ -1259,10 +1258,10 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForEventWithRegistrationBeginInPastReturnsTrue(): void
     {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setUnlimitedVacancies();
         $this->subject->setRegistrationBeginDate(
-            $this->now - 20,
+            $this->nowAsUnixTimestamp - 20,
         );
 
         self::assertTrue(
@@ -1275,7 +1274,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterForEventWithoutRegistrationBeginReturnsTrue(): void
     {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setUnlimitedVacancies();
         $this->subject->setRegistrationBeginDate(0);
 
@@ -1291,7 +1290,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForEventWithFutureDateReturnsEmptyString(): void
     {
-        $this->subject->setBeginDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 3600);
 
         self::assertSame(
             '',
@@ -1304,8 +1303,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForPastEventReturnsSeminarRegistrationClosedMessage(): void
     {
-        $this->subject->setBeginDate($this->now - 7200);
-        $this->subject->setEndDate($this->now - 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp - 7200);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp - 3600);
 
         self::assertSame(
             $this->translate('message_seminarRegistrationIsClosed'),
@@ -1318,8 +1317,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForPastEventReturnsRegistrationDeadlineOverMessage(): void
     {
-        $this->subject->setBeginDate($this->now - 7200);
-        $this->subject->setEndDate($this->now - 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp - 7200);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp - 3600);
 
         self::assertSame(
             $this->translate('message_seminarRegistrationIsClosed'),
@@ -1332,8 +1331,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForCurrentlyRunningEventReturnsSeminarRegistrationClosesMessage(): void
     {
-        $this->subject->setBeginDate($this->now - 3600);
-        $this->subject->setEndDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp - 3600);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp + 3600);
 
         self::assertSame(
             $this->translate('message_seminarRegistrationIsClosed'),
@@ -1360,7 +1359,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForEventWithUnlimitedVacanciesReturnsEmptyString(): void
     {
-        $this->subject->setBeginDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 3600);
         $this->subject->setUnlimitedVacancies();
 
         self::assertSame(
@@ -1400,7 +1399,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForFullyBookedEventReturnsNoVacanciesMessage(): void
     {
-        $this->subject->setBeginDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 3600);
         $this->subject->setNeedsRegistration(true);
         $this->subject->setAttendancesMax(10);
         $this->subject->setNumberOfAttendances(10);
@@ -1416,7 +1415,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForFullyBookedEventWithRegistrationQueueReturnsEmptyString(): void
     {
-        $this->subject->setBeginDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 3600);
         $this->subject->setNeedsRegistration(true);
         $this->subject->setAttendancesMax(10);
         $this->subject->setNumberOfAttendances(10);
@@ -1433,10 +1432,10 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForEventWithRegistrationBeginInFutureReturnsRegistrationOpensOnMessage(
     ): void {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setUnlimitedVacancies();
         $this->subject->setRegistrationBeginDate(
-            $this->now + 20,
+            $this->nowAsUnixTimestamp + 20,
         );
 
         self::assertSame(
@@ -1453,10 +1452,10 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForEventWithRegistrationBeginInPastReturnsEmptyString(): void
     {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setUnlimitedVacancies();
         $this->subject->setRegistrationBeginDate(
-            $this->now - 20,
+            $this->nowAsUnixTimestamp - 20,
         );
 
         self::assertSame(
@@ -1470,7 +1469,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function canSomebodyRegisterMessageForEventWithoutRegistrationBeginReturnsEmptyString(): void
     {
-        $this->subject->setBeginDate($this->now + 45);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 45);
         $this->subject->setUnlimitedVacancies();
         $this->subject->setRegistrationBeginDate(0);
 
@@ -1740,7 +1739,7 @@ final class LegacyEventTest extends FunctionalTestCase
     public function isUnregistrationPossibleWithoutUnregistrationDeadlineReturnsTrue(): void
     {
         $this->subject->setUnregistrationDeadline(0);
-        $this->subject->setBeginDate($this->now + self::SECONDS_PER_WEEK);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
 
         self::assertTrue($this->subject->isUnregistrationPossible());
     }
@@ -1761,8 +1760,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleWithFutureEventDeadlineReturnsTrue(): void
     {
-        $this->subject->setUnregistrationDeadline($this->now + self::SECONDS_PER_DAY);
-        $this->subject->setBeginDate($this->now + self::SECONDS_PER_WEEK);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp + self::SECONDS_PER_DAY);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
 
         self::assertTrue($this->subject->isUnregistrationPossible());
     }
@@ -1772,8 +1771,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleWithPastEventDeadlineReturnsFalse(): void
     {
-        $this->subject->setUnregistrationDeadline($this->now - self::SECONDS_PER_DAY);
-        $this->subject->setBeginDate($this->now + self::SECONDS_PER_WEEK);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp - self::SECONDS_PER_DAY);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
 
         self::assertFalse($this->subject->isUnregistrationPossible());
     }
@@ -1783,7 +1782,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleWithoutBeginDateAndWithFutureEventDeadlineReturnsTrue(): void
     {
-        $this->subject->setUnregistrationDeadline($this->now + self::SECONDS_PER_DAY);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp + self::SECONDS_PER_DAY);
         $this->subject->setBeginDate(0);
 
         self::assertTrue($this->subject->isUnregistrationPossible());
@@ -1794,7 +1793,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleWithoutBeginDateAndWithPastEventDeadlineReturnsFalse(): void
     {
-        $this->subject->setUnregistrationDeadline($this->now - self::SECONDS_PER_DAY);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp - self::SECONDS_PER_DAY);
         $this->subject->setBeginDate(0);
 
         self::assertFalse($this->subject->isUnregistrationPossible());
@@ -1805,8 +1804,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleWithUnregistrationDeadlineInFutureReturnsTrue(): void
     {
-        $this->subject->setUnregistrationDeadline($this->now + self::SECONDS_PER_DAY);
-        $this->subject->setBeginDate($this->now + self::SECONDS_PER_WEEK);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp + self::SECONDS_PER_DAY);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
 
         self::assertTrue($this->subject->isUnregistrationPossible());
     }
@@ -1816,8 +1815,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleWithUnregistrationDeadlineInPastReturnsFalse(): void
     {
-        $this->subject->setUnregistrationDeadline($this->now - self::SECONDS_PER_DAY);
-        $this->subject->setBeginDate($this->now + self::SECONDS_PER_DAY);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp - self::SECONDS_PER_DAY);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + self::SECONDS_PER_DAY);
 
         self::assertFalse($this->subject->isUnregistrationPossible());
     }
@@ -1827,7 +1826,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleWithoutBeginDateAndWithUnregistrationDeadlineInFutureReturnsTrue(): void
     {
-        $this->subject->setUnregistrationDeadline($this->now + self::SECONDS_PER_DAY);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp + self::SECONDS_PER_DAY);
         $this->subject->setBeginDate(0);
 
         self::assertTrue($this->subject->isUnregistrationPossible());
@@ -1839,7 +1838,7 @@ final class LegacyEventTest extends FunctionalTestCase
     public function isUnregistrationPossibleWithoutBeginDateAndWithUnregistrationDeadlineInPastReturnsFalse(): void
     {
         $this->subject->setBeginDate(0);
-        $this->subject->setUnregistrationDeadline($this->now - self::SECONDS_PER_DAY);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp - self::SECONDS_PER_DAY);
 
         self::assertFalse($this->subject->isUnregistrationPossible());
     }
@@ -1849,8 +1848,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleWithPastEventUnregistrationDeadlineReturnsFalse(): void
     {
-        $this->subject->setBeginDate($this->now + 2 * self::SECONDS_PER_DAY);
-        $this->subject->setUnregistrationDeadline($this->now - self::SECONDS_PER_DAY);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 2 * self::SECONDS_PER_DAY);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp - self::SECONDS_PER_DAY);
 
         self::assertFalse($this->subject->isUnregistrationPossible());
     }
@@ -1861,8 +1860,8 @@ final class LegacyEventTest extends FunctionalTestCase
     public function isUnregistrationPossibleForNeedsRegistrationFalseReturnsFalse(): void
     {
         $this->subject->setNeedsRegistration(false);
-        $this->subject->setUnregistrationDeadline($this->now + self::SECONDS_PER_DAY);
-        $this->subject->setBeginDate($this->now + self::SECONDS_PER_WEEK);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp + self::SECONDS_PER_DAY);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
 
         self::assertFalse($this->subject->isUnregistrationPossible());
     }
@@ -1872,9 +1871,9 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleForStartedEventWithUnregistrationDeadlineInFutureReturnsTrue(): void
     {
-        $this->subject->setBeginDate($this->now - self::SECONDS_PER_DAY);
-        $this->subject->setEndDate($this->now + self::SECONDS_PER_DAY);
-        $this->subject->setUnregistrationDeadline($this->now + self::SECONDS_PER_WEEK);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp - self::SECONDS_PER_DAY);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp + self::SECONDS_PER_DAY);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
 
         self::assertTrue($this->subject->isUnregistrationPossible());
     }
@@ -1884,9 +1883,9 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function isUnregistrationPossibleForPastEventWithUnregistrationDeadlineInFutureReturnsTrue(): void
     {
-        $this->subject->setBeginDate($this->now - self::SECONDS_PER_WEEK);
-        $this->subject->setEndDate($this->now - self::SECONDS_PER_DAY);
-        $this->subject->setUnregistrationDeadline($this->now + self::SECONDS_PER_WEEK);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp - self::SECONDS_PER_WEEK);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp - self::SECONDS_PER_DAY);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
 
         self::assertTrue($this->subject->isUnregistrationPossible());
     }
@@ -1909,7 +1908,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getEffectiveUnregistrationDeadlineForDeadlineSetAndNoBeginDateReturnsDeadline(): void
     {
-        $deadline = $this->now + self::SECONDS_PER_WEEK;
+        $deadline = $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK;
         $this->subject->setBeginDate(0);
         $this->subject->setUnregistrationDeadline($deadline);
 
@@ -1921,8 +1920,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getEffectiveUnregistrationDeadlineForDeadlineSetReturnsDeadline(): void
     {
-        $this->subject->setBeginDate($this->now + self::SECONDS_PER_WEEK);
-        $deadline = $this->now + self::SECONDS_PER_DAY;
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
+        $deadline = $this->nowAsUnixTimestamp + self::SECONDS_PER_DAY;
         $this->subject->setUnregistrationDeadline($deadline);
 
         self::assertSame($deadline, $this->subject->getEffectiveUnregistrationDeadline());
@@ -1933,7 +1932,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getEffectiveUnregistrationDeadlineBeginDateSetAndNoDeadlineReturnsBeginDate(): void
     {
-        $start = $this->now + self::SECONDS_PER_WEEK;
+        $start = $this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK;
         $this->subject->setBeginDate($start);
         $this->subject->setUnregistrationDeadline(0);
 
@@ -1974,8 +1973,8 @@ final class LegacyEventTest extends FunctionalTestCase
         $this->subject->setAttendancesMax(1);
         $this->subject->setRegistrationQueue(true);
         $this->subject->setNumberOfAttendances(1);
-        $this->subject->setUnregistrationDeadline($this->now + (6 * self::SECONDS_PER_DAY));
-        $this->subject->setBeginDate($this->now + self::SECONDS_PER_WEEK);
+        $this->subject->setUnregistrationDeadline($this->nowAsUnixTimestamp + (6 * self::SECONDS_PER_DAY));
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + self::SECONDS_PER_WEEK);
 
         self::assertTrue($this->subject->isUnregistrationPossible());
     }
@@ -4108,7 +4107,7 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getVacanciesStringForCanceledEventWithVacanciesReturnsEmptyString(): void
     {
         $this->configuration->setAsInteger('showVacanciesThreshold', 10);
-        $this->subject->setBeginDate($this->now + 10000);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 10000);
         $this->subject->setAttendancesMax(5);
         $this->subject->setNumberOfAttendances(0);
         $this->subject->setStatus(EventInterface::STATUS_CANCELED);
@@ -4122,7 +4121,7 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getVacanciesStringWithoutRegistrationNeededReturnsEmptyString(): void
     {
         $this->configuration->setAsInteger('showVacanciesThreshold', 10);
-        $this->subject->setBeginDate($this->now + 10000);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 10000);
         $this->subject->setNeedsRegistration(false);
 
         self::assertSame('', $this->subject->getVacanciesString());
@@ -4136,8 +4135,8 @@ final class LegacyEventTest extends FunctionalTestCase
         $this->configuration->setAsInteger('showVacanciesThreshold', 10);
         $this->subject->setAttendancesMax(5);
         $this->subject->setNumberOfAttendances(0);
-        $this->subject->setBeginDate($this->now + 10000);
-        $this->subject->setRegistrationDeadline($this->now - 10000);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 10000);
+        $this->subject->setRegistrationDeadline($this->nowAsUnixTimestamp - 10000);
 
         self::assertSame('', $this->subject->getVacanciesString());
     }
@@ -4148,7 +4147,7 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getVacanciesStringForNonZeroVacanciesBelowThresholdReturnsNumberOfVacancies(): void
     {
         $this->configuration->setAsInteger('showVacanciesThreshold', 10);
-        $this->subject->setBeginDate($this->now + 10000);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 10000);
         $this->subject->setAttendancesMax(5);
         $this->subject->setNumberOfAttendances(0);
 
@@ -4164,7 +4163,7 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getVacanciesStringForNoVancanciesReturnsFullyBooked(): void
     {
         $this->configuration->setAsInteger('showVacanciesThreshold', 10);
-        $this->subject->setBeginDate($this->now + 10000);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 10000);
         $this->subject->setAttendancesMax(5);
         $this->subject->setNumberOfAttendances(5);
 
@@ -4180,7 +4179,7 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getVacanciesStringForVacanciesGreaterThanThresholdReturnsEnough(): void
     {
         $this->configuration->setAsInteger('showVacanciesThreshold', 10);
-        $this->subject->setBeginDate($this->now + 10000);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 10000);
         $this->subject->setAttendancesMax(42);
         $this->subject->setNumberOfAttendances(0);
 
@@ -4196,7 +4195,7 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getVacanciesStringForVacanciesEqualToThresholdReturnsEnough(): void
     {
         $this->configuration->setAsInteger('showVacanciesThreshold', 42);
-        $this->subject->setBeginDate($this->now + 10000);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 10000);
         $this->subject->setAttendancesMax(42);
         $this->subject->setNumberOfAttendances(0);
 
@@ -4211,7 +4210,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getVacanciesStringForUnlimitedVacanciesAndZeroRegistrationsReturnsEnough(): void
     {
-        $this->subject->setBeginDate($this->now + 10000);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 10000);
         $this->subject->setUnlimitedVacancies();
         $this->subject->setNumberOfAttendances(0);
 
@@ -4226,7 +4225,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getVacanciesStringForUnlimitedVacanciesAndOneRegistrationReturnsEnough(): void
     {
-        $this->subject->setBeginDate($this->now + 10000);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp + 10000);
         $this->subject->setUnlimitedVacancies();
         $this->subject->setNumberOfAttendances(1);
 
@@ -5031,7 +5030,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getCancellationDeadlineForEventWithoutSpeakerReturnsBeginDateOfEvent(): void
     {
-        $this->subject->setBeginDate($this->now);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp);
 
         self::assertSame(
             $this->subject->getBeginDateAsTimestamp(),
@@ -5044,7 +5043,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getCancellationDeadlineForEventWithSpeakerWithoutCancellationPeriodReturnsBeginDateOfEvent(): void
     {
-        $this->subject->setBeginDate($this->now);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp);
         $this->addSpeakerRelation(['cancelation_period' => 0]);
 
         self::assertSame(
@@ -5058,7 +5057,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getCancellationDeadlineForEventWithTwoSpeakersWithoutCancellationPeriodReturnsBeginDateOfEvent(
     ): void {
-        $this->subject->setBeginDate($this->now);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp);
         $this->addSpeakerRelation(['cancelation_period' => 0]);
         $this->addSpeakerRelation(['cancelation_period' => 0]);
 
@@ -5073,11 +5072,11 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getCancellationDeadlineForEventWithOneSpeakersWithCancellationPeriodReturnsBeginDateMinusCancelationPeriod(
     ): void {
-        $this->subject->setBeginDate($this->now);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp);
         $this->addSpeakerRelation(['cancelation_period' => 1]);
 
         self::assertSame(
-            $this->now - self::SECONDS_PER_DAY,
+            $this->nowAsUnixTimestamp - self::SECONDS_PER_DAY,
             $this->subject->getCancelationDeadline(),
         );
     }
@@ -5087,12 +5086,12 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getCancellationDeadlineForEventWithTwoSpeakersWithCancellationPeriodsReturnsBeginDateMinusBiggestCancelationPeriod(
     ): void {
-        $this->subject->setBeginDate($this->now);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp);
         $this->addSpeakerRelation(['cancelation_period' => 21]);
         $this->addSpeakerRelation(['cancelation_period' => 42]);
 
         self::assertSame(
-            $this->now - (42 * self::SECONDS_PER_DAY),
+            $this->nowAsUnixTimestamp - (42 * self::SECONDS_PER_DAY),
             $this->subject->getCancelationDeadline(),
         );
     }
@@ -5315,8 +5314,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getEventDataForEventWithDateUsesHyphenAsDateSeparator(): void
     {
-        $this->subject->setBeginDate($this->now);
-        $this->subject->setEndDate($this->now + self::SECONDS_PER_DAY);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp + self::SECONDS_PER_DAY);
 
         self::assertStringContainsString(
             '-',
@@ -5329,8 +5328,8 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getEventDataForEventWithTimeUsesHyphenAsTimeSeparator(): void
     {
-        $this->subject->setBeginDate($this->now);
-        $this->subject->setEndDate($this->now + 3600);
+        $this->subject->setBeginDate($this->nowAsUnixTimestamp);
+        $this->subject->setEndDate($this->nowAsUnixTimestamp + 3600);
 
         self::assertStringContainsString(
             '-',
@@ -5643,9 +5642,9 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getRegistrationBeginForEventWithRegistrationBeginReturnsFormattedRegistrationBegin(): void
     {
-        $this->subject->setRegistrationBeginDate($this->now);
+        $this->subject->setRegistrationBeginDate($this->nowAsUnixTimestamp);
 
-        self::assertSame(\date('Y-m-d H:i', $this->now), $this->subject->getRegistrationBegin());
+        self::assertSame(\date('Y-m-d H:i', $this->nowAsUnixTimestamp), $this->subject->getRegistrationBegin());
     }
 
     // Tests regarding the description.
@@ -5780,14 +5779,14 @@ final class LegacyEventTest extends FunctionalTestCase
                 'title' => 'a test event',
                 'needs_registration' => 1,
                 'deadline_registration' => 0,
-                'begin_date' => $this->now,
+                'begin_date' => $this->nowAsUnixTimestamp,
                 'end_date' => 0,
             ],
         );
         $subject = new TestingLegacyEvent($uid);
 
         self::assertSame(
-            $this->now,
+            $this->nowAsUnixTimestamp,
             $subject->getLatestPossibleRegistrationTime(),
         );
     }
@@ -5802,15 +5801,15 @@ final class LegacyEventTest extends FunctionalTestCase
             [
                 'title' => 'a test event',
                 'needs_registration' => 1,
-                'deadline_registration' => $this->now,
-                'begin_date' => $this->now + 1000,
+                'deadline_registration' => $this->nowAsUnixTimestamp,
+                'begin_date' => $this->nowAsUnixTimestamp + 1000,
                 'end_date' => 0,
             ],
         );
         $subject = new TestingLegacyEvent($uid);
 
         self::assertSame(
-            $this->now,
+            $this->nowAsUnixTimestamp,
             $subject->getLatestPossibleRegistrationTime(),
         );
     }

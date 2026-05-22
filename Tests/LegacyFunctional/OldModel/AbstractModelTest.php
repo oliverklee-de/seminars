@@ -26,17 +26,21 @@ final class AbstractModelTest extends FunctionalTestCase
     private TestingFramework $testingFramework;
 
     /**
-     * @var positive-int UID of the minimal fixture's data in the DB
+     * @var positive-int
      */
     private int $subjectUid;
+
+    private int $nowAsUnixTimestamp;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this
-            ->get(Context::class)
-            ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->get(Context::class)->setAspect('date', new DateTimeAspect($now));
+        $nowAsUnixTimestamp = $now->getTimestamp();
+        self::assertGreaterThan(0, $nowAsUnixTimestamp);
+        $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
 
         $this->testingFramework = $this->get(TestingFramework::class);
         $systemFolderUid = $this->testingFramework->createSystemFolder();
@@ -44,13 +48,9 @@ final class AbstractModelTest extends FunctionalTestCase
             'sys_template',
             [
                 'pid' => $systemFolderUid,
-                'tstamp' => (int)$this
-                    ->get(Context::class)
-                    ->getPropertyFromAspect('date', 'timestamp'),
+                'tstamp' => $this->nowAsUnixTimestamp,
                 'sorting' => 256,
-                'crdate' => (int)$this
-                    ->get(Context::class)
-                    ->getPropertyFromAspect('date', 'timestamp'),
+                'crdate' => $this->nowAsUnixTimestamp,
                 'title' => 'TEST',
                 'root' => 1,
                 'clear' => 3,
