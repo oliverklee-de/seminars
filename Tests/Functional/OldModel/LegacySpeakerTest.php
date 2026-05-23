@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\Functional\OldModel;
 
 use OliverKlee\Seminars\OldModel\LegacySpeaker;
-use OliverKlee\Seminars\Tests\Functional\Traits\FalHelper;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -15,8 +14,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class LegacySpeakerTest extends FunctionalTestCase
 {
-    use FalHelper;
-
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -112,7 +109,6 @@ final class LegacySpeakerTest extends FunctionalTestCase
     public function getImageWithFileReferenceReturnsFileReference(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/Speakers.xml');
-        $this->provideAdminBackEndUserForFal();
 
         $subject = new LegacySpeaker(3);
 
