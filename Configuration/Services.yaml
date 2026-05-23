@@ -8,6 +8,9 @@ services:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*,../Classes/Model/*,../Classes/OldModel/*,../Classes/Service/SingleViewLinkBuilder.php'
 
+  OliverKlee\Seminars\Email\SalutationBuilder:
+    public: true
+
   OliverKlee\Seminars\UpgradeWizards\CopyBillingAddressToRegistrationsUpgradeWizard:
     public: true
 
