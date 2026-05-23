@@ -47,7 +47,7 @@ class RegistrationManager implements SingletonInterface
 
     private TemplateRegistry $templateRegistry;
 
-    private Configuration $sharedPluginConfiguration;
+    private ConfigurationRegistry $configurationRegistry;
 
     private ?Template $emailTemplate = null;
 
@@ -62,7 +62,12 @@ class RegistrationManager implements SingletonInterface
         $this->context = $context;
         $this->eventRepository = $eventRepository;
         $this->templateRegistry = $templateRegistry;
-        $this->sharedPluginConfiguration = $configurationRegistry->getByNamespace('plugin.tx_seminars');
+        $this->configurationRegistry = $configurationRegistry;
+    }
+
+    private function getSharedPluginConfiguration(): Configuration
+    {
+        return $this->configurationRegistry->getByNamespace('plugin.tx_seminars');
     }
 
     private function isLoggedIn(): bool
@@ -279,7 +284,7 @@ class RegistrationManager implements SingletonInterface
             $this->notifyOrganizers($registration);
         }
 
-        if ($this->sharedPluginConfiguration->getAsBoolean('sendAdditionalNotificationEmails')) {
+        if ($this->getSharedPluginConfiguration()->getAsBoolean('sendAdditionalNotificationEmails')) {
             $this->sendAdditionalNotification($registration);
         }
     }
@@ -318,7 +323,7 @@ class RegistrationManager implements SingletonInterface
      */
     private function fillVacancies(LegacyRegistration $unregistration): void
     {
-        if (!$this->sharedPluginConfiguration->getAsBoolean('automaticallyFillVacanciesOnUnregistration')) {
+        if (!$this->getSharedPluginConfiguration()->getAsBoolean('automaticallyFillVacanciesOnUnregistration')) {
             return;
         }
         $seminar = $unregistration->getSeminarObject();
@@ -351,7 +356,7 @@ class RegistrationManager implements SingletonInterface
                 $this->notifyAttendee($registration, 'confirmationOnQueueUpdate');
                 $this->notifyOrganizers($registration, 'notificationOnQueueUpdate');
 
-                if ($this->sharedPluginConfiguration->getAsBoolean('sendAdditionalNotificationEmails')) {
+                if ($this->getSharedPluginConfiguration()->getAsBoolean('sendAdditionalNotificationEmails')) {
                     $this->sendAdditionalNotification($registration);
                 }
             }
@@ -368,7 +373,7 @@ class RegistrationManager implements SingletonInterface
         LegacyRegistration $oldRegistration,
         string $helloSubjectPrefix = 'confirmation'
     ): void {
-        if (!$this->sharedPluginConfiguration->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {
+        if (!$this->getSharedPluginConfiguration()->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {
             return;
         }
 
@@ -484,7 +489,7 @@ class RegistrationManager implements SingletonInterface
         LegacyRegistration $registration,
         string $helloSubjectPrefix = 'notification'
     ): void {
-        if (!$this->sharedPluginConfiguration->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {
+        if (!$this->getSharedPluginConfiguration()->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {
             return;
         }
         if (!$registration->hasExistingFrontEndUser()) {
@@ -513,40 +518,40 @@ class RegistrationManager implements SingletonInterface
 
         $template = $this->getInitializedEmailTemplate();
         $template->hideSubparts(
-            $this->sharedPluginConfiguration->getAsString('hideFieldsInNotificationMail'),
+            $this->getSharedPluginConfiguration()->getAsString('hideFieldsInNotificationMail'),
             'field_wrapper',
         );
 
         $template->setMarker('hello', $this->translate('email_' . $helloSubjectPrefix . 'Hello'));
         $template->setMarker('summary', $registration->getTitle());
 
-        if ($this->sharedPluginConfiguration->hasString('showSeminarFieldsInNotificationMail')) {
+        if ($this->getSharedPluginConfiguration()->hasString('showSeminarFieldsInNotificationMail')) {
             $template->setMarker(
                 'seminardata',
                 $event->dumpSeminarValues(
-                    $this->sharedPluginConfiguration->getAsString('showSeminarFieldsInNotificationMail'),
+                    $this->getSharedPluginConfiguration()->getAsString('showSeminarFieldsInNotificationMail'),
                 ),
             );
         } else {
             $template->hideSubparts('seminardata', 'field_wrapper');
         }
 
-        if ($this->sharedPluginConfiguration->hasString('showFeUserFieldsInNotificationMail')) {
+        if ($this->getSharedPluginConfiguration()->hasString('showFeUserFieldsInNotificationMail')) {
             $template->setMarker(
                 'feuserdata',
                 $registration->dumpUserValues(
-                    $this->sharedPluginConfiguration->getAsString('showFeUserFieldsInNotificationMail'),
+                    $this->getSharedPluginConfiguration()->getAsString('showFeUserFieldsInNotificationMail'),
                 ),
             );
         } else {
             $template->hideSubparts('feuserdata', 'field_wrapper');
         }
 
-        if ($this->sharedPluginConfiguration->hasString('showAttendanceFieldsInNotificationMail')) {
+        if ($this->getSharedPluginConfiguration()->hasString('showAttendanceFieldsInNotificationMail')) {
             $template->setMarker(
                 'attendancedata',
                 $registration->dumpAttendanceValues(
-                    $this->sharedPluginConfiguration->getAsString('showAttendanceFieldsInNotificationMail'),
+                    $this->getSharedPluginConfiguration()->getAsString('showAttendanceFieldsInNotificationMail'),
                 ),
             );
         } else {
@@ -656,7 +661,7 @@ class RegistrationManager implements SingletonInterface
         $template = $this->getInitializedEmailTemplate();
 
         $template->setMarker('message', $this->translate($localLanguageKey));
-        $showSeminarFields = $this->sharedPluginConfiguration->getAsString('showSeminarFieldsInNotificationMail');
+        $showSeminarFields = $this->getSharedPluginConfiguration()->getAsString('showSeminarFieldsInNotificationMail');
         if ($showSeminarFields !== '') {
             $template->setMarker(
                 'seminardata',
@@ -682,7 +687,7 @@ class RegistrationManager implements SingletonInterface
             return $this->emailTemplate;
         }
 
-        $templateFileName = $this->sharedPluginConfiguration->getAsString('templateFile');
+        $templateFileName = $this->getSharedPluginConfiguration()->getAsString('templateFile');
         $template = $this->templateRegistry->getByFileName($templateFileName);
         foreach ($template->getLabelMarkerNames() as $label) {
             $template->setMarker($label, $this->translate($label));
@@ -717,7 +722,7 @@ class RegistrationManager implements SingletonInterface
         $template = $this->getInitializedEmailTemplate();
         $template->setMarker('html_mail_charset', 'utf-8');
         $template->hideSubparts(
-            $this->sharedPluginConfiguration->getAsString('hideFieldsInThankYouMail'),
+            $this->getSharedPluginConfiguration()->getAsString('hideFieldsInThankYouMail'),
             $wrapperPrefix,
         );
 
@@ -907,13 +912,13 @@ class RegistrationManager implements SingletonInterface
     {
         // The CSS inlining uses a Composer-provided library and hence is a Composer-only feature.
         if (
-            !$this->sharedPluginConfiguration->hasString('cssFileForAttendeeMail')
+            !$this->getSharedPluginConfiguration()->hasString('cssFileForAttendeeMail')
             || !\class_exists(CssInliner::class)
         ) {
             return $emailBody;
         }
 
-        $cssFile = $this->sharedPluginConfiguration->getAsString('cssFileForAttendeeMail');
+        $cssFile = $this->getSharedPluginConfiguration()->getAsString('cssFileForAttendeeMail');
         $absolutePath = GeneralUtility::getFileAbsFileName($cssFile);
         if (\is_readable($absolutePath)) {
             $css = \file_get_contents($absolutePath);
@@ -1140,7 +1145,7 @@ class RegistrationManager implements SingletonInterface
      */
     private function translate(string $key): string
     {
-        $salutationSuffix = '_' . $this->sharedPluginConfiguration->getAsString('salutation');
+        $salutationSuffix = '_' . $this->getSharedPluginConfiguration()->getAsString('salutation');
         $labelWithSalutation = LocalizationUtility::translate($key . $salutationSuffix, 'seminars');
         $labelWithoutSalutation = LocalizationUtility::translate($key, 'seminars');
 
