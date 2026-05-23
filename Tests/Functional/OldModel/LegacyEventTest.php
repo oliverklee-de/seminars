@@ -12,7 +12,6 @@ use OliverKlee\Seminars\Domain\Model\Registration\Registration as ExtbaseRegistr
 use OliverKlee\Seminars\FrontEnd\DefaultController;
 use OliverKlee\Seminars\Model\Place;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
-use OliverKlee\Seminars\Tests\Functional\Traits\FalHelper;
 use OliverKlee\Seminars\Tests\Support\LanguageHelper;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use TYPO3\CMS\Core\Database\Connection;
@@ -29,7 +28,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class LegacyEventTest extends FunctionalTestCase
 {
-    use FalHelper;
     use LanguageHelper;
 
     protected array $testExtensionsToLoad = [
@@ -432,7 +430,6 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getAttachedFilesForNoAttachedFilesReturnsEmptyArray(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
-        $this->provideAdminBackEndUserForFal();
 
         $subject = new LegacyEvent(1);
 
@@ -445,7 +442,6 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getAttachedFilesForNotMigratedFilesReturnsEmptyArray(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
-        $this->provideAdminBackEndUserForFal();
 
         $subject = new LegacyEvent(2);
 
@@ -470,7 +466,6 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getAttachedFilesWithOneDirectlyAttachedFileFileReferenceInArray(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
-        $this->provideAdminBackEndUserForFal();
 
         $subject = new LegacyEvent(4);
         $files = $subject->getAttachedFiles();
@@ -485,7 +480,6 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getAttachedFilesForDateReturnsFilesFromTopic(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
-        $this->provideAdminBackEndUserForFal();
 
         $subject = new LegacyEvent(5);
         $files = $subject->getAttachedFiles();
@@ -500,7 +494,6 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getAttachedFilesForDateReturnsFilesFromTopicAndDateCombined(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
-        $this->provideAdminBackEndUserForFal();
 
         $subject = new LegacyEvent(6);
         $files = $subject->getAttachedFiles();
@@ -821,7 +814,6 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getImageWithFileReferenceReturnsFileReference(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/EventsWithImages.xml');
-        $this->provideAdminBackEndUserForFal();
 
         $subject = new LegacyEvent(3);
 
@@ -834,7 +826,6 @@ final class LegacyEventTest extends FunctionalTestCase
     public function getImageForDateForSingleEventWithFileReferenceReturnsFileReference(): void
     {
         $this->importDataSet(__DIR__ . '/Fixtures/EventsWithImages.xml');
-        $this->provideAdminBackEndUserForFal();
 
         $subject = new LegacyEvent(5);
 
