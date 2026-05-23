@@ -46,7 +46,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
         $this->configuration->setAsString('salutation', 'formal');
         $this->frontEndUserMapper = $this->get(MapperRegistry::class)->getByClassName(FrontEndUserMapper::class);
 
-        $this->subject = new SalutationBuilder();
+        $this->subject = $this->get(SalutationBuilder::class);
     }
 
     protected function tearDown(): void
@@ -76,6 +76,14 @@ final class SalutationBuilderTest extends FunctionalTestCase
     public function createFrontEndUserReturnsFeUserModel(): void
     {
         self::assertInstanceOf(FrontEndUser::class, $this->createFrontEndUser());
+    }
+
+    /**
+     * @test
+     */
+    public function isAvailableViaContainer(): void
+    {
+        self::assertInstanceOf(SalutationBuilder::class, $this->get(SalutationBuilder::class));
     }
 
     // Tests concerning getSalutation
