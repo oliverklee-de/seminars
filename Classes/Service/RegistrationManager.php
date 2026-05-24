@@ -49,6 +49,8 @@ class RegistrationManager implements SingletonInterface
 
     private ConfigurationRegistry $configurationRegistry;
 
+    private SalutationBuilder $salutationBuilder;
+
     private ?Template $emailTemplate = null;
 
     public function __construct(
@@ -56,13 +58,15 @@ class RegistrationManager implements SingletonInterface
         Context $context,
         EventRepository $eventRepository,
         TemplateRegistry $templateRegistry,
-        ConfigurationRegistry $configurationRegistry
+        ConfigurationRegistry $configurationRegistry,
+        SalutationBuilder $salutationBuilder
     ) {
         $this->connectionPool = $connectionPool;
         $this->context = $context;
         $this->eventRepository = $eventRepository;
         $this->templateRegistry = $templateRegistry;
         $this->configurationRegistry = $configurationRegistry;
+        $this->salutationBuilder = $salutationBuilder;
     }
 
     private function getSharedPluginConfiguration(): Configuration
@@ -1050,10 +1054,9 @@ class RegistrationManager implements SingletonInterface
     private function setEmailIntroduction(string $helloSubjectPrefix, LegacyRegistration $registration): void
     {
         $template = $this->getInitializedEmailTemplate();
-        $salutationBuilder = GeneralUtility::makeInstance(SalutationBuilder::class);
         $user = $registration->getFrontEndUser();
         if ($user instanceof FrontEndUser) {
-            $salutationText = $salutationBuilder->getSalutation($user);
+            $salutationText = $this->salutationBuilder->getSalutation($user);
         } else {
             $salutationText = '';
         }
@@ -1062,7 +1065,7 @@ class RegistrationManager implements SingletonInterface
         $event = $registration->getSeminarObject();
         $introductionTemplate = $this->translate('email_' . $helloSubjectPrefix . 'Hello');
         \assert($introductionTemplate !== '');
-        $introduction = $salutationBuilder->createIntroduction($introductionTemplate, $event);
+        $introduction = $this->salutationBuilder->createIntroduction($introductionTemplate, $event);
 
         if ($registration->hasTotalPrice()) {
             $introduction .= ' ' . sprintf($this->translate('email_price'), $registration->getTotalPrice());

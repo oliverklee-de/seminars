@@ -27,13 +27,13 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class EmailService implements SingletonInterface
 {
-    protected SalutationBuilder $salutationBuilder;
+    private SalutationBuilder $salutationBuilder;
 
-    protected DateRangeViewHelper $dateRangeViewHelper;
+    private DateRangeViewHelper $dateRangeViewHelper;
 
-    public function __construct()
+    public function __construct(SalutationBuilder $salutationBuilder)
     {
-        $this->salutationBuilder = GeneralUtility::makeInstance(SalutationBuilder::class);
+        $this->salutationBuilder = $salutationBuilder;
         $this->dateRangeViewHelper = GeneralUtility::makeInstance(DateRangeViewHelper::class);
     }
 

@@ -11,6 +11,7 @@ use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
+use OliverKlee\Seminars\Email\SalutationBuilder;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
@@ -62,6 +63,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     private ConfigurationRegistry $configurationRegistry;
 
+    private SalutationBuilder $salutationBuilder;
+
     /**
      * @var positive-int
      */
@@ -95,6 +98,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->eventRepository = $this->get(EventRepository::class);
         $this->templateRegistry = $this->get(TemplateRegistry::class);
         $this->configurationRegistry = $this->get(ConfigurationRegistry::class);
+        $this->salutationBuilder = $this->get(SalutationBuilder::class);
 
         $now = new \DateTimeImmutable('2018-04-26 12:42:23');
         $this->context->setAspect('date', new DateTimeAspect($now));
@@ -947,6 +951,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->eventRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
+                    $this->salutationBuilder,
                 ],
             )
             ->getMock();
@@ -982,6 +987,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->eventRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
+                    $this->salutationBuilder,
                 ],
             )
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
@@ -1012,6 +1018,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->eventRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
+                    $this->salutationBuilder,
                 ],
             )
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
@@ -1049,6 +1056,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->eventRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
+                    $this->salutationBuilder,
                 ],
             )
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
@@ -1094,6 +1102,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->eventRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
+                    $this->salutationBuilder,
                 ],
             )
             ->onlyMethods(['getUnregistrationNotice'])->getMock();
