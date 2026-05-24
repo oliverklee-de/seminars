@@ -6,7 +6,7 @@ namespace OliverKlee\Seminars\Tests\Functional\ViewHelpers;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Seminars\Model\AbstractTimeSpan;
+use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\ViewHelpers\DateRangeViewHelper;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -51,7 +51,7 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithNoDatesReturnsEmptyString(): void
     {
-        $timeSpan = $this->getMockForAbstractClass(AbstractTimeSpan::class);
+        $timeSpan = new Event();
         $timeSpan->setData([]);
 
         self::assertSame('', $this->subject->render($timeSpan));
@@ -62,7 +62,7 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithBeginDateOnlyRendersOnlyBeginDate(): void
     {
-        $timeSpan = $this->getMockForAbstractClass(AbstractTimeSpan::class);
+        $timeSpan = new Event();
         $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
 
         self::assertSame(
@@ -76,7 +76,7 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithEqualBeginAndEndDateReturnsOnlyBeginDate(): void
     {
-        $timeSpan = $this->getMockForAbstractClass(AbstractTimeSpan::class);
+        $timeSpan = new Event();
         $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
         $timeSpan->setEndDateAsUnixTimeStamp(self::BEGIN_DATE);
 
@@ -91,7 +91,7 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithBeginAndEndDateOnSameDayReturnsOnlyBeginDate(): void
     {
-        $timeSpan = $this->getMockForAbstractClass(AbstractTimeSpan::class);
+        $timeSpan = new Event();
         $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
         $timeSpan->setEndDateAsUnixTimeStamp(self::BEGIN_DATE + 3600);
 
@@ -106,7 +106,7 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithBeginAndEndDateOnDifferentDaysReturnsBothFullDatesSeparatedByDash(): void
     {
-        $timeSpan = $this->getMockForAbstractClass(AbstractTimeSpan::class);
+        $timeSpan = new Event();
         $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
         $endDate = self::BEGIN_DATE + (2 * 86400);
         $timeSpan->setEndDateAsUnixTimeStamp($endDate);
@@ -124,7 +124,7 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
     {
         $dash = '#DASH#';
 
-        $timeSpan = $this->getMockForAbstractClass(AbstractTimeSpan::class);
+        $timeSpan = new Event();
         $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
         $endDate = self::BEGIN_DATE + (2 * 86400);
         $timeSpan->setEndDateAsUnixTimeStamp($endDate);

@@ -11,7 +11,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 /**
  * This test case holds all tests specific to single events.
  *
- * @covers \OliverKlee\Seminars\Model\AbstractTimeSpan
  * @covers \OliverKlee\Seminars\Model\Event
  */
 final class SingleEventTest extends FunctionalTestCase
