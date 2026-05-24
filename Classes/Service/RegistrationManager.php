@@ -1061,6 +1061,7 @@ class RegistrationManager implements SingletonInterface
 
         $event = $registration->getSeminarObject();
         $introductionTemplate = $this->translate('email_' . $helloSubjectPrefix . 'Hello');
+        \assert($introductionTemplate !== '');
         $introduction = $salutationBuilder->createIntroduction($introductionTemplate, $event);
 
         if ($registration->hasTotalPrice()) {
