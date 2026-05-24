@@ -14,7 +14,6 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 /**
  * This test case holds all tests specific to event topics.
  *
- * @covers \OliverKlee\Seminars\Model\AbstractTimeSpan
  * @covers \OliverKlee\Seminars\Model\Event
  */
 final class EventTopicTest extends UnitTestCase

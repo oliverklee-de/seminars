@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\ViewHelpers;
 
-use OliverKlee\Seminars\Model\AbstractTimeSpan;
+use OliverKlee\Seminars\Model\Event;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -21,12 +21,11 @@ class DateRangeViewHelper
      *
      * Returns a date range if the timespan takes several days.
      *
-     * @param AbstractTimeSpan $timeSpan the timespan to get the date for
      * @param string $dash the character or HTML entity used to separate start date and end date
      *
      * @return string the timespan date
      */
-    public function render(AbstractTimeSpan $timeSpan, string $dash = '&#8211;'): string
+    public function render(Event $timeSpan, string $dash = '&#8211;'): string
     {
         if (!$timeSpan->hasBeginDate()) {
             return '';

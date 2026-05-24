@@ -16,7 +16,6 @@ use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
- * @covers \OliverKlee\Seminars\Model\AbstractTimeSpan
  * @covers \OliverKlee\Seminars\Model\Event
  */
 final class EventTest extends FunctionalTestCase
