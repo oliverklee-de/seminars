@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\Mapper;
 
+use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\Mapper\EventMapper;
 use OliverKlee\Seminars\Model\Event;
-use OliverKlee\Seminars\Tests\Functional\Traits\CollectionHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -16,8 +16,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class EventMapperTest extends FunctionalTestCase
 {
-    use CollectionHelper;
-
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -31,6 +29,22 @@ final class EventMapperTest extends FunctionalTestCase
         parent::setUp();
 
         $this->subject = $this->get(MapperRegistry::class)->getByClassName(EventMapper::class);
+    }
+
+    /**
+     * @param positive-int $uid
+     */
+    private static function assertContainsModelWithUid(Collection $models, int $uid): void
+    {
+        self::assertTrue($models->hasUid($uid));
+    }
+
+    /**
+     * @param positive-int $uid
+     */
+    private static function assertNotContainsModelWithUid(Collection $models, int $uid): void
+    {
+        self::assertFalse($models->hasUid($uid));
     }
 
     /**
