@@ -184,6 +184,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
 
         $event = TestingLegacyEvent::fromData(['begin_date' => 0]);
 
+        // @phpstan-ignore argument.type (We're checking for a contract violation here.)
         $this->subject->createIntroduction('', $event);
     }
 

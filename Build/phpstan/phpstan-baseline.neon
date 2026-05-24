@@ -226,11 +226,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/Registration/RegistrationRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$format of function sprintf expects string, string\\|null given\\.$#"
-			count: 1
-			path: ../../Classes/Email/SalutationBuilder.php
-
-		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Form\\\\Element\\\\EventDetailsElement\\:\\:render\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../Classes/Form/Element/EventDetailsElement.php
