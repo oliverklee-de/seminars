@@ -342,7 +342,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method getDate\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 3
+			count: 2
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -492,7 +492,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method getTime\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 2
+			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -502,7 +502,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 4
+			count: 3
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -517,7 +517,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 3
+			count: 2
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -566,22 +566,12 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Cannot call method hasEndDate\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Cannot call method hasEventType\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method hasExpiry\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Cannot call method hasImage\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -663,16 +653,6 @@ parameters:
 		-
 			message: "#^Cannot call method isEarlyBirdDeadlineOver\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Cannot call method isEventDate\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Cannot call method isEventTopic\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-

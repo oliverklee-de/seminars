@@ -452,7 +452,9 @@ class DefaultController extends TemplateHelper
             $result = $this->getSubpart('ERROR_VIEW');
             $this->responseHeadersModifier->setOverrideStatusCode(404);
         } elseif ($this->createSeminar($this->showUid, $this->isLoggedIn())) {
-            $result = $this->createSingleViewForExistingEvent();
+            $event = $this->getSeminar();
+            \assert($event instanceof LegacyEvent);
+            $result = $this->createSingleViewForExistingEvent($event);
         } else {
             $this->setMarker('error_text', $this->translate('message_wrongSeminarNumber'));
             $result = $this->getSubpart('ERROR_VIEW');
@@ -467,13 +469,11 @@ class DefaultController extends TemplateHelper
     }
 
     /**
-     * Creates the single view for the event with the event in $this->seminar.
-     *
-     * @return string the rendered single view
+     * Creates the single view for the provided event.
      */
-    protected function createSingleViewForExistingEvent(): string
+    protected function createSingleViewForExistingEvent(LegacyEvent $event): string
     {
-        $title = $this->seminar->getTitle();
+        $title = $event->getTitle();
         GeneralUtility::makeInstance(SingleViewPageTitleProvider::class)->setTitle($title);
 
         $this->setEventTypeMarker();
@@ -481,14 +481,14 @@ class DefaultController extends TemplateHelper
         // This is for old templates that still have the removed marker.
         $this->setMarker('STYLE_SINGLEVIEWTITLE', '');
 
-        if ($this->seminar->hasImage()) {
+        if ($event->hasImage()) {
             $this->setMarker('SINGLE_VIEW_IMAGE', $this->createImageForSingleView());
         } else {
             $this->hideSubparts('image', 'FIELD_WRAPPER');
         }
 
         $this->setMarker('title', \htmlspecialchars($title, ENT_QUOTES | ENT_HTML5));
-        $this->setMarker('uid', $this->seminar->getUid());
+        $this->setMarker('uid', $event->getUid());
 
         $this->setSubtitleMarker();
         $this->setDescriptionMarker();
@@ -498,8 +498,8 @@ class DefaultController extends TemplateHelper
 
         $this->setCategoriesMarker();
 
-        $this->setMarker('date', $this->seminar->getDate());
-        $this->setMarker('time', $this->seminar->getTime());
+        $this->setMarker('date', $event->getDate());
+        $this->setMarker('time', $event->getTime());
         $this->setPlaceMarker();
         $this->setRoomMarker();
 
@@ -541,22 +541,18 @@ class DefaultController extends TemplateHelper
 
         $this->getSingleViewHookProvider()->executeHook('modifySingleView', $this);
 
-        $result = $this->getSubpart('SINGLE_VIEW');
+        $resultParts = [$this->getSubpart('SINGLE_VIEW')];
 
-        // Caches $this->seminar because the list view will overwrite
-        // $this->seminar.
-        // TODO: This needs to be removed as soon as the list view is moved
-        // to its own class.
-        $seminar = $this->seminar;
-        if ($this->seminar->hasEndDate()) {
-            $result .= $this->createEventsOnNextDayList();
+        if ($event->hasEndDate()) {
+            $this->seminar = $event;
+            $resultParts[] = $this->createEventsOnNextDayList();
         }
-        $this->setSeminar($seminar);
-        if ($this->seminar->isEventTopic() || $this->seminar->isEventDate()) {
-            $result .= $this->createOtherDatesList();
+        if ($event->isEventTopic() || $event->isEventDate()) {
+            $this->seminar = $event;
+            $resultParts[] = $this->createOtherDatesList();
         }
 
-        return $result;
+        return \implode('', $resultParts);
     }
 
     private function createImageForSingleView(): string
