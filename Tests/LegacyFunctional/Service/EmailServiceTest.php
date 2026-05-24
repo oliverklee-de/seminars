@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\Service;
 
 use OliverKlee\Oelib\DataStructures\Collection;
-use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Organizer;
@@ -35,8 +34,6 @@ final class EmailServiceTest extends FunctionalTestCase
 
     private EmailService $subject;
 
-    private TestingFramework $testingFramework;
-
     private Event $event;
 
     private FrontEndUser $user;
@@ -48,8 +45,6 @@ final class EmailServiceTest extends FunctionalTestCase
         parent::setUp();
 
         $this->unifyTestingEnvironment();
-
-        $this->testingFramework = $this->get(TestingFramework::class);
 
         $this->email = $this->createEmailMock();
 
@@ -83,14 +78,6 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->event->getRegistrations()->add($registration);
 
         $this->subject = new EmailService();
-    }
-
-    protected function tearDown(): void
-    {
-        $this->restoreOriginalEnvironment();
-        $this->testingFramework->cleanUpWithoutDatabase();
-
-        parent::tearDown();
     }
 
     // Tests for sendEmailToAttendees
