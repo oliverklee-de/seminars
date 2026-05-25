@@ -2620,9 +2620,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>topic</source>
         <target state="final">Thema</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer">
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer" approved="yes">
         <source>organizer</source>
-        <target state="needs-translation">organizer</target>
+        <target state="final">Veranstalter</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.city" approved="yes">
         <source>city</source>
