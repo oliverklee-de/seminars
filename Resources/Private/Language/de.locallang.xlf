@@ -2536,6 +2536,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>topic</source>
         <target state="final">Thema</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.organizer">
+        <source>organizer</source>
+        <target state="needs-translation">organizer</target>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.city" approved="yes">
         <source>city</source>
         <target state="final">Stadt</target>
@@ -2559,6 +2563,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.eventArchive.events.property.topic" approved="yes">
         <source>Topic</source>
         <target state="final">Thema</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.organizer">
+        <source>Organizer</source>
+        <target state="needs-translation">Organizer</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.city" approved="yes">
         <source>City</source>
@@ -2612,6 +2620,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>topic</source>
         <target state="final">Thema</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer">
+        <source>organize</source>
+        <target state="needs-translation">organize</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.city" approved="yes">
         <source>city</source>
         <target state="final">Stadt</target>
@@ -2643,6 +2655,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.eventOutlook.events.property.topic" approved="yes">
         <source>Topic</source>
         <target state="final">Thema</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.organizer">
+        <source>Organizer</source>
+        <target state="needs-translation">Organizer</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.city" approved="yes">
         <source>City</source>
@@ -2832,6 +2848,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>topic</source>
         <target state="final">Thema</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.organizer">
+        <source>organizer</source>
+        <target state="needs-translation">organizer</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.city" approved="yes">
         <source>city</source>
         <target state="final">Stadt</target>
@@ -2915,6 +2935,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.myRegistrations.index.heading.topic" approved="yes">
         <source>Topic</source>
         <target state="final">Thema</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.organizer">
+        <source>Organizer</source>
+        <target state="needs-translation">Organizer</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.city" approved="yes">
         <source>City</source>
