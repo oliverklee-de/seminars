@@ -1951,7 +1951,7 @@
         <source>topic</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer">
-        <source>organize</source>
+        <source>organizer</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.city">
         <source>city</source>
