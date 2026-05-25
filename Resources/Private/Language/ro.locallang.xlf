@@ -2654,8 +2654,8 @@
         <target state="needs-translation">topic</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer">
-        <source>organize</source>
-        <target state="needs-translation">organize</target>
+        <source>organizer</source>
+        <target state="needs-translation">organizer</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.city">
         <source>city</source>
