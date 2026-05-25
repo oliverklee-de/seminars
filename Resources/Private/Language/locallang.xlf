@@ -1887,6 +1887,9 @@
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.topic">
         <source>topic</source>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.organizer">
+        <source>organizer</source>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.city">
         <source>city</source>
       </trans-unit>
@@ -1904,6 +1907,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.topic">
         <source>Topic</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.organizer">
+        <source>Organizer</source>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.city">
         <source>City</source>
@@ -1944,6 +1950,9 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.topic">
         <source>topic</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer">
+        <source>organize</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.city">
         <source>city</source>
       </trans-unit>
@@ -1967,6 +1976,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.topic">
         <source>Topic</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.organizer">
+        <source>Organizer</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.city">
         <source>City</source>
@@ -2109,6 +2121,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.topic">
         <source>topic</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.organizer">
+        <source>organizer</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.city">
         <source>city</source>
       </trans-unit>
@@ -2171,6 +2186,9 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.topic">
         <source>Topic</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.organizer">
+        <source>Organizer</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.city">
         <source>City</source>

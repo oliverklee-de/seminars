@@ -195,6 +195,22 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function archiveActionRendersOrganizersOfVenue(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEventWithTwoOrganizers.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Rainbow Recitals,', $html);
+        self::assertStringContainsString('Fortran Foundation', $html);
+    }
+
+    /**
+     * @test
+     */
     public function archiveActionRendersCityOfVenue(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
@@ -419,6 +435,22 @@ final class EventControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         self::assertStringContainsString('2039-12-01–2039-12-02', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionRendersOrganizersOfVenue(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithTwoOrganizers.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Rainbow Recitals,', $html);
+        self::assertStringContainsString('Fortran Foundation', $html);
     }
 
     /**

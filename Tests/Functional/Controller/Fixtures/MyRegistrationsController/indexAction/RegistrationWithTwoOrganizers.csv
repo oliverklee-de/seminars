@@ -1,0 +1,17 @@
+"tx_seminars_seminars"
+,"uid","pid","title","registrations","organizers"
+,1,1,"the event title",1,2
+
+"tx_seminars_organizers"
+,"uid","pid","title"
+,1,2,"Rainbow Recitals"
+,2,2,"Fortran Foundation"
+
+"tx_seminars_seminars_organizers_mm"
+,"uid_local","uid_foreign","sorting"
+,1,1,1
+,1,2,2
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,1,1,1

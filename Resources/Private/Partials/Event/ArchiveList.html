@@ -19,6 +19,11 @@
                             <f:translate key="plugin.eventArchive.events.property.topic"/>
                         </th>
                     </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled fieldName="organizer">
+                        <th scope="col">
+                            <f:translate key="plugin.eventArchive.events.property.organizer"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled fieldName="city">
                         <th scope="city">
                             <f:translate key="plugin.eventArchive.events.property.city"/>
@@ -52,6 +57,13 @@
                                                pageUid="{settings.singleViewPage}}">
                                     {event.displayTitle}
                                 </f:link.action>
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled fieldName="organizer">
+                            <td>
+                                <f:for each="{event.organizers}" as="organizer" iteration="iteration">
+                                    {organizer.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                </f:for>
                             </td>
                         </oelib:isFieldEnabled>
                         <oelib:isFieldEnabled fieldName="city">
