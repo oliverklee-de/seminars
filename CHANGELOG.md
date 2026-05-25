@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Restyle the FE list views (#5043)
+- Restyle the FE list views (#5043, #5117)
 - Add the venue to the "my registrations" list (#4982)
 - Add the city to the "my registrations" list (#4981)
 - Also show nonbinding reservations in the BE module (#4862)
@@ -24,7 +24,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Add stub functionality for certificates of attendance
   (#4669, #4671, #4677, #4678, #4679, #4690)
 - Add `Permissions::isAdmin()` (#4607)
-- Show the registrations statistics in the FE editor list view
+- Show the registration statistics in the FE editor list view
   (#4569, #4584, #4764, #4765)
 - Show the invoicing status of registrations in the BE module (#4562)
 - Add accessors for the payment status of registrations (#4560)
