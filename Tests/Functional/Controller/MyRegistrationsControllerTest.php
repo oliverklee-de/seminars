@@ -341,6 +341,22 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function indexActionRendersSpeakersOfRegistrationOfTheLoggedInUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithTwoSpeakers.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('Sally Speaker,', $html);
+        self::assertStringContainsString('Sam Speaker', $html);
+    }
+
+    /**
+     * @test
+     */
     public function indexActionRendersRegularRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');

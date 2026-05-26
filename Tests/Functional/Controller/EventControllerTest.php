@@ -195,7 +195,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function archiveActionRendersOrganizersOfVenue(): void
+    public function archiveActionRendersOrganizersOfEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEventWithTwoOrganizers.csv');
@@ -299,6 +299,22 @@ final class EventControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         self::assertStringContainsString('workshop', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function archiveActionRendersSpeakers(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEventWithTwoSpeakers.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Sally Speaker,', $html);
+        self::assertStringContainsString('Sam Speaker', $html);
     }
 
     /**
@@ -440,7 +456,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionRendersOrganizersOfVenue(): void
+    public function outlookActionRendersOrganizersOfEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithTwoOrganizers.csv');
@@ -529,6 +545,22 @@ final class EventControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('Maritim Hotel', $html);
         self::assertStringContainsString('Premier Inn', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionRendersSpeakers(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithTwoSpeakers.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Sally Speaker,', $html);
+        self::assertStringContainsString('Sam Speaker', $html);
     }
 
     /**
