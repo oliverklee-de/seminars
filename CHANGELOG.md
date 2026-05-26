@@ -13,7 +13,6 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Add the city to the "my registrations" list (#4981)
 - Also show nonbinding reservations in the BE module (#4862)
 - Add nonbinding reservation seats to the event statistics (#4918)
-- Allow limiting FE editor venue access for FE users (#4900, #4910, #4922)
 - Add `RegistrationRepository.countNonbindingReservationSeatsByEvent` (#4898)
 - Allow limiting FE editor topic access for FE users (#4860)
 - Add `EventRepository.findTopicsAccessibleToFrontendUser` (#4858)
