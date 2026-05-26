@@ -126,7 +126,6 @@ return [
         'properties' => [
             'defaultOrganizerUid' => ['fieldName' => 'default_organizer'],
             'concatenatedUidsOfAvailableTopicsForFrontEndEditor' => ['fieldName' => 'available_topics'],
-            'concatenatedUidsOfAvailableVenuesForFrontEndEditor' => ['fieldName' => 'available_venues'],
         ],
     ],
     Organizer::class => [
