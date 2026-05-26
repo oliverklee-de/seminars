@@ -151,7 +151,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithTopicReturnsSlugFromTopicTitleAndEventDateUid(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.csv');
 
         $eventDateUid = 1234;
         $record = [
@@ -172,7 +172,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithTopicWithValuesAsStringReturnsSlugFromTopicTitleAndEventDateUid(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.csv');
 
         $eventDateUid = 1234;
         $record = [
@@ -193,7 +193,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithTopicWithEmptyTitleReturnsEventDateUidWithoutTrailingSlash(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithTopicWithoutTitle.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithTopicWithoutTitle.csv');
 
         $eventDateUid = 1234;
         $record = [
@@ -214,7 +214,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithoutTopicReturnsEventDateUidWithoutTrailingSlash(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithoutTopic.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithoutTopic.csv');
 
         $eventDateUid = 1234;
         $record = [
@@ -235,7 +235,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithDeletedTopicReturnsSlugFromTopicTitleAndEventDateUid(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithDeletedTopic.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithDeletedTopic.csv');
 
         $eventDateUid = 1234;
         $record = [
@@ -256,7 +256,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithHiddenTopicReturnsSlugFromTopicTitleAndEventDateUid(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithHiddenTopic.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithHiddenTopic.csv');
 
         $eventDateUid = 1234;
         $record = [
@@ -277,7 +277,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithTimedTopicReturnsSlugFromTopicTitleAndEventDateUid(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithTimedTopic.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithTimedTopic.csv');
 
         $eventDateUid = 1234;
         $record = [
@@ -298,7 +298,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugKeepsCurrentSlugIfTheGeneratedSlugIsTheSame(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithSlug.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithSlug.csv');
 
         $record = ['uid' => 1, 'object_type' => EventInterface::TYPE_SINGLE_EVENT, 'title' => 'some-event'];
 
@@ -353,7 +353,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
     public function generateSlugForNonDateEventDispatchesAfterSlugGeneratedEventWithGeneratedSlugWithUid(
         int $type
     ): void {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithSlug.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithSlug.csv');
 
         $uid = 1234;
         $record = ['uid' => $uid, 'object_type' => $type, 'title' => 'some-event'];
@@ -369,7 +369,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithTopicDispatchesAfterSlugGeneratedEventGeneratedSlugFromTopic(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.csv');
 
         $eventDateUid = 1234;
         $record = [
@@ -391,7 +391,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithTopicDispatchesAfterSlugGeneratedEventWithTitleFromTopic(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.csv');
 
         $record = [
             'uid' => 1234,
@@ -412,7 +412,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugForEventDateWithTopicDispatchesAfterSlugGeneratedEventWithEventUidFromDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventDateWithTopic.csv');
 
         $eventDateUid = 1234;
         $record = [
@@ -434,7 +434,7 @@ final class SlugGeneratorTest extends FunctionalTestCase
      */
     public function generateSlugPassesSlugifiedTitleToEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleEventWithSlug.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventWithSlug.csv');
 
         $uid = 1234;
         $record = ['uid' => $uid, 'object_type' => EventInterface::TYPE_SINGLE_EVENT, 'title' => 'Some event'];
