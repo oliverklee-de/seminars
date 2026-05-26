@@ -1,0 +1,33 @@
+"pages"
+,"uid","pid","doktype","slug"
+,1,0,0,"/home"
+,2,1,254,"/folder"
+,3,1,0,"/defaultSingleView"
+,4,1,0,"/eventTypeSpecificSingleView"
+,5,1,0,"/categorySpecificSingleView"
+
+"tx_seminars_seminars"
+,"uid","pid","title","details_page","event_type","categories"
+,1,2,"event without specific single view page","",0,0
+,2,2,"event with external single view page","www.example.com",0,0
+,3,2,"event with event type and category without special single view pages","",1,1
+,4,2,"event with event type with special single view pages","",2,0
+,5,2,"event with category with special single view pages","",0,1
+,6,2,"event with event type and category with special single view pages","",2,1
+,7,2,"event with individual details page and event type with special single view pages","www.example.com",2,0
+
+"tx_seminars_event_types"
+,"uid","pid","title","single_view_page"
+,1,2,"type without single view page",0
+,2,2,"type with single view page",4
+
+"tx_seminars_categories"
+,"uid","pid","title","single_view_page"
+,1,2,"category without single view page",0
+,2,2,"category with single view page",5
+
+"tx_seminars_seminars_categories_mm"
+,"uid_local","uid_foreign"
+,3,1
+,5,2
+,6,2

@@ -1,0 +1,7 @@
+"tx_seminars_seminars"
+,"uid","title","begin_date","end_date","needs_registration","registrations","attendees_max","details_page"
+,1,"future event with vacancies",1898325173,1898353973,1,0,2,99
+
+"pages"
+,"pid","uid","slug"
+,1,99,"/separateDetails"

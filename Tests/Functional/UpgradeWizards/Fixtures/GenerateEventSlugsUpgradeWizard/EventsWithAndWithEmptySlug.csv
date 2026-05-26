@@ -1,0 +1,4 @@
+"tx_seminars_seminars"
+,"uid","title","slug"
+,1,"Event with slug","existing-slug"
+,2,"Event without slug",""

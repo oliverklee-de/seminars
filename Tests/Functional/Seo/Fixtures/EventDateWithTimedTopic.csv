@@ -1,0 +1,4 @@
+"tx_seminars_seminars"
+,"uid","title","object_type","topic","endtime","slug"
+,1,"Event date",2,2,0,"existing-date-slug/1"
+,2,"Timed event topic",1,0,1,"existing-topic-slug/2"

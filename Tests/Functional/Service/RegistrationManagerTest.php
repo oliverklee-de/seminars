@@ -108,7 +108,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     private function setUpFakeFrontEnd(): TestingDefaultController
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/RegistrationPage.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/RegistrationPage.csv');
         $this->testingFramework->createFakeFrontEnd(1);
         $frontendController = $GLOBALS['TSFE'] ?? null;
         self::assertInstanceOf(TypoScriptFrontendController::class, $frontendController);
@@ -284,7 +284,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $plugin = $this->setUpFakeFrontEnd();
 
-        $this->importDataSet(__DIR__ . '/Fixtures/EventWithVacancies.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventWithVacancies.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 
@@ -300,7 +300,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $plugin = $this->setUpFakeFrontEnd();
 
-        $this->importDataSet(__DIR__ . '/Fixtures/EventWithVacancies.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventWithVacancies.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 
@@ -316,7 +316,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $plugin = $this->setUpFakeFrontEnd();
 
-        $this->importDataSet(__DIR__ . '/Fixtures/FullyBookedEvent.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/FullyBookedEvent.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 
@@ -332,7 +332,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $plugin = $this->setUpFakeFrontEnd();
 
-        $this->importDataSet(__DIR__ . '/Fixtures/EventWithUnlimitedVacancies.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventWithUnlimitedVacancies.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 
@@ -348,7 +348,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $plugin = $this->setUpFakeFrontEnd();
 
-        $this->importDataSet(__DIR__ . '/Fixtures/FullyBookedEventWithQueue.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/FullyBookedEventWithQueue.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 
@@ -365,7 +365,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     public function getLinkToRegistrationPageCreatesLinkToRegistrationPageWithEventUid(): void
     {
         $plugin = $this->setUpFakeFrontEnd();
-        $this->importDataSet(__DIR__ . '/Fixtures/EventWithVacancies.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventWithVacancies.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 
@@ -381,7 +381,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     public function getLinkToRegistrationPageWithSeparateDetailsPageCreatesLinkToRegistrationPage(): void
     {
         $plugin = $this->setUpFakeFrontEnd();
-        $this->importDataSet(__DIR__ . '/Fixtures/EventWithVacanciesWithSeparateDetailsPage.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventWithVacanciesWithSeparateDetailsPage.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 
@@ -397,7 +397,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     public function getLinkToRegistrationPageWithEventWithoutDateCreatesPrebookingLabel(): void
     {
         $plugin = $this->setUpFakeFrontEnd();
-        $this->importDataSet(__DIR__ . '/Fixtures/EventWithoutDate.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventWithoutDate.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 
@@ -412,7 +412,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     public function getLinkToRegistrationPageWithFullyBookedWithoutDateCreatesRegistrationLabel(): void
     {
         $plugin = $this->setUpFakeFrontEnd();
-        $this->importDataSet(__DIR__ . '/Fixtures/FullyBookedEventWithoutDate.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/FullyBookedEventWithoutDate.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 
@@ -427,7 +427,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     public function getLinkToRegistrationPageWithFullyBookedWithQueueCreatesQueueLabel(): void
     {
         $plugin = $this->setUpFakeFrontEnd();
-        $this->importDataSet(__DIR__ . '/Fixtures/FullyBookedEventWithQueue.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/FullyBookedEventWithQueue.csv');
         $event = LegacyEvent::fromUid(1);
         self::assertInstanceOf(LegacyEvent::class, $event);
 

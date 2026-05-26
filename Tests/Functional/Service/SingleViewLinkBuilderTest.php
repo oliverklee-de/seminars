@@ -36,7 +36,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleViewLinkBuilder.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleViewLinkBuilder.csv');
 
         $this->testingFramework = $this->get(TestingFramework::class);
         $this->testingFramework->createFakeFrontEnd(1);
