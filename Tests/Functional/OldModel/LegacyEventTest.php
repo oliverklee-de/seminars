@@ -528,7 +528,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $result = $subject->getPlaceWithDetails($plugin);
 
-        self::assertStringContainsString('The Castle (without country)', $result);
+        self::assertStringContainsString('The Castle', $result);
     }
 
     /**
@@ -542,8 +542,8 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $result = $subject->getPlaceWithDetails($plugin);
 
-        self::assertStringContainsString('The Castle (without country)', $result);
-        self::assertStringContainsString('The garden (without country)', $result);
+        self::assertStringContainsString('The Castle', $result);
+        self::assertStringContainsString('The garden', $result);
     }
 
     /**
@@ -628,7 +628,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $result = $subject->getPlaceWithDetailsRaw();
 
-        self::assertStringContainsString('The Castle (without country)', $result);
+        self::assertStringContainsString('The Castle', $result);
     }
 
     /**
@@ -641,7 +641,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $result = $subject->getPlaceWithDetailsRaw();
 
-        self::assertStringContainsString("3 turns left, then always right\nThe garden (without country)", $result);
+        self::assertStringContainsString("3 turns left, then always right\nThe garden", $result);
     }
 
     /**
@@ -723,7 +723,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $result = $subject->getPlaceShort();
 
-        self::assertStringContainsString('The Castle (without country)', $result);
+        self::assertStringContainsString('The Castle', $result);
     }
 
     /**
@@ -736,7 +736,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $result = $subject->getPlaceShort();
 
-        self::assertStringContainsString('The Castle (without country), The garden (without country)', $result);
+        self::assertStringContainsString('The Castle, The garden', $result);
     }
 
     // Tests concerning getPlaces
