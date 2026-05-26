@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Tests\Support;
+namespace OliverKlee\Seminars\Tests\Functional\Support;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
@@ -19,7 +19,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 trait BackEndTestsTrait
 {
-    use LanguageHelper;
+    use BackendLanguageTrait;
 
     /**
      * @var array<mixed>

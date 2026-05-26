@@ -7,7 +7,7 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\FrontEnd;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\FrontEnd\SelectorWidget;
 use OliverKlee\Seminars\Hooks\Interfaces\SeminarSelectorWidget;
-use OliverKlee\Seminars\Tests\Support\LanguageHelper;
+use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -19,7 +19,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class SelectorWidgetTest extends FunctionalTestCase
 {
-    use LanguageHelper;
+    use BackendLanguageTrait;
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',

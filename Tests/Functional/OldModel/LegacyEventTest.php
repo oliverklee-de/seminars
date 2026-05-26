@@ -12,7 +12,7 @@ use OliverKlee\Seminars\Domain\Model\Registration\Registration as ExtbaseRegistr
 use OliverKlee\Seminars\FrontEnd\DefaultController;
 use OliverKlee\Seminars\Model\Place;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
-use OliverKlee\Seminars\Tests\Support\LanguageHelper;
+use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -28,7 +28,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class LegacyEventTest extends FunctionalTestCase
 {
-    use LanguageHelper;
+    use BackendLanguageTrait;
 
     protected array $testExtensionsToLoad = [
         'sjbr/static-info-tables',

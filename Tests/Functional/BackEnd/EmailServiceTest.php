@@ -7,7 +7,7 @@ namespace OliverKlee\Seminars\Tests\Functional\BackEnd;
 use OliverKlee\Seminars\BackEnd\EmailService;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
-use OliverKlee\Seminars\Tests\Support\LanguageHelper;
+use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
 use TYPO3\CMS\Core\Mail\MailMessage;
@@ -19,7 +19,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class EmailServiceTest extends FunctionalTestCase
 {
-    use LanguageHelper;
+    use BackendLanguageTrait;
     use EmailTrait;
     use MakeInstanceTrait;
 

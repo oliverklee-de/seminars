@@ -6,7 +6,7 @@ namespace OliverKlee\Seminars\Tests\Functional\Hooks;
 
 use OliverKlee\Seminars\Hooks\DataHandlerHook;
 use OliverKlee\Seminars\Hooks\Interfaces\DataSanitization;
-use OliverKlee\Seminars\Tests\Support\BackEndTestsTrait;
+use OliverKlee\Seminars\Tests\Functional\Support\BackEndTestsTrait;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
