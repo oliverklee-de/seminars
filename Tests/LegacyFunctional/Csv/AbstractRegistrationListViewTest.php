@@ -57,13 +57,6 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
      */
     private array $mockedClassNames = [];
 
-    /**
-     * backed-up extension configuration of the TYPO3 configuration variables
-     *
-     * @var array<string, mixed>
-     */
-    private array $extConfBackup = [];
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -73,9 +66,6 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
         $nowAsUnixTimestamp = $now->getTimestamp();
         \assert($nowAsUnixTimestamp > 0);
         $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
-
-        $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'];
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'] = [];
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
@@ -114,7 +104,6 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
     protected function tearDown(): void
     {
         $this->purgeMockedInstances();
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'] = $this->extConfBackup;
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();

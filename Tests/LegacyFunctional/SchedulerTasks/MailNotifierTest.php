@@ -98,8 +98,6 @@ final class MailNotifierTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        $this->restoreOriginalEnvironment();
-
         if ($this->testingFramework instanceof TestingFramework) {
             $this->testingFramework->cleanUpWithoutDatabase();
         }

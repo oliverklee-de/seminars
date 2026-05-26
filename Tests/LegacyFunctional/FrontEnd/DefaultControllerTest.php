@@ -81,13 +81,6 @@ final class DefaultControllerTest extends FunctionalTestCase
      */
     private int $numberOfOrganizers = 0;
 
-    /**
-     * backed-up extension configuration of the TYPO3 configuration variables
-     *
-     * @var array<string, mixed>
-     */
-    private array $extConfBackup = [];
-
     private ConnectionPool $connectionPool;
 
     private DummyConfiguration $pluginConfiguration;
@@ -107,9 +100,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $nowAsUnixTimestamp = $now->getTimestamp();
         self::assertGreaterThan(0, $nowAsUnixTimestamp);
         $this->nowAsUnixTimestamp = $nowAsUnixTimestamp;
-
-        $this->extConfBackup = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'];
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'] = [];
 
         $this->testingFramework = $this->get(TestingFramework::class);
         $this->eventMapper = $this->get(MapperRegistry::class)->getByClassName(EventMapper::class);
@@ -171,8 +161,6 @@ final class DefaultControllerTest extends FunctionalTestCase
     protected function tearDown(): void
     {
         $this->testingFramework->cleanUpWithoutDatabase();
-
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF'] = $this->extConfBackup;
 
         parent::tearDown();
     }

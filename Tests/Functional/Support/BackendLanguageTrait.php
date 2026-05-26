@@ -32,7 +32,7 @@ trait BackendLanguageTrait
     }
 
     /**
-     * Sets $GLOBALS['LANG'].
+     * Sets `$GLOBALS['LANG']`.
      */
     private function initializeBackEndLanguage(): void
     {
