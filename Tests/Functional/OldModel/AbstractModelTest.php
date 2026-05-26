@@ -59,7 +59,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidForNonExistentRecordReturnsNull(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(99);
 
@@ -71,7 +71,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidByDefaultIgnoresHiddenRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(2);
 
@@ -83,7 +83,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidByDefaultIgnoresNotStartedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(4);
 
@@ -95,7 +95,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidByDefaultIgnoresExpiredRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(5);
 
@@ -107,7 +107,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidByDefaultIgnoresDeletedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(3);
 
@@ -119,7 +119,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidByDefaultForHiddenAllowedFindsHiddenRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(2, true);
 
@@ -131,7 +131,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidByDefaultForHiddenAllowedFindsNotStartedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(4, true);
 
@@ -143,7 +143,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidByDefaultForHiddenAllowedFindsExpiredRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(5, true);
 
@@ -155,7 +155,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidByDefaultForHiddenAllowedFindsVisibleRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(1, true);
 
@@ -167,7 +167,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidByDefaultForHiddenAllowedIgnoresDeletedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(3, true);
 
@@ -179,7 +179,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidForExistingRecordCreatesInstanceOfSubclass(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = TestingModel::fromUid(1);
 
@@ -191,7 +191,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function fromUidMapsDataFromDatabase(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         /** @var TestingModel $result */
         $result = TestingModel::fromUid(1);
@@ -204,7 +204,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function constructionByUidForNonExistentRecordReturnsModelWithoutUid(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = new TestingModel(99);
 
@@ -216,7 +216,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function constructionByUidByDefaultIgnoresHiddenRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = new TestingModel(2);
 
@@ -228,7 +228,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function constructionByUidByDefaultIgnoresDeletedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = new TestingModel(3);
 
@@ -240,7 +240,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function constructionByUidByDefaultForHiddenAllowedFindsHiddenRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = new TestingModel(2, true);
 
@@ -252,7 +252,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function constructionByUidByDefaultForHiddenAllowedFindsVisibleRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = new TestingModel(1, true);
 
@@ -264,7 +264,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function constructionByUidByDefaultForHiddenAllowedIgnoresDeletedRecords(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $result = new TestingModel(3, true);
 
@@ -276,7 +276,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function constructionByUidSetsDataFromDatabase(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         /** @var TestingModel $result */
         $result = new TestingModel(1);
@@ -391,7 +391,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function commitToDatabaseCanUpdateExistingRecord(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $model = TestingModel::fromUid(1);
         $newTitle = 'new title';
@@ -410,7 +410,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function commitToDatabaseForExistingRecordReturnsTrue(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $model = TestingModel::fromUid(1);
         $newTitle = 'new title';
@@ -426,7 +426,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function commitToDatabaseKeepsCreationDateOfExistingRecordUnchanged(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
 
         $model = TestingModel::fromUid(1);
         self::assertInstanceOf(TestingModel::class, $model);
@@ -460,7 +460,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function createMmRecordsWithEmptyReferencesReturnsZero(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
         $subject = TestingModel::fromUid(1);
 
         $result = $subject->createMmRecords('tx_seminars_test_test_mm', []);
@@ -473,7 +473,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function createMmRecordsWithOneReferenceReturnsOne(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
         $subject = TestingModel::fromUid(1);
 
         $result = $subject->createMmRecords('tx_seminars_test_test_mm', [42]);
@@ -486,7 +486,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function createMmRecordsWithTwoReferencesReturnsTwo(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
         $subject = TestingModel::fromUid(1);
 
         $result = $subject->createMmRecords('tx_seminars_test_test_mm', [42, 31]);
@@ -499,7 +499,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function createMmRecordsNotCountsZeroReferences(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
         $subject = TestingModel::fromUid(1);
 
         $result = $subject->createMmRecords('tx_seminars_test_test_mm', [0]);
@@ -512,7 +512,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function createMmRecordsCreatesRecordWithLocalAndForeignUid(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
         $subject = TestingModel::fromUid(1);
 
         $subject->createMmRecords('tx_seminars_test_test_mm', [42]);
@@ -527,7 +527,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function createMmRecordsNotCreatesRecordForZeroReference(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
         $subject = TestingModel::fromUid(1);
 
         $subject->createMmRecords('tx_seminars_test_test_mm', [0]);
@@ -541,7 +541,7 @@ final class AbstractModelTest extends FunctionalTestCase
      */
     public function createMmRecordsCreatesIncreasingSortingInReferenceOrder(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Test.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Test.csv');
         $subject = TestingModel::fromUid(1);
 
         $subject->createMmRecords('tx_seminars_test_test_mm', [42, 31]);

@@ -1,0 +1,7 @@
+"tx_seminars_test"
+,"uid","title","crdate","tstamp","hidden","deleted","starttime","endtime"
+,1,"the first one",1574714377,1574714380,0,0,0,0
+,2,"the hidden one",0,0,1,0,0,0
+,3,"the deleted one",0,0,0,1,0,0
+,4,"not started yet",0,0,0,0,3574712685,0
+,5,"expired",0,0,0,0,0,42

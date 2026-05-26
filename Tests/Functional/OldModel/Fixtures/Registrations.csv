@@ -1,0 +1,11 @@
+"tx_seminars_attendances"
+,"uid","seats","user","seminar","interests","expectations","background_knowledge","known_from","notes","price","food","accommodation","attendees_names","kids","registered_themselves"
+,1,4,1,1,"coding","good coffee","latte art","word of mouth","Looking forward to it!","Standard: 500.23€","vegetarian","at home","Max Moe",2,1
+
+"fe_users"
+,"uid"
+,1
+
+"tx_seminars_seminars"
+,uid
+,1

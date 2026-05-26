@@ -1,0 +1,19 @@
+"tx_seminars_target_groups"
+,"uid","title"
+,1,"Target group one"
+,2,"Target group two"
+
+"tx_seminars_seminars"
+,"uid","title","object_type","topic","target_groups"
+,1,"event without any target groups",0,0,0
+,2,"event with one target group",0,0,1
+,3,"event with two target groups",0,0,2
+,4,"topic with one target group",1,0,1
+,5,"date with one target group",2,4,0
+
+"tx_seminars_seminars_target_groups_mm"
+,"uid_local","uid_foreign","sorting"
+,2,1,0
+,3,1,2
+,3,2,1
+,4,1,0

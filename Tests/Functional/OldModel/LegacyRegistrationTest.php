@@ -45,7 +45,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
      */
     public function fromUidMapsDataFromDatabase(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Registrations.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Registrations.csv');
 
         $subject = LegacyRegistration::fromUid(1);
 
@@ -70,7 +70,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
      */
     public function mapsFrontEndUser(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Registrations.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Registrations.csv');
 
         $subject = LegacyRegistration::fromUid(1);
 
@@ -85,7 +85,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
      */
     public function mapsEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Registrations.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Registrations.csv');
 
         $subject = LegacyRegistration::fromUid(1);
 

@@ -70,7 +70,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
     private function buildFrontEndAndPlugin(): DefaultController
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/SingleRootPage.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleRootPage.csv');
         $this->testingFramework->createFakeFrontEnd(1);
 
         $plugin = new DefaultController();
@@ -84,7 +84,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function fromUidMapsDataFromDatabase(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(1);
         self::assertSame('event with all scalar data set', $subject->getTitle());
@@ -126,7 +126,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttendancesForNoRegistrationsReturnsZero(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(2);
 
@@ -138,7 +138,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttendancesCountsOfflineRegistrations(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(3);
 
@@ -150,7 +150,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttendancesSumsSeatsOfRegistrationsWithSeats(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(4);
 
@@ -162,7 +162,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttendancesCalculatesSeatsOfRegistrationsWithoutSeatsAsOneEach(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(5);
 
@@ -174,7 +174,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttendancesIgnoresRegistrationsOnQueue(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(6);
 
@@ -186,7 +186,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function calculateStatisticsTakesNewOfflineRegistrationsIntoAccount(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(2);
         self::assertSame(0, $subject->getAttendances());
@@ -203,7 +203,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function calculateStatisticsTakesRegularRegistrationRecordsIntoAccount(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $eventUid = 4;
         $subject = TestingLegacyEvent::fromUid($eventUid);
@@ -223,7 +223,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function calculateStatisticsIgnoresNonbindingReservations(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $eventUid = 4;
         $subject = TestingLegacyEvent::fromUid($eventUid);
@@ -247,7 +247,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getVacanciesForNoMaxAttendancesAndNoRegistrationsReturnsZero(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(2);
 
@@ -259,7 +259,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getVacanciesForMaxAttendancesAndNoRegistrationsReturnsMaxAttendances(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(9);
 
@@ -271,7 +271,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getVacanciesReturnsMaxVacanciesMinusOfflineRegistrations(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(3);
 
@@ -283,7 +283,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getVacanciesReturnsMaxVacanciesMinusRegistrations(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(4);
 
@@ -295,7 +295,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getVacanciesForMoreRegisteredSeatsThanAllowedReturnsZero(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(5);
 
@@ -307,7 +307,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getVacanciesIgnoresQueueRegistrations(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(6);
 
@@ -319,7 +319,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getCheckboxesForNoCheckboxesReturnsEmptyArray(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/Checkboxes.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/Checkboxes.csv');
 
         $subject = TestingLegacyEvent::fromUid(1);
         $result = $subject->getCheckboxes();
@@ -332,7 +332,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getCheckboxesReturnsCaptionAndUidOfAssociatedCheckboxesForSingleEvent(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/Checkboxes.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/Checkboxes.csv');
 
         $subject = TestingLegacyEvent::fromUid(2);
         $result = $subject->getCheckboxes();
@@ -346,7 +346,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getCheckboxesReturnsCaptionAndUidOfAssociatedCheckboxesForEventDate(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/Checkboxes.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/Checkboxes.csv');
 
         $subject = TestingLegacyEvent::fromUid(4);
         $result = $subject->getCheckboxes();
@@ -360,7 +360,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getCheckboxesReturnsAssociatedCheckboxesOrderedBySorting(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/Checkboxes.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/Checkboxes.csv');
 
         $subject = TestingLegacyEvent::fromUid(3);
         $result = $subject->getCheckboxes();
@@ -374,7 +374,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getTargetGroupsAsArrayForNoTargetGroupsReturnsEmptyArray(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/TargetGroups.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/TargetGroups.csv');
 
         $subject = TestingLegacyEvent::fromUid(1);
         $result = $subject->getTargetGroupsAsArray();
@@ -387,7 +387,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getTargetGroupsAsArrayReturnsTitlesOfAssociatedTargetGroups(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/TargetGroups.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/TargetGroups.csv');
 
         $subject = TestingLegacyEvent::fromUid(2);
         $result = $subject->getTargetGroupsAsArray();
@@ -401,7 +401,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getTargetGroupsAsArrayReturnsAssociatedTargetGroupsOrderedBySorting(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/TargetGroups.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/TargetGroups.csv');
 
         $subject = TestingLegacyEvent::fromUid(3);
         $result = $subject->getTargetGroupsAsArray();
@@ -415,7 +415,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getTargetGroupsAsArrayForDateReturnsTitlesOfTopicTargetGroups(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/TargetGroups.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/TargetGroups.csv');
 
         $subject = TestingLegacyEvent::fromUid(5);
         $result = $subject->getTargetGroupsAsArray();
@@ -429,7 +429,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttachedFilesForNoAttachedFilesReturnsEmptyArray(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.csv');
 
         $subject = new LegacyEvent(1);
 
@@ -441,7 +441,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttachedFilesForNotMigratedFilesReturnsEmptyArray(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.csv');
 
         $subject = new LegacyEvent(2);
 
@@ -453,7 +453,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttachedFilesWithPositiveFileCountWithoutFileReferenceReturnsEmptyArray(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.csv');
 
         $subject = new LegacyEvent(3);
 
@@ -465,7 +465,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttachedFilesWithOneDirectlyAttachedFileFileReferenceInArray(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.csv');
 
         $subject = new LegacyEvent(4);
         $files = $subject->getAttachedFiles();
@@ -479,7 +479,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttachedFilesForDateReturnsFilesFromTopic(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.csv');
 
         $subject = new LegacyEvent(5);
         $files = $subject->getAttachedFiles();
@@ -493,7 +493,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getAttachedFilesForDateReturnsFilesFromTopicAndDateCombined(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithAttachments.csv');
 
         $subject = new LegacyEvent(6);
         $files = $subject->getAttachedFiles();
@@ -508,7 +508,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsForEventWithoutVenuesReturnsEmptyString(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $plugin = $this->buildFrontEndAndPlugin();
         $subject = TestingLegacyEvent::fromUid(1);
 
@@ -522,7 +522,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsContainsTitleOfPlace(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $plugin = $this->buildFrontEndAndPlugin();
         $subject = TestingLegacyEvent::fromUid(2);
 
@@ -536,7 +536,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsContainsTitlesOfAllRelatedPlaces(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $plugin = $this->buildFrontEndAndPlugin();
         $subject = TestingLegacyEvent::fromUid(8);
 
@@ -551,7 +551,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsCanContainAddressOfOneVenue(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $plugin = $this->buildFrontEndAndPlugin();
         $subject = TestingLegacyEvent::fromUid(2);
 
@@ -566,7 +566,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsHasCityOfVenueOnlyOnce(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $plugin = $this->buildFrontEndAndPlugin();
         $subject = TestingLegacyEvent::fromUid(2);
 
@@ -580,7 +580,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsContainsHomepageLinkOfOnePlace(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $plugin = $this->buildFrontEndAndPlugin();
         $subject = TestingLegacyEvent::fromUid(2);
 
@@ -595,7 +595,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsContainsDirectionsOfOnePlace(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $plugin = $this->buildFrontEndAndPlugin();
         $subject = TestingLegacyEvent::fromUid(2);
 
@@ -609,7 +609,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsRawForEventWithoutVenuesReturnsEmptyString(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(1);
         $this->initializeBackEndLanguage();
 
@@ -623,7 +623,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsRawContainsTitleOfPlace(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(2);
 
         $result = $subject->getPlaceWithDetailsRaw();
@@ -636,7 +636,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsRawSeparatesPlacesByNewline(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(8);
 
         $result = $subject->getPlaceWithDetailsRaw();
@@ -649,7 +649,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsRawContainsAddressOfOnePlace(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(2);
 
         $result = $subject->getPlaceWithDetailsRaw();
@@ -662,7 +662,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsRawForNonEmptyZipAndCityContainsZipAndCity(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(2);
 
         $result = $subject->getPlaceWithDetailsRaw();
@@ -676,7 +676,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsRawContainsHomepageLinkOfOnePlace(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(2);
 
         $result = $subject->getPlaceWithDetailsRaw();
@@ -689,7 +689,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceWithDetailsRawContainsDirectionsOfOnePlace(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(2);
 
         $result = $subject->getPlaceWithDetailsRaw();
@@ -704,7 +704,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceShortForEventWithoutVenuesReturnsEmptyString(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(1);
         $this->initializeBackEndLanguage();
 
@@ -718,7 +718,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceShortReturnsPlaceNameForOnePlace(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(2);
 
         $result = $subject->getPlaceShort();
@@ -731,7 +731,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlaceShortReturnsPlaceNamesWithCommaForTwoPlaces(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(8);
 
         $result = $subject->getPlaceShort();
@@ -746,7 +746,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlacesForEventWithNoPlacesReturnsEmptyList(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(1);
 
         $result = $subject->getPlaces();
@@ -760,7 +760,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getPlacesForSeminarWithOnePlacesReturnsListWithPlace(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(2);
 
         $result = $subject->getPlaces();
@@ -777,7 +777,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getImageWithoutImageReturnsNull(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithImages.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithImages.csv');
 
         $subject = new LegacyEvent(1);
 
@@ -789,7 +789,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getImageWithNotYetMigratedImageReturnsNull(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithImages.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithImages.csv');
 
         $subject = new LegacyEvent(4);
 
@@ -801,7 +801,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getImageWithPositiveImageCountWithoutFileReferenceReturnsNull(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithImages.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithImages.csv');
 
         $subject = new LegacyEvent(2);
 
@@ -813,7 +813,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getImageWithFileReferenceReturnsFileReference(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithImages.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithImages.csv');
 
         $subject = new LegacyEvent(3);
 
@@ -825,7 +825,7 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function getImageForDateForSingleEventWithFileReferenceReturnsFileReference(): void
     {
-        $this->importDataSet(__DIR__ . '/Fixtures/EventsWithImages.xml');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/EventsWithImages.csv');
 
         $subject = new LegacyEvent(5);
 

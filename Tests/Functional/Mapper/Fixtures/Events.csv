@@ -1,0 +1,26 @@
+"tx_seminars_seminars"
+,"uid","title","object_type","topic","begin_date","registrations","date_of_last_registration_digest","hidden","deleted"
+,1,"a complete event",0,0,0,0,0,0,0
+,2,"a complete event with a date of the last registration digest",0,0,0,0,1,0,0
+,3,"event with one registration, but without registration digest date",0,0,2,1,0,0,0
+,4,"event with one registration after the digest date",0,0,1,1,1,0,0
+,5,"event with one registration before the digest date",0,0,1,1,2,0,0
+,6,"event with one deleted registration after the digest date",0,0,1,1,0,0,0
+,7,"deleted event with one registration after the digest date",0,0,1,1,0,0,1
+,8,"event with two registrations: one before and one after the digest date",0,0,1,2,2,0,0
+,9,"date with one registration after the digest date",2,1,1,1,1,0,0
+,10,"topic with one registration after the digest date",1,1,1,1,1,0,0
+,11,"hidden event with one registration after the digest date",0,0,1,1,1,1,0
+
+"tx_seminars_attendances"
+,"crdate","seminar","deleted"
+,1,3,0
+,2,4,0
+,1,5,0
+,1,6,1
+,1,7,0
+,1,8,0
+,3,8,0
+,2,9,0
+,2,10,0
+,2,11,0

@@ -1,0 +1,25 @@
+"tx_seminars_seminars"
+,"uid","title","place"
+,1,"event without any place",0
+,2,"event with one place without country",1
+,4,"event with one place with valid country",1
+,5,"event with one place with invalid country",1
+,6,"event with one place with deleted country",1
+,7,"event with 2 places with countries",2
+,8,"event with 2 places without countries",2
+
+"tx_seminars_seminars_place_mm"
+,"uid_local","uid_foreign","sorting"
+,2,1,0
+,4,2,0
+,5,3,0
+,6,4,0
+,7,2,2
+,7,5,1
+,8,1,1
+,8,6,2
+
+"tx_seminars_sites"
+,"uid","title","address","city","directions","homepage"
+,1,"The Castle (without country)","On top of the mountain 12345 Hamm","Hamm","3 turns left, then always right","www.example.com"
+,6,"The garden (without country)","","","",""
