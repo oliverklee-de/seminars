@@ -67,11 +67,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     {
         $request = (new InternalRequest())->withPageId(7);
 
-        $response = $this->executeFrontendSubRequest($request);
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         $expected = LocalizationUtility::translate('plugin.myRegistrations.error.notLoggedIn', 'seminars');
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -110,14 +110,14 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate(
             'plugin.myRegistrations.messages.noRegistrations_formal',
             'seminars',
         );
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -130,14 +130,14 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate(
             'plugin.myRegistrations.messages.noRegistrations_formal',
             'seminars',
         );
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -150,9 +150,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringNotContainsString('some other event', (string)$response->getBody());
+        self::assertStringNotContainsString('some other event', $html);
     }
 
     /**
@@ -180,9 +180,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('2039-12-01', (string)$response->getBody());
+        self::assertStringContainsString('2039-12-01', $html);
     }
 
     /**
@@ -195,9 +195,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('2039-12-01–2039-12-02', (string)$response->getBody());
+        self::assertStringContainsString('2039-12-01–2039-12-02', $html);
     }
 
     /**
@@ -210,9 +210,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('workshop', (string)$response->getBody());
+        self::assertStringContainsString('workshop', $html);
     }
 
     /**
@@ -225,9 +225,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('the event title', (string)$response->getBody());
+        self::assertStringContainsString('the event title', $html);
     }
 
     /**
@@ -240,9 +240,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringNotContainsString('the event title', (string)$response->getBody());
+        self::assertStringNotContainsString('the event title', $html);
     }
 
     /**
@@ -255,9 +255,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('the topic title', (string)$response->getBody());
+        self::assertStringContainsString('the topic title', $html);
     }
 
     /**
@@ -270,10 +270,10 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('Rainbow Recitals,', (string)$response->getBody());
-        self::assertStringContainsString('Fortran Foundation', (string)$response->getBody());
+        self::assertStringContainsString('Rainbow Recitals,', $html);
+        self::assertStringContainsString('Fortran Foundation', $html);
     }
 
     /**
@@ -286,9 +286,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('Bonn', (string)$response->getBody());
+        self::assertStringContainsString('Bonn', $html);
     }
 
     /**
@@ -301,10 +301,10 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('Bonn', (string)$response->getBody());
-        self::assertStringContainsString('Köln', (string)$response->getBody());
+        self::assertStringContainsString('Bonn', $html);
+        self::assertStringContainsString('Köln', $html);
     }
 
     /**
@@ -317,9 +317,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('Maritim Hotel', (string)$response->getBody());
+        self::assertStringContainsString('Maritim Hotel', $html);
     }
 
     /**
@@ -332,10 +332,10 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('Maritim Hotel', (string)$response->getBody());
-        self::assertStringContainsString('Premier Inn', (string)$response->getBody());
+        self::assertStringContainsString('Maritim Hotel', $html);
+        self::assertStringContainsString('Premier Inn', $html);
     }
 
     /**
@@ -364,11 +364,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate('plugin.myRegistrations.property.registrationStatus.0', 'seminars');
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -381,11 +381,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate('plugin.myRegistrations.property.registrationStatus.1', 'seminars');
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -398,11 +398,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate('plugin.myRegistrations.property.registrationStatus.2', 'seminars');
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -416,15 +416,12 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $urlPrefix = '/my-events\\?tx_seminars_myregistrations%5Baction%5D=show&amp;'
             . 'tx_seminars_myregistrations%5Bcontroller%5D=MyRegistrations&amp;'
             . 'tx_seminars_myregistrations%5Bregistration%5D=1';
-        self::assertMatchesRegularExpression(
-            '#' . $urlPrefix . '[^"]*">.*the event title#s',
-            (string)$response->getBody(),
-        );
+        self::assertMatchesRegularExpression('#' . $urlPrefix . '[^"]*">.*the event title#s', $html);
     }
 
     /**
@@ -442,11 +439,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext());
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate('plugin.myRegistrations.error.notLoggedIn', 'seminars');
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -524,11 +521,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate('plugin.myRegistrations.error.notFound', 'seminars');
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -827,11 +824,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate('plugin.myRegistrations.property.registrationStatus.0', 'seminars');
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -849,11 +846,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate('plugin.myRegistrations.property.registrationStatus.1', 'seminars');
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -871,11 +868,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = LocalizationUtility::translate('plugin.myRegistrations.property.registrationStatus.2', 'seminars');
         self::assertIsString($expected);
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -893,17 +890,14 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $urlPrefix = '/my-events\\?tx_seminars_myregistrations%5Baction%5D=checkPrerequisites&amp;'
             . 'tx_seminars_myregistrations%5Bcontroller%5D=EventUnregistration&amp;'
             . 'tx_seminars_myregistrations%5Bregistration%5D=1';
         $linkText = LocalizationUtility::translate('plugin.myRegistrations.show.toUnregistrationForm', 'seminars');
         self::assertIsString($linkText);
-        self::assertMatchesRegularExpression(
-            '#' . $urlPrefix . '[^"]*">.*' . $linkText . '#s',
-            (string)$response->getBody(),
-        );
+        self::assertMatchesRegularExpression('#' . $urlPrefix . '[^"]*">.*' . $linkText . '#s', $html);
     }
 
     /**
@@ -923,12 +917,12 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $urlPrefix = '/my-events?tx_seminars_myregistrations%5Baction%5D=checkPrerequisites&amp;'
             . 'tx_seminars_myregistrations%5Bcontroller%5D=EventUnregistration&amp;'
             . 'tx_seminars_myregistrations%5Bregistration%5D=1';
-        self::assertStringNotContainsString($urlPrefix, (string)$response->getBody());
+        self::assertStringNotContainsString($urlPrefix, $html);
     }
 
     /**
@@ -946,14 +940,14 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expected = 'href="/my-events?'
             . 'tx_seminars_myregistrations%5Baction%5D=downloadAttendeeAttachment&amp;'
             . 'tx_seminars_myregistrations%5Bcontroller%5D=MyRegistrations&amp;'
             . 'tx_seminars_myregistrations%5BfileUid%5D=1&amp;'
             . 'tx_seminars_myregistrations%5Bregistration%5D=1';
-        self::assertStringContainsString($expected, (string)$response->getBody());
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
@@ -971,9 +965,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertMatchesRegularExpression('#>\\s*speaker\\.txt\\s*</a>#', (string)$response->getBody());
+        self::assertMatchesRegularExpression('#>\\s*speaker\\.txt\\s*</a>#', $html);
     }
 
     /**
@@ -991,9 +985,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertMatchesRegularExpression('#>\\s*speaker portrait\\s*</a>#', (string)$response->getBody());
+        self::assertMatchesRegularExpression('#>\\s*speaker portrait\\s*</a>#', $html);
     }
 
     /**
@@ -1011,9 +1005,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringNotContainsString('speaker.txt', (string)$response->getBody());
+        self::assertStringNotContainsString('speaker.txt', $html);
     }
 
     /**
@@ -1031,9 +1025,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringNotContainsString('speaker.txt', (string)$response->getBody());
+        self::assertStringNotContainsString('speaker.txt', $html);
     }
 
     /**
@@ -1051,9 +1045,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('speaker.txt', (string)$response->getBody());
+        self::assertStringContainsString('speaker.txt', $html);
     }
 
     /**
@@ -1071,9 +1065,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringNotContainsString('speaker.txt', (string)$response->getBody());
+        self::assertStringNotContainsString('speaker.txt', $html);
     }
 
     /**
@@ -1272,11 +1266,11 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $response = $this->executeFrontendSubRequest($request, $requestContext);
+        $responseBody = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         $expectedFileContents = \file_get_contents(
             self::FIXTURES_PATH . '/downloadAttendeeAttachmentAction/fileadmin/speaker.txt',
         );
-        self::assertSame($expectedFileContents, (string)$response->getBody());
+        self::assertSame($expectedFileContents, $responseBody);
     }
 }
