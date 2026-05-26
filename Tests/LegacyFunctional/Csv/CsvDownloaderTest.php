@@ -73,7 +73,6 @@ final class CsvDownloaderTest extends FunctionalTestCase
     protected function tearDown(): void
     {
         $this->testingFramework->cleanUpWithoutDatabase();
-        $this->restoreOriginalEnvironment();
 
         parent::tearDown();
     }

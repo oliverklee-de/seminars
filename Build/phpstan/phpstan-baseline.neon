@@ -1411,33 +1411,8 @@ parameters:
 			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 3
-			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
-
-		-
-			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
-			count: 2
-			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Event\\\\EventRepository\\:\\:updateRegistrationCounterCache\\(\\) expects OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event, OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\|null given\\.$#"
 			count: 4
-			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Event\\\\EventRepositoryTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Event\\\\EventRepositoryTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
 			path: ../../Tests/Functional/Domain/Repository/Event/EventRepositoryTest.php
 
 		-
@@ -1446,33 +1421,8 @@ parameters:
 			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 3
-			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
-
-		-
-			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
-			count: 2
-			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepository\\:\\:existsRegistrationForEventAndUser\\(\\) expects OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventInterface, OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\|null given\\.$#"
 			count: 7
-			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepositoryTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepositoryTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
 			path: ../../Tests/Functional/Domain/Repository/Registration/RegistrationRepositoryTest.php
 
 		-
@@ -1507,7 +1457,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 7
+			count: 4
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
@@ -1541,13 +1491,8 @@ parameters:
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
-			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
-			count: 2
-			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
-
-		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 7
+			count: 6
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
@@ -1568,16 +1513,6 @@ parameters:
 		-
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 2
-			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Hooks\\\\DataHandlerHookTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\Functional\\\\Hooks\\\\DataHandlerHookTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
@@ -2122,7 +2057,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 4
+			count: 1
 			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
@@ -2132,43 +2067,13 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 2
+			count: 1
 			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^PHPDoc tag @var with type PHPUnit\\\\Framework\\\\MockObject\\\\MockObject is not subtype of type PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&stdClass\\.$#"
 			count: 4
 			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Csv\\\\AbstractRegistrationListViewTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
-
-		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 3
-			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
-
-		-
-			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Csv\\\\CsvDownloaderTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/CsvDownloaderTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\AbstractViewTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
@@ -2197,7 +2102,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 9
+			count: 6
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
@@ -2212,7 +2117,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 7
+			count: 6
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
@@ -2232,11 +2137,6 @@ parameters:
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:hideListRegistrationsColumnIfNecessaryDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:\\$extConfBackup \\(array\\<string, mixed\\>\\) does not accept mixed\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
@@ -2366,11 +2266,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyRegistrationTest.php
 
 		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 3
-			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 10
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
@@ -2383,16 +2278,6 @@ parameters:
 		-
 			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
 			count: 5
-			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
-			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 1
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
@@ -2426,21 +2311,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\SchedulerTasks\\\\MailNotifierTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\SchedulerTasks\\\\MailNotifierTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 3
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 6
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
@@ -2456,16 +2326,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
-			message: "#^Cannot access offset 'getUserObj' on mixed\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
 			message: "#^Function str_contains not found\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
@@ -2473,16 +2333,6 @@ parameters:
 		-
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
 			count: 5
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\EmailServiceTest\\:\\:\\$extConfBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\Service\\\\EmailServiceTest\\:\\:\\$t3VarBackup type has no value type specified in iterable type array\\.$#"
-			count: 1
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
