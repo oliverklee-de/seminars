@@ -6,7 +6,7 @@ namespace OliverKlee\Seminars\Tests\Functional\FrontEnd;
 
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\FrontEnd\CategoryList;
-use OliverKlee\Seminars\Tests\Support\LanguageHelper;
+use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -17,7 +17,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class CategoryListTest extends FunctionalTestCase
 {
-    use LanguageHelper;
+    use BackendLanguageTrait;
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',

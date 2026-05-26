@@ -14,7 +14,7 @@ use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
 use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Tests\Functional\FrontEnd\Fixtures\TestingDefaultController;
-use OliverKlee\Seminars\Tests\Support\LanguageHelper;
+use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
 use Symfony\Component\Mime\Part\DataPart;
@@ -31,7 +31,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class RegistrationManagerTest extends FunctionalTestCase
 {
-    use LanguageHelper;
+    use BackendLanguageTrait;
     use EmailTrait;
     use MakeInstanceTrait;
 

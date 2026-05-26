@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Tests\Support;
+namespace OliverKlee\Seminars\Tests\Functional\Support;
 
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
@@ -15,7 +15,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  *
  * @phpstan-require-extends FunctionalTestCase
  */
-trait LanguageHelper
+trait BackendLanguageTrait
 {
     private ?LanguageService $languageService = null;
 

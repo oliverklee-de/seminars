@@ -11,7 +11,7 @@ use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
-use OliverKlee\Seminars\Tests\Support\LanguageHelper;
+use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -20,7 +20,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class LegacyRegistrationTest extends FunctionalTestCase
 {
-    use LanguageHelper;
+    use BackendLanguageTrait;
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',

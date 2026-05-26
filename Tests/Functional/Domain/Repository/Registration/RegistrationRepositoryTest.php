@@ -16,7 +16,7 @@ use OliverKlee\Seminars\Domain\Model\RegistrationCheckbox;
 use OliverKlee\Seminars\Domain\Repository\AbstractRawDataCapableRepository;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
-use OliverKlee\Seminars\Tests\Support\BackEndTestsTrait;
+use OliverKlee\Seminars\Tests\Functional\Support\BackEndTestsTrait;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\Repository;

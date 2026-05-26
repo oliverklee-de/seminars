@@ -6,7 +6,7 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\Csv;
 
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Csv\CsvDownloader;
-use OliverKlee\Seminars\Tests\Support\BackEndTestsTrait;
+use OliverKlee\Seminars\Tests\Functional\Support\BackEndTestsTrait;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
