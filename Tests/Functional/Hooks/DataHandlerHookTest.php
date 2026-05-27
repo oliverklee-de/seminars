@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\Functional\Hooks;
 
 use OliverKlee\Seminars\Hooks\DataHandlerHook;
-use OliverKlee\Seminars\Hooks\Interfaces\DataSanitization;
 use OliverKlee\Seminars\Tests\Functional\Support\BackEndTestsTrait;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -112,109 +111,6 @@ final class DataHandlerHookTest extends FunctionalTestCase
         $this->dataHandler->substNEWwithIDs[$temporaryUid] = $uid;
 
         $this->subject->processDatamap_afterAllOperations($this->dataHandler);
-    }
-
-    /**
-     * @test
-     */
-    public function afterDatabaseOperationsOnUpdateCallsSanitizeEventDataHook(): void
-    {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
-        $uid = 1;
-        $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
-        $data = $result->fetchAssociative();
-
-        $hook = $this->createMock(DataSanitization::class);
-        $hook
-            ->expects(self::once())->method('sanitizeEventData')
-            ->with($uid, $data)
-            ->willReturn([]);
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][DataSanitization::class][] = $hookClass;
-        GeneralUtility::addInstance($hookClass, $hook);
-
-        $this->processUpdateActionForSeminarsTable($uid);
-    }
-
-    /**
-     * @test
-     */
-    public function afterDatabaseOperationsOnUpdateSanitizeHookWillModifyData(): void
-    {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
-        $uid = 1;
-        $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
-        $data = $result->fetchAssociative();
-        $expectedTitle = 'ModifiedUpdateTitle';
-
-        $hook = $this->createMock(DataSanitization::class);
-        $hook
-            ->expects(self::once())->method('sanitizeEventData')
-            ->with($uid, $data)
-            ->willReturn(['title' => $expectedTitle]);
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][DataSanitization::class][] = $hookClass;
-        GeneralUtility::addInstance($hookClass, $hook);
-
-        $this->processUpdateActionForSeminarsTable($uid);
-
-        $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
-        $row = $result->fetchAssociative();
-
-        self::assertSame($expectedTitle, $row['title']);
-    }
-
-    /**
-     * @test
-     */
-    public function afterDatabaseOperationsOnNewCallsSanitizeEventDataHook(): void
-    {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
-        $uid = 1;
-        $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
-        $data = $result->fetchAssociative();
-
-        $hook = $this->createMock(DataSanitization::class);
-        $hook
-            ->expects(self::once())->method('sanitizeEventData')
-            ->with($uid, $data)
-            ->willReturn([]);
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][DataSanitization::class][] = $hookClass;
-        GeneralUtility::addInstance($hookClass, $hook);
-
-        $this->processNewActionForSeminarsTable($uid);
-    }
-
-    /**
-     * @test
-     */
-    public function afterDatabaseOperationsOnNewSanitizeHookWillModifyData(): void
-    {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook.csv');
-        $uid = 1;
-        $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
-        $data = $result->fetchAssociative();
-        $expectedTitle = 'ModifiedNewTitle';
-
-        $hook = $this->createMock(DataSanitization::class);
-        $hook
-            ->expects(self::once())->method('sanitizeEventData')
-            ->with($uid, $data)
-            ->willReturn(['title' => $expectedTitle]);
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][DataSanitization::class][] = $hookClass;
-        GeneralUtility::addInstance($hookClass, $hook);
-
-        $this->processNewActionForSeminarsTable($uid);
-
-        $result = $this->eventsTableConnection->select(['*'], self::EVENTS_TABLE, ['uid' => $uid]);
-        $row = $result->fetchAssociative();
-        self::assertSame($expectedTitle, $row['title']);
     }
 
     /**

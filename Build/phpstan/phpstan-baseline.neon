@@ -931,11 +931,6 @@ parameters:
 			path: ../../Classes/Hooks/HookProvider.php
 
 		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\HookProvider\\:\\:executeHookReturningMergedArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Classes/Hooks/HookProvider.php
-
-		-
 			message: "#^Parameter \\#1 \\$className of static method TYPO3\\\\CMS\\\\Core\\\\Utility\\\\GeneralUtility\\:\\:makeInstance\\(\\) expects class\\-string\\<object\\>, mixed given\\.$#"
 			count: 1
 			path: ../../Classes/Hooks/HookProvider.php
@@ -947,18 +942,8 @@ parameters:
 
 		-
 			message: "#^Variable method call on OliverKlee\\\\Seminars\\\\Hooks\\\\Interfaces\\\\Hook\\.$#"
-			count: 3
+			count: 2
 			path: ../../Classes/Hooks/HookProvider.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\Interfaces\\\\DataSanitization\\:\\:sanitizeEventData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Classes/Hooks/Interfaces/DataSanitization.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Hooks\\\\Interfaces\\\\DataSanitization\\:\\:sanitizeEventData\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Classes/Hooks/Interfaces/DataSanitization.php
 
 		-
 			message: "#^Parameter \\#1 \\$dataOfModels of method OliverKlee\\\\Oelib\\\\Mapper\\\\AbstractDataMapper\\<OliverKlee\\\\Seminars\\\\Model\\\\Event\\>\\:\\:getListOfModels\\(\\) expects array\\<array\\<string, bool\\|float\\|int\\|string\\|null\\>\\>, array\\<int, array\\<string, mixed\\>\\> given\\.$#"
@@ -1436,21 +1421,6 @@ parameters:
 			path: ../../Tests/Functional/FrontEnd/DefaultController/PluginDefinitionTest.php
 
 		-
-			message: "#^Cannot access an offset on mixed\\.$#"
-			count: 4
-			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
-
-		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 4
-			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
-
-		-
-			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\DataSanitization' on mixed\\.$#"
-			count: 4
-			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
-
-		-
 			message: "#^Cannot access offset 'SC_OPTIONS' on mixed\\.$#"
 			count: 2
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
@@ -1477,7 +1447,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 6
+			count: 2
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
 		-
@@ -1487,11 +1457,6 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 't3lib/class\\.t3lib…' on mixed\\.$#"
-			count: 2
-			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
-
-		-
-			message: "#^Cannot access offset 'title' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 2
 			path: ../../Tests/Functional/Hooks/DataHandlerHookTest.php
 
@@ -2351,33 +2316,13 @@ parameters:
 			path: ../../Tests/Unit/Email/EmailBuilderTest.php
 
 		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Hooks\\\\Fixtures\\\\TestingHookImplementorReturnsArray\\:\\:testHookMethodReturnsNestedArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Hooks/Fixtures/TestingHookImplementorReturnsArray.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Hooks\\\\Fixtures\\\\TestingHookImplementorReturnsArray2\\:\\:testHookMethodReturnsNestedArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Hooks/Fixtures/TestingHookImplementorReturnsArray2.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\Hooks\\\\Fixtures\\\\TestingHookInterfaceReturnsArray\\:\\:testHookMethodReturnsNestedArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Hooks/Fixtures/TestingHookInterfaceReturnsArray.php
-
-		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 21
+			count: 16
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Tests\\\\\\\\Unit\\\\\\\\Hooks\\\\\\\\Fixtures\\\\\\\\TestingHookInterface' on mixed\\.$#"
 			count: 6
-			path: ../../Tests/Unit/Hooks/HookProviderTest.php
-
-		-
-			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Tests\\\\\\\\Unit\\\\\\\\Hooks\\\\\\\\Fixtures\\\\\\\\TestingHookInterfaceReturnsArray' on mixed\\.$#"
-			count: 5
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
@@ -2392,7 +2337,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 20
+			count: 15
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
@@ -2412,12 +2357,12 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 1577363366 on mixed\\.$#"
-			count: 7
+			count: 4
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
 			message: "#^Cannot access offset 1577363367 on mixed\\.$#"
-			count: 5
+			count: 3
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
