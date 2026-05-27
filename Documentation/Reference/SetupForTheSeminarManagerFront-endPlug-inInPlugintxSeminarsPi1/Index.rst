@@ -389,22 +389,6 @@ override the corresponding value from TS Setup.**
 .. container:: table-row
 
    Property
-         accessToFrontEndRegistrationLists
-
-   Data type
-         string
-
-   Description
-         who is allowed to view the list of registrations on the front end;
-         allowed values are: attendees\_and\_managers, login
-
-   Default
-         attendees\_and\_managers
-
-
-.. container:: table-row
-
-   Property
          showSpeakerDetails
 
    Data type

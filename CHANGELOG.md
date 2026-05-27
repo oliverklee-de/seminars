@@ -176,6 +176,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+- Drop the legacy FE registration lists (#4277, #5133)
 - Drop the email hook system (#5085)
 - Drop the CSV attachment from the scheduler task emails (#5028)
 - Drop `LegacyEvent::isUserRegisteredMessage()` (#4985)
@@ -185,7 +186,6 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - !!! Drop the checkbox for the separate billing address (#4495)
 - Drop the `unregistrationDeadlineDaysBeforeBeginDate` setting (#4251)
 - Drop the `allowRegistrationForEventsWithoutDate` option (#4348)
-- Remove public access feature for registration lists (#4277)
 - Drop `Venue.zip` (#4274)
 - Drop `Venue.country` (#4273, #4275)
 - Drop `Event.language` (#4271)

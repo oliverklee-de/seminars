@@ -816,22 +816,12 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Parameter \\#4 \\$accessLevel of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'attendees_and…'\\|'login', string given\\.$#"
-			count: 2
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$internal \\(array\\{descFlag\\: bool, maxPages\\: int, orderBy\\?\\: string, res_count\\: int\\<0, max\\>, results_at_a_time\\: int\\}\\) does not accept array\\{descFlag\\: string, maxPages\\: int, orderBy\\?\\: string, res_count\\: int\\<0, max\\>, results_at_a_time\\: int\\}\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\RegistrationsList\\:\\:__construct\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/RegistrationsList.php
-
-		-
-			message: "#^Parameter \\#4 \\$accessLevel of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'attendees_and…'\\|'login', string given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/RegistrationsList.php
 
@@ -2237,27 +2227,17 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'list_vip…'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
-			count: 3
-			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsListMessage\\(\\) expects 'list_registrations'\\|'list_vip…'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
-			message: "#^Parameter \\#2 \\$accessLevel of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsListMessage\\(\\) expects 'attendees_and…'\\|'login', string given\\.$#"
-			count: 2
-			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
-
-		-
 			message: "#^Parameter \\#2 \\$registrationsListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
-			count: 3
+			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Parameter \\#3 \\$registrationsVipListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
-			count: 3
+			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-

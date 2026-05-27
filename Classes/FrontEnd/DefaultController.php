@@ -344,7 +344,6 @@ class DefaultController extends TemplateHelper
                 $this->whatToDisplay,
                 0,
                 $this->getConfValueInteger('registrationsVipListPID'),
-                $this->getConfValueString('accessToFrontEndRegistrationLists'),
             )
         ) {
             // So a link to the VIP list is possible.
@@ -353,8 +352,6 @@ class DefaultController extends TemplateHelper
             $this->seminar->canViewRegistrationsList(
                 $this->whatToDisplay,
                 $this->getConfValueInteger('registrationsListPID'),
-                0,
-                $this->getConfValueString('accessToFrontEndRegistrationLists'),
             )
         ) {
             // No link to the VIP list ... so maybe to the list for the participants.
@@ -1113,7 +1110,6 @@ class DefaultController extends TemplateHelper
             $this->whatToDisplay,
             $this->getConfValueInteger('registrationsListPID'),
             $this->getConfValueInteger('registrationsVipListPID'),
-            $this->getConfValueString('accessToFrontEndRegistrationLists'),
         );
 
         if (!$canViewListOfRegistrations) {

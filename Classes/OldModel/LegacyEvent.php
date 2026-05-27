@@ -1783,7 +1783,6 @@ class LegacyEvent extends AbstractTimeSpan
      * @param int<0, max> $registrationsVipListPID
      *        the value of the registrationsVipListPID parameter
      *        (only relevant for (seminar_list|my_events|my_vip_events))
-     * @param 'attendees_and_managers'|'login' $accessLevel
      *
      * @return bool TRUE if a FE user is logged in and the user may view
      *                 the registrations list or may see a link to that
@@ -1792,32 +1791,17 @@ class LegacyEvent extends AbstractTimeSpan
     public function canViewRegistrationsList(
         string $whichPlugin,
         int $registrationsListPID = 0,
-        int $registrationsVipListPID = 0,
-        string $accessLevel = 'attendees_and_managers'
+        int $registrationsVipListPID = 0
     ): bool {
         if (!$this->needsRegistration()) {
             return false;
         }
 
-        switch ($accessLevel) {
-            case 'login':
-                $result = $this->canViewRegistrationsListForLoginAccess(
-                    $whichPlugin,
-                    $registrationsListPID,
-                    $registrationsVipListPID,
-                );
-                break;
-            case 'attendees_and_managers':
-                // The fall-through is intended.
-            default:
-                $result = $this->canViewRegistrationsListForAttendeesAndManagersAccess(
-                    $whichPlugin,
-                    $registrationsListPID,
-                    $registrationsVipListPID,
-                );
-        }
-
-        return $result;
+        return $this->canViewRegistrationsListForAttendeesAndManagersAccess(
+            $whichPlugin,
+            $registrationsListPID,
+            $registrationsVipListPID,
+        );
     }
 
     /**
@@ -1883,83 +1867,23 @@ class LegacyEvent extends AbstractTimeSpan
 
     /**
      * Checks whether a FE user is logged in and whether he/she may view this
-     * seminar's registrations list or see a link to it.
-     *
-     * This function assumes that the access level for FE registration lists is
-     * "login".
-     *
-     * @param 'seminar_list'|'my_events'|'my_vip_events'|'list_registrations'|'list_vip_registrations' $whichPlugin
-     * @param int<0, max> $registrationsListPID
-     *        the value of the registrationsListPID parameter
-     *        (only relevant for (seminar_list|my_events|my_vip_events))
-     * @param int<0, max> $registrationsVipListPID
-     *        the value of the registrationsVipListPID parameter
-     *        (only relevant for (seminar_list|my_events|my_vip_events))
-     *
-     * @return bool TRUE if a FE user is logged in and the user may view
-     *                 the registrations list or may see a link to that
-     *                 page, FALSE otherwise
-     */
-    protected function canViewRegistrationsListForLoginAccess(
-        string $whichPlugin,
-        int $registrationsListPID = 0,
-        int $registrationsVipListPID = 0
-    ): bool {
-        $currentUserUid = $this->getLoggedInFrontEndUserUid();
-        if ($currentUserUid === 0) {
-            return false;
-        }
-
-        $hasListPid = ($registrationsListPID > 0);
-        $hasVipListPid = ($registrationsVipListPID > 0);
-
-        switch ($whichPlugin) {
-            case 'my_vip_events':
-                $result = $this->isUserVip($currentUserUid) && $hasVipListPid;
-                break;
-            case 'list_vip_registrations':
-                $result = $this->isUserVip($currentUserUid);
-                break;
-            case 'list_registrations':
-                $result = true;
-                break;
-            default:
-                $result = $hasListPid;
-        }
-
-        return $result;
-    }
-
-    /**
-     * Checks whether a FE user is logged in and whether he/she may view this
      * seminar's registrations list.
      * This function is intended to be used from the registrations list,
      * NOT to check whether a link to that list should be shown.
      *
      * @param 'seminar_list'|'my_events'|'my_vip_events'|'list_registrations'|'list_vip_registrations' $whichPlugin
-     * @param 'attendees_and_managers'|'login' $accessLevel
      *
-     * @return string an empty string if everything is OK, a localized error
-     *                message otherwise
+     * @return string an empty string if everything is OK, a localized error message otherwise
      */
-    public function canViewRegistrationsListMessage(
-        string $whichPlugin,
-        string $accessLevel = 'attendees_and_managers'
-    ): string {
+    public function canViewRegistrationsListMessage(string $whichPlugin): string
+    {
         if (!$this->needsRegistration()) {
             return $this->translate('message_noRegistrationNecessary');
         }
         if (!$this->isLoggedIn()) {
             return $this->translate('message_notLoggedIn');
         }
-        if (
-            !$this->canViewRegistrationsList(
-                $whichPlugin,
-                0,
-                0,
-                $accessLevel,
-            )
-        ) {
+        if (!$this->canViewRegistrationsList($whichPlugin)) {
             return $this->translate('message_accessDenied');
         }
 
