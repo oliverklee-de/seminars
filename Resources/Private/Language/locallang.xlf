@@ -553,9 +553,6 @@
       <trans-unit id="seminars.pi_flexform.list_registrations">
         <source>List of Registrations (for attendees)</source>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.list_vip_registrations">
-        <source>List of Registrations (for event managers)</source>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list">
         <source>Category List</source>
       </trans-unit>
@@ -576,9 +573,6 @@
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.registrationsListPID">
         <source>Page that contains the list of registrations (for attendees):</source>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.registrationsVipListPID">
-        <source>Page that contains the list of registrations (for event managers):</source>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.formal">
         <source>formal</source>

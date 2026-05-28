@@ -208,14 +208,10 @@ class DefaultController extends TemplateHelper
             case 'single_view':
                 $result = $this->createSingleView();
                 break;
-            case 'list_vip_registrations':
-                // The fallthrough is intended
-                // because createRegistrationsListPage() will differentiate later.
             case 'list_registrations':
                 $registrationsList = GeneralUtility::makeInstance(
                     RegistrationsList::class,
                     $this->conf,
-                    $this->whatToDisplay,
                     (int)($this->piVars['seminar'] ?? 0),
                     $this->cObj,
                 );
@@ -340,15 +336,6 @@ class DefaultController extends TemplateHelper
 
         \assert($this->seminar instanceof LegacyEvent);
         if (
-            $this->seminar->canViewRegistrationsList(
-                $this->whatToDisplay,
-                0,
-                $this->getConfValueInteger('registrationsVipListPID'),
-            )
-        ) {
-            // So a link to the VIP list is possible.
-            $targetPageId = $this->getConfValueInteger('registrationsVipListPID');
-        } elseif (
             $this->seminar->canViewRegistrationsList(
                 $this->whatToDisplay,
                 $this->getConfValueInteger('registrationsListPID'),
@@ -1109,7 +1096,6 @@ class DefaultController extends TemplateHelper
         $canViewListOfRegistrations = $this->seminar->canViewRegistrationsList(
             $this->whatToDisplay,
             $this->getConfValueInteger('registrationsListPID'),
-            $this->getConfValueInteger('registrationsVipListPID'),
         );
 
         if (!$canViewListOfRegistrations) {
@@ -1945,14 +1931,13 @@ class DefaultController extends TemplateHelper
 
         switch ($whatToDisplay) {
             case 'seminar_list':
-                $hideIt = !$this->hasConfValueInteger('registrationsListPID')
-                    && !$this->hasConfValueInteger('registrationsVipListPID');
+                $hideIt = !$this->hasConfValueInteger('registrationsListPID');
                 break;
             case 'my_events':
                 $hideIt = !$this->hasConfValueInteger('registrationsListPID');
                 break;
             case 'my_vip_events':
-                $hideIt = !$this->hasConfValueInteger('registrationsVipListPID');
+                $hideIt = true;
                 break;
             default:
                 $hideIt = false;

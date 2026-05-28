@@ -92,7 +92,6 @@ final class RegistrationsListTest extends FunctionalTestCase
                 'templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html',
                 'enableRegistration' => 1,
             ],
-            'list_registrations',
             $this->seminarUid,
             $this->getFrontEndController()->cObj,
         );
@@ -165,55 +164,6 @@ final class RegistrationsListTest extends FunctionalTestCase
         );
     }
 
-    ////////////////////////////////////
-    // Tests for creating the fixture.
-    ////////////////////////////////////
-
-    /**
-     * @test
-     */
-    public function createFixtureWithInvalidWhatToDisplayThrowsException(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('The value "foo" of the first parameter $whatToDisplay is not valid.');
-        new RegistrationsList(
-            ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html'],
-            'foo',
-            0,
-            $this->getFrontEndController()->cObj,
-        );
-    }
-
-    /**
-     * @test
-     *
-     * @doesNotPerformAssertions
-     */
-    public function createFixtureWithListRegistrationsAsWhatToDisplayDoesNotThrowException(): void
-    {
-        new RegistrationsList(
-            ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html'],
-            'list_registrations',
-            0,
-            $this->getFrontEndController()->cObj,
-        );
-    }
-
-    /**
-     * @test
-     *
-     * @doesNotPerformAssertions
-     */
-    public function createFixtureWithListVipRegistrationsAsWhatToDisplayDoesNotThrowException(): void
-    {
-        new RegistrationsList(
-            ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html'],
-            'list_vip_registrations',
-            0,
-            $this->getFrontEndController()->cObj,
-        );
-    }
-
     ///////////////////////
     // Tests for render()
     ///////////////////////
@@ -233,7 +183,6 @@ final class RegistrationsListTest extends FunctionalTestCase
     {
         $subject = new RegistrationsList(
             ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html'],
-            'list_registrations',
             -1,
             $this->getFrontEndController()->cObj,
         );
@@ -249,7 +198,6 @@ final class RegistrationsListTest extends FunctionalTestCase
     {
         $subject = new RegistrationsList(
             ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html'],
-            'list_registrations',
             0,
             $this->getFrontEndController()->cObj,
         );
