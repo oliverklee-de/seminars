@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Add more columns to the FE list views (#5119)
+- Add more columns to the FE list views (#5119, #5131)
 - Restyle the FE list views (#5043, #5117)
 - Add the venue to the "my registrations" list (#4982)
 - Add the city to the "my registrations" list (#4981)

@@ -1896,6 +1896,9 @@
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.venue">
         <source>venue</source>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers">
+        <source>speakers</source>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.message.noEventsFound">
         <source>No events found.</source>
       </trans-unit>
@@ -1916,6 +1919,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.venue">
         <source>Venue</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.speakers">
+        <source>Speakers</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook">
         <source>Event outlook</source>
@@ -1959,6 +1965,9 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.venue">
         <source>venue</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
+        <source>speakers</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.vacancies">
         <source>vacancies</source>
       </trans-unit>
@@ -1985,6 +1994,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.venue">
         <source>Venue</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.speakers">
+        <source>Speakers</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies">
         <source>Vacancies</source>
@@ -2130,6 +2142,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.venue">
         <source>venue</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers">
+        <source>speakers</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.registrationStatus">
         <source>registration status</source>
       </trans-unit>
@@ -2195,6 +2210,9 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.venue">
         <source>Venue</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.speakers">
+        <source>Speakers</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus">
         <source>Status</source>
