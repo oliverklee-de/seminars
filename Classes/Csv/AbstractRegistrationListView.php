@@ -7,8 +7,6 @@ namespace OliverKlee\Seminars\Csv;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Seminars\BagBuilder\RegistrationBagBuilder;
-use OliverKlee\Seminars\Hooks\HookProvider;
-use OliverKlee\Seminars\Hooks\Interfaces\RegistrationListCsv;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -162,12 +160,9 @@ abstract class AbstractRegistrationListView
 
         $allLines = array_merge([$this->createCsvHeading()], $this->createCsvBodyLines());
 
-        $allLines = $this->createCsvSeparatorLine()
+        return $this->createCsvSeparatorLine()
             . implode(self::LINE_SEPARATOR, $allLines)
             . self::LINE_SEPARATOR;
-
-        return GeneralUtility::makeInstance(HookProvider::class, RegistrationListCsv::class)
-            ->executeHookReturningModifiedValue('modifyCsv', $allLines, $this);
     }
 
     /**

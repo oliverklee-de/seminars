@@ -8,11 +8,9 @@ use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Csv\AbstractRegistrationListView;
-use OliverKlee\Seminars\Hooks\Interfaces\RegistrationListCsv;
 use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -51,11 +49,6 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
      * @var list<non-empty-string>
      */
     public $registrationFieldKeys = [];
-
-    /**
-     * @var list<class-string>
-     */
-    private array $mockedClassNames = [];
 
     protected function setUp(): void
     {
@@ -103,115 +96,9 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        $this->purgeMockedInstances();
         $this->testingFramework->cleanUpWithoutDatabase();
 
         parent::tearDown();
-    }
-
-    // Utility functions
-
-    /**
-     * Adds an instance to the TYPO3 instance FIFO buffer used by `GeneralUtility::makeInstance()`
-     * and registers it for purging in `tearDown()`.
-     *
-     * In case of a failing test or an exception in the test before the instance is taken
-     * from the FIFO buffer, the instance would stay in the buffer and make following tests
-     * fail. This function adds it to the list of instances to purge in `tearDown()` in addition
-     * to `GeneralUtility::addInstance()`.
-     *
-     * @param class-string $className
-     */
-    private function addMockedInstance(string $className, object $instance): void
-    {
-        GeneralUtility::addInstance($className, $instance);
-        $this->mockedClassNames[] = $className;
-    }
-
-    /**
-     * Purges possibly leftover instances from the Typo3 instance FIFO buffer used by
-     * `GeneralUtility::makeInstance()`.
-     */
-    private function purgeMockedInstances(): void
-    {
-        foreach ($this->mockedClassNames as $className) {
-            GeneralUtility::makeInstance($className);
-        }
-
-        $this->mockedClassNames = [];
-    }
-
-    // Tests for the utility functions
-
-    /**
-     * @test
-     */
-    public function mockedInstancesListIsEmptyInitially(): void
-    {
-        self::assertEmpty($this->mockedClassNames);
-    }
-
-    /**
-     * @test
-     */
-    public function addMockedInstanceAddsClassnameToList(): void
-    {
-        /** @var MockObject $mockedInstance */
-        $mockedInstance = $this->createMock(\stdClass::class);
-        $mockedClassName = \get_class($mockedInstance);
-
-        $this->addMockedInstance($mockedClassName, $mockedInstance);
-        // manually purge the Typo3 FIFO here, as purgeMockedInstances() is not tested yet
-        GeneralUtility::makeInstance($mockedClassName);
-
-        self::assertCount(1, $this->mockedClassNames);
-        self::assertSame($mockedClassName, $this->mockedClassNames[0]);
-    }
-
-    /**
-     * @test
-     */
-    public function addMockedInstanceAddsInstanceToTypo3InstanceBuffer(): void
-    {
-        /** @var MockObject $mockedInstance */
-        $mockedInstance = $this->createMock(\stdClass::class);
-        $mockedClassName = \get_class($mockedInstance);
-
-        $this->addMockedInstance($mockedClassName, $mockedInstance);
-
-        self::assertSame($mockedInstance, GeneralUtility::makeInstance($mockedClassName));
-    }
-
-    /**
-     * @test
-     */
-    public function purgeMockedInstancesRemovesClassnameFromList(): void
-    {
-        /** @var MockObject $mockedInstance */
-        $mockedInstance = $this->createMock(\stdClass::class);
-        $mockedClassName = \get_class($mockedInstance);
-        $this->addMockedInstance($mockedClassName, $mockedInstance);
-
-        $this->purgeMockedInstances();
-        // manually purge the Typo3 FIFO here, as purgeMockedInstances() is not tested for that yet
-        GeneralUtility::makeInstance($mockedClassName);
-
-        self::assertEmpty($this->mockedClassNames);
-    }
-
-    /**
-     * @test
-     */
-    public function purgeMockedInstancesRemovesInstanceFromTypo3InstanceBuffer(): void
-    {
-        /** @var MockObject $mockedInstance */
-        $mockedInstance = $this->createMock(\stdClass::class);
-        $mockedClassName = \get_class($mockedInstance);
-        $this->addMockedInstance($mockedClassName, $mockedInstance);
-
-        $this->purgeMockedInstances();
-
-        self::assertNotSame($mockedInstance, GeneralUtility::makeInstance($mockedClassName));
     }
 
     /**
@@ -641,27 +528,5 @@ final class AbstractRegistrationListViewTest extends FunctionalTestCase
             "\r\n",
             $this->subject->render(),
         );
-    }
-
-    /**
-     * @test
-     */
-    public function renderCallsHookAndReturnsModifiedValue(): void
-    {
-        $this->configuration->setAsBoolean('addExcelSpecificSeparatorLineToCsv', false);
-        $renderResult = "\r\n";
-        $modifiedResult = "modified CSV\r\n";
-
-        $hook = $this->createMock(RegistrationListCsv::class);
-        $hook
-            ->expects(self::once())->method('modifyCsv')
-            ->with($renderResult, $this->subject)
-            ->willReturn($modifiedResult);
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][RegistrationListCsv::class][] = $hookClass;
-        $this->addMockedInstance($hookClass, $hook);
-
-        self::assertSame($modifiedResult, $this->subject->render());
     }
 }

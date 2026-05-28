@@ -116,11 +116,6 @@ parameters:
 			path: ../../Classes/Csv/AbstractRegistrationListView.php
 
 		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Csv\\\\AbstractRegistrationListView\\:\\:render\\(\\) should return string but returns mixed\\.$#"
-			count: 1
-			path: ../../Classes/Csv/AbstractRegistrationListView.php
-
-		-
 			message: "#^Parameter \\#1 \\$model of method OliverKlee\\\\Seminars\\\\Csv\\\\AbstractRegistrationListView\\:\\:createCsvColumnsForFrontEndUser\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/Csv/AbstractRegistrationListView.php
@@ -2039,31 +2034,6 @@ parameters:
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 7
 			path: ../../Tests/LegacyFunctional/BagBuilder/RegistrationBagBuilderTest.php
-
-		-
-			message: "#^Cannot access an offset on mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
-
-		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
-
-		-
-			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\RegistrationListCsv' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
-
-		-
-			message: "#^PHPDoc tag @var with type PHPUnit\\\\Framework\\\\MockObject\\\\MockObject is not subtype of type PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&stdClass\\.$#"
-			count: 4
-			path: ../../Tests/LegacyFunctional/Csv/AbstractRegistrationListViewTest.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\AbstractViewTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
