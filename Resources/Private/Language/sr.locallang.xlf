@@ -2581,6 +2581,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers">
+        <source>speakers</source>
+        <target state="needs-translation">speakers</target>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.message.noEventsFound">
         <source>No events found.</source>
         <target state="needs-translation">No events found.</target>
@@ -2608,6 +2612,10 @@
       <trans-unit id="plugin.eventArchive.events.property.venue">
         <source>Venue</source>
         <target state="needs-translation">Venue</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.speakers">
+        <source>Speakers</source>
+        <target state="needs-translation">Speakers</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook">
         <source>Event outlook</source>
@@ -2665,6 +2673,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
+        <source>speakers</source>
+        <target state="needs-translation">speakers</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.vacancies">
         <source>vacancies</source>
         <target state="needs-translation">vacancies</target>
@@ -2700,6 +2712,10 @@
       <trans-unit id="plugin.eventOutlook.events.property.venue">
         <source>Venue</source>
         <target state="needs-translation">Venue</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.speakers">
+        <source>Speakers</source>
+        <target state="needs-translation">Speakers</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies">
         <source>Vacancies</source>
@@ -2893,6 +2909,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers">
+        <source>speakers</source>
+        <target state="needs-translation">speakers</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.registrationStatus">
         <source>registration status</source>
         <target state="needs-translation">registration status</target>
@@ -2980,6 +3000,10 @@
       <trans-unit id="plugin.myRegistrations.index.heading.venue">
         <source>Venue</source>
         <target state="needs-translation">Venue</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.speakers">
+        <source>Speakers</source>
+        <target state="needs-translation">Speakers</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus">
         <source>Status</source>
