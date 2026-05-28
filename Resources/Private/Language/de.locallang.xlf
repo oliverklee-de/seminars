@@ -2548,9 +2548,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers">
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
-        <target state="needs-translation">speakers</target>
+        <target state="final">Referent_innen</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.message.noEventsFound" approved="yes">
         <source>No events found.</source>
@@ -2580,9 +2580,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Venue</source>
         <target state="final">Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.speakers">
+      <trans-unit id="plugin.eventArchive.events.property.speakers" approved="yes">
         <source>Speakers</source>
-        <target state="needs-translation">Speakers</target>
+        <target state="final">Referent_innen</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook" approved="yes">
         <source>Event outlook</source>
@@ -2640,9 +2640,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
-        <target state="needs-translation">speakers</target>
+        <target state="final">Referent_innen</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.vacancies" approved="yes">
         <source>vacancies</source>
@@ -2680,9 +2680,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Venue</source>
         <target state="final">Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.speakers">
+      <trans-unit id="plugin.eventOutlook.events.property.speakers" approved="yes">
         <source>Speakers</source>
-        <target state="needs-translation">Speakers</target>
+        <target state="final">Referent_innen</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies" approved="yes">
         <source>Vacancies</source>
@@ -2876,9 +2876,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
-        <target state="needs-translation">speakers</target>
+        <target state="final">Referent_innen</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.registrationStatus" approved="yes">
         <source>registration status</source>
@@ -2968,9 +2968,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Venue</source>
         <target state="final">Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.speakers">
+      <trans-unit id="plugin.myRegistrations.index.heading.speakers" approved="yes">
         <source>Speakers</source>
-        <target state="needs-translation">Speakers</target>
+        <target state="final">Referent_innen</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus" approved="yes">
         <source>Status</source>
