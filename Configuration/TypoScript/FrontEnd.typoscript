@@ -70,10 +70,6 @@ plugin.tx_seminars_pi1 {
   # whether to use the label "Price" as heading for the standard price (instead of "Standard price") in the detailed view and on the registration page
   generalPriceInSingle = 0
 
-  # who is allowed to view the list of registrations on the front end:
-  # "attendees_and_managers" or "login"
-  accessToFrontEndRegistrationLists = attendees_and_managers
-
   # whether detailed information for the speakers is shown in the single view
   showSpeakerDetails = 1
 

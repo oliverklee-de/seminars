@@ -78,14 +78,7 @@ class RegistrationsList extends AbstractView
             // seminar title and date.
             $this->setMarker('title', \htmlspecialchars($this->seminar->getTitleAndDate(), ENT_QUOTES | ENT_HTML5));
 
-            if (
-                $this->seminar->canViewRegistrationsList(
-                    $this->whatToDisplay,
-                    0,
-                    0,
-                    $this->getConfValueString('accessToFrontEndRegistrationLists'),
-                )
-            ) {
+            if ($this->seminar->canViewRegistrationsList($this->whatToDisplay)) {
                 $isOkay = true;
             } else {
                 $errorMessage = $this->seminar->canViewRegistrationsListMessage($this->whatToDisplay);
