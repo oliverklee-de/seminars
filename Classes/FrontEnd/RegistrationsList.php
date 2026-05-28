@@ -25,8 +25,7 @@ class RegistrationsList extends AbstractView
      * The constructor.
      *
      * @param array $configuration TypoScript configuration for the plugin, may be empty
-     * @param string $whatToDisplay a string selecting the flavor of the list view, either "list_registrations" or
-     *        "list_vip_registrations"
+     * @param string $whatToDisplay a string selecting the flavor of the list view, "list_vip_registrations"
      * @param int $seminarUid UID of the seminar of which we want to list the registrations, invalid UIDs will be
      *        handled later
      * @param ContentObjectRenderer $contentObjectRenderer the parent cObj, needed for the flexforms
@@ -41,7 +40,7 @@ class RegistrationsList extends AbstractView
 
         $this->responseHeadersModifier = GeneralUtility::makeInstance(ResponseHeadersModifier::class);
 
-        if (!\in_array($whatToDisplay, ['list_registrations', 'list_vip_registrations'], true)) {
+        if ($whatToDisplay !== 'list_vip_registrations') {
             throw new \InvalidArgumentException(
                 'The value "' . $whatToDisplay . '" of the first parameter $whatToDisplay is not valid.',
                 1333293210,

@@ -6060,24 +6060,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'registrationsListPID' => 1,
                 'registrationsVipListPID' => 1,
             ],
-            'listRegistrationsIsRegistered' => [
-                'expected' => true,
-                'loggedIn' => true,
-                'isRegistered' => true,
-                'isVip' => false,
-                'whichPlugin' => 'list_registrations',
-                'registrationsListPID' => 0,
-                'registrationsVipListPID' => 0,
-            ],
-            'listRegistrationsIsVip' => [
-                'expected' => false,
-                'loggedIn' => true,
-                'isRegistered' => false,
-                'isVip' => true,
-                'whichPlugin' => 'list_registrations',
-                'registrationsListPID' => 0,
-                'registrationsVipListPID' => 0,
-            ],
             'listVipRegistrationsIsRegistered' => [
                 'expected' => false,
                 'loggedIn' => true,
@@ -6145,34 +6127,6 @@ final class LegacyEventTest extends FunctionalTestCase
     }
 
     // Tests concerning canViewRegistrationsListMessage
-
-    /**
-     * @test
-     */
-    public function canViewRegistrationsListMessageWithoutNeededRegistrationReturnsNoRegistrationMessage(): void
-    {
-        $subject = $this->getMockBuilder(LegacyEvent::class)->onlyMethods(['needsRegistration'])->getMock();
-        $subject->method('needsRegistration')->willReturn(false);
-
-        self::assertSame(
-            $this->translate('message_noRegistrationNecessary'),
-            $subject->canViewRegistrationsListMessage('list_registrations'),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function canViewRegistrationsListMessageForListAndNoLoginAndAttendeesAccessReturnsPleaseLoginMessage(): void
-    {
-        $subject = $this->getMockBuilder(LegacyEvent::class)->onlyMethods(['needsRegistration'])->getMock();
-        $subject->method('needsRegistration')->willReturn(true);
-
-        self::assertSame(
-            $this->translate('message_notLoggedIn'),
-            $subject->canViewRegistrationsListMessage('list_registrations'),
-        );
-    }
 
     /**
      * @test

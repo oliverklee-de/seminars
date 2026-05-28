@@ -550,9 +550,6 @@
       <trans-unit id="seminars.pi_flexform.my_vip_events">
         <source>My Managed Events</source>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.list_registrations">
-        <source>List of Registrations (for attendees)</source>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.list_vip_registrations">
         <source>List of Registrations (for event managers)</source>
       </trans-unit>

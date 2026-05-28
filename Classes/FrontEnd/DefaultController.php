@@ -209,9 +209,6 @@ class DefaultController extends TemplateHelper
                 $result = $this->createSingleView();
                 break;
             case 'list_vip_registrations':
-                // The fallthrough is intended
-                // because createRegistrationsListPage() will differentiate later.
-            case 'list_registrations':
                 $registrationsList = GeneralUtility::makeInstance(
                     RegistrationsList::class,
                     $this->conf,

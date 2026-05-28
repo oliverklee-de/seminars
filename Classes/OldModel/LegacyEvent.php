@@ -1774,9 +1774,9 @@ class LegacyEvent extends AbstractTimeSpan
      * a) a link may be created to the page with the list of registrations
      *    (for $whichPlugin = (seminar_list|my_events|my_vip_events))
      * b) the user is allowed to view the list of registrations
-     *    (for $whichPlugin = (list_registrations|list_vip_registrations))
+     *    (for $whichPlugin = (list_vip_registrations))
      *
-     * @param 'seminar_list'|'my_events'|'my_vip_events'|'list_registrations'|'list_vip_registrations' $whichPlugin
+     * @param 'seminar_list'|'my_events'|'my_vip_events'|'list_vip_registrations' $whichPlugin
      * @param int<0, max> $registrationsListPID
      *        the value of the registrationsListPID parameter
      *        (only relevant for (seminar_list|my_events|my_vip_events))
@@ -1797,7 +1797,7 @@ class LegacyEvent extends AbstractTimeSpan
             return false;
         }
 
-        return $this->canViewRegistrationsListForAttendeesAndManagersAccess(
+        return $this->canViewRegistrationsListForManagersAccess(
             $whichPlugin,
             $registrationsListPID,
             $registrationsVipListPID,
@@ -1806,12 +1806,11 @@ class LegacyEvent extends AbstractTimeSpan
 
     /**
      * Checks whether a FE user is logged in and whether he/she may view this
-     * seminar's registrations list or see a link to it.
+     * seminar's registration list or see a link to it.
      *
-     * This function assumes that the access level for FE registration lists is
-     * "attendees and managers".
+     * This function assumes that the access level for FE registration lists is "managers".
      *
-     * @param 'seminar_list'|'my_events'|'my_vip_events'|'list_registrations'|'list_vip_registrations' $whichPlugin
+     * @param 'seminar_list'|'my_events'|'my_vip_events'|'list_vip_registrations' $whichPlugin
      * @param int<0, max> $registrationsListPID
      *        the value of the registrationsListPID parameter
      *        (only relevant for (seminar_list|my_events|my_vip_events))
@@ -1823,7 +1822,7 @@ class LegacyEvent extends AbstractTimeSpan
      *                 the registrations list or may see a link to that
      *                 page, FALSE otherwise
      */
-    protected function canViewRegistrationsListForAttendeesAndManagersAccess(
+    protected function canViewRegistrationsListForManagersAccess(
         string $whichPlugin,
         int $registrationsListPID = 0,
         int $registrationsVipListPID = 0
@@ -1852,9 +1851,6 @@ class LegacyEvent extends AbstractTimeSpan
             case 'my_vip_events':
                 $result = $this->isUserVip($currentUserUid) && $hasVipListPid;
                 break;
-            case 'list_registrations':
-                $result = $this->isUserRegistered($currentUserUid);
-                break;
             case 'list_vip_registrations':
                 $result = $this->isUserVip($currentUserUid);
                 break;
@@ -1871,7 +1867,7 @@ class LegacyEvent extends AbstractTimeSpan
      * This function is intended to be used from the registrations list,
      * NOT to check whether a link to that list should be shown.
      *
-     * @param 'seminar_list'|'my_events'|'my_vip_events'|'list_registrations'|'list_vip_registrations' $whichPlugin
+     * @param 'seminar_list'|'my_events'|'my_vip_events'|'list_vip_registrations' $whichPlugin
      *
      * @return string an empty string if everything is OK, a localized error message otherwise
      */

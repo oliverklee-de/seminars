@@ -92,7 +92,7 @@ final class RegistrationsListTest extends FunctionalTestCase
                 'templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html',
                 'enableRegistration' => 1,
             ],
-            'list_registrations',
+            'list_vip_registrations',
             $this->seminarUid,
             $this->getFrontEndController()->cObj,
         );
@@ -193,7 +193,7 @@ final class RegistrationsListTest extends FunctionalTestCase
     {
         new RegistrationsList(
             ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html'],
-            'list_registrations',
+            'list_vip_registrations',
             0,
             $this->getFrontEndController()->cObj,
         );
@@ -233,7 +233,7 @@ final class RegistrationsListTest extends FunctionalTestCase
     {
         $subject = new RegistrationsList(
             ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html'],
-            'list_registrations',
+            'list_vip_registrations',
             -1,
             $this->getFrontEndController()->cObj,
         );
@@ -249,7 +249,7 @@ final class RegistrationsListTest extends FunctionalTestCase
     {
         $subject = new RegistrationsList(
             ['templateFile' => 'EXT:seminars/Resources/Private/Templates/FrontEnd/FrontEnd.html'],
-            'list_registrations',
+            'list_vip_registrations',
             0,
             $this->getFrontEndController()->cObj,
         );
