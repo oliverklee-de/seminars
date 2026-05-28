@@ -1,0 +1,13 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:switch expression="{event.eventFormat}">
+        <f:case value="1">
+            <f:translate key="label_attendance_mode"/>
+        </f:case>
+        <f:case value="2">
+            <f:translate key="label_attendance_mode.online"/>
+        </f:case>
+        <f:defaultCase>
+            <f:translate key="label_attendance_mode.onSite"/>
+        </f:defaultCase>
+    </f:switch>
+</html>
