@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Hooks;
 
-use OliverKlee\Seminars\Hooks\Interfaces\DataSanitization;
 use OliverKlee\Seminars\Seo\SlugGenerator;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
@@ -95,12 +93,6 @@ class DataHandlerHook implements SingletonInterface
         if (\preg_match('/^(-[\\d]+)?$/', $currentSlug) === 1) {
             $updatedData['slug'] = $this->slugGenerator->generateSlug(['record' => $updatedData]);
         }
-
-        $dataSanitizationHookProvider = GeneralUtility::makeInstance(HookProvider::class, DataSanitization::class);
-        $updatedData = array_merge(
-            $updatedData,
-            $dataSanitizationHookProvider->executeHookReturningMergedArray('sanitizeEventData', $uid, $updatedData),
-        );
 
         if ($updatedData !== $originalData) {
             $this->connectionPool->getConnectionForTable(self::TABLE_EVENTS)->update(

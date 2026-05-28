@@ -176,6 +176,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+- Drop the hooks for the `DataHandler` hook (#5135)
 - Drop the hook system for modifying the CSV export (#5134)
 - Drop the legacy FE registration lists (#4277, #5133)
 - Drop the email hook system (#5085)

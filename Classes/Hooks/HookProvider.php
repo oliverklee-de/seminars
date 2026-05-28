@@ -27,10 +27,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * for these methods. By passing an object to the hooked-in methods, the object content can be manipulated,
  * and by this change the behavior of `seminars`.
  *
- * In some cases, when a return value is required, you may use `executeHookReturningMergedArray()` for returning complex
- * results while all hooked-in methods process the same parameters. Use `executeHookReturningModifiedValue()`, if your
- * hook shall pass the already manipulated value to the next hook (e.g., for a gating condition check).
- *
  * There is an optional index to `$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars']`, provided
  * for easier conversion of existing hooks to this class.
  */
@@ -93,26 +89,6 @@ class HookProvider
         foreach ($this->getHooks() as $hook) {
             $hook->$method(...$params);
         }
-    }
-
-    /**
-     * Executes the hooked-in methods that return result arrays.
-     *
-     * @param string $method the method to execute
-     * @param mixed $params parameters to `$method()`
-     *
-     * @return array the merged result arrays with numeric or string keys, may contain duplicate values
-     */
-    public function executeHookReturningMergedArray(string $method, ...$params): array
-    {
-        $this->validateHookMethod($method);
-
-        $result = [];
-        foreach ($this->getHooks() as $hook) {
-            $result[] = $hook->$method(...$params);
-        }
-
-        return \array_merge([], ...$result);
     }
 
     /**
