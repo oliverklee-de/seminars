@@ -751,10 +751,6 @@ Fehler 404. Eine Veranstaltung mit dieser Nummer existiert nicht. Wenn Sie diese
         <source>List of Registrations (for attendees)</source>
         <target state="final">Liste der Anmeldungen (für angemeldete Personen)</target>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.list_vip_registrations" approved="yes">
-        <source>List of Registrations (for event managers)</source>
-        <target state="final">Liste der Anmeldungen (für Verwalter)</target>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list" approved="yes">
         <source>Category List</source>
         <target state="final">Kategorienliste</target>
@@ -782,10 +778,6 @@ Fehler 404. Eine Veranstaltung mit dieser Nummer existiert nicht. Wenn Sie diese
       <trans-unit id="seminars.pi_flexform.registrationsListPID" approved="yes">
         <source>Page that contains the list of registrations (for attendees):</source>
         <target state="final">Seite mit der Liste der Anmeldungen (für angemeldete Personen):</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.registrationsVipListPID" approved="yes">
-        <source>Page that contains the list of registrations (for event managers):</source>
-        <target state="final">Seite mit der Liste der Anmeldungen (für Verwalter):</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.formal" approved="yes">
         <source>formal</source>
