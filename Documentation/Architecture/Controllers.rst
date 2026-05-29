@@ -61,9 +61,6 @@ In ``FrontEnd/``, there are additional classes that are used by the ``DefaultCon
 | ``list_registrations``     | List of all registrations for a specific event.                  |
 |                            | Intended for normal frontend users viewing event registrations.  |
 +----------------------------+------------------------------------------------------------------+
-| ``list_vip_registrations`` | List of all registrations for a specific event.                  |
-|                            | Intended for users with special management permissions.          |
-+----------------------------+------------------------------------------------------------------+
 | ``category_list``          | List of event categories.                                        |
 +----------------------------+------------------------------------------------------------------+
 | ``topic_list``             | List of event topics.                                            |

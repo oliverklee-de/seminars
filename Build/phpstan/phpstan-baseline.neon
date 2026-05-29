@@ -776,8 +776,8 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'list_vip…'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
-			count: 2
+			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
+			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -802,11 +802,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, array\\|float\\|int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Parameter \\#3 \\$registrationsVipListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -2161,17 +2156,12 @@ parameters:
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'list_vip…'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
+			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
 			message: "#^Parameter \\#2 \\$registrationsListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
-
-		-
-			message: "#^Parameter \\#3 \\$registrationsVipListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 

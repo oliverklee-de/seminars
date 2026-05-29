@@ -21,33 +21,21 @@ class RegistrationsList extends AbstractView
 
     private ResponseHeadersModifier $responseHeadersModifier;
 
+    protected string $whatToDisplay = 'list_registrations';
+
     /**
      * The constructor.
      *
      * @param array $configuration TypoScript configuration for the plugin, may be empty
-     * @param string $whatToDisplay a string selecting the flavor of the list view, either "list_registrations" or
-     *        "list_vip_registrations"
      * @param int $seminarUid UID of the seminar of which we want to list the registrations, invalid UIDs will be
      *        handled later
      * @param ContentObjectRenderer $contentObjectRenderer the parent cObj, needed for the flexforms
      */
-    public function __construct(
-        array $configuration,
-        string $whatToDisplay,
-        int $seminarUid,
-        ContentObjectRenderer $contentObjectRenderer
-    ) {
+    public function __construct(array $configuration, int $seminarUid, ContentObjectRenderer $contentObjectRenderer)
+    {
         parent::__construct($configuration, $contentObjectRenderer);
 
         $this->responseHeadersModifier = GeneralUtility::makeInstance(ResponseHeadersModifier::class);
-
-        if (!\in_array($whatToDisplay, ['list_registrations', 'list_vip_registrations'], true)) {
-            throw new \InvalidArgumentException(
-                'The value "' . $whatToDisplay . '" of the first parameter $whatToDisplay is not valid.',
-                1333293210,
-            );
-        }
-        $this->whatToDisplay = $whatToDisplay;
 
         $this->createSeminar($seminarUid);
     }

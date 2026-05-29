@@ -124,9 +124,6 @@ plugin.tx_seminars_pi1 {
   # PID of the page that contains the registrations list for participants
   registrationsListPID =
 
-  # PID of the page that contains the registrations list for event managers
-  registrationsVipListPID =
-
   # the maximum width of the image of a seminar in the single view
   seminarImageSingleViewWidth = 260
 

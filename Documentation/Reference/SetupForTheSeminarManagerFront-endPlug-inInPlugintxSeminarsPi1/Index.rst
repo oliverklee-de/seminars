@@ -650,21 +650,6 @@ override the corresponding value from TS Setup.**
 .. container:: table-row
 
    Property
-         registrationsVipListPID
-
-   Data type
-         page\_id
-
-   Description
-         PID of the page that contains the registrations list for editors
-
-   Default
-         None
-
-
-.. container:: table-row
-
-   Property
          defaultEventVipsFeGroupID
 
    Data type

@@ -4936,8 +4936,6 @@ final class DefaultControllerTest extends FunctionalTestCase
      *                            expected to be hidden
      *               [whatToDisplay] string: the value for what_to_display
      *               [listPid] integer: the PID of the registration list page
-     *               [vipListPid] integer: the PID of the VIP registration list
-     *                            page
      */
     public function hideListRegistrationsColumnIfNecessaryDataProvider(): array
     {
@@ -4946,91 +4944,61 @@ final class DefaultControllerTest extends FunctionalTestCase
                 'getsHidden' => false,
                 'whatToDisplay' => 'seminar_list',
                 'listPid' => 1,
-                'vipListPid' => 1,
             ],
             'hiddenForListForNoPidsSet' => [
                 'getsHidden' => true,
                 'whatToDisplay' => 'seminar_list',
                 'listPid' => 0,
-                'vipListPid' => 0,
             ],
             'notHiddenForListForListPidSet' => [
                 'getsHidden' => false,
                 'whatToDisplay' => 'seminar_list',
                 'listPid' => 1,
-                'vipListPid' => 0,
             ],
-            'notHiddenForListForVipListPidSet' => [
-                'getsHidden' => false,
-                'whatToDisplay' => 'seminar_list',
-                'listPid' => 0,
-                'vipListPid' => 1,
-            ],
-            'hiddenForOtherDatesForAndBothPidsSet' => [
-                'getsHidden' => true,
-                'whatToDisplay' => 'other_dates',
-                'listPid' => 1,
-                'vipListPid' => 1,
-            ],
-            'hiddenForEventsNextDayForBothPidsSet' => [
+            'hiddenForEventsNextDayForListPidSet' => [
                 'getsHidden' => true,
                 'whatToDisplay' => 'events_next_day',
                 'listPid' => 1,
-                'vipListPid' => 1,
             ],
-            'notHiddenForMyEventsForBothPidsSet' => [
+            'notHiddenForMyEventsForListPisSet' => [
                 'getsHidden' => false,
                 'whatToDisplay' => 'my_events',
                 'listPid' => 1,
-                'vipListPid' => 1,
             ],
-            'hiddenForMyEventsForNoPidsSet' => [
+            'hiddenForMyEventsForNoPidSet' => [
                 'getsHidden' => true,
                 'whatToDisplay' => 'my_events',
                 'listPid' => 0,
-                'vipListPid' => 0,
             ],
             'notHiddenForMyEventsForListPidSet' => [
                 'getsHidden' => false,
                 'whatToDisplay' => 'my_events',
                 'listPid' => 1,
-                'vipListPid' => 0,
             ],
-            'hiddenForMyEventsForVipListPidSet' => [
+            'notHiddenForMyVipEventsForListPidSet' => [
                 'getsHidden' => true,
-                'whatToDisplay' => 'my_events',
-                'listPid' => 0,
-                'vipListPid' => 1,
-            ],
-            'notHiddenForMyVipEventsForBothPidsSet' => [
-                'getsHidden' => false,
                 'whatToDisplay' => 'my_vip_events',
                 'listPid' => 1,
-                'vipListPid' => 1,
             ],
-            'hiddenForMyVipEventsForNoPidsSet' => [
+            'hiddenForMyVipEventsForNoPidSet' => [
                 'getsHidden' => true,
                 'whatToDisplay' => 'my_vip_events',
                 'listPid' => 0,
-                'vipListPid' => 0,
             ],
             'hiddenForMyVipEventsForListPidSet' => [
                 'getsHidden' => true,
                 'whatToDisplay' => 'my_vip_events',
                 'listPid' => 1,
-                'vipListPid' => 0,
             ],
             'notHiddenForMyVipEventsForVipListPidSet' => [
-                'getsHidden' => false,
+                'getsHidden' => true,
                 'whatToDisplay' => 'my_vip_events',
                 'listPid' => 0,
-                'vipListPid' => 1,
             ],
-            'hiddenForTopicListForBothPidsSet' => [
+            'hiddenForTopicListForListPidSet' => [
                 'getsHidden' => true,
                 'whatToDisplay' => 'topic_list',
                 'listPid' => 1,
-                'vipListPid' => 1,
             ],
         ];
     }
@@ -5039,17 +5007,11 @@ final class DefaultControllerTest extends FunctionalTestCase
      * @test
      *
      * @dataProvider hideListRegistrationsColumnIfNecessaryDataProvider
-     *
-     * @param bool $getsHidden
-     * @param string $whatToDisplay
-     * @param int $listPid
-     * @param int $vipListPid
      */
     public function hideListRegistrationsColumnIfNecessaryWithRegistrationEnabledAndLoggedIn(
         bool $getsHidden,
         string $whatToDisplay,
-        int $listPid,
-        int $vipListPid
+        int $listPid
     ): void {
         $subject =
             $this->getMockBuilder(TestingDefaultController::class)->onlyMethods(
@@ -5070,12 +5032,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             $subject->expects(self::never())->method('hideColumns');
         }
 
-        $subject->init(
-            [
-                'registrationsListPID' => $listPid,
-                'registrationsVipListPID' => $vipListPid,
-            ],
-        );
+        $subject->init(['registrationsListPID' => $listPid]);
 
         $subject->hideListRegistrationsColumnIfNecessary($whatToDisplay);
     }
@@ -5086,15 +5043,11 @@ final class DefaultControllerTest extends FunctionalTestCase
      * @dataProvider hideListRegistrationsColumnIfNecessaryDataProvider
      *
      * @param bool $getsHidden (ignored)
-     * @param string $whatToDisplay
-     * @param int $listPid
-     * @param int $vipListPid
      */
     public function hideListRegistrationsColumnIfNecessaryWithRegistrationEnabledAndNotLoggedInAlwaysHidesColumn(
         bool $getsHidden,
         string $whatToDisplay,
-        int $listPid,
-        int $vipListPid
+        int $listPid
     ): void {
         $subject =
             $this->getMockBuilder(TestingDefaultController::class)->onlyMethods(
@@ -5111,12 +5064,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             ->expects(self::once())->method('hideColumns')
             ->with(['list_registrations']);
 
-        $subject->init(
-            [
-                'registrationsListPID' => $listPid,
-                'registrationsVipListPID' => $vipListPid,
-            ],
-        );
+        $subject->init(['registrationsListPID' => $listPid]);
 
         $subject->hideListRegistrationsColumnIfNecessary($whatToDisplay);
     }
@@ -5127,15 +5075,11 @@ final class DefaultControllerTest extends FunctionalTestCase
      * @dataProvider hideListRegistrationsColumnIfNecessaryDataProvider
      *
      * @param bool $getsHidden (ignored)
-     * @param string $whatToDisplay
-     * @param int $listPid
-     * @param int $vipListPid
      */
     public function hideListRegistrationsColumnIfNecessaryWithRegistrationDisabledAndLoggedInAlwaysHidesColumn(
         bool $getsHidden,
         string $whatToDisplay,
-        int $listPid,
-        int $vipListPid
+        int $listPid
     ): void {
         $subject =
             $this->getMockBuilder(TestingDefaultController::class)->onlyMethods(
@@ -5152,12 +5096,7 @@ final class DefaultControllerTest extends FunctionalTestCase
             ->expects(self::once())->method('hideColumns')
             ->with(['list_registrations']);
 
-        $subject->init(
-            [
-                'registrationsListPID' => $listPid,
-                'registrationsVipListPID' => $vipListPid,
-            ],
-        );
+        $subject->init(['registrationsListPID' => $listPid]);
 
         $subject->hideListRegistrationsColumnIfNecessary($whatToDisplay);
     }

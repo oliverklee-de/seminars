@@ -5965,7 +5965,6 @@ final class LegacyEventTest extends FunctionalTestCase
      *                                that event
      *               [whichPlugin] string: value for that parameter
      *               [registrationsListPID] integer: value for that parameter
-     *               [registrationsVipListPID] integer: value for that parameter
      */
     public function canViewRegistrationsListDataProvider(): array
     {
@@ -5977,7 +5976,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => false,
                 'whichPlugin' => 'seminar_list',
                 'registrationsListPID' => 0,
-                'registrationsVipListPID' => 0,
             ],
             'seminarListLoggedInWithListPid' => [
                 'expected' => false,
@@ -5986,7 +5984,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => false,
                 'whichPlugin' => 'seminar_list',
                 'registrationsListPID' => 1,
-                'registrationsVipListPID' => 0,
             ],
             'seminarListIsRegisteredWithListPid' => [
                 'expected' => true,
@@ -5995,7 +5992,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => false,
                 'whichPlugin' => 'seminar_list',
                 'registrationsListPID' => 1,
-                'registrationsVipListPID' => 0,
             ],
             'seminarListIsRegisteredWithoutListPid' => [
                 'expected' => false,
@@ -6004,16 +6000,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => false,
                 'whichPlugin' => 'seminar_list',
                 'registrationsListPID' => 0,
-                'registrationsVipListPID' => 0,
-            ],
-            'seminarListIsVipWithListPid' => [
-                'expected' => true,
-                'loggedIn' => true,
-                'isRegistered' => true,
-                'isVip' => true,
-                'whichPlugin' => 'seminar_list',
-                'registrationsListPID' => 0,
-                'registrationsVipListPID' => 1,
             ],
             'seminarListIsVipWithoutListPid' => [
                 'expected' => false,
@@ -6022,7 +6008,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => true,
                 'whichPlugin' => 'seminar_list',
                 'registrationsListPID' => 0,
-                'registrationsVipListPID' => 0,
             ],
             'myEventsIsRegisteredWithListPid' => [
                 'expected' => true,
@@ -6031,7 +6016,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => false,
                 'whichPlugin' => 'my_events',
                 'registrationsListPID' => 1,
-                'registrationsVipListPID' => 1,
             ],
             'myEventsIsVipWithListPid' => [
                 'expected' => false,
@@ -6040,7 +6024,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => true,
                 'whichPlugin' => 'my_events',
                 'registrationsListPID' => 1,
-                'registrationsVipListPID' => 1,
             ],
             'myVipEventsIsRegisteredWithListPid' => [
                 'expected' => false,
@@ -6049,16 +6032,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => false,
                 'whichPlugin' => 'my_vip_events',
                 'registrationsListPID' => 1,
-                'registrationsVipListPID' => 1,
-            ],
-            'myVipEventsIsVipWithListPid' => [
-                'expected' => true,
-                'loggedIn' => true,
-                'isRegistered' => false,
-                'isVip' => true,
-                'whichPlugin' => 'my_vip_events',
-                'registrationsListPID' => 1,
-                'registrationsVipListPID' => 1,
             ],
             'listRegistrationsIsRegistered' => [
                 'expected' => true,
@@ -6067,7 +6040,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => false,
                 'whichPlugin' => 'list_registrations',
                 'registrationsListPID' => 0,
-                'registrationsVipListPID' => 0,
             ],
             'listRegistrationsIsVip' => [
                 'expected' => false,
@@ -6076,25 +6048,6 @@ final class LegacyEventTest extends FunctionalTestCase
                 'isVip' => true,
                 'whichPlugin' => 'list_registrations',
                 'registrationsListPID' => 0,
-                'registrationsVipListPID' => 0,
-            ],
-            'listVipRegistrationsIsRegistered' => [
-                'expected' => false,
-                'loggedIn' => true,
-                'isRegistered' => true,
-                'isVip' => false,
-                'whichPlugin' => 'list_vip_registrations',
-                'registrationsListPID' => 0,
-                'registrationsVipListPID' => 0,
-            ],
-            'listVipRegistrationsIsVip' => [
-                'expected' => true,
-                'loggedIn' => true,
-                'isRegistered' => false,
-                'isVip' => true,
-                'whichPlugin' => 'list_vip_registrations',
-                'registrationsListPID' => 0,
-                'registrationsVipListPID' => 0,
             ],
         ];
     }
@@ -6110,8 +6063,7 @@ final class LegacyEventTest extends FunctionalTestCase
         bool $isRegistered,
         bool $isVip,
         string $whichPlugin,
-        int $registrationsListPID,
-        int $registrationsVipListPID
+        int $registrationsListPID
     ): void {
         $subject = $this
             ->getMockBuilder(LegacyEvent::class)
@@ -6136,11 +6088,7 @@ final class LegacyEventTest extends FunctionalTestCase
 
         self::assertSame(
             $expected,
-            $subject->canViewRegistrationsList(
-                $whichPlugin,
-                $registrationsListPID,
-                $registrationsVipListPID,
-            ),
+            $subject->canViewRegistrationsList($whichPlugin, $registrationsListPID),
         );
     }
 
@@ -6171,20 +6119,6 @@ final class LegacyEventTest extends FunctionalTestCase
         self::assertSame(
             $this->translate('message_notLoggedIn'),
             $subject->canViewRegistrationsListMessage('list_registrations'),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function canViewRegistrationsListMessageForVipListAndNoLoginReturnsPleaseLoginMessage(): void
-    {
-        $subject = $this->getMockBuilder(LegacyEvent::class)->onlyMethods(['needsRegistration'])->getMock();
-        $subject->method('needsRegistration')->willReturn(true);
-
-        self::assertSame(
-            $this->translate('message_notLoggedIn'),
-            $subject->canViewRegistrationsListMessage('list_vip_registrations'),
         );
     }
 
