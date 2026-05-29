@@ -371,14 +371,6 @@ Eine Veranstaltung mit dieser Nummer existiert nicht. Wenn du diese Fehlermeldun
         <source>starting %s</source>
         <target state="final">ab %s</target>
       </trans-unit>
-      <trans-unit id="message_accessDenied" approved="yes">
-        <source>Sorry, you don't have access to this part of the site.</source>
-        <target state="final">Zu diesem Teil der Site haben Sie leider keine Zugangsberechtigung.</target>
-      </trans-unit>
-      <trans-unit id="message_accessDenied_informal" approved="yes">
-        <source>Sorry, you don't have access to this part of the site.</source>
-        <target state="final">Zu diesem Teil der Site hast du leider keine Zugangsberechtigung.</target>
-      </trans-unit>
       <trans-unit id="email_confirmationSubject" approved="yes">
         <source>Registration confirmation</source>
         <target state="final">Anmeldebestätigung</target>
@@ -747,10 +739,6 @@ Fehler 404. Eine Veranstaltung mit dieser Nummer existiert nicht. Wenn Sie diese
         <source>My Managed Events</source>
         <target state="final">Meine verwalteten Veranstaltungen</target>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.list_registrations" approved="yes">
-        <source>List of Registrations (for attendees)</source>
-        <target state="final">Liste der Anmeldungen (für angemeldete Personen)</target>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list" approved="yes">
         <source>Category List</source>
         <target state="final">Kategorienliste</target>
@@ -774,10 +762,6 @@ Fehler 404. Eine Veranstaltung mit dieser Nummer existiert nicht. Wenn Sie diese
       <trans-unit id="seminars.pi_flexform.loginPID" approved="yes">
         <source>Page that contains the login form:</source>
         <target state="final">Seite mit dem Login-Formular:</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.registrationsListPID" approved="yes">
-        <source>Page that contains the list of registrations (for attendees):</source>
-        <target state="final">Seite mit der Liste der Anmeldungen (für angemeldete Personen):</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.formal" approved="yes">
         <source>formal</source>
@@ -954,18 +938,6 @@ Fehler 404. Eine Veranstaltung mit dieser Nummer existiert nicht. Wenn Sie diese
       <trans-unit id="seminars.pi_flexform.showSiteDetails" approved="yes">
         <source>Show site details</source>
         <target state="final">Ortsdetails anzeigen</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.sheet_registrationsListView" approved="yes">
-        <source>Registrations list view</source>
-        <target state="final">Anmeldungslistenansicht</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.showFeUserFieldsInRegistrationsList" approved="yes">
-        <source>Which FEuser fields to show in the list of registrations for an event</source>
-        <target state="final">Zeige diese FE-User-Felder in der Liste der Anmeldungen</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.showRegistrationFieldsInRegistrationList" approved="yes">
-        <source>Which registration fields to show in the list of registrations for an event:</source>
-        <target state="final">Zeige diese Anmeldungs-Felder in der Liste der Anmeldungen:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.linkToSingleView" approved="yes">
         <source>Link the single view from the list view:</source>
@@ -1175,14 +1147,6 @@ Zeige Ergebnisse ###SPAN_BEGIN###%s bis %s&lt;/span&gt; von ###SPAN_BEGIN###%s&l
         <source>unregister</source>
         <target state="final">abmelden</target>
       </trans-unit>
-      <trans-unit id="label_list_registrations" approved="yes">
-        <source>List of registrations</source>
-        <target state="final">Liste der Anmeldungen</target>
-      </trans-unit>
-      <trans-unit id="label_listRegistrationsLink" approved="yes">
-        <source>View the list of registrations</source>
-        <target state="final">Liste der Anmeldungen anzeigen</target>
-      </trans-unit>
       <trans-unit id="label_list_otherdates" approved="yes">
         <source>Other dates for this topic</source>
         <target state="final">Andere Termine für diese Veranstaltung</target>
@@ -1357,10 +1321,6 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="label_no_categories" approved="yes">
         <source>Currently, we aren't offering any categorized events.</source>
         <target state="final">Momentan bieten wir keine in Kategorien eingeordneten Veranstaltungen an.</target>
-      </trans-unit>
-      <trans-unit id="label_waiting_list" approved="yes">
-        <source>Waiting list</source>
-        <target state="final">Warteliste</target>
       </trans-unit>
       <trans-unit id="message_noResults" approved="yes">
         <source>Sorry, currently no events could be found.</source>
