@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Tests\Functional\Domain\Repository;
+namespace OliverKlee\Seminars\Tests\Functional\Domain\Repository\Event;
 
 use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
 use OliverKlee\Seminars\Domain\Model\Venue;
@@ -11,11 +11,10 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
- * @covers \OliverKlee\Seminars\Domain\Model\Event\TimeSlot
+ * @covers \OliverKlee\Seminars\Domain\Repository\Event\TimeSlotRepository
  */
 final class TimeSlotRepositoryTest extends FunctionalTestCase
 {
-
     private const FIXTURES_PATH = __DIR__ . '/Fixtures';
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
@@ -55,5 +54,4 @@ final class TimeSlotRepositoryTest extends FunctionalTestCase
         self::assertSame('Leuchtturm', $result->getRoom());
         self::assertInstanceOf(Venue::class, $result->getVenue());
     }
-
 }

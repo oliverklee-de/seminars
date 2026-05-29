@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Domain\Model\Event;
 
 use OliverKlee\Seminars\Domain\Model\Venue;
+use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -61,6 +62,4 @@ class TimeSlot extends AbstractEntity
     {
         $this->room = $room;
     }
-
-
 }

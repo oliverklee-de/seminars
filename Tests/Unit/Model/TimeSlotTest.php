@@ -21,6 +21,7 @@ final class TimeSlotTest extends UnitTestCase
 
         $this->subject = new TimeSlot();
     }
+
     /**
      * @test
      */
