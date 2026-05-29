@@ -377,14 +377,6 @@
         <source>starting %s</source>
         <target state="needs-translation">starting %s</target>
       </trans-unit>
-      <trans-unit id="message_accessDenied" approved="yes">
-        <source>Sorry, you don't have access to this part of the site.</source>
-        <target state="final">Sorry, U heeft geen toegang tot dit deel van de website.</target>
-      </trans-unit>
-      <trans-unit id="message_accessDenied_informal" approved="yes">
-        <source>Sorry, you don't have access to this part of the site.</source>
-        <target state="final">Sorry, je hebt geen toegang tot dit deel van de website.</target>
-      </trans-unit>
       <trans-unit id="email_confirmationSubject" approved="yes">
         <source>Registration confirmation</source>
         <target state="final">Bevestiging van de registratie</target>
@@ -773,10 +765,6 @@
         <source>My Managed Events</source>
         <target state="final">Mijn VIP Evenementen</target>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.list_registrations" approved="yes">
-        <source>List of Registrations (for attendees)</source>
-        <target state="final">Lijst van registraties (voor deelnemers)</target>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list" approved="yes">
         <source>Category List</source>
         <target state="final">Categorie lijst</target>
@@ -800,10 +788,6 @@
       <trans-unit id="seminars.pi_flexform.loginPID" approved="yes">
         <source>Page that contains the login form:</source>
         <target state="final">Pagina die het inlogformulier bevat:</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.registrationsListPID" approved="yes">
-        <source>Page that contains the list of registrations (for attendees):</source>
-        <target state="final">Pagina die de lijst van registraties (voor deelnemers) bevat:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.formal" approved="yes">
         <source>formal</source>
@@ -982,18 +966,6 @@
       <trans-unit id="seminars.pi_flexform.showSiteDetails" approved="yes">
         <source>Show site details</source>
         <target state="final">Toon locatie details</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.sheet_registrationsListView">
-        <source>Registrations list view</source>
-        <target state="needs-translation">Registrations list view</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.showFeUserFieldsInRegistrationsList" approved="yes">
-        <source>Which FEuser fields to show in the list of registrations for an event</source>
-        <target state="final">Welke FE user velden wil je tonen in het overzicht van registratie voor een seminar</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.showRegistrationFieldsInRegistrationList">
-        <source>Which registration fields to show in the list of registrations for an event:</source>
-        <target state="needs-translation">Which registration fields to show in the list of registrations for an event:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.linkToSingleView">
         <source>Link the single view from the list view:</source>
@@ -1205,14 +1177,6 @@
         <source>unregister</source>
         <target state="needs-translation">unregister</target>
       </trans-unit>
-      <trans-unit id="label_list_registrations" approved="yes">
-        <source>List of registrations</source>
-        <target state="final">Lijst van registraties</target>
-      </trans-unit>
-      <trans-unit id="label_listRegistrationsLink" approved="yes">
-        <source>View the list of registrations</source>
-        <target state="final">Toon de lijst van registraties</target>
-      </trans-unit>
       <trans-unit id="label_list_otherdates" approved="yes">
         <source>Other dates for this topic</source>
         <target state="final">Andere datums voor dit onderwerp</target>
@@ -1392,10 +1356,6 @@
       <trans-unit id="label_no_categories" approved="yes">
         <source>Currently, we aren't offering any categorized events.</source>
         <target state="final">Op dit moment bieden we geen evenementen in de volgende categorieën:</target>
-      </trans-unit>
-      <trans-unit id="label_waiting_list" approved="yes">
-        <source>Waiting list</source>
-        <target state="final">Wachtlijst</target>
       </trans-unit>
       <trans-unit id="message_noResults" approved="yes">
         <source>Sorry, currently no events could be found.</source>
