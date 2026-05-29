@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Tests\Unit\Model;
+namespace OliverKlee\Seminars\Tests\Unit\Domain\Model\Event;
 
 use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
 use OliverKlee\Seminars\Domain\Model\Venue;
@@ -113,10 +113,12 @@ final class TimeSlotTest extends UnitTestCase
      */
     public function setRoomSetsRoom(): void
     {
-        $this->subject->setRoom('Leuchtturm');
+        $room = 'Leuchtturm';
+
+        $this->subject->setRoom($room);
 
         self::assertSame(
-            'Leuchtturm',
+            $room,
             $this->subject->getRoom(),
         );
     }

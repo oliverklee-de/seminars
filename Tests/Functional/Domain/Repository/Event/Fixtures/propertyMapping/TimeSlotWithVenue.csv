@@ -1,6 +1,6 @@
 "tx_seminars_timeslots"
-,"uid","begin_date","end_date","place","room"
-,1,1743588000,1743703200,1,"Leuchtturm"
+,"uid","place"
+,1,1
 
 "tx_seminars_sites"
 ,"uid","title"

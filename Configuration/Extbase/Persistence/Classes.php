@@ -180,10 +180,10 @@ return [
     ],
     TimeSlot::class => [
         'tableName' => 'tx_seminars_timeslots',
-            'properties' => [
-                'start' => ['fieldName' => 'begin_date'],
-                'end' => ['fieldName' => 'end_date'],
-                'venue' => ['fieldName' => 'place'],
-         ],
+        'properties' => [
+            'start' => ['fieldName' => 'begin_date'],
+            'end' => ['fieldName' => 'end_date'],
+            'venue' => ['fieldName' => 'place'],
+        ],
     ],
 ];

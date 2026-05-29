@@ -26,6 +26,7 @@ class Registration
 class RegistrationCheckbox
 class SingleEvent
 class Speaker
+class TimeSlot
 class Venue
 
 ' ===========
@@ -58,6 +59,7 @@ Speaker ..|> MailRole
 EventDate "*" --> "1" EventType
 EventDate "*" --> "*" PaymentMethod
 EventDate "*" --> "*" Price
+EventDate "*" --> "*" Time
 EventDate "*" --> "0..1" EventTopic
 
 EventDateInterface "1" --> "*" AccommodationOption

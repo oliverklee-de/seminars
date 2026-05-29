@@ -64,8 +64,10 @@ final class TimeSlotRepositoryTest extends FunctionalTestCase
 
         $result = $this->subject->findByUid(1);
 
+        $venue = $result->getVenue();
+
         self::assertInstanceOf(TimeSlot::class, $result);
-        self::assertInstanceOf(Venue::class, $result->getVenue());
-        self::assertSame('AKA', $result->getVenue()->getTitle());
+        self::assertInstanceOf(Venue::class, $venue);
+        self::assertSame('AKA', $venue->getTitle());
     }
 }

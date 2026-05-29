@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Tests\Functional\Domain\Model;
+namespace OliverKlee\Seminars\Tests\Functional\Domain\Model\Event;
 
 use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
+use TYPO3\CMS\Extbase\Validation\Validator\ConjunctionValidator;
 use TYPO3\CMS\Extbase\Validation\ValidatorResolver;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -13,8 +15,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class TimeSlotTest extends FunctionalTestCase
 {
-    protected bool $initializeDatabase = false;
-
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -23,13 +23,19 @@ final class TimeSlotTest extends FunctionalTestCase
 
     private TimeSlot $subject;
 
-    private ValidatorResolver $validatorResolver;
+    private ConjunctionValidator $validator;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->validatorResolver = $this->get(ValidatorResolver::class);
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackendUser.csv');
+        $GLOBALS['LANG'] = $this
+            ->get(LanguageServiceFactory::class)
+            ->createFromUserPreferences($this->setUpBackendUser(1));
+
+        $this->validator = $this->get(ValidatorResolver::class)->getBaseValidatorConjunction(TimeSlot::class);
+
         $this->subject = new TimeSlot();
     }
 
@@ -39,8 +45,9 @@ final class TimeSlotTest extends FunctionalTestCase
     public function roomWithMaximumLengthPassesValidation(): void
     {
         $this->subject->setRoom(str_repeat('p', 255));
-        $validator = $this->validatorResolver->getBaseValidatorConjunction(TimeSlot::class);
-        $result = $validator->validate($this->subject);
+
+        $result = $this->validator->validate($this->subject);
+
         self::assertFalse($result->forProperty('room')->hasErrors());
     }
 
@@ -50,8 +57,9 @@ final class TimeSlotTest extends FunctionalTestCase
     public function roomInputLongerThanMaximumLengthDoesNotPassValidation(): void
     {
         $this->subject->setRoom(str_repeat('p', 256));
-        $validator = $this->validatorResolver->getBaseValidatorConjunction(TimeSlot::class);
-        $result = $validator->validate($this->subject);
+
+        $result = $this->validator->validate($this->subject);
+
         self::assertTrue($result->forProperty('room')->hasErrors());
     }
 }

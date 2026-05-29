@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Domain\Model\Event;
 
 use OliverKlee\Seminars\Domain\Model\Venue;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 
 /**
  * This class represents the timeslots
@@ -17,7 +19,12 @@ class TimeSlot extends AbstractEntity
 
     protected ?\DateTime $end = null;
 
-    protected ?Venue $venue = null;
+    /**
+     * @var Venue|null
+     * @phpstan-var Venue|LazyLoadingProxy|null
+     * @Lazy
+     */
+    protected $venue;
 
     /**
      * @Validate("StringLength", options={"maximum": 255})
@@ -46,7 +53,13 @@ class TimeSlot extends AbstractEntity
 
     public function getVenue(): ?Venue
     {
-        return $this->venue;
+        $venue = $this->venue;
+        if ($venue instanceof LazyLoadingProxy) {
+            $venue = $venue->_loadRealInstance();
+            $this->venue = ($venue instanceof Venue) ? $venue : null;
+        }
+
+        return $venue;
     }
 
     public function setVenue(?Venue $venue): void
