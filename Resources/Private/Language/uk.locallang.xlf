@@ -377,14 +377,6 @@
         <source>starting %s</source>
         <target state="needs-translation">starting %s</target>
       </trans-unit>
-      <trans-unit id="message_accessDenied">
-        <source>Sorry, you don't have access to this part of the site.</source>
-        <target state="needs-translation">Sorry, you don't have access to this part of the site.</target>
-      </trans-unit>
-      <trans-unit id="message_accessDenied_informal">
-        <source>Sorry, you don't have access to this part of the site.</source>
-        <target state="needs-translation">Sorry, you don't have access to this part of the site.</target>
-      </trans-unit>
       <trans-unit id="email_confirmationSubject">
         <source>Registration confirmation</source>
         <target state="needs-translation">Registration confirmation</target>
@@ -773,10 +765,6 @@
         <source>My Managed Events</source>
         <target state="needs-translation">My Managed Events</target>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.list_registrations">
-        <source>List of Registrations (for attendees)</source>
-        <target state="needs-translation">List of Registrations (for attendees)</target>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list">
         <source>Category List</source>
         <target state="needs-translation">Category List</target>
@@ -800,10 +788,6 @@
       <trans-unit id="seminars.pi_flexform.loginPID">
         <source>Page that contains the login form:</source>
         <target state="needs-translation">Page that contains the login form:</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.registrationsListPID">
-        <source>Page that contains the list of registrations (for attendees):</source>
-        <target state="needs-translation">Page that contains the list of registrations (for attendees):</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.formal">
         <source>formal</source>
@@ -982,18 +966,6 @@
       <trans-unit id="seminars.pi_flexform.showSiteDetails">
         <source>Show site details</source>
         <target state="needs-translation">Show site details</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.sheet_registrationsListView">
-        <source>Registrations list view</source>
-        <target state="needs-translation">Registrations list view</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.showFeUserFieldsInRegistrationsList">
-        <source>Which FEuser fields to show in the list of registrations for an event</source>
-        <target state="needs-translation">Which FEuser fields to show in the list of registrations for an event</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.showRegistrationFieldsInRegistrationList">
-        <source>Which registration fields to show in the list of registrations for an event:</source>
-        <target state="needs-translation">Which registration fields to show in the list of registrations for an event:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.linkToSingleView">
         <source>Link the single view from the list view:</source>
@@ -1205,14 +1177,6 @@
         <source>unregister</source>
         <target state="needs-translation">unregister</target>
       </trans-unit>
-      <trans-unit id="label_list_registrations">
-        <source>List of registrations</source>
-        <target state="needs-translation">List of registrations</target>
-      </trans-unit>
-      <trans-unit id="label_listRegistrationsLink">
-        <source>View the list of registrations</source>
-        <target state="needs-translation">View the list of registrations</target>
-      </trans-unit>
       <trans-unit id="label_list_otherdates">
         <source>Other dates for this topic</source>
         <target state="needs-translation">Other dates for this topic</target>
@@ -1392,10 +1356,6 @@
       <trans-unit id="label_no_categories">
         <source>Currently, we aren't offering any categorized events.</source>
         <target state="needs-translation">Currently, we aren't offering any categorized events.</target>
-      </trans-unit>
-      <trans-unit id="label_waiting_list">
-        <source>Waiting list</source>
-        <target state="needs-translation">Waiting list</target>
       </trans-unit>
       <trans-unit id="message_noResults">
         <source>Sorry, currently no events could be found.</source>
