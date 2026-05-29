@@ -377,14 +377,6 @@
         <source>starting %s</source>
         <target state="final">dès %s</target>
       </trans-unit>
-      <trans-unit id="message_accessDenied" approved="yes">
-        <source>Sorry, you don't have access to this part of the site.</source>
-        <target state="final">Désolé, vous n'avez pas le droit d'accéder à cette partie du site.</target>
-      </trans-unit>
-      <trans-unit id="message_accessDenied_informal" approved="yes">
-        <source>Sorry, you don't have access to this part of the site.</source>
-        <target state="final">Désolé, tu n'as pas le droit d'accéder à cette partie du site.</target>
-      </trans-unit>
       <trans-unit id="email_confirmationSubject" approved="yes">
         <source>Registration confirmation</source>
         <target state="final">Confirmation d'inscription</target>
@@ -773,10 +765,6 @@
         <source>My Managed Events</source>
         <target state="final">Les événements VIP géré par moi</target>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.list_registrations" approved="yes">
-        <source>List of Registrations (for attendees)</source>
-        <target state="final">Liste des inscriptions (participants)</target>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list" approved="yes">
         <source>Category List</source>
         <target state="final">Liste des catégories</target>
@@ -800,10 +788,6 @@
       <trans-unit id="seminars.pi_flexform.loginPID" approved="yes">
         <source>Page that contains the login form:</source>
         <target state="final">Page qui contient le formulaire de login :</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.registrationsListPID" approved="yes">
-        <source>Page that contains the list of registrations (for attendees):</source>
-        <target state="final">Page qui contient la liste des inscriptions (participants) :</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.formal" approved="yes">
         <source>formal</source>
@@ -982,18 +966,6 @@
       <trans-unit id="seminars.pi_flexform.showSiteDetails" approved="yes">
         <source>Show site details</source>
         <target state="final">Afficher les détails du lieu</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.sheet_registrationsListView" approved="yes">
-        <source>Registrations list view</source>
-        <target state="final">Vue sous forme de liste des inscriptions</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.showFeUserFieldsInRegistrationsList" approved="yes">
-        <source>Which FEuser fields to show in the list of registrations for an event</source>
-        <target state="final">Quels champs FEuser faut-il afficher dans la liste d'inscrits pour un événement</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.showRegistrationFieldsInRegistrationList" approved="yes">
-        <source>Which registration fields to show in the list of registrations for an event:</source>
-        <target state="final">Champs d'inscription à afficher dans la liste des inscriptions à un événement</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.linkToSingleView">
         <source>Link the single view from the list view:</source>
@@ -1205,14 +1177,6 @@
         <source>unregister</source>
         <target state="needs-translation">unregister</target>
       </trans-unit>
-      <trans-unit id="label_list_registrations" approved="yes">
-        <source>List of registrations</source>
-        <target state="final">Liste des inscriptions</target>
-      </trans-unit>
-      <trans-unit id="label_listRegistrationsLink" approved="yes">
-        <source>View the list of registrations</source>
-        <target state="final">Voir la liste des inscriptions</target>
-      </trans-unit>
       <trans-unit id="label_list_otherdates" approved="yes">
         <source>Other dates for this topic</source>
         <target state="final">Autres dates pour ce sujet</target>
@@ -1392,10 +1356,6 @@
       <trans-unit id="label_no_categories" approved="yes">
         <source>Currently, we aren't offering any categorized events.</source>
         <target state="final">Pour l'instant, nous ne proposons aucun événement catégorisé.</target>
-      </trans-unit>
-      <trans-unit id="label_waiting_list" approved="yes">
-        <source>Waiting list</source>
-        <target state="final">Liste d'attente</target>
       </trans-unit>
       <trans-unit id="message_noResults" approved="yes">
         <source>Sorry, currently no events could be found.</source>
