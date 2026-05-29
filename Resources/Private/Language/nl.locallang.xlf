@@ -777,10 +777,6 @@
         <source>List of Registrations (for attendees)</source>
         <target state="final">Lijst van registraties (voor deelnemers)</target>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.list_vip_registrations" approved="yes">
-        <source>List of Registrations (for event managers)</source>
-        <target state="final">Lijst van registraties (voor VIP's)</target>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list" approved="yes">
         <source>Category List</source>
         <target state="final">Categorie lijst</target>
@@ -808,10 +804,6 @@
       <trans-unit id="seminars.pi_flexform.registrationsListPID" approved="yes">
         <source>Page that contains the list of registrations (for attendees):</source>
         <target state="final">Pagina die de lijst van registraties (voor deelnemers) bevat:</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.registrationsVipListPID" approved="yes">
-        <source>Page that contains the list of registrations (for event managers):</source>
-        <target state="final">pagina die de lijst van registraties (voor VIP's) bevat:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.formal" approved="yes">
         <source>formal</source>
