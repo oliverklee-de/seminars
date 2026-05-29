@@ -541,9 +541,6 @@
       <trans-unit id="seminars.pi_flexform.my_events">
         <source>My Events</source>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.my_vip_events">
-        <source>My Managed Events</source>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list">
         <source>Category List</source>
       </trans-unit>
@@ -753,12 +750,6 @@
       </trans-unit>
       <trans-unit id="label_myevents_informal">
         <source>You are registered for the following events:</source>
-      </trans-unit>
-      <trans-unit id="label_myvipevents">
-        <source>You are an editor for the following events:</source>
-      </trans-unit>
-      <trans-unit id="label_myvipevents_informal">
-        <source>You are an editor for the following events:</source>
       </trans-unit>
       <trans-unit id="label_category">
         <source>Category</source>

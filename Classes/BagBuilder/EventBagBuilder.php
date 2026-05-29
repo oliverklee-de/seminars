@@ -389,32 +389,6 @@ class EventBagBuilder extends AbstractBagBuilder
     }
 
     /**
-     * Limits the bag to events with the FE user UID given in the parameter
-     * $feUserUid as event manager.
-     *
-     * @param int<0, max> $feUserUid the FE user UID of the event manager to limit for,
-     *        set to 0 to remove the limitation
-     */
-    public function limitToEventManager(int $feUserUid): void
-    {
-        // @phpstan-ignore-next-line We are explicitly checking for a contract violation here.
-        if ($feUserUid < 0) {
-            throw new \InvalidArgumentException('The parameter $feUserUid must be >= 0.', 1333292729);
-        }
-
-        if ($feUserUid === 0) {
-            $this->removeAdditionalTableName('tx_seminars_seminars_feusers_mm');
-            unset($this->whereClauseParts['vip']);
-            return;
-        }
-
-        $this->addAdditionalTableName('tx_seminars_seminars_feusers_mm');
-        $this->whereClauseParts['vip'] = 'tx_seminars_seminars.uid = ' .
-            'tx_seminars_seminars_feusers_mm.uid_local AND ' .
-            'tx_seminars_seminars_feusers_mm.uid_foreign = ' . $feUserUid;
-    }
-
-    /**
      * Limits the bag to events on the day after the end date of the event given
      * event in the first parameter $event.
      *

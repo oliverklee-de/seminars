@@ -45,12 +45,6 @@
                                         </numIndex>
                                         <numIndex index="1">my_events</numIndex>
                                     </numIndex>
-                                    <numIndex index="5" type="array">
-                                        <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.my_vip_events
-                                        </numIndex>
-                                        <numIndex index="1">my_vip_events</numIndex>
-                                    </numIndex>
                                     <numIndex index="10" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.category_list

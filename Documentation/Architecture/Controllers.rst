@@ -56,8 +56,6 @@ In ``FrontEnd/``, there are additional classes that are used by the ``DefaultCon
 +----------------------------+------------------------------------------------------------------+
 | ``my_events``              | Shows the events the currently logged-in user is registered for. |
 +----------------------------+------------------------------------------------------------------+
-| ``my_vip_events``          | Shows events the logged-in user has management permissions for.  |
-+----------------------------+------------------------------------------------------------------+
 | ``category_list``          | List of event categories.                                        |
 +----------------------------+------------------------------------------------------------------+
 | ``topic_list``             | List of event topics.                                            |
