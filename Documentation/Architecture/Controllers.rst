@@ -58,9 +58,6 @@ In ``FrontEnd/``, there are additional classes that are used by the ``DefaultCon
 +----------------------------+------------------------------------------------------------------+
 | ``my_vip_events``          | Shows events the logged-in user has management permissions for.  |
 +----------------------------+------------------------------------------------------------------+
-| ``list_registrations``     | List of all registrations for a specific event.                  |
-|                            | Intended for normal frontend users viewing event registrations.  |
-+----------------------------+------------------------------------------------------------------+
 | ``category_list``          | List of event categories.                                        |
 +----------------------------+------------------------------------------------------------------+
 | ``topic_list``             | List of event topics.                                            |

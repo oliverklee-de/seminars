@@ -33,7 +33,6 @@ use OliverKlee\Seminars\ViewHelpers\RichTextViewHelper;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\HttpUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
@@ -208,15 +207,6 @@ class DefaultController extends TemplateHelper
             case 'single_view':
                 $result = $this->createSingleView();
                 break;
-            case 'list_registrations':
-                $registrationsList = GeneralUtility::makeInstance(
-                    RegistrationsList::class,
-                    $this->conf,
-                    (int)($this->piVars['seminar'] ?? 0),
-                    $this->cObj,
-                );
-                $result = $registrationsList->render();
-                break;
             case 'category_list':
                 $categoryList = GeneralUtility::makeInstance(
                     CategoryList::class,
@@ -321,48 +311,6 @@ class DefaultController extends TemplateHelper
     }
 
     /**
-     * Creates the link to the list of registrations for the current seminar.
-     * Returns an empty string if this link is not allowed.
-     * For standard lists, a link is created if either the user is a VIP or is
-     * registered for that seminar (with the link to the VIP list taking
-     * precedence).
-     *
-     * @return string HTML for the link (may be an empty string)
-     */
-    protected function getRegistrationsListLink(): string
-    {
-        $result = '';
-        $targetPageId = 0;
-
-        \assert($this->seminar instanceof LegacyEvent);
-        if (
-            $this->seminar->canViewRegistrationsList(
-                $this->whatToDisplay,
-                $this->getConfValueInteger('registrationsListPID'),
-            )
-        ) {
-            // No link to the VIP list ... so maybe to the list for the participants.
-            $targetPageId = $this->getConfValueInteger('registrationsListPID');
-        }
-
-        if ($targetPageId) {
-            \assert($this->cObj instanceof ContentObjectRenderer);
-            $result = $this->cObj->typoLink(
-                $this->translate('label_listRegistrationsLink'),
-                [
-                    'parameter' => (string)$targetPageId,
-                    'additionalParams' => HttpUtility::buildQueryString(
-                        ['tx_seminars_pi1[seminar]' => $this->seminar->getUid()],
-                        '&',
-                    ),
-                ],
-            );
-        }
-
-        return $result;
-    }
-
-    /**
      * Returns a label wrapped in <a> tags. The link points to the login page
      * and contains a redirect parameter that points back to a certain page
      * (must be provided as a parameter to this function). The user will be
@@ -429,7 +377,7 @@ class DefaultController extends TemplateHelper
     protected function createSingleView(): string
     {
         $this->hideSubparts($this->getConfValueString('hideFields', 's_template_special'), 'FIELD_WRAPPER');
-        $this->hideSubparts('language', 'FIELD_WRAPPER');
+        $this->hideSubparts('language,list_registrations', 'field_wrapper');
 
         if ($this->showUid <= 0) {
             $this->setMarker('error_text', $this->translate('message_missingSeminarNumber'));
@@ -519,7 +467,6 @@ class DefaultController extends TemplateHelper
 
         $this->setRegistrationDeadlineMarker();
         $this->setRegistrationMarker();
-        $this->setListOfRegistrationMarker();
 
         $this->hideUnneededSubpartsForTopicRecords();
 
@@ -1087,26 +1034,6 @@ class DefaultController extends TemplateHelper
     }
 
     /**
-     * Fills in the matching marker for the link to the list of registrations
-     * or hides the subpart if the currently logged in FE user is not allowed
-     * to view the list of registrations.
-     */
-    private function setListOfRegistrationMarker(): void
-    {
-        $canViewListOfRegistrations = $this->seminar->canViewRegistrationsList(
-            $this->whatToDisplay,
-            $this->getConfValueInteger('registrationsListPID'),
-        );
-
-        if (!$canViewListOfRegistrations) {
-            $this->hideSubparts('list_registrations', 'field_wrapper');
-            return;
-        }
-
-        $this->setMarker('list_registrations', $this->getRegistrationsListLink());
-    }
-
-    /**
      * Hides unneeded subparts for topic records.
      */
     private function hideUnneededSubpartsForTopicRecords(): void
@@ -1117,8 +1044,7 @@ class DefaultController extends TemplateHelper
 
         $this->hideSubparts(
             'accreditation_number,date,time,place,room,speakers,organizers,' .
-            'vacancies,deadline_registration,registration,' .
-            'list_registrations,eventsnextday',
+            'vacancies,deadline_registration,registration,eventsnextday',
             'field_wrapper',
         );
     }
@@ -1180,7 +1106,7 @@ class DefaultController extends TemplateHelper
             }
 
             // Hides unneeded columns from the list.
-            $temporaryHiddenColumns = ['title', 'list_registrations'];
+            $temporaryHiddenColumns = ['title'];
             $this->hideColumns($temporaryHiddenColumns);
 
             $tableOtherDates = $this->createListTable($seminarBag, 'other_dates');
@@ -1306,7 +1232,6 @@ class DefaultController extends TemplateHelper
         $this->hideColumnsForAllViewsFromTypoScriptSetup();
         $this->hideRegisterColumnIfNecessary($whatToDisplay);
         $this->hideColumnsForAllViewsExceptMyEvents($whatToDisplay);
-        $this->hideListRegistrationsColumnIfNecessary($whatToDisplay);
         $this->hideFilesColumnIfUserCannotAccessFiles();
 
         if (!isset($this->piVars['pointer'])) {
@@ -1466,7 +1391,6 @@ class DefaultController extends TemplateHelper
             'vacancies',
             'status_registration',
             'registration',
-            'list_registrations',
             'edit',
         ];
 
@@ -1605,8 +1529,6 @@ class DefaultController extends TemplateHelper
             $this->setMarker('class_listvacancies', $this->getVacanciesClasses($this->seminar));
 
             $this->setRegistrationLinkMarker($whatToDisplay);
-
-            $this->setMarker('list_registrations', $this->getRegistrationsListLink());
 
             $this->getListViewHookProvider()->executeHook('modifyListRow', $this);
 
@@ -1906,46 +1828,6 @@ class DefaultController extends TemplateHelper
 
         $this->unhideSubpartsArray($columnsToUnhide, $permanentlyHiddenColumns, 'LISTHEADER_WRAPPER');
         $this->unhideSubpartsArray($columnsToUnhide, $permanentlyHiddenColumns, 'LISTITEM_WRAPPER');
-    }
-
-    /**
-     * Hides the column with the link to the list of registrations if online
-     * registration is disabled, no user is logged in or there is no page
-     * specified to link to.
-     *
-     * Also hides it for the "other_dates" and "events_next_day" lists.
-     *
-     * @param string $whatToDisplay the flavor of list view: either an empty string (for the default list view),
-     *        the value from "what_to_display", or "other_dates"
-     */
-    public function hideListRegistrationsColumnIfNecessary(string $whatToDisplay): void
-    {
-        $alwaysHideInViews = ['topic_list', 'other_dates', 'events_next_day'];
-        if (
-            !$this->isRegistrationEnabled() || !$this->isLoggedIn()
-            || \in_array($whatToDisplay, $alwaysHideInViews, true)
-        ) {
-            $this->hideColumns(['list_registrations']);
-            return;
-        }
-
-        switch ($whatToDisplay) {
-            case 'seminar_list':
-                $hideIt = !$this->hasConfValueInteger('registrationsListPID');
-                break;
-            case 'my_events':
-                $hideIt = !$this->hasConfValueInteger('registrationsListPID');
-                break;
-            case 'my_vip_events':
-                $hideIt = true;
-                break;
-            default:
-                $hideIt = false;
-        }
-
-        if ($hideIt) {
-            $this->hideColumns(['list_registrations']);
-        }
     }
 
     /**

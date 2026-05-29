@@ -6,16 +6,6 @@ parameters:
 			path: ../../Classes/BackEnd/EmailService.php
 
 		-
-			message: "#^Cannot access an offset on mixed\\.$#"
-			count: 2
-			path: ../../Classes/BackEnd/FlexForms.php
-
-		-
-			message: "#^Cannot access offset 'Field' on mixed\\.$#"
-			count: 1
-			path: ../../Classes/BackEnd/FlexForms.php
-
-		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
 			path: ../../Classes/Bag/AbstractBag.php
@@ -288,11 +278,6 @@ parameters:
 		-
 			message: "#^Cannot call method cObjGetSingle\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 2
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Cannot call method canViewRegistrationsList\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -716,11 +701,6 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, int given\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Parameter \\#1 \\$age of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:limitToAge\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
@@ -776,11 +756,6 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Parameter \\#2 \\$event of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getLinkToRegistrationPage\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
@@ -796,11 +771,6 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Parameter \\#2 \\$registrationsListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Parameter \\#2 \\$str of function explode expects string, array\\|float\\|int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
@@ -809,11 +779,6 @@ parameters:
 			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$internal \\(array\\{descFlag\\: bool, maxPages\\: int, orderBy\\?\\: string, res_count\\: int\\<0, max\\>, results_at_a_time\\: int\\}\\) does not accept array\\{descFlag\\: string, maxPages\\: int, orderBy\\?\\: string, res_count\\: int\\<0, max\\>, results_at_a_time\\: int\\}\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\RegistrationsList\\:\\:__construct\\(\\) has parameter \\$configuration with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/RegistrationsList.php
 
 		-
 			message: "#^Cannot call method createRelativeUrlForEvent\\(\\) on OliverKlee\\\\Seminars\\\\Service\\\\SingleViewLinkBuilder\\|null\\.$#"
@@ -2056,16 +2021,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\DefaultControllerTest\\:\\:hideListRegistrationsColumnIfNecessaryDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\RegistrationsListTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/FrontEnd/RegistrationsListTest.php
-
-		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\FrontEnd\\\\RequirementsListTest\\:\\:getFrontEndController\\(\\) should return TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController but returns mixed\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/FrontEnd/RequirementsListTest.php
@@ -2152,16 +2107,6 @@ parameters:
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyEventTest\\:\\:addTutorRelation\\(\\) has parameter \\$speakerData with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$whichPlugin of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects 'list_registrations'\\|'my_events'\\|'my_vip_events'\\|'seminar_list', string given\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$registrationsListPID of method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:canViewRegistrationsList\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 

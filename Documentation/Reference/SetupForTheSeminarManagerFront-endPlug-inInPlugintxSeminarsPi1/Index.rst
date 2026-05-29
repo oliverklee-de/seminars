@@ -436,38 +436,6 @@ override the corresponding value from TS Setup.**
 .. container:: table-row
 
    Property
-         showFeUserFieldsInRegistrationsList
-
-   Data type
-         string
-
-   Description
-         comma-separated list of FEuser fields to show in the list of
-         registrations for an event
-
-   Default
-         name
-
-
-.. container:: table-row
-
-   Property
-         showRegistrationFieldsInRegistrationList
-
-   Data type
-         string
-
-   Description
-         comma-separated list of registration fields to show in the list of
-         registrations for an event
-
-   Default
-         None
-
-
-.. container:: table-row
-
-   Property
          enableSortingLinksInListView
 
    Data type
@@ -627,21 +595,6 @@ override the corresponding value from TS Setup.**
 
    Description
          PID of the FE page that contains the login form or onetimeaccount
-
-   Default
-         None
-
-
-.. container:: table-row
-
-   Property
-         registrationsListPID
-
-   Data type
-         page\_id
-
-   Description
-         PID of the page that contains the registrations list for participants
 
    Default
          None
