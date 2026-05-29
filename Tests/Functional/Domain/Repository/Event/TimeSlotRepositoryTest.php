@@ -16,6 +16,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 final class TimeSlotRepositoryTest extends FunctionalTestCase
 {
     private const FIXTURES_PATH = __DIR__ . '/Fixtures';
+
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
@@ -42,9 +43,9 @@ final class TimeSlotRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function mapsAllModelFields(): void
+    public function mapsAllScalarModelFields(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/propertyMapping/TimeSlotWithAllFields.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/propertyMapping/TimeSlotWithAllScalarFields.csv');
 
         $result = $this->subject->findByUid(1);
 
@@ -52,6 +53,19 @@ final class TimeSlotRepositoryTest extends FunctionalTestCase
         self::assertEquals(new \DateTime('2025-04-02 10:00'), $result->getStart());
         self::assertEquals(new \DateTime('2025-04-03 18:00'), $result->getEnd());
         self::assertSame('Leuchtturm', $result->getRoom());
+    }
+
+    /**
+     * @test
+     */
+    public function mapsVenueRelation(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/propertyMapping/TimeSlotWithVenue.csv');
+
+        $result = $this->subject->findByUid(1);
+
+        self::assertInstanceOf(TimeSlot::class, $result);
         self::assertInstanceOf(Venue::class, $result->getVenue());
+        self::assertSame('AKA', $result->getVenue()->getTitle());
     }
 }

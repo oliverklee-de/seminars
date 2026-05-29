@@ -184,7 +184,6 @@ return [
                 'start' => ['fieldName' => 'begin_date'],
                 'end' => ['fieldName' => 'end_date'],
                 'venue' => ['fieldName' => 'place'],
-                'room' => ['fieldName' => 'room'],
          ],
     ],
 ];

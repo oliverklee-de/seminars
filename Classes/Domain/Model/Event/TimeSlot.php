@@ -18,6 +18,7 @@ class TimeSlot extends AbstractEntity
     protected ?\DateTime $end = null;
 
     protected ?Venue $venue = null;
+
     /**
      * @Validate("StringLength", options={"maximum": 255})
      */
