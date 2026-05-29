@@ -79,12 +79,6 @@ plugin.tx_seminars_pi1 {
   # whether file downloads are limited to attendees only
   limitFileDownloadToAttendees = 1
 
-  # comma-separated list of FEuser fields to show in the list of registrations for an event
-  showFeUserFieldsInRegistrationsList = name
-
-  # comma-separated list of registration fields to show in the list of registrations for an event
-  showRegistrationFieldsInRegistrationList =
-
   # whether to add sorting links to the headers in the list view
   enableSortingLinksInListView = 1
 
@@ -120,9 +114,6 @@ plugin.tx_seminars_pi1 {
 
   # PID of the FE page that contains the login form or onetimeaccount
   loginPID =
-
-  # PID of the page that contains the registrations list for participants
-  registrationsListPID =
 
   # the maximum width of the image of a seminar in the single view
   seminarImageSingleViewWidth = 260

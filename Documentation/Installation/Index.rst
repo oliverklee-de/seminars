@@ -17,5 +17,4 @@ Installation
    SettingAccessRights/Index
    AddingPagesToTheFrontEnd/Index
    SettingUpAListOfCategories/Index
-   SettingUpTheFront-endRegistrationLists/Index
    SettingUpTheSchedulerTask/Index

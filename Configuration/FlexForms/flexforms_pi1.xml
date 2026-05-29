@@ -51,12 +51,6 @@
                                         </numIndex>
                                         <numIndex index="1">my_vip_events</numIndex>
                                     </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.list_registrations
-                                        </numIndex>
-                                        <numIndex index="1">list_registrations</numIndex>
-                                    </numIndex>
                                     <numIndex index="10" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.category_list
@@ -154,23 +148,6 @@
                             </config>
                         </TCEforms>
                     </loginPID>
-                    <registrationsListPID>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.registrationsListPID
-                            </label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
-                    </registrationsListPID>
                     <limitFileDownloadToAttendees>
                         <TCEforms>
                             <label>
@@ -683,48 +660,5 @@
                 </el>
             </ROOT>
         </s_template_special>
-        <s_registrationsListView>
-            <ROOT>
-                <TCEforms>
-                    <sheetTitle>
-                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.sheet_registrationsListView
-                    </sheetTitle>
-                </TCEforms>
-                <el>
-                    <showFeUserFieldsInRegistrationsList>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.showFeUserFieldsInRegistrationsList
-                            </label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectCheckBox</renderType>
-                                <renderMode>checkbox</renderMode>
-                                <maxitems>100</maxitems>
-                                <itemsProcFunc>
-                                    OliverKlee\Seminars\BackEnd\FlexForms->getShowFeUserFieldsInRegistrationsList
-                                </itemsProcFunc>
-                            </config>
-                        </TCEforms>
-                    </showFeUserFieldsInRegistrationsList>
-                    <showRegistrationFieldsInRegistrationList>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.showRegistrationFieldsInRegistrationList
-                            </label>
-                            <config>
-                                <renderType>selectCheckBox</renderType>
-                                <type>select</type>
-                                <renderMode>checkbox</renderMode>
-                                <maxitems>100</maxitems>
-                                <itemsProcFunc>
-                                    OliverKlee\Seminars\BackEnd\FlexForms->getShowRegistrationFieldsInRegistrationList
-                                </itemsProcFunc>
-                            </config>
-                        </TCEforms>
-                    </showRegistrationFieldsInRegistrationList>
-                </el>
-            </ROOT>
-        </s_registrationsListView>
     </sheets>
 </T3DataStructure>

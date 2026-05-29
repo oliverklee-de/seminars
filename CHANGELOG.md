@@ -178,7 +178,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - Drop the hooks for the `DataHandler` hook (#5135)
 - Drop the hook system for modifying the CSV export (#5134)
-- Drop the legacy FE registration lists (#4277, #5133, #5139)
+- Drop the legacy FE registration lists (#4277, #5133, #5139, #5140)
 - Drop the email hook system (#5085)
 - Drop the CSV attachment from the scheduler task emails (#5028)
 - Drop `LegacyEvent::isUserRegisteredMessage()` (#4985)
