@@ -777,10 +777,6 @@
         <source>List of Registrations (for attendees)</source>
         <target state="final">Список зарегистрировавшихся (для посетителей)</target>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.list_vip_registrations" approved="yes">
-        <source>List of Registrations (for event managers)</source>
-        <target state="final">Список зарегистрировавшихся (для VIP)</target>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list" approved="yes">
         <source>Category List</source>
         <target state="final">Список категорий</target>
@@ -808,10 +804,6 @@
       <trans-unit id="seminars.pi_flexform.registrationsListPID" approved="yes">
         <source>Page that contains the list of registrations (for attendees):</source>
         <target state="final">Страница со списком регистраций (для посетителей):</target>
-      </trans-unit>
-      <trans-unit id="seminars.pi_flexform.registrationsVipListPID" approved="yes">
-        <source>Page that contains the list of registrations (for event managers):</source>
-        <target state="final">Страница со списком регистраций (для VIP):</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.formal" approved="yes">
         <source>formal</source>
