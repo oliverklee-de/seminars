@@ -355,10 +355,6 @@
         <source>Access</source>
         <target state="needs-translation">Access</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_seminars.vips">
-        <source>Managers of this event</source>
-        <target state="needs-translation">Managers of this event</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_seminars.image">
         <source>Image</source>
         <target state="needs-translation">Image</target>
