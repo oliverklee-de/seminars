@@ -761,10 +761,6 @@
         <source>My Events</source>
         <target state="needs-translation">My Events</target>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.my_vip_events">
-        <source>My Managed Events</source>
-        <target state="needs-translation">My Managed Events</target>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list">
         <source>Category List</source>
         <target state="needs-translation">Category List</target>
@@ -1048,14 +1044,6 @@
       <trans-unit id="label_myevents_informal">
         <source>You are registered for the following events:</source>
         <target state="needs-translation">You are registered for the following events:</target>
-      </trans-unit>
-      <trans-unit id="label_myvipevents">
-        <source>You are an editor for the following events:</source>
-        <target state="needs-translation">You are an editor for the following events:</target>
-      </trans-unit>
-      <trans-unit id="label_myvipevents_informal">
-        <source>You are an editor for the following events:</source>
-        <target state="needs-translation">You are an editor for the following events:</target>
       </trans-unit>
       <trans-unit id="label_category">
         <source>Category</source>
