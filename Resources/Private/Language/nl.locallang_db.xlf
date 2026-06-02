@@ -355,10 +355,6 @@
         <source>Access</source>
         <target state="needs-translation">Access</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_seminars.vips" approved="yes">
-        <source>Managers of this event</source>
-        <target state="final">FE gebruikers welke toestemming hebben om de lijst van registraties te zien</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_seminars.image">
         <source>Image</source>
         <target state="needs-translation">Image</target>
