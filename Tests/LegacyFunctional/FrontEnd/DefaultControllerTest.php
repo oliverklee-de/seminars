@@ -220,25 +220,6 @@ final class DefaultControllerTest extends FunctionalTestCase
     }
 
     /**
-     * Creates a FE user, adds him/her as a VIP to the seminar with the UID in
-     * $this->seminarUid and logs him/her in.
-     */
-    private function createLogInAndAddFeUserAsVip(): void
-    {
-        $feUserUid = $this->testingFramework->createAndLoginFrontEndUser();
-        $this->testingFramework->createRelation(
-            'tx_seminars_seminars_feusers_mm',
-            $this->seminarUid,
-            $feUserUid,
-        );
-        $this->testingFramework->changeRecord(
-            'tx_seminars_seminars',
-            $this->seminarUid,
-            ['vips' => 1],
-        );
-    }
-
-    /**
      * Inserts a category record into the database and creates a relation to
      * it from the event with the UID stored in $this->seminarUid.
      *
@@ -367,46 +348,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         self::assertEquals(
             2,
             $connection->count('*', 'tx_seminars_seminars_target_groups_mm', ['uid_local' => $this->seminarUid]),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function createLogInAndAddFeUserAsVipCreatesFeUser(): void
-    {
-        $connection = $this->connectionPool->getConnectionForTable('fe_users');
-
-        $this->createLogInAndAddFeUserAsVip();
-
-        self::assertEquals(
-            1,
-            $connection->count('*', 'fe_users', []),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function createLogInAndAddFeUserAsVipLogsInFeUser(): void
-    {
-        $this->createLogInAndAddFeUserAsVip();
-
-        self::assertTrue($this->context->getAspect('frontend.user')->isLoggedIn());
-    }
-
-    /**
-     * @test
-     */
-    public function createLogInAndAddFeUserAsVipAddsUserAsVip(): void
-    {
-        $connection = $this->connectionPool->getConnectionForTable('tx_seminars_seminars');
-
-        $this->createLogInAndAddFeUserAsVip();
-
-        self::assertEquals(
-            1,
-            $connection->count('*', 'tx_seminars_seminars', ['uid' => $this->seminarUid, 'vips' => 1]),
         );
     }
 
@@ -3912,116 +3853,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function editSubpartIsHiddenInMyVipEventsListView(): void
-    {
-        $this->createLogInAndAddFeUserAsVip();
-        $this->subject->setConfigurationValue('what_to_display', 'my_vip_events');
-
-        $this->subject->main('', []);
-        self::assertFalse(
-            $this->subject->isSubpartVisible('LISTITEM_WRAPPER_EDIT'),
-        );
-    }
-
-    /////////////////////////////////////////////////////////////////
-    // Tests concerning the category list in the "my VIP events" view
-    /////////////////////////////////////////////////////////////////
-
-    /**
-     * @test
-     */
-    public function myVipEventsViewShowsCategoryTitleOfEvent(): void
-    {
-        $this->createLogInAndAddFeUserAsVip();
-        $this->subject->setConfigurationValue('what_to_display', 'my_vip_events');
-
-        $categoryUid = $this->testingFramework->createRecord(
-            'tx_seminars_categories',
-            ['title' => 'category_foo'],
-        );
-        $this->testingFramework->createRelationAndUpdateCounter(
-            'tx_seminars_seminars',
-            $this->seminarUid,
-            $categoryUid,
-            'categories',
-        );
-
-        self::assertStringContainsString(
-            'category_foo',
-            $this->subject->main('', []),
-        );
-    }
-
-    /////////////////////////////////////////////////////////////////////
-    // Tests concerning the displaying of events in the VIP events view
-    /////////////////////////////////////////////////////////////////////
-
-    /**
-     * @test
-     */
-    public function myVipEventsViewWithTimeFrameSetToCurrentShowsCurrentEvent(): void
-    {
-        $this->createLogInAndAddFeUserAsVip();
-        $this->subject->setConfigurationValue('what_to_display', 'my_vip_events');
-        $this->subject->setConfigurationValue('timeframeInList', 'current');
-        $this->testingFramework->changeRecord(
-            'tx_seminars_seminars',
-            $this->seminarUid,
-            [
-                'title' => 'currentEvent',
-                'begin_date' => $this->nowAsUnixTimestamp - 20,
-                'end_date' => $this->nowAsUnixTimestamp + 20,
-            ],
-        );
-
-        self::assertStringContainsString(
-            'currentEvent',
-            $this->subject->main('', []),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function myVipEventsViewWithTimeFrameSetToCurrentNotShowsEventInFuture(): void
-    {
-        $this->createLogInAndAddFeUserAsVip();
-        $this->subject->setConfigurationValue('what_to_display', 'my_vip_events');
-        $this->subject->setConfigurationValue('timeframeInList', 'current');
-        $this->testingFramework->changeRecord(
-            'tx_seminars_seminars',
-            $this->seminarUid,
-            [
-                'title' => 'futureEvent',
-                'begin_date' => $this->nowAsUnixTimestamp + 21,
-                'end_date' => $this->nowAsUnixTimestamp + 42,
-            ],
-        );
-
-        self::assertStringNotContainsString(
-            'futureEvent',
-            $this->subject->main('', []),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function myVipEventsHidesRegistrationColumn(): void
-    {
-        $this->createLogInAndAddFeUserAsVip();
-        $this->subject->setConfigurationValue('what_to_display', 'my_vip_events');
-
-        $this->subject->main('', []);
-
-        self::assertFalse(
-            $this->subject->isSubpartVisible('LISTHEADER_WRAPPER_REGISTRATION'),
-        );
-    }
-
     // Tests concerning getFieldHeader
 
     /**
@@ -5063,32 +4894,6 @@ final class DefaultControllerTest extends FunctionalTestCase
             ->with($this->subject, self::anything(), 'my_events');
         // We don't test for the second parameter (the bag builder instance here)
         // because we cannot access it from the outside.
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][SeminarListView::class][] = $hookClass;
-        GeneralUtility::addInstance($hookClass, $hook);
-
-        $this->subject->main('', []);
-    }
-
-    /**
-     * @test
-     */
-    public function listViewCallsSeminarListViewHookMethodsForMyVipEventsList(): void
-    {
-        $this->subject->setConfigurationValue('what_to_display', 'my_vip_events');
-
-        $this->createLogInAndAddFeUserAsVip();
-
-        $hook = $this->createMock(SeminarListView::class);
-        $hook->expects(self::once())->method('modifyListHeader')->with($this->subject);
-        $hook->expects(self::once())->method('modifyListRow')->with($this->subject);
-        $hook->expects(self::never())->method('modifyMyEventsListRow');
-        $hook->expects(self::once())->method('modifyListFooter')->with($this->subject);
-        $hook
-            ->expects(self::once())->method('modifyEventBagBuilder')
-            ->with($this->subject, self::anything(), 'my_vip_events');
-        $hook->expects(self::never())->method('modifyRegistrationBagBuilder');
 
         $hookClass = \get_class($hook);
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][SeminarListView::class][] = $hookClass;

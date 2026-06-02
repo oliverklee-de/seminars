@@ -241,11 +241,6 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToEventManager\\(\\)\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToEventsNextDay\\(\\)\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
@@ -272,7 +267,7 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$id on TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController\\|null\\.$#"
-			count: 2
+			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -1982,17 +1977,17 @@ parameters:
 
 		-
 			message: "#^Cannot access an offset on mixed\\.$#"
-			count: 6
+			count: 5
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 6
+			count: 5
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
 			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\SeminarListView' on mixed\\.$#"
-			count: 5
+			count: 4
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-
@@ -2002,7 +1997,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 6
+			count: 5
 			path: ../../Tests/LegacyFunctional/FrontEnd/DefaultControllerTest.php
 
 		-

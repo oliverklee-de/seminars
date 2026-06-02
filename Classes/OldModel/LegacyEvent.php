@@ -1750,24 +1750,6 @@ class LegacyEvent extends AbstractTimeSpan
     }
 
     /**
-     * Checks whether a certain user is entered as a default VIP for all events
-     * but also checks whether this user is entered as a VIP for this event,
-     * i.e., he/she is allowed to view the list of registrations for this event.
-     *
-     * @param positive-int $userUid UID of the FE user to check
-     *
-     * @return bool whether the user is a VIP for this event
-     */
-    public function isUserVip(int $userUid): bool
-    {
-        $table = 'tx_seminars_seminars_feusers_mm';
-        $count = self::getConnectionForTable($table)
-            ->count('*', $table, ['uid_local' => $this->getUid(), 'uid_foreign' => $userUid]);
-
-        return $count > 0;
-    }
-
-    /**
      * Checks whether it is possible at all to register for this seminar,
      * ie., it needs registration at all,
      *     has not been canceled,

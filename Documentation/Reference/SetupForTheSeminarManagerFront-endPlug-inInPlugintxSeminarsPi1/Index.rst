@@ -58,13 +58,11 @@ override the corresponding value from TS Setup.**
    Description
          The kind of front-end plug-in to display. Allowed values are in:
          *seminar\_list, single\_view, topic\_list,*  *my\_events,
-         my\_vip\_events, seminar\_registration, list\_registrations,
-         list\_vip\_registrations, edit\_event,
+         seminar\_registration,
          category\_list, event\_headline* This must be set using flexforms.
 
    Default
          seminar\_list
-
 
 .. container:: table-row
 

@@ -215,9 +215,6 @@ class DefaultController extends TemplateHelper
                 );
                 $result = $categoryList->render();
                 break;
-            case 'my_vip_events':
-                // The fallthrough is intended
-                // because createListView() will differentiate later.
             case 'topic_list':
                 // The fallthrough is intended
                 // because createListView() will differentiate later.
@@ -1128,8 +1125,7 @@ class DefaultController extends TemplateHelper
 
     /**
      * Creates the HTML for the event list view.
-     * This function is used for the normal event list as well as the
-     * "my events" and the "my VIP events" list.
+     * This function is used for the normal event list as well as the "my events" list.
      *
      * @param string $whatToDisplay a string selecting the flavor of list view: either an empty string
      *        (for the default list view), the value from "what_to_display" or "other_dates"
@@ -1168,20 +1164,6 @@ class DefaultController extends TemplateHelper
                     $isOkay = false;
                 }
                 break;
-            case 'my_vip_events':
-                if ($this->isLoggedIn()) {
-                    $result .= $this->getSubpart('MESSAGE_MY_VIP_EVENTS');
-                } else {
-                    $this->setMarker('error_text', $this->translate('message_notLoggedIn'));
-                    $result .= $this->getSubpart('ERROR_VIEW');
-                    $result .= $this->getLoginLink(
-                        $this->translate('message_pleaseLogIn'),
-                        (int)$this->getFrontEndController()->id,
-                    );
-                    $isOkay = false;
-                }
-
-                break;
             default:
                 // nothing to do
         }
@@ -1213,7 +1195,7 @@ class DefaultController extends TemplateHelper
     }
 
     /**
-     * Initializes the list view (normal list, my events or my VIP events) and
+     * Initializes the list view (normal list or "my events") and
      * creates a seminar bag or a registration bag (for the "my events" view),
      * but does not create any actual HTML output.
      *
@@ -1280,9 +1262,6 @@ class DefaultController extends TemplateHelper
                 break;
             case 'my_events':
                 $builder->limitToAttendee($user);
-                break;
-            case 'my_vip_events':
-                $builder->limitToEventManager($this->getLoggedInFrontEndUserUid());
                 break;
             case 'events_next_day':
                 $builder->limitToEventsNextDay($this->seminar);
@@ -1838,7 +1817,7 @@ class DefaultController extends TemplateHelper
      */
     private function hideRegisterColumnIfNecessary(string $whatToDisplay): void
     {
-        if ($whatToDisplay === 'my_vip_events' || !$this->isRegistrationEnabled()) {
+        if (!$this->isRegistrationEnabled()) {
             $this->hideColumns(['registration']);
         }
     }
