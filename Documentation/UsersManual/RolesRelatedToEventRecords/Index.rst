@@ -27,10 +27,4 @@ user needs to be set as event manager for their events.
 listed under a different heading.
 
 **Owners** are the front-end users who have created an event record in
-the front end.
-
-**Event managers/VIPs** are special front-end users who are allowed to
-view the list of registrations for an event from their “my managed
-events” list. The extension can be configured so that all users from e
-a certain front-end user group are considered to be event managers for
-all events.
+the front end and who can view the registration lists.

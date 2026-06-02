@@ -601,22 +601,6 @@ override the corresponding value from TS Setup.**
 .. container:: table-row
 
    Property
-         defaultEventVipsFeGroupID
-
-   Data type
-         integer
-
-   Description
-         UID of the FE user group that is allowed to see the registrations of
-         all events
-
-   Default
-         None
-
-
-.. container:: table-row
-
-   Property
          seminarImageSingleViewWidth
 
    Data type
