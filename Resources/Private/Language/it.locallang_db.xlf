@@ -355,10 +355,6 @@
         <source>Access</source>
         <target state="needs-translation">Access</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_seminars.vips" approved="yes">
-        <source>Managers of this event</source>
-        <target state="final">Utenti di front-end abilitati a vedere la lista dei partecipanti</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_seminars.image">
         <source>Image</source>
         <target state="needs-translation">Image</target>
