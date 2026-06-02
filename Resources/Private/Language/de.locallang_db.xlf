@@ -355,10 +355,6 @@
         <source>Access</source>
         <target state="final">Zugriff</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_seminars.vips" approved="yes">
-        <source>Managers of this event</source>
-        <target state="final">Verwaltung dieser Veranstaltung</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_seminars.image" approved="yes">
         <source>Image</source>
         <target state="final">Bild</target>
