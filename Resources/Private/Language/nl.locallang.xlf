@@ -761,10 +761,6 @@
         <source>My Events</source>
         <target state="final">Mijn Evenementen</target>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.my_vip_events" approved="yes">
-        <source>My Managed Events</source>
-        <target state="final">Mijn VIP Evenementen</target>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list" approved="yes">
         <source>Category List</source>
         <target state="final">Categorie lijst</target>
@@ -1048,14 +1044,6 @@
       <trans-unit id="label_myevents_informal" approved="yes">
         <source>You are registered for the following events:</source>
         <target state="final">Jij bent voor de volgende evenementen geregistreerd:</target>
-      </trans-unit>
-      <trans-unit id="label_myvipevents" approved="yes">
-        <source>You are an editor for the following events:</source>
-        <target state="final">U bent een VIP voor de volgende evenementen:</target>
-      </trans-unit>
-      <trans-unit id="label_myvipevents_informal" approved="yes">
-        <source>You are an editor for the following events:</source>
-        <target state="final">Jij bent een VIP voor de volgende evenementen:</target>
       </trans-unit>
       <trans-unit id="label_category" approved="yes">
         <source>Category</source>
