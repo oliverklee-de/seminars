@@ -907,18 +907,6 @@ $tca = [
                 'maxitems' => 1,
             ],
         ],
-        'vips' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.vips',
-            'config' => [
-                'type' => 'group',
-                'allowed' => 'fe_users',
-                'size' => 5,
-                'minitems' => 0,
-                'maxitems' => 999,
-                'MM' => 'tx_seminars_seminars_feusers_mm',
-            ],
-        ],
         'image' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.image',
@@ -974,7 +962,7 @@ $tca = [
                 .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelBilling, billing_start, '
                 .
-                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelAccess, hidden, starttime, endtime, owner_feuser, vips',
+                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelAccess, hidden, starttime, endtime, owner_feuser',
         ],
         EventInterface::TYPE_EVENT_TOPIC => [
             'showitem' =>
@@ -1006,7 +994,7 @@ $tca = [
                 .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelBilling, billing_start, '
                 .
-                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelAccess, hidden, owner_feuser, vips',
+                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelAccess, hidden, owner_feuser',
         ],
     ],
 ];

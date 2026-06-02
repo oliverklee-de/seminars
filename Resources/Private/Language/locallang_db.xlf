@@ -267,9 +267,6 @@
       <trans-unit id="tx_seminars_seminars.divLabelAccess">
         <source>Access</source>
       </trans-unit>
-      <trans-unit id="tx_seminars_seminars.vips">
-        <source>Managers of this event</source>
-      </trans-unit>
       <trans-unit id="tx_seminars_seminars.image">
         <source>Image</source>
       </trans-unit>
