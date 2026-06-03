@@ -11,7 +11,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 
 /**
- * This class represents one of multiple many time slots of an event, e.g., the first day from 10:00-17:00.
+ * This class represents one of multiple time slots of an event, e.g., the first day from 10:00-17:00.
  */
 class TimeSlot extends AbstractEntity
 {
@@ -57,6 +57,8 @@ class TimeSlot extends AbstractEntity
         if ($venue instanceof LazyLoadingProxy) {
             $venue = $venue->_loadRealInstance();
             $this->venue = ($venue instanceof Venue) ? $venue : null;
+            $venue = ($venue instanceof Venue) ? $venue : null;
+            $this->venue = $venue;
         }
 
         return $venue;

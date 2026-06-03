@@ -63,10 +63,10 @@ final class TimeSlotRepositoryTest extends FunctionalTestCase
         $this->importCSVDataSet(self::FIXTURES_PATH . '/propertyMapping/TimeSlotWithVenue.csv');
 
         $result = $this->subject->findByUid(1);
+        self::assertInstanceOf(TimeSlot::class, $result);
 
         $venue = $result->getVenue();
 
-        self::assertInstanceOf(TimeSlot::class, $result);
         self::assertInstanceOf(Venue::class, $venue);
         self::assertSame('AKA', $venue->getTitle());
     }

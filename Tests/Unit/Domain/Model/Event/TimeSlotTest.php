@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Unit\Domain\Model\Event;
 
+use DateTime;
 use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
 use OliverKlee\Seminars\Domain\Model\Venue;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -27,9 +28,7 @@ final class TimeSlotTest extends UnitTestCase
      */
     public function getStartInitiallyReturnsNull(): void
     {
-        self::assertNull(
-            $this->subject->getStart(),
-        );
+        self::assertNull($this->subject->getStart());
     }
 
     /**
@@ -37,14 +36,11 @@ final class TimeSlotTest extends UnitTestCase
      */
     public function setStartSetsStart(): void
     {
-        $date = new \DateTime('2025-04-02 10:00:00');
+        $date = new DateTime('2025-04-02 10:00:00');
 
         $this->subject->setStart($date);
 
-        self::assertSame(
-            $date,
-            $this->subject->getStart(),
-        );
+        self::assertSame($date, $this->subject->getStart());
     }
 
     /**
@@ -52,9 +48,7 @@ final class TimeSlotTest extends UnitTestCase
      */
     public function getEndInitiallyReturnsNull(): void
     {
-        self::assertNull(
-            $this->subject->getEnd(),
-        );
+        self::assertNull($this->subject->getEnd());
     }
 
     /**
@@ -62,14 +56,11 @@ final class TimeSlotTest extends UnitTestCase
      */
     public function setEndSetsEnd(): void
     {
-        $date = new \DateTime('2025-04-03 18:00:00');
+        $date = new DateTime('2025-04-03 18:00:00');
 
         $this->subject->setEnd($date);
 
-        self::assertSame(
-            $date,
-            $this->subject->getEnd(),
-        );
+        self::assertSame($date, $this->subject->getEnd());
     }
 
     /**
@@ -77,9 +68,7 @@ final class TimeSlotTest extends UnitTestCase
      */
     public function getVenueInitiallyReturnsNull(): void
     {
-        self::assertNull(
-            $this->subject->getVenue(),
-        );
+        self::assertNull($this->subject->getVenue());
     }
 
     /**
@@ -91,10 +80,7 @@ final class TimeSlotTest extends UnitTestCase
 
         $this->subject->setVenue($venue);
 
-        self::assertSame(
-            $venue,
-            $this->subject->getVenue(),
-        );
+        self::assertSame($venue, $this->subject->getVenue());
     }
 
     /**
@@ -102,10 +88,7 @@ final class TimeSlotTest extends UnitTestCase
      */
     public function getRoomInitiallyReturnsEmptyString(): void
     {
-        self::assertSame(
-            '',
-            $this->subject->getRoom(),
-        );
+        self::assertSame('', $this->subject->getRoom());
     }
 
     /**
@@ -117,9 +100,6 @@ final class TimeSlotTest extends UnitTestCase
 
         $this->subject->setRoom($room);
 
-        self::assertSame(
-            $room,
-            $this->subject->getRoom(),
-        );
+        self::assertSame($room, $this->subject->getRoom());
     }
 }
