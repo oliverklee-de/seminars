@@ -9,6 +9,7 @@ use OliverKlee\Seminars\Domain\Model\Event\EventDate;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventTopic;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
+use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\FoodOption;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
@@ -175,6 +176,14 @@ return [
         'tableName' => 'tx_seminars_sites',
         'properties' => [
             'fullAddress' => ['fieldName' => 'address'],
+        ],
+    ],
+    TimeSlot::class => [
+        'tableName' => 'tx_seminars_timeslots',
+        'properties' => [
+            'start' => ['fieldName' => 'begin_date'],
+            'end' => ['fieldName' => 'end_date'],
+            'venue' => ['fieldName' => 'place'],
         ],
     ],
 ];

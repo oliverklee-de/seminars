@@ -26,6 +26,7 @@ class Registration
 class RegistrationCheckbox
 class SingleEvent
 class Speaker
+class TimeSlot
 class Venue
 
 ' ===========
@@ -74,3 +75,5 @@ Registration "*" --> "*" AccommodationOption
 Registration "*" --> "1" EvenDateInterface
 Registration "*" --> "*" FoodOption
 Registration "*" --> "*" RegistrationCheckbox
+
+TimeSlot "*" --> "0..1" Venue
