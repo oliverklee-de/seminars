@@ -141,32 +141,7 @@ parameters:
 			path: ../../Classes/Domain/Model/Event/EventDate.php
 
 		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventTopic\\:\\:getEventType\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\EventType\\|null but returns object\\|null\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventTopic.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\SingleEvent\\:\\:getEventType\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\EventType\\|null but returns object\\|null\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/SingleEvent.php
-
-		-
 			message: "#^Call to static method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Price\\:\\:isPriceCodeValid\\(\\) with 'price_regular'\\|'price_regular_early'\\|'price_special'\\|'price_special_early' will always evaluate to true\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Registration/Registration.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:getEvent\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventDateInterface\\|null but returns object\\|null\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Registration/Registration.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:getPaymentMethod\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\PaymentMethod\\|null but returns object\\|null\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Registration/Registration.php
-
-		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:getUser\\(\\) should return OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\FrontendUser\\|null but returns object\\|null\\.$#"
 			count: 1
 			path: ../../Classes/Domain/Model/Registration/Registration.php
 
