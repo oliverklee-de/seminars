@@ -56,7 +56,6 @@ class TimeSlot extends AbstractEntity
         $venue = $this->venue;
         if ($venue instanceof LazyLoadingProxy) {
             $venue = $venue->_loadRealInstance();
-            $this->venue = ($venue instanceof Venue) ? $venue : null;
             $venue = ($venue instanceof Venue) ? $venue : null;
             $this->venue = $venue;
         }
