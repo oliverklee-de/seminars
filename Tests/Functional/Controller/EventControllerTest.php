@@ -287,6 +287,38 @@ final class EventControllerTest extends FunctionalTestCase
     }
 
     /**
+     * @return array<non-empty-string, array{0: non-empty-string, 1: non-empty-string}>
+     */
+    public static function eventFormatForArchiveActionDataProvider(): array
+    {
+        return [
+            'on-site' => ['PastOnSiteEvent.csv', '0'],
+            'hybrid' => ['PastHybridEvent.csv', '1'],
+            'online' => ['PastOnlineEvent.csv', '2'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider eventFormatForArchiveActionDataProvider
+     */
+    public function archiveActionRendersEventFormat(string $fixtureFile, string $labelKey): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/' . $fixtureFile);
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $keyPrefix = 'plugin.eventArchive.events.property.eventFormat.';
+        $expected = LocalizationUtility::translate($keyPrefix . $labelKey, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
      * @test
      */
     public function archiveActionRendersEventType(): void
@@ -545,6 +577,38 @@ final class EventControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('Maritim Hotel', $html);
         self::assertStringContainsString('Premier Inn', $html);
+    }
+
+    /**
+     * @return array<non-empty-string, array{0: non-empty-string, 1: non-empty-string}>
+     */
+    public static function eventFormatForOutlookActionDataProvider(): array
+    {
+        return [
+            'on-site' => ['FutureOnSiteEvent.csv', '0'],
+            'hybrid' => ['FutureHybridEvent.csv', '1'],
+            'online' => ['FutureOnlineEvent.csv', '2'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider eventFormatForOutlookActionDataProvider
+     */
+    public function outlookActionRendersEventFormat(string $fixtureFile, string $labelKey): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/' . $fixtureFile);
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $keyPrefix = 'plugin.eventOutlook.events.property.eventFormat.';
+        $expected = LocalizationUtility::translate($keyPrefix . $labelKey, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
     }
 
     /**

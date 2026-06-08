@@ -34,6 +34,11 @@
                             <f:translate key="plugin.eventArchive.events.property.venue"/>
                         </th>
                     </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled fieldName="eventFormat">
+                        <th scope="col">
+                            <f:translate key="plugin.eventArchive.events.property.eventFormat"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled fieldName="speakers">
                         <th scope="col">
                             <f:translate key="plugin.eventArchive.events.property.speakers"/>
@@ -83,6 +88,11 @@
                                 <f:for each="{event.venues}" as="venue" iteration="iteration">
                                     {venue.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
                                 </f:for>
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled fieldName="eventFormat">
+                            <td>
+                                <f:translate key="plugin.eventArchive.events.property.eventFormat.{event.eventFormat}"/>
                             </td>
                         </oelib:isFieldEnabled>
                         <oelib:isFieldEnabled fieldName="speakers">
