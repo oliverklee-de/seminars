@@ -2584,6 +2584,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>speakers</source>
         <target state="final">Referent_innen</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price">
+        <source>price</source>
+        <target state="needs-translation">price</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.vacancies" approved="yes">
         <source>vacancies</source>
         <target state="final">freie Plätze</target>
@@ -2623,6 +2627,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.eventOutlook.events.property.speakers" approved="yes">
         <source>Speakers</source>
         <target state="final">Referent_innen</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.price">
+        <source>Price</source>
+        <target state="needs-translation">Price</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies" approved="yes">
         <source>Vacancies</source>
