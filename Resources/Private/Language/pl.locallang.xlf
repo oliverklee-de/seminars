@@ -2617,6 +2617,10 @@
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price">
+        <source>price</source>
+        <target state="needs-translation">price</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.vacancies">
         <source>vacancies</source>
         <target state="needs-translation">vacancies</target>
@@ -2656,6 +2660,10 @@
       <trans-unit id="plugin.eventOutlook.events.property.speakers">
         <source>Speakers</source>
         <target state="needs-translation">Speakers</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.price">
+        <source>Price</source>
+        <target state="needs-translation">Price</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies">
         <source>Vacancies</source>
