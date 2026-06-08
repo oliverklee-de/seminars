@@ -10,26 +10,26 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
-                    <th scope="col" colspan="2" class="nowrap">
+                    <th scope="col" colspan="2" class="text-nowrap">
                         <f:translate key="{propertyLabelPrefix}.uid"/>
                     </th>
                     <th scope="col" class="col-title col-responsive">
                         <f:translate key="{propertyLabelPrefix}.internalTitle"/>
                     </th>
-                    <th scope="col" class="nowrap">
+                    <th scope="col" class="text-nowrap">
                         <f:translate key="{propertyLabelPrefix}.date"/>
                     </th>
                     <f:if condition="{permissions.writeAccessToEvents}">
-                        <th scope="col" class="col-control nowrap">&nbsp;</th>
+                        <th scope="col" class="col-control text-nowrap">&nbsp;</th>
                     </f:if>
-                    <th scope="col" class="nowrap">
+                    <th scope="col" class="text-nowrap">
                         <f:translate key="{propertyLabelPrefix}.seats"/>
                     </th>
-                    <th scope="col" colspan="2" class="nowrap">
+                    <th scope="col" colspan="2" class="text-nowrap">
                         <f:translate key="{propertyLabelPrefix}.registrations"/>
                     </th>
                     <f:if condition="{permissions.readAccessToRegistrations}">
-                        <th scope="col" class="col-control nowrap">&nbsp;</th>
+                        <th scope="col" class="col-control text-nowrap">&nbsp;</th>
                     </f:if>
                 </tr>
             </thead>
@@ -46,10 +46,10 @@
                         <f:variable name="visible"
                                     value="{f:if(condition: '{event.rawData.hidden}', then: 0, else: 1)}"/>
                         <f:variable name="statistics" value="{event.statistics}"/>
-                        <td class="text-end text-right nowrap">
+                        <td class="text-end text-nowrap">
                             {event.uid}
                         </td>
-                        <td class="col-icon nowrap">
+                        <td class="col-icon text-nowrap">
                             <core:iconForRecord table="{tableName}" row="{event.rawData}"/>
                         </td>
                         <td class="col-title col-responsive">
@@ -65,11 +65,11 @@
                                 </f:else>
                             </f:if>
                         </td>
-                        <td class="nowrap">
+                        <td class="text-nowrap">
                             <f:render partial="EventDate" arguments="{event: event}"/>
                         </td>
                         <f:if condition="{permissions.writeAccessToEvents}">
-                            <td class="col-control nowrap">
+                            <td class="col-control text-nowrap">
                                 <div class="btn-group" role="group">
                                     <be:link.editRecord uid="{event.uid}" table="{tableName}" class="btn btn-default"
                                                         title="{f:translate(key: '{actionLabelPrefix}.editEvent')}">
@@ -117,13 +117,13 @@
                                 </div>
                             </td>
                         </f:if>
-                        <td class="nowrap">
+                        <td class="text-nowrap">
                             <f:render partial="BackEnd/SeatStatistics" arguments="{event: event}"/>
                         </td>
-                        <td class="nowrap">
+                        <td class="text-nowrap">
                             <f:render partial="BackEnd/RegistrationStatistics" arguments="{event: event}"/>
                         </td>
-                        <td class="nowrap">
+                        <td class="text-nowrap">
                             <f:if condition="{statistics}">
                                 <f:if
                                     condition="{statistics.regularSeatsCount} || {statistics.waitingListSeatsCount} || {statistics.nonbindingReservationSeatsCount}">
@@ -139,7 +139,7 @@
                             </f:if>
                         </td>
                         <f:if condition="{permissions.readAccessToRegistrations}">
-                            <td class="col-icon nowrap">
+                            <td class="col-icon text-nowrap">
                                 <f:if condition="{visible} && {statistics.regularSeatsCount}">
                                     <f:link.action controller="BackEnd\Email" action="compose"
                                                    title="{f:translate(key: '{actionLabelPrefix}.email.long')}"

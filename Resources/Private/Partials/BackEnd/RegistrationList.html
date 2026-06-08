@@ -10,20 +10,20 @@
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
-                    <th scope="col" colspan="2" class="nowrap">
+                    <th scope="col" colspan="2" class="text-nowrap">
                         <f:translate key="{propertyLabelPrefix}.uid"/>
                     </th>
                     <th scope="col" class="col-title col-responsive">
                         <f:translate key="{propertyLabelPrefix}.name"/>
                     </th>
-                    <th scope="col" class="nowrap">
+                    <th scope="col" class="text-nowrap">
                         <f:translate key="{propertyLabelPrefix}.seats"/>
                     </th>
-                    <th scope="col" class="nowrap">
+                    <th scope="col" class="text-nowrap">
                         <f:translate key="{propertyLabelPrefix}.invoicingStatus"/>
                     </th>
                     <f:if condition="{permissions.writeAccessToRegistrations}">
-                        <th scope="col" class="col-control nowrap">&nbsp;</th>
+                        <th scope="col" class="col-control text-nowrap">&nbsp;</th>
                     </f:if>
                 </tr>
             </thead>
@@ -39,10 +39,10 @@
 
                 <f:for each="{registrations}" as="registration">
                     <tr>
-                        <td class="text-end text-right nowrap">
+                        <td class="text-end text-nowrap">
                             {registration.uid}
                         </td>
-                        <td class="col-icon nowrap">
+                        <td class="col-icon text-nowrap">
                             <core:iconForRecord table="{tableName}" row="{registration.rawData}"/>
                         </td>
                         <td class="col-title col-responsive">
@@ -79,10 +79,10 @@
                                 </f:else>
                             </f:if>
                         </td>
-                        <td class="text-end text-right nowrap">
+                        <td class="text-end text-nowrap">
                             {registration.seats}
                         </td>
-                        <td class="nowrap">
+                        <td class="text-nowrap">
                             <f:if condition="{registration.paid}">
                                 <f:then>
                                     <f:translate key="{propertyLabelPrefix}.invoicingStatus.paid"/>
@@ -93,7 +93,7 @@
                             </f:if>
                         </td>
                         <f:if condition="{permissions.writeAccessToRegistrations}">
-                            <td class="col-control nowrap">
+                            <td class="col-control text-nowrap">
                                 <div class="btn-group" role="group">
                                     <be:link.editRecord uid="{registration.uid}" table="{tableName}"
                                                         class="btn btn-default"
