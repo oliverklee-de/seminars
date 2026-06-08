@@ -169,4 +169,9 @@ interface EventDateInterface extends EventInterface
      * @return ObjectStorage<FileReference>
      */
     public function getDownloadsForAttendees(): ObjectStorage;
+
+    /**
+     * @return ObjectStorage<TimeSlot>
+     */
+    public function getTimeSlots(): ObjectStorage;
 }

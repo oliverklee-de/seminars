@@ -13,6 +13,7 @@ use OliverKlee\Seminars\Domain\Model\Event\EventStatistics;
 use OliverKlee\Seminars\Domain\Model\Event\EventTopic;
 use OliverKlee\Seminars\Domain\Model\Event\NullEventTopic;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
+use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\FoodOption;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
@@ -2850,5 +2851,35 @@ final class EventRepositoryTest extends FunctionalTestCase
         $secondTopic = $result[2];
         self::assertInstanceOf(EventTopic::class, $secondTopic);
         self::assertSame('juggling', $secondTopic->getInternalTitle());
+    }
+
+    /**
+     * @test
+     */
+    public function mapsTimeSlotAssociationForSingleEvent(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/SingleEventWithTimeSlot.csv');
+
+        $result = $this->subject->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $result);
+
+        $associatedModels = $result->getTimeSlots();
+        self::assertCount(1, $associatedModels);
+        self::assertInstanceOf(TimeSlot::class, $associatedModels->toArray()[0]);
+    }
+
+    /**
+     * @test
+     */
+    public function mapsTimeSlotAssociationForEventDate(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/EventDateWithTimeSlot.csv');
+
+        $result = $this->subject->findByUid(1);
+        self::assertInstanceOf(EventDate::class, $result);
+
+        $associatedModels = $result->getTimeSlots();
+        self::assertCount(1, $associatedModels);
+        self::assertInstanceOf(TimeSlot::class, $associatedModels->toArray()[0]);
     }
 }
