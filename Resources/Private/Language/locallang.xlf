@@ -1923,6 +1923,9 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
         <source>speakers</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price">
+        <source>price</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.vacancies">
         <source>vacancies</source>
       </trans-unit>
@@ -1952,6 +1955,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.speakers">
         <source>Speakers</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.price">
+        <source>Price</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies">
         <source>Vacancies</source>

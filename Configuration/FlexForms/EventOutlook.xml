@@ -159,11 +159,17 @@
                                     </numIndex>
                                     <numIndex index="7" type="array">
                                         <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.price
+                                        </numIndex>
+                                        <numIndex index="1">price</numIndex>
+                                    </numIndex>
+                                    <numIndex index="8" type="array">
+                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.vacancies
                                         </numIndex>
                                         <numIndex index="1">vacancies</numIndex>
                                     </numIndex>
-                                    <numIndex index="8" type="array">
+                                    <numIndex index="9" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.registration
                                         </numIndex>

@@ -566,6 +566,36 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function outlookActionForEventWithPriceRendersPrice(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithStandardPrice.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('499.50 €', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionForEventWithoutPriceDoesNotRenderPrice(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithoutStandardPrice.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringNotContainsString('€', $html);
+    }
+
+    /**
+     * @test
+     */
     public function outlookActionRendersEventType(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
