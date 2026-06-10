@@ -21,12 +21,15 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
     private const PAGE_UID = 8;
 
     protected array $testExtensionsToLoad = [
+        'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
         'oliverklee/seminars',
     ];
 
     protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
         'typo3/cms-fluid-styled-content',
     ];
 

@@ -22,7 +22,13 @@ final class SalutationBuilderTest extends FunctionalTestCase
     private const TIME_FORMAT = 'H:i';
     private const SECONDS_PER_HOUR = 3600;
 
+    protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
+    ];
+
     protected array $testExtensionsToLoad = [
+        'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
         'oliverklee/seminars',

@@ -16,12 +16,15 @@ final class EventControllerTest extends FunctionalTestCase
     private const FIXTURES_PATH = __DIR__ . '/Fixtures/EventController';
 
     protected array $testExtensionsToLoad = [
+        'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
         'oliverklee/seminars',
     ];
 
     protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
         'typo3/cms-fluid-styled-content',
     ];
 

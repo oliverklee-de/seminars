@@ -16,7 +16,13 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
     private const FIXTURES_PREFIX = __DIR__ . '/Fixtures/CopyBillingAddressToRegistrationsUpgradeWizard/';
     private const ASSERTIONS_PATH = __DIR__ . '/Assertions/CopyBillingAddressToRegistrationsUpgradeWizard/';
 
+    protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
+    ];
+
     protected array $testExtensionsToLoad = [
+        'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
         'oliverklee/seminars',

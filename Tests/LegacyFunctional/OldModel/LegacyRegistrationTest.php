@@ -32,7 +32,10 @@ final class LegacyRegistrationTest extends FunctionalTestCase
         'oliverklee/seminars',
     ];
 
-    protected array $coreExtensionsToLoad = ['typo3/cms-extensionmanager'];
+    protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
+    ];
 
     private LegacyRegistration $subject;
 
