@@ -2521,6 +2521,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventFormat">
+        <source>event format</source>
+        <target state="needs-translation">event format</target>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers">
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
@@ -2552,6 +2556,22 @@
       <trans-unit id="plugin.eventArchive.events.property.venue">
         <source>Venue</source>
         <target state="needs-translation">Venue</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.eventFormat">
+        <source>Format</source>
+        <target state="needs-translation">Format</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.eventFormat.0">
+        <source>on-site</source>
+        <target state="needs-translation">on-site</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.eventFormat.1">
+        <source>hybrid</source>
+        <target state="needs-translation">hybrid</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.eventFormat.2">
+        <source>online</source>
+        <target state="needs-translation">online</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.speakers">
         <source>Speakers</source>
@@ -2613,6 +2633,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventFormat">
+        <source>event format</source>
+        <target state="needs-translation">event format</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
@@ -2656,6 +2680,22 @@
       <trans-unit id="plugin.eventOutlook.events.property.venue">
         <source>Venue</source>
         <target state="needs-translation">Venue</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.eventFormat">
+        <source>Format</source>
+        <target state="needs-translation">Format</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.eventFormat.0">
+        <source>on-site</source>
+        <target state="needs-translation">on-site</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.eventFormat.1">
+        <source>hybrid</source>
+        <target state="needs-translation">hybrid</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.eventFormat.2">
+        <source>online</source>
+        <target state="needs-translation">online</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.speakers">
         <source>Speakers</source>
