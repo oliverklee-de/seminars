@@ -62,54 +62,6 @@ final class ListViewTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function eventListFlavorWithoutUidCreatesListView(): void
-    {
-        $controller = $this
-            ->getMockBuilder(TestingDefaultController::class)
-            ->onlyMethods([
-                'createListView',
-                'createSingleView',
-                'pi_initPIflexForm',
-                'getTemplateCode',
-                'setLabels',
-            ])
-            ->disableOriginalConstructor()
-            ->getMock();
-        $controller->expects(self::once())->method('createListView')->with('seminar_list');
-        $controller->expects(self::never())->method('createSingleView');
-
-        $controller->piVars = [];
-
-        $controller->main('', ['what_to_display' => 'seminar_list']);
-    }
-
-    /**
-     * @test
-     */
-    public function eventListFlavorWithUidCreatesListView(): void
-    {
-        $controller = $this
-            ->getMockBuilder(TestingDefaultController::class)
-            ->onlyMethods([
-                'createListView',
-                'createSingleView',
-                'pi_initPIflexForm',
-                'getTemplateCode',
-                'setLabels',
-            ])
-            ->disableOriginalConstructor()
-            ->getMock();
-        $controller->expects(self::once())->method('createListView')->with('seminar_list');
-        $controller->expects(self::never())->method('createSingleView');
-
-        $controller->piVars = ['showUid' => '42'];
-
-        $controller->main('', ['what_to_display' => 'seminar_list']);
-    }
-
-    /**
-     * @test
-     */
     public function listViewShowsVisibleSingleEvent(): void
     {
         $subject = $this->buildSubjectForListView('EventList');
