@@ -242,6 +242,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Fix property mapping with timeslots and registrations (#5155)
 - Use the correct no-wrap Bootstrap class (#5151)
 - Avoid the deprecated static `TemplateRegistry` methods (#5013)
 - Avoid the deprecated static `ConfigurationRegistry` methods (#5009, #5010)
