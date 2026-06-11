@@ -68,6 +68,7 @@ EventDateInterface "1" --> "*" Organizer
 EventDateInterface "1" --> "*" RegistrationCheckbox
 EventDateInterface "1" --> "*" Speaker
 EventDateInterface "1" --> "*" Venue
+EventDateInterface "1" --> "*" TimeSlot
 
 EventTopicInterface "1" --> "*" Category
 

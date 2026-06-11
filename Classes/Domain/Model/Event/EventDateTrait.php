@@ -161,6 +161,12 @@ trait EventDateTrait
      */
     protected ObjectStorage $downloadsForAttendees;
 
+    /**
+     * @var ObjectStorage<TimeSlot>
+     * @Lazy
+     */
+    protected ObjectStorage $timeSlots;
+
     private function initializeEventDate(): void
     {
         $this->venues = new ObjectStorage();
@@ -170,6 +176,7 @@ trait EventDateTrait
         $this->foodOptions = new ObjectStorage();
         $this->registrationCheckboxes = new ObjectStorage();
         $this->downloadsForAttendees = new ObjectStorage();
+        $this->timeSlots = new ObjectStorage();
     }
 
     public function getStart(): ?\DateTime
@@ -649,5 +656,21 @@ trait EventDateTrait
     public function setBillingStart(\DateTime $billingStart): void
     {
         $this->billingStart = $billingStart;
+    }
+
+    /**
+     * @return ObjectStorage<TimeSlot>
+     */
+    public function getTimeSlots(): ObjectStorage
+    {
+        return $this->timeSlots;
+    }
+
+    /**
+     * @param ObjectStorage<TimeSlot> $timeSlots
+     */
+    public function setTimeSlots(ObjectStorage $timeSlots): void
+    {
+        $this->timeSlots = $timeSlots;
     }
 }

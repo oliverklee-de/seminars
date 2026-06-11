@@ -75,6 +75,7 @@ return [
             'foodOptions' => ['fieldName' => 'foods'],
             'registrationCheckboxes' => ['fieldName' => 'checkboxes'],
             'downloadsForAttendees' => ['fieldName' => 'attached_files'],
+            'timeSlots' => ['fieldName' => 'timeslots'],
         ],
     ],
     EventTopic::class => [
@@ -114,6 +115,7 @@ return [
             'foodOptions' => ['fieldName' => 'foods'],
             'registrationCheckboxes' => ['fieldName' => 'checkboxes'],
             'downloadsForAttendees' => ['fieldName' => 'attached_files'],
+            'timeSlots' => ['fieldName' => 'timeslots'],
         ],
     ],
     EventType::class => [

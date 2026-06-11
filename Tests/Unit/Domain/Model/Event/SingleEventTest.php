@@ -12,6 +12,7 @@ use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventStatistics;
 use OliverKlee\Seminars\Domain\Model\Event\EventTopicInterface;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
+use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\FoodOption;
 use OliverKlee\Seminars\Domain\Model\Organizer;
@@ -1941,5 +1942,28 @@ final class SingleEventTest extends UnitTestCase
     public function hasDownloadableCertificateAlwaysReturnsFalse(): void
     {
         self::assertFalse($this->subject->hasDownloadableCertificate());
+    }
+
+    /**
+     * @test
+     */
+    public function getTimeSlotsInitiallyReturnsEmptyStorage(): void
+    {
+        $timeslots = $this->subject->getTimeSlots();
+
+        self::assertInstanceOf(ObjectStorage::class, $timeslots);
+        self::assertCount(0, $timeslots);
+    }
+
+    /**
+     * @test
+     */
+    public function setTimeSlotsSetsTimeSlots(): void
+    {
+        /** @var ObjectStorage<TimeSlot> $timeslots */
+        $timeslots = new ObjectStorage();
+        $this->subject->setTimeSlots($timeslots);
+
+        self::assertSame($timeslots, $this->subject->getTimeSlots());
     }
 }

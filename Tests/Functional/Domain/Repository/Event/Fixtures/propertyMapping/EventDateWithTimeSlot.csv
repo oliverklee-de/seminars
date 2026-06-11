@@ -1,0 +1,7 @@
+"tx_seminars_seminars"
+,"uid","object_type","timeslots"
+,1,2,1
+
+"tx_seminars_timeslots"
+,"uid","pid","seminar"
+,1,1,1
