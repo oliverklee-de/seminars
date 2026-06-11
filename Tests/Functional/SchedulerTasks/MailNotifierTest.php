@@ -20,9 +20,14 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class MailNotifierTest extends FunctionalTestCase
 {
-    protected array $coreExtensionsToLoad = ['typo3/cms-scheduler'];
+    protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
+        'typo3/cms-scheduler',
+    ];
 
     protected array $testExtensionsToLoad = [
+        'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
         'oliverklee/seminars',

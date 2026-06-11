@@ -18,7 +18,13 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
 {
     private const DEFAULT_SINGLE_VIEW_PAGE_UID = 3;
 
+    protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
+    ];
+
     protected array $testExtensionsToLoad = [
+        'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
         'oliverklee/seminars',

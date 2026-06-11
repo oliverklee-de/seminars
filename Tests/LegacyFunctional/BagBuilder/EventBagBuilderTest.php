@@ -22,7 +22,13 @@ final class EventBagBuilderTest extends FunctionalTestCase
     private const SECONDS_PER_DAY = 86400;
     private const SECONDS_PER_WEEK = 604800;
 
+    protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
+    ];
+
     protected array $testExtensionsToLoad = [
+        'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
         'oliverklee/seminars',

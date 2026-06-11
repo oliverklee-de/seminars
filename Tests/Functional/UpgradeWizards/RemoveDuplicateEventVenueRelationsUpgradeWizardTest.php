@@ -17,7 +17,13 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
     private const FIXTURES_PREFIX = __DIR__ . '/Fixtures/RemoveDuplicateEventVenueRelationsUpgradeWizard/';
     private const ASSERTIONS_PATH = __DIR__ . '/Assertions/RemoveDuplicateEventVenueRelationsUpgradeWizard/';
 
+    protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
+    ];
+
     protected array $testExtensionsToLoad = [
+        'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
         'oliverklee/seminars',
