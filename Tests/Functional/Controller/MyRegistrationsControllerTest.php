@@ -1276,4 +1276,35 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
         );
         self::assertSame($expectedFileContents, $responseBody);
     }
+
+    /**
+     * @test
+     */
+    public function indexActionRendersSingleRoomOfRegistrationOfTheLoggedInUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithOneRoom.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+
+        self::assertStringContainsString('A101', (string)$response->getBody());
+    }
+
+    /**
+     * @test
+     */
+    public function indexActionRendersMultipleRoomsOfRegistrationOfTheLoggedInUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithTwoRooms.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $response = $this->executeFrontendSubRequest($request, $requestContext);
+
+        self::assertStringContainsString('B100', (string)$response->getBody());
+        self::assertStringContainsString('C100', (string)$response->getBody());
+    }
 }

@@ -1,0 +1,9 @@
+"tx_seminars_seminars"
+,"uid","pid","title","room","registrations"
+,2,1,"the event title","B100",1
+,3,1,"event2","C100",1
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,1,2,1
+,2,1,3,1

@@ -20,7 +20,7 @@
                                 <renderType>selectCheckBox</renderType>
                                 <minitems>1</minitems>
                                 <maxitems>99</maxitems>
-                                <default>date,eventType,topic,city,venue,registrationStatus</default>
+                                <default>date,eventType,topic,city,venue,room,registrationStatus</default>
                                 <items type="array">
                                     <numIndex index="0" type="array">
                                         <numIndex index="0">
@@ -60,17 +60,23 @@
                                     </numIndex>
                                     <numIndex index="6" type="array">
                                         <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.room
+                                        </numIndex>
+                                        <numIndex index="1">room</numIndex>
+                                    </numIndex>
+                                    <numIndex index="7" type="array">
+                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.speakers
                                         </numIndex>
                                         <numIndex index="1">speakers</numIndex>
                                     </numIndex>
-                                    <numIndex index="7" type="array">
+                                    <numIndex index="8" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.registrationStatus
                                         </numIndex>
                                         <numIndex index="1">registrationStatus</numIndex>
                                     </numIndex>
-                                    <numIndex index="8" type="array">
+                                    <numIndex index="9" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.certificateOfAttendance
                                         </numIndex>
