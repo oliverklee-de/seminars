@@ -1,6 +1,6 @@
 "tx_seminars_seminars"
 ,"uid","pid","title","registrations","description"
-,1,1,"the event title",1,"<p>Großartig, großartig, sehr großartig</p>"
+,1,1,"the event title",1,"<p>Großartig, großartig, <em>sehr</em> großartig</p>"
 
 "tx_seminars_attendances"
 ,"uid","pid","seminar","user"

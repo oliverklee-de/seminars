@@ -132,7 +132,7 @@
                                     </numIndex>
                                     <numIndex index="6" type="array">
                                         <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistartions.settings.displayOptions.fields.description
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.description
                                         </numIndex>
                                         <numIndex index="1">description</numIndex>
                                     </numIndex>

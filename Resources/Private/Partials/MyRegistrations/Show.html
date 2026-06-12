@@ -60,12 +60,7 @@
 
     <oelib:isFieldEnabled fieldName="description">
         <f:if condition="{event.description}">
-            <h3>
-                <f:translate key="plugin.eventSingleView.events.property.description"/>
-            </h3>
-            <p>
-                {event.description}
-            </p>
+            {event.description -> f:format.html()}
         </f:if>
     </oelib:isFieldEnabled>
 

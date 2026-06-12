@@ -2166,6 +2166,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.room">
         <source>room</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.description">
+        <source>description</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.unregistration">
         <source>unregistration</source>
       </trans-unit>

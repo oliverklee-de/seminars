@@ -829,7 +829,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        self::assertStringContainsString('<p>Großartig, großartig, sehr großartig</p>', $html);
+        self::assertStringContainsString('<p>Großartig, großartig, <em>sehr</em> großartig</p>', $html);
     }
 
     /**
