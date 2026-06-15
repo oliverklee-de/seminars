@@ -2908,13 +2908,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>room</source>
         <target state="final">Raum</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.description">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.description" approved="yes">
         <source>description</source>
-        <target state="translated">Beschreibung</target>
+        <target state="final">Beschreibung</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.speakers">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.speakers" approved="yes">
         <source>speakers</source>
-        <target state="needs-translation">speakers</target>
+        <target state="final">Referent_innen</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.unregistration" approved="yes">
         <source>unregistration</source>
