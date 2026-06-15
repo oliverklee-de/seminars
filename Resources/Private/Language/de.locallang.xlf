@@ -2488,9 +2488,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventFormat">
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventFormat" approved="yes">
         <source>event format</source>
-        <target state="needs-translation">event format</target>
+        <target state="final">Veranstaltungsformat</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
@@ -2524,21 +2524,21 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Venue</source>
         <target state="final">Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventFormat">
+      <trans-unit id="plugin.eventArchive.events.property.eventFormat" approved="yes">
         <source>Format</source>
-        <target state="needs-translation">Format</target>
+        <target state="final">Format</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventFormat.0">
+      <trans-unit id="plugin.eventArchive.events.property.eventFormat.0" approved="yes">
         <source>on-site</source>
-        <target state="needs-translation">on-site</target>
+        <target state="final">vor Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventFormat.1">
+      <trans-unit id="plugin.eventArchive.events.property.eventFormat.1" approved="yes">
         <source>hybrid</source>
-        <target state="needs-translation">hybrid</target>
+        <target state="final">hybrid</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventFormat.2">
+      <trans-unit id="plugin.eventArchive.events.property.eventFormat.2" approved="yes">
         <source>online</source>
-        <target state="needs-translation">online</target>
+        <target state="final">online</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.speakers" approved="yes">
         <source>Speakers</source>
@@ -2600,9 +2600,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventFormat">
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventFormat" approved="yes">
         <source>event format</source>
-        <target state="needs-translation">event format</target>
+        <target state="final">Veranstaltungsformat</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
@@ -2648,21 +2648,21 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Venue</source>
         <target state="final">Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventFormat">
+      <trans-unit id="plugin.eventOutlook.events.property.eventFormat" approved="yes">
         <source>Format</source>
-        <target state="needs-translation">Format</target>
+        <target state="final">Format</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventFormat.0">
+      <trans-unit id="plugin.eventOutlook.events.property.eventFormat.0" approved="yes">
         <source>on-site</source>
-        <target state="needs-translation">on-site</target>
+        <target state="final">vor Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventFormat.1">
+      <trans-unit id="plugin.eventOutlook.events.property.eventFormat.1" approved="yes">
         <source>hybrid</source>
-        <target state="needs-translation">hybrid</target>
+        <target state="final">hybrid</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventFormat.2">
+      <trans-unit id="plugin.eventOutlook.events.property.eventFormat.2" approved="yes">
         <source>online</source>
-        <target state="needs-translation">online</target>
+        <target state="final">online</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.speakers" approved="yes">
         <source>Speakers</source>
@@ -2910,7 +2910,7 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.description">
         <source>description</source>
-        <target state="needs-translation">description</target>
+        <target state="translated">Beschreibung</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.unregistration" approved="yes">
         <source>unregistration</source>
