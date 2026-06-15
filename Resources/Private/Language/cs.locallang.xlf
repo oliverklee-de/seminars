@@ -2941,6 +2941,10 @@
         <source>room</source>
         <target state="needs-translation">room</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.description">
+        <source>description</source>
+        <target state="needs-translation">description</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.unregistration">
         <source>unregistration</source>
         <target state="needs-translation">unregistration</target>
