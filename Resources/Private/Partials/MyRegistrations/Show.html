@@ -58,6 +58,12 @@
         </f:if>
     </oelib:isFieldEnabled>
 
+    <oelib:isFieldEnabled fieldName="description">
+        <f:if condition="{event.description}">
+            {event.description -> f:format.html()}
+        </f:if>
+    </oelib:isFieldEnabled>
+
     <oelib:isFieldEnabled fieldName="unregistration">
         <f:if condition="{unregistrationIsPossible}">
             <h3>
