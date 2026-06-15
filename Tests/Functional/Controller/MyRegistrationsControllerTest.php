@@ -835,7 +835,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionRendersOneSpeaker(): void
+    public function showActionCanRenderMultipleSpeakers(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithTwoSpeakers.csv');
