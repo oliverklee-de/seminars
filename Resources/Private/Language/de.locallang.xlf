@@ -2912,6 +2912,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>description</source>
         <target state="translated">Beschreibung</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.speakers">
+        <source>speakers</source>
+        <target state="needs-translation">speakers</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.unregistration" approved="yes">
         <source>unregistration</source>
         <target state="final">Abmeldung</target>
