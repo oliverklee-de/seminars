@@ -6,8 +6,8 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ## x.y.z
 
 ### Added
-
-- Add `description` data to `myRegistrations` single view (#5159)
+- Add `speakers` to `myRegistrations` single view (#5159)
+- Add `description` to `myRegistrations` single view (#5159)
 - Add `Event.timeSlots` (#5149)
 - Add a `TimeSlot` model and repository (#5039)
 - Add more columns to the FE list views (#5119, #5131, #5150, #5152)
