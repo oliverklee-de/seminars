@@ -342,6 +342,38 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     }
 
     /**
+     * @return array<non-empty-string, array{0: non-empty-string, 1: non-empty-string}>
+     */
+    public static function attendanceModeForIndexActionDataProvider(): array
+    {
+        return [
+            'on-site' => ['OnSiteRegistration.csv', '1'],
+            'online' => ['OnlineRegistration.csv', '2'],
+            'hybrid' => ['HybridRegistration.csv', '3'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider attendanceModeForIndexActionDataProvider
+     */
+    public function indexActionRendersAttendanceModeOfRegistration(string $fixtureFile, string $labelKey): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/' . $fixtureFile);
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        $keyPrefix = 'plugin.myRegistrations.property.attendanceMode.';
+        $expected = LocalizationUtility::translate($keyPrefix . $labelKey, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
      * @test
      */
     public function indexActionRendersSpeakersOfRegistrationOfTheLoggedInUser(): void
