@@ -2945,6 +2945,10 @@
         <source>description</source>
         <target state="needs-translation">description</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.speakers">
+        <source>speakers</source>
+        <target state="needs-translation">speakers</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.unregistration">
         <source>unregistration</source>
         <target state="needs-translation">unregistration</target>
