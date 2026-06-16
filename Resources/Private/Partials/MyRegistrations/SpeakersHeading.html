@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:variable name="speakers" value="{event.speakers}"/>
+    <f:if condition="{speakers}">
+        <h3>
+            <f:variable name="numberOfSpeakers" value="{speakers -> f:count()}"/>
+            <f:if condition="{numberOfSpeakers} == 1">
+                <f:then>
+                    <f:translate key="plugin.eventSingleView.events.property.speakers.one"/>
+                </f:then>
+                <f:else>
+                    <f:translate key="plugin.eventSingleView.events.property.speakers.many"/>
+                </f:else>
+            </f:if>
+        </h3>
+    </f:if>
+</html>
