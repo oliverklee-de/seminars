@@ -2864,6 +2864,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.attendanceMode">
+        <source>attendance mode</source>
+        <target state="needs-translation">attendance mode</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
         <target state="final">Referent_innen</target>
@@ -2964,6 +2968,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Venue</source>
         <target state="final">Ort</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.attendanceMode">
+        <source>Mode</source>
+        <target state="needs-translation">Mode</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.speakers" approved="yes">
         <source>Speakers</source>
         <target state="final">Referent_innen</target>
@@ -2983,6 +2991,18 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.long" approved="yes">
         <source>📄 Display certificate of attendance</source>
         <target state="final">📄 Teilnahmebescheinigung anzeigen</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.1">
+        <source>on-site</source>
+        <target state="needs-translation">on-site</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.2">
+        <source>online</source>
+        <target state="needs-translation">online</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.3">
+        <source>hybrid</source>
+        <target state="needs-translation">hybrid</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.0" approved="yes">
         <source>regular</source>
