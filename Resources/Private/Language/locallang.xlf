@@ -1854,6 +1854,9 @@
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventFormat">
         <source>event format</source>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.categories">
+        <source>categories</source>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers">
         <source>speakers</source>
       </trans-unit>
@@ -1889,6 +1892,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.2">
         <source>online</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.categories">
+        <source>Categories</source>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.speakers">
         <source>Speakers</source>
@@ -1938,6 +1944,9 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventFormat">
         <source>event format</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.categories">
+        <source>categories</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
         <source>speakers</source>
       </trans-unit>
@@ -1982,6 +1991,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.2">
         <source>online</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.categories">
+        <source>Categories</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.speakers">
         <source>Speakers</source>
@@ -2136,6 +2148,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.attendanceMode">
         <source>attendance mode</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.categories">
+        <source>categories</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers">
         <source>speakers</source>
       </trans-unit>
@@ -2213,6 +2228,9 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.attendanceMode">
         <source>Mode</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.categories">
+        <source>Categories</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.speakers">
         <source>Speakers</source>

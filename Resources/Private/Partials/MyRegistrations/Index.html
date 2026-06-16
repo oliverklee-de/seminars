@@ -39,6 +39,11 @@
                             <f:translate key="plugin.myRegistrations.index.heading.attendanceMode"/>
                         </th>
                     </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="categories">
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.index.heading.categories"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="speakers">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.speakers"/>
@@ -106,6 +111,13 @@
                                     <f:if condition="{registration.attendanceMode}">
                                         <f:translate key="plugin.myRegistrations.property.attendanceMode.{registration.attendanceMode}"/>
                                     </f:if>
+                                </td>
+                            </oelib:isFieldEnabled>
+                            <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="categories">
+                                <td>
+                                    <f:for each="{event.categories}" as="category">
+                                        {category.title}
+                                    </f:for>
                                 </td>
                             </oelib:isFieldEnabled>
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="speakers">

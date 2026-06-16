@@ -39,6 +39,11 @@
                             <f:translate key="plugin.eventOutlook.events.property.eventFormat"/>
                         </th>
                     </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled fieldName="categories">
+                        <th scope="col">
+                            <f:translate key="plugin.eventOutlook.events.property.categories"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled fieldName="speakers">
                         <th scope="col">
                             <f:translate key="plugin.eventOutlook.events.property.speakers"/>
@@ -108,6 +113,13 @@
                         <oelib:isFieldEnabled fieldName="eventFormat">
                             <td>
                                 <f:translate key="plugin.eventOutlook.events.property.eventFormat.{event.eventFormat}"/>
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled fieldName="categories">
+                            <td>
+                                <f:for each="{event.categories}" as="category">
+                                    {category.title}
+                                </f:for>
                             </td>
                         </oelib:isFieldEnabled>
                         <oelib:isFieldEnabled fieldName="speakers">
