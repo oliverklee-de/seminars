@@ -2897,6 +2897,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.attendanceMode">
+        <source>attendance mode</source>
+        <target state="needs-translation">attendance mode</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers">
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
@@ -2997,6 +3001,10 @@
         <source>Venue</source>
         <target state="needs-translation">Venue</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.attendanceMode">
+        <source>Mode</source>
+        <target state="needs-translation">Mode</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.speakers">
         <source>Speakers</source>
         <target state="needs-translation">Speakers</target>
@@ -3016,6 +3024,18 @@
       <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.long">
         <source>📄 Display certificate of attendance</source>
         <target state="needs-translation">📄 Display certificate of attendance</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.1">
+        <source>on-site</source>
+        <target state="needs-translation">on-site</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.2">
+        <source>online</source>
+        <target state="needs-translation">online</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.3">
+        <source>hybrid</source>
+        <target state="needs-translation">hybrid</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.0">
         <source>regular</source>
