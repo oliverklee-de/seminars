@@ -2864,9 +2864,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.attendanceMode">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.attendanceMode" approved="yes">
         <source>attendance mode</source>
-        <target state="needs-translation">attendance mode</target>
+        <target state="final">Teilnahmemodus</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
@@ -2968,9 +2968,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Venue</source>
         <target state="final">Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.attendanceMode">
+      <trans-unit id="plugin.myRegistrations.index.heading.attendanceMode" approved="yes">
         <source>Mode</source>
-        <target state="needs-translation">Mode</target>
+        <target state="final">Modus</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.speakers" approved="yes">
         <source>Speakers</source>
@@ -2992,17 +2992,17 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>📄 Display certificate of attendance</source>
         <target state="final">📄 Teilnahmebescheinigung anzeigen</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.attendanceMode.1">
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.1" approved="yes">
         <source>on-site</source>
-        <target state="needs-translation">on-site</target>
+        <target state="final">vor Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.attendanceMode.2">
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.2" approved="yes">
         <source>online</source>
-        <target state="needs-translation">online</target>
+        <target state="final">online</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.attendanceMode.3">
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.3" approved="yes">
         <source>hybrid</source>
-        <target state="needs-translation">hybrid</target>
+        <target state="final">hybrid</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.0" approved="yes">
         <source>regular</source>
