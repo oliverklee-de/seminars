@@ -37,6 +37,10 @@
                 </h3>
 
                 <f:render partial="Event/DateAndTime" arguments="{event: event}"/>
+
+                <f:if condition="{event.timeSlots -> f:count()}">
+                    <f:render partial="Event/TimeSlots" arguments="{event: event}"/>
+                </f:if>
             </f:if>
         </oelib:isFieldEnabled>
 
