@@ -49,6 +49,11 @@
                             <f:translate key="plugin.eventOutlook.events.property.speakers"/>
                         </th>
                     </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled fieldName="eventUid">
+                        <th scope="col">
+                            <f:translate key="plugin.eventOutlook.events.property.eventUid"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled fieldName="price">
                         <th scope="col">
                             <f:translate key="plugin.eventOutlook.events.property.price"/>
@@ -127,6 +132,12 @@
                                 <f:for each="{event.speakers}" as="speaker" iteration="iteration">
                                     {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
                                 </f:for>
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled fieldName="eventUid">
+                            <td class="text-end">
+                                <f:translate key="plugin.eventOutlook.events.property.eventUid.number"
+                                             arguments="{0: event.uid}"/>
                             </td>
                         </oelib:isFieldEnabled>
                         <oelib:isFieldEnabled fieldName="price">

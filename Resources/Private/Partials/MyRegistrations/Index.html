@@ -49,6 +49,11 @@
                             <f:translate key="plugin.myRegistrations.index.heading.speakers"/>
                         </th>
                     </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventUid">
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.index.heading.eventUid"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="registrationStatus">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.registrationStatus"/>
@@ -126,6 +131,12 @@
                                     <f:for each="{event.speakers}" as="speaker" iteration="iteration">
                                         {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
                                     </f:for>
+                                </td>
+                            </oelib:isFieldEnabled>
+                            <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventUid">
+                                <td class="text-end">
+                                    <f:translate key="plugin.myRegistrations.property.eventUid.number"
+                                                 arguments="{0: event.uid}"/>
                                 </td>
                             </oelib:isFieldEnabled>
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="registrationStatus">

@@ -371,6 +371,28 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function archiveActionRendersEventUid(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEvent.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $labelWithPlaceholder = LocalizationUtility::translate(
+            'plugin.eventArchive.events.property.eventUid.number',
+            'seminars',
+        );
+        self::assertIsString($labelWithPlaceholder);
+        $expected = sprintf($labelWithPlaceholder, 1);
+        self::assertSame('#1', $expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
+     * @test
+     */
     public function outlookActionForNoEventsShowsMessage(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
@@ -660,6 +682,28 @@ final class EventControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('Sally Speaker,', $html);
         self::assertStringContainsString('Sam Speaker', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionRendersEventUid(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEvent.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $labelWithPlaceholder = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.eventUid.number',
+            'seminars',
+        );
+        self::assertIsString($labelWithPlaceholder);
+        $expected = sprintf($labelWithPlaceholder, 1);
+        self::assertSame('#1', $expected);
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
