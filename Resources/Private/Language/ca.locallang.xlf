@@ -2525,6 +2525,10 @@
         <source>event format</source>
         <target state="needs-translation">event format</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.categories">
+        <source>categories</source>
+        <target state="needs-translation">categories</target>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers">
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
@@ -2572,6 +2576,10 @@
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.2">
         <source>online</source>
         <target state="needs-translation">online</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.categories">
+        <source>Categories</source>
+        <target state="needs-translation">Categories</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.speakers">
         <source>Speakers</source>
@@ -2637,6 +2645,10 @@
         <source>event format</source>
         <target state="needs-translation">event format</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.categories">
+        <source>categories</source>
+        <target state="needs-translation">categories</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
@@ -2696,6 +2708,10 @@
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.2">
         <source>online</source>
         <target state="needs-translation">online</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.categories">
+        <source>Categories</source>
+        <target state="needs-translation">Categories</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.speakers">
         <source>Speakers</source>
@@ -2901,6 +2917,10 @@
         <source>attendance mode</source>
         <target state="needs-translation">attendance mode</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.categories">
+        <source>categories</source>
+        <target state="needs-translation">categories</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers">
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
@@ -3004,6 +3024,10 @@
       <trans-unit id="plugin.myRegistrations.index.heading.attendanceMode">
         <source>Mode</source>
         <target state="needs-translation">Mode</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.categories">
+        <source>Categories</source>
+        <target state="needs-translation">Categories</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.speakers">
         <source>Speakers</source>
