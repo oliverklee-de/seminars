@@ -2492,6 +2492,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>event format</source>
         <target state="final">Veranstaltungsformat</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.categories">
+        <source>categories</source>
+        <target state="needs-translation">categories</target>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
         <target state="final">Referent_innen</target>
@@ -2539,6 +2543,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.2" approved="yes">
         <source>online</source>
         <target state="final">online</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.categories">
+        <source>Categories</source>
+        <target state="needs-translation">Categories</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.speakers" approved="yes">
         <source>Speakers</source>
@@ -2604,6 +2612,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>event format</source>
         <target state="final">Veranstaltungsformat</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.categories">
+        <source>categories</source>
+        <target state="needs-translation">categories</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
         <target state="final">Referent_innen</target>
@@ -2663,6 +2675,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.2" approved="yes">
         <source>online</source>
         <target state="final">online</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.categories">
+        <source>Categories</source>
+        <target state="needs-translation">Categories</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.speakers" approved="yes">
         <source>Speakers</source>
@@ -2868,6 +2884,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>attendance mode</source>
         <target state="final">Teilnahmemodus</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.categories">
+        <source>categories</source>
+        <target state="needs-translation">categories</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
         <target state="final">Referent_innen</target>
@@ -2971,6 +2991,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.myRegistrations.index.heading.attendanceMode" approved="yes">
         <source>Mode</source>
         <target state="final">Modus</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.categories">
+        <source>Categories</source>
+        <target state="needs-translation">Categories</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.speakers" approved="yes">
         <source>Speakers</source>
