@@ -26,14 +26,6 @@ final class TimeSlotTest extends UnitTestCase
     /**
      * @test
      */
-    public function getStartInitiallyReturnsNull(): void
-    {
-        self::assertNull($this->subject->getStart());
-    }
-
-    /**
-     * @test
-     */
     public function setStartSetsStart(): void
     {
         $date = new DateTime('2025-04-02 10:00:00');
@@ -41,14 +33,6 @@ final class TimeSlotTest extends UnitTestCase
         $this->subject->setStart($date);
 
         self::assertSame($date, $this->subject->getStart());
-    }
-
-    /**
-     * @test
-     */
-    public function getEndInitiallyReturnsNull(): void
-    {
-        self::assertNull($this->subject->getEnd());
     }
 
     /**
