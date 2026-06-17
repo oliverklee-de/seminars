@@ -10,7 +10,8 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Add more data to the "my registrations" single view (#5159, #5172)
 - Add `Event.timeSlots` (#5149)
 - Add a `TimeSlot` model and repository (#5039)
-- Add more columns to the FE list views (#5119, #5131, #5150, #5152, #5171)
+- Add more columns to the FE list views
+  (#5119, #5131, #5150, #5152, #5171, #5177)
 - Restyle the FE list views (#5043, #5117)
 - Add the venue to the "my registrations" list (#4982)
 - Add the city to the "my registrations" list (#4981)

@@ -339,6 +339,22 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function archiveActionRendersCategories(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEventWithTwoCategories.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('intense', $html);
+        self::assertStringContainsString('laid-back', $html);
+    }
+
+    /**
+     * @test
+     */
     public function archiveActionRendersSpeakers(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
@@ -612,6 +628,22 @@ final class EventControllerTest extends FunctionalTestCase
         $expected = LocalizationUtility::translate($keyPrefix . $labelKey, 'seminars');
         self::assertIsString($expected);
         self::assertStringContainsString($expected, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionRendersCategories(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithTwoCategories.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('intense', $html);
+        self::assertStringContainsString('laid-back', $html);
     }
 
     /**

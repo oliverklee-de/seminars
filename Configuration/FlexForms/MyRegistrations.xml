@@ -66,17 +66,23 @@
                                     </numIndex>
                                     <numIndex index="7" type="array">
                                         <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.categories
+                                        </numIndex>
+                                        <numIndex index="1">categories</numIndex>
+                                    </numIndex>
+                                    <numIndex index="8" type="array">
+                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.speakers
                                         </numIndex>
                                         <numIndex index="1">speakers</numIndex>
                                     </numIndex>
-                                    <numIndex index="8" type="array">
+                                    <numIndex index="9" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.registrationStatus
                                         </numIndex>
                                         <numIndex index="1">registrationStatus</numIndex>
                                     </numIndex>
-                                    <numIndex index="9" type="array">
+                                    <numIndex index="10" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.certificateOfAttendance
                                         </numIndex>
