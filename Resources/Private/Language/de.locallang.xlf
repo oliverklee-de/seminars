@@ -2492,9 +2492,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>event format</source>
         <target state="final">Veranstaltungsformat</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.categories">
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.categories" approved="yes">
         <source>categories</source>
-        <target state="needs-translation">categories</target>
+        <target state="final">Kategorien</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
@@ -2544,9 +2544,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>online</source>
         <target state="final">online</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.categories">
+      <trans-unit id="plugin.eventArchive.events.property.categories" approved="yes">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="final">Kategorien</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.speakers" approved="yes">
         <source>Speakers</source>
@@ -2612,9 +2612,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>event format</source>
         <target state="final">Veranstaltungsformat</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.categories">
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.categories" approved="yes">
         <source>categories</source>
-        <target state="needs-translation">categories</target>
+        <target state="final">Kategorien</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
@@ -2676,9 +2676,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>online</source>
         <target state="final">online</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.categories">
+      <trans-unit id="plugin.eventOutlook.events.property.categories" approved="yes">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="final">Kategorien</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.speakers" approved="yes">
         <source>Speakers</source>
@@ -2884,9 +2884,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>attendance mode</source>
         <target state="final">Teilnahmemodus</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.categories">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.categories" approved="yes">
         <source>categories</source>
-        <target state="needs-translation">categories</target>
+        <target state="final">Kategorien</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers" approved="yes">
         <source>speakers</source>
@@ -2992,9 +2992,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Mode</source>
         <target state="final">Modus</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.categories">
+      <trans-unit id="plugin.myRegistrations.index.heading.categories" approved="yes">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="final">Kategorien</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.speakers" approved="yes">
         <source>Speakers</source>
