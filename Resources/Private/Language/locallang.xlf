@@ -1860,6 +1860,9 @@
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers">
         <source>speakers</source>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventUid">
+        <source>UID</source>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.message.noEventsFound">
         <source>No events found.</source>
       </trans-unit>
@@ -1898,6 +1901,12 @@
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.speakers">
         <source>Speakers</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.eventUid">
+        <source>Number</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.eventUid.number">
+        <source>#%1$u</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook">
         <source>Event outlook</source>
@@ -1950,6 +1959,9 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
         <source>speakers</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventUid">
+        <source>UID</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price">
         <source>price</source>
       </trans-unit>
@@ -1997,6 +2009,12 @@
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.speakers">
         <source>Speakers</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.eventUid">
+        <source>Number</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.eventUid.number">
+        <source>#%1$u</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.price">
         <source>Price</source>
@@ -2154,6 +2172,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers">
         <source>speakers</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.eventUid">
+        <source>event UID</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.registrationStatus">
         <source>registration status</source>
       </trans-unit>
@@ -2235,6 +2256,9 @@
       <trans-unit id="plugin.myRegistrations.index.heading.speakers">
         <source>Speakers</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.eventUid">
+        <source>Event number</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus">
         <source>Status</source>
       </trans-unit>
@@ -2246,6 +2270,9 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.long">
         <source>📄 Display certificate of attendance</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.eventUid.number">
+        <source>#%1$u</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.attendanceMode.1">
         <source>on-site</source>

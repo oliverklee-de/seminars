@@ -6,7 +6,7 @@
                                                                       <sheet index=""displayOptions"">
                                                                           <language index=""lDEF"">
                                                                               <field index=""settings.columnsToShow"">
-                                                                                  <value index=""vDEF"">date,eventType,topic,organizer,city,venue,attendanceMode,categories,speakers,registrationStatus</value>
+                                                                                  <value index=""vDEF"">date,eventType,topic,organizer,city,venue,attendanceMode,categories,speakers,eventUid,registrationStatus</value>
                                                                               </field>
                                                                               <field index=""settings.fieldsToShow"">
                                                                                   <value index=""vDEF"">topic,eventType,registrationStatus,dateAndTime,venue,room,description,speakers,unregistration,downloads</value>

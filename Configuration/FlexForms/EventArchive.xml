@@ -100,7 +100,7 @@
                                 <renderType>selectCheckBox</renderType>
                                 <minitems>1</minitems>
                                 <maxitems>99</maxitems>
-                                <default>date,topic,city</default>
+                                <default>date,topic,city,eventUid</default>
                                 <items type="array">
                                     <numIndex index="0" type="array">
                                         <numIndex index="0">
@@ -155,6 +155,12 @@
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventArchive.settings.displayOptions.columns.speakers
                                         </numIndex>
                                         <numIndex index="1">speakers</numIndex>
+                                    </numIndex>
+                                    <numIndex index="9" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventArchive.settings.displayOptions.columns.eventUid
+                                        </numIndex>
+                                        <numIndex index="1">eventUid</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
