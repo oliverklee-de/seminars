@@ -2500,9 +2500,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>speakers</source>
         <target state="final">Referent_innen</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventUid">
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventUid" approved="yes">
         <source>UID</source>
-        <target state="needs-translation">UID</target>
+        <target state="final">UID</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.message.noEventsFound" approved="yes">
         <source>No events found.</source>
@@ -2556,13 +2556,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Speakers</source>
         <target state="final">Referent_innen</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventUid">
+      <trans-unit id="plugin.eventArchive.events.property.eventUid" approved="yes">
         <source>Number</source>
-        <target state="needs-translation">Number</target>
+        <target state="final">Nummer</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventUid.number">
+      <trans-unit id="plugin.eventArchive.events.property.eventUid.number" approved="yes">
         <source>#%1$u</source>
-        <target state="needs-translation">#%1$u</target>
+        <target state="final">#%1$u</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook" approved="yes">
         <source>Event outlook</source>
@@ -2632,9 +2632,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>speakers</source>
         <target state="final">Referent_innen</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventUid">
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventUid" approved="yes">
         <source>UID</source>
-        <target state="needs-translation">UID</target>
+        <target state="final">UID</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price" approved="yes">
         <source>price</source>
@@ -2700,13 +2700,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Speakers</source>
         <target state="final">Referent_innen</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventUid">
+      <trans-unit id="plugin.eventOutlook.events.property.eventUid" approved="yes">
         <source>Number</source>
-        <target state="needs-translation">Number</target>
+        <target state="final">Nummer</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventUid.number">
+      <trans-unit id="plugin.eventOutlook.events.property.eventUid.number" approved="yes">
         <source>#%1$u</source>
-        <target state="needs-translation">#%1$u</target>
+        <target state="final">#%1$u</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.price" approved="yes">
         <source>Price</source>
@@ -2916,9 +2916,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>speakers</source>
         <target state="final">Referent_innen</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.eventUid">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.eventUid" approved="yes">
         <source>event UID</source>
-        <target state="needs-translation">event UID</target>
+        <target state="final">UID der Veranstaltung</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.registrationStatus" approved="yes">
         <source>registration status</source>
@@ -3028,9 +3028,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Speakers</source>
         <target state="final">Referent_innen</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.eventUid">
+      <trans-unit id="plugin.myRegistrations.index.heading.eventUid" approved="yes">
         <source>Event number</source>
-        <target state="needs-translation">Event number</target>
+        <target state="final">Veranstaltungsnummer</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus" approved="yes">
         <source>Status</source>
@@ -3048,9 +3048,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>📄 Display certificate of attendance</source>
         <target state="final">📄 Teilnahmebescheinigung anzeigen</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.eventUid.number">
+      <trans-unit id="plugin.myRegistrations.property.eventUid.number" approved="yes">
         <source>#%1$u</source>
-        <target state="needs-translation">#%1$u</target>
+        <target state="final">#%1$u</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.attendanceMode.1" approved="yes">
         <source>on-site</source>
