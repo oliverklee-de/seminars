@@ -15,9 +15,9 @@ use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
  */
 class TimeSlot extends AbstractEntity
 {
-    protected ?\DateTime $start = null;
+    protected \DateTime $start;
 
-    protected ?\DateTime $end = null;
+    protected \DateTime $end;
 
     /**
      * @var Venue|null
@@ -31,22 +31,22 @@ class TimeSlot extends AbstractEntity
      */
     protected string $room = '';
 
-    public function getStart(): ?\DateTime
+    public function getStart(): \DateTime
     {
         return $this->start;
     }
 
-    public function setStart(?\DateTime $start): void
+    public function setStart(\DateTime $start): void
     {
         $this->start = $start;
     }
 
-    public function getEnd(): ?\DateTime
+    public function getEnd(): \DateTime
     {
         return $this->end;
     }
 
-    public function setEnd(?\DateTime $end): void
+    public function setEnd(\DateTime $end): void
     {
         $this->end = $end;
     }
