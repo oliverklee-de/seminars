@@ -212,7 +212,7 @@ abstract class AbstractBag implements \Iterator
 
         $this->queryResult = $this->connectionPool
             ->getConnectionForTable($this->allTableNames)
-            ->query($sql)->fetchAll();
+            ->executeQuery($sql)->fetchAllAssociative();
 
         $this->queryHasBeenExecuted = true;
     }
