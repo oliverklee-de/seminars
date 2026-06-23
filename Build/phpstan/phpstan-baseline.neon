@@ -41,7 +41,7 @@ parameters:
 			path: ../../Classes/Bag/AbstractBag.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag\\<M of OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\>\\:\\:\\$queryResult \\(array\\<int, array\\<string, float\\|int\\|string\\|null\\>\\>\\) does not accept array\\.$#"
+			message: "#^Property OliverKlee\\\\Seminars\\\\Bag\\\\AbstractBag\\<M of OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\>\\:\\:\\$queryResult \\(array\\<int, array\\<string, float\\|int\\|string\\|null\\>\\>\\) does not accept array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: ../../Classes/Bag/AbstractBag.php
 
