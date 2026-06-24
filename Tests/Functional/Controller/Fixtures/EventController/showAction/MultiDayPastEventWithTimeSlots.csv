@@ -1,0 +1,8 @@
+"tx_seminars_seminars"
+,"uid","pid","title","begin_date","end_date","timeslots"
+,1,2,"Extension Development with Extbase and Fluid",1730538000,1730653200,2
+
+"tx_seminars_timeslots"
+,"uid","pid","seminar","begin_date","end_date"
+,1,2,1,1730538000,1730566800
+,2,2,1,1730624400,1730653200
