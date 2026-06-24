@@ -132,8 +132,6 @@ class EventRegistrationController extends ActionController
         $this->registrationGuard->assertBookableEventType($event);
         \assert($event instanceof EventDateInterface);
 
-        $this->view->assign('event', $event);
-
         $applicablePrices = $this->priceFinder->findApplicablePrices($event);
         if ($registration instanceof Registration) {
             $newRegistration = $registration;
@@ -145,7 +143,6 @@ class EventRegistrationController extends ActionController
             $newRegistration->setPriceCode($firstPriceCode);
         }
         $this->registrationProcessor->enrichWithMetadata($newRegistration, $event, $this->settings, $this->request);
-        $this->view->assign('registration', $newRegistration);
 
         $maximumBookableSeats = (int)($this->settings['maximumBookableSeats'] ?? self::MAXIMUM_BOOKABLE_SEATS);
         $vacancies = $this->registrationGuard->getVacancies($event);
@@ -156,8 +153,15 @@ class EventRegistrationController extends ActionController
                 $maximumBookableSeats = $event->hasWaitingList() ? $maximumBookableSeats : 0;
             }
         }
-        $this->view->assign('maximumBookableSeats', $maximumBookableSeats);
-        $this->view->assign('applicablePrices', $applicablePrices);
+
+        $this->view->assignMultiple(
+            [
+                'event' => $event,
+                'registration' => $newRegistration,
+                'maximumBookableSeats' => $maximumBookableSeats,
+                'applicablePrices' => $applicablePrices,
+            ],
+        );
 
         return $this->htmlResponse();
     }
