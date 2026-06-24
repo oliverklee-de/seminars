@@ -663,12 +663,24 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     }
 
     /**
-     * @test
+     * @return array<non-empty-string, array{0: non-empty-string}>
      */
-    public function showActionRendersDateOfSingleDayEvent(): void
+    public static function singleDayEventDataProvider(): array
+    {
+        return [
+            'without time slots' => ['RegistrationForSingleDayEvent.csv'],
+            'with time slots' => ['RegistrationForSingleDayEventWithTimeSlots.csv'],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider singleDayEventDataProvider
+     */
+    public function showActionRendersDateOfSingleDayEvent(string $csvFile): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForSingleDayEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/' . $csvFile);
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -724,11 +736,12 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
     /**
      * @test
+     * @dataProvider singleDayEventDataProvider
      */
-    public function showActionRendersStartAndEndTimeOfSingleDayEvent(): void
+    public function showActionRendersStartAndEndTimeOfSingleDayEvent(string $csvFile): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForSingleDayEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/' . $csvFile);
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -743,12 +756,25 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     }
 
     /**
-     * @test
+     * @return array<non-empty-string, array{0: non-empty-string}>
      */
-    public function showActionRendersStartDateAndTimeOfMultiDayEvent(): void
+    public static function multiDayEventDataProvider(): array
+    {
+        return [
+            'without time slots' => ['RegistrationForMultiDayEvent.csv'],
+            'with time slots' => ['RegistrationForMultiDayEventWithTimeSlots.csv'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider multiDayEventDataProvider
+     */
+    public function showActionRendersStartDateAndTimeOfMultiDayEvent(string $csvDataSet): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForMultiDayEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/' . $csvDataSet);
 
         $request = (new InternalRequest())
             ->withPageId(7)
@@ -764,11 +790,13 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
     /**
      * @test
+     *
+     * @dataProvider multiDayEventDataProvider
      */
-    public function showActionRendersEndDateAndTimeOfMultiDayEvent(): void
+    public function showActionRendersEndDateAndTimeOfMultiDayEvent(string $csvDataSet): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForMultiDayEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/' . $csvDataSet);
 
         $request = (new InternalRequest())
             ->withPageId(7)
