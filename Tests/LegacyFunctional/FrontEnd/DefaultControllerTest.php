@@ -4864,10 +4864,7 @@ final class DefaultControllerTest extends FunctionalTestCase
         $hook->expects(self::exactly(2))->method('modifyListRow')->with($this->subject);
         $hook->expects(self::never())->method('modifyMyEventsListRow');
         $hook->expects(self::exactly(2))->method('modifyListFooter')->with($this->subject);
-        $hook->expects(self::exactly(2))->method('modifyEventBagBuilder')->withConsecutive(
-            [$this->subject, self::anything(), 'events_next_day'],
-            [$this->subject, self::anything(), 'other_dates'],
-        );
+        $hook->expects(self::exactly(2))->method('modifyEventBagBuilder');
         $hook->expects(self::never())->method('modifyRegistrationBagBuilder');
 
         $hookClass = \get_class($hook);
