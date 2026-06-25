@@ -225,8 +225,12 @@ class EventRegistrationController extends ActionController
      */
     public function thankYouAction(Event $event, Registration $registration): ResponseInterface
     {
-        $this->view->assign('event', $event);
-        $this->view->assign('registration', $registration);
+        $this->view->assignMultiple(
+            [
+                'event' => $event,
+                'registration' => $registration,
+            ],
+        );
 
         return $this->htmlResponse();
     }

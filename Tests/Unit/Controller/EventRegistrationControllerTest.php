@@ -1235,30 +1235,18 @@ final class EventRegistrationControllerTest extends UnitTestCase
     /**
      * @test
      */
-    public function thankYouActionPassesProvidedEventToView(): void
+    public function thankYouActionPassesProvidedEventAndRegistrationToView(): void
     {
         $event = new SingleEvent();
-
-        $this->viewMock->expects(self::exactly(2))->method('assign')->withConsecutive(
-            ['event', $event],
-            ['registration', self::anything()],
-        );
-
-        $this->subject->thankYouAction($event, new Registration());
-    }
-
-    /**
-     * @test
-     */
-    public function thankYouActionPassesProvidedRegistrationToView(): void
-    {
         $registration = new Registration();
 
-        $this->viewMock->expects(self::exactly(2))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', $registration],
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+            ],
         );
 
-        $this->subject->thankYouAction(new SingleEvent(), $registration);
+        $this->subject->thankYouAction($event, $registration);
     }
 }
