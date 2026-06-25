@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\SchedulerTasks;
 
-use DateTimeZone;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Seminars\SchedulerTasks\RegistrationDigest;
@@ -68,7 +67,7 @@ final class RegistrationDigestTest extends FunctionalTestCase
         $this->email = $this->createEmailMock();
         GeneralUtility::addInstance(MailMessage::class, $this->email);
 
-        $now = new \DateTimeImmutable('2018-04-26 12:42:23', new DateTimeZone('UTC'));
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23', new \DateTimeZone('UTC'));
         $context = $this->get(Context::class);
         $context->setAspect('date', new DateTimeAspect($now));
 
