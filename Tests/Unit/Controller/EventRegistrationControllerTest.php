@@ -449,14 +449,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
     {
         $event = new SingleEvent();
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', $event],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', self::anything()],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => 10,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -466,14 +469,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
     {
         $event = new EventDate();
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', $event],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', self::anything()],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => 10,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -484,14 +490,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $registration = new Registration();
         GeneralUtility::addInstance(Registration::class, $registration);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', $registration],
-            ['maximumBookableSeats', self::anything()],
-            ['applicablePrices', self::anything()],
+        $event = new SingleEvent();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => 10,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction(new SingleEvent(), null);
+        $this->subject->newAction($event, null);
     }
 
     /**
@@ -502,14 +511,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $registration = new Registration();
         GeneralUtility::addInstance(Registration::class, $registration);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', $registration],
-            ['maximumBookableSeats', self::anything()],
-            ['applicablePrices', self::anything()],
+        $event = new SingleEvent();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => 10,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction(new SingleEvent(), null);
+        $this->subject->newAction($event, null);
     }
 
     /**
@@ -541,14 +553,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $event = new SingleEvent();
         $this->registrationGuardMock->expects(self::once())->method('getVacancies')->with($event)->willReturn(null);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', 10],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => 10,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -559,14 +574,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $event = new SingleEvent();
         $this->registrationGuardMock->expects(self::once())->method('getVacancies')->with($event)->willReturn(11);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', 10],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => 10,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -580,14 +598,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
             ->expects(self::once())->method('getVacancies')
             ->with($event)->willReturn($vacancies);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', $vacancies],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => $vacancies,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -603,14 +624,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $maximumBookableSeats = 15;
         $this->subject->_set('settings', ['maximumBookableSeats' => (string)$maximumBookableSeats]);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', $maximumBookableSeats],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => $maximumBookableSeats,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -627,14 +651,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $maximumBookableSeats = 15;
         $this->subject->_set('settings', ['maximumBookableSeats' => (string)$maximumBookableSeats]);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', $maximumBookableSeats],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => $maximumBookableSeats,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -651,14 +678,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $maximumBookableSeats = 15;
         $this->subject->_set('settings', ['maximumBookableSeats' => (string)$maximumBookableSeats]);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', $vacancies],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => $vacancies,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -675,14 +705,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $maximumBookableSeats = 15;
         $this->subject->_set('settings', ['maximumBookableSeats' => (string)$maximumBookableSeats]);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', $vacancies],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => $vacancies,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -700,14 +733,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
         $maximumBookableSeats = 5;
         $this->subject->_set('settings', ['maximumBookableSeats' => (string)$maximumBookableSeats]);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', $maximumBookableSeats],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => $maximumBookableSeats,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -722,14 +758,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
             ->expects(self::once())->method('getVacancies')
             ->with($event)->willReturn($vacancies);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', 10],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => 10,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->newAction($event, new Registration());
+        $this->subject->newAction($event, $registration);
     }
 
     /**
@@ -743,11 +782,14 @@ final class EventRegistrationControllerTest extends UnitTestCase
             ->expects(self::once())->method('findApplicablePrices')->with($event)
             ->willReturn($applicablePrices);
 
-        $this->viewMock->expects(self::exactly(4))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['maximumBookableSeats', self::anything()],
-            ['applicablePrices', $applicablePrices],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'maximumBookableSeats' => 10,
+                'applicablePrices' => $applicablePrices,
+            ],
         );
 
         $this->subject->newAction($event, new Registration());
