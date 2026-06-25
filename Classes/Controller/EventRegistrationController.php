@@ -179,9 +179,13 @@ class EventRegistrationController extends ActionController
         $this->registrationProcessor->enrichWithMetadata($registration, $event, $this->settings, $this->request);
         $this->registrationProcessor->calculateTotalPrice($registration);
 
-        $this->view->assign('event', $event);
-        $this->view->assign('registration', $registration);
-        $this->view->assign('applicablePrices', $this->priceFinder->findApplicablePrices($event));
+        $this->view->assignMultiple(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'applicablePrices' => $this->priceFinder->findApplicablePrices($event),
+            ],
+        );
 
         return $this->htmlResponse();
     }
