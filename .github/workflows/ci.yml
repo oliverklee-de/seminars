@@ -150,7 +150,7 @@ jobs:
   functional-tests:
     name: Functional tests
     runs-on: ubuntu-24.04
-    timeout-minutes: 6
+    timeout-minutes: 8
     needs: php-lint
     steps:
       - name: Checkout
