@@ -67,7 +67,17 @@ final class EventRegistrationControllerTest extends UnitTestCase
     /**
      * @var UriBuilder&MockObject
      */
-    private UriBuilder $uriBuilderMock;
+    private UriBuilder $initialUriBuilderMock;
+
+    /**
+     * @var UriBuilder&MockObject
+     */
+    private UriBuilder $uriBuilderMockAfterReset1;
+
+    /**
+     * @var UriBuilder&MockObject
+     */
+    private UriBuilder $uriBuilderMockAfterReset2;
 
     /**
      * @var Request&Stub
@@ -102,10 +112,15 @@ final class EventRegistrationControllerTest extends UnitTestCase
 
         $this->viewMock = $this->createMock(TemplateView::class);
         $this->subject->_set('view', $this->viewMock);
-        $this->uriBuilderMock = $this->createMock(UriBuilder::class);
-        $this->subject->_set('uriBuilder', $this->uriBuilderMock);
+        $this->initialUriBuilderMock = $this->createMock(UriBuilder::class);
+        $this->subject->_set('uriBuilder', $this->initialUriBuilderMock);
         $this->subject->_set('request', $this->requestStub);
         $this->subject->_set('settings', []);
+
+        $this->uriBuilderMockAfterReset1 = $this->createMock(UriBuilder::class);
+        $this->initialUriBuilderMock->method('reset')->willReturn($this->uriBuilderMockAfterReset1);
+        $this->uriBuilderMockAfterReset2 = $this->createMock(UriBuilder::class);
+        $this->uriBuilderMockAfterReset1->method('reset')->willReturn($this->uriBuilderMockAfterReset2);
     }
 
     protected function tearDown(): void
@@ -374,21 +389,43 @@ final class EventRegistrationControllerTest extends UnitTestCase
             ->method('existsFrontEndUserUidInSession')
             ->with($this->requestStub)->willReturn(false);
 
-        $redirectUrl = 'https://example.com/current-page';
-        $loginPageUrl = 'https://example.com/login-with-event-uid';
         $loginPageUid = 17;
         $this->subject->_set('settings', ['loginPage' => (string)$loginPageUid]);
 
-        $this->uriBuilderMock->expects(self::exactly(2))->method('reset')->willReturnSelf();
-        $this->uriBuilderMock->expects(self::exactly(2))->method('setCreateAbsoluteUri')->with(true)->willReturnSelf();
-        $this->uriBuilderMock->expects(self::once())->method('setTargetPageUid')->with($loginPageUid)->willReturnSelf();
-        $this->uriBuilderMock->expects(self::exactly(2))->method('setArguments')->withConsecutive(
-            [['tx_seminars_eventregistration[event]' => $eventUid]],
-            [['redirect_url' => $redirectUrl]],
-        )->willReturnSelf();
-        $this->uriBuilderMock
-            ->expects(self::exactly(2))->method('buildFrontendUri')
-            ->willReturnOnConsecutiveCalls($redirectUrl, $loginPageUrl);
+        $redirectUrl = 'https://example.com/current-page';
+        $this->uriBuilderMockAfterReset1
+            ->expects(self::once())
+            ->method('setCreateAbsoluteUri')
+            ->with(true)
+            ->willReturnSelf();
+        $this->uriBuilderMockAfterReset1
+            ->expects(self::once())->method('setArguments')
+            ->with(['tx_seminars_eventregistration[event]' => $eventUid])
+            ->willReturnSelf();
+        $this->uriBuilderMockAfterReset1
+            ->expects(self::once())
+            ->method('buildFrontendUri')
+            ->willReturn($redirectUrl);
+
+        $loginPageUrl = 'https://example.com/login-with-event-uid';
+        $this->uriBuilderMockAfterReset2
+            ->expects(self::once())
+            ->method('setCreateAbsoluteUri')
+            ->with(true)
+            ->willReturnSelf();
+        $this->uriBuilderMockAfterReset2
+            ->expects(self::once())
+            ->method('setTargetPageUid')
+            ->with($loginPageUid)
+            ->willReturnSelf();
+        $this->uriBuilderMockAfterReset2
+            ->expects(self::once())->method('setArguments')
+            ->with(['redirect_url' => $redirectUrl])
+            ->willReturnSelf();
+        $this->uriBuilderMockAfterReset2
+            ->expects(self::once())
+            ->method('buildFrontendUri')
+            ->willReturn($loginPageUrl);
 
         $this->mockRedirectToUri($loginPageUrl);
 

@@ -106,16 +106,20 @@ class EventRegistrationController extends ActionController
 
     private function redirectToLoginPage(Event $event): ResponseInterface
     {
-        // In order to shorten the URL by removing redundant arguments, we are not using `$uriBuilder->uriFor()` here.
-        $redirectUrl = $this->uriBuilder
-            ->reset()->setCreateAbsoluteUri(true)
+        $uriBuilder = $this->uriBuilder->reset();
+
+        // To shorten the URL by removing redundant arguments, we are not using `$uriBuilder->uriFor()` here.
+        $redirectUrl = $uriBuilder
+            ->setCreateAbsoluteUri(true)
             ->setArguments(['tx_seminars_eventregistration[event]' => $event->getUid()])
             ->buildFrontendUri();
 
         $loginPageUid = (int)($this->settings['loginPage'] ?? 0);
-        $loginPageUrlWithRedirect = $this->uriBuilder
-            ->reset()->setCreateAbsoluteUri(true)
-            ->setTargetPageUid($loginPageUid)->setArguments(['redirect_url' => $redirectUrl])
+        $loginPageUrlWithRedirect = $uriBuilder
+            ->reset()
+            ->setCreateAbsoluteUri(true)
+            ->setTargetPageUid($loginPageUid)
+            ->setArguments(['redirect_url' => $redirectUrl])
             ->buildFrontendUri();
 
         return $this->redirectToUri($loginPageUrlWithRedirect);
