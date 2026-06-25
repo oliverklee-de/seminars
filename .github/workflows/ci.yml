@@ -191,6 +191,14 @@ jobs:
             php-version: "8.3"
             dbms: "mysql"
             composer-dependencies: Max
+          - typo3-version: "11.5"
+            php-version: "8.3"
+            dbms: "sqlite"
+            composer-dependencies: Max
+          - typo3-version: "11.5"
+            php-version: "8.3"
+            dbms: "postgres"
+            composer-dependencies: Max
   legacy-functional-tests:
     name: Legacy functional tests
     runs-on: ubuntu-24.04
@@ -234,6 +242,14 @@ jobs:
           - typo3-version: "11.5"
             php-version: "8.3"
             dbms: "mysql"
+            composer-dependencies: Max
+          - typo3-version: "11.5"
+            php-version: "8.3"
+            dbms: "sqlite"
+            composer-dependencies: Max
+          - typo3-version: "11.5"
+            php-version: "8.3"
+            dbms: "postgres"
             composer-dependencies: Max
   shellcheck:
     name: Check shell scripts
