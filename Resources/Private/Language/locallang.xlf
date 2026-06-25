@@ -2292,6 +2292,21 @@
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.2">
         <source>nonbinding reservation</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.timeSlots.caption">
+        <source>Time slots</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.timeSlots.date">
+        <source>Date</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.timeSlots.time">
+        <source>Time</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.timeSlots.venue">
+        <source>Venue</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.timeSlots.room">
+        <source>Room</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.unregistration">
         <source>Unregistration</source>
       </trans-unit>

@@ -790,7 +790,6 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
     /**
      * @test
-     *
      * @dataProvider multiDayEventDataProvider
      */
     public function showActionRendersEndDateAndTimeOfMultiDayEvent(string $csvDataSet): void
@@ -808,6 +807,99 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         self::assertStringContainsString('2039-12-02 17:00', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionCanRenderTimeSlotTimesOfSingleDayEvent(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForSingleDayEventWithTimeSlots.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        $expectedTimeWithUnit = LocalizationUtility::translate('timeWithUnit', 'seminars', ['09:00–13:00']);
+        self::assertIsString($expectedTimeWithUnit);
+        self::assertStringContainsString($expectedTimeWithUnit, $html);
+
+        $expectedTimeWithUnit2 = LocalizationUtility::translate('timeWithUnit', 'seminars', ['15:00–17:00']);
+        self::assertIsString($expectedTimeWithUnit2);
+        self::assertStringContainsString($expectedTimeWithUnit2, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionCanRenderTimeSlotsDateOfSingleDayEvent(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForSingleDayEventWithTimeSlots.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('2039-12-01', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionCanRenderTimeSlotsDatesOfMultiDayEventWithTimeSlots(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForMultiDayEventWithTimeSlots.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('2039-12-01', $html);
+        self::assertStringContainsString('2039-12-02', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionCanRenderTimeSlotsTimesOfMultiDayEventWithTimeSlots(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForMultiDayEventWithTimeSlots.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        $expectedTimeWithUnit = LocalizationUtility::translate('timeWithUnit', 'seminars', ['09:00–13:00']);
+        self::assertIsString($expectedTimeWithUnit);
+        self::assertStringContainsString($expectedTimeWithUnit, $html);
+
+        $expectedTimeWithUnit2 = LocalizationUtility::translate('timeWithUnit', 'seminars', ['15:00–17:00']);
+        self::assertIsString($expectedTimeWithUnit2);
+        self::assertStringContainsString($expectedTimeWithUnit2, $html);
     }
 
     /**

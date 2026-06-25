@@ -1,0 +1,56 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:if condition="{event.timeSlots -> f:count()}">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped w-auto">
+                <caption class="tx-seminars-visually-hidden">
+                    <f:translate key="plugin.myRegistrations.property.timeSlots.caption"/>
+                </caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.property.timeSlots.date"/>
+                        </th>
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.property.timeSlots.time"/>
+                        </th>
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.property.timeSlots.venue"/>
+                        </th>
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.property.timeSlots.room"/>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {f:translate(key: 'dateFormat') -> f:variable(name: 'dateFormat')}
+                    {f:translate(key: 'timeFormat') -> f:variable(name: 'timeFormat')}
+
+                    <f:for each="{event.timeSlots}" as="timeslot">
+                        <tr>
+                            <td>
+                                {timeslot.start -> f:format.date(format: dateFormat)}
+                            </td>
+                            <td>
+                                {timeslot.start -> f:format.date(format: timeFormat) -> f:variable(name: 'startTime')}
+                                {timeslot.end -> f:format.date(format: timeFormat) -> f:variable(name: 'endTime')}
+                                {f:translate(key: 'range', arguments: {0: startTime, 1: endTime}) ->
+                                f:variable(name:'timeRange')}
+                                <f:translate key="timeWithUnit" arguments="{0: timeRange}"/>
+                            </td>
+                            <td>
+                                <f:if condition="{timeslot.venue}">
+                                    {timeslot.venue.title}
+                                </f:if>
+                            </td>
+                            <td>
+                                {timeslot.room}
+                            </td>
+                        </tr>
+                    </f:for>
+                </tbody>
+            </table>
+        </div>
+    </f:if>
+</html>
