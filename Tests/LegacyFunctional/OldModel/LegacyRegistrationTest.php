@@ -65,20 +65,7 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $currenciesConnection = $this->get(ConnectionPool::class)->getConnectionForTable('static_currencies');
         if ($currenciesConnection->count('*', 'static_currencies', []) === 0) {
-            $currenciesConnection->insert(
-                'static_currencies',
-                [
-                    'uid' => 49,
-                    'cu_iso_3' => 'EUR',
-                    'cu_iso_nr' => 978,
-                    'cu_name_en' => 'Euro',
-                    'cu_symbol_left' => '€',
-                    'cu_thousands_point' => '.',
-                    'cu_decimal_point' => ',',
-                    'cu_decimal_digits' => 2,
-                    'cu_sub_divisor' => 100,
-                ],
-            );
+            $this->importCSVDataSet(__DIR__ . '/../../Functional/Fixtures/EuroCurrency.csv');
         }
 
         $this->configuration = new DummyConfiguration();

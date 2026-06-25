@@ -87,6 +87,10 @@ final class LegacyEventTest extends FunctionalTestCase
      */
     public function fromUidMapsDataFromDatabase(): void
     {
+        $currenciesConnection = $this->get(ConnectionPool::class)->getConnectionForTable('static_currencies');
+        if ($currenciesConnection->count('*', 'static_currencies', []) === 0) {
+            $this->importCSVDataSet(__DIR__ . '/../Fixtures/EuroCurrency.csv');
+        }
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Events.csv');
 
         $subject = TestingLegacyEvent::fromUid(1);
