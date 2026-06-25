@@ -962,13 +962,16 @@ final class EventRegistrationControllerTest extends UnitTestCase
     {
         $event = new SingleEvent();
 
-        $this->viewMock->expects(self::exactly(3))->method('assign')->withConsecutive(
-            ['event', $event],
-            ['registration', self::anything()],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->confirmAction($event, new Registration());
+        $this->subject->confirmAction($event, $registration);
     }
 
     /**
@@ -978,10 +981,13 @@ final class EventRegistrationControllerTest extends UnitTestCase
     {
         $event = new EventDate();
 
-        $this->viewMock->expects(self::exactly(3))->method('assign')->withConsecutive(
-            ['event', $event],
-            ['registration', self::anything()],
-            ['applicablePrices', self::anything()],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'applicablePrices' => [],
+            ],
         );
 
         $this->subject->confirmAction($event, new Registration());
@@ -994,13 +1000,16 @@ final class EventRegistrationControllerTest extends UnitTestCase
     {
         $registration = new Registration();
 
-        $this->viewMock->expects(self::exactly(3))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', $registration],
-            ['applicablePrices', self::anything()],
+        $event = new SingleEvent();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'applicablePrices' => [],
+            ],
         );
 
-        $this->subject->confirmAction(new SingleEvent(), $registration);
+        $this->subject->confirmAction($event, $registration);
     }
 
     /**
@@ -1014,13 +1023,16 @@ final class EventRegistrationControllerTest extends UnitTestCase
             ->expects(self::once())->method('findApplicablePrices')->with($event)
             ->willReturn($applicablePrices);
 
-        $this->viewMock->expects(self::exactly(3))->method('assign')->withConsecutive(
-            ['event', self::anything()],
-            ['registration', self::anything()],
-            ['applicablePrices', $applicablePrices],
+        $registration = new Registration();
+        $this->viewMock->expects(self::once())->method('assignMultiple')->with(
+            [
+                'event' => $event,
+                'registration' => $registration,
+                'applicablePrices' => $applicablePrices,
+            ],
         );
 
-        $this->subject->confirmAction($event, new Registration());
+        $this->subject->confirmAction($event, $registration);
     }
 
     /**
