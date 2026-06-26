@@ -1198,6 +1198,87 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function showActionCanRenderTimeSlotTimesOfSingleDayPastEvent(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleDayPastEventWithTimeSlots.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $expectedTimeWithUnit = LocalizationUtility::translate('timeWithUnit', 'seminars', ['09:00–09:00']);
+        self::assertIsString($expectedTimeWithUnit);
+        self::assertStringContainsString($expectedTimeWithUnit, $html);
+
+        $expectedTimeWithUnit2 = LocalizationUtility::translate('timeWithUnit', 'seminars', ['09:00–17:00']);
+        self::assertIsString($expectedTimeWithUnit2);
+        self::assertStringContainsString($expectedTimeWithUnit2, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionCanRenderTimeSlotsDateOfSingleDayPastEvent(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleDayPastEventWithTimeSlots.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('2024-11-03', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionCanRenderTimeSlotsDatesOfMultiDayPastEventWithTimeSlots(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/MultiDayPastEventWithTimeSlots.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('2024-11-02', $html);
+        self::assertStringContainsString('2024-11-03', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionCanRenderTimeSlotsTimesOfMultiDayPastEventWithTimeSlots(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/MultiDayPastEventWithTimeSlots.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $expectedTimeWithUnit = LocalizationUtility::translate('timeWithUnit', 'seminars', ['09:00–17:00']);
+        self::assertIsString($expectedTimeWithUnit);
+        self::assertStringContainsString($expectedTimeWithUnit, $html);
+
+        $expectedTimeWithUnit2 = LocalizationUtility::translate('timeWithUnit', 'seminars', ['09:00–17:00']);
+        self::assertIsString($expectedTimeWithUnit2);
+        self::assertStringContainsString($expectedTimeWithUnit2, $html);
+    }
+
+    /**
+     * @test
+     */
     public function showActionRendersTitleOfVenue(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
