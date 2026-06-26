@@ -2849,6 +2849,26 @@
         <source>End: %1s %2s</source>
         <target state="needs-translation">End: %1s %2s</target>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.caption">
+        <source>Time slots</source>
+        <target state="needs-translation">Time slots</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.date">
+        <source>Date</source>
+        <target state="needs-translation">Date</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.time">
+        <source>Time</source>
+        <target state="needs-translation">Time</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.venue">
+        <source>Venue</source>
+        <target state="needs-translation">Venue</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.room">
+        <source>Room</source>
+        <target state="needs-translation">Room</target>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.room">
         <source>Room</source>
         <target state="needs-translation">Room</target>
@@ -3108,26 +3128,6 @@
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.2">
         <source>nonbinding reservation</source>
         <target state="needs-translation">nonbinding reservation</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.caption">
-        <source>Time slots</source>
-        <target state="needs-translation">Time slots</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.date">
-        <source>Date</source>
-        <target state="needs-translation">Date</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.time">
-        <source>Time</source>
-        <target state="needs-translation">Time</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.venue">
-        <source>Venue</source>
-        <target state="needs-translation">Venue</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.room">
-        <source>Room</source>
-        <target state="needs-translation">Room</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.unregistration">
         <source>Unregistration</source>
