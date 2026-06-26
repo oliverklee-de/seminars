@@ -2816,25 +2816,25 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>End: %1s %2s</source>
         <target state="final">Ende: %1s %2s Uhr</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.property.timeSlots.caption">
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.caption" approved="yes">
         <source>Time slots</source>
-        <target state="needs-translation">Time slots</target>
+        <target state="final">Zeitslots</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.property.timeSlots.date">
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.date" approved="yes">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="final">Datum</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.property.timeSlots.time">
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.time" approved="yes">
         <source>Time</source>
-        <target state="needs-translation">Time</target>
+        <target state="final">Zeit</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.property.timeSlots.venue">
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.venue" approved="yes">
         <source>Venue</source>
-        <target state="needs-translation">Venue</target>
+        <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.property.timeSlots.room">
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.room" approved="yes">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="final">Raum</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.room" approved="yes">
         <source>Room</source>
