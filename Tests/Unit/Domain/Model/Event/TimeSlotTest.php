@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Unit\Domain\Model\Event;
 
-use DateTime;
 use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
 use OliverKlee\Seminars\Domain\Model\Venue;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -28,7 +27,7 @@ final class TimeSlotTest extends UnitTestCase
      */
     public function setStartSetsStart(): void
     {
-        $date = new DateTime('2025-04-02 10:00:00');
+        $date = new \DateTime('2025-04-02 10:00:00');
 
         $this->subject->setStart($date);
 
@@ -40,7 +39,7 @@ final class TimeSlotTest extends UnitTestCase
      */
     public function setEndSetsEnd(): void
     {
-        $date = new DateTime('2025-04-03 18:00:00');
+        $date = new \DateTime('2025-04-03 18:00:00');
 
         $this->subject->setEnd($date);
 
