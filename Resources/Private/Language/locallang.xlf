@@ -2097,6 +2097,21 @@
       <trans-unit id="plugin.eventSingleView.events.property.endDateAndTimeWithUnit">
         <source>End: %1s %2s</source>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.caption">
+        <source>Time slots</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.date">
+        <source>Date</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.time">
+        <source>Time</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.venue">
+        <source>Venue</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.property.timeSlots.room">
+        <source>Room</source>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.room">
         <source>Room</source>
       </trans-unit>
@@ -2291,21 +2306,6 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.2">
         <source>nonbinding reservation</source>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.caption">
-        <source>Time slots</source>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.date">
-        <source>Date</source>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.time">
-        <source>Time</source>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.venue">
-        <source>Venue</source>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.timeSlots.room">
-        <source>Room</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.unregistration">
         <source>Unregistration</source>
