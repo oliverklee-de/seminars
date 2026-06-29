@@ -1494,9 +1494,9 @@ abstract class TemplateHelper
     }
 
     /**
-     * Wraps the input string in a <div> tag with the class attribute set to the prefixId.
+     * Wraps the input string in a `<div>` tag with the class attribute set to the prefixId.
      * All content returned from your plugins should be returned through this function so all content from your plugin
-     * is encapsulated in a <div>-tag nicely identifying the content of your plugin.
+     * is encapsulated in a `<div>` tag nicely identifying the content of your plugin.
      *
      * @param string $str HTML content to wrap in the div-tags with the "main class" of the plugin
      *
@@ -1505,26 +1505,10 @@ abstract class TemplateHelper
     // phpcs:disable
     protected function pi_wrapInBaseClass(string $str): string
     {
-        $content = '<div class="' . \str_replace('_', '-', $this->prefixId) . '">
+        return '<div class="' . \str_replace('_', '-', $this->prefixId) . '">
             ' . $str . '
                 </div>
             ';
-        if (!($this->frontendController->config['config']['disablePrefixComment'] ?? false)) {
-            $content = '
-
-
-            <!--
-
-                BEGIN: Content of extension "' . $this->extKey . '", plugin "' . $this->prefixId . '"
-
-            -->
-            ' . $content . '
-                <!-- END: Content of extension "' . $this->extKey . '", plugin "' . $this->prefixId . '" -->
-
-            ';
-        }
-
-        return $content;
     }
 
     /**
