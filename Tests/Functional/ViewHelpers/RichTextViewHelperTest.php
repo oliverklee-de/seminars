@@ -2,18 +2,30 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Tests\Unit\ViewHelpers;
+namespace OliverKlee\Seminars\Tests\Functional\ViewHelpers;
 
 use OliverKlee\Seminars\ViewHelpers\RichTextViewHelper;
 use TYPO3\CMS\Core\Http\ServerRequest;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
  * @covers \OliverKlee\Seminars\ViewHelpers\RichTextViewHelper
  */
-final class RichTextViewHelperTest extends UnitTestCase
+final class RichTextViewHelperTest extends FunctionalTestCase
 {
-    protected bool $resetSingletonInstances = true;
+    protected array $coreExtensionsToLoad = [
+        'typo3/cms-extensionmanager',
+        'typo3/cms-install',
+    ];
+
+    protected array $testExtensionsToLoad = [
+        'sjbr/static-info-tables',
+        'oliverklee/feuserextrafields',
+        'oliverklee/oelib',
+        'oliverklee/seminars',
+    ];
+
+    protected bool $initializeDatabase = false;
 
     private RichTextViewHelper $subject;
 
@@ -24,13 +36,6 @@ final class RichTextViewHelperTest extends UnitTestCase
         $GLOBALS['TYPO3_REQUEST'] = new ServerRequest();
 
         $this->subject = new RichTextViewHelper();
-    }
-
-    protected function tearDown(): void
-    {
-        unset($GLOBALS['TYPO3_REQUEST']);
-
-        parent::tearDown();
     }
 
     /**
