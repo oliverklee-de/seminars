@@ -246,6 +246,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Avoid the deprecated `TypoScriptFrontendController::getLanguage()` (#5224)
 - Avoid deprecated query methods in `AbstractBag` (#5203)
 - Fix property mapping with timeslots and registrations (#5155)
 - Use the correct no-wrap Bootstrap class (#5151)
