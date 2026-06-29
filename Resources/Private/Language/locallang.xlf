@@ -1908,6 +1908,9 @@
       <trans-unit id="plugin.eventArchive.events.property.eventUid.number">
         <source>#%1$u</source>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.singleViewLink.ariaLabel">
+        <source>Show details for the event &quot;%1$s&quot;</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook">
         <source>Event outlook</source>
       </trans-unit>
@@ -2015,6 +2018,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number">
         <source>#%1$u</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.singleViewLink.ariaLabel">
+        <source>Show details for the event &quot;%1$s&quot;</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.price">
         <source>Price</source>

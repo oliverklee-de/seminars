@@ -123,7 +123,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function archiveActionLinksEventTitleToSingleView(): void
+    public function archiveActionForSingleEventLinksEventTitleToSingleView(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastSingleEvent.csv');
@@ -132,7 +132,31 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertMatchesRegularExpression('#<a href="/event-single-view/1">.*Extension Development#s', $html);
+        $expected = '#<a [^>]*href="/event-single-view/1"[^>]*>\\s*Extension Development#s';
+        self::assertMatchesRegularExpression($expected, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function archiveActionForSingleEventLinksEventTitleWithAriaText(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastSingleEvent.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $label = LocalizationUtility::translate(
+            'plugin.eventArchive.events.property.singleViewLink.ariaLabel',
+            'seminars',
+            ['Extension Development with Extbase and Fluid'],
+        );
+        self::assertIsString($label);
+        $encodedLabel = \htmlspecialchars($label, ENT_QUOTES | ENT_HTML5);
+        $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>\\s*Extension Development#s';
+        self::assertMatchesRegularExpression($expected, $html);
     }
 
     /**
@@ -153,7 +177,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function archiveActionRendersPastDateWithTitleFromTopic(): void
+    public function archiveActionForEventDateLinksEventTitleFromTopicToSingleView(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastDateWithTopic.csv');
@@ -162,7 +186,31 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('Extension Development with Extbase and Fluid', $html);
+        $expected = '#<a [^>]*href="/event-single-view/2"[^>]*>\\s*Extension Development#s';
+        self::assertMatchesRegularExpression($expected, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function archiveActionForEventDateLinksEventTitleFromTopicWithAriaText(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastDateWithTopic.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $label = LocalizationUtility::translate(
+            'plugin.eventArchive.events.property.singleViewLink.ariaLabel',
+            'seminars',
+            ['Extension Development with Extbase and Fluid'],
+        );
+        self::assertIsString($label);
+        $encodedLabel = \htmlspecialchars($label, ENT_QUOTES | ENT_HTML5);
+        $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>\\s*Extension Development#s';
+        self::assertMatchesRegularExpression($expected, $html);
     }
 
     /**
@@ -454,7 +502,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionLinksEventTitleToSingleView(): void
+    public function outlookActionForSingleEventLinksEventTitleToSingleView(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureSingleEvent.csv');
@@ -463,7 +511,31 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertMatchesRegularExpression('#<a href="/event-single-view/1">.*Extension Development#s', $html);
+        $expected = '#<a [^>]*href="/event-single-view/1"[^>]*>\\s*Extension Development#s';
+        self::assertMatchesRegularExpression($expected, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionForSingleEventLinksEventTitleWithAriaText(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureSingleEvent.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $label = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.singleViewLink.ariaLabel',
+            'seminars',
+            ['Extension Development with Extbase and Fluid'],
+        );
+        self::assertIsString($label);
+        $encodedLabel = \htmlspecialchars($label, ENT_QUOTES | ENT_HTML5);
+        $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>\\s*Extension Development#s';
+        self::assertMatchesRegularExpression($expected, $html);
     }
 
     /**
@@ -484,7 +556,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionRendersFutureDateWithTitleFromTopic(): void
+    public function outlookActionForEventDateLinksEventTitleFromTopicToSingleView(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureDateWithTopic.csv');
@@ -493,7 +565,31 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('Extension Development with Extbase and Fluid', $html);
+        $expected = '#<a [^>]*href="/event-single-view/2"[^>]*>\\s*Extension Development#s';
+        self::assertMatchesRegularExpression($expected, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionForEventDateLinksEventTitleFromTopicWithAriaText(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureDateWithTopic.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $label = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.singleViewLink.ariaLabel',
+            'seminars',
+            ['Extension Development with Extbase and Fluid'],
+        );
+        self::assertIsString($label);
+        $encodedLabel = \htmlspecialchars($label, ENT_QUOTES | ENT_HTML5);
+        $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>\\s*Extension Development#s';
+        self::assertMatchesRegularExpression($expected, $html);
     }
 
     /**
