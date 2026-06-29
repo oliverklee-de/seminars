@@ -69,12 +69,14 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
      */
     private static function buildDefaultArguments(array $arguments): array
     {
+        $key = self::retrieveKeyFromArguments($arguments);
+
         $defaultArguments = $arguments;
         $defaultArguments['extensionName'] = 'seminars';
-        $defaultArguments['default'] = (string)($arguments['key'] ?? '');
+        $defaultArguments['default'] = $key;
         $defaultArguments['languageKey'] = $arguments['languageKey'] ?? null;
-        $defaultArguments['key'] = (string)($arguments['key'] ?? '');
-        $defaultArguments['id'] = (string)($arguments['key'] ?? '');
+        $defaultArguments['key'] = $key;
+        $defaultArguments['id'] = $key;
         $defaultArguments['alternativeLanguageKeys'] = $arguments['alternativeLanguageKeys'] ?? null;
 
         return $defaultArguments;
@@ -87,10 +89,24 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
         array $arguments,
         RenderingContextInterface $renderingContext
     ): string {
-        $key = (string)($arguments['key'] ?? '');
         $salutation = self::getSalutationMode($renderingContext);
 
-        return $key . '_' . $salutation;
+        return self::retrieveKeyFromArguments($arguments) . '_' . $salutation;
+    }
+
+    /**
+     * @param array<string, mixed> $arguments
+     *
+     * @return non-empty-string
+     */
+    private static function retrieveKeyFromArguments(array $arguments): string
+    {
+        \assert(isset($arguments['key']));
+
+        $result = $arguments['key'];
+        \assert(\is_string($result) && $result !== '');
+
+        return $result;
     }
 
     private static function getSalutationMode(RenderingContextInterface $renderingContext): string
