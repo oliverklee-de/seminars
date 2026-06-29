@@ -81,7 +81,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function archiveActionRendersTitleOfPastSingleEventInStorageFolder(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastSingleEvent.csv');
 
         $request = (new InternalRequest())->withPageId(1);
 
@@ -126,7 +126,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function archiveActionLinksEventTitleToSingleView(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastSingleEvent.csv');
 
         $request = (new InternalRequest())->withPageId(1);
 
@@ -141,7 +141,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function archiveActionDoesDoesNotRenderFutureSingleEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/FutureEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/FutureSingleEvent.csv');
 
         $request = (new InternalRequest())->withPageId(1);
 
@@ -374,7 +374,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function archiveActionRendersEventUid(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastSingleEvent.csv');
 
         $request = (new InternalRequest())->withPageId(1);
 
@@ -412,7 +412,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function outlookActionRendersTitleOfFutureSingleEventInStorageFolder(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureSingleEvent.csv');
 
         $request = (new InternalRequest())->withPageId(1);
 
@@ -457,7 +457,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function outlookActionLinksEventTitleToSingleView(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureSingleEvent.csv');
 
         $request = (new InternalRequest())->withPageId(1);
 
@@ -472,7 +472,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function outlookActionDoesDoesNotRenderPastSingleEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/PastEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/PastSingleEvent.csv');
 
         $request = (new InternalRequest())->withPageId(1);
 
@@ -690,7 +690,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function outlookActionRendersEventUid(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureSingleEvent.csv');
 
         $request = (new InternalRequest())->withPageId(1);
 
@@ -983,7 +983,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function showActionRendersTitleOfFutureSingleEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureSingleEvent.csv');
 
         $request = (new InternalRequest())
             ->withPageId(3)
@@ -1000,7 +1000,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function showActionRendersTitleOfPastSingleEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastEvent.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastSingleEvent.csv');
 
         $request = (new InternalRequest())
             ->withPageId(3)
