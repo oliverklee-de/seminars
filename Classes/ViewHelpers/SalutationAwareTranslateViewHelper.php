@@ -17,7 +17,7 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
  *
  * The salutation mode (`formal` or `informal`) is determined by the `salutation` TypoScript setting.
  *
- * The label key need to have either the suffix `_formal` or `_informal` depending on the salutation mode.
+ * The label key needs to have either the suffix `_formal` or `_informal` depending on the salutation mode.
  *
  * If you do not need salutation-specific versions of labels, you should use the `translate` view helper instead as
  * it is slightly faster than this one.
@@ -27,7 +27,7 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
     use CompileWithRenderStatic;
 
     /**
-     * The output is already escaped. We must not escape children in order to avoid double encoding.
+     * The output already is escaped. We must not escape children to avoid double encoding.
      *
      * @var bool
      */
