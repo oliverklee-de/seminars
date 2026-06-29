@@ -7,8 +7,10 @@ namespace OliverKlee\Seminars\Templating;
 use OliverKlee\Oelib\Exception\NotFoundException;
 use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Oelib\Templating\TemplateRegistry;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Localization\Locales;
 use TYPO3\CMS\Core\Localization\LocalizationFactory;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\HttpUtility;
@@ -179,7 +181,11 @@ abstract class TemplateHelper
             }
         }
         $this->extractPiVars();
-        $this->LLkey = $this->frontendController->getLanguage()->getTypo3Language();
+        $request = $GLOBALS['TYPO3_REQUEST'] ?? null;
+        \assert($request instanceof ServerRequestInterface);
+        $siteLanguage = $request->getAttribute('language');
+        \assert($siteLanguage instanceof SiteLanguage);
+        $this->LLkey = $siteLanguage->getTypo3Language();
 
         $locales = GeneralUtility::makeInstance(Locales::class);
         if (\in_array($this->LLkey, $locales->getLocales(), true)) {

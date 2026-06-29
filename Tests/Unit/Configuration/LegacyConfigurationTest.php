@@ -7,6 +7,8 @@ namespace OliverKlee\Seminars\Tests\Unit\Configuration;
 use OliverKlee\Seminars\Configuration\LegacyConfiguration;
 use OliverKlee\Seminars\Templating\TemplateHelper;
 use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -30,6 +32,10 @@ final class LegacyConfigurationTest extends UnitTestCase
     {
         parent::setUp();
 
+        $requestMock = $this->createMock(ServerRequestInterface::class);
+        $requestMock->method('getAttribute')->with('language')->willReturn($this->createStub(SiteLanguage::class));
+        $GLOBALS['TYPO3_REQUEST'] = $requestMock;
+
         $frontEndControllerMock = $this->createMock(TypoScriptFrontendController::class);
         $this->contentObjectMock = $this->createMock(ContentObjectRenderer::class);
         $frontEndControllerMock->cObj = $this->contentObjectMock;
@@ -40,7 +46,7 @@ final class LegacyConfigurationTest extends UnitTestCase
 
     protected function tearDown(): void
     {
-        unset($GLOBALS['TSFE']);
+        unset($GLOBALS['TSFE'], $GLOBALS['TYPO3_REQUEST']);
         parent::tearDown();
     }
 
