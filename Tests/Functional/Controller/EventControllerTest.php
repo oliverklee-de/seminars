@@ -1451,7 +1451,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionSingleEventsWithoutDateDoesRenderPrice(): void
+    public function showActionForSingleEventWithoutDateRendersPrice(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithNoDateWithPrice.csv');
