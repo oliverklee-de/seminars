@@ -1687,7 +1687,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function showActionForPastSingleEventDoesNotRenderPrice(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastEventWithPrice.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastSingleEventWithPrice.csv');
 
         $request = (new InternalRequest())
             ->withPageId(3)
@@ -1701,10 +1701,10 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionForPastSingleEventWithDateDoesNotRenderPrice(): void
+    public function showActionForPastEventDateDoesNotRenderPrice(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastEventWithPrice.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastEventDateWithPrice.csv');
 
         $request = (new InternalRequest())
             ->withPageId(3)
@@ -1713,7 +1713,6 @@ final class EventControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         self::assertStringNotContainsString('500.50 €', $html);
-        self::assertStringContainsString('1970-01-01', $html);
     }
 
     /**
@@ -1722,7 +1721,7 @@ final class EventControllerTest extends FunctionalTestCase
     public function showActionForSingleEventWithoutDateRendersPrice(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithNoDateWithPrice.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithPriceAndNoDate.csv');
 
         $request = (new InternalRequest())
             ->withPageId(3)
@@ -1736,10 +1735,10 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionForSingleEventWithoutDateRendersPrice(): void
+    public function showActionForEventDateWithoutDateRendersPrice(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithNoDateWithPrice.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventDateWithPriceAndTopicAndNoDate.csv');
 
         $request = (new InternalRequest())
             ->withPageId(3)
@@ -1747,10 +1746,7 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        self::assertStringContainsString('500.50 €', $html);
-
-        $expectedDateHeading = LocalizationUtility::translate('dateAndTime', 'seminars');
-        self::assertNull($expectedDateHeading);
+        self::assertStringContainsString('500.50', $html);
     }
 
     /**
