@@ -74,10 +74,10 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
         $defaultArguments = $arguments;
         $defaultArguments['extensionName'] = 'seminars';
         $defaultArguments['default'] = $key;
-        $defaultArguments['languageKey'] = $arguments['languageKey'] ?? null;
+        $defaultArguments['languageKey'] = '';
         $defaultArguments['key'] = $key;
         $defaultArguments['id'] = $key;
-        $defaultArguments['alternativeLanguageKeys'] = $arguments['alternativeLanguageKeys'] ?? null;
+        $defaultArguments['alternativeLanguageKeys'] = [];
 
         return $defaultArguments;
     }
