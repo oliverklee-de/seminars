@@ -54,6 +54,11 @@
                             <f:translate key="plugin.eventArchive.events.property.eventUid"/>
                         </th>
                     </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled fieldName="singleViewLink">
+                        <th scope="col">
+                            <f:translate key="plugin.eventArchive.events.property.singleViewLink"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                 </tr>
             </thead>
             <tbody>
@@ -126,6 +131,15 @@
                             <td class="text-end">
                                 <f:translate key="plugin.eventArchive.events.property.eventUid.number"
                                              arguments="{0: event.uid}"/>
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled fieldName="singleViewLink">
+                            <td>
+                                <f:link.action action="show" arguments="{event: event}"
+                                               pageUid="{settings.singleViewPage}"
+                                               additionalAttributes="{'aria-label': '{singleViewLinkAriaLabel}'}">
+                                    <f:translate key="plugin.eventArchive.events.property.singleViewLink"/>
+                                </f:link.action>
                             </td>
                         </oelib:isFieldEnabled>
                     </tr>

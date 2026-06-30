@@ -162,6 +162,12 @@
                                         </numIndex>
                                         <numIndex index="1">eventUid</numIndex>
                                     </numIndex>
+                                    <numIndex index="10" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventArchive.settings.displayOptions.columns.singleViewLink
+                                        </numIndex>
+                                        <numIndex index="1">singleViewLink</numIndex>
+                                    </numIndex>
                                 </items>
                             </config>
                         </TCEforms>
