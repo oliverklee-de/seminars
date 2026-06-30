@@ -148,13 +148,13 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        $label = LocalizationUtility::translate(
+        $ariaLabel = LocalizationUtility::translate(
             'plugin.eventArchive.events.property.singleViewLink.ariaLabel',
             'seminars',
             ['Extension Development with Extbase and Fluid'],
         );
-        self::assertIsString($label);
-        $encodedLabel = \htmlspecialchars($label, ENT_QUOTES | ENT_HTML5);
+        self::assertIsString($ariaLabel);
+        $encodedLabel = \htmlspecialchars($ariaLabel, ENT_QUOTES | ENT_HTML5);
         $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>\\s*Extension Development#s';
         self::assertMatchesRegularExpression($expected, $html);
     }
@@ -202,13 +202,13 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        $label = LocalizationUtility::translate(
+        $ariaLabel = LocalizationUtility::translate(
             'plugin.eventArchive.events.property.singleViewLink.ariaLabel',
             'seminars',
             ['Extension Development with Extbase and Fluid'],
         );
-        self::assertIsString($label);
-        $encodedLabel = \htmlspecialchars($label, ENT_QUOTES | ENT_HTML5);
+        self::assertIsString($ariaLabel);
+        $encodedLabel = \htmlspecialchars($ariaLabel, ENT_QUOTES | ENT_HTML5);
         $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>\\s*Extension Development#s';
         self::assertMatchesRegularExpression($expected, $html);
     }
@@ -527,13 +527,13 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        $label = LocalizationUtility::translate(
+        $ariaLabel = LocalizationUtility::translate(
             'plugin.eventOutlook.events.property.singleViewLink.ariaLabel',
             'seminars',
             ['Extension Development with Extbase and Fluid'],
         );
-        self::assertIsString($label);
-        $encodedLabel = \htmlspecialchars($label, ENT_QUOTES | ENT_HTML5);
+        self::assertIsString($ariaLabel);
+        $encodedLabel = \htmlspecialchars($ariaLabel, ENT_QUOTES | ENT_HTML5);
         $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>\\s*Extension Development#s';
         self::assertMatchesRegularExpression($expected, $html);
     }
@@ -581,13 +581,13 @@ final class EventControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
-        $label = LocalizationUtility::translate(
+        $ariaLabel = LocalizationUtility::translate(
             'plugin.eventOutlook.events.property.singleViewLink.ariaLabel',
             'seminars',
             ['Extension Development with Extbase and Fluid'],
         );
-        self::assertIsString($label);
-        $encodedLabel = \htmlspecialchars($label, ENT_QUOTES | ENT_HTML5);
+        self::assertIsString($ariaLabel);
+        $encodedLabel = \htmlspecialchars($ariaLabel, ENT_QUOTES | ENT_HTML5);
         $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>\\s*Extension Development#s';
         self::assertMatchesRegularExpression($expected, $html);
     }
