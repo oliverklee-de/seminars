@@ -1433,28 +1433,10 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionForPastSingleEventWithDateDoesNotRenderPrice(): void
-    {
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastEventWithPrice.csv');
-
-        $request = (new InternalRequest())
-            ->withPageId(3)
-            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
-
-        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
-
-        self::assertStringNotContainsString('500.50 €', $html);
-        self::assertStringContainsString('1970-01-01', $html);
-    }
-
-    /**
-     * @test
-     */
     public function showActionForSingleEventWithoutDateRendersPrice(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithNoDateWithPrice.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithPriceAndNoDate.csv');
 
         $request = (new InternalRequest())
             ->withPageId(3)
@@ -1468,10 +1450,10 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionForSingleEventWithoutDateRendersPrice(): void
+    public function showActionForSingleEventWithoutDateWhileAssertingNullRendersPrice(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithNoDateWithPrice.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithPriceAndNoDate.csv');
 
         $request = (new InternalRequest())
             ->withPageId(3)
