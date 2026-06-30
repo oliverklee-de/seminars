@@ -1416,6 +1416,60 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function showActionForPastSingleEventDoesNotRenderPrice(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastEventWithPrice.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringNotContainsString('500.50 €', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForSingleEventWithoutDateRendersPrice(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithPriceAndNoDate.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('500.50 €', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForSingleEventWithoutDateWhileAssertingNullRendersPrice(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/SingleEventWithPriceAndNoDate.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('500.50 €', $html);
+
+        $expectedDateHeading = LocalizationUtility::translate('dateAndTime', 'seminars');
+        self::assertNull($expectedDateHeading);
+    }
+
+    /**
+     * @test
+     */
     public function showActionForEventWithRegistrationDeadlineOverDoesNotRenderPrice(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
