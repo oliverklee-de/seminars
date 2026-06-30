@@ -177,17 +177,23 @@
                                     </numIndex>
                                     <numIndex index="10" type="array">
                                         <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.singleViewLink
+                                        </numIndex>
+                                        <numIndex index="1">singleViewLink</numIndex>
+                                    </numIndex>
+                                    <numIndex index="11" type="array">
+                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.price
                                         </numIndex>
                                         <numIndex index="1">price</numIndex>
                                     </numIndex>
-                                    <numIndex index="11" type="array">
+                                    <numIndex index="12" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.vacancies
                                         </numIndex>
                                         <numIndex index="1">vacancies</numIndex>
                                     </numIndex>
-                                    <numIndex index="12" type="array">
+                                    <numIndex index="13" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.registration
                                         </numIndex>

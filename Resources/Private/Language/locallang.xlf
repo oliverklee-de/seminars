@@ -1863,6 +1863,9 @@
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventUid">
         <source>UID</source>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.singleViewLink">
+        <source>link to the single view</source>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.message.noEventsFound">
         <source>No events found.</source>
       </trans-unit>
@@ -1907,6 +1910,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventUid.number">
         <source>#%1$u</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.singleViewLink">
+        <source>Details</source>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.singleViewLink.ariaLabel">
         <source>Show details for the event &quot;%1$s&quot;</source>
@@ -1965,6 +1971,9 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventUid">
         <source>UID</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.singleViewLink">
+        <source>link to the single view</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price">
         <source>price</source>
       </trans-unit>
@@ -2018,6 +2027,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number">
         <source>#%1$u</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.singleViewLink">
+        <source>Details</source>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.singleViewLink.ariaLabel">
         <source>Show details for the event &quot;%1$s&quot;</source>
