@@ -58,6 +58,8 @@
             </thead>
             <tbody>
                 <f:for each="{events}" as="event">
+                    <f:variable name="singleViewLinkAriaLabel"
+                                value="{f:translate(key: 'plugin.eventArchive.events.property.singleViewLink.ariaLabel', arguments: {0: event.displayTitle})}"/>
                     <tr>
                         <oelib:isFieldEnabled fieldName="date">
                             <td>
@@ -74,7 +76,8 @@
                         <oelib:isFieldEnabled fieldName="topic">
                             <td>
                                 <f:link.action action="show" arguments="{event: event}"
-                                               pageUid="{settings.singleViewPage}">
+                                               pageUid="{settings.singleViewPage}"
+                                               additionalAttributes="{'aria-label': '{singleViewLinkAriaLabel}'}">
                                     {event.displayTitle}
                                 </f:link.action>
                             </td>
