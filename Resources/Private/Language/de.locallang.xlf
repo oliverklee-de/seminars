@@ -2504,9 +2504,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>UID</source>
         <target state="final">UID</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.singleViewLink">
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.singleViewLink" approved="yes">
         <source>link to the single view</source>
-        <target state="needs-translation">link to the single view</target>
+        <target state="final">Link zur Einzelansicht</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.message.noEventsFound" approved="yes">
         <source>No events found.</source>
@@ -2568,9 +2568,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>#%1$u</source>
         <target state="final">#%1$u</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.singleViewLink">
+      <trans-unit id="plugin.eventArchive.events.property.singleViewLink" approved="yes">
         <source>Details</source>
-        <target state="needs-translation">Details</target>
+        <target state="final">Details</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.singleViewLink.ariaLabel" approved="yes">
         <source>Show details for the event &quot;%1$s&quot;</source>
@@ -2648,9 +2648,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>UID</source>
         <target state="final">UID</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.singleViewLink">
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.singleViewLink" approved="yes">
         <source>link to the single view</source>
-        <target state="needs-translation">link to the single view</target>
+        <target state="final">Link zur Einzelansicht</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price" approved="yes">
         <source>price</source>
@@ -2724,9 +2724,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>#%1$u</source>
         <target state="final">#%1$u</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.singleViewLink">
+      <trans-unit id="plugin.eventOutlook.events.property.singleViewLink" approved="yes">
         <source>Details</source>
-        <target state="needs-translation">Details</target>
+        <target state="final">Details</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.singleViewLink.ariaLabel" approved="yes">
         <source>Show details for the event &quot;%1$s&quot;</source>
