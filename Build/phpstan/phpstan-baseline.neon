@@ -1236,11 +1236,6 @@ parameters:
 			path: ../../Classes/UpgradeWizards/GenerateEventSlugsUpgradeWizard.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
-			count: 1
-			path: ../../Classes/ViewHelpers/SalutationAwareTranslateViewHelper.php
-
-		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 1
 			path: ../../Tests/Functional/BackEnd/EmailServiceTest.php

@@ -26,6 +26,10 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
 
+    private const EXTENSION_NAME = 'seminars';
+
+    private const DEFAULT_SALUTATION = 'formal';
+
     /**
      * The output already is escaped. We must not escape children to avoid double encoding.
      *
@@ -57,7 +61,7 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
             $renderingContext,
         );
 
-        return $labelWithSalutation !== $keyWithSalutation
+        return ($labelWithSalutation !== $keyWithSalutation)
             ? $labelWithSalutation
             : TranslateViewHelper::renderStatic($defaultArguments, $renderChildrenClosure, $renderingContext);
     }
@@ -72,7 +76,7 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
         $key = self::retrieveKeyFromArguments($arguments);
 
         $defaultArguments = $arguments;
-        $defaultArguments['extensionName'] = 'seminars';
+        $defaultArguments['extensionName'] = self::EXTENSION_NAME;
         $defaultArguments['default'] = $key;
         $defaultArguments['languageKey'] = '';
         $defaultArguments['key'] = $key;
@@ -109,13 +113,17 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
         return $result;
     }
 
+    /**
+     * @return non-empty-string
+     */
     private static function getSalutationMode(RenderingContextInterface $renderingContext): string
     {
         $settings = $renderingContext->getVariableProvider()->get('settings');
-        if (!\is_array($settings)) {
-            $settings = [];
-        }
-        return (string)($settings['salutation'] ?? 'formal');
+        \assert(is_array($settings));
+
+        return (isset($settings['salutation']) && is_string($settings['salutation']) && $settings['salutation'] !== '')
+            ? $settings['salutation']
+            : self::DEFAULT_SALUTATION;
     }
 
     /**
