@@ -2537,6 +2537,10 @@
         <source>UID</source>
         <target state="needs-translation">UID</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.singleViewLink">
+        <source>link to the single view</source>
+        <target state="needs-translation">link to the single view</target>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.message.noEventsFound">
         <source>No events found.</source>
         <target state="needs-translation">No events found.</target>
@@ -2596,6 +2600,10 @@
       <trans-unit id="plugin.eventArchive.events.property.eventUid.number">
         <source>#%1$u</source>
         <target state="needs-translation">#%1$u</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.singleViewLink">
+        <source>Details</source>
+        <target state="needs-translation">Details</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.singleViewLink.ariaLabel">
         <source>Show details for the event &quot;%1$s&quot;</source>
@@ -2673,6 +2681,10 @@
         <source>UID</source>
         <target state="needs-translation">UID</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.singleViewLink">
+        <source>link to the single view</source>
+        <target state="needs-translation">link to the single view</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price">
         <source>price</source>
         <target state="needs-translation">price</target>
@@ -2744,6 +2756,10 @@
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number">
         <source>#%1$u</source>
         <target state="needs-translation">#%1$u</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.singleViewLink">
+        <source>Details</source>
+        <target state="needs-translation">Details</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.singleViewLink.ariaLabel">
         <source>Show details for the event &quot;%1$s&quot;</source>
