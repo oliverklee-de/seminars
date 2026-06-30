@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\ViewHelpers;
 
-use TYPO3\CMS\Fluid\ViewHelpers\TranslateViewHelper;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
@@ -51,39 +51,14 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ): string {
-        $defaultArguments = self::buildDefaultArguments($arguments);
-
-        $keyWithSalutation = self::buildKeyWithSalutation($defaultArguments, $renderingContext);
-        $argumentsWithSalutation = self::buildArgumentsWithSalutation($defaultArguments, $keyWithSalutation);
-        $labelWithSalutation = TranslateViewHelper::renderStatic(
-            $argumentsWithSalutation,
-            $renderChildrenClosure,
-            $renderingContext,
-        );
+        $key = self::retrieveKeyFromArguments($arguments);
+        $keyWithSalutation = self::buildKeyWithSalutation($arguments, $renderingContext);
+        $translateArguments = \is_array($arguments['arguments']) ? $arguments['arguments'] : [];
+        $labelWithSalutation = self::translate($keyWithSalutation, $translateArguments);
 
         return ($labelWithSalutation !== $keyWithSalutation)
             ? $labelWithSalutation
-            : TranslateViewHelper::renderStatic($defaultArguments, $renderChildrenClosure, $renderingContext);
-    }
-
-    /**
-     * @param array<string, mixed> $arguments
-     *
-     * @return array<string, mixed>
-     */
-    private static function buildDefaultArguments(array $arguments): array
-    {
-        $key = self::retrieveKeyFromArguments($arguments);
-
-        $defaultArguments = $arguments;
-        $defaultArguments['extensionName'] = self::EXTENSION_NAME;
-        $defaultArguments['default'] = $key;
-        $defaultArguments['languageKey'] = '';
-        $defaultArguments['key'] = $key;
-        $defaultArguments['id'] = $key;
-        $defaultArguments['alternativeLanguageKeys'] = [];
-
-        return $defaultArguments;
+            : self::translate($key, $translateArguments);
     }
 
     /**
@@ -119,25 +94,23 @@ class SalutationAwareTranslateViewHelper extends AbstractViewHelper
     private static function getSalutationMode(RenderingContextInterface $renderingContext): string
     {
         $settings = $renderingContext->getVariableProvider()->get('settings');
-        \assert(is_array($settings));
 
-        return (isset($settings['salutation']) && is_string($settings['salutation']) && $settings['salutation'] !== '')
+        return (is_array($settings) && isset($settings['salutation']) && is_string($settings['salutation'])
+            && $settings['salutation'] !== '')
             ? $settings['salutation']
             : self::DEFAULT_SALUTATION;
     }
 
     /**
-     * @param array<string, mixed> $defaultArguments
-     *
-     * @return array<string, mixed>
+     * @param array<mixed> $arguments
      */
-    private static function buildArgumentsWithSalutation(array $defaultArguments, string $keyWithSalutation): array
+    public static function translate(string $key, array $arguments): string
     {
-        $argumentsWithSalutation = $defaultArguments;
-        $argumentsWithSalutation['key'] = $keyWithSalutation;
-        $argumentsWithSalutation['id'] = $keyWithSalutation;
-        $argumentsWithSalutation['default'] = $keyWithSalutation;
+        $value = LocalizationUtility::translate($key, self::EXTENSION_NAME, $arguments);
+        if (!is_string($value)) {
+            $value = $key;
+        }
 
-        return $argumentsWithSalutation;
+        return $value;
     }
 }
