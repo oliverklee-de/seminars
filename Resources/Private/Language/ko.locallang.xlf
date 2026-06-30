@@ -2597,6 +2597,10 @@
         <source>#%1$u</source>
         <target state="needs-translation">#%1$u</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.singleViewLink.ariaLabel">
+        <source>Show details for the event &quot;%1$s&quot;</source>
+        <target state="needs-translation">Show details for the event "%1$s"</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook">
         <source>Event outlook</source>
         <target state="needs-translation">Event outlook</target>
@@ -2740,6 +2744,10 @@
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number">
         <source>#%1$u</source>
         <target state="needs-translation">#%1$u</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.singleViewLink.ariaLabel">
+        <source>Show details for the event &quot;%1$s&quot;</source>
+        <target state="needs-translation">Show details for the event "%1$s"</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.price">
         <source>Price</source>
