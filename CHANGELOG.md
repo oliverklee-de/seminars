@@ -246,6 +246,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Avoid the deprecated `renderStatic` (#5233, #5237)
 - Remove extraneous closing braces in Fluid templates (#5232)
 - Avoid the deprecated `TypoScriptFrontendController::getLanguage()` (#5224)
 - Avoid deprecated query methods in `AbstractBag` (#5203)
