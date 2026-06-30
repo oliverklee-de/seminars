@@ -2564,6 +2564,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>#%1$u</source>
         <target state="final">#%1$u</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.singleViewLink.ariaLabel">
+        <source>Show details for the event &quot;%1$s&quot;</source>
+        <target state="needs-translation">Show details for the event "%1$s"</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook" approved="yes">
         <source>Event outlook</source>
         <target state="final">Veranstaltungsausblick</target>
@@ -2707,6 +2711,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number" approved="yes">
         <source>#%1$u</source>
         <target state="final">#%1$u</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.singleViewLink.ariaLabel">
+        <source>Show details for the event &quot;%1$s&quot;</source>
+        <target state="needs-translation">Show details for the event "%1$s"</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.price" approved="yes">
         <source>Price</source>
