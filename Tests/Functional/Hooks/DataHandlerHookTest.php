@@ -9,6 +9,7 @@ use OliverKlee\Seminars\Tests\Functional\Support\BackEndTestsTrait;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -520,6 +521,13 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function doesNotDuplicateRegistrationsWhenCopyingEvent(): void
     {
+        if ((new Typo3Version())->getMajorVersion() >= 13) {
+            self::markTestSkipped(
+                'This functionality relies on altering the TCA at runtime, which is not supported in TYPO3 v13 and '
+                . 'later. Also, the tested functionality is deprecated anyway and will be removed very soon.',
+            );
+        }
+
         $this->initializeBackEndUser();
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/copy/SingleEventWithOneRegistration.csv');
 
@@ -555,6 +563,13 @@ final class DataHandlerHookTest extends FunctionalTestCase
      */
     public function doesNotMoveRegistrationsWhenMovingEvent(): void
     {
+        if ((new Typo3Version())->getMajorVersion() >= 13) {
+            self::markTestSkipped(
+                'This functionality relies on altering the TCA at runtime, which is not supported in TYPO3 v13 and '
+                . 'later. Also, the tested functionality is deprecated anyway and will be removed very soon.',
+            );
+        }
+
         $this->initializeBackEndUser();
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/move/SingleEventWithOneRegistrationOnPage.csv');
 
