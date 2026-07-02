@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\Tests\Functional\SchedulerTasks;
 
 use OliverKlee\Seminars\SchedulerTasks\MailNotifier;
 use OliverKlee\Seminars\SchedulerTasks\MailNotifierConfiguration;
-use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
@@ -38,9 +37,6 @@ final class MailNotifierConfigurationTest extends FunctionalTestCase
 
     private MailNotifierConfiguration $subject;
 
-    /**
-     * @var SchedulerModuleController&MockObject
-     */
     private SchedulerModuleController $moduleController;
 
     protected function setUp(): void
@@ -52,7 +48,7 @@ final class MailNotifierConfigurationTest extends FunctionalTestCase
             ->get(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
-        $this->moduleController = $this->createMock(SchedulerModuleController::class);
+        $this->moduleController = $this->get(SchedulerModuleController::class);
 
         $this->subject = new MailNotifierConfiguration();
     }
