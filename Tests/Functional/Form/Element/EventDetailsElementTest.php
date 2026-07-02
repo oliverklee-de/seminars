@@ -8,6 +8,7 @@ use OliverKlee\Seminars\Form\Element\EventDetailsElement;
 use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Backend\Form\Element\GroupElement;
 use TYPO3\CMS\Backend\Form\NodeFactory;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -40,6 +41,22 @@ final class EventDetailsElementTest extends FunctionalTestCase
             ->createFromUserPreferences($this->setUpBackendUser(1));
     }
 
+    /**
+     * @param array<mixed> $data
+     */
+    private function buildSubject(array $data = []): EventDetailsElement
+    {
+        if ((new Typo3Version())->getMajorVersion() >= 13) {
+            $subject = $this->get(EventDetailsElement::class);
+            // @phpstan-ignore method.notFound (This is code for V13.)
+            $subject->setData($data);
+        } else {
+            $subject = new EventDetailsElement(new NodeFactory(), $data);
+        }
+
+        return $subject;
+    }
+
     private function getDateFormat(): string
     {
         return LocalizationUtility::translate('dateFormat', 'seminars') ?? '';
@@ -50,7 +67,7 @@ final class EventDetailsElementTest extends FunctionalTestCase
      */
     public function isAbstractFormElement(): void
     {
-        $subject = new EventDetailsElement(new NodeFactory(), []);
+        $subject = $this->buildSubject();
 
         self::assertInstanceOf(AbstractFormElement::class, $subject);
     }
@@ -60,7 +77,7 @@ final class EventDetailsElementTest extends FunctionalTestCase
      */
     public function isGroupElement(): void
     {
-        $subject = new EventDetailsElement(new NodeFactory(), []);
+        $subject = $this->buildSubject();
 
         self::assertInstanceOf(GroupElement::class, $subject);
     }
@@ -117,7 +134,7 @@ final class EventDetailsElementTest extends FunctionalTestCase
             'processedTca' => ['columns' => [$fieldName => $fieldConfiguration]],
         ];
         ArrayUtility::mergeRecursiveWithOverrule($data, $additionalData);
-        $subject = new EventDetailsElement(new NodeFactory(), $data);
+        $subject = $this->buildSubject($data);
 
         $subject->render();
 
