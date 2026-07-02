@@ -793,7 +793,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
 
         self::assertStringContainsString(
-            '<input type="hidden" name="tx_seminars_frontendeditor[event][__identity]" value="1" />',
+            '<input type="hidden" name="tx_seminars_frontendeditor[event][__identity]" value="1"',
             $html,
         );
         self::assertStringContainsString('event with owner', $html);
@@ -1348,7 +1348,7 @@ final class FrontEndEditorControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
 
         self::assertStringContainsString(
-            '<input type="hidden" name="tx_seminars_frontendeditor[event][__identity]" value="1" />',
+            '<input type="hidden" name="tx_seminars_frontendeditor[event][__identity]" value="1"',
             $html,
         );
         self::assertStringContainsString('event with owner', $html);
