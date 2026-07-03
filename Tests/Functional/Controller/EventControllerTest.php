@@ -1067,7 +1067,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionRendersEventDateType(): void
+    public function outlookActionRendersEventTypeOfEventDate(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithEventDateType.csv');
