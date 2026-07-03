@@ -946,11 +946,42 @@ final class EventControllerTest extends FunctionalTestCase
     }
 
     /**
+     * @return array<non-empty-string, array{0: non-empty-string, 1: non-empty-string}>
+     */
+    public static function eventFormatForOutlookActionForEventDateDataProvider(): array
+    {
+        return [
+            'on-site' => ['FutureOnSiteEventDateWithTopic.csv', '0'],
+            'hybrid' => ['FutureHybridEventDateWithTopic.csv', '1'],
+            'online' => ['FutureOnlineEventDateWithTopic.csv', '2'],
+        ];
+    }
+    /**
      * @test
      *
      * @dataProvider eventFormatForOutlookActionDataProvider
      */
     public function outlookActionRendersEventFormat(string $fixtureFile, string $labelKey): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/' . $fixtureFile);
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $keyPrefix = 'plugin.eventOutlook.events.property.eventFormat.';
+        $expected = LocalizationUtility::translate($keyPrefix . $labelKey, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider eventFormatForOutlookActionForEventDateDataProvider
+     */
+    public function outlookActionForEventDateRendersEventFormat(string $fixtureFile, string $labelKey): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/' . $fixtureFile);
