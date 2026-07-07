@@ -139,7 +139,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function archiveActionForSingleEventLinksEventTitleWithAriaText(): void
+    public function archiveActionForSingleEventLinksEventTitleWithAriaLabel(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastSingleEvent.csv');
@@ -180,7 +180,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function archiveActionForSingleEventLinksSingleViewLinkTextWithAriaText(): void
+    public function archiveActionForSingleEventLinksSingleViewLinkTextWithAriaLabel(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastSingleEvent.csv');
@@ -236,7 +236,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function archiveActionForEventDateLinksEventTitleFromTopicWithAriaText(): void
+    public function archiveActionForEventDateLinksEventTitleFromTopicWithAriaLabel(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastDateWithTopic.csv');
@@ -277,7 +277,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function archiveActionForEventDateLinksSingleViewLinkTextWithAriaText(): void
+    public function archiveActionForEventDateLinksSingleViewLinkTextWithAriaLabel(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastDateWithTopic.csv');
@@ -604,7 +604,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionForSingleEventLinksEventTitleWithAriaText(): void
+    public function outlookActionForSingleEventLinksEventTitleWithAriaLabel(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureSingleEvent.csv');
@@ -645,7 +645,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionForSingleEventLinksSingleViewLinkTextWithAriaText(): void
+    public function outlookActionForSingleEventLinksSingleViewLinkTextWithAriaLabel(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureSingleEvent.csv');
@@ -716,7 +716,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionForEventDateLinksEventTitleFromTopicWithAriaText(): void
+    public function outlookActionForEventDateLinksEventTitleFromTopicWithAriaLabel(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureDateWithTopic.csv');
@@ -757,7 +757,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionForEventDateLinksSingleViewLinkTextWithAriaText(): void
+    public function outlookActionForEventDateLinksSingleViewLinkTextWithAriaLabel(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureDateWithTopic.csv');
@@ -956,6 +956,7 @@ final class EventControllerTest extends FunctionalTestCase
             'online' => ['FutureOnlineEventDateWithTopic.csv', '2'],
         ];
     }
+
     /**
      * @test
      *
