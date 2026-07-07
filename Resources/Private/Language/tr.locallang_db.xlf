@@ -5,43 +5,43 @@
     <body>
       <trans-unit id="moduleFunction.tx_seminars_modfunc1">
         <source>Seminars</source>
-        <target state="needs-translation">Seminars</target>
+        <target state="translated">Seminerler</target>
       </trans-unit>
       <trans-unit id="LGL.hidden">
         <source>Hide</source>
-        <target state="needs-translation">Hide</target>
+        <target state="translated">Gizle</target>
       </trans-unit>
       <trans-unit id="LGL.starttime">
         <source>Start</source>
-        <target state="needs-translation">Start</target>
+        <target state="translated">Başlat</target>
       </trans-unit>
       <trans-unit id="LGL.endtime">
         <source>Stop</source>
-        <target state="needs-translation">Stop</target>
+        <target state="translated">Durdur</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars">
         <source>Event</source>
-        <target state="needs-translation">Event</target>
+        <target state="translated">Etkinlik</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelGeneral">
         <source>General</source>
-        <target state="needs-translation">General</target>
+        <target state="translated">Genel</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.uid">
         <source>Event number</source>
-        <target state="needs-translation">Event number</target>
+        <target state="translated">Olay numarası</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.object_type">
         <source>Type</source>
-        <target state="needs-translation">Type</target>
+        <target state="translated">Tür</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.object_type.I.0">
         <source>Single event</source>
-        <target state="needs-translation">Single event</target>
+        <target state="translated">Tek bir olay</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.object_type.I.1">
         <source>Topic for multiple events</source>
-        <target state="needs-translation">Topic for multiple events</target>
+        <target state="translated">Çoklu etkinlikler için konu</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.object_type.I.2">
         <source>Date for a topic</source>
