@@ -2055,8 +2055,14 @@
       <trans-unit id="plugin.eventOutlook.events.property.registration.register">
         <source>registration</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.registration.register.ariaLabel">
+        <source>Register for the event &quot;%1$s&quot;</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList">
         <source>waiting list</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList.ariaLabel">
+        <source>Subscribe to the waiting list for the event &quot;%1$s&quot;</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView">
         <source>Event single view</source>

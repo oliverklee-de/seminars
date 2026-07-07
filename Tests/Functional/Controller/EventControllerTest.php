@@ -1272,6 +1272,29 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function outlookActionForEventWithOneVacancyRendersLinkWithRegistrationLabelAriaLabel(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithOneVacancy.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $ariaLabel = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.registration.register.ariaLabel',
+            'seminars',
+            ['Extension Development with Extbase and Fluid'],
+        );
+        self::assertIsString($ariaLabel);
+        $encodedLabel = \htmlspecialchars($ariaLabel, ENT_QUOTES | ENT_HTML5);
+        $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>#s';
+        self::assertMatchesRegularExpression($expected, $html);
+    }
+
+    /**
+     * @test
+     */
     public function outlookActionForFutureEventWithNoVacanciesAndWaitingListRendersLinkToRegistration(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
@@ -1305,6 +1328,29 @@ final class EventControllerTest extends FunctionalTestCase
         );
         self::assertIsString($expectedMessage);
         self::assertStringContainsString($expectedMessage, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionForFutureEventWithNoVacanciesAndWaitingListRendersLinkWithWaitingListAriaLabel(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithNoVacanciesAndWaitingList.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $ariaLabel = LocalizationUtility::translate(
+            'plugin.eventOutlook.events.property.registration.waitingList.ariaLabel',
+            'seminars',
+            ['Extension Development with Extbase and Fluid'],
+        );
+        self::assertIsString($ariaLabel);
+        $encodedLabel = \htmlspecialchars($ariaLabel, ENT_QUOTES | ENT_HTML5);
+        $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>#s';
+        self::assertMatchesRegularExpression($expected, $html);
     }
 
     /**
