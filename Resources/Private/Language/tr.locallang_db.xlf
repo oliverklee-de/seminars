@@ -45,51 +45,51 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.object_type.I.2">
         <source>Date for a topic</source>
-        <target state="needs-translation">Date for a topic</target>
+        <target state="translated">Konu tarihi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.slug">
         <source>URL segment</source>
-        <target state="needs-translation">URL segment</target>
+        <target state="translated">URL parçası</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.subtitle">
         <source>Subtitle</source>
-        <target state="needs-translation">Subtitle</target>
+        <target state="translated">Alt yazı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.categories">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="translated">Kategoriler</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.teaser">
         <source>Teaser text</source>
-        <target state="needs-translation">Teaser text</target>
+        <target state="translated">Ön izleme metni</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.description">
         <source>Description</source>
-        <target state="needs-translation">Description</target>
+        <target state="translated">Açıklama</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.topic">
         <source>Topic</source>
-        <target state="needs-translation">Topic</target>
+        <target state="translated">Konu</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.event_type">
         <source>Event type</source>
-        <target state="needs-translation">Event type</target>
+        <target state="translated">Etkinlik türü</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Tarih</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.time">
         <source>Time</source>
-        <target state="needs-translation">Time</target>
+        <target state="translated">Zaman</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.accreditation_number">
         <source>Accreditation number</source>
-        <target state="needs-translation">Accreditation number</target>
+        <target state="translated">Akreditasyon numarası</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.credit_points">
         <source>Credit points</source>
@@ -101,7 +101,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.additional_information">
         <source>Additional information</source>
-        <target state="needs-translation">Additional information</target>
+        <target state="translated">Ek bilgi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.checkboxes">
         <source>Registration options with checkbox</source>
@@ -121,19 +121,19 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.cancelled">
         <source>Status</source>
-        <target state="needs-translation">Status</target>
+        <target state="translated">Durum</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.cancelled_planned">
         <source>planned</source>
-        <target state="needs-translation">planned</target>
+        <target state="translated">planlandı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.cancelled_canceled">
         <source>canceled</source>
-        <target state="needs-translation">canceled</target>
+        <target state="translated">iptal edildi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.cancelled_confirmed">
         <source>confirmed</source>
-        <target state="needs-translation">confirmed</target>
+        <target state="translated">doğrulandı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.automatic_confirmation_cancelation">
         <source>Set the status automatically</source>
@@ -141,7 +141,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.notes">
         <source>Internal Notes</source>
-        <target state="needs-translation">Internal Notes</target>
+        <target state="translated">Dahili notlar</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.attached_files">
         <source>Downloads for registered persons</source>
@@ -169,15 +169,15 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.leaders">
         <source>Leaders</source>
-        <target state="needs-translation">Leaders</target>
+        <target state="translated">Liderler</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelOrganizers">
         <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <target state="translated">Organizatör</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.organizers">
         <source>Organizers</source>
-        <target state="needs-translation">Organizers</target>
+        <target state="translated">Organizatörler</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.organizing_partners">
         <source>Organizing Partners</source>
@@ -317,15 +317,15 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.is_full">
         <source>Is full</source>
-        <target state="needs-translation">Is full</target>
+        <target state="translated">Dolu</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelPayment">
         <source>Payment</source>
-        <target state="needs-translation">Payment</target>
+        <target state="translated">Ödeme</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.price_regular">
         <source>Regular price</source>
-        <target state="needs-translation">Regular price</target>
+        <target state="translated">Normal fiyat</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.price_regular_early">
         <source>Regular price (early bird)</source>
@@ -345,7 +345,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelBilling">
         <source>Billing</source>
-        <target state="needs-translation">Billing</target>
+        <target state="translated">Faturalandırma</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.billing_start">
         <source>Start of the billing process</source>
@@ -353,11 +353,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelAccess">
         <source>Access</source>
-        <target state="needs-translation">Access</target>
+        <target state="translated">Erişim</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.image">
         <source>Image</source>
-        <target state="needs-translation">Image</target>
+        <target state="translated">Görsel</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.requirements">
         <source>Requirements</source>
@@ -381,39 +381,39 @@
       </trans-unit>
       <trans-unit id="tx_seminars_speakers">
         <source>Speaker</source>
-        <target state="needs-translation">Speaker</target>
+        <target state="translated">Konuşmacı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.title">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">İsim</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.organization">
         <source>Organization</source>
-        <target state="needs-translation">Organization</target>
+        <target state="translated">Organizasyon</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.homepage">
         <source>Homepage</source>
-        <target state="needs-translation">Homepage</target>
+        <target state="translated">Anasayfa</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.description">
         <source>Description</source>
-        <target state="needs-translation">Description</target>
+        <target state="translated">Açıklama</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.image">
         <source>Image</source>
-        <target state="needs-translation">Image</target>
+        <target state="translated">Görsel</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.skills">
         <source>Skills</source>
-        <target state="needs-translation">Skills</target>
+        <target state="translated">Beceriler</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.notes">
         <source>Internal Notes</source>
-        <target state="needs-translation">Internal Notes</target>
+        <target state="translated">Dahili notlar</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.address">
         <source>Address</source>
-        <target state="needs-translation">Address</target>
+        <target state="translated">Adres</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.phone_work">
         <source>Phone number (work)</source>
@@ -429,7 +429,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.email">
         <source>Email address</source>
-        <target state="needs-translation">Email address</target>
+        <target state="translated">E-posta adresi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.cancelation_period">
         <source>Cancelation period (in days)</source>
@@ -457,15 +457,15 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.divLabelPaymentInformation">
         <source>Billing</source>
-        <target state="needs-translation">Billing</target>
+        <target state="translated">Faturalandırma</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.divLabelBillingAddress">
         <source>Billing Address</source>
-        <target state="needs-translation">Billing Address</target>
+        <target state="translated">Fatura Adresi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.uid">
         <source>Ticket ID</source>
-        <target state="needs-translation">Ticket ID</target>
+        <target state="translated">Destek ID</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.crdate">
         <source>Registration date</source>
@@ -473,7 +473,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.user">
         <source>Front-end User</source>
@@ -481,11 +481,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.seminar">
         <source>Event</source>
-        <target state="needs-translation">Event</target>
+        <target state="translated">Etkinlik</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registration_queue">
         <source>Status</source>
-        <target state="needs-translation">Status</target>
+        <target state="translated">Durum</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registration_queue.regular">
         <source>regular registration</source>
@@ -493,7 +493,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registration_queue.waitingList">
         <source>waiting list</source>
-        <target state="needs-translation">waiting list</target>
+        <target state="translated">bekleme listesi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registration_queue.nonbindingReservation">
         <source>nonbinding reservation</source>
@@ -509,19 +509,19 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.standard">
         <source>Regular price</source>
-        <target state="needs-translation">Regular price</target>
+        <target state="translated">Normal fiyat</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.earlyBird">
         <source>Early-bird price</source>
-        <target state="needs-translation">Early-bird price</target>
+        <target state="translated">Erkenci fiyat</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.special">
         <source>Special price</source>
-        <target state="needs-translation">Special price</target>
+        <target state="translated">Özel fiyat</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.specialEarlyBird">
         <source>Early-bird special price</source>
-        <target state="needs-translation">Early-bird special price</target>
+        <target state="translated">Erkenci özel fiyat</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.total_price">
         <source>Total price for this attendance</source>
@@ -533,7 +533,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.datepaid">
         <source>Date of payment</source>
-        <target state="needs-translation">Date of payment</target>
+        <target state="translated">Ödeme tarihi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.invoice_number">
         <source>Invoice number</source>
@@ -645,7 +645,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.notes">
         <source>Additional notes</source>
-        <target state="needs-translation">Additional notes</target>
+        <target state="translated">Ek notlar</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registered_themselves">
         <source>Has signed up themselves (too)</source>
@@ -653,7 +653,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.seats">
         <source>Number of seats</source>
-        <target state="needs-translation">Number of seats</target>
+        <target state="translated">Koltuk sayısı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.attendees_names">
         <source>Additional registered persons</source>
@@ -665,7 +665,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.kids">
         <source>Number of kids</source>
-        <target state="needs-translation">Number of kids</target>
+        <target state="translated">Çocuk sayısı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.attendance_mode">
         <source>Attendance mode</source>
@@ -673,11 +673,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.attendance_mode.onSite">
         <source>on-site</source>
-        <target state="needs-translation">on-site</target>
+        <target state="translated">yerinde</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.attendance_mode.online">
         <source>online</source>
-        <target state="needs-translation">online</target>
+        <target state="translated">çevrimiçi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.attendance_mode.hybrid">
         <source>hybrid</source>
@@ -693,19 +693,19 @@
       </trans-unit>
       <trans-unit id="tx_seminars_sites.title">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">İsim</target>
       </trans-unit>
       <trans-unit id="tx_seminars_sites.address">
         <source>Full address</source>
-        <target state="needs-translation">Full address</target>
+        <target state="translated">Tam adres</target>
       </trans-unit>
       <trans-unit id="tx_seminars_sites.city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">İl</target>
       </trans-unit>
       <trans-unit id="tx_seminars_sites.homepage">
         <source>Homepage</source>
-        <target state="needs-translation">Homepage</target>
+        <target state="translated">Anasayfa</target>
       </trans-unit>
       <trans-unit id="tx_seminars_sites.directions">
         <source>Directions</source>
@@ -725,39 +725,39 @@
       </trans-unit>
       <trans-unit id="tx_seminars_sites.phone_number">
         <source>Phone number</source>
-        <target state="needs-translation">Phone number</target>
+        <target state="translated">Telefon numarası</target>
       </trans-unit>
       <trans-unit id="tx_seminars_organizers">
         <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <target state="translated">Organizatör</target>
       </trans-unit>
       <trans-unit id="tx_seminars_organizers.title">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">İsim</target>
       </trans-unit>
       <trans-unit id="tx_seminars_organizers.description">
         <source>Description</source>
-        <target state="needs-translation">Description</target>
+        <target state="translated">Açıklama</target>
       </trans-unit>
       <trans-unit id="tx_seminars_organizers.homepage">
         <source>Homepage</source>
-        <target state="needs-translation">Homepage</target>
+        <target state="translated">Anasayfa</target>
       </trans-unit>
       <trans-unit id="tx_seminars_organizers.email">
         <source>Email address</source>
-        <target state="needs-translation">Email address</target>
+        <target state="translated">E-posta adresi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_organizers.email_footer">
         <source>Email footer</source>
-        <target state="needs-translation">Email footer</target>
+        <target state="translated">E-posta alt bilgisi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_payment_methods">
         <source>Method of payment</source>
-        <target state="needs-translation">Method of payment</target>
+        <target state="translated">Ödeme yöntemi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_payment_methods.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="tx_seminars_payment_methods.description">
         <source>Detailed description for emails</source>
@@ -765,11 +765,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_event_types">
         <source>Event type</source>
-        <target state="needs-translation">Event type</target>
+        <target state="translated">Etkinlik türü</target>
       </trans-unit>
       <trans-unit id="tx_seminars_event_types.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="tx_seminars_event_types.single_view_page">
         <source>Single view page for events of this type</source>
@@ -781,7 +781,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_checkboxes.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="tx_seminars_lodgings">
         <source>Lodging option</source>
@@ -789,7 +789,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_lodgings.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="tx_seminars_foods">
         <source>Food option</source>
@@ -797,7 +797,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_foods.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="tx_seminars_timeslots">
         <source>Time slot</source>
@@ -805,43 +805,43 @@
       </trans-unit>
       <trans-unit id="tx_seminars_timeslots.begin_date">
         <source>Begin date</source>
-        <target state="needs-translation">Begin date</target>
+        <target state="translated">Başlangıç tarihi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_timeslots.end_date">
         <source>End date</source>
-        <target state="needs-translation">End date</target>
+        <target state="translated">Bitiş tarihi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_timeslots.place">
         <source>Place</source>
-        <target state="needs-translation">Place</target>
+        <target state="translated">Yer</target>
       </trans-unit>
       <trans-unit id="tx_seminars_timeslots.room">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="translated">Oda</target>
       </trans-unit>
       <trans-unit id="tx_seminars_target_groups">
         <source>Target Groups</source>
-        <target state="needs-translation">Target Groups</target>
+        <target state="translated">Hedef Gruplar</target>
       </trans-unit>
       <trans-unit id="tx_seminars_target_groups.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="tx_seminars_target_groups.minimum_age">
         <source>Minimum age</source>
-        <target state="needs-translation">Minimum age</target>
+        <target state="translated">Minimum yaş</target>
       </trans-unit>
       <trans-unit id="tx_seminars_target_groups.maximum_age">
         <source>Maximum age</source>
-        <target state="needs-translation">Maximum age</target>
+        <target state="translated">Maksimum yaş</target>
       </trans-unit>
       <trans-unit id="tx_seminars_categories">
         <source>Event category</source>
-        <target state="needs-translation">Event category</target>
+        <target state="translated">Etkinlik kategorisi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_categories.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="tx_seminars_categories.single_view_page">
         <source>Single view page for events in this category</source>
