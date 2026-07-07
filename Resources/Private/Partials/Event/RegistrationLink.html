@@ -2,16 +2,20 @@
     <f:variable name="statistics" value="{event.statistics}"/>
     <f:if condition="{settings.registrationPage} && {event.registrationRequired}">
         <f:if condition="{event.registrationPossibleByDate} && {statistics.anyVacancies}">
+            <f:if condition="{statistics.regularVacancies}">
+                <f:then>
+                    <f:variable name="registrationType" value="register"/>
+                </f:then>
+                <f:else>
+                    <f:variable name="registrationType" value="waitingList"/>
+                </f:else>
+            </f:if>
+            <f:variable name="registrationLinkAriaLabel"
+                        value="{f:translate(key: 'plugin.eventOutlook.events.property.registration.{registrationType}.ariaLabel', arguments: {0: event.displayTitle})}"/>
             <f:link.action controller="EventRegistration" action="checkPrerequisites"
-                           pageUid="{settings.registrationPage}" arguments="{event: event}">
-                <f:if condition="{statistics.regularVacancies}">
-                    <f:then>
-                        <f:translate key="plugin.{viewName}.events.property.registration.register"/>
-                    </f:then>
-                    <f:else>
-                        <f:translate key="plugin.{viewName}.events.property.registration.waitingList"/>
-                    </f:else>
-                </f:if>
+                           pageUid="{settings.registrationPage}" arguments="{event: event}"
+                           additionalAttributes="{'aria-label': '{registrationLinkAriaLabel}'}">
+                <f:translate key="plugin.{viewName}.events.property.registration.{registrationType}"/>
             </f:link.action>
         </f:if>
     </f:if>
