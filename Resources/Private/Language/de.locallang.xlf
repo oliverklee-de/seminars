@@ -2760,17 +2760,17 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>registration</source>
         <target state="final">zur Anmeldung</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.registration.register.ariaLabel">
+      <trans-unit id="plugin.eventOutlook.events.property.registration.register.ariaLabel" approved="yes">
         <source>Register for the event &quot;%1$s&quot;</source>
-        <target state="needs-translation">Register for the event "%1$s"</target>
+        <target state="final">Zur Veranstaltung "%1$s" anmelden</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList" approved="yes">
         <source>waiting list</source>
         <target state="final">Warteliste</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList.ariaLabel">
+      <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList.ariaLabel" approved="yes">
         <source>Subscribe to the waiting list for the event &quot;%1$s&quot;</source>
-        <target state="needs-translation">Subscribe to the waiting list for the event "%1$s"</target>
+        <target state="final">Auf die Warteliste der Veranstaltung "%1$s" setzen</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView" approved="yes">
         <source>Event single view</source>
