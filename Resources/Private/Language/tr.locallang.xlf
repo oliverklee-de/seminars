@@ -5,15 +5,15 @@
     <body>
       <trans-unit id="test-label">
         <source>This is a test label.</source>
-        <target state="needs-translation">This is a test label.</target>
+        <target state="translated">Bu bir deneme etiketi.</target>
       </trans-unit>
       <trans-unit id="test-label-with-arguments">
         <source>Hello %s!</source>
-        <target state="needs-translation">Hello %s!</target>
+        <target state="translated">Merhaba%s!</target>
       </trans-unit>
       <trans-unit id="test-label-with-salutation_formal">
         <source>This is a test label with a formal salutation.</source>
-        <target state="needs-translation">This is a test label with a formal salutation.</target>
+        <target state="translated">Bu bir resmî deneme etiketi.</target>
       </trans-unit>
       <trans-unit id="test-label-with-salutation_informal">
         <source>This is a test label with an informal salutation.</source>
@@ -41,23 +41,23 @@
       </trans-unit>
       <trans-unit id="label_title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Başlık</target>
       </trans-unit>
       <trans-unit id="label_description">
         <source>Description</source>
-        <target state="needs-translation">Description</target>
+        <target state="translated">Açıklama</target>
       </trans-unit>
       <trans-unit id="label_uid">
         <source>Number</source>
-        <target state="needs-translation">Number</target>
+        <target state="translated">Numara</target>
       </trans-unit>
       <trans-unit id="label_registration_uid">
         <source>Ticket ID</source>
-        <target state="needs-translation">Ticket ID</target>
+        <target state="translated">Destek ID</target>
       </trans-unit>
       <trans-unit id="label_event_type">
         <source>Event type</source>
-        <target state="needs-translation">Event type</target>
+        <target state="translated">Etkinlik türü</target>
       </trans-unit>
       <trans-unit id="label_accreditation_number">
         <source>Accreditation number</source>
@@ -65,43 +65,43 @@
       </trans-unit>
       <trans-unit id="label_credit_points">
         <source>Credit points</source>
-        <target state="needs-translation">Credit points</target>
+        <target state="translated">Kredi puanları</target>
       </trans-unit>
       <trans-unit id="label_date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Tarih</target>
       </trans-unit>
       <trans-unit id="label_time">
         <source>Time</source>
-        <target state="needs-translation">Time</target>
+        <target state="translated">Zaman</target>
       </trans-unit>
       <trans-unit id="label_place">
         <source>Place</source>
-        <target state="needs-translation">Place</target>
+        <target state="translated">Yer</target>
       </trans-unit>
       <trans-unit id="label_room">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="translated">Oda</target>
       </trans-unit>
       <trans-unit id="label_attendance_mode">
         <source>On-site/online</source>
-        <target state="needs-translation">On-site/online</target>
+        <target state="translated">Yerinde/çevrimiçi</target>
       </trans-unit>
       <trans-unit id="label_attendance_mode.onSite">
         <source>on-site</source>
-        <target state="needs-translation">on-site</target>
+        <target state="translated">yerinde</target>
       </trans-unit>
       <trans-unit id="label_attendance_mode.online">
         <source>online</source>
-        <target state="needs-translation">online</target>
+        <target state="translated">çevrimiçi</target>
       </trans-unit>
       <trans-unit id="label_seats">
         <source>Seats</source>
-        <target state="needs-translation">Seats</target>
+        <target state="translated">Koltuklar</target>
       </trans-unit>
       <trans-unit id="label_total_price">
         <source>Total price</source>
-        <target state="needs-translation">Total price</target>
+        <target state="translated">Toplam fiyat</target>
       </trans-unit>
       <trans-unit id="label_attendees_names">
         <source>Registered persons</source>
@@ -113,135 +113,135 @@
       </trans-unit>
       <trans-unit id="label_kids">
         <source>Number of kids</source>
-        <target state="needs-translation">Number of kids</target>
+        <target state="translated">Çocuk sayısı</target>
       </trans-unit>
       <trans-unit id="label_price">
         <source>Price</source>
-        <target state="needs-translation">Price</target>
+        <target state="translated">Fiyat</target>
       </trans-unit>
       <trans-unit id="label_price_general">
         <source>Price</source>
-        <target state="needs-translation">Price</target>
+        <target state="translated">Fiyat</target>
       </trans-unit>
       <trans-unit id="label_price_regular">
         <source>Regular price</source>
-        <target state="needs-translation">Regular price</target>
+        <target state="translated">Normal fiyat</target>
       </trans-unit>
       <trans-unit id="label_price_regular_early">
         <source>Early-bird price</source>
-        <target state="needs-translation">Early-bird price</target>
+        <target state="translated">Erkenci fiyat</target>
       </trans-unit>
       <trans-unit id="label_price_earlybird_regular">
         <source>Early-bird price</source>
-        <target state="needs-translation">Early-bird price</target>
+        <target state="translated">Erkenci fiyat</target>
       </trans-unit>
       <trans-unit id="label_price_special">
         <source>Special price</source>
-        <target state="needs-translation">Special price</target>
+        <target state="translated">Özel fiyat</target>
       </trans-unit>
       <trans-unit id="label_price_special_early">
         <source>Early-bird special price</source>
-        <target state="needs-translation">Early-bird special price</target>
+        <target state="translated">Erkenci özel fiyat</target>
       </trans-unit>
       <trans-unit id="label_price_earlybird_special">
         <source>Early-bird special price</source>
-        <target state="needs-translation">Early-bird special price</target>
+        <target state="translated">Erkenci özel fiyat</target>
       </trans-unit>
       <trans-unit id="label_method_of_payment">
         <source>Method of payment</source>
-        <target state="needs-translation">Method of payment</target>
+        <target state="translated">Ödeme yöntemi</target>
       </trans-unit>
       <trans-unit id="label_gender">
         <source>Gender</source>
-        <target state="needs-translation">Gender</target>
+        <target state="translated">Cinsiyet</target>
       </trans-unit>
       <trans-unit id="label_username">
         <source>User name</source>
-        <target state="needs-translation">User name</target>
+        <target state="translated">Kullanıcı adı</target>
       </trans-unit>
       <trans-unit id="label_name">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">İsim</target>
       </trans-unit>
       <trans-unit id="label_address">
         <source>Address</source>
-        <target state="needs-translation">Address</target>
+        <target state="translated">Adres</target>
       </trans-unit>
       <trans-unit id="label_zip">
         <source>ZIP code</source>
-        <target state="needs-translation">ZIP code</target>
+        <target state="translated">Posta kodu</target>
       </trans-unit>
       <trans-unit id="label_city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">İl</target>
       </trans-unit>
       <trans-unit id="label_country">
         <source>Country</source>
-        <target state="needs-translation">Country</target>
+        <target state="translated">Ülke</target>
       </trans-unit>
       <trans-unit id="label_attendees">
         <source>Attendees</source>
-        <target state="needs-translation">Attendees</target>
+        <target state="translated">Katılımcılar</target>
       </trans-unit>
       <trans-unit id="label_vacancies">
         <source>Vacancies</source>
-        <target state="needs-translation">Vacancies</target>
+        <target state="translated">İş olanakları</target>
       </trans-unit>
       <trans-unit id="label_unlimited">
         <source>unlimited</source>
-        <target state="needs-translation">unlimited</target>
+        <target state="translated">sınırsız</target>
       </trans-unit>
       <trans-unit id="label_enough_attendees">
         <source>Enough attendees</source>
-        <target state="needs-translation">Enough attendees</target>
+        <target state="translated">Yeterli katılımcılar</target>
       </trans-unit>
       <trans-unit id="label_is_full">
         <source>Is full</source>
-        <target state="needs-translation">Is full</target>
+        <target state="translated">Dolu</target>
       </trans-unit>
       <trans-unit id="label_paymentmethod">
         <source>Selected method of payment</source>
-        <target state="needs-translation">Selected method of payment</target>
+        <target state="translated">Seçilen ödeme yöntemi</target>
       </trans-unit>
       <trans-unit id="label_billing_address">
         <source>Billing address</source>
-        <target state="needs-translation">Billing address</target>
+        <target state="translated">Fatura adresi</target>
       </trans-unit>
       <trans-unit id="label_telephone">
         <source>Phone</source>
-        <target state="needs-translation">Phone</target>
+        <target state="translated">Telefon</target>
       </trans-unit>
       <trans-unit id="label_email">
         <source>Email address</source>
-        <target state="needs-translation">Email address</target>
+        <target state="translated">E-posta adresi</target>
       </trans-unit>
       <trans-unit id="label_interests">
         <source>Special interests</source>
-        <target state="needs-translation">Special interests</target>
+        <target state="translated">Özel ilgi alanları</target>
       </trans-unit>
       <trans-unit id="label_expectations">
         <source>Expectations</source>
-        <target state="needs-translation">Expectations</target>
+        <target state="translated">Beklentiler</target>
       </trans-unit>
       <trans-unit id="label_background_knowledge">
         <source>Background knowledge</source>
-        <target state="needs-translation">Background knowledge</target>
+        <target state="translated">Arka plan bilgisi</target>
       </trans-unit>
       <trans-unit id="label_notes">
         <source>Additional Notes</source>
-        <target state="needs-translation">Additional Notes</target>
+        <target state="translated">Ek Notlar</target>
       </trans-unit>
       <trans-unit id="label_webinar_url">
         <source>Webinar URL</source>
-        <target state="needs-translation">Webinar URL</target>
+        <target state="translated">Webinar bağlantısı</target>
       </trans-unit>
       <trans-unit id="label_seminardata">
         <source>Seminar data</source>
-        <target state="needs-translation">Seminar data</target>
+        <target state="translated">Seminer verisi</target>
       </trans-unit>
       <trans-unit id="label_feuserdata">
         <source>Account data</source>
-        <target state="needs-translation">Account data</target>
+        <target state="translated">Hesap verisi</target>
       </trans-unit>
       <trans-unit id="label_attendancedata">
         <source>Data that has been entered on registration</source>
@@ -249,35 +249,35 @@
       </trans-unit>
       <trans-unit id="label_gender.I.0">
         <source>Mr.</source>
-        <target state="needs-translation">Mr.</target>
+        <target state="translated">Bay</target>
       </trans-unit>
       <trans-unit id="label_gender.I.1">
         <source>Ms.</source>
-        <target state="needs-translation">Ms.</target>
+        <target state="translated">Bayan</target>
       </trans-unit>
       <trans-unit id="label_status.I.1">
         <source>Student</source>
-        <target state="needs-translation">Student</target>
+        <target state="translated">Öğrenci</target>
       </trans-unit>
       <trans-unit id="label_status.I.2">
         <source>Job seeking</source>
-        <target state="needs-translation">Job seeking</target>
+        <target state="translated">İş arıyor</target>
       </trans-unit>
       <trans-unit id="label_status.I.3">
         <source>Working</source>
-        <target state="needs-translation">Working</target>
+        <target state="translated">Çalışıyor</target>
       </trans-unit>
       <trans-unit id="label_status.I.4">
         <source>Retired</source>
-        <target state="needs-translation">Retired</target>
+        <target state="translated">Emekli</target>
       </trans-unit>
       <trans-unit id="status_regular">
         <source>regular</source>
-        <target state="needs-translation">regular</target>
+        <target state="translated">normal</target>
       </trans-unit>
       <trans-unit id="status_waiting_list">
         <source>waiting list</source>
-        <target state="needs-translation">waiting list</target>
+        <target state="translated">bekleme listesi</target>
       </trans-unit>
       <trans-unit id="status_nonbinding_reservation">
         <source>nonbinding reservation</source>
@@ -285,23 +285,23 @@
       </trans-unit>
       <trans-unit id="label_yes">
         <source>yes</source>
-        <target state="needs-translation">yes</target>
+        <target state="translated">evet</target>
       </trans-unit>
       <trans-unit id="label_no">
         <source>no</source>
-        <target state="needs-translation">no</target>
+        <target state="translated">hayır</target>
       </trans-unit>
       <trans-unit id="label_hours">
         <source>h</source>
-        <target state="needs-translation">h</target>
+        <target state="translated">s</target>
       </trans-unit>
       <trans-unit id="label_checkboxes">
         <source>Selected options</source>
-        <target state="needs-translation">Selected options</target>
+        <target state="translated">Seçilen seçenekler</target>
       </trans-unit>
       <trans-unit id="message_notLoggedIn">
         <source>Please log in first.</source>
-        <target state="needs-translation">Please log in first.</target>
+        <target state="translated">Lütfen önce giriş yapın.</target>
       </trans-unit>
       <trans-unit id="message_notLoggedIn_informal">
         <source>Please log in first.</source>
@@ -363,11 +363,11 @@
       </trans-unit>
       <trans-unit id="message_forFree">
         <source>free</source>
-        <target state="needs-translation">free</target>
+        <target state="translated">ücretsiz</target>
       </trans-unit>
       <trans-unit id="message_enough">
         <source>enough</source>
-        <target state="needs-translation">enough</target>
+        <target state="translated">yeterli</target>
       </trans-unit>
       <trans-unit id="message_fullyBooked">
         <source>fully booked</source>
