@@ -175,4 +175,16 @@ class EventDate extends Event implements EventDateInterface
 
         return $topic->getPriceByPriceCode($priceCode);
     }
+
+    /**
+     * @throws \UnexpectedValueException if this event date is without topic, no categories shown.
+     */
+    public function getCategories(): ObjectStorage
+    {
+        $topic = $this->getTopic();
+        if (!$topic instanceof EventTopic) {
+            throw new \UnexpectedValueException('This event date does not have a topic.', 1668096905);
+        }
+        return $topic->getCategories();
+    }
 }
