@@ -87,18 +87,17 @@ interface EventInterface extends DomainObjectInterface
     public function getPriceByPriceCode(string $priceCode): Price;
 
     /**
+     * @return ObjectStorage<Category>
+     */
+    public function getCategories(): ObjectStorage;
+
+    /**
      * Returns the raw data as it is stored in the database.
      *
      * @return array<string, string|int|float|null>|null
      *
      * @internal
      */
-
-    /**
-     * @return ObjectStorage<Category>
-     */
-    public function getCategories(): ObjectStorage;
-
     public function getRawData(): ?array;
 
     /**
