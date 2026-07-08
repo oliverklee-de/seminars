@@ -113,7 +113,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.needs_registration">
         <source>Needs registration</source>
-        <target state="needs-translation">Needs registration</target>
+        <target state="translated">Kayıt gerekli</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.allows_multiple_registrations">
         <source>Allows multiple registrations from the same person</source>
@@ -153,19 +153,19 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelSpeakers">
         <source>Speakers</source>
-        <target state="needs-translation">Speakers</target>
+        <target state="translated">Konuşmacı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.speakers">
         <source>Speakers</source>
-        <target state="needs-translation">Speakers</target>
+        <target state="translated">Konuşmacılar</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.partners">
         <source>Partners</source>
-        <target state="needs-translation">Partners</target>
+        <target state="translated">Ortaklar</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.tutors">
         <source>Tutors</source>
-        <target state="needs-translation">Tutors</target>
+        <target state="translated">Eğitmenler</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.leaders">
         <source>Leaders</source>
@@ -193,7 +193,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelPlaceTime">
         <source>Place/Time</source>
-        <target state="needs-translation">Place/Time</target>
+        <target state="translated">Yer/Zaman</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.event_format">
         <source>Event format</source>
@@ -201,27 +201,27 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.event_format.on-site">
         <source>on-site</source>
-        <target state="needs-translation">on-site</target>
+        <target state="translated">yerinde</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.event_format.hybrid">
         <source>hybrid</source>
-        <target state="needs-translation">hybrid</target>
+        <target state="translated">hibrit</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.event_format.online">
         <source>online</source>
-        <target state="needs-translation">online</target>
+        <target state="translated">çevrimiçi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.webinar_url">
         <source>Webinar URL</source>
-        <target state="needs-translation">Webinar URL</target>
+        <target state="translated">Webinar bağlantısı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.begin_date">
         <source>Begin time and date</source>
-        <target state="needs-translation">Begin time and date</target>
+        <target state="translated">Başlangıç tarihi ve zamanı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.end_date">
         <source>End time and date</source>
-        <target state="needs-translation">End time and date</target>
+        <target state="translated">Bitiş tarihi ve zamanı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.timeslots">
         <source>Time slots</source>
@@ -229,71 +229,71 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.begin_date_registration">
         <source>Begin date for registration</source>
-        <target state="needs-translation">Begin date for registration</target>
+        <target state="translated">Kayıt için başlangıç tarihi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.deadline_registration">
         <source>Registration deadline</source>
-        <target state="needs-translation">Registration deadline</target>
+        <target state="translated">Kayıt için son süre</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.deadline_early_bird">
         <source>Early bird deadline</source>
-        <target state="needs-translation">Early bird deadline</target>
+        <target state="translated">Erkenci son süre</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.deadline_unregistration">
         <source>Unregistration deadline</source>
-        <target state="needs-translation">Unregistration deadline</target>
+        <target state="translated">Kayıt silme son süre</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.expiry">
         <source>License expiry</source>
-        <target state="needs-translation">License expiry</target>
+        <target state="translated">Lisans bitiş</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.place">
         <source>Place</source>
-        <target state="needs-translation">Place</target>
+        <target state="translated">Yer</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.room">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="translated">Oda</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.tab.attendeeInformation">
         <source>Information for attendees</source>
-        <target state="needs-translation">Information for attendees</target>
+        <target state="translated">Katılımcılar için bilgi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelLodging">
         <source>Lodging/Food</source>
-        <target state="needs-translation">Lodging/Food</target>
+        <target state="translated">Konaklama/Yemek</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.lodgings">
         <source>Available lodgings</source>
-        <target state="needs-translation">Available lodgings</target>
+        <target state="translated">Mevcut konaklamalar</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.foods">
         <source>Available foods</source>
-        <target state="needs-translation">Available foods</target>
+        <target state="translated">Mevcut yemekler</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelAttendees">
         <source>Attendees</source>
-        <target state="needs-translation">Attendees</target>
+        <target state="translated">Katılımcılar</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.attendees_min">
         <source>Minimal number of attendees</source>
-        <target state="needs-translation">Minimal number of attendees</target>
+        <target state="translated">En az katılımcı sayısı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.attendees_max">
         <source>Maximal number of attendees</source>
-        <target state="needs-translation">Maximal number of attendees</target>
+        <target state="translated">En fazla katılımcı sayısı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.queue_size">
         <source>Registration queue</source>
-        <target state="needs-translation">Registration queue</target>
+        <target state="translated">Kayıt sırası</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.offline_attendees">
         <source>Number of offline-registered attendees</source>
-        <target state="needs-translation">Number of offline-registered attendees</target>
+        <target state="translated">Çevrimdışı kaydolan katılımcı sayısı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.organizers_notified_about_minimum_reached">
         <source>Organizers have been notified that the minimum number of attendees has been reached</source>
-        <target state="needs-translation">Organizers have been notified that the minimum number of attendees has been reached</target>
+        <target state="translated">Organizatörlere en az katılımcı sayısına ulaşıldığı bildirildi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.mute_notification_emails">
         <source>Mute the notification emails to the organizers</source>
@@ -301,7 +301,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.target_groups">
         <source>Target groups</source>
-        <target state="needs-translation">Target groups</target>
+        <target state="translated">Hedef gruplar</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.attendees">
         <source>Current number of attendees</source>
@@ -333,11 +333,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.price_special">
         <source>Special price</source>
-        <target state="needs-translation">Special price</target>
+        <target state="translated">Özel fiyat</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.price_special_early">
         <source>Special price (early bird)</source>
-        <target state="needs-translation">Special price (early bird)</target>
+        <target state="translated">Özel fiyat (erkenci)</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.payment_methods">
         <source>Allowed methods of payment</source>
@@ -569,7 +569,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.gender.I.1">
         <source>Ms.</source>
-        <target state="needs-translation">Ms.</target>
+        <target state="translated">Bayan</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.gender.I.2">
         <source>diverse</source>
@@ -585,19 +585,19 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">İl</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.country">
         <source>Country</source>
-        <target state="needs-translation">Country</target>
+        <target state="translated">Ülke</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.telephone">
         <source>Telephone</source>
-        <target state="needs-translation">Telephone</target>
+        <target state="translated">Telefon</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.email">
         <source>Email</source>
-        <target state="needs-translation">Email</target>
+        <target state="translated">E-posta</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.been_there">
         <source>Has attended</source>
