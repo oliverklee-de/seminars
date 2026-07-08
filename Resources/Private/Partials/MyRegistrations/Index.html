@@ -9,56 +9,67 @@
                             <f:translate key="plugin.myRegistrations.index.heading.date"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventType">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.eventType"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="topic">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.topic"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="organizer">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.organizer"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="city">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.city"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="venue">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.venue"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="attendanceMode">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.attendanceMode"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="categories">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.categories"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="speakers">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.speakers"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventUid">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.eventUid"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="registrationStatus">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.registrationStatus"/>
                         </th>
                     </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="certificateOfAttendance">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.certificateOfAttendance"/>
@@ -69,6 +80,7 @@
             <tbody>
                 <f:for each="{registrations}" as="registration">
                     <f:variable name="event" value="{registration.event}"/>
+
                     <f:if condition="{event}">
                         <tr>
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="date">
@@ -76,6 +88,7 @@
                                     <f:render partial="EventDate" arguments="{event: event}"/>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventType">
                                 <td>
                                     <f:if condition="{event.eventType}">
@@ -83,6 +96,7 @@
                                     </f:if>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="topic">
                                 <td>
                                     <f:link.action action="show" arguments="{registration: registration}">
@@ -90,6 +104,7 @@
                                     </f:link.action>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="organizer">
                                 <td>
                                     <f:for each="{event.organizers}" as="organizer" iteration="iteration">
@@ -97,6 +112,7 @@
                                     </f:for>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="city">
                                 <td>
                                     <f:for each="{event.cityNames}" as="cityName" iteration="iteration">
@@ -104,6 +120,7 @@
                                     </f:for>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="venue">
                                 <td>
                                     <f:for each="{event.venues}" as="venue" iteration="iteration">
@@ -111,6 +128,7 @@
                                     </f:for>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="attendanceMode">
                                 <td>
                                     <f:if condition="{registration.attendanceMode}">
@@ -119,6 +137,7 @@
                                     </f:if>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="categories">
                                 <td>
                                     <f:for each="{event.categories}" as="category">
@@ -126,6 +145,7 @@
                                     </f:for>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="speakers">
                                 <td>
                                     <f:for each="{event.speakers}" as="speaker" iteration="iteration">
@@ -133,18 +153,21 @@
                                     </f:for>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventUid">
                                 <td class="text-end">
                                     <f:translate key="plugin.myRegistrations.property.eventUid.number"
                                                  arguments="{0: event.uid}"/>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="registrationStatus">
                                 <td>
                                     <f:translate
                                         key="plugin.myRegistrations.property.registrationStatus.{registration.status}"/>
                                 </td>
                             </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="certificateOfAttendance">
                                 <td>
                                     <f:if condition="{registration.downloadableCertificate}">
