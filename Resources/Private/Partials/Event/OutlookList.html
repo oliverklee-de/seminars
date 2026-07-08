@@ -9,11 +9,6 @@
                             <f:translate key="plugin.eventOutlook.events.property.date"/>
                         </th>
                     </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="eventType">
-                        <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.eventType"/>
-                        </th>
-                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled fieldName="topic">
                         <th scope="col">
                             <f:translate key="plugin.eventOutlook.events.property.topic"/>
@@ -24,14 +19,29 @@
                             <f:translate key="plugin.eventOutlook.events.property.organizer"/>
                         </th>
                     </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled fieldName="venue">
+                        <th scope="col">
+                            <f:translate key="plugin.eventOutlook.events.property.venue"/>
+                        </th>
+                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled fieldName="city">
                         <th scope="col">
                             <f:translate key="plugin.eventOutlook.events.property.city"/>
                         </th>
                     </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="venue">
+                    <oelib:isFieldEnabled fieldName="speakers">
                         <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.venue"/>
+                            <f:translate key="plugin.eventOutlook.events.property.speakers"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled fieldName="price">
+                        <th scope="col">
+                            <f:translate key="plugin.eventOutlook.events.property.price"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+                    <oelib:isFieldEnabled fieldName="eventType">
+                        <th scope="col">
+                            <f:translate key="plugin.eventOutlook.events.property.eventType"/>
                         </th>
                     </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled fieldName="eventFormat">
@@ -44,11 +54,6 @@
                             <f:translate key="plugin.eventOutlook.events.property.categories"/>
                         </th>
                     </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="speakers">
-                        <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.speakers"/>
-                        </th>
-                    </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled fieldName="eventUid">
                         <th scope="col">
                             <f:translate key="plugin.eventOutlook.events.property.eventUid"/>
@@ -59,19 +64,14 @@
                             <f:translate key="plugin.eventOutlook.events.property.singleViewLink"/>
                         </th>
                     </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="price">
+                    <oelib:isFieldEnabled fieldName="registration">
                         <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.price"/>
+                            <f:translate key="plugin.eventOutlook.events.property.registration"/>
                         </th>
                     </oelib:isFieldEnabled>
                     <oelib:isFieldEnabled fieldName="vacancies">
                         <th scope="col">
                             <f:translate key="plugin.eventOutlook.events.property.vacancies"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-                    <oelib:isFieldEnabled fieldName="registration">
-                        <th scope="col">
-                            <f:translate key="plugin.eventOutlook.events.property.registration"/>
                         </th>
                     </oelib:isFieldEnabled>
                 </tr>
@@ -85,13 +85,6 @@
                         <oelib:isFieldEnabled fieldName="date">
                             <td>
                                 <f:render partial="EventDate" arguments="{event: event}"/>
-                            </td>
-                        </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="eventType">
-                            <td>
-                                <f:if condition="{event.eventType}">
-                                    {event.eventType.title}
-                                </f:if>
                             </td>
                         </oelib:isFieldEnabled>
                         <oelib:isFieldEnabled fieldName="topic">
@@ -110,6 +103,13 @@
                                 </f:for>
                             </td>
                         </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled fieldName="venue">
+                            <td>
+                                <f:for each="{event.venues}" as="venue" iteration="iteration">
+                                    {venue.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                </f:for>
+                            </td>
+                        </oelib:isFieldEnabled>
                         <oelib:isFieldEnabled fieldName="city">
                             <td>
                                 <f:for each="{event.cityNames}" as="cityName" iteration="iteration">
@@ -117,11 +117,25 @@
                                 </f:for>
                             </td>
                         </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="venue">
+                        <oelib:isFieldEnabled fieldName="speakers">
                             <td>
-                                <f:for each="{event.venues}" as="venue" iteration="iteration">
-                                    {venue.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                <f:for each="{event.speakers}" as="speaker" iteration="iteration">
+                                    {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
                                 </f:for>
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled fieldName="price">
+                            <td class="text-end text-nowrap">
+                                <f:if condition="{event.standardPrice}">
+                                    <f:render partial="PriceWithVat" arguments="{amount: event.standardPrice}"/>
+                                </f:if>
+                            </td>
+                        </oelib:isFieldEnabled>
+                        <oelib:isFieldEnabled fieldName="eventType">
+                            <td>
+                                <f:if condition="{event.eventType}">
+                                    {event.eventType.title}
+                                </f:if>
                             </td>
                         </oelib:isFieldEnabled>
                         <oelib:isFieldEnabled fieldName="eventFormat">
@@ -133,13 +147,6 @@
                             <td>
                                 <f:for each="{event.categories}" as="category">
                                     {category.title}
-                                </f:for>
-                            </td>
-                        </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="speakers">
-                            <td>
-                                <f:for each="{event.speakers}" as="speaker" iteration="iteration">
-                                    {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
                                 </f:for>
                             </td>
                         </oelib:isFieldEnabled>
@@ -158,22 +165,15 @@
                                 </f:link.action>
                             </td>
                         </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="price">
-                            <td class="text-end text-nowrap">
-                                <f:if condition="{event.standardPrice}">
-                                    <f:render partial="PriceWithVat" arguments="{amount: event.standardPrice}"/>
-                                </f:if>
+                        <oelib:isFieldEnabled fieldName="registration">
+                            <td>
+                                <f:render partial="Event/RegistrationLink"
+                                          arguments="{event: event, viewName: 'eventOutlook'}"/>
                             </td>
                         </oelib:isFieldEnabled>
                         <oelib:isFieldEnabled fieldName="vacancies">
                             <td class="text-nowrap">
                                 <f:render partial="Event/Vacancies"
-                                          arguments="{event: event, viewName: 'eventOutlook'}"/>
-                            </td>
-                        </oelib:isFieldEnabled>
-                        <oelib:isFieldEnabled fieldName="registration">
-                            <td>
-                                <f:render partial="Event/RegistrationLink"
                                           arguments="{event: event, viewName: 'eventOutlook'}"/>
                             </td>
                         </oelib:isFieldEnabled>

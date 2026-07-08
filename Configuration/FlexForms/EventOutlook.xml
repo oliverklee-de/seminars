@@ -113,7 +113,7 @@
                                 <renderType>selectCheckBox</renderType>
                                 <minitems>1</minitems>
                                 <maxitems>99</maxitems>
-                                <default>date,topic,city,vacancies,registration</default>
+                                <default>date,topic,city,registration,vacancies</default>
                                 <items type="array">
                                     <numIndex index="0" type="array">
                                         <numIndex index="0">
@@ -123,21 +123,21 @@
                                     </numIndex>
                                     <numIndex index="1" type="array">
                                         <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.eventType
-                                        </numIndex>
-                                        <numIndex index="1">eventType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.topic
                                         </numIndex>
                                         <numIndex index="1">topic</numIndex>
                                     </numIndex>
-                                    <numIndex index="3" type="array">
+                                    <numIndex index="2" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.organizer
                                         </numIndex>
                                         <numIndex index="1">organizer</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.venue
+                                        </numIndex>
+                                        <numIndex index="1">venue</numIndex>
                                     </numIndex>
                                     <numIndex index="4" type="array">
                                         <numIndex index="0">
@@ -147,57 +147,57 @@
                                     </numIndex>
                                     <numIndex index="5" type="array">
                                         <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.venue
-                                        </numIndex>
-                                        <numIndex index="1">venue</numIndex>
-                                    </numIndex>
-                                    <numIndex index="6" type="array">
-                                        <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.eventFormat
-                                        </numIndex>
-                                        <numIndex index="1">eventFormat</numIndex>
-                                    </numIndex>
-                                    <numIndex index="7" type="array">
-                                        <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.categories
-                                        </numIndex>
-                                        <numIndex index="1">categories</numIndex>
-                                    </numIndex>
-                                    <numIndex index="8" type="array">
-                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.speakers
                                         </numIndex>
                                         <numIndex index="1">speakers</numIndex>
                                     </numIndex>
-                                    <numIndex index="9" type="array">
-                                        <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.eventUid
-                                        </numIndex>
-                                        <numIndex index="1">eventUid</numIndex>
-                                    </numIndex>
-                                    <numIndex index="10" type="array">
-                                        <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.singleViewLink
-                                        </numIndex>
-                                        <numIndex index="1">singleViewLink</numIndex>
-                                    </numIndex>
-                                    <numIndex index="11" type="array">
+                                    <numIndex index="6" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.price
                                         </numIndex>
                                         <numIndex index="1">price</numIndex>
                                     </numIndex>
-                                    <numIndex index="12" type="array">
+                                    <numIndex index="7" type="array">
                                         <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.vacancies
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.eventType
                                         </numIndex>
-                                        <numIndex index="1">vacancies</numIndex>
+                                        <numIndex index="1">eventType</numIndex>
                                     </numIndex>
-                                    <numIndex index="13" type="array">
+                                    <numIndex index="8" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.eventFormat
+                                        </numIndex>
+                                        <numIndex index="1">eventFormat</numIndex>
+                                    </numIndex>
+                                    <numIndex index="9" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.categories
+                                        </numIndex>
+                                        <numIndex index="1">categories</numIndex>
+                                    </numIndex>
+                                    <numIndex index="10" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.eventUid
+                                        </numIndex>
+                                        <numIndex index="1">eventUid</numIndex>
+                                    </numIndex>
+                                    <numIndex index="11" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.singleViewLink
+                                        </numIndex>
+                                        <numIndex index="1">singleViewLink</numIndex>
+                                    </numIndex>
+                                    <numIndex index="12" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.registration
                                         </numIndex>
                                         <numIndex index="1">registration</numIndex>
+                                    </numIndex>
+                                    <numIndex index="13" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.vacancies
+                                        </numIndex>
+                                        <numIndex index="1">vacancies</numIndex>
                                     </numIndex>
                                 </items>
                             </config>
