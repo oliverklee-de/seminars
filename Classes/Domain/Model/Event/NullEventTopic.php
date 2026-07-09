@@ -158,6 +158,13 @@ class NullEventTopic extends AbstractDomainObject implements EventTopicInterface
         throw new \BadMethodCallException('NullEventTopic does not have any prices.', 1757951370);
     }
 
+    /**
+     * Returns the raw data as it is stored in the database.
+     *
+     * @return array<string, string|int|float|null>|null
+     *
+     * @internal
+     */
     public function getRawData(): ?array
     {
         return null;
