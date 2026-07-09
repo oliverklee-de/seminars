@@ -29,7 +29,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.uid">
         <source>Event number</source>
-        <target state="translated">Olay numarası</target>
+        <target state="translated">Etkinlik numarası</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.object_type">
         <source>Type</source>
@@ -37,7 +37,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.object_type.I.0">
         <source>Single event</source>
-        <target state="translated">Tek bir olay</target>
+        <target state="translated">Tek bir etkinlik</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.object_type.I.1">
         <source>Topic for multiple events</source>
@@ -93,11 +93,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.credit_points">
         <source>Credit points</source>
-        <target state="needs-translation">Credit points</target>
+        <target state="translated">Kredi puanları</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.details_page">
         <source>Page with the details view</source>
-        <target state="needs-translation">Page with the details view</target>
+        <target state="translated">Ayrıntılı sayfa görüntüsü</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.additional_information">
         <source>Additional information</source>
@@ -105,11 +105,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.checkboxes">
         <source>Registration options with checkbox</source>
-        <target state="needs-translation">Registration options with checkbox</target>
+        <target state="translated">Onay kutulu kayıt seçenekleri</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.uses_terms_2">
         <source>Display the additional terms checkbox in the registration form</source>
-        <target state="needs-translation">Display the additional terms checkbox in the registration form</target>
+        <target state="translated">Kayıt formunda ek koşullar oyay kutusunu görüntüle</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.needs_registration">
         <source>Needs registration</source>
@@ -117,7 +117,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.allows_multiple_registrations">
         <source>Allows multiple registrations from the same person</source>
-        <target state="needs-translation">Allows multiple registrations from the same person</target>
+        <target state="translated">Aynı kişinin birden fazla kayıt yapmasına izin verir</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.cancelled">
         <source>Status</source>
@@ -137,7 +137,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.automatic_confirmation_cancelation">
         <source>Set the status automatically</source>
-        <target state="needs-translation">Set the status automatically</target>
+        <target state="translated">Durumu otomatik ayarla</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.notes">
         <source>Internal Notes</source>
@@ -145,11 +145,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.attached_files">
         <source>Downloads for registered persons</source>
-        <target state="needs-translation">Downloads for registered persons</target>
+        <target state="translated">Kayıtlı kişiler için indirmeler</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.download_start_date">
         <source>Downloads available starting at</source>
-        <target state="needs-translation">Downloads available starting at</target>
+        <target state="translated">İndirmeler şu tarihten itibaren mevcuttur</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelSpeakers">
         <source>Speakers</source>
@@ -181,7 +181,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.organizing_partners">
         <source>Organizing Partners</source>
-        <target state="needs-translation">Organizing Partners</target>
+        <target state="translated">Organize ortakları</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.event_takes_place_reminder_sent">
         <source>Organizers have been reminded about this event being about to take place</source>
@@ -337,7 +337,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.price_special_early">
         <source>Special price (early bird)</source>
-        <target state="translated">Özel fiyat (erkenci)</target>
+        <target state="translated">Özel fiyat (erken kayıt)</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.payment_methods">
         <source>Allowed methods of payment</source>
@@ -493,7 +493,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registration_queue.waitingList">
         <source>waiting list</source>
-        <target state="translated">bekleme listesi</target>
+        <target state="translated">yedek listesi</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registration_queue.nonbindingReservation">
         <source>nonbinding reservation</source>
@@ -513,7 +513,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.earlyBird">
         <source>Early-bird price</source>
-        <target state="translated">Erkenci fiyat</target>
+        <target state="translated">Erken kayıt fiyatı</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.special">
         <source>Special price</source>
@@ -521,7 +521,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.specialEarlyBird">
         <source>Early-bird special price</source>
-        <target state="translated">Erkenci özel fiyat</target>
+        <target state="translated">Erken kayıt özel fiyat</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.total_price">
         <source>Total price for this attendance</source>
