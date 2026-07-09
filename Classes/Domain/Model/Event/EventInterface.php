@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Domain\Model\Event;
 
+use OliverKlee\Seminars\Domain\Model\Category;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
@@ -84,6 +85,11 @@ interface EventInterface extends DomainObjectInterface
      * @throws \UnexpectedValueException if there is no price with that code
      */
     public function getPriceByPriceCode(string $priceCode): Price;
+
+    /**
+     * @return ObjectStorage<Category>
+     */
+    public function getCategories(): ObjectStorage;
 
     /**
      * Returns the raw data as it is stored in the database.

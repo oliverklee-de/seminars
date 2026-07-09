@@ -1821,4 +1821,31 @@ final class EventDateTest extends UnitTestCase
 
         self::assertSame($timeslots, $this->subject->getTimeSlots());
     }
+
+    /**
+     * @test
+     */
+    public function getCategoriesForEventDateWithNoTopicThrowsException(): void
+    {
+        self::assertNull($this->subject->getTopic());
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getCategories();
+    }
+
+    /**
+     * @test
+     */
+    public function getCategoriesForEventDateWithTopicReturnsCategories(): void
+    {
+        $topic = new EventTopic();
+        $this->subject->setTopic($topic);
+
+        self::assertSame($topic, $this->subject->getTopic());
+
+        $this->subject->getCategories();
+    }
 }

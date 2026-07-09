@@ -1,0 +1,12 @@
+"tx_seminars_seminars"
+,"uid","object_type","title","topic","categories"
+,1,1,"event topic",0,1
+,2,2,"event date",1,0
+
+"tx_seminars_categories"
+,"uid","title"
+,1,"cooking"
+
+"tx_seminars_seminars_categories_mm"
+,"uid_local","uid_foreign"
+,1,1

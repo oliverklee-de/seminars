@@ -650,6 +650,21 @@ final class EventRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function mapsCategoriesAssociationForEventDate(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/EventDateWithTopicWithCategory.csv');
+
+        $result = $this->subject->findByUid(2);
+        self::assertInstanceOf(EventDate::class, $result);
+
+        $associatedModels = $result->getCategories();
+        self::assertCount(1, $associatedModels);
+        self::assertInstanceOf(Category::class, $associatedModels->toArray()[0]);
+    }
+
+    /**
+     * @test
+     */
     public function findOneByUidForBackendCanFindVisibleEvent(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/SingleEventOnPage.csv');
