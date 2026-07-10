@@ -619,6 +619,28 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function archiveActionRendersEventUidForEventDate(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastSingleEventDate.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $labelWithPlaceholder = LocalizationUtility::translate(
+            'plugin.eventArchive.events.property.eventUid.number',
+            'seminars',
+        );
+        self::assertIsString($labelWithPlaceholder);
+        $expected = sprintf($labelWithPlaceholder, 1);
+        self::assertSame('#1', $expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
+     * @test
+     */
     public function outlookActionForNoEventsShowsMessage(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
