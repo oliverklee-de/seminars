@@ -220,6 +220,21 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function archiveActionForEventDateRendersTitleOfTopic(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastDateWithTopic.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Extension Development with Extbase and Fluid', $html);
+    }
+
+    /**
+     * @test
+     */
     public function archiveActionForEventDateLinksEventTitleFromTopicToSingleView(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
