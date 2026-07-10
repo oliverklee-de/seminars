@@ -1,0 +1,8 @@
+"tx_seminars_seminars"
+,"uid","pid","object_type","topic","title","begin_date","end_date","event_type"
+,1,2,2,2,"event date record",1,2,0
+,2,2,1,0,"topic record",0,0,1
+
+"tx_seminars_event_types"
+,"uid","pid","title"
+,1,2,"workshop"
