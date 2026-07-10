@@ -501,6 +501,38 @@ final class EventControllerTest extends FunctionalTestCase
     }
 
     /**
+     * @return array<non-empty-string, array{0: non-empty-string, 1: non-empty-string}>
+     */
+    public static function eventFormatForArchiveActionForEventDateDataProvider(): array
+    {
+        return [
+            'on-site' => ['PastOnSiteEventDateWithTopic.csv', '0'],
+            'hybrid' => ['PastHybridEventDateWithTopic.csv', '1'],
+            'online' => ['PastOnlineEventDateWithTopic.csv', '2'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider eventFormatForArchiveActionForEventDateDataProvider
+     */
+    public function archiveActionForEventDateRendersEventFormat(string $fixtureFile, string $labelKey): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/' . $fixtureFile);
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $keyPrefix = 'plugin.eventArchive.events.property.eventFormat.';
+        $expected = LocalizationUtility::translate($keyPrefix . $labelKey, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
      * @test
      */
     public function archiveActionRendersEventType(): void
