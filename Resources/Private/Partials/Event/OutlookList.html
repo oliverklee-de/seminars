@@ -38,23 +38,27 @@
                                 </f:if>
                             </oelib:isFieldEnabled>
 
+                            <oelib:isFieldEnabled fieldName="city">
+                                <f:if condition="{event.cityNames}">
+                                    <div class="d-flex mb-1">
+                                        <span class="event-list-item__details-title">
+                                            <f:translate key="plugin.eventOutlook.events.property.city"/>
+                                        </span>
+                                        <f:for each="{event.cityNames}" as="cityName" iteration="iteration">
+                                            {cityName}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                        </f:for>
+                                    </div>
+                                </f:if>
+                            </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled fieldName="venue">
-                                <f:if condition="{event.venues} || {event.cityNames}">
+                                <f:if condition="{event.venues}">
                                     <div class="d-flex mb-1">
                                         <span class="event-list-item__details-title">
                                             <f:translate key="plugin.eventOutlook.events.property.venue"/>
                                         </span>
                                         <f:for each="{event.venues}" as="venue" iteration="iteration">
-                                            {venue.title}
-                                            <f:if condition="!{iteration.isLast}">
-                                                <f:then>,</f:then>
-                                                <f:else>
-                                                    <f:if condition="{event.cityNames}">,</f:if>
-                                                </f:else>
-                                            </f:if>
-                                        </f:for>
-                                        <f:for each="{event.cityNames}" as="cityName" iteration="iteration">
-                                            {cityName}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                            {venue.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
                                         </f:for>
                                     </div>
                                 </f:if>
