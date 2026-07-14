@@ -1,0 +1,18 @@
+"tx_seminars_seminars"
+,"uid","pid","object_type","topic","title","registrations","categories"
+,1,1,2,2,"event date record",1,0
+,2,1,1,0,"topic record",0,2
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,1,1,1
+
+"tx_seminars_categories"
+,"uid","pid","title"
+,1,1,"intense"
+,2,1,"laid-back"
+
+"tx_seminars_seminars_categories_mm"
+,"uid_local","uid_foreign"
+,2,1
+,2,2
