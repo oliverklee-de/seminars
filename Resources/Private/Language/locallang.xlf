@@ -2094,6 +2094,9 @@
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.venue">
         <source>venue</source>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.categories">
+        <source>categories</source>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.room">
         <source>room</source>
       </trans-unit>
@@ -2156,6 +2159,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.venue">
         <source>Venue</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.categories">
+        <source>Categories</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.speakers.one">
         <source>Speaker</source>
