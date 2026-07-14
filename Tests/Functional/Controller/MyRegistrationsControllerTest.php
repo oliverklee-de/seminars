@@ -430,6 +430,28 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function indexActionForEventDateRendersEventUid(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationOfEventDate.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        $labelWithPlaceholder = LocalizationUtility::translate(
+            'plugin.myRegistrations.property.eventUid.number',
+            'seminars',
+        );
+        self::assertIsString($labelWithPlaceholder);
+        $expected = sprintf($labelWithPlaceholder, 1);
+        self::assertSame('#1', $expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
+     * @test
+     */
     public function indexActionRendersRegularRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
