@@ -1,0 +1,13 @@
+"tx_seminars_seminars"
+,"uid","pid","title","begin_date","end_date","target_groups"
+,1,2,"Extension Development with Extbase and Fluid",1,2,2
+
+"tx_seminars_sites"
+,"uid","pid","title"
+,1,2,"Fortgeschrittene"
+,2,2,"Profi"
+
+"tx_seminars_seminars_target_groups_mm"
+,"uid_local","uid_foreign"
+,1,1
+,1,2

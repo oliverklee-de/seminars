@@ -75,6 +75,7 @@ return [
             'foodOptions' => ['fieldName' => 'foods'],
             'registrationCheckboxes' => ['fieldName' => 'checkboxes'],
             'downloadsForAttendees' => ['fieldName' => 'attached_files'],
+            'targetGroups' => ['fieldName' => 'target_groups'],
             'timeSlots' => ['fieldName' => 'timeslots'],
         ],
     ],
@@ -116,6 +117,7 @@ return [
             'registrationCheckboxes' => ['fieldName' => 'checkboxes'],
             'downloadsForAttendees' => ['fieldName' => 'attached_files'],
             'timeSlots' => ['fieldName' => 'timeslots'],
+            'targetGroups' => ['fieldName' => 'target_groups'],
         ],
     ],
     EventType::class => [
