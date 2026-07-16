@@ -2845,6 +2845,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.categories">
+        <source>categories</source>
+        <target state="needs-translation">categories</target>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.room">
         <source>room</source>
         <target state="needs-translation">room</target>
@@ -2928,6 +2932,10 @@
       <trans-unit id="plugin.eventSingleView.events.property.venue">
         <source>Venue</source>
         <target state="needs-translation">Venue</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.categories">
+        <source>Categories</source>
+        <target state="needs-translation">Categories</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.speakers.one">
         <source>Speaker</source>
