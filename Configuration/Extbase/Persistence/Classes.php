@@ -75,6 +75,7 @@ return [
             'foodOptions' => ['fieldName' => 'foods'],
             'registrationCheckboxes' => ['fieldName' => 'checkboxes'],
             'downloadsForAttendees' => ['fieldName' => 'attached_files'],
+            'teaser' => ['fieldName' => 'teaser'],
             'timeSlots' => ['fieldName' => 'timeslots'],
         ],
     ],
@@ -90,6 +91,7 @@ return [
             'multipleRegistrationPossible' => ['fieldName' => 'allows_multiple_registrations'],
             'specialPrice' => ['fieldName' => 'price_special'],
             'specialEarlyBirdPrice' => ['fieldName' => 'price_special_early'],
+            'teaser' => ['fieldName' => 'teaser'],
         ],
     ],
     EventDate::class => [

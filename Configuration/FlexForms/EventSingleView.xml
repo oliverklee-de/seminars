@@ -49,7 +49,7 @@
                                 <minitems>1</minitems>
                                 <maxitems>99</maxitems>
                                 <default>
-                                    title, eventType, registrationTop, dateAndTime, venue, room, price, vacancies,
+                                    title, eventType, registrationTop, dateAndTime, venue, room, price, vacancies, teaser,
                                     description, speakers, registrationBottom
                                 </default>
                                 <items type="array">
@@ -102,12 +102,18 @@
                                         <numIndex index="1">vacancies</numIndex>
                                     </numIndex>
                                     <numIndex index="8" type="array">
+                                    <numIndex index="0">
+                                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.teaser
+                                    </numIndex>
+                                        <numIndex index="1">teaser</numIndex>
+                                    </numIndex>
+                                    <numIndex index="9" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.description
                                         </numIndex>
                                         <numIndex index="1">description</numIndex>
                                     </numIndex>
-                                    <numIndex index="9" type="array">
+                                    <numIndex index="10" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.speakers
                                         </numIndex>

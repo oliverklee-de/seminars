@@ -92,6 +92,11 @@ interface EventInterface extends DomainObjectInterface
     public function getCategories(): ObjectStorage;
 
     /**
+     * @return string our teaser, might be empty
+     */
+    public function getTeaser(): string;
+
+    /**
      * Returns the raw data as it is stored in the database.
      *
      * @return array<string, string|int|float|null>|null
