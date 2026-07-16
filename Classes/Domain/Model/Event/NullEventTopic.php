@@ -103,6 +103,11 @@ class NullEventTopic extends AbstractDomainObject implements EventTopicInterface
         return 0.0;
     }
 
+    public function getTeaser(): string
+    {
+        return '';
+    }
+
     public function getEventType(): ?EventType
     {
         return null;

@@ -117,7 +117,6 @@ return [
             'foodOptions' => ['fieldName' => 'foods'],
             'registrationCheckboxes' => ['fieldName' => 'checkboxes'],
             'downloadsForAttendees' => ['fieldName' => 'attached_files'],
-            'teaser' => ['fieldName' => 'teaser'],
             'timeSlots' => ['fieldName' => 'timeslots'],
         ],
     ],

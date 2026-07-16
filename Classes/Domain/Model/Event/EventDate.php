@@ -96,6 +96,14 @@ class EventDate extends Event implements EventDateInterface
         return $topic instanceof EventTopic ? $topic->getSpecialEarlyBirdPrice() : 0.0;
     }
 
+
+    public function getTeaser(): string
+    {
+        $topic = $this->getTopic();
+
+        return $topic instanceof EventTopic ? $topic->getTeaser() : '';
+    }
+
     public function getEventType(): ?EventType
     {
         $topic = $this->getTopic();

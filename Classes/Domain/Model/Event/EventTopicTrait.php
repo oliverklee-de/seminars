@@ -34,6 +34,8 @@ trait EventTopicTrait
 
     protected float $specialEarlyBirdPrice = 0.0;
 
+    protected string $teaser = '';
+
     /**
      * @var EventType|null
      * @phpstan-var EventType|LazyLoadingProxy|null
@@ -119,6 +121,16 @@ trait EventTopicTrait
     public function getSpecialEarlyBirdPrice(): float
     {
         return $this->specialEarlyBirdPrice;
+    }
+
+    public function getTeaser(): string
+    {
+        return $this->teaser;
+    }
+
+    public function setTeaser(string $teaser): void
+    {
+        $this->teaser = $teaser;
     }
 
     public function setSpecialEarlyBirdPrice(float $specialEarlyBirdPrice): void
