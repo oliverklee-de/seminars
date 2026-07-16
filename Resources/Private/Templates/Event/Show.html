@@ -58,6 +58,19 @@
             </f:if>
         </oelib:isFieldEnabled>
 
+        <oelib:isFieldEnabled fieldName="categories">
+            <f:if condition="{event.categories}">
+                <h3>
+                    <f:translate key="plugin.eventSingleView.events.property.categories"/>
+                </h3>
+                <p>
+                    <f:for each="{event.categories}" as="category" iteration="iteration">
+                        {category.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                    </f:for>
+                </p>
+            </f:if>
+        </oelib:isFieldEnabled>
+
         <oelib:isFieldEnabled fieldName="room">
             <f:if condition="{event.room}">
                 <h3>
