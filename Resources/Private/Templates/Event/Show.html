@@ -92,6 +92,14 @@
             </f:if>
         </oelib:isFieldEnabled>
 
+        <oelib:isFieldEnabled fieldName="teaser">
+            <f:if condition="{event.teaser}">
+                <p>
+                {event.teaser -> f:format.html()}
+                </p>
+            </f:if>
+        </oelib:isFieldEnabled>
+
         <oelib:isFieldEnabled fieldName="description">
             <f:if condition="{event.description}">
                 {event.description -> f:format.html()}
