@@ -2812,9 +2812,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.categories">
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.categories" approved="yes">
         <source>categories</source>
-        <target state="needs-translation">categories</target>
+        <target state="final">Kategorien</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.room" approved="yes">
         <source>room</source>
@@ -2900,9 +2900,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.categories">
+      <trans-unit id="plugin.eventSingleView.events.property.categories" approved="yes">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="final">Kategorien</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.speakers.one" approved="yes">
         <source>Speaker</source>
