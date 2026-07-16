@@ -187,4 +187,16 @@ class EventDate extends Event implements EventDateInterface
         }
         return $topic->getCategories();
     }
+
+    /**
+     * @throws \UnexpectedValueException if this event date is without topic, no categories shown.
+     */
+    public function getTargetGroups(): ObjectStorage
+    {
+        $topic = $this->getTopic();
+        if (!$topic instanceof EventTopic) {
+            throw new \UnexpectedValueException('This event date does not have a topic.', 1668096905);
+        }
+        return $topic->getTargetGroups();
+    }
 }
