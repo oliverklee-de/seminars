@@ -18,6 +18,7 @@ use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Model\RegistrationCheckbox;
 use OliverKlee\Seminars\Domain\Model\Speaker;
+use OliverKlee\Seminars\Domain\Model\TargetGroup;
 use OliverKlee\Seminars\Domain\Model\Venue;
 
 return [
@@ -26,6 +27,9 @@ return [
     ],
     Category::class => [
         'tableName' => 'tx_seminars_categories',
+    ],
+    TargetGroup::class => [
+        'tableName' => 'tx_seminars_target_groups',
     ],
     Event::class => [
         'tableName' => 'tx_seminars_seminars',

@@ -26,6 +26,7 @@ class Registration
 class RegistrationCheckbox
 class SingleEvent
 class Speaker
+class TargetGroup
 class TimeSlot
 class Venue
 
