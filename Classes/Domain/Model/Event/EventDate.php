@@ -7,6 +7,7 @@ namespace OliverKlee\Seminars\Domain\Model\Event;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
+use OliverKlee\Seminars\Domain\Model\Event\TargetGroup;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
@@ -189,7 +190,7 @@ class EventDate extends Event implements EventDateInterface
     }
 
     /**
-     * @throws \UnexpectedValueException if this event date is without topic, no categories shown.
+     * @throws \UnexpectedValueException if this event date is without topic, no target groups shown.
      */
     public function getTargetGroups(): ObjectStorage
     {

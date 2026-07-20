@@ -8,9 +8,7 @@ use OliverKlee\Seminars\Domain\Model\Category;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
-use OliverKlee\Seminars\Domain\Model\TargetGroup;
-use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
-use TYPO3\CMS\Extbase\Annotation\Validate;
+use OliverKlee\Seminars\Domain\Model\Event\TargetGroup;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 

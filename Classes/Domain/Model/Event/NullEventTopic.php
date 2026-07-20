@@ -8,7 +8,7 @@ use OliverKlee\Seminars\Domain\Model\Category;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
-use OliverKlee\Seminars\Domain\Model\TargetGroup;
+use OliverKlee\Seminars\Domain\Model\Event\TargetGroup;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 

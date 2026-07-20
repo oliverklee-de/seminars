@@ -9,6 +9,7 @@ use OliverKlee\Seminars\Domain\Model\Event\EventDate;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventTopic;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
+use OliverKlee\Seminars\Domain\Model\Event\TargetGroup;
 use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\FoodOption;
@@ -18,7 +19,6 @@ use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Model\RegistrationCheckbox;
 use OliverKlee\Seminars\Domain\Model\Speaker;
-use OliverKlee\Seminars\Domain\Model\TargetGroup;
 use OliverKlee\Seminars\Domain\Model\Venue;
 
 return [

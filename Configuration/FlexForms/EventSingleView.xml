@@ -85,29 +85,35 @@
                                     </numIndex>
                                     <numIndex index="5" type="array">
                                         <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.targetGroups
+                                        </numIndex>
+                                        <numIndex index="1">targetGroups</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6" type="array">
+                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.room
                                         </numIndex>
                                         <numIndex index="1">room</numIndex>
                                     </numIndex>
-                                    <numIndex index="6" type="array">
+                                    <numIndex index="7" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.price
                                         </numIndex>
                                         <numIndex index="1">price</numIndex>
                                     </numIndex>
-                                    <numIndex index="7" type="array">
+                                    <numIndex index="8" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.vacancies
                                         </numIndex>
                                         <numIndex index="1">vacancies</numIndex>
                                     </numIndex>
-                                    <numIndex index="8" type="array">
+                                    <numIndex index="9" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.description
                                         </numIndex>
                                         <numIndex index="1">description</numIndex>
                                     </numIndex>
-                                    <numIndex index="9" type="array">
+                                    <numIndex index="10" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.speakers
                                         </numIndex>

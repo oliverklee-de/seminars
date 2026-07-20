@@ -59,7 +59,7 @@
         </oelib:isFieldEnabled>
 
         <oelib:isFieldEnabled fieldName="targetGroups">
-            <f:if condition="{event.targetGroups}">
+            <f:if condition="{event.targetGroups -> f:count()}">
                 <h3>
                     <f:translate key="plugin.eventSingleView.events.property.targetGroups"/>
                 </h3>
@@ -140,6 +140,19 @@
                                   arguments="{event: event, viewName: 'eventSingleView'}"/>
                     </p>
                 </f:if>
+            </f:if>
+        </oelib:isFieldEnabled>
+
+        <oelib:isFieldEnabled fieldName="targetGroups">
+            <f:if condition="{event.targetGroups}">
+                <h3>
+                    <f:translate key="plugin.eventSingleView.events.property.targetGroups"/>
+                </h3>
+                <p>
+                    <f:for each="{event.targetGroups}" as="targetGroup" iteration="iteration">
+                        {targetGroup.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                    </f:for>
+                </p>
             </f:if>
         </oelib:isFieldEnabled>
     </f:section>

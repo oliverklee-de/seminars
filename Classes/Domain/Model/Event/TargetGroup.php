@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Domain\Model;
+namespace OliverKlee\Seminars\Domain\Model\Event;
 
-use TYPO3\CMS\Extbase\Annotation\Validate;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -22,8 +21,8 @@ class TargetGroup extends AbstractEntity
         return $this->title;
     }
 
-    public function setTitle(string $name): void
+    public function setTitle(string $title): void
     {
-        $this->title = $name;
+        $this->title = $title;
     }
 }
