@@ -58,12 +58,6 @@
                                         </numIndex>
                                         <numIndex index="1">venue</numIndex>
                                     </numIndex>
-                                    <numIndex index="5" type="array">
-                                        <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.
-                                        </numIndex>
-                                        <numIndex index="1">venue</numIndex>
-                                    </numIndex>
                                     <numIndex index="6" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.attendanceMode

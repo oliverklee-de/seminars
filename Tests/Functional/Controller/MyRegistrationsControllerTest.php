@@ -1007,7 +1007,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionRendersCategories(): void
+    public function showActionForSingleEventRendersCategories(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithTwoCategories.csv');
@@ -1019,10 +1019,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
-
         $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
-        self::assertStringContainsString('Methodentraining', $html);
+        self::assertStringContainsString('Methodentraining,', $html);
         self::assertStringContainsString('Kaffeekunst', $html);
     }
 
@@ -1041,10 +1039,8 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
             ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
 
-        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
-
         $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
-        self::assertStringContainsString('Methodentraining', $html);
+        self::assertStringContainsString('Methodentraining,', $html);
         self::assertStringContainsString('Kaffeekunst', $html);
     }
 
