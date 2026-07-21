@@ -3049,6 +3049,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.categories">
+        <source>categories</source>
+        <target state="needs-translation">categories</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.room">
         <source>room</source>
         <target state="needs-translation">room</target>
