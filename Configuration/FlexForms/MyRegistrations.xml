@@ -109,7 +109,7 @@
                                 <minitems>1</minitems>
                                 <maxitems>99</maxitems>
                                 <default>
-                                    topic,eventType,registrationStatus,dateAndTime,venue,room,description,speakers,unregistration,downloads
+                                    topic,eventType,registrationStatus,dateAndTime,venue,categories,room,description,speakers,unregistration,downloads
                                 </default>
                                 <items type="array">
                                     <numIndex index="0" type="array">
@@ -144,29 +144,35 @@
                                     </numIndex>
                                     <numIndex index="5" type="array">
                                         <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.categories
+                                        </numIndex>
+                                        <numIndex index="1">categories</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6" type="array">
+                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.room
                                         </numIndex>
                                         <numIndex index="1">room</numIndex>
                                     </numIndex>
-                                    <numIndex index="6" type="array">
+                                    <numIndex index="7" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.description
                                         </numIndex>
                                         <numIndex index="1">description</numIndex>
                                     </numIndex>
-                                    <numIndex index="7" type="array">
+                                    <numIndex index="8" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.speakers
                                         </numIndex>
                                         <numIndex index="1">speakers</numIndex>
                                     </numIndex>
-                                    <numIndex index="8" type="array">
+                                    <numIndex index="9" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.unregistration
                                         </numIndex>
                                         <numIndex index="1">unregistration</numIndex>
                                     </numIndex>
-                                    <numIndex index="9" type="array">
+                                    <numIndex index="10" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.downloads
                                         </numIndex>

@@ -2247,6 +2247,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.venue">
         <source>venue</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.categories">
+        <source>categories</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.room">
         <source>room</source>
       </trans-unit>

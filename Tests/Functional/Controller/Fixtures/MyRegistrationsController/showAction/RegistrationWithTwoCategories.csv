@@ -1,0 +1,17 @@
+"tx_seminars_seminars"
+,"uid","pid","title","registrations","begin_date","end_date","categories"
+,1,2,"Extension Development with Extbase and Fluid",1,2524604400,2524604401,2
+
+"tx_seminars_categories"
+,"uid","pid","title"
+,1,2,"Methodentraining"
+,2,2,"Kaffeekunst"
+
+"tx_seminars_seminars_categories_mm"
+,"uid_local","uid_foreign"
+,1,1
+,1,2
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,1,1,1

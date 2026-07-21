@@ -9,7 +9,7 @@
                                                                                   <value index=""vDEF"">date,eventType,topic,organizer,city,venue,attendanceMode,categories,speakers,eventUid,registrationStatus</value>
                                                                               </field>
                                                                               <field index=""settings.fieldsToShow"">
-                                                                                  <value index=""vDEF"">topic,eventType,registrationStatus,dateAndTime,venue,room,description,speakers,unregistration,downloads</value>
+                                                                                  <value index=""vDEF"">topic,eventType,registrationStatus,dateAndTime,venue,categories,room,description,speakers,unregistration,downloads</value>
                                                                               </field>
                                                                           </language>
                                                                       </sheet>

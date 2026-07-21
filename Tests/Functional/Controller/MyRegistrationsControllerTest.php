@@ -1007,6 +1007,46 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function showActionForSingleEventRendersCategories(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithTwoCategories.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+        self::assertStringContainsString('Methodentraining,', $html);
+        self::assertStringContainsString('Kaffeekunst', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersCategories(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForEventDateWithTwoCategories.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+        self::assertStringContainsString('Methodentraining,', $html);
+        self::assertStringContainsString('Kaffeekunst', $html);
+    }
+
+    /**
+     * @test
+     */
     public function showActionRendersAddressOfVenue(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
