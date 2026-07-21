@@ -2668,33 +2668,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>No events found.</source>
         <target state="final">Keine Veranstaltungen gefunden.</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.date" approved="yes">
-        <source>Date</source>
-        <target state="final">Datum</target>
+      <trans-unit id="plugin.eventOutlook.events.property.organizer">
+        <source>Organizer:</source>
+        <target state="needs-translation">Organizer:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventType" approved="yes">
-        <source>Type</source>
-        <target state="final">Art</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.topic" approved="yes">
-        <source>Topic</source>
-        <target state="final">Thema</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.organizer" approved="yes">
-        <source>Organizer</source>
-        <target state="final">Veranstalter</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.city" approved="yes">
-        <source>City</source>
-        <target state="final">Stadt</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.venue" approved="yes">
-        <source>Venue</source>
-        <target state="final">Ort</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventFormat" approved="yes">
-        <source>Format</source>
-        <target state="final">Format</target>
+      <trans-unit id="plugin.eventOutlook.events.property.venue">
+        <source>Venue:</source>
+        <target state="needs-translation">Venue:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.0" approved="yes">
         <source>on-site</source>
@@ -2708,17 +2688,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>online</source>
         <target state="final">online</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.categories" approved="yes">
-        <source>Categories</source>
-        <target state="final">Kategorien</target>
+      <trans-unit id="plugin.eventOutlook.events.property.speakers.one">
+        <source>Speaker:</source>
+        <target state="needs-translation">Speaker:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.speakers" approved="yes">
-        <source>Speakers</source>
-        <target state="final">Referent_innen</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventUid" approved="yes">
-        <source>Number</source>
-        <target state="final">Nummer</target>
+      <trans-unit id="plugin.eventOutlook.events.property.speakers.many">
+        <source>Speakers:</source>
+        <target state="needs-translation">Speakers:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number" approved="yes">
         <source>#%1$u</source>
@@ -2732,13 +2708,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Show details for the event &quot;%1$s&quot;</source>
         <target state="final">Details für die Veranstaltung "%1$s " anzeigen</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.price" approved="yes">
-        <source>Price</source>
-        <target state="final">Preis</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies" approved="yes">
-        <source>Vacancies</source>
-        <target state="final">Frei</target>
+      <trans-unit id="plugin.eventOutlook.events.property.price">
+        <source>Price:</source>
+        <target state="needs-translation">Price:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked" approved="yes">
         <source>fully booked</source>
