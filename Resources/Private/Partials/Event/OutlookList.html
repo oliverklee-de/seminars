@@ -131,30 +131,31 @@
                         </div>
                     </div>
 
-                    <oelib:isFieldEnabled fieldName="vacancies|registration">
+                    <oelib:isFieldEnabled fieldName="singleViewLink|registration|vacancies">
                         <div
                             class="col col-12 col-md-auto d-md-block justify-content-center justify-content-sm-start event-list-item__action">
                             <div class="row h-100 justify-content-between">
-                                <f:variable name="singleViewLinkAriaLabel"
-                                            value="{f:translate(key: 'plugin.eventOutlook.events.property.singleViewLink.ariaLabel', arguments: {0: event.displayTitle})}"/>
-                                <div class="col col-12 col-sm-6 col-md-12">
-                                    <f:link.action action="show" arguments="{event: event}"
-                                                   pageUid="{settings.singleViewPage}"
-                                                   additionalAttributes="{'aria-label': '{singleViewLinkAriaLabel}'}"
-                                                   class="btn btn-primary w-100">
-                                        <f:translate key="plugin.eventOutlook.events.property.singleViewLink"/>
-                                    </f:link.action>
-                                </div>
-                                <f:if
-                                    condition="{settings.registrationPage} && {event.registrationRequired} && {event.registrationPossibleByDate}">
-                                    <div class="col col-12 col-sm-6 col-md-12 align-content-end">
-                                        <oelib:isFieldEnabled fieldName="registration">
-                                            <f:render partial="Event/RegistrationLink"
-                                                      arguments="{event: event, viewName: 'eventOutlook', listView: 1, stylingClasses: 'mt-3 mt-sm-0 mt-md-3'}"/>
-                                        </oelib:isFieldEnabled>
-                                        <oelib:isFieldEnabled fieldName="vacancies">
-                                            <f:if
-                                                condition="{event.registrationRequired} && {event.registrationPossibleByDate}">
+                                <oelib:isFieldEnabled fieldName="singleViewLink">
+                                    <f:variable name="singleViewLinkAriaLabel"
+                                                value="{f:translate(key: 'plugin.eventOutlook.events.property.singleViewLink.ariaLabel', arguments: {0: event.displayTitle})}"/>
+                                    <div class="col col-12 col-sm-6 col-md-12">
+                                        <f:link.action action="show" arguments="{event: event}"
+                                                       pageUid="{settings.singleViewPage}"
+                                                       additionalAttributes="{'aria-label': '{singleViewLinkAriaLabel}'}"
+                                                       class="btn btn-primary w-100">
+                                            <f:translate key="plugin.eventOutlook.events.property.singleViewLink"/>
+                                        </f:link.action>
+                                    </div>
+                                </oelib:isFieldEnabled>
+                                <oelib:isFieldEnabled fieldName="registration|vacancies">
+                                    <f:if
+                                        condition="{settings.registrationPage} && {event.registrationRequired} && {event.registrationPossibleByDate}">
+                                        <div class="col col-12 col-sm-6 col-md-12 align-content-end">
+                                            <oelib:isFieldEnabled fieldName="registration">
+                                                <f:render partial="Event/RegistrationLink"
+                                                          arguments="{event: event, viewName: 'eventOutlook', listView: 1, stylingClasses: 'mt-3 mt-sm-0 mt-md-3'}"/>
+                                            </oelib:isFieldEnabled>
+                                            <oelib:isFieldEnabled fieldName="vacancies">
                                                 <f:if condition="!{event.statistics.regularVacancies}">
                                                     <f:then>
                                                         <f:variable name="spacingBottom"
@@ -168,10 +169,10 @@
                                                     <f:render partial="Event/Vacancies"
                                                               arguments="{event: event, viewName: 'eventOutlook'}"/>
                                                 </div>
-                                            </f:if>
-                                        </oelib:isFieldEnabled>
-                                    </div>
-                                </f:if>
+                                            </oelib:isFieldEnabled>
+                                        </div>
+                                    </f:if>
+                                </oelib:isFieldEnabled>
                             </div>
                         </div>
                     </oelib:isFieldEnabled>
