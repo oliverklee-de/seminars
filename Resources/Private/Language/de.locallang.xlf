@@ -3016,9 +3016,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.categories">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.categories" approved="yes">
         <source>categories</source>
-        <target state="needs-translation">categories</target>
+        <target state="final">Kategorien</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.room" approved="yes">
         <source>room</source>
