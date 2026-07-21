@@ -2668,13 +2668,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>No events found.</source>
         <target state="final">Keine Veranstaltungen gefunden.</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.organizer">
+      <trans-unit id="plugin.eventOutlook.events.property.organizer" approved="yes">
         <source>Organizer:</source>
-        <target state="needs-translation">Organizer:</target>
+        <target state="final">Veranstalter:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.venue">
+      <trans-unit id="plugin.eventOutlook.events.property.venue" approved="yes">
         <source>Venue:</source>
-        <target state="needs-translation">Venue:</target>
+        <target state="final">Veranstaltungsort:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.0" approved="yes">
         <source>on-site</source>
@@ -2688,13 +2688,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>online</source>
         <target state="final">online</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.speakers.one">
+      <trans-unit id="plugin.eventOutlook.events.property.speakers.one" approved="yes">
         <source>Speaker:</source>
-        <target state="needs-translation">Speaker:</target>
+        <target state="final">Referent_in:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.speakers.many">
+      <trans-unit id="plugin.eventOutlook.events.property.speakers.many" approved="yes">
         <source>Speakers:</source>
-        <target state="needs-translation">Speakers:</target>
+        <target state="final">Referent_innen:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number" approved="yes">
         <source>#%1$u</source>
@@ -2708,9 +2708,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Show details for the event &quot;%1$s&quot;</source>
         <target state="final">Details für die Veranstaltung "%1$s " anzeigen</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.price">
+      <trans-unit id="plugin.eventOutlook.events.property.price" approved="yes">
         <source>Price:</source>
-        <target state="needs-translation">Price:</target>
+        <target state="final">Preis:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked" approved="yes">
         <source>fully booked</source>
