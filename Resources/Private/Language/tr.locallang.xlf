@@ -2695,33 +2695,13 @@
         <source>No events found.</source>
         <target state="needs-translation">No events found.</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.date">
-        <source>Date</source>
-        <target state="needs-translation">Date</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventType">
-        <source>Type</source>
-        <target state="needs-translation">Type</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.topic">
-        <source>Topic</source>
-        <target state="needs-translation">Topic</target>
-      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.organizer">
-        <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.city">
-        <source>City</source>
-        <target state="needs-translation">City</target>
+        <source>Organizer:</source>
+        <target state="needs-translation">Organizer:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.venue">
-        <source>Venue</source>
-        <target state="needs-translation">Venue</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventFormat">
-        <source>Format</source>
-        <target state="needs-translation">Format</target>
+        <source>Venue:</source>
+        <target state="needs-translation">Venue:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.0">
         <source>on-site</source>
@@ -2735,17 +2715,13 @@
         <source>online</source>
         <target state="needs-translation">online</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.categories">
-        <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+      <trans-unit id="plugin.eventOutlook.events.property.speakers.one">
+        <source>Speaker:</source>
+        <target state="needs-translation">Speaker:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.speakers">
-        <source>Speakers</source>
-        <target state="needs-translation">Speakers</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.eventUid">
-        <source>Number</source>
-        <target state="needs-translation">Number</target>
+      <trans-unit id="plugin.eventOutlook.events.property.speakers.many">
+        <source>Speakers:</source>
+        <target state="needs-translation">Speakers:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number">
         <source>#%1$u</source>
@@ -2760,12 +2736,8 @@
         <target state="needs-translation">Show details for the event "%1$s"</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.price">
-        <source>Price</source>
-        <target state="needs-translation">Price</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies">
-        <source>Vacancies</source>
-        <target state="needs-translation">Vacancies</target>
+        <source>Price:</source>
+        <target state="needs-translation">Price:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked">
         <source>fully booked</source>
