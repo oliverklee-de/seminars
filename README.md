@@ -14,9 +14,9 @@ Most of the documentation is in ReST format
 [in the Documentation/ folder](Documentation/) and is rendered
 [as part of the TYPO3 documentation](https://docs.typo3.org/typo3cms/extensions/seminars/).
 
-## Compatibility with TYPO3 12LTS/12.4
+## Compatibility with TYPO3 13LTS/13.4
 
-A TYPO3-12LTS-compatible version of this extension is available via an
+A TYPO3-13LTS-compatible version of this extension is available via an
 [early-acces program](https://github.com/oliverklee-de/seminars/wiki/Early-access-program-for-newer-TYPO3-versions).
 
 ## Give it a try!
