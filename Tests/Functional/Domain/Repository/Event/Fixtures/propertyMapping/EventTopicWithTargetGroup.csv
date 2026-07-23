@@ -1,0 +1,11 @@
+"tx_seminars_seminars"
+,"uid","object_type","target_groups"
+,1,1,1
+
+"tx_seminars_target_groups"
+,"uid","title"
+,1,"Profis"
+
+"tx_seminars_seminars_target_groups_mm"
+,"uid_local","uid_foreign"
+,1,1

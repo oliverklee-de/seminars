@@ -21,6 +21,7 @@ use OliverKlee\Seminars\Domain\Model\Price;
 use OliverKlee\Seminars\Domain\Model\RawDataInterface;
 use OliverKlee\Seminars\Domain\Model\RegistrationCheckbox;
 use OliverKlee\Seminars\Domain\Model\Speaker;
+use OliverKlee\Seminars\Domain\Model\TargetGroup;
 use OliverKlee\Seminars\Domain\Model\Venue;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
@@ -1891,6 +1892,29 @@ final class SingleEventTest extends UnitTestCase
         $this->subject->setCategories($associatedModels);
 
         self::assertSame($associatedModels, $this->subject->getCategories());
+    }
+
+    /**
+     * @test
+     */
+    public function getTargetGroupsInitiallyReturnsEmptyStorage(): void
+    {
+        $associatedModels = $this->subject->getTargetGroups();
+
+        self::assertInstanceOf(ObjectStorage::class, $associatedModels);
+        self::assertCount(0, $associatedModels);
+    }
+
+    /**
+     * @test
+     */
+    public function setTargetGroupsSetsTargetGroups(): void
+    {
+        /** @var ObjectStorage<TargetGroup> $associatedModels */
+        $associatedModels = new ObjectStorage();
+        $this->subject->setTargetGroups($associatedModels);
+
+        self::assertSame($associatedModels, $this->subject->getTargetGroups());
     }
 
     /**

@@ -13,6 +13,7 @@ use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
 use OliverKlee\Seminars\Domain\Model\RawDataInterface;
+use OliverKlee\Seminars\Domain\Model\TargetGroup;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -640,6 +641,29 @@ final class EventTopicTest extends UnitTestCase
         $this->subject->setCategories($associatedModels);
 
         self::assertSame($associatedModels, $this->subject->getCategories());
+    }
+
+    /**
+     * @test
+     */
+    public function getTargetGroupsInitiallyReturnsEmptyStorage(): void
+    {
+        $associatedModels = $this->subject->getTargetGroups();
+
+        self::assertInstanceOf(ObjectStorage::class, $associatedModels);
+        self::assertCount(0, $associatedModels);
+    }
+
+    /**
+     * @test
+     */
+    public function setTargetGroupsSetsTargetGroups(): void
+    {
+        /** @var ObjectStorage<TargetGroup> $associatedModels */
+        $associatedModels = new ObjectStorage();
+        $this->subject->setTargetGroups($associatedModels);
+
+        self::assertSame($associatedModels, $this->subject->getTargetGroups());
     }
 
     /**

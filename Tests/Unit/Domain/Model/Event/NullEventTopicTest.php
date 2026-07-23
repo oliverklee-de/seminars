@@ -80,6 +80,17 @@ final class NullEventTopicTest extends UnitTestCase
     /**
      * @test
      */
+    public function getTargetGroupsReturnsEmptyObjectStorage(): void
+    {
+        $targetGroups = $this->subject->getTargetGroups();
+
+        self::assertInstanceOf(ObjectStorage::class, $targetGroups);
+        self::assertCount(0, $targetGroups);
+    }
+
+    /**
+     * @test
+     */
     public function isHiddenReturnsFalse(): void
     {
         self::assertFalse($this->subject->isHidden());

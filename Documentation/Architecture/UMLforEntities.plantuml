@@ -72,6 +72,7 @@ EventDateInterface "1" --> "*" Venue
 EventDateInterface "1" --> "*" TimeSlot
 
 EventTopicInterface "1" --> "*" Category
+EventTopicInterface "*" --> "*" TargetGroup
 
 Registration "*" --> "*" AccommodationOption
 Registration "*" --> "1" EvenDateInterface
