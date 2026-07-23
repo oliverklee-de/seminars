@@ -696,7 +696,7 @@ final class EventRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function mapsTagetGroupsAssociationForEventDate(): void
+    public function mapsTargetGroupsAssociationForEventDate(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/EventDateWithTopicWithTargetGroup.csv');
 

@@ -1857,7 +1857,7 @@ final class EventDateTest extends UnitTestCase
         self::assertNull($this->subject->getTopic());
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionCode(1784805134);
         $this->expectExceptionMessage('This event date does not have a topic.');
 
         $this->subject->getTargetGroups();
@@ -1869,10 +1869,12 @@ final class EventDateTest extends UnitTestCase
     public function getTargetGroupsForEventDateWithTopicReturnsTargetGroups(): void
     {
         $topic = new EventTopic();
+
+        $targetGroups = new ObjectStorage();
+        $topic->setTargetGroups($targetGroups);
+
         $this->subject->setTopic($topic);
 
-        self::assertSame($topic, $this->subject->getTopic());
-
-        $this->subject->getTargetGroups();
+        self::assertSame($targetGroups, $this->subject->getTargetGroups());
     }
 }

@@ -80,7 +80,6 @@ return [
             'registrationCheckboxes' => ['fieldName' => 'checkboxes'],
             'downloadsForAttendees' => ['fieldName' => 'attached_files'],
             'timeSlots' => ['fieldName' => 'timeslots'],
-            'targetGroups' => ['fieldName' => 'target_groups'],
         ],
     ],
     EventTopic::class => [
@@ -95,7 +94,6 @@ return [
             'multipleRegistrationPossible' => ['fieldName' => 'allows_multiple_registrations'],
             'specialPrice' => ['fieldName' => 'price_special'],
             'specialEarlyBirdPrice' => ['fieldName' => 'price_special_early'],
-            'targetGroups' => ['fieldName' => 'target_groups'],
         ],
     ],
     EventDate::class => [
