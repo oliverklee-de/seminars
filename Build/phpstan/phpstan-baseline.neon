@@ -101,11 +101,6 @@ parameters:
 			path: ../../Classes/Controller/EventRegistrationController.php
 
 		-
-			message: "#^Function str_contains not found\\.$#"
-			count: 3
-			path: ../../Classes/Csv/AbstractRegistrationListView.php
-
-		-
 			message: "#^Parameter \\#1 \\$model of method OliverKlee\\\\Seminars\\\\Csv\\\\AbstractRegistrationListView\\:\\:createCsvColumnsForFrontEndUser\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/Csv/AbstractRegistrationListView.php
@@ -641,7 +636,7 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Function str_contains not found\\.$#"
+			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:getFromDate\\(\\) should return int but returns int\\|false\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -657,6 +652,11 @@ parameters:
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:getLoggedInFrontEndUserUid\\(\\) should return int but returns mixed\\.$#"
+			count: 1
+			path: ../../Classes/FrontEnd/DefaultController.php
+
+		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:getToDate\\(\\) should return int but returns int\\|false\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -741,7 +741,7 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Parameter \\#2 \\$str of function explode expects string, array\\|float\\|int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
+			message: "#^Parameter \\#2 \\$string of function explode expects string, array\\|float\\|int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -926,6 +926,11 @@ parameters:
 			path: ../../Classes/OldModel/AbstractTimeSpan.php
 
 		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractTimeSpan\\:\\:getEndDateAsTimestampEvenIfOpenEnded\\(\\) should return int but returns int\\|false\\.$#"
+			count: 1
+			path: ../../Classes/OldModel/AbstractTimeSpan.php
+
+		-
 			message: "#^Cannot call method cObjGetSingle\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/LegacyEvent.php
@@ -953,11 +958,6 @@ parameters:
 		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 2
-			path: ../../Classes/OldModel/LegacyEvent.php
-
-		-
-			message: "#^Function str_contains not found\\.$#"
-			count: 1
 			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
@@ -1031,17 +1031,12 @@ parameters:
 			path: ../../Classes/OldModel/LegacyRegistration.php
 
 		-
-			message: "#^Function str_contains not found\\.$#"
-			count: 1
-			path: ../../Classes/OldModel/LegacyRegistration.php
-
-		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\:\\:getSeminarObject\\(\\) should return OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent but returns OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/LegacyRegistration.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/LegacyRegistration.php
 
@@ -1186,7 +1181,7 @@ parameters:
 			path: ../../Classes/Templating/TemplateHelper.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$LOCAL_LANG \\(array\\<string, array\\<string, array\\<int, array\\<string, string\\>\\>\\>\\>\\) does not accept array\\<array\\<array\\<int, array\\<string, mixed\\>\\>\\>\\>\\.$#"
+			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$LOCAL_LANG \\(array\\<string, array\\<string, array\\<int, array\\<string, string\\>\\>\\>\\>\\) does not accept array\\<string, array\\<array\\<int, array\\<string, mixed\\>\\>\\>\\>\\.$#"
 			count: 1
 			path: ../../Classes/Templating/TemplateHelper.php
 
@@ -1216,13 +1211,13 @@ parameters:
 			path: ../../Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
 
 		-
-			message: "#^Parameter \\#1 \\$str of function trim expects string, mixed given\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$string of function substr expects string, mixed given\\.$#"
+			count: 7
 			path: ../../Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
 
 		-
-			message: "#^Parameter \\#1 \\$string of function substr expects string, mixed given\\.$#"
-			count: 7
+			message: "#^Parameter \\#1 \\$string of function trim expects string, mixed given\\.$#"
+			count: 1
 			path: ../../Classes/UpgradeWizards/CopyBillingAddressToRegistrationsUpgradeWizard.php
 
 		-
@@ -1237,11 +1232,6 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/Functional/BackEnd/EmailServiceTest.php
-
-		-
-			message: "#^Function str_contains not found\\.$#"
 			count: 1
 			path: ../../Tests/Functional/BackEnd/EmailServiceTest.php
 
@@ -1463,6 +1453,16 @@ parameters:
 		-
 			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
 			count: 10
+			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$beginDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setBeginDateAndTime\\(\\) expects int, int\\|false given\\.$#"
+			count: 13
+			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$endDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setEndDateAndTime\\(\\) expects int, int\\|false given\\.$#"
+			count: 12
 			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
 
 		-
@@ -1831,16 +1831,6 @@ parameters:
 			path: ../../Tests/Functional/SchedulerTasks/MailNotifierConfigurationTest.php
 
 		-
-			message: "#^Function str_contains not found\\.$#"
-			count: 1
-			path: ../../Tests/Functional/SchedulerTasks/RegistrationDigestTest.php
-
-		-
-			message: "#^Function str_contains not found\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Service/EmailServiceTest.php
-
-		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 6
 			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
@@ -1857,11 +1847,6 @@ parameters:
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Function str_contains not found\\.$#"
 			count: 1
 			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
@@ -2076,6 +2061,11 @@ parameters:
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
 
 		-
+			message: "#^Parameter \\#1 \\$expiry of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingLegacyEvent\\:\\:setExpiry\\(\\) expects int, int\\|false given\\.$#"
+			count: 1
+			path: ../../Tests/LegacyFunctional/OldModel/LegacyEventTest.php
+
+		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\OldModel\\\\LegacyRegistrationTest\\:\\:setPaymentMethodRelation\\(\\) has parameter \\$paymentMethodData with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/OldModel/LegacyRegistrationTest.php
@@ -2093,11 +2083,6 @@ parameters:
 		-
 			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
 			count: 5
-			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
-			message: "#^Function str_contains not found\\.$#"
-			count: 1
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
@@ -2141,11 +2126,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
-			message: "#^Function str_contains not found\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
 			count: 5
 			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
@@ -2168,11 +2148,6 @@ parameters:
 		-
 			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
 			count: 6
-			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
-
-		-
-			message: "#^Function str_contains not found\\.$#"
-			count: 1
 			path: ../../Tests/LegacyFunctional/Service/RegistrationManagerTest.php
 
 		-
@@ -2271,6 +2246,16 @@ parameters:
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
+			message: "#^Parameter \\#1 \\$beginDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setBeginDateAndTime\\(\\) expects int, int\\|false given\\.$#"
+			count: 5
+			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$endDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setEndDateAndTime\\(\\) expects int, int\\|false given\\.$#"
+			count: 5
+			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
+
+		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\LegacyRegistrationTest\\:\\:nameUserDataDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../Tests/Unit/OldModel/LegacyRegistrationTest.php
@@ -2304,11 +2289,6 @@ parameters:
 			message: "#^Property OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:\\$cObj \\(TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\) does not accept array\\.$#"
 			count: 1
 			path: ../../Tests/Unit/Templating/TemplateHelperTest.php
-
-		-
-			message: "#^Function str_contains not found\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Traits/EmailTraitTest.php
 
 		-
 			message: "#^Cannot access offset 'FE' on mixed\\.$#"
@@ -2396,6 +2376,6 @@ parameters:
 			path: ../../ext_localconf.php
 
 		-
-			message: "#^Parameter \\#1 \\$arr1 of function array_merge expects array, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\.\\.\\.\\$arrays of function array_merge expects array, mixed given\\.$#"
 			count: 1
 			path: ../../ext_localconf.php
