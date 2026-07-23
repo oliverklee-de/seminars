@@ -1,4 +1,4 @@
 "tx_seminars_seminars"
-,"uid","object_type","title","topic","description","begin_date","end_date","begin_date_registration","deadline_early_bird","deadline_registration","needs_registration","queue_size","attendees_min","attendees_max","owner_feuser","offline_attendees","cancelled","download_start_date","billing_start"
-,1,2,"Jousting date",2,"",1648893600,1649008800,1640995200,1646215200,1648807200,1,1,5,20,15,5,2,1680343200,1743501600
-,2,1,"Jousting topic",0,"There is no glory in prevention.",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,"uid","object_type","title","teaser","topic","description","begin_date","end_date","begin_date_registration","deadline_early_bird","deadline_registration","needs_registration","queue_size","attendees_min","attendees_max","owner_feuser","offline_attendees","cancelled","download_start_date","billing_start"
+,1,2,"Jousting date","",2,"",1648893600,1649008800,1640995200,1646215200,1648807200,1,1,5,20,15,5,2,1680343200,1743501600
+,2,1,"Jousting topic","WE LIKE TEASER",0,"There is no glory in prevention.",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

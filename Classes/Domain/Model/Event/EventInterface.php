@@ -41,6 +41,8 @@ interface EventInterface extends DomainObjectInterface
 
     public function getDescription(): string;
 
+    public function getTeaser(): string;
+
     public function getStandardPrice(): float;
 
     public function getEarlyBirdPrice(): float;

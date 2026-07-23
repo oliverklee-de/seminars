@@ -68,6 +68,17 @@ class EventDate extends Event implements EventDateInterface
         return $topic instanceof EventTopic ? $topic->getDescription() : '';
     }
 
+    public function getTeaser(): string
+    {
+        $topic = $this->getTopic();
+
+        if (!$topic instanceof EventTopic) {
+            throw new \UnexpectedValueException('This event date does not have a topic.', 1784760657);
+        }
+
+        return $topic->getTeaser();
+    }
+
     public function getStandardPrice(): float
     {
         $topic = $this->getTopic();

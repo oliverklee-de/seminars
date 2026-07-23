@@ -27,6 +27,11 @@ trait EventTopicTrait
      */
     protected string $description = '';
 
+    /**
+     * @Validate("StringLength", options={"maximum": 250})
+     */
+    protected string $teaser = '';
+
     protected float $standardPrice = 0.0;
 
     protected float $earlyBirdPrice = 0.0;
@@ -84,6 +89,16 @@ trait EventTopicTrait
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    public function getTeaser(): string
+    {
+        return $this->teaser;
+    }
+
+    public function setTeaser(string $teaser): void
+    {
+        $this->teaser = $teaser;
     }
 
     public function getStandardPrice(): float

@@ -205,6 +205,31 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
+    public function getTeaserWithoutTopicThrowsExeption(): void
+    {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionCode(1784760657);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getTeaser();
+    }
+
+    /**
+     * @test
+     */
+    public function getTeaserWithTopicReturnsTeaserFromTopic(): void
+    {
+        $topic = new EventTopic();
+        $value = 'TYPO3 extension development';
+        $topic->setTeaser($value);
+        $this->subject->setTopic($topic);
+
+        self::assertSame($value, $this->subject->getTeaser());
+    }
+
+    /**
+     * @test
+     */
     public function getStartInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getStart());

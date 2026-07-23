@@ -104,6 +104,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         self::assertSame('Jousting', $result->getInternalTitle());
         self::assertSame('Jousting', $result->getDisplayTitle());
         self::assertSame('There is no glory in prevention.', $result->getDescription());
+        self::assertSame('WE LIKE TEASER', $result->getTeaser());
         self::assertEquals(new \DateTime('2022-04-02 10:00'), $result->getStart());
         self::assertEquals(new \DateTime('2022-04-03 18:00'), $result->getEnd());
         self::assertEquals(new \DateTime('2022-01-01 00:00'), $result->getRegistrationStart());
@@ -161,6 +162,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         self::assertSame('Jousting topic', $result->getInternalTitle());
         self::assertSame('Jousting topic', $result->getDisplayTitle());
         self::assertSame('There is no glory in prevention.', $result->getDescription());
+        self::assertSame('WE LIKE TEASER', $result->getTeaser());
         self::assertEqualsWithDelta(150.0, $result->getStandardPrice(), 0.0001);
         self::assertEqualsWithDelta(125.0, $result->getEarlyBirdPrice(), 0.0001);
         self::assertSame(15, $result->getOwnerUid());
@@ -184,6 +186,7 @@ final class EventRepositoryTest extends FunctionalTestCase
         self::assertSame('Jousting date', $result->getInternalTitle());
         self::assertSame('Jousting topic', $result->getDisplayTitle());
         self::assertSame('There is no glory in prevention.', $result->getDescription());
+        self::assertSame('WE LIKE TEASER', $result->getTeaser());
         self::assertEquals(new \DateTime('2022-04-02 10:00'), $result->getStart());
         self::assertEquals(new \DateTime('2022-04-03 18:00'), $result->getEnd());
         self::assertEquals(new \DateTime('2022-01-01 00:00'), $result->getRegistrationStart());

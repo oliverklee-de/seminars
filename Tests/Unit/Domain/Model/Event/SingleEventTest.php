@@ -183,6 +183,25 @@ final class SingleEventTest extends UnitTestCase
     /**
      * @test
      */
+    public function getTeaserInitiallyReturnsEmptyString(): void
+    {
+        self::assertSame('', $this->subject->getTeaser());
+    }
+
+    /**
+     * @test
+     */
+    public function setTeaserSetsTeaser(): void
+    {
+        $value = 'HEREIN HEREIN SPAZIERT';
+        $this->subject->setTeaser($value);
+
+        self::assertSame($value, $this->subject->getTeaser());
+    }
+
+    /**
+     * @test
+     */
     public function getStartInitiallyReturnsNull(): void
     {
         self::assertNull($this->subject->getStart());
