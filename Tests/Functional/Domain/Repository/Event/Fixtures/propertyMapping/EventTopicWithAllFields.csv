@@ -1,3 +1,3 @@
 "tx_seminars_seminars"
-,"uid","object_type","title","description","price_regular","price_regular_early","owner_feuser","uses_terms_2","allows_multiple_registrations","price_special","price_special_early"
-,1,1,"Jousting topic","There is no glory in prevention.",150.0,125.0,15,1,1,100.0,75.0
+,"uid","object_type","title","description","teaser","price_regular","price_regular_early","owner_feuser","uses_terms_2","allows_multiple_registrations","price_special","price_special_early"
+,1,1,"Jousting topic","There is no glory in prevention.","WE LIKE TEASER",150.0,125.0,15,1,1,100.0,75.0

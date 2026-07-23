@@ -155,6 +155,25 @@ final class EventTopicTest extends UnitTestCase
     /**
      * @test
      */
+    public function getTeaserInitiallyReturnsEmptyString(): void
+    {
+        self::assertSame('', $this->subject->getTeaser());
+    }
+
+    /**
+     * @test
+     */
+    public function setTeaserSetsTeaser(): void
+    {
+        $value = 'HEREIN HEREIN SPAZIERT';
+        $this->subject->setTeaser($value);
+
+        self::assertSame($value, $this->subject->getTeaser());
+    }
+
+    /**
+     * @test
+     */
     public function getStandardPriceInitiallyReturnsZero(): void
     {
         self::assertSame(0.0, $this->subject->getStandardPrice());

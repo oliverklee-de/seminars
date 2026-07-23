@@ -159,6 +159,14 @@ final class NullEventTopicTest extends UnitTestCase
     /**
      * @test
      */
+    public function getTeaserReturnsEmptyString(): void
+    {
+        self::assertSame('', $this->subject->getTeaser());
+    }
+
+    /**
+     * @test
+     */
     public function getStandardPriceReturnsZero(): void
     {
         self::assertSame(0.0, $this->subject->getStandardPrice());

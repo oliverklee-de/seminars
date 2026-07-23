@@ -95,6 +95,11 @@ class NullEventTopic extends AbstractDomainObject implements EventTopicInterface
         return '';
     }
 
+    public function getTeaser(): string
+    {
+        return '';
+    }
+
     public function getStandardPrice(): float
     {
         return 0.0;
