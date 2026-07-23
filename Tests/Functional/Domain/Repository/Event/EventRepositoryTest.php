@@ -21,6 +21,7 @@ use OliverKlee\Seminars\Domain\Model\Organizer;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\RegistrationCheckbox;
 use OliverKlee\Seminars\Domain\Model\Speaker;
+use OliverKlee\Seminars\Domain\Model\TargetGroup;
 use OliverKlee\Seminars\Domain\Model\Venue;
 use OliverKlee\Seminars\Domain\Repository\AbstractRawDataCapableRepository;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
@@ -660,6 +661,51 @@ final class EventRepositoryTest extends FunctionalTestCase
         $associatedModels = $result->getCategories();
         self::assertCount(1, $associatedModels);
         self::assertInstanceOf(Category::class, $associatedModels->toArray()[0]);
+    }
+
+    /**
+     * @test
+     */
+    public function mapsTargetGroupsAssociationForSingleEvent(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/SingleEventWithTargetGroup.csv');
+
+        $result = $this->subject->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $result);
+
+        $associatedModels = $result->getTargetGroups();
+        self::assertCount(1, $associatedModels);
+        self::assertInstanceOf(TargetGroup::class, $associatedModels->toArray()[0]);
+    }
+
+    /**
+     * @test
+     */
+    public function mapsTargetGroupsAssociationForEventTopic(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/EventTopicWithTargetGroup.csv');
+
+        $result = $this->subject->findByUid(1);
+        self::assertInstanceOf(EventTopic::class, $result);
+
+        $associatedModels = $result->getTargetGroups();
+        self::assertCount(1, $associatedModels);
+        self::assertInstanceOf(TargetGroup::class, $associatedModels->toArray()[0]);
+    }
+
+    /**
+     * @test
+     */
+    public function mapsTagetGroupsAssociationForEventDate(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/EventDateWithTopicWithTargetGroup.csv');
+
+        $result = $this->subject->findByUid(2);
+        self::assertInstanceOf(EventDate::class, $result);
+
+        $associatedModels = $result->getTargetGroups();
+        self::assertCount(1, $associatedModels);
+        self::assertInstanceOf(TargetGroup::class, $associatedModels->toArray()[0]);
     }
 
     /**

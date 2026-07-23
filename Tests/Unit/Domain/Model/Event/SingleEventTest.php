@@ -1896,6 +1896,29 @@ final class SingleEventTest extends UnitTestCase
     /**
      * @test
      */
+    public function getTargetGroupsInitiallyReturnsEmptyStorage(): void
+    {
+        $associatedModels = $this->subject->getTargetGroups();
+
+        self::assertInstanceOf(ObjectStorage::class, $associatedModels);
+        self::assertCount(0, $associatedModels);
+    }
+
+    /**
+     * @test
+     */
+    public function setTargetGroupsSetsTargetGroups(): void
+    {
+        /** @var ObjectStorage<TargetGroup> $associatedModels */
+        $associatedModels = new ObjectStorage();
+        $this->subject->setTargetGroups($associatedModels);
+
+        self::assertSame($associatedModels, $this->subject->getTargetGroups());
+    }
+
+    /**
+     * @test
+     */
     public function isSingleEventAlwaysReturnsTrue(): void
     {
         self::assertTrue($this->subject->isSingleEvent());
