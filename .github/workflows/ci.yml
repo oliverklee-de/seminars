@@ -92,7 +92,7 @@ jobs:
           - "8.2"
         # For consistency, the TYPO3 version should match the default TYPO3 version in `runTests.sh`.
         typo3-version:
-          - "11.5"
+          - "12.4"
         composer-dependencies:
           - Max
   prepare-release:
