@@ -20,6 +20,7 @@ use OliverKlee\Seminars\Domain\Model\Price;
 use OliverKlee\Seminars\Domain\Model\RawDataInterface;
 use OliverKlee\Seminars\Domain\Model\RegistrationCheckbox;
 use OliverKlee\Seminars\Domain\Model\Speaker;
+use OliverKlee\Seminars\Domain\Model\TargetGroup;
 use OliverKlee\Seminars\Domain\Model\Venue;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
@@ -1856,7 +1857,7 @@ final class EventDateTest extends UnitTestCase
     {
         self::assertNull($this->subject->getTopic());
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(\UnexpectedValueException::class);
         $this->expectExceptionCode(1784805134);
         $this->expectExceptionMessage('This event date does not have a topic.');
 
@@ -1868,9 +1869,11 @@ final class EventDateTest extends UnitTestCase
      */
     public function getTargetGroupsForEventDateWithTopicReturnsTargetGroups(): void
     {
+        /** @var ObjectStorage<TargetGroup> $targetGroups */
+        $targetGroups = new ObjectStorage();
+
         $topic = new EventTopic();
 
-        $targetGroups = new ObjectStorage();
         $topic->setTargetGroups($targetGroups);
 
         $this->subject->setTopic($topic);
