@@ -8,6 +8,7 @@ use OliverKlee\Seminars\Domain\Model\Category;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
+use OliverKlee\Seminars\Domain\Model\Event\TargetGroup;
 use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -90,6 +91,11 @@ interface EventInterface extends DomainObjectInterface
      * @return ObjectStorage<Category>
      */
     public function getCategories(): ObjectStorage;
+
+    /**
+     * @return ObjectStorage<TargetGroup>
+     */
+    public function getTargetGroups(): ObjectStorage;
 
     /**
      * Returns the raw data as it is stored in the database.

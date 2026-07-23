@@ -9,6 +9,7 @@ use OliverKlee\Seminars\Domain\Model\Event\EventDate;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventTopic;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
+use OliverKlee\Seminars\Domain\Model\Event\TargetGroup;
 use OliverKlee\Seminars\Domain\Model\Event\TimeSlot;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\FoodOption;
@@ -79,6 +80,7 @@ return [
             'foodOptions' => ['fieldName' => 'foods'],
             'registrationCheckboxes' => ['fieldName' => 'checkboxes'],
             'downloadsForAttendees' => ['fieldName' => 'attached_files'],
+            'targetGroups' => ['fieldName' => 'target_groups'],
             'timeSlots' => ['fieldName' => 'timeslots'],
         ],
     ],
@@ -94,6 +96,7 @@ return [
             'multipleRegistrationPossible' => ['fieldName' => 'allows_multiple_registrations'],
             'specialPrice' => ['fieldName' => 'price_special'],
             'specialEarlyBirdPrice' => ['fieldName' => 'price_special_early'],
+            'targetGroups' => ['fieldName' => 'target_groups'],
         ],
     ],
     EventDate::class => [

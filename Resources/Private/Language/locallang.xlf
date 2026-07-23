@@ -2070,6 +2070,9 @@
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.dateAndTime">
         <source>date and time</source>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.targetGroups">
+        <source>target groups</source>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.venue">
         <source>venue</source>
       </trans-unit>
@@ -2135,6 +2138,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.vacancies.available">
         <source>tickets available</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.targetGroups">
+        <source>Target groups</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.venue">
         <source>Venue</source>

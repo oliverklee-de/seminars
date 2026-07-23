@@ -8,6 +8,7 @@ use OliverKlee\Seminars\Domain\Model\Category;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
+use OliverKlee\Seminars\Domain\Model\Event\TargetGroup;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -38,6 +39,17 @@ class NullEventTopic extends AbstractDomainObject implements EventTopicInterface
         $categories = new ObjectStorage();
 
         return $categories;
+    }
+
+    /**
+     * @return ObjectStorage<TargetGroup>
+     */
+    public function getTargetGroups(): ObjectStorage
+    {
+        /** @var ObjectStorage<TargetGroup> $targetGroups */
+        $targetGroups = new ObjectStorage();
+
+        return $targetGroups;
     }
 
     public function isHidden(): bool

@@ -8,8 +8,7 @@ use OliverKlee\Seminars\Domain\Model\Category;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
-use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
-use TYPO3\CMS\Extbase\Annotation\Validate;
+use OliverKlee\Seminars\Domain\Model\Event\TargetGroup;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -57,10 +56,17 @@ trait EventTopicTrait
      */
     protected ObjectStorage $categories;
 
+    /**
+     * @var ObjectStorage<TargetGroup>
+     * @Lazy
+     */
+    protected ObjectStorage $targetGroups;
+
     private function initializeEventTopic(): void
     {
         $this->paymentMethods = new ObjectStorage();
         $this->categories = new ObjectStorage();
+        $this->targetGroups = new ObjectStorage();
     }
 
     public function getDisplayTitle(): string
@@ -255,4 +261,21 @@ trait EventTopicTrait
     {
         $this->categories = $categories;
     }
+
+    /**
+     * @return ObjectStorage<TargetGroup>
+     */
+    public function getTargetGroups(): ObjectStorage
+    {
+        return $this->targetGroups;
+    }
+
+    /**
+     * @param ObjectStorage<TargetGroup> $targetGroups
+     */
+    public function setTargetGroups(ObjectStorage $targetGroups): void
+    {
+        $this->targetGroups = $targetGroups;
+    }
+
 }
