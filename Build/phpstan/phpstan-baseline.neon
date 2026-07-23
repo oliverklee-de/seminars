@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Access to constant OK on an unknown class TYPO3\\\\CMS\\\\Core\\\\Type\\\\ContextualFeedbackSeverity\\.$#"
+			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
 			count: 1
 			path: ../../Classes/BackEnd/EmailService.php
 
@@ -101,6 +101,26 @@ parameters:
 			path: ../../Classes/Controller/EventRegistrationController.php
 
 		-
+			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
+			count: 1
+			path: ../../Classes/Controller/EventUnregistrationController.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
+			count: 3
+			path: ../../Classes/Controller/FrontEndEditorController.php
+
+		-
+			message: "#^Comparison operation \"\\>\\=\" between int\\<0, max\\> and 0 is always true\\.$#"
+			count: 1
+			path: ../../Classes/Controller/FrontEndEditorController.php
+
+		-
+			message: "#^Parameter \\#1 \\$pid of method TYPO3\\\\CMS\\\\Extbase\\\\DomainObject\\\\AbstractDomainObject\\:\\:setPid\\(\\) expects int\\<0, max\\>, int given\\.$#"
+			count: 1
+			path: ../../Classes/Controller/FrontEndEditorController.php
+
+		-
 			message: "#^Parameter \\#1 \\$model of method OliverKlee\\\\Seminars\\\\Csv\\\\AbstractRegistrationListView\\:\\:createCsvColumnsForFrontEndUser\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/Csv/AbstractRegistrationListView.php
@@ -151,12 +171,12 @@ parameters:
 			path: ../../Classes/Domain/Repository/AbstractRawDataCapableRepository.php
 
 		-
-			message: "#^Method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\>\\:\\:logicalAnd\\(\\) invoked with 2 parameters, 1 required\\.$#"
-			count: 4
+			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Event\\\\EventRepository\\:\\:findInPast\\(\\) should return array\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\> but returns array\\<int, T of object\\>\\.$#"
+			count: 1
 			path: ../../Classes/Domain/Repository/Event/EventRepository.php
 
 		-
-			message: "#^Method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\>\\:\\:logicalOr\\(\\) invoked with 2 parameters, 1 required\\.$#"
+			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Event\\\\EventRepository\\:\\:findUpcoming\\(\\) should return array\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\Event\\> but returns array\\<int, T of object\\>\\.$#"
 			count: 1
 			path: ../../Classes/Domain/Repository/Event/EventRepository.php
 
@@ -176,8 +196,8 @@ parameters:
 			path: ../../Classes/Domain/Repository/Registration/RegistrationRepository.php
 
 		-
-			message: "#^Method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\>\\:\\:logicalAnd\\(\\) invoked with 2 parameters, 1 required\\.$#"
-			count: 2
+			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Repository\\\\Registration\\\\RegistrationRepository\\:\\:findActiveRegistrationsByUser\\(\\) should return array\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\> but returns array\\<int, T of object\\>\\.$#"
+			count: 1
 			path: ../../Classes/Domain/Repository/Registration/RegistrationRepository.php
 
 		-
@@ -197,6 +217,11 @@ parameters:
 
 		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 1
+			path: ../../Classes/FrontEnd/CategoryList.php
+
+		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\CategoryList\\:\\:createLinkToListViewLimitedByCategory\\(\\) should return string but returns string\\|TYPO3\\\\CMS\\\\Frontend\\\\Typolink\\\\LinkResult\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/CategoryList.php
 
@@ -631,6 +656,11 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
+			message: "#^Casting to int something that's already int\\.$#"
+			count: 1
+			path: ../../Classes/FrontEnd/DefaultController.php
+
+		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 3
 			path: ../../Classes/FrontEnd/DefaultController.php
@@ -652,6 +682,11 @@ parameters:
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:getLoggedInFrontEndUserUid\\(\\) should return int but returns mixed\\.$#"
+			count: 1
+			path: ../../Classes/FrontEnd/DefaultController.php
+
+		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:getLoginLink\\(\\) should return string but returns string\\|TYPO3\\\\CMS\\\\Frontend\\\\Typolink\\\\LinkResult\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -966,6 +1001,11 @@ parameters:
 			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:buildHtmlForOrganizerWithPossibleHomepageLink\\(\\) should return string but returns string\\|TYPO3\\\\CMS\\\\Frontend\\\\Typolink\\\\LinkResult\\.$#"
+			count: 1
+			path: ../../Classes/OldModel/LegacyEvent.php
+
+		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:getAssociationAsArray\\(\\) should return array\\<int, array\\<string, int\\|string\\>\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/LegacyEvent.php
@@ -991,7 +1031,7 @@ parameters:
 			path: ../../Classes/OldModel/LegacyEvent.php
 
 		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:getPlacesAsArray\\(\\) should return list\\<array\\<string, int\\|string\\>\\> but returns array\\<int, array\\<string, mixed\\>\\>\\.$#"
+			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\:\\:getPlacesAsArray\\(\\) should return list\\<array\\<string, int\\|string\\>\\> but returns list\\<array\\<string, mixed\\>\\>\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/LegacyEvent.php
 
@@ -1041,14 +1081,14 @@ parameters:
 			path: ../../Classes/OldModel/LegacyRegistration.php
 
 		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\:\\:getLinkedTitle\\(\\) should return string but returns string\\|TYPO3\\\\CMS\\\\Frontend\\\\Typolink\\\\LinkResult\\.$#"
+			count: 1
+			path: ../../Classes/OldModel/LegacySpeaker.php
+
+		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyTimeSlot\\:\\:getPlaceShort\\(\\) should return string but returns mixed\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/LegacyTimeSlot.php
-
-		-
-			message: "#^Access to constant ERROR on an unknown class TYPO3\\\\CMS\\\\Core\\\\Type\\\\ContextualFeedbackSeverity\\.$#"
-			count: 1
-			path: ../../Classes/SchedulerTasks/MailNotifierConfiguration.php
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\SchedulerTasks\\\\MailNotifierConfiguration\\:\\:getLanguageService\\(\\) should return TYPO3\\\\CMS\\\\Core\\\\Localization\\\\LanguageService but returns mixed\\.$#"
@@ -1081,12 +1121,22 @@ parameters:
 			path: ../../Classes/SchedulerTasks/RegistrationDigest.php
 
 		-
-			message: "#^Parameter \\#1 \\$key of function array_key_exists expects int\\|string, int\\|null given\\.$#"
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 1
+			path: ../../Classes/Service/EventStatisticsCalculator.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
+			count: 1
+			path: ../../Classes/Service/EventStatisticsCalculator.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of function array_key_exists expects int\\|string, int\\<1, max\\>\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/Service/RegistrationGuard.php
 
 		-
-			message: "#^Property OliverKlee\\\\Seminars\\\\Service\\\\RegistrationGuard\\:\\:\\$vacanciesCache \\(array\\<int\\<1, max\\>, int\\<0, max\\>\\|null\\>\\) does not accept non\\-empty\\-array\\<''\\|int, int\\<0, max\\>\\|null\\>\\.$#"
+			message: "#^Property OliverKlee\\\\Seminars\\\\Service\\\\RegistrationGuard\\:\\:\\$vacanciesCache \\(array\\<int\\<1, max\\>, int\\<0, max\\>\\|null\\>\\) does not accept non\\-empty\\-array\\<''\\|int\\<1, max\\>, int\\<0, max\\>\\|null\\>\\.$#"
 			count: 2
 			path: ../../Classes/Service/RegistrationGuard.php
 
@@ -1097,6 +1147,16 @@ parameters:
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
+			count: 1
+			path: ../../Classes/Service/RegistrationManager.php
+
+		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getLinkToRegistrationPage\\(\\) should return string but returns string\\|TYPO3\\\\CMS\\\\Frontend\\\\Typolink\\\\LinkResult\\.$#"
+			count: 1
+			path: ../../Classes/Service/RegistrationManager.php
+
+		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getLinkToUnregistrationPage\\(\\) should return string but returns string\\|TYPO3\\\\CMS\\\\Frontend\\\\Typolink\\\\LinkResult\\.$#"
 			count: 1
 			path: ../../Classes/Service/RegistrationManager.php
 
@@ -1131,12 +1191,22 @@ parameters:
 			path: ../../Classes/Service/RegistrationProcessor.php
 
 		-
+			message: "#^Comparison operation \"\\<\\=\" between int\\<1, max\\> and 0 is always false\\.$#"
+			count: 1
+			path: ../../Classes/Service/RegistrationProcessor.php
+
+		-
 			message: "#^Parameter \\#1 \\$format of method DateTime\\:\\:format\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/Service/RegistrationProcessor.php
 
 		-
 			message: "#^Parameter \\#1 \\$name of method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Registration\\\\Registration\\:\\:setTitle\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: ../../Classes/Service/RegistrationProcessor.php
+
+		-
+			message: "#^Parameter \\#1 \\$pid of method TYPO3\\\\CMS\\\\Extbase\\\\DomainObject\\\\AbstractDomainObject\\:\\:setPid\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
 			path: ../../Classes/Service/RegistrationProcessor.php
 
@@ -1167,6 +1237,11 @@ parameters:
 
 		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:pi_linkTP\\(\\) has parameter \\$urlParameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../../Classes/Templating/TemplateHelper.php
+
+		-
+			message: "#^Method OliverKlee\\\\Seminars\\\\Templating\\\\TemplateHelper\\:\\:pi_linkTP\\(\\) should return string but returns string\\|TYPO3\\\\CMS\\\\Frontend\\\\Typolink\\\\LinkResult\\.$#"
 			count: 1
 			path: ../../Classes/Templating/TemplateHelper.php
 
@@ -1826,11 +1901,6 @@ parameters:
 			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
 
 		-
-			message: "#^Access to constant ERROR on an unknown class TYPO3\\\\CMS\\\\Core\\\\Type\\\\ContextualFeedbackSeverity\\.$#"
-			count: 2
-			path: ../../Tests/Functional/SchedulerTasks/MailNotifierConfigurationTest.php
-
-		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 6
 			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
@@ -2171,9 +2241,169 @@ parameters:
 			path: ../../Tests/Unit/Configuration/EventRegistrationFlexFormsTest.php
 
 		-
+			message: "#^Class TYPO3\\\\CMS\\\\Backend\\\\Template\\\\ModuleTemplateFactory constructor invoked with 3 parameters, 7 required\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Controller/BackEnd/EmailControllerTest.php
+
+		-
+			message: "#^Class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/EmailControllerTest.php
+
+		-
+			message: "#^Instantiated class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/EmailControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationMocker\\<mixed\\>\\:\\:willThrowException\\(\\) expects Throwable, TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/EmailControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\TestCase\\:\\:expectException\\(\\) expects class\\-string\\<Throwable\\>, string given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/EmailControllerTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$uriBuilder of class TYPO3\\\\CMS\\\\Backend\\\\Template\\\\ModuleTemplateFactory constructor expects TYPO3\\\\CMS\\\\Backend\\\\Routing\\\\UriBuilder, PHPUnit\\\\Framework\\\\MockObject\\\\Stub&TYPO3\\\\CMS\\\\Core\\\\Messaging\\\\FlashMessageService given\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Controller/BackEnd/EmailControllerTest.php
+
+		-
+			message: "#^Class TYPO3\\\\CMS\\\\Backend\\\\Template\\\\ModuleTemplateFactory constructor invoked with 3 parameters, 7 required\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Controller/BackEnd/EventControllerTest.php
+
+		-
+			message: "#^Class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/EventControllerTest.php
+
+		-
+			message: "#^Instantiated class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/EventControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationMocker\\<mixed\\>\\:\\:willThrowException\\(\\) expects Throwable, TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/EventControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\TestCase\\:\\:expectException\\(\\) expects class\\-string\\<Throwable\\>, string given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/EventControllerTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$uriBuilder of class TYPO3\\\\CMS\\\\Backend\\\\Template\\\\ModuleTemplateFactory constructor expects TYPO3\\\\CMS\\\\Backend\\\\Routing\\\\UriBuilder, PHPUnit\\\\Framework\\\\MockObject\\\\Stub&TYPO3\\\\CMS\\\\Core\\\\Messaging\\\\FlashMessageService given\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Controller/BackEnd/EventControllerTest.php
+
+		-
+			message: "#^Class TYPO3\\\\CMS\\\\Backend\\\\Template\\\\ModuleTemplateFactory constructor invoked with 3 parameters, 7 required\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Controller/BackEnd/ModuleControllerTest.php
+
+		-
+			message: "#^Class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/ModuleControllerTest.php
+
+		-
+			message: "#^Instantiated class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/ModuleControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationMocker\\<mixed\\>\\:\\:willThrowException\\(\\) expects Throwable, TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/ModuleControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\TestCase\\:\\:expectException\\(\\) expects class\\-string\\<Throwable\\>, string given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/ModuleControllerTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$uriBuilder of class TYPO3\\\\CMS\\\\Backend\\\\Template\\\\ModuleTemplateFactory constructor expects TYPO3\\\\CMS\\\\Backend\\\\Routing\\\\UriBuilder, PHPUnit\\\\Framework\\\\MockObject\\\\Stub&TYPO3\\\\CMS\\\\Core\\\\Messaging\\\\FlashMessageService given\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Controller/BackEnd/ModuleControllerTest.php
+
+		-
+			message: "#^Class TYPO3\\\\CMS\\\\Backend\\\\Template\\\\ModuleTemplateFactory constructor invoked with 3 parameters, 7 required\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Controller/BackEnd/RegistrationControllerTest.php
+
+		-
+			message: "#^Class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/RegistrationControllerTest.php
+
+		-
 			message: "#^Instanceof between Psr\\\\Http\\\\Message\\\\ResponseInterface and Psr\\\\Http\\\\Message\\\\ResponseInterface will always evaluate to true\\.$#"
 			count: 2
 			path: ../../Tests/Unit/Controller/BackEnd/RegistrationControllerTest.php
+
+		-
+			message: "#^Instantiated class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/RegistrationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationMocker\\<mixed\\>\\:\\:willThrowException\\(\\) expects Throwable, TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/RegistrationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\TestCase\\:\\:expectException\\(\\) expects class\\-string\\<Throwable\\>, string given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/BackEnd/RegistrationControllerTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$uriBuilder of class TYPO3\\\\CMS\\\\Backend\\\\Template\\\\ModuleTemplateFactory constructor expects TYPO3\\\\CMS\\\\Backend\\\\Routing\\\\UriBuilder, PHPUnit\\\\Framework\\\\MockObject\\\\Stub&TYPO3\\\\CMS\\\\Core\\\\Messaging\\\\FlashMessageService given\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Controller/BackEnd/RegistrationControllerTest.php
+
+		-
+			message: "#^Class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/EventRegistrationControllerTest.php
+
+		-
+			message: "#^Instantiated class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/EventRegistrationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationMocker\\<mixed\\>\\:\\:willThrowException\\(\\) expects Throwable, TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/EventRegistrationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\TestCase\\:\\:expectException\\(\\) expects class\\-string\\<Throwable\\>, string given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/EventRegistrationControllerTest.php
+
+		-
+			message: "#^Class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/EventUnregistrationControllerTest.php
+
+		-
+			message: "#^Instantiated class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/EventUnregistrationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationMocker\\<mixed\\>\\:\\:willThrowException\\(\\) expects Throwable, TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/EventUnregistrationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\TestCase\\:\\:expectException\\(\\) expects class\\-string\\<Throwable\\>, string given\\.$#"
+			count: 3
+			path: ../../Tests/Unit/Controller/EventUnregistrationControllerTest.php
 
 		-
 			message: "#^Call to static method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Price\\:\\:isPriceCodeValid\\(\\) with 'price_regular'\\|'price_regular_early'\\|'price_special'\\|'price_special_early' will always evaluate to true\\.$#"
