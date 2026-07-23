@@ -263,6 +263,22 @@ jobs:
             php-version: "8.3"
             dbms: "mysql"
             composer-dependencies: Max
+          - typo3-version: "12.4"
+            php-version: "8.1"
+            dbms: "mysql"
+            composer-dependencies: Min
+          - typo3-version: "12.4"
+            php-version: "8.1"
+            dbms: "mysql"
+            composer-dependencies: Max
+          - typo3-version: "12.4"
+            php-version: "8.3"
+            dbms: "mysql"
+            composer-dependencies: Min
+          - typo3-version: "12.4"
+            php-version: "8.3"
+            dbms: "mysql"
+            composer-dependencies: Max
   shellcheck:
     name: Check shell scripts
     runs-on: ubuntu-24.04
