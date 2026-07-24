@@ -2111,6 +2111,42 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function showActionRendersTargetGroups(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastEventWithTwoTargetGroups.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Fortgeschrittene,', $html);
+        self::assertStringContainsString('Profi', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersTargetGroups(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastEventDateWithTopicAndTwoTargetGroups.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Fortgeschrittene,', $html);
+        self::assertStringContainsString('Profi', $html);
+    }
+
+    /**
+     * @test
+     */
     public function showActionForEventWithUnlimitedSeatsRendersAvailable(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
