@@ -50,7 +50,7 @@
                                 <maxitems>99</maxitems>
                                 <default>
                                     title, eventType, registrationTop, dateAndTime, venue, categories, room, price, targetGroups, vacancies,
-                                    description, speakers, registrationBottom
+                                    teaser, description, speakers, registrationBottom
                                 </default>
                                 <items type="array">
                                     <numIndex index="0" type="array">
@@ -115,17 +115,23 @@
                                     </numIndex>
                                     <numIndex index="10" type="array">
                                         <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.teaser
+                                        </numIndex>
+                                        <numIndex index="1">teaser</numIndex>
+                                    </numIndex>
+                                    <numIndex index="11" type="array">
+                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.description
                                         </numIndex>
                                         <numIndex index="1">description</numIndex>
                                     </numIndex>
-                                    <numIndex index="11" type="array">
+                                    <numIndex index="12" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.speakers
                                         </numIndex>
                                         <numIndex index="1">speakers</numIndex>
                                     </numIndex>
-                                    <numIndex index="12" type="array">
+                                    <numIndex index="13" type="array">
                                         <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.registrationBottom
                                         </numIndex>
