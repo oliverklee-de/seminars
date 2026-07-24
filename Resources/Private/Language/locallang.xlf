@@ -2082,6 +2082,9 @@
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.price">
         <source>price</source>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.targetGroups">
+        <source>target groups</source>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.vacancies">
         <source>vacancies</source>
       </trans-unit>
@@ -2123,6 +2126,9 @@
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.price">
         <source>Price</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.targetGroups">
+        <source>Target groups</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.vacancies">
         <source>Vacancies</source>
