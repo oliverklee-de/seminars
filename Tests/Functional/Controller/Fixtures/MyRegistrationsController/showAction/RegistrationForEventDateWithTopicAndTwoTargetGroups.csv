@@ -1,0 +1,18 @@
+"tx_seminars_seminars"
+,"uid","pid","object_type","topic","title","registrations","begin_date","end_date","target_groups"
+,1,2,2,2,"date record",1,1,2,0
+,2,2,1,0,"topic record",0,0,0,2
+
+"tx_seminars_target_groups"
+,"uid","pid","title"
+,1,2,"Fortgeschrittene"
+,2,2,"Profi"
+
+"tx_seminars_seminars_target_groups_mm"
+,"uid_local","uid_foreign"
+,2,1
+,2,2
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,1,1,1
