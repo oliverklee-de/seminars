@@ -2804,9 +2804,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>vacancies</source>
         <target state="final">freie Plätze</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.teaser">
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.teaser" approved="yes">
         <source>teaser</source>
-        <target state="needs-translation">teaser</target>
+        <target state="final">Teaser</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.description" approved="yes">
         <source>description</source>
