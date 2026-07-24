@@ -2796,9 +2796,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>price</source>
         <target state="final">Preis</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.targetGroups">
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.targetGroups" approved="yes">
         <source>target groups</source>
-        <target state="needs-translation">target groups</target>
+        <target state="final">Zielgruppen</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.vacancies" approved="yes">
         <source>vacancies</source>
@@ -2856,9 +2856,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Price</source>
         <target state="final">Preis</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.targetGroups">
+      <trans-unit id="plugin.eventSingleView.events.property.targetGroups" approved="yes">
         <source>Target groups</source>
-        <target state="needs-translation">Target groups</target>
+        <target state="final">Zielgruppen</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.vacancies" approved="yes">
         <source>Vacancies</source>
