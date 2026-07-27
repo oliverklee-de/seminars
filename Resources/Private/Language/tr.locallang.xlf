@@ -3035,6 +3035,10 @@
         <source>room</source>
         <target state="needs-translation">room</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.teaser">
+        <source>teaser</source>
+        <target state="needs-translation">teaser</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.description">
         <source>description</source>
         <target state="needs-translation">description</target>
