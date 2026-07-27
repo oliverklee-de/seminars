@@ -2304,7 +2304,7 @@
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus">
         <source>Status</source>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.targetGroups">
+      <trans-unit id="plugin.myRegistrations.show.heading.targetGroups">
         <source>Target groups</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.certificateOfAttendance">
