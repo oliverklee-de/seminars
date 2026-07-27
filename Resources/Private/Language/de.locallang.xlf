@@ -3008,9 +3008,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>room</source>
         <target state="final">Raum</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.targetGroups">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.targetGroups" approved="yes">
         <source>target groups</source>
-        <target state="needs-translation">target groups</target>
+        <target state="final">Zielgruppen</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.teaser" approved="yes">
         <source>teaser</source>
@@ -3104,9 +3104,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>📄 Display certificate of attendance</source>
         <target state="final">📄 Teilnahmebescheinigung anzeigen</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.targetGroups">
+      <trans-unit id="plugin.myRegistrations.show.heading.targetGroups" approved="yes">
         <source>Target groups</source>
-        <target state="needs-translation">Target groups</target>
+        <target state="final">Zielgruppen</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.eventUid.number" approved="yes">
         <source>#%1$u</source>
