@@ -2241,6 +2241,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.room">
         <source>room</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.targetGroups">
+        <source>target groups</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.teaser">
         <source>teaser</source>
       </trans-unit>
@@ -2309,6 +2312,9 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.long">
         <source>📄 Display certificate of attendance</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.targetGroups">
+        <source>Target groups</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.eventUid.number">
         <source>#%1$u</source>

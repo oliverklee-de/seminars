@@ -78,6 +78,19 @@
             </f:if>
         </oelib:isFieldEnabled>
 
+        <oelib:isFieldEnabled fieldName="targetGroups">
+            <f:if condition="{event.targetGroups}">
+                <h3>
+                    <f:translate key="plugin.myRegistrations.show.heading.targetGroups"/>
+                </h3>
+                <p>
+                    <f:for each="{event.targetGroups}" as="targetGroup" iteration="iteration">
+                        {targetGroup.title}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                    </f:for>
+                </p>
+            </f:if>
+        </oelib:isFieldEnabled>
+
         <oelib:isFieldEnabled fieldName="teaser">
             <f:if condition="{event.teaser}">
                 <p>
