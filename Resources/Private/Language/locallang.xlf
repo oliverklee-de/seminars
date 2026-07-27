@@ -2304,9 +2304,6 @@
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus">
         <source>Status</source>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.targetGroups">
-        <source>Target groups</source>
-      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.certificateOfAttendance">
         <source>Certificate</source>
       </trans-unit>
@@ -2315,6 +2312,9 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.long">
         <source>📄 Display certificate of attendance</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.targetGroups">
+        <source>Target groups</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.eventUid.number">
         <source>#%1$u</source>

@@ -1128,7 +1128,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionRendersTargetGroups(): void
+    public function showActionForSingleEventRendersTargetGroups(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithTwoTargetGroups.csv');
