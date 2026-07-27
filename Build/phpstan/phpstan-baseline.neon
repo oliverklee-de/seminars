@@ -151,11 +151,6 @@ parameters:
 			path: ../../Classes/Csv/DownloadRegistrationListView.php
 
 		-
-			message: "#^Method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Event\\\\EventDate\\:\\:getPaymentMethods\\(\\) should return TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\PaymentMethod\\> but returns TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\ObjectStorage\\<mixed\\>\\.$#"
-			count: 1
-			path: ../../Classes/Domain/Model/Event/EventDate.php
-
-		-
 			message: "#^Call to static method OliverKlee\\\\Seminars\\\\Domain\\\\Model\\\\Price\\:\\:isPriceCodeValid\\(\\) with 'price_regular'\\|'price_regular_early'\\|'price_special'\\|'price_special_early' will always evaluate to true\\.$#"
 			count: 1
 			path: ../../Classes/Domain/Model/Registration/Registration.php
