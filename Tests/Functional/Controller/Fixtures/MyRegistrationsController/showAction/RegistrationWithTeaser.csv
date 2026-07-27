@@ -1,0 +1,7 @@
+"tx_seminars_seminars"
+,"uid","pid","title","registrations","begin_date","end_date","teaser"
+,1,2,"Extension Development with Extbase and Fluid",1,2524604400,2524604401,"Ganz ganz toll"
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,1,1,1

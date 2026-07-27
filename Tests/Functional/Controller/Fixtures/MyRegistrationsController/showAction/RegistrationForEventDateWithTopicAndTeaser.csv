@@ -1,0 +1,8 @@
+"tx_seminars_seminars"
+,"uid","pid","object_type","topic","title","registrations","begin_date","end_date","teaser"
+,1,2,2,2,"date record",1,2524604400,2524604401,""
+,2,2,1,0,"topic record",0,2524604400,2524604401,"Ganz ganz toll"
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,1,1,1
