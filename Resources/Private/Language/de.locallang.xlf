@@ -2674,7 +2674,7 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.venue" approved="yes">
         <source>Venue:</source>
-        <target state="final">Veranstaltungsort:</target>
+        <target state="final">Ort:</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.0" approved="yes">
         <source>on-site</source>
