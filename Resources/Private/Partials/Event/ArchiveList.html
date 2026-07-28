@@ -10,12 +10,6 @@
                         </th>
                     </oelib:isFieldEnabled>
 
-                    <oelib:isFieldEnabled fieldName="eventType">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.eventType"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
                     <oelib:isFieldEnabled fieldName="topic">
                         <th scope="col">
                             <f:translate key="plugin.eventArchive.events.property.topic"/>
@@ -40,6 +34,18 @@
                         </th>
                     </oelib:isFieldEnabled>
 
+                    <oelib:isFieldEnabled fieldName="speakers">
+                        <th scope="col">
+                            <f:translate key="plugin.eventArchive.events.property.speakers"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+
+                    <oelib:isFieldEnabled fieldName="eventType">
+                        <th scope="col">
+                            <f:translate key="plugin.eventArchive.events.property.eventType"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled fieldName="eventFormat">
                         <th scope="col">
                             <f:translate key="plugin.eventArchive.events.property.eventFormat"/>
@@ -49,12 +55,6 @@
                     <oelib:isFieldEnabled fieldName="categories">
                         <th scope="col">
                             <f:translate key="plugin.eventArchive.events.property.categories"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled fieldName="speakers">
-                        <th scope="col">
-                            <f:translate key="plugin.eventArchive.events.property.speakers"/>
                         </th>
                     </oelib:isFieldEnabled>
 
@@ -79,14 +79,6 @@
                         <oelib:isFieldEnabled fieldName="date">
                             <td>
                                 <f:render partial="EventDate" arguments="{event: event}"/>
-                            </td>
-                        </oelib:isFieldEnabled>
-
-                        <oelib:isFieldEnabled fieldName="eventType">
-                            <td>
-                                <f:if condition="{event.eventType}">
-                                    {event.eventType.title}
-                                </f:if>
                             </td>
                         </oelib:isFieldEnabled>
 
@@ -124,6 +116,22 @@
                             </td>
                         </oelib:isFieldEnabled>
 
+                        <oelib:isFieldEnabled fieldName="speakers">
+                            <td>
+                                <f:for each="{event.speakers}" as="speaker" iteration="iteration">
+                                    {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                </f:for>
+                            </td>
+                        </oelib:isFieldEnabled>
+
+                        <oelib:isFieldEnabled fieldName="eventType">
+                            <td>
+                                <f:if condition="{event.eventType}">
+                                    {event.eventType.title}
+                                </f:if>
+                            </td>
+                        </oelib:isFieldEnabled>
+
                         <oelib:isFieldEnabled fieldName="eventFormat">
                             <td>
                                 <f:translate key="plugin.eventArchive.events.property.eventFormat.{event.eventFormat}"/>
@@ -134,14 +142,6 @@
                             <td>
                                 <f:for each="{event.categories}" as="category">
                                     {category.title}
-                                </f:for>
-                            </td>
-                        </oelib:isFieldEnabled>
-
-                        <oelib:isFieldEnabled fieldName="speakers">
-                            <td>
-                                <f:for each="{event.speakers}" as="speaker" iteration="iteration">
-                                    {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
                                 </f:for>
                             </td>
                         </oelib:isFieldEnabled>
