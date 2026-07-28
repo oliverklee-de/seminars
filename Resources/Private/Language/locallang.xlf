@@ -2031,9 +2031,6 @@
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.available">
         <source>available</source>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.registration">
-        <source>Registration</source>
-      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.register">
         <source>registration</source>
       </trans-unit>
