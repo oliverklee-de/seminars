@@ -34,6 +34,20 @@ class EventDate extends Event implements EventDateInterface
         return false;
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
+    public function getEnsuredTopic(): EventTopicInterface
+    {
+        $topic = $this->getTopic();
+
+        if (!$topic instanceof EventTopicInterface) {
+            throw new \RuntimeException('This event date does not have a topic.', 1668096905);
+        }
+
+        return $topic;
+    }
+
     public function isEventDate(): bool
     {
         return true;
@@ -54,104 +68,104 @@ class EventDate extends Event implements EventDateInterface
         $this->topic = $topic;
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function getDisplayTitle(): string
     {
-        $topic = $this->getTopic();
-
-        return $topic instanceof EventTopic ? $topic->getDisplayTitle() : '';
+        return $this->getEnsuredTopic()->getDisplayTitle();
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function getDescription(): string
     {
-        $topic = $this->getTopic();
-
-        return $topic instanceof EventTopic ? $topic->getDescription() : '';
+        return $this->getEnsuredTopic()->getDescription();
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function getTeaser(): string
     {
-        $topic = $this->getTopic();
-
-        if (!$topic instanceof EventTopic) {
-            throw new \UnexpectedValueException('This event date does not have a topic.', 1784760657);
-        }
-
-        return $topic->getTeaser();
+        return $this->getEnsuredTopic()->getTeaser();
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function getStandardPrice(): float
     {
-        $topic = $this->getTopic();
-
-        return $topic instanceof EventTopic ? $topic->getStandardPrice() : 0.0;
+        return $this->getEnsuredTopic()->getStandardPrice();
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function getEarlyBirdPrice(): float
     {
-        $topic = $this->getTopic();
-
-        return $topic instanceof EventTopic ? $topic->getEarlyBirdPrice() : 0.0;
+        return $this->getEnsuredTopic()->getEarlyBirdPrice();
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function getSpecialPrice(): float
     {
-        $topic = $this->getTopic();
-
-        return $topic instanceof EventTopic ? $topic->getSpecialPrice() : 0.0;
+        return $this->getEnsuredTopic()->getSpecialPrice();
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function getSpecialEarlyBirdPrice(): float
     {
-        $topic = $this->getTopic();
-
-        return $topic instanceof EventTopic ? $topic->getSpecialEarlyBirdPrice() : 0.0;
+        return $this->getEnsuredTopic()->getSpecialEarlyBirdPrice();
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function getEventType(): ?EventType
     {
-        $topic = $this->getTopic();
-
-        return $topic instanceof EventTopic ? $topic->getEventType() : null;
+        return $this->getEnsuredTopic()->getEventType();
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function hasAdditionalTerms(): bool
     {
-        $topic = $this->getTopic();
-
-        return $topic instanceof EventTopic && $topic->hasAdditionalTerms();
+        return $this->getEnsuredTopic()->hasAdditionalTerms();
     }
 
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
     public function isMultipleRegistrationPossible(): bool
     {
-        $topic = $this->getTopic();
-
-        return $topic instanceof EventTopic && $topic->isMultipleRegistrationPossible();
+        return $this->getEnsuredTopic()->isMultipleRegistrationPossible();
     }
 
     /**
      * @return ObjectStorage<PaymentMethod>
+     *
+     * @throws \RuntimeException if this event date is without topic
      */
     public function getPaymentMethods(): ObjectStorage
     {
-        $topic = $this->getTopic();
-        if (!$topic instanceof EventTopic) {
-            return new ObjectStorage();
-        }
-
-        return $topic->getPaymentMethods();
+        return $this->getEnsuredTopic()->getPaymentMethods();
     }
 
     /**
      * Returns true if the standard price is 0.0. (In this case, all other prices are irrelevant.)
+     *
+     * @throws \RuntimeException if this event date is without topic
      */
     public function isFreeOfCharge(): bool
     {
-        $topic = $this->getTopic();
-        if (!$topic instanceof EventTopic) {
-            return true;
-        }
-
-        return $topic->isFreeOfCharge();
+        return $this->getEnsuredTopic()->isFreeOfCharge();
     }
 
     /**
@@ -161,55 +175,37 @@ class EventDate extends Event implements EventDateInterface
      * If this event is free of charge, the result will be only the standard price with a total amount of zero.
      *
      * @return array<Price::PRICE_*, Price>
+     *
+     * @throws \RuntimeException if this event date is without topic
      */
     public function getAllPrices(): array
     {
-        $topic = $this->getTopic();
-        if (!$topic instanceof EventTopic) {
-            return [];
-        }
-
-        return $topic->getAllPrices();
+        return $this->getEnsuredTopic()->getAllPrices();
     }
 
     /**
      * @param Price::PRICE_* $priceCode
      *
-     * @throws \UnexpectedValueException if this date has no topic, or if there is no price with that code
+     * @throws \RuntimeException if this event date is without topic
      */
     public function getPriceByPriceCode(string $priceCode): Price
     {
-        $topic = $this->getTopic();
-        if (!$topic instanceof EventTopic) {
-            throw new \UnexpectedValueException('This event date does not have a topic.', 1668096905);
-        }
-
-        return $topic->getPriceByPriceCode($priceCode);
+        return $this->getEnsuredTopic()->getPriceByPriceCode($priceCode);
     }
 
     /**
-     * @throws \UnexpectedValueException if this event date is without topic, no categories shown.
+     * @throws \RuntimeException if this event date is without topic
      */
     public function getCategories(): ObjectStorage
     {
-        $topic = $this->getTopic();
-        if (!$topic instanceof EventTopic) {
-            throw new \UnexpectedValueException('This event date does not have a topic.', 1668096905);
-        }
-        return $topic->getCategories();
+        return $this->getEnsuredTopic()->getCategories();
     }
 
     /**
-     * @throws \UnexpectedValueException if this event date is without topic, no target groups shown.
+     * @throws \RuntimeException if this event date is without topic
      */
     public function getTargetGroups(): ObjectStorage
     {
-        $topic = $this->getTopic();
-
-        if (!$topic instanceof EventTopic) {
-            throw new \UnexpectedValueException('This event date does not have a topic.', 1784805134);
-        }
-
-        return $topic->getTargetGroups();
+        return $this->getEnsuredTopic()->getTargetGroups();
     }
 }

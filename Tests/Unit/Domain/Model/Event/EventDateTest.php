@@ -163,9 +163,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getDisplayTitleWithoutTopicReturnsEmptyString(): void
+    public function getDisplayTitleWithoutTopicThrowsException(): void
     {
-        self::assertSame('', $this->subject->getDisplayTitle());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getDisplayTitle();
     }
 
     /**
@@ -184,9 +188,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getDescriptionWithoutTopicReturnsEmptyString(): void
+    public function getDescriptionWithoutTopicThrowsException(): void
     {
-        self::assertSame('', $this->subject->getDescription());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getDescription();
     }
 
     /**
@@ -207,8 +215,8 @@ final class EventDateTest extends UnitTestCase
      */
     public function getTeaserWithoutTopicThrowsExeption(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
-        $this->expectExceptionCode(1784760657);
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
         $this->expectExceptionMessage('This event date does not have a topic.');
 
         $this->subject->getTeaser();
@@ -551,9 +559,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getStandardPriceWithoutTopicReturnsZero(): void
+    public function getStandardPriceWithoutTopicThrowsException(): void
     {
-        self::assertSame(0.0, $this->subject->getStandardPrice());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getStandardPrice();
     }
 
     /**
@@ -572,9 +584,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getEarlyBirdPriceWithoutTopicReturnsZero(): void
+    public function getEarlyBirdPriceWithoutTopicThrowsException(): void
     {
-        self::assertSame(0.0, $this->subject->getEarlyBirdPrice());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getEarlyBirdPrice();
     }
 
     /**
@@ -593,9 +609,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getEventTypeWithoutTopicReturnsNull(): void
+    public function getEventTypeWithoutTopicThrowsException(): void
     {
-        self::assertNull($this->subject->getEventType());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getEventType();
     }
 
     /**
@@ -885,9 +905,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function hasAdditionalTermsWithoutTopicReturnsFalse(): void
+    public function hasAdditionalTermsWithoutTopicThrowsException(): void
     {
-        self::assertFalse($this->subject->hasAdditionalTerms());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->hasAdditionalTerms();
     }
 
     /**
@@ -917,9 +941,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function isMultipleRegistrationPossibleWithoutTopicReturnsFalse(): void
+    public function isMultipleRegistrationPossibleWithoutTopicThrowsException(): void
     {
-        self::assertFalse($this->subject->isMultipleRegistrationPossible());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->isMultipleRegistrationPossible();
     }
 
     /**
@@ -1026,9 +1054,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSpecialPriceWithoutTopicReturnsZero(): void
+    public function getSpecialPriceWithoutTopicThrowsException(): void
     {
-        self::assertSame(0.0, $this->subject->getSpecialPrice());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getSpecialPrice();
     }
 
     /**
@@ -1047,9 +1079,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSpecialEarlyBirdPriceWithoutTopicReturnsZero(): void
+    public function getSpecialEarlyBirdPriceWithoutTopicThrowsException(): void
     {
-        self::assertSame(0.0, $this->subject->getSpecialEarlyBirdPrice());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getSpecialEarlyBirdPrice();
     }
 
     /**
@@ -1137,12 +1173,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getPaymentMethodsWithoutTopicReturnsEmptyStorage(): void
+    public function getPaymentMethodsWithoutTopicThrowsException(): void
     {
-        $associatedModels = $this->subject->getPaymentMethods();
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
 
-        self::assertInstanceOf(ObjectStorage::class, $associatedModels);
-        self::assertCount(0, $associatedModels);
+        $this->subject->getPaymentMethods();
     }
 
     /**
@@ -1162,9 +1199,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function isFreeOfChargeForNoTopicReturnsTrue(): void
+    public function isFreeOfChargeForNoTopicThrowsException(): void
     {
-        self::assertTrue($this->subject->isFreeOfCharge());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->isFreeOfCharge();
     }
 
     /**
@@ -1183,9 +1224,13 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getAllPricesForNoTopicReturnsEmptyArray(): void
+    public function getAllPricesForNoTopicThrowsException(): void
     {
-        self::assertSame([], $this->subject->getAllPrices());
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getAllPrices();
     }
 
     /**
@@ -1206,7 +1251,7 @@ final class EventDateTest extends UnitTestCase
      */
     public function getPricesByPriceCodeForNoTopicThrowsException(): void
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(\RuntimeException::class);
         $this->expectExceptionCode(1668096905);
         $this->expectExceptionMessage('This event date does not have a topic.');
 
@@ -1882,8 +1927,8 @@ final class EventDateTest extends UnitTestCase
     {
         self::assertNull($this->subject->getTopic());
 
-        $this->expectException(\UnexpectedValueException::class);
-        $this->expectExceptionCode(1784805134);
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
         $this->expectExceptionMessage('This event date does not have a topic.');
 
         $this->subject->getTargetGroups();
