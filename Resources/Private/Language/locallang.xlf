@@ -1989,6 +1989,9 @@
       <trans-unit id="plugin.eventOutlook.events.property.organizer">
         <source>Organizer:</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.city">
+        <source>City:</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.venue">
         <source>Venue:</source>
       </trans-unit>
