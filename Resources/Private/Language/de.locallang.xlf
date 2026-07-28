@@ -3052,6 +3052,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>You are not registered to any events yet.</source>
         <target state="final">Du bist noch zu keiner Veranstaltung angemeldet.</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.toUnregistrationForm" approved="yes">
+        <source>unregistration</source>
+        <target state="final">Abmeldung</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.date" approved="yes">
         <source>Date</source>
         <target state="final">Datum</target>
@@ -3096,6 +3100,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Status</source>
         <target state="final">Status</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.unregistration" approved="yes">
+        <source>Unregistration</source>
+        <target state="final">Abmeldung</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.certificateOfAttendance" approved="yes">
         <source>Certificate</source>
         <target state="final">Bescheinigung</target>
@@ -3108,9 +3116,33 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>📄 Display certificate of attendance</source>
         <target state="final">📄 Teilnahmebescheinigung anzeigen</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm" approved="yes">
+        <source>proceed to unregistration</source>
+        <target state="final">zur Abmeldung</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.heading.targetGroups" approved="yes">
         <source>Target groups</source>
         <target state="final">Zielgruppen</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.registrationStatus" approved="yes">
+        <source>Registration status</source>
+        <target state="final">Anmeldestatus</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.certificateOfAttendance" approved="yes">
+        <source>Certificate of attendance</source>
+        <target state="final">Teilnahmebescheinigung</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.unregistration" approved="yes">
+        <source>Unregistration</source>
+        <target state="final">Abmeldung</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.downloads" approved="yes">
+        <source>Downloads</source>
+        <target state="final">Downloads</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.displayCertificateOfAttendance" approved="yes">
+        <source>📄 Display certificate of attendance</source>
+        <target state="final">📄 Teilnahmebescheinigung anzeigen</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.eventUid.number" approved="yes">
         <source>#%1$u</source>
@@ -3139,38 +3171,6 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.2" approved="yes">
         <source>nonbinding reservation</source>
         <target state="final">unverbindliche Reservierung</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.unregistration" approved="yes">
-        <source>Unregistration</source>
-        <target state="final">Abmeldung</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.toUnregistrationForm" approved="yes">
-        <source>unregistration</source>
-        <target state="final">Abmeldung</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.registrationStatus" approved="yes">
-        <source>Registration status</source>
-        <target state="final">Anmeldestatus</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.certificateOfAttendance" approved="yes">
-        <source>Certificate of attendance</source>
-        <target state="final">Teilnahmebescheinigung</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.unregistration" approved="yes">
-        <source>Unregistration</source>
-        <target state="final">Abmeldung</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.displayCertificateOfAttendance" approved="yes">
-        <source>📄 Display certificate of attendance</source>
-        <target state="final">📄 Teilnahmebescheinigung anzeigen</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm" approved="yes">
-        <source>proceed to unregistration</source>
-        <target state="final">zur Abmeldung</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.downloads" approved="yes">
-        <source>Downloads</source>
-        <target state="final">Downloads</target>
       </trans-unit>
     </body>
   </file>
