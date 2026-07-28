@@ -2755,10 +2755,6 @@
         <source>available</source>
         <target state="needs-translation">available</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.registration">
-        <source>Registration</source>
-        <target state="needs-translation">Registration</target>
-      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.register">
         <source>registration</source>
         <target state="needs-translation">registration</target>
