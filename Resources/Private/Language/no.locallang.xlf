@@ -2545,37 +2545,25 @@
         <source>No events found.</source>
         <target state="needs-translation">No events found.</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.date">
-        <source>Date</source>
-        <target state="needs-translation">Date</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.topic">
-        <source>Topic</source>
-        <target state="needs-translation">Topic</target>
-      </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.organizer">
-        <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <source>Organizer:</source>
+        <target state="needs-translation">Organizer:</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.city">
-        <source>City</source>
-        <target state="needs-translation">City</target>
+        <source>City:</source>
+        <target state="needs-translation">City:</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.venue">
-        <source>Venue</source>
-        <target state="needs-translation">Venue</target>
+        <source>Venue:</source>
+        <target state="needs-translation">Venue:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.speakers">
-        <source>Speakers</source>
-        <target state="needs-translation">Speakers</target>
+      <trans-unit id="plugin.eventArchive.events.property.speakers.one">
+        <source>Speaker:</source>
+        <target state="needs-translation">Speaker:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventType">
-        <source>Type</source>
-        <target state="needs-translation">Type</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventFormat">
-        <source>Format</source>
-        <target state="needs-translation">Format</target>
+      <trans-unit id="plugin.eventArchive.events.property.speakers.many">
+        <source>Speakers:</source>
+        <target state="needs-translation">Speakers:</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.0">
         <source>on-site</source>
@@ -2588,14 +2576,6 @@
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.2">
         <source>online</source>
         <target state="needs-translation">online</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.categories">
-        <source>Categories</source>
-        <target state="needs-translation">Categories</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventUid">
-        <source>Number</source>
-        <target state="needs-translation">Number</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventUid.number">
         <source>#%1$u</source>
