@@ -3085,6 +3085,10 @@
         <source>You are not registered to any events yet.</source>
         <target state="needs-translation">You are not registered to any events yet.</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.toUnregistrationForm">
+        <source>unregistration</source>
+        <target state="needs-translation">unregistration</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.date">
         <source>Date</source>
         <target state="needs-translation">Date</target>
@@ -3129,6 +3133,10 @@
         <source>Status</source>
         <target state="needs-translation">Status</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.unregistration">
+        <source>Unregistration</source>
+        <target state="needs-translation">Unregistration</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.certificateOfAttendance">
         <source>Certificate</source>
         <target state="needs-translation">Certificate</target>
@@ -3141,9 +3149,33 @@
         <source>📄 Display certificate of attendance</source>
         <target state="needs-translation">📄 Display certificate of attendance</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm">
+        <source>proceed to unregistration</source>
+        <target state="needs-translation">proceed to unregistration</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.heading.targetGroups">
         <source>Target groups</source>
         <target state="needs-translation">Target groups</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.registrationStatus">
+        <source>Registration status</source>
+        <target state="needs-translation">Registration status</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.certificateOfAttendance">
+        <source>Certificate of attendance</source>
+        <target state="needs-translation">Certificate of attendance</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.unregistration">
+        <source>Unregistration</source>
+        <target state="needs-translation">Unregistration</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.downloads">
+        <source>Downloads</source>
+        <target state="needs-translation">Downloads</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.displayCertificateOfAttendance">
+        <source>📄 Display certificate of attendance</source>
+        <target state="needs-translation">📄 Display certificate of attendance</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.eventUid.number">
         <source>#%1$u</source>
@@ -3172,38 +3204,6 @@
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.2">
         <source>nonbinding reservation</source>
         <target state="needs-translation">nonbinding reservation</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.unregistration">
-        <source>Unregistration</source>
-        <target state="needs-translation">Unregistration</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.toUnregistrationForm">
-        <source>unregistration</source>
-        <target state="needs-translation">unregistration</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.registrationStatus">
-        <source>Registration status</source>
-        <target state="needs-translation">Registration status</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.certificateOfAttendance">
-        <source>Certificate of attendance</source>
-        <target state="needs-translation">Certificate of attendance</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.unregistration">
-        <source>Unregistration</source>
-        <target state="needs-translation">Unregistration</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.displayCertificateOfAttendance">
-        <source>📄 Display certificate of attendance</source>
-        <target state="needs-translation">📄 Display certificate of attendance</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm">
-        <source>proceed to unregistration</source>
-        <target state="needs-translation">proceed to unregistration</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.downloads">
-        <source>Downloads</source>
-        <target state="needs-translation">Downloads</target>
       </trans-unit>
     </body>
   </file>
