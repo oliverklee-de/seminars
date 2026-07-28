@@ -2512,37 +2512,25 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>No events found.</source>
         <target state="final">Keine Veranstaltungen gefunden.</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.date" approved="yes">
-        <source>Date</source>
-        <target state="final">Datum</target>
+      <trans-unit id="plugin.eventArchive.events.property.organizer">
+        <source>Organizer:</source>
+        <target state="needs-translation">Organizer:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.topic" approved="yes">
-        <source>Topic</source>
-        <target state="final">Thema</target>
+      <trans-unit id="plugin.eventArchive.events.property.city">
+        <source>City:</source>
+        <target state="needs-translation">City:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.organizer" approved="yes">
-        <source>Organizer</source>
-        <target state="final">Veranstalter</target>
+      <trans-unit id="plugin.eventArchive.events.property.venue">
+        <source>Venue:</source>
+        <target state="needs-translation">Venue:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.city" approved="yes">
-        <source>City</source>
-        <target state="final">Stadt</target>
+      <trans-unit id="plugin.eventArchive.events.property.speakers.one">
+        <source>Speaker:</source>
+        <target state="needs-translation">Speaker:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.venue" approved="yes">
-        <source>Venue</source>
-        <target state="final">Ort</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.speakers" approved="yes">
-        <source>Speakers</source>
-        <target state="final">Referent_innen</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventType" approved="yes">
-        <source>Type</source>
-        <target state="final">Art</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventFormat" approved="yes">
-        <source>Format</source>
-        <target state="final">Format</target>
+      <trans-unit id="plugin.eventArchive.events.property.speakers.many">
+        <source>Speakers:</source>
+        <target state="needs-translation">Speakers:</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.0" approved="yes">
         <source>on-site</source>
@@ -2555,14 +2543,6 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.2" approved="yes">
         <source>online</source>
         <target state="final">online</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.categories" approved="yes">
-        <source>Categories</source>
-        <target state="final">Kategorien</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventUid" approved="yes">
-        <source>Number</source>
-        <target state="final">Nummer</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventUid.number" approved="yes">
         <source>#%1$u</source>
