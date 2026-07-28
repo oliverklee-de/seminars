@@ -2512,25 +2512,25 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>No events found.</source>
         <target state="final">Keine Veranstaltungen gefunden.</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.organizer">
+      <trans-unit id="plugin.eventArchive.events.property.organizer" approved="yes">
         <source>Organizer:</source>
-        <target state="needs-translation">Organizer:</target>
+        <target state="final">Veranstalter:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.city">
+      <trans-unit id="plugin.eventArchive.events.property.city" approved="yes">
         <source>City:</source>
-        <target state="needs-translation">City:</target>
+        <target state="final">Stadt:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.venue">
+      <trans-unit id="plugin.eventArchive.events.property.venue" approved="yes">
         <source>Venue:</source>
-        <target state="needs-translation">Venue:</target>
+        <target state="final">Ort:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.speakers.one">
+      <trans-unit id="plugin.eventArchive.events.property.speakers.one" approved="yes">
         <source>Speaker:</source>
-        <target state="needs-translation">Speaker:</target>
+        <target state="final">Referent_in:</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.speakers.many">
+      <trans-unit id="plugin.eventArchive.events.property.speakers.many" approved="yes">
         <source>Speakers:</source>
-        <target state="needs-translation">Speakers:</target>
+        <target state="final">Referent_innen:</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventFormat.0" approved="yes">
         <source>on-site</source>
