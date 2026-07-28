@@ -135,15 +135,15 @@
                                     </numIndex>
                                     <numIndex index="3" type="array">
                                         <numIndex index="0">
-                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.venue
-                                        </numIndex>
-                                        <numIndex index="1">venue</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">
                                             LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.city
                                         </numIndex>
                                         <numIndex index="1">city</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventOutlook.settings.displayOptions.columns.venue
+                                        </numIndex>
+                                        <numIndex index="1">venue</numIndex>
                                     </numIndex>
                                     <numIndex index="5" type="array">
                                         <numIndex index="0">
