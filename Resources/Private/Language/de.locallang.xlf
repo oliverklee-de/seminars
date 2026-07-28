@@ -2728,10 +2728,6 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>available</source>
         <target state="final">verfügbar</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.registration" approved="yes">
-        <source>Registration</source>
-        <target state="final">Anmeldung</target>
-      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.register" approved="yes">
         <source>registration</source>
         <target state="final">zur Anmeldung</target>
