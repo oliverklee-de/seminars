@@ -2501,10 +2501,6 @@
         <source>date</source>
         <target state="needs-translation">date</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventType">
-        <source>event type</source>
-        <target state="needs-translation">event type</target>
-      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.topic">
         <source>topic</source>
         <target state="needs-translation">topic</target>
@@ -2521,6 +2517,14 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers">
+        <source>speakers</source>
+        <target state="needs-translation">speakers</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventType">
+        <source>event type</source>
+        <target state="needs-translation">event type</target>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventFormat">
         <source>event format</source>
         <target state="needs-translation">event format</target>
@@ -2528,10 +2532,6 @@
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.categories">
         <source>categories</source>
         <target state="needs-translation">categories</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.speakers">
-        <source>speakers</source>
-        <target state="needs-translation">speakers</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventUid">
         <source>UID</source>
@@ -2549,10 +2549,6 @@
         <source>Date</source>
         <target state="needs-translation">Date</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.eventType">
-        <source>Type</source>
-        <target state="needs-translation">Type</target>
-      </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.topic">
         <source>Topic</source>
         <target state="needs-translation">Topic</target>
@@ -2568,6 +2564,14 @@
       <trans-unit id="plugin.eventArchive.events.property.venue">
         <source>Venue</source>
         <target state="needs-translation">Venue</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.speakers">
+        <source>Speakers</source>
+        <target state="needs-translation">Speakers</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventArchive.events.property.eventType">
+        <source>Type</source>
+        <target state="needs-translation">Type</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventFormat">
         <source>Format</source>
@@ -2588,10 +2592,6 @@
       <trans-unit id="plugin.eventArchive.events.property.categories">
         <source>Categories</source>
         <target state="needs-translation">Categories</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventArchive.events.property.speakers">
-        <source>Speakers</source>
-        <target state="needs-translation">Speakers</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.events.property.eventUid">
         <source>Number</source>
@@ -2645,10 +2645,6 @@
         <source>date</source>
         <target state="needs-translation">date</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventType">
-        <source>event type</source>
-        <target state="needs-translation">event type</target>
-      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.topic">
         <source>topic</source>
         <target state="needs-translation">topic</target>
@@ -2665,6 +2661,18 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
+        <source>speakers</source>
+        <target state="needs-translation">speakers</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price">
+        <source>price</source>
+        <target state="needs-translation">price</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventType">
+        <source>event type</source>
+        <target state="needs-translation">event type</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventFormat">
         <source>event format</source>
         <target state="needs-translation">event format</target>
@@ -2672,10 +2680,6 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.categories">
         <source>categories</source>
         <target state="needs-translation">categories</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.speakers">
-        <source>speakers</source>
-        <target state="needs-translation">speakers</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.eventUid">
         <source>UID</source>
@@ -2685,17 +2689,13 @@
         <source>link to the single view</source>
         <target state="needs-translation">link to the single view</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.price">
-        <source>price</source>
-        <target state="needs-translation">price</target>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.registration">
+        <source>registration</source>
+        <target state="needs-translation">registration</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.vacancies">
         <source>vacancies</source>
         <target state="needs-translation">vacancies</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.registration">
-        <source>registration</source>
-        <target state="needs-translation">registration</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.message.noEventsFound">
         <source>No events found.</source>
@@ -2713,6 +2713,18 @@
         <source>Venue:</source>
         <target state="needs-translation">Venue:</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.speakers.one">
+        <source>Speaker:</source>
+        <target state="needs-translation">Speaker:</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.speakers.many">
+        <source>Speakers:</source>
+        <target state="needs-translation">Speakers:</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.price">
+        <source>Price:</source>
+        <target state="needs-translation">Price:</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventFormat.0">
         <source>on-site</source>
         <target state="needs-translation">on-site</target>
@@ -2725,14 +2737,6 @@
         <source>online</source>
         <target state="needs-translation">online</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.speakers.one">
-        <source>Speaker:</source>
-        <target state="needs-translation">Speaker:</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.speakers.many">
-        <source>Speakers:</source>
-        <target state="needs-translation">Speakers:</target>
-      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.eventUid.number">
         <source>#%1$u</source>
         <target state="needs-translation">#%1$u</target>
@@ -2744,22 +2748,6 @@
       <trans-unit id="plugin.eventOutlook.events.property.singleViewLink.ariaLabel">
         <source>Show details for the event &quot;%1$s&quot;</source>
         <target state="needs-translation">Show details for the event "%1$s"</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.price">
-        <source>Price:</source>
-        <target state="needs-translation">Price:</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked">
-        <source>fully booked</source>
-        <target state="needs-translation">fully booked</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fewLeft">
-        <source>few left</source>
-        <target state="needs-translation">few left</target>
-      </trans-unit>
-      <trans-unit id="plugin.eventOutlook.events.property.vacancies.available">
-        <source>available</source>
-        <target state="needs-translation">available</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.register">
         <source>registration</source>
@@ -2776,6 +2764,18 @@
       <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList.ariaLabel">
         <source>Subscribe to the waiting list for the event &quot;%1$s&quot;</source>
         <target state="needs-translation">Subscribe to the waiting list for the event "%1$s"</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked">
+        <source>fully booked</source>
+        <target state="needs-translation">fully booked</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.fewLeft">
+        <source>few left</source>
+        <target state="needs-translation">few left</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.vacancies.available">
+        <source>available</source>
+        <target state="needs-translation">available</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView">
         <source>Event single view</source>
@@ -2961,10 +2961,6 @@
         <source>date</source>
         <target state="needs-translation">date</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.eventType">
-        <source>event type</source>
-        <target state="needs-translation">event type</target>
-      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.topic">
         <source>topic</source>
         <target state="needs-translation">topic</target>
@@ -2981,6 +2977,14 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers">
+        <source>speakers</source>
+        <target state="needs-translation">speakers</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.eventType">
+        <source>event type</source>
+        <target state="needs-translation">event type</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.attendanceMode">
         <source>attendance mode</source>
         <target state="needs-translation">attendance mode</target>
@@ -2988,10 +2992,6 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.categories">
         <source>categories</source>
         <target state="needs-translation">categories</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.speakers">
-        <source>speakers</source>
-        <target state="needs-translation">speakers</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.eventUid">
         <source>event UID</source>
@@ -3089,10 +3089,6 @@
         <source>Date</source>
         <target state="needs-translation">Date</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.eventType">
-        <source>Type</source>
-        <target state="needs-translation">Type</target>
-      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.topic">
         <source>Topic</source>
         <target state="needs-translation">Topic</target>
@@ -3109,6 +3105,14 @@
         <source>Venue</source>
         <target state="needs-translation">Venue</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.speakers">
+        <source>Speakers</source>
+        <target state="needs-translation">Speakers</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.eventType">
+        <source>Type</source>
+        <target state="needs-translation">Type</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.attendanceMode">
         <source>Mode</source>
         <target state="needs-translation">Mode</target>
@@ -3117,10 +3121,6 @@
         <source>Categories</source>
         <target state="needs-translation">Categories</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.speakers">
-        <source>Speakers</source>
-        <target state="needs-translation">Speakers</target>
-      </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.eventUid">
         <source>Event number</source>
         <target state="needs-translation">Event number</target>
@@ -3128,10 +3128,6 @@
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus">
         <source>Status</source>
         <target state="needs-translation">Status</target>
-      </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.unregistration">
-        <source>Unregistration</source>
-        <target state="needs-translation">Unregistration</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.certificateOfAttendance">
         <source>Certificate</source>
@@ -3144,6 +3140,10 @@
       <trans-unit id="plugin.myRegistrations.index.displayCertificateOfAttendance.long">
         <source>📄 Display certificate of attendance</source>
         <target state="needs-translation">📄 Display certificate of attendance</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.unregistration">
+        <source>Unregistration</source>
+        <target state="needs-translation">Unregistration</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm">
         <source>proceed to unregistration</source>
@@ -3177,10 +3177,6 @@
         <source>#%1$u</source>
         <target state="needs-translation">#%1$u</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.property.attendanceMode.1">
-        <source>on-site</source>
-        <target state="needs-translation">on-site</target>
-      </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.attendanceMode.2">
         <source>online</source>
         <target state="needs-translation">online</target>
@@ -3200,6 +3196,10 @@
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.2">
         <source>nonbinding reservation</source>
         <target state="needs-translation">nonbinding reservation</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.attendanceMode.1">
+        <source>on-site</source>
+        <target state="needs-translation">on-site</target>
       </trans-unit>
     </body>
   </file>
