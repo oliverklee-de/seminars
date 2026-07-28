@@ -2705,6 +2705,10 @@
         <source>Organizer:</source>
         <target state="needs-translation">Organizer:</target>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.events.property.city">
+        <source>City:</source>
+        <target state="needs-translation">City:</target>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.venue">
         <source>Venue:</source>
         <target state="needs-translation">Venue:</target>
