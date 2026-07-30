@@ -9,7 +9,7 @@ return [
     'web_events' => [
         'parent' => 'web',
         'access' => 'user',
-        'icon' => 'EXT:seminars/Resources/Public/Icons/BackEndModule.svg',
+        'iconIdentifier' => 'tx-seminars-backend-module',
         'labels' => 'LLL:EXT:seminars/Resources/Private/Language/locallang.xlf',
         'extensionName' => 'Seminars',
         'controllerActions' => [
