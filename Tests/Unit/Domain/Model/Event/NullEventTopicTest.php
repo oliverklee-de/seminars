@@ -310,4 +310,12 @@ final class NullEventTopicTest extends UnitTestCase
     {
         self::assertFalse($this->subject->hasDownloadableCertificate());
     }
+
+    /**
+     * @test
+     */
+    public function getAttendanceModeReturnsZero(): void
+    {
+        self::assertSame(0, $this->subject->getAttendanceMode());
+    }
 }

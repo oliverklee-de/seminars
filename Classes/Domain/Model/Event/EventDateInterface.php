@@ -23,6 +23,11 @@ interface EventDateInterface extends EventInterface
     public const EVENT_FORMAT_HYBRID = 1;
     public const EVENT_FORMAT_ONLINE = 2;
 
+    public const ATTENDANCE_MODE_ON_SITE = 0;
+    public const ATTENDANCE_MODE_HYBRID = 1;
+    public const ATTENDANCE_MODE_ONLINE = 2;
+
+
     public function getStart(): ?\DateTime;
 
     public function getEnd(): ?\DateTime;
@@ -174,4 +179,9 @@ interface EventDateInterface extends EventInterface
      * @return ObjectStorage<TimeSlot>
      */
     public function getTimeSlots(): ObjectStorage;
+
+    /**
+     * @return EventDateInterface::ATTENDANCE_MODE_*
+     */
+    public function getAttendanceMode(): int;
 }

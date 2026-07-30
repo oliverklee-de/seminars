@@ -2009,4 +2009,24 @@ final class SingleEventTest extends UnitTestCase
 
         self::assertSame($timeslots, $this->subject->getTimeSlots());
     }
+
+    /**
+     * @test
+     */
+    public function getAttendanceModeInitiallyReturnsZero(): void
+    {
+        self::assertSame(EventDateInterface::ATTENDANCE_MODE_ON_SITE, $this->subject->getAttendanceMode());
+    }
+
+    /**
+     * @test
+     */
+    public function setAttendanceModeSetsAttendanceMode(): void
+    {
+
+        $value = EventDateInterface::ATTENDANCE_MODE_HYBRID;
+        $this->subject->setAttendanceMode($value);
+
+        self::assertSame($value, $this->subject->getAttendanceMode());
+    }
 }

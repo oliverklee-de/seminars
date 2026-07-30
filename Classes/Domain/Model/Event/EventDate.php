@@ -208,4 +208,14 @@ class EventDate extends Event implements EventDateInterface
     {
         return $this->getEnsuredTopic()->getTargetGroups();
     }
+
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
+    public function getAttendanceMode(): int
+    {
+        return $this->getEnsuredTopic()->getAttendanceMode();
+    }
+
+
 }

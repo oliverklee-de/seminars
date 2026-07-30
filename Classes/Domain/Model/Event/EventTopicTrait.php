@@ -32,6 +32,12 @@ trait EventTopicTrait
      */
     protected string $teaser = '';
 
+    /**
+     * @var EventDateInterface::ATTENDANCE_MODE_*
+     * @Validate("NumberRange", options={"minimum": 0, "maximum": 2})
+     */
+    protected int $attendanceMode = EventDateInterface::ATTENDANCE_MODE_ON_SITE;
+
     protected float $standardPrice = 0.0;
 
     protected float $earlyBirdPrice = 0.0;
@@ -294,4 +300,21 @@ trait EventTopicTrait
     {
         $this->targetGroups = $targetGroups;
     }
+
+    /**
+     * @return EventDateInterface::ATTENDANCE_MODE_*
+     */
+    public function getAttendanceMode(): int
+    {
+        return $this->attendanceMode;
+    }
+
+    /**
+     * @return EventDateInterface::ATTENDANCE_MODE_*
+     */
+    public function setAttendanceMode(int $attendanceMode): void
+    {
+        $this->attendanceMode = $attendanceMode;
+    }
+
 }

@@ -1950,4 +1950,18 @@ final class EventDateTest extends UnitTestCase
 
         self::assertSame($targetGroups, $this->subject->getTargetGroups());
     }
+
+    /**
+     * @test
+     */
+    public function getAttendanceModeInitiallyReturnsOnSite(): void
+    {
+        $topic = new EventTopic();
+
+        $topic->setAttendanceMode(0);
+
+        $this->subject->setTopic($topic);
+
+        self::assertSame(EventDateInterface::ATTENDANCE_MODE_ON_SITE, $this->subject->getAttendanceMode());
+    }
 }
