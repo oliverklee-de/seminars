@@ -135,7 +135,7 @@ final class NullEventTopicTest extends UnitTestCase
     /**
      * @test
      */
-    public function getInternalTitleRetursEmptyString(): void
+    public function getInternalTitleReturnsEmptyString(): void
     {
         self::assertSame('', $this->subject->getInternalTitle());
     }
