@@ -2980,9 +2980,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.attendanceMode">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.attendanceMode" approved="yes">
         <source>attendance mode</source>
-        <target state="needs-translation">attendance mode</target>
+        <target state="final">Teilnahmemodus</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.categories" approved="yes">
         <source>categories</source>
@@ -3100,9 +3100,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>proceed to unregistration</source>
         <target state="final">zur Abmeldung</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.show.heading.attendanceMode">
+      <trans-unit id="plugin.myRegistrations.show.heading.attendanceMode" approved="yes">
         <source>Attendance mode</source>
-        <target state="needs-translation">Attendance mode</target>
+        <target state="final">Teilnahmemodus</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.heading.targetGroups" approved="yes">
         <source>Target groups</source>
