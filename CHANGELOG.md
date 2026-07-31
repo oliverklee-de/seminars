@@ -251,6 +251,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Use native ES6 JavaScript modules in the BE in TYPO3 >= 12LTS (#5321)
 - Avoid the deprecated `renderStatic` (#5233, #5237)
 - Remove extraneous closing braces in Fluid templates (#5232)
 - Avoid the deprecated `TypoScriptFrontendController::getLanguage()` (#5224)
