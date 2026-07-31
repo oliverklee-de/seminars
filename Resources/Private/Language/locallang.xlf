@@ -2221,7 +2221,7 @@
         <source>venue</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.attendanceMode">
-        <source>attendanceMode</source>
+        <source>attendance mode</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.categories">
         <source>categories</source>
