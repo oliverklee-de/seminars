@@ -375,7 +375,7 @@ final class EventControllerTest extends UnitTestCase
     {
         $this->pageRendererMock
             ->expects(self::once())->method('loadRequireJsModule')
-            ->with('TYPO3/CMS/Seminars/BackEnd/DeleteConfirmation');
+            ->with('TYPO3/CMS/Seminars/BackEnd/DeleteConfirmationAmdModule');
 
         $this->subject->searchAction(1, 'specatacular event');
     }
