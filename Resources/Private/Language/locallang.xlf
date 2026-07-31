@@ -2220,6 +2220,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.venue">
         <source>venue</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.attendanceMode">
+        <source>attendanceMode</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.categories">
         <source>categories</source>
       </trans-unit>
@@ -2306,6 +2309,9 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm">
         <source>proceed to unregistration</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.attendanceMode">
+        <source>Attendance Mode</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.heading.targetGroups">
         <source>Target groups</source>
