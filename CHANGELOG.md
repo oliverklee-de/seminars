@@ -11,7 +11,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Add support for TYPO3 12LTS (#5281, #5286, #5294, #5309)
 - Add more data to the "EventController" single view (#5213)
 - Add more data to the "my registrations" single view
-  (#5159, #5172, #5180, #5298, #5299, #5300, #5302)
+  (#5159, #5172, #5180, #5298, #5299, #5300, #5302, #5318)
 - Add `Event.timeSlots` (#5149)
 - Add a `TimeSlot` model and repository (#5039)
 - Add more columns to the FE list views

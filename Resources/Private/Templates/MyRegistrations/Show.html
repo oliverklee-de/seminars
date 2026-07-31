@@ -54,6 +54,17 @@
             </f:if>
         </oelib:isFieldEnabled>
 
+        <oelib:isFieldEnabled fieldName="attendanceMode">
+            <f:if condition="{registration.attendanceMode}">
+                <h3>
+                    <f:translate key="plugin.myRegistrations.show.heading.attendanceMode"/>
+                </h3>
+                <p>
+                    <f:translate key="plugin.myRegistrations.property.attendanceMode.{registration.attendanceMode}"/>
+                </p>
+            </f:if>
+        </oelib:isFieldEnabled>
+
         <oelib:isFieldEnabled fieldName="categories">
             <f:if condition="{event.categories}">
                 <h3>
