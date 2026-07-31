@@ -2311,7 +2311,7 @@
         <source>proceed to unregistration</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.heading.attendanceMode">
-        <source>Attendance Mode</source>
+        <source>Attendance mode</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.heading.targetGroups">
         <source>Target groups</source>
