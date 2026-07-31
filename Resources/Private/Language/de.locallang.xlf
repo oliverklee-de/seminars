@@ -2162,7 +2162,7 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       </trans-unit>
       <trans-unit id="backEndModule.message.selectFolder" approved="yes">
         <source>Please select a folder in the page tree.</source>
-        <target state="final">Bitte wählen Sie einen Ordner im Seitenbaum aus.</target>
+        <target state="final">Bitte wähle einen Ordner im Seitenbaum aus.</target>
       </trans-unit>
       <trans-unit id="backEndModule.message.noEventsInFolder" approved="yes">
         <source>There are no event records in the selected folder.</source>
@@ -2334,7 +2334,7 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       </trans-unit>
       <trans-unit id="backEndModule.confirm.deleteEvent.content" approved="yes">
         <source>Do you really want to delete this event?</source>
-        <target state="final">Möchten Sie diese Veranstaltung wirklich löschen?</target>
+        <target state="final">Möchtest du diese Veranstaltung wirklich löschen?</target>
       </trans-unit>
       <trans-unit id="backEndModule.confirm.deleteEvent.cancel" approved="yes">
         <source>Cancel</source>
@@ -2350,7 +2350,7 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       </trans-unit>
       <trans-unit id="backEndModule.confirm.deleteRegistration.content" approved="yes">
         <source>Do you really want to delete this registration?</source>
-        <target state="final">Möchten Sie diese Anmeldung wirklich löschen?</target>
+        <target state="final">Möchtest du diese Anmeldung wirklich löschen?</target>
       </trans-unit>
       <trans-unit id="backEndModule.confirm.deleteRegistration.cancel" approved="yes">
         <source>Cancel</source>
