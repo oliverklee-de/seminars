@@ -3013,6 +3013,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.attendanceMode">
+        <source>attendance mode</source>
+        <target state="needs-translation">attendance mode</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.categories">
         <source>categories</source>
         <target state="needs-translation">categories</target>
@@ -3128,6 +3132,10 @@
       <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm">
         <source>proceed to unregistration</source>
         <target state="needs-translation">proceed to unregistration</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.show.heading.attendanceMode">
+        <source>Attendance mode</source>
+        <target state="needs-translation">Attendance mode</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.heading.targetGroups">
         <source>Target groups</source>
