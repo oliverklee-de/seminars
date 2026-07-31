@@ -310,4 +310,12 @@ final class NullEventTopicTest extends UnitTestCase
     {
         self::assertFalse($this->subject->hasDownloadableCertificate());
     }
+
+    /**
+     * @test
+     */
+    public function getImageReturnsNull(): void
+    {
+        self::assertNull($this->subject->getImage());
+    }
 }

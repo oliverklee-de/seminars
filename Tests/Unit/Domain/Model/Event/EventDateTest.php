@@ -1950,4 +1950,45 @@ final class EventDateTest extends UnitTestCase
 
         self::assertSame($targetGroups, $this->subject->getTargetGroups());
     }
+
+    /**
+     * @test
+     */
+    public function getImageForEventDateWithNoTopicThrowsException(): void
+    {
+        self::assertNull($this->subject->getTopic());
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionCode(1668096905);
+        $this->expectExceptionMessage('This event date does not have a topic.');
+
+        $this->subject->getImage();
+    }
+
+    /**
+     * @test
+     */
+    public function getImageForEventDateWithTopicReturnsImage(): void
+    {
+        $image = new FileReference();
+        $topic = new EventTopic();
+        $topic->setImage($image);
+
+        $this->subject->setTopic($topic);
+
+        self::assertSame($image, $this->subject->getImage());
+    }
+
+    /**
+     * @test
+     */
+    public function getImageForEventDateWithTopicWithoutImageReturnsNoImage(): void
+    {
+        $topic = new EventTopic();
+        $topic->setImage(null);
+
+        $this->subject->setTopic($topic);
+
+        self::assertNull($this->subject->getImage());
+    }
 }
