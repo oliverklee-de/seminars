@@ -94,16 +94,15 @@ class EventController extends ActionController
      */
     public function searchAction(int $pageUid, string $searchTerm = ''): ResponseInterface
     {
-        $this->view->assign('permissions', $this->permissions);
-        $this->view->assign('pageUid', $pageUid);
-
         $events = $this->eventRepository->findBySearchTermInBackEndMode($pageUid, $searchTerm);
         $this->eventRepository->enrichWithRawData($events);
         foreach ($events as $event) {
             $this->eventStatisticsCalculator->enrichWithStatistics($event);
         }
-        $this->view->assign('events', $events);
 
+        $this->view->assign('permissions', $this->permissions);
+        $this->view->assign('pageUid', $pageUid);
+        $this->view->assign('events', $events);
         $this->view->assign('searchTerm', \trim($searchTerm));
 
         if ((new Typo3Version())->getMajorVersion() >= 12) {
@@ -113,9 +112,11 @@ class EventController extends ActionController
         }
 
         $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
-        $moduleTemplate->setContent($this->view->render());
 
-        return $this->htmlResponse($moduleTemplate->renderContent());
+        $moduleTemplate->setContent($this->view->render());
+        $response = $this->htmlResponse($moduleTemplate->renderContent());
+
+        return $response;
     }
 
     /**

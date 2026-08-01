@@ -75,23 +75,22 @@ class RegistrationController extends ActionController
             throw new \RuntimeException('Event with UID ' . $eventUid . ' not found.', 1698859637);
         }
 
+        $this->eventStatisticsCalculator->enrichWithStatistics($event);
+
         $this->view->assign('permissions', $this->permissions);
         $this->view->assign('pageUid', $this->getPageUid());
-
-        $this->eventStatisticsCalculator->enrichWithStatistics($event);
         $this->view->assign('event', $event);
 
         if ($event instanceof EventDateInterface) {
             $regularRegistrations = $this->registrationRepository->findRegularRegistrationsByEvent($eventUid);
             $this->registrationRepository->enrichWithRawData($regularRegistrations);
-            $this->view->assign('regularRegistrations', $regularRegistrations);
-
             $waitingListRegistrations = $this->registrationRepository->findWaitingListRegistrationsByEvent($eventUid);
             $this->registrationRepository->enrichWithRawData($waitingListRegistrations);
-            $this->view->assign('waitingListRegistrations', $waitingListRegistrations);
-
             $nonbindingReservations = $this->registrationRepository->findNonbindingReservationsByEvent($eventUid);
             $this->registrationRepository->enrichWithRawData($nonbindingReservations);
+
+            $this->view->assign('regularRegistrations', $regularRegistrations);
+            $this->view->assign('waitingListRegistrations', $waitingListRegistrations);
             $this->view->assign('nonbindingReservations', $nonbindingReservations);
         }
 
@@ -102,9 +101,11 @@ class RegistrationController extends ActionController
         }
 
         $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
-        $moduleTemplate->setContent($this->view->render());
 
-        return $this->htmlResponse($moduleTemplate->renderContent());
+        $moduleTemplate->setContent($this->view->render());
+        $response = $this->htmlResponse($moduleTemplate->renderContent());
+
+        return $response;
     }
 
     /**
