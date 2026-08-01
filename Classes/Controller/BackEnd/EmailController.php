@@ -49,15 +49,16 @@ class EmailController extends ActionController
     ): ResponseInterface {
         $this->checkPermissions();
 
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+
         $this->view->assign('event', $event);
         $this->view->assign('pageUid', $pageUid);
         $this->view->assign('subject', $subject);
         $this->view->assign('body', $body);
-
-        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
         $moduleTemplate->setContent($this->view->render());
+        $response = $this->htmlResponse($moduleTemplate->renderContent());
 
-        return $this->htmlResponse($moduleTemplate->renderContent());
+        return $response;
     }
 
     /**
