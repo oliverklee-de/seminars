@@ -9,6 +9,7 @@ use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
 use OliverKlee\Seminars\Domain\Model\TargetGroup;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -208,5 +209,13 @@ class NullEventTopic extends AbstractDomainObject implements EventTopicInterface
     public function hasDownloadableCertificate(): bool
     {
         return false;
+    }
+
+    /**
+     * @return FileReference|null
+     */
+    public function getImage(): ?FileReference
+    {
+        return null;
     }
 }

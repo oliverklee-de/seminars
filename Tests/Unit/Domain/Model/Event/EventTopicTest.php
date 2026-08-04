@@ -14,6 +14,7 @@ use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
 use OliverKlee\Seminars\Domain\Model\RawDataInterface;
 use OliverKlee\Seminars\Domain\Model\TargetGroup;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -715,5 +716,24 @@ final class EventTopicTest extends UnitTestCase
     public function hasDownloadableCertificateAlwaysReturnsFalse(): void
     {
         self::assertFalse($this->subject->hasDownloadableCertificate());
+    }
+
+    /**
+     * @test
+     */
+    public function getImageInitiallyReturnsNull(): void
+    {
+        self::assertNull($this->subject->getImage());
+    }
+
+    /**
+     * @test
+     */
+    public function setImageSetsImage(): void
+    {
+        $model = new FileReference();
+        $this->subject->setImage($model);
+
+        self::assertSame($model, $this->subject->getImage());
     }
 }

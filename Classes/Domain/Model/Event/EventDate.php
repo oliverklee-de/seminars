@@ -7,6 +7,7 @@ namespace OliverKlee\Seminars\Domain\Model\Event;
 use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
@@ -207,5 +208,13 @@ class EventDate extends Event implements EventDateInterface
     public function getTargetGroups(): ObjectStorage
     {
         return $this->getEnsuredTopic()->getTargetGroups();
+    }
+
+    /**
+     * @throws \RuntimeException if this event date is without topic
+     */
+    public function getImage(): ?FileReference
+    {
+        return $this->getEnsuredTopic()->getImage();
     }
 }
