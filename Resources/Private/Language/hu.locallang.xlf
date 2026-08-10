@@ -5,83 +5,83 @@
     <body>
       <trans-unit id="test-label">
         <source>This is a test label.</source>
-        <target state="needs-translation">This is a test label.</target>
+        <target state="translated">Ez egy tesztcímke.</target>
       </trans-unit>
       <trans-unit id="test-label-with-arguments">
         <source>Hello %s!</source>
-        <target state="needs-translation">Hello %s!</target>
+        <target state="translated">Helló %s!</target>
       </trans-unit>
       <trans-unit id="test-label-with-salutation_formal">
         <source>This is a test label with a formal salutation.</source>
-        <target state="needs-translation">This is a test label with a formal salutation.</target>
+        <target state="translated">Ez egy tesztcímke formális megszólítással.</target>
       </trans-unit>
       <trans-unit id="test-label-with-salutation_informal">
         <source>This is a test label with an informal salutation.</source>
-        <target state="needs-translation">This is a test label with an informal salutation.</target>
+        <target state="translated">Ez egy tesztcímke informális megszólítással.</target>
       </trans-unit>
       <trans-unit id="test-label-with-salutation-and-fallback">
         <source>This is a test label with a fallback.</source>
-        <target state="needs-translation">This is a test label with a fallback.</target>
+        <target state="translated">Ez egy tesztcímke tartalékszöveggel.</target>
       </trans-unit>
       <trans-unit id="test-label-with-salutation-and-fallback_informal">
         <source>This is a test label with a fallback and an informal salutation.</source>
-        <target state="needs-translation">This is a test label with a fallback and an informal salutation.</target>
+        <target state="translated">Ez egy tesztcímke tartalékszöveggel és informális megszólítással.</target>
       </trans-unit>
       <trans-unit id="test-label-with-salutation-and-fallback_formal">
         <source>This is a test label with a fallback and a formal salutation.</source>
-        <target state="needs-translation">This is a test label with a fallback and a formal salutation.</target>
+        <target state="translated">Ez egy tesztcímke tartalékszöveggel és formális megszólítással.</target>
       </trans-unit>
       <trans-unit id="pi1_title">
         <source>Seminar Manager</source>
-        <target state="needs-translation">Seminar Manager</target>
+        <target state="translated">Szemináriumkezelő</target>
       </trans-unit>
       <trans-unit id="pi1_description">
         <source>Displays seminars in the FE</source>
-        <target state="needs-translation">Displays seminars in the FE</target>
+        <target state="translated">Szemináriumok megjelenítése a frontenden</target>
       </trans-unit>
       <trans-unit id="label_title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="label_description">
         <source>Description</source>
-        <target state="needs-translation">Description</target>
+        <target state="translated">Leírás</target>
       </trans-unit>
       <trans-unit id="label_uid">
         <source>Number</source>
-        <target state="needs-translation">Number</target>
+        <target state="translated">Szám</target>
       </trans-unit>
       <trans-unit id="label_registration_uid">
         <source>Ticket ID</source>
-        <target state="needs-translation">Ticket ID</target>
+        <target state="translated">Jegyazonosító</target>
       </trans-unit>
       <trans-unit id="label_event_type">
         <source>Event type</source>
-        <target state="needs-translation">Event type</target>
+        <target state="translated">Eseménytípus</target>
       </trans-unit>
       <trans-unit id="label_accreditation_number">
         <source>Accreditation number</source>
-        <target state="needs-translation">Accreditation number</target>
+        <target state="translated">Akkreditációs szám</target>
       </trans-unit>
       <trans-unit id="label_credit_points">
         <source>Credit points</source>
-        <target state="needs-translation">Credit points</target>
+        <target state="translated">Kreditpontok</target>
       </trans-unit>
       <trans-unit id="label_date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Dátum</target>
       </trans-unit>
       <trans-unit id="label_time">
         <source>Time</source>
-        <target state="needs-translation">Time</target>
+        <target state="translated">Időpont</target>
       </trans-unit>
       <trans-unit id="label_place">
         <source>Place</source>
-        <target state="needs-translation">Place</target>
+        <target state="translated">Helyszín</target>
       </trans-unit>
       <trans-unit id="label_room">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="translated">Terem</target>
       </trans-unit>
       <trans-unit id="label_attendance_mode">
         <source>On-site/online</source>
@@ -97,15 +97,15 @@
       </trans-unit>
       <trans-unit id="label_seats">
         <source>Seats</source>
-        <target state="needs-translation">Seats</target>
+        <target state="translated">Férőhelyek</target>
       </trans-unit>
       <trans-unit id="label_total_price">
         <source>Total price</source>
-        <target state="needs-translation">Total price</target>
+        <target state="translated">Teljes ár</target>
       </trans-unit>
       <trans-unit id="label_attendees_names">
         <source>Registered persons</source>
-        <target state="needs-translation">Registered persons</target>
+        <target state="translated">Regisztrált személyek</target>
       </trans-unit>
       <trans-unit id="label_lodgings">
         <source>Lodging options</source>
@@ -113,67 +113,67 @@
       </trans-unit>
       <trans-unit id="label_kids">
         <source>Number of kids</source>
-        <target state="needs-translation">Number of kids</target>
+        <target state="translated">Gyermekek száma</target>
       </trans-unit>
       <trans-unit id="label_price">
         <source>Price</source>
-        <target state="needs-translation">Price</target>
+        <target state="translated">Ár</target>
       </trans-unit>
       <trans-unit id="label_price_general">
         <source>Price</source>
-        <target state="needs-translation">Price</target>
+        <target state="translated">Ár</target>
       </trans-unit>
       <trans-unit id="label_price_regular">
         <source>Regular price</source>
-        <target state="needs-translation">Regular price</target>
+        <target state="translated">Normál ár</target>
       </trans-unit>
       <trans-unit id="label_price_regular_early">
         <source>Early-bird price</source>
-        <target state="needs-translation">Early-bird price</target>
+        <target state="translated">Korai regisztrációs ár</target>
       </trans-unit>
       <trans-unit id="label_price_earlybird_regular">
         <source>Early-bird price</source>
-        <target state="needs-translation">Early-bird price</target>
+        <target state="translated">Korai regisztrációs ár</target>
       </trans-unit>
       <trans-unit id="label_price_special">
         <source>Special price</source>
-        <target state="needs-translation">Special price</target>
+        <target state="translated">Kedvezményes ár</target>
       </trans-unit>
       <trans-unit id="label_price_special_early">
         <source>Early-bird special price</source>
-        <target state="needs-translation">Early-bird special price</target>
+        <target state="translated">Kedvezményes korai regisztrációs ár</target>
       </trans-unit>
       <trans-unit id="label_price_earlybird_special">
         <source>Early-bird special price</source>
-        <target state="needs-translation">Early-bird special price</target>
+        <target state="translated">Kedvezményes korai regisztrációs ár</target>
       </trans-unit>
       <trans-unit id="label_method_of_payment">
         <source>Method of payment</source>
-        <target state="needs-translation">Method of payment</target>
+        <target state="translated">Fizetési mód</target>
       </trans-unit>
       <trans-unit id="label_gender">
         <source>Gender</source>
-        <target state="needs-translation">Gender</target>
+        <target state="translated">Nem</target>
       </trans-unit>
       <trans-unit id="label_username">
         <source>User name</source>
-        <target state="needs-translation">User name</target>
+        <target state="translated">Felhasználónév</target>
       </trans-unit>
       <trans-unit id="label_name">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">Név</target>
       </trans-unit>
       <trans-unit id="label_address">
         <source>Address</source>
-        <target state="needs-translation">Address</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="label_zip">
         <source>ZIP code</source>
-        <target state="needs-translation">ZIP code</target>
+        <target state="translated">Irányítószám</target>
       </trans-unit>
       <trans-unit id="label_city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">Város</target>
       </trans-unit>
       <trans-unit id="label_country">
         <source>Country</source>
@@ -181,35 +181,35 @@
       </trans-unit>
       <trans-unit id="label_attendees">
         <source>Attendees</source>
-        <target state="needs-translation">Attendees</target>
+        <target state="translated">Résztvevők</target>
       </trans-unit>
       <trans-unit id="label_vacancies">
         <source>Vacancies</source>
-        <target state="needs-translation">Vacancies</target>
+        <target state="translated">Szabad helyek</target>
       </trans-unit>
       <trans-unit id="label_unlimited">
         <source>unlimited</source>
-        <target state="needs-translation">unlimited</target>
+        <target state="translated">korlátlan</target>
       </trans-unit>
       <trans-unit id="label_enough_attendees">
         <source>Enough attendees</source>
-        <target state="needs-translation">Enough attendees</target>
+        <target state="translated">Elegendő résztvevő</target>
       </trans-unit>
       <trans-unit id="label_is_full">
         <source>Is full</source>
-        <target state="needs-translation">Is full</target>
+        <target state="translated">Megtelt</target>
       </trans-unit>
       <trans-unit id="label_paymentmethod">
         <source>Selected method of payment</source>
-        <target state="needs-translation">Selected method of payment</target>
+        <target state="translated">Kiválasztott fizetési mód</target>
       </trans-unit>
       <trans-unit id="label_billing_address">
         <source>Billing address</source>
-        <target state="needs-translation">Billing address</target>
+        <target state="translated">Számlázási cím</target>
       </trans-unit>
       <trans-unit id="label_telephone">
         <source>Phone</source>
-        <target state="needs-translation">Phone</target>
+        <target state="translated">Telefon</target>
       </trans-unit>
       <trans-unit id="label_email">
         <source>Email address</source>
@@ -217,15 +217,15 @@
       </trans-unit>
       <trans-unit id="label_interests">
         <source>Special interests</source>
-        <target state="needs-translation">Special interests</target>
+        <target state="translated">Különleges érdeklődési körök</target>
       </trans-unit>
       <trans-unit id="label_expectations">
         <source>Expectations</source>
-        <target state="needs-translation">Expectations</target>
+        <target state="translated">Elvárások</target>
       </trans-unit>
       <trans-unit id="label_background_knowledge">
         <source>Background knowledge</source>
-        <target state="needs-translation">Background knowledge</target>
+        <target state="translated">Előzetes ismeretek</target>
       </trans-unit>
       <trans-unit id="label_notes">
         <source>Additional Notes</source>
@@ -237,47 +237,47 @@
       </trans-unit>
       <trans-unit id="label_seminardata">
         <source>Seminar data</source>
-        <target state="needs-translation">Seminar data</target>
+        <target state="translated">Szeminárium adatai</target>
       </trans-unit>
       <trans-unit id="label_feuserdata">
         <source>Account data</source>
-        <target state="needs-translation">Account data</target>
+        <target state="translated">Fiókadatok</target>
       </trans-unit>
       <trans-unit id="label_attendancedata">
         <source>Data that has been entered on registration</source>
-        <target state="needs-translation">Data that has been entered on registration</target>
+        <target state="translated">A regisztráció során megadott adatok</target>
       </trans-unit>
       <trans-unit id="label_gender.I.0">
         <source>Mr.</source>
-        <target state="needs-translation">Mr.</target>
+        <target state="translated">Úr</target>
       </trans-unit>
       <trans-unit id="label_gender.I.1">
         <source>Ms.</source>
-        <target state="needs-translation">Ms.</target>
+        <target state="translated">Hölgy</target>
       </trans-unit>
       <trans-unit id="label_status.I.1">
         <source>Student</source>
-        <target state="needs-translation">Student</target>
+        <target state="translated">Diák</target>
       </trans-unit>
       <trans-unit id="label_status.I.2">
         <source>Job seeking</source>
-        <target state="needs-translation">Job seeking</target>
+        <target state="translated">Álláskereső</target>
       </trans-unit>
       <trans-unit id="label_status.I.3">
         <source>Working</source>
-        <target state="needs-translation">Working</target>
+        <target state="translated">Dolgozó</target>
       </trans-unit>
       <trans-unit id="label_status.I.4">
         <source>Retired</source>
-        <target state="needs-translation">Retired</target>
+        <target state="translated">Nyugdíjas</target>
       </trans-unit>
       <trans-unit id="status_regular">
         <source>regular</source>
-        <target state="needs-translation">regular</target>
+        <target state="translated">rendes</target>
       </trans-unit>
       <trans-unit id="status_waiting_list">
         <source>waiting list</source>
-        <target state="needs-translation">waiting list</target>
+        <target state="translated">várólista</target>
       </trans-unit>
       <trans-unit id="status_nonbinding_reservation">
         <source>nonbinding reservation</source>
@@ -285,35 +285,35 @@
       </trans-unit>
       <trans-unit id="label_yes">
         <source>yes</source>
-        <target state="needs-translation">yes</target>
+        <target state="translated">igen</target>
       </trans-unit>
       <trans-unit id="label_no">
         <source>no</source>
-        <target state="needs-translation">no</target>
+        <target state="translated">nem</target>
       </trans-unit>
       <trans-unit id="label_hours">
         <source>h</source>
-        <target state="needs-translation">h</target>
+        <target state="translated">ó</target>
       </trans-unit>
       <trans-unit id="label_checkboxes">
         <source>Selected options</source>
-        <target state="needs-translation">Selected options</target>
+        <target state="translated">Kiválasztott opciók</target>
       </trans-unit>
       <trans-unit id="message_notLoggedIn">
         <source>Please log in first.</source>
-        <target state="needs-translation">Please log in first.</target>
+        <target state="translated">Kérjük, előbb jelentkezzen be.</target>
       </trans-unit>
       <trans-unit id="message_notLoggedIn_informal">
         <source>Please log in first.</source>
-        <target state="needs-translation">Please log in first.</target>
+        <target state="translated">Kérjük, előbb jelentkezzen be.</target>
       </trans-unit>
       <trans-unit id="message_alreadyRegistered">
         <source>You already have registered for this event.</source>
-        <target state="needs-translation">You already have registered for this event.</target>
+        <target state="translated">Ön már regisztrált erre az eseményre.</target>
       </trans-unit>
       <trans-unit id="message_alreadyRegistered_informal">
         <source>You already have registered for this event.</source>
-        <target state="needs-translation">You already have registered for this event.</target>
+        <target state="translated">Ön már regisztrált erre az eseményre.</target>
       </trans-unit>
       <trans-unit id="message_missingSeminarNumber">
         <source>
@@ -347,87 +347,87 @@
       </trans-unit>
       <trans-unit id="message_noRegistrationNecessary">
         <source>For this event, no registration is necessary.</source>
-        <target state="needs-translation">For this event, no registration is necessary.</target>
+        <target state="translated">Ehhez az eseményhez nincs szükség regisztrációra.</target>
       </trans-unit>
       <trans-unit id="message_seminarCancelled">
         <source>Alas, this event has been canceled.</source>
-        <target state="needs-translation">Alas, this event has been canceled.</target>
+        <target state="translated">Sajnos ezt az eseményt törölték.</target>
       </trans-unit>
       <trans-unit id="message_seminarRegistrationIsClosed">
         <source>Sorry, the registration period for this event is over.</source>
-        <target state="needs-translation">Sorry, the registration period for this event is over.</target>
+        <target state="translated">Sajnáljuk, az erre az eseményre vonatkozó regisztrációs időszak lejárt.</target>
       </trans-unit>
       <trans-unit id="message_noVacancies">
         <source>Sorry, there are no more vacancies.</source>
-        <target state="needs-translation">Sorry, there are no more vacancies.</target>
+        <target state="translated">Sajnáljuk, már nincs több szabad hely.</target>
       </trans-unit>
       <trans-unit id="message_forFree">
         <source>free</source>
-        <target state="needs-translation">free</target>
+        <target state="translated">ingyenes</target>
       </trans-unit>
       <trans-unit id="message_enough">
         <source>enough</source>
-        <target state="needs-translation">enough</target>
+        <target state="translated">elég</target>
       </trans-unit>
       <trans-unit id="message_fullyBooked">
         <source>fully booked</source>
-        <target state="needs-translation">fully booked</target>
+        <target state="translated">teljesen betelt</target>
       </trans-unit>
       <trans-unit id="message_registrationOpensOn">
         <source>starting %s</source>
-        <target state="needs-translation">starting %s</target>
+        <target state="translated">kezdés: %s</target>
       </trans-unit>
       <trans-unit id="email_confirmationSubject">
         <source>Registration confirmation</source>
-        <target state="needs-translation">Registration confirmation</target>
+        <target state="translated">Regisztrációs visszaigazolás</target>
       </trans-unit>
       <trans-unit id="email_confirmationHello">
         <source>thank you for registering for the event &quot;%s&quot;</source>
-        <target state="needs-translation">thank you for registering for the event "%s"</target>
+        <target state="translated">köszönjük, hogy regisztrált a(z) "%s" eseményre</target>
       </trans-unit>
       <trans-unit id="email_confirmationHello_informal">
         <source>thank you for registering for the event &quot;%s&quot;</source>
-        <target state="needs-translation">thank you for registering for the event "%s"</target>
+        <target state="translated">köszönjük, hogy regisztrált a(z) "%s" eseményre</target>
       </trans-unit>
       <trans-unit id="email_price">
         <source>at the total price of %s</source>
-        <target state="needs-translation">at the total price of %s</target>
+        <target state="translated">%s teljes ár ellenében</target>
       </trans-unit>
       <trans-unit id="email_confirmationOnUnregistrationSubject">
         <source>Unregistration confirmation</source>
-        <target state="needs-translation">Unregistration confirmation</target>
+        <target state="translated">Regisztráció törlésének visszaigazolása</target>
       </trans-unit>
       <trans-unit id="email_confirmationOnUnregistrationHello">
         <source>hereby, we confirm your unregistration from the event &quot;%s&quot;</source>
-        <target state="needs-translation">hereby, we confirm your unregistration from the event "%s"</target>
+        <target state="translated">ezúton igazoljuk regisztrációjának törlését a(z) "%s" eseményről</target>
       </trans-unit>
       <trans-unit id="email_confirmationOnUnregistrationHello_informal">
         <source>hereby, we confirm your unregistration from the event &quot;%s&quot;</source>
-        <target state="needs-translation">hereby, we confirm your unregistration from the event "%s"</target>
+        <target state="translated">ezúton igazoljuk regisztrációjának törlését a(z) "%s" eseményről</target>
       </trans-unit>
       <trans-unit id="email_confirmationOnRegistrationForQueueSubject">
         <source>Registration for the waiting list confirmation</source>
-        <target state="needs-translation">Registration for the waiting list confirmation</target>
+        <target state="translated">Várólistára regisztrálás visszaigazolása</target>
       </trans-unit>
       <trans-unit id="email_confirmationOnRegistrationForQueueHello">
         <source>thank you for registering for the waiting list of the event &quot;%s&quot;</source>
-        <target state="needs-translation">thank you for registering for the waiting list of the event "%s"</target>
+        <target state="translated">köszönjük, hogy regisztrált a(z) "%s" esemény várólistájára</target>
       </trans-unit>
       <trans-unit id="email_confirmationOnRegistrationForQueueHello_informal">
         <source>thank you for registering for the waiting list of the event &quot;%s&quot;</source>
-        <target state="needs-translation">thank you for registering for the waiting list of the event "%s"</target>
+        <target state="translated">köszönjük, hogy regisztrált a(z) "%s" esemény várólistájára</target>
       </trans-unit>
       <trans-unit id="email_confirmationOnQueueUpdateSubject">
         <source>Registration became a regular registration confirmation</source>
-        <target state="needs-translation">Registration became a regular registration confirmation</target>
+        <target state="translated">Visszaigazolás: a regisztráció rendes regisztrációvá vált</target>
       </trans-unit>
       <trans-unit id="email_confirmationOnQueueUpdateHello">
         <source>your registration just has become a regular registration for the event &quot;%s&quot;</source>
-        <target state="needs-translation">your registration just has become a regular registration for the event "%s"</target>
+        <target state="translated">a(z) "%s" eseményre vonatkozó regisztrációja éppen rendes regisztrációvá vált</target>
       </trans-unit>
       <trans-unit id="email_confirmationOnQueueUpdateHello_informal">
         <source>your registration just has become a regular registration for the event &quot;%s&quot;</source>
-        <target state="needs-translation">your registration just has become a regular registration for the event "%s"</target>
+        <target state="translated">a(z) "%s" eseményre vonatkozó regisztrációja éppen rendes regisztrációvá vált</target>
       </trans-unit>
       <trans-unit id="email_unregistrationNotice">
         <source>You will be able to unregister online until %s.</source>
@@ -439,23 +439,23 @@
       </trans-unit>
       <trans-unit id="email_additionalNotificationEnoughRegistrations">
         <source>Your event has now enough registrations to be held.</source>
-        <target state="needs-translation">Your event has now enough registrations to be held.</target>
+        <target state="translated">Eseménye most már elegendő regisztrációval rendelkezik a megrendezéshez.</target>
       </trans-unit>
       <trans-unit id="email_additionalNotificationEnoughRegistrationsSubject">
         <source>Event has enough registrations: %d - %s</source>
-        <target state="needs-translation">Event has enough registrations: %d - %s</target>
+        <target state="translated">Az esemény elegendő regisztrációval rendelkezik: %d – %s</target>
       </trans-unit>
       <trans-unit id="email_additionalNotificationIsFull">
         <source>Your event is full, there are no empty seats left.</source>
-        <target state="needs-translation">Your event is full, there are no empty seats left.</target>
+        <target state="translated">Eseménye megtelt, már nincs szabad hely.</target>
       </trans-unit>
       <trans-unit id="email_additionalNotificationIsFullSubject">
         <source>Event is full: %d - %s</source>
-        <target state="needs-translation">Event is full: %d - %s</target>
+        <target state="translated">Az esemény megtelt: %d – %s</target>
       </trans-unit>
       <trans-unit id="email_notificationSubject">
         <source>Registration notification</source>
-        <target state="needs-translation">Registration notification</target>
+        <target state="translated">Regisztrációról szóló értesítés</target>
       </trans-unit>
       <trans-unit id="email_notificationHello">
         <source>
@@ -471,7 +471,7 @@
       </trans-unit>
       <trans-unit id="email_notificationOnUnregistrationSubject">
         <source>Unregistration notification</source>
-        <target state="needs-translation">Unregistration notification</target>
+        <target state="translated">Regisztráció törléséről szóló értesítés</target>
       </trans-unit>
       <trans-unit id="email_notificationOnUnregistrationHello">
         <source>
@@ -487,7 +487,7 @@
       </trans-unit>
       <trans-unit id="email_notificationOnRegistrationForQueueSubject">
         <source>Registration for waiting list notification</source>
-        <target state="needs-translation">Registration for waiting list notification</target>
+        <target state="translated">Várólistára regisztrálásról szóló értesítés</target>
       </trans-unit>
       <trans-unit id="email_notificationOnRegistrationForQueueHello">
         <source>
@@ -503,7 +503,7 @@
       </trans-unit>
       <trans-unit id="email_notificationOnQueueUpdateSubject">
         <source>Registration became a regular registration notification</source>
-        <target state="needs-translation">Registration became a regular registration notification</target>
+        <target state="translated">Értesítés: a regisztráció rendes regisztrációvá vált</target>
       </trans-unit>
       <trans-unit id="email_notificationOnQueueUpdateHello">
         <source>
@@ -519,7 +519,7 @@
       </trans-unit>
       <trans-unit id="email_eventTakesPlaceReminderSubject">
         <source>&quot;%event&quot; begins in %days days</source>
-        <target state="needs-translation">"%event" begins in %days days</target>
+        <target state="translated">A(z) "%event" %days nap múlva kezdődik</target>
       </trans-unit>
       <trans-unit id="email_eventTakesPlaceReminder">
         <source>
@@ -537,7 +537,7 @@
       </trans-unit>
       <trans-unit id="email_cancelationDeadlineReminderSubject">
         <source>Cancelation deadline for &quot;%event&quot; has just passed</source>
-        <target state="needs-translation">Cancelation deadline for "%event" has just passed</target>
+        <target state="translated">A(z) "%event" lemondási határideje éppen lejárt</target>
       </trans-unit>
       <trans-unit id="email_cancelationDeadlineReminder">
         <source>
@@ -569,27 +569,27 @@
       </trans-unit>
       <trans-unit id="email_hello_informal">
         <source>Dear</source>
-        <target state="needs-translation">Dear</target>
+        <target state="translated">Kedves</target>
       </trans-unit>
       <trans-unit id="email_hello_formal_99">
         <source>Dear</source>
-        <target state="needs-translation">Dear</target>
+        <target state="translated">Kedves</target>
       </trans-unit>
       <trans-unit id="email_eventDate">
         <source>on %s</source>
-        <target state="needs-translation">on %s</target>
+        <target state="translated">%s napján</target>
       </trans-unit>
       <trans-unit id="email_timeFrom">
         <source>from %s</source>
-        <target state="needs-translation">from %s</target>
+        <target state="translated">%s-tól</target>
       </trans-unit>
       <trans-unit id="email_timeAt">
         <source>at %s</source>
-        <target state="needs-translation">at %s</target>
+        <target state="translated">%s helyszínen</target>
       </trans-unit>
       <trans-unit id="email_timeTo">
         <source>to</source>
-        <target state="needs-translation">to</target>
+        <target state="translated">-ig</target>
       </trans-unit>
       <trans-unit id="schedulerTasks.mailNotifier.name">
         <source>Email notifications</source>
@@ -607,19 +607,19 @@
       </trans-unit>
       <trans-unit id="schedulerTasks.fields.page-uid">
         <source>UID of the page with the TypoScript configuration</source>
-        <target state="needs-translation">UID of the page with the TypoScript configuration</target>
+        <target state="translated">A TypoScript-konfigurációt tartalmazó oldal UID-ja</target>
       </trans-unit>
       <trans-unit id="schedulerTasks.errors.page-uid">
         <source>Please enter the UID of an existing page.</source>
-        <target state="needs-translation">Please enter the UID of an existing page.</target>
+        <target state="translated">Kérjük, adjon meg egy létező oldal UID-ját.</target>
       </trans-unit>
       <trans-unit id="email-event-canceled-subject">
         <source>Event canceled: %eventTitle %eventDate</source>
-        <target state="needs-translation">Event canceled: %eventTitle %eventDate</target>
+        <target state="translated">Esemény törölve: %eventTitle %eventDate</target>
       </trans-unit>
       <trans-unit id="email-event-confirmed-subject">
         <source>Event confirmed: %eventTitle %eventDate</source>
-        <target state="needs-translation">Event confirmed: %eventTitle %eventDate</target>
+        <target state="translated">Esemény megerősítve: %eventTitle %eventDate</target>
       </trans-unit>
       <trans-unit id="email-event-canceled-body">
         <source>
@@ -655,11 +655,11 @@
       </trans-unit>
       <trans-unit id="message_onRequest">
         <source>on request</source>
-        <target state="needs-translation">on request</target>
+        <target state="translated">igény szerint</target>
       </trans-unit>
       <trans-unit id="registrationDigestEmail_Subject">
         <source>New registrations</source>
-        <target state="needs-translation">New registrations</target>
+        <target state="translated">Új regisztrációk</target>
       </trans-unit>
       <trans-unit id="range">
         <source>%1s–%2s</source>
@@ -667,11 +667,11 @@
       </trans-unit>
       <trans-unit id="dateFormat">
         <source>Y-m-d</source>
-        <target state="needs-translation">Y-m-d</target>
+        <target state="translated">Y-m-d</target>
       </trans-unit>
       <trans-unit id="timeFormat">
         <source>H:i</source>
-        <target state="needs-translation">H:i</target>
+        <target state="translated">H:i</target>
       </trans-unit>
       <trans-unit id="timeWithUnit">
         <source>%1s</source>
@@ -679,11 +679,11 @@
       </trans-unit>
       <trans-unit id="decimalSeparator">
         <source>.</source>
-        <target state="needs-translation">.</target>
+        <target state="translated">.</target>
       </trans-unit>
       <trans-unit id="thousandsSeparator">
         <source>,</source>
-        <target state="needs-translation">,</target>
+        <target state="translated">,</target>
       </trans-unit>
       <trans-unit id="priceWithAndWithoutVat">
         <source>%1$s incl. VAT (%2$s plus %3$s VAT)</source>
@@ -691,11 +691,11 @@
       </trans-unit>
       <trans-unit id="registrationTitleFormat">
         <source>%1s / %2s, %3s</source>
-        <target state="needs-translation">%1s / %2s, %3s</target>
+        <target state="translated">%1s / %2s, %3s</target>
       </trans-unit>
       <trans-unit id="message_403">
         <source>Error 403. Sorry, you don't have access to this data.</source>
-        <target state="needs-translation">Error 403. Sorry, you don't have access to this data.</target>
+        <target state="translated">403-as hiba. Sajnáljuk, Önnek nincs hozzáférése ezekhez az adatokhoz.</target>
       </trans-unit>
       <trans-unit id="message_404">
         <source>
@@ -723,227 +723,227 @@
       </trans-unit>
       <trans-unit id="mlang_tabs_tab">
         <source>Events</source>
-        <target state="needs-translation">Events</target>
+        <target state="translated">Események</target>
       </trans-unit>
       <trans-unit id="mlang_labels_tabdescr">
         <source>This module allows you to manage events and registrations.</source>
-        <target state="needs-translation">This module allows you to manage events and registrations.</target>
+        <target state="translated">Ez a modul lehetővé teszi az események és regisztrációk kezelését.</target>
       </trans-unit>
       <trans-unit id="mlang_labels_tablabel">
         <source>This module allows you to manage events and registrations.</source>
-        <target state="needs-translation">This module allows you to manage events and registrations.</target>
+        <target state="translated">Ez a modul lehetővé teszi az események és regisztrációk kezelését.</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.sheet_general">
         <source>General</source>
-        <target state="needs-translation">General</target>
+        <target state="translated">Általános</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.what_to_display">
         <source>What should be displayed:</source>
-        <target state="needs-translation">What should be displayed:</target>
+        <target state="translated">Mit jelenítsen meg:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.sheet_template_and_special">
         <source>Templates and special properties</source>
-        <target state="needs-translation">Templates and special properties</target>
+        <target state="translated">Sablonok és speciális tulajdonságok</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.seminar_list">
         <source>Event List</source>
-        <target state="needs-translation">Event List</target>
+        <target state="translated">Eseménylista</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.single_view">
         <source>Event Single View</source>
-        <target state="needs-translation">Event Single View</target>
+        <target state="translated">Esemény részletes nézete</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.topic_list">
         <source>Topic List</source>
-        <target state="needs-translation">Topic List</target>
+        <target state="translated">Témalista</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.my_events">
         <source>My Events</source>
-        <target state="needs-translation">My Events</target>
+        <target state="translated">Az én eseményeim</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list">
         <source>Category List</source>
-        <target state="needs-translation">Category List</target>
+        <target state="translated">Kategórialista</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.listPID">
         <source>Page that contains the seminar list:</source>
-        <target state="needs-translation">Page that contains the seminar list:</target>
+        <target state="translated">A szemináriumlistát tartalmazó oldal:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.detailPID">
         <source>Page that contains the detailed view:</source>
-        <target state="needs-translation">Page that contains the detailed view:</target>
+        <target state="translated">A részletes nézetet tartalmazó oldal:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.myEventsPID">
         <source>Page that contains the &quot;my events&quot; list:</source>
-        <target state="needs-translation">Page that contains the "my events" list:</target>
+        <target state="translated">A(z) „az én eseményeim” listát tartalmazó oldal:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.registerPID">
         <source>Page that contains the event registration form:</source>
-        <target state="needs-translation">Page that contains the event registration form:</target>
+        <target state="translated">Az eseményregisztrációs űrlapot tartalmazó oldal:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.loginPID">
         <source>Page that contains the login form:</source>
-        <target state="needs-translation">Page that contains the login form:</target>
+        <target state="translated">A bejelentkezési űrlapot tartalmazó oldal:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.formal">
         <source>formal</source>
-        <target state="needs-translation">formal</target>
+        <target state="translated">formális</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.informal">
         <source>informal</source>
-        <target state="needs-translation">informal</target>
+        <target state="translated">informális</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.sheet_list_view">
         <source>List view</source>
-        <target state="needs-translation">List view</target>
+        <target state="translated">Listanézet</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.displaySearchFormFields">
         <source>Display search widget options:</source>
-        <target state="needs-translation">Display search widget options:</target>
+        <target state="translated">Keresőmodul opcióinak megjelenítése:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.searchForm.type">
         <source>Event type</source>
-        <target state="needs-translation">Event type</target>
+        <target state="translated">Eseménytípus</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.searchForm.city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">Város</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.searchForm.place">
         <source>Place</source>
-        <target state="needs-translation">Place</target>
+        <target state="translated">Helyszín</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.searchForm.organizer">
         <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <target state="translated">Szervező</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.searchForm.categories">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="translated">Kategóriák</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.searchForm.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Dátum</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.searchForm.age">
         <source>Age</source>
-        <target state="needs-translation">Age</target>
+        <target state="translated">Életkor</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.searchForm.price">
         <source>Price</source>
-        <target state="needs-translation">Price</target>
+        <target state="translated">Ár</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.searchForm.textField">
         <source>Full-text search</source>
-        <target state="needs-translation">Full-text search</target>
+        <target state="translated">Teljes szövegű keresés</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.limitListViewToEventTypes">
         <source>List events only of these types:</source>
-        <target state="needs-translation">List events only of these types:</target>
+        <target state="translated">Csak ezeket az eseménytípusokat listázza:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.limitListViewToCategories">
         <source>List events only from these categories:</source>
-        <target state="needs-translation">List events only from these categories:</target>
+        <target state="translated">Csak ezekből a kategóriákból listázza az eseményeket:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.limitListViewToPlaces">
         <source>List events only at these places:</source>
-        <target state="needs-translation">List events only at these places:</target>
+        <target state="translated">Csak ezeken a helyszíneken listázza az eseményeket:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.limitListViewToOrganizers">
         <source>List events only of these organizers:</source>
-        <target state="needs-translation">List events only of these organizers:</target>
+        <target state="translated">Csak ezeknek a szervezőknek az eseményeit listázza:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.showOnlyEventsWithVacancies">
         <source>Show only events which have vacancies:</source>
-        <target state="needs-translation">Show only events which have vacancies:</target>
+        <target state="translated">Csak a szabad hellyel rendelkező eseményeket mutassa:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.limitFileDownloadToAttendees">
         <source>Show attached files list only to attendees:</source>
-        <target state="needs-translation">Show attached files list only to attendees:</target>
+        <target state="translated">A csatolt fájlok listáját csak a résztvevőknek mutassa:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.startingpoint">
         <source>Data source:</source>
-        <target state="needs-translation">Data source:</target>
+        <target state="translated">Adatforrás:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.recursive">
         <source>Recursion:</source>
-        <target state="needs-translation">Recursion:</target>
+        <target state="translated">Rekurzió:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.showSingleEvent">
         <source>Which event should be shown in a detailed view?</source>
-        <target state="needs-translation">Which event should be shown in a detailed view?</target>
+        <target state="translated">Melyik eseményt jelenítse meg a részletes nézet?</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.timeframeInList">
         <source>Only show events from this time-frame:</source>
-        <target state="needs-translation">Only show events from this time-frame:</target>
+        <target state="translated">Csak ebben az időszakban lévő eseményeket mutasson:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.timeframeInList1">
         <source>all events</source>
-        <target state="needs-translation">all events</target>
+        <target state="translated">minden esemény</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.timeframeInList2">
         <source>past events</source>
-        <target state="needs-translation">past events</target>
+        <target state="translated">múltbeli események</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.timeframeInList3">
         <source>past and current events</source>
-        <target state="needs-translation">past and current events</target>
+        <target state="translated">múltbeli és jelenlegi események</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.timeframeInList4">
         <source>current events</source>
-        <target state="needs-translation">current events</target>
+        <target state="translated">jelenlegi események</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.timeframeInList5">
         <source>current and upcoming events</source>
-        <target state="needs-translation">current and upcoming events</target>
+        <target state="translated">jelenlegi és közelgő események</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.timeframeInList6">
         <source>upcoming events</source>
-        <target state="needs-translation">upcoming events</target>
+        <target state="translated">közelgő események</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.timeframeInList7">
         <source>events with the deadline in the future</source>
-        <target state="needs-translation">events with the deadline in the future</target>
+        <target state="translated">olyan események, amelyeknek a határideje a jövőben van</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.timeframeInList8">
         <source>today</source>
-        <target state="needs-translation">today</target>
+        <target state="translated">ma</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.hideFields">
         <source>Hide fields in detailed view (comma-separated):</source>
-        <target state="needs-translation">Hide fields in detailed view (comma-separated):</target>
+        <target state="translated">Mezők elrejtése a részletes nézetben (vesszővel elválasztva):</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.showEmptyEntryInOptionLists">
         <source>Show empty option in selector widget:</source>
-        <target state="needs-translation">Show empty option in selector widget:</target>
+        <target state="translated">Üres opció megjelenítése a kiválasztómodulban:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.numberOfYearsInDateFilter">
         <source>Number of years a user can search into the future:</source>
-        <target state="needs-translation">Number of years a user can search into the future:</target>
+        <target state="translated">Hány évre kereshet a felhasználó előre a jövőbe:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.hideSearchForm">
         <source>Hide the search form in list view:</source>
-        <target state="needs-translation">Hide the search form in list view:</target>
+        <target state="translated">A keresőűrlap elrejtése a listanézetben:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.hidePageBrowser">
         <source>Hide the page browser in list view:</source>
-        <target state="needs-translation">Hide the page browser in list view:</target>
+        <target state="translated">Az oldallapozó elrejtése a listanézetben:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.hideCanceledEvents">
         <source>Hide canceled events in list view:</source>
-        <target state="needs-translation">Hide canceled events in list view:</target>
+        <target state="translated">A törölt események elrejtése a listanézetben:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.sortListViewByCategory">
         <source>Sort the list view by category:</source>
-        <target state="needs-translation">Sort the list view by category:</target>
+        <target state="translated">A listanézet rendezése kategória szerint:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.hideColumns">
         <source>Hide column names in list view (comma-separated):</source>
-        <target state="needs-translation">Hide column names in list view (comma-separated):</target>
+        <target state="translated">Oszlopnevek elrejtése a listanézetben (vesszővel elválasztva):</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.generalPriceInList">
         <source>Use &quot;Price&quot; as column title for the standard price in the list view:</source>
-        <target state="needs-translation">Use "Price" as column title for the standard price in the list view:</target>
+        <target state="translated">Az „Ár” oszlopcím használata a standard ár esetén a listanézetben:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.generalPriceInSingle">
         <source>
@@ -957,47 +957,47 @@
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.showSpeakerDetails">
         <source>Show speaker details</source>
-        <target state="needs-translation">Show speaker details</target>
+        <target state="translated">Előadó adatainak megjelenítése</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.showSiteDetails">
         <source>Show site details</source>
-        <target state="needs-translation">Show site details</target>
+        <target state="translated">Helyszín adatainak megjelenítése</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.linkToSingleView">
         <source>Link the single view from the list view:</source>
-        <target state="needs-translation">Link the single view from the list view:</target>
+        <target state="translated">A részletes nézet elérése a listanézetből:</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.always">
         <source>always</source>
-        <target state="needs-translation">always</target>
+        <target state="translated">mindig</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.never">
         <source>never</source>
-        <target state="needs-translation">never</target>
+        <target state="translated">soha</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.onlyForNonEmptyDescription">
         <source>if the event has a description</source>
-        <target state="needs-translation">if the event has a description</target>
+        <target state="translated">ha az esemény rendelkezik leírással</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.fromTsSetup">
         <source>(from TS setup)</source>
-        <target state="needs-translation">(from TS setup)</target>
+        <target state="translated">(a TS beállításból)</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.recursive.I.0">
         <source>0 levels (only selected page)</source>
-        <target state="needs-translation">0 levels (only selected page)</target>
+        <target state="translated">0 szint (csak a kijelölt oldal)</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.recursive.I.1">
         <source>1 level</source>
-        <target state="needs-translation">1 level</target>
+        <target state="translated">1 szint</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.recursive.I.2">
         <source>2 levels</source>
-        <target state="needs-translation">2 levels</target>
+        <target state="translated">2 szint</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.recursive.I.3">
         <source>3 levels</source>
-        <target state="needs-translation">3 levels</target>
+        <target state="translated">3 szint</target>
       </trans-unit>
       <trans-unit id="seminars.pi_flexform.recursive.I.4">
         <source>4 levels</source>
@@ -1095,7 +1095,7 @@
       </trans-unit>
       <trans-unit id="label_price_range">
         <source>Price</source>
-        <target state="needs-translation">Price</target>
+        <target state="translated">Ár</target>
       </trans-unit>
       <trans-unit id="label_paymentmethods">
         <source>Available methods of payment</source>
@@ -1131,7 +1131,7 @@
       </trans-unit>
       <trans-unit id="label_categories">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="translated">Kategóriák</target>
       </trans-unit>
       <trans-unit id="label_deadline_registration">
         <source>Deadline for registration</source>
@@ -1155,7 +1155,7 @@
       </trans-unit>
       <trans-unit id="label_onlineRegistrationOnQueue">
         <source>waiting list</source>
-        <target state="needs-translation">waiting list</target>
+        <target state="translated">várólista</target>
       </trans-unit>
       <trans-unit id="label_onlinePrebooking">
         <source>prebook</source>
@@ -1263,19 +1263,19 @@
       </trans-unit>
       <trans-unit id="label_timeslot_date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Dátum</target>
       </trans-unit>
       <trans-unit id="label_timeslot_time">
         <source>Time</source>
-        <target state="needs-translation">Time</target>
+        <target state="translated">Időpont</target>
       </trans-unit>
       <trans-unit id="label_timeslot_room">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="translated">Terem</target>
       </trans-unit>
       <trans-unit id="label_timeslot_place">
         <source>Place</source>
-        <target state="needs-translation">Place</target>
+        <target state="translated">Helyszín</target>
       </trans-unit>
       <trans-unit id="label_selector_submit">
         <source>Apply filter</source>
@@ -1295,11 +1295,11 @@
       </trans-unit>
       <trans-unit id="label_to">
         <source>to</source>
-        <target state="needs-translation">to</target>
+        <target state="translated">-ig</target>
       </trans-unit>
       <trans-unit id="label_organizer">
         <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <target state="translated">Szervező</target>
       </trans-unit>
       <trans-unit id="label_date_search">
         <source>Period from</source>
@@ -1311,7 +1311,7 @@
       </trans-unit>
       <trans-unit id="label_price_search">
         <source>Price</source>
-        <target state="needs-translation">Price</target>
+        <target state="translated">Ár</target>
       </trans-unit>
       <trans-unit id="label_searching_hints">
         <source>
@@ -1443,7 +1443,7 @@
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow.waitingList">
         <source>waiting list</source>
-        <target state="needs-translation">waiting list</target>
+        <target state="translated">várólista</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.settings.displayOptions.fieldsToShow.minimumNumberOfRegistrations">
         <source>required number of registrations</source>
@@ -1531,7 +1531,7 @@
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.internalTitle">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.topic">
         <source>Topic</source>
@@ -1539,11 +1539,11 @@
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.categories">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="translated">Kategóriák</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Dátum</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.regularRegistrations">
         <source>Registrations</source>
@@ -1551,15 +1551,15 @@
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.vacancies">
         <source>Vacancies</source>
-        <target state="needs-translation">Vacancies</target>
+        <target state="translated">Szabad helyek</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.events.property.vacancies.unlimited">
         <source>unlimited</source>
-        <target state="needs-translation">unlimited</target>
+        <target state="translated">korlátlan</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.description">
         <source>Description</source>
-        <target state="needs-translation">Description</target>
+        <target state="translated">Leírás</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.standardPrice">
         <source>Standard price</source>
@@ -1567,11 +1567,11 @@
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.earlyBirdPrice">
         <source>Early-bird price</source>
-        <target state="needs-translation">Early-bird price</target>
+        <target state="translated">Korai regisztrációs ár</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.eventType">
         <source>Event type</source>
-        <target state="needs-translation">Event type</target>
+        <target state="translated">Eseménytípus</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.start">
         <source>Start</source>
@@ -1619,7 +1619,7 @@
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.property.organizers">
         <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <target state="translated">Szervező</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.action.new">
         <source>Create a new event</source>
@@ -1659,11 +1659,11 @@
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.name">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">Név</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.address">
         <source>Address</source>
-        <target state="needs-translation">Address</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.email">
         <source>Email</source>
@@ -1671,7 +1671,7 @@
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.telephone">
         <source>Phone</source>
-        <target state="needs-translation">Phone</target>
+        <target state="translated">Telefon</target>
       </trans-unit>
       <trans-unit id="plugin.frontEndEditor.listRegistrations.tableHeading.dateOfBirth">
         <source>Date of birth</source>
@@ -1815,7 +1815,7 @@
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.settings.fieldsToShow.group.billingAddress">
         <source>Billing address</source>
-        <target state="needs-translation">Billing address</target>
+        <target state="translated">Számlázási cím</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.settings.fieldsToShow.separateBillingAddress">
         <source>separate billing address</source>
@@ -1835,7 +1835,7 @@
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.settings.fieldsToShow.billingZipCode">
         <source>ZIP code</source>
-        <target state="needs-translation">ZIP code</target>
+        <target state="translated">Irányítószám</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.settings.fieldsToShow.billingCity">
         <source>city</source>
@@ -1923,7 +1923,7 @@
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.fieldset.billingAddress">
         <source>Billing address</source>
-        <target state="needs-translation">Billing address</target>
+        <target state="translated">Számlázási cím</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.fieldset.personsToRegister">
         <source>Persons to register</source>
@@ -2079,7 +2079,7 @@
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.property.billingAddress">
         <source>Billing address</source>
-        <target state="needs-translation">Billing address</target>
+        <target state="translated">Számlázási cím</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.property.company">
         <source>Company</source>
@@ -2095,11 +2095,11 @@
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.property.zipCode">
         <source>ZIP code</source>
-        <target state="needs-translation">ZIP code</target>
+        <target state="translated">Irányítószám</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.property.city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">Város</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.property.country">
         <source>Country</source>
@@ -2131,11 +2131,11 @@
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.property.paymentMethod">
         <source>Method of payment</source>
-        <target state="needs-translation">Method of payment</target>
+        <target state="translated">Fizetési mód</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.property.priceCode">
         <source>Price</source>
-        <target state="needs-translation">Price</target>
+        <target state="translated">Ár</target>
       </trans-unit>
       <trans-unit id="plugin.eventRegistration.property.orderReference">
         <source>Order reference</source>
@@ -2155,23 +2155,23 @@
       </trans-unit>
       <trans-unit id="price.standard">
         <source>Regular price</source>
-        <target state="needs-translation">Regular price</target>
+        <target state="translated">Normál ár</target>
       </trans-unit>
       <trans-unit id="price.earlyBird">
         <source>Early-bird price</source>
-        <target state="needs-translation">Early-bird price</target>
+        <target state="translated">Korai regisztrációs ár</target>
       </trans-unit>
       <trans-unit id="price.special">
         <source>Special price</source>
-        <target state="needs-translation">Special price</target>
+        <target state="translated">Kedvezményes ár</target>
       </trans-unit>
       <trans-unit id="price.specialEarlyBird">
         <source>Early-bird special price</source>
-        <target state="needs-translation">Early-bird special price</target>
+        <target state="translated">Kedvezményes korai regisztrációs ár</target>
       </trans-unit>
       <trans-unit id="backEndModule.heading.events">
         <source>Events</source>
-        <target state="needs-translation">Events</target>
+        <target state="translated">Események</target>
       </trans-unit>
       <trans-unit id="backEndModule.heading.registrations">
         <source>Registrations</source>
@@ -2223,15 +2223,15 @@
       </trans-unit>
       <trans-unit id="backEndModule.events.property.internalTitle">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="backEndModule.events.property.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Dátum</target>
       </trans-unit>
       <trans-unit id="backEndModule.events.property.seats">
         <source>Seats</source>
-        <target state="needs-translation">Seats</target>
+        <target state="translated">Férőhelyek</target>
       </trans-unit>
       <trans-unit id="backEndModule.events.property.seats.minimum">
         <source>required registrations for the event to take place</source>
@@ -2279,7 +2279,7 @@
       </trans-unit>
       <trans-unit id="backEndModule.events.property.name">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">Név</target>
       </trans-unit>
       <trans-unit id="backEndModule.registration.noName">
         <source>(User %1$u)</source>
@@ -2739,7 +2739,7 @@
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList">
         <source>waiting list</source>
-        <target state="needs-translation">waiting list</target>
+        <target state="translated">várólista</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.registration.waitingList.ariaLabel">
         <source>Subscribe to the waiting list for the event &quot;%1$s&quot;</source>
@@ -2747,7 +2747,7 @@
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.fullyBooked">
         <source>fully booked</source>
-        <target state="needs-translation">fully booked</target>
+        <target state="translated">teljesen betelt</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.events.property.vacancies.fewLeft">
         <source>few left</source>
@@ -2851,11 +2851,11 @@
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.property.timeSlots.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Dátum</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.property.timeSlots.time">
         <source>Time</source>
-        <target state="needs-translation">Time</target>
+        <target state="translated">Időpont</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.property.timeSlots.venue">
         <source>Venue</source>
@@ -2863,15 +2863,15 @@
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.property.timeSlots.room">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="translated">Terem</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.room">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="translated">Terem</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.price">
         <source>Price</source>
-        <target state="needs-translation">Price</target>
+        <target state="translated">Ár</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.targetGroups">
         <source>Target groups</source>
@@ -2879,11 +2879,11 @@
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.vacancies">
         <source>Vacancies</source>
-        <target state="needs-translation">Vacancies</target>
+        <target state="translated">Szabad helyek</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.vacancies.fullyBooked">
         <source>fully booked</source>
-        <target state="needs-translation">fully booked</target>
+        <target state="translated">teljesen betelt</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.vacancies.fewLeft">
         <source>few tickets left</source>
@@ -2899,7 +2899,7 @@
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.categories">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="translated">Kategóriák</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.speakers.one">
         <source>Speaker</source>
@@ -3071,7 +3071,7 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Dátum</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.topic">
         <source>Topic</source>
@@ -3079,11 +3079,11 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.organizer">
         <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <target state="translated">Szervező</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">Város</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.venue">
         <source>Venue</source>
@@ -3103,7 +3103,7 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.categories">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="translated">Kategóriák</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.eventUid">
         <source>Event number</source>
@@ -3175,11 +3175,11 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.0">
         <source>regular</source>
-        <target state="needs-translation">regular</target>
+        <target state="translated">rendes</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.1">
         <source>waiting list</source>
-        <target state="needs-translation">waiting list</target>
+        <target state="translated">várólista</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.registrationStatus.2">
         <source>nonbinding reservation</source>
