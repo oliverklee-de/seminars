@@ -25,7 +25,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelGeneral">
         <source>General</source>
-        <target state="needs-translation">General</target>
+        <target state="translated">Általános</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.uid">
         <source>Event number</source>
@@ -49,7 +49,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.slug">
         <source>URL segment</source>
@@ -61,7 +61,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.categories">
         <source>Categories</source>
-        <target state="needs-translation">Categories</target>
+        <target state="translated">Kategóriák</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.teaser">
         <source>Teaser text</source>
@@ -69,7 +69,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.description">
         <source>Description</source>
-        <target state="needs-translation">Description</target>
+        <target state="translated">Leírás</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.topic">
         <source>Topic</source>
@@ -77,23 +77,23 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.event_type">
         <source>Event type</source>
-        <target state="needs-translation">Event type</target>
+        <target state="translated">Eseménytípus</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Dátum</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.time">
         <source>Time</source>
-        <target state="needs-translation">Time</target>
+        <target state="translated">Időpont</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.accreditation_number">
         <source>Accreditation number</source>
-        <target state="needs-translation">Accreditation number</target>
+        <target state="translated">Akkreditációs szám</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.credit_points">
         <source>Credit points</source>
-        <target state="needs-translation">Credit points</target>
+        <target state="translated">Kreditpontok</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.details_page">
         <source>Page with the details view</source>
@@ -173,7 +173,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelOrganizers">
         <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <target state="translated">Szervező</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.organizers">
         <source>Organizers</source>
@@ -249,11 +249,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.place">
         <source>Place</source>
-        <target state="needs-translation">Place</target>
+        <target state="translated">Helyszín</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.room">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="translated">Terem</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.tab.attendeeInformation">
         <source>Information for attendees</source>
@@ -273,7 +273,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelAttendees">
         <source>Attendees</source>
-        <target state="needs-translation">Attendees</target>
+        <target state="translated">Résztvevők</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.attendees_min">
         <source>Minimal number of attendees</source>
@@ -317,7 +317,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.is_full">
         <source>Is full</source>
-        <target state="needs-translation">Is full</target>
+        <target state="translated">Megtelt</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelPayment">
         <source>Payment</source>
@@ -325,7 +325,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.price_regular">
         <source>Regular price</source>
-        <target state="needs-translation">Regular price</target>
+        <target state="translated">Normál ár</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.price_regular_early">
         <source>Regular price (early bird)</source>
@@ -333,7 +333,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.price_special">
         <source>Special price</source>
-        <target state="needs-translation">Special price</target>
+        <target state="translated">Kedvezményes ár</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.price_special_early">
         <source>Special price (early bird)</source>
@@ -385,7 +385,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.title">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">Név</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.organization">
         <source>Organization</source>
@@ -397,7 +397,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.description">
         <source>Description</source>
-        <target state="needs-translation">Description</target>
+        <target state="translated">Leírás</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.image">
         <source>Image</source>
@@ -413,7 +413,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.address">
         <source>Address</source>
-        <target state="needs-translation">Address</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_speakers.phone_work">
         <source>Phone number (work)</source>
@@ -465,7 +465,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.uid">
         <source>Ticket ID</source>
-        <target state="needs-translation">Ticket ID</target>
+        <target state="translated">Jegyazonosító</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.crdate">
         <source>Registration date</source>
@@ -473,7 +473,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.user">
         <source>Front-end User</source>
@@ -493,7 +493,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registration_queue.waitingList">
         <source>waiting list</source>
-        <target state="needs-translation">waiting list</target>
+        <target state="translated">várólista</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registration_queue.nonbindingReservation">
         <source>nonbinding reservation</source>
@@ -509,19 +509,19 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.standard">
         <source>Regular price</source>
-        <target state="needs-translation">Regular price</target>
+        <target state="translated">Normál ár</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.earlyBird">
         <source>Early-bird price</source>
-        <target state="needs-translation">Early-bird price</target>
+        <target state="translated">Korai regisztrációs ár</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.special">
         <source>Special price</source>
-        <target state="needs-translation">Special price</target>
+        <target state="translated">Kedvezményes ár</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.price_code.specialEarlyBird">
         <source>Early-bird special price</source>
-        <target state="needs-translation">Early-bird special price</target>
+        <target state="translated">Kedvezményes korai regisztrációs ár</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.total_price">
         <source>Total price for this attendance</source>
@@ -545,7 +545,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.method_of_payment">
         <source>Method of payment</source>
-        <target state="needs-translation">Method of payment</target>
+        <target state="translated">Fizetési mód</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.separate_billing_address">
         <source>Separate billing address</source>
@@ -557,19 +557,19 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.name">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">Név</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.gender">
         <source>Gender</source>
-        <target state="needs-translation">Gender</target>
+        <target state="translated">Nem</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.gender.I.0">
         <source>Mr.</source>
-        <target state="needs-translation">Mr.</target>
+        <target state="translated">Úr</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.gender.I.1">
         <source>Ms.</source>
-        <target state="needs-translation">Ms.</target>
+        <target state="translated">Hölgy</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.gender.I.2">
         <source>diverse</source>
@@ -585,7 +585,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">Város</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.country">
         <source>Country</source>
@@ -605,11 +605,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.checkboxes">
         <source>Selected options</source>
-        <target state="needs-translation">Selected options</target>
+        <target state="translated">Kiválasztott opciók</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.interests">
         <source>Special interests</source>
-        <target state="needs-translation">Special interests</target>
+        <target state="translated">Különleges érdeklődési körök</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.expectations">
         <source>Expectations for the event</source>
@@ -617,7 +617,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.background_knowledge">
         <source>Background knowledge</source>
-        <target state="needs-translation">Background knowledge</target>
+        <target state="translated">Előzetes ismeretek</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.lodgings">
         <source>Selected lodging options</source>
@@ -665,7 +665,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.kids">
         <source>Number of kids</source>
-        <target state="needs-translation">Number of kids</target>
+        <target state="translated">Gyermekek száma</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.attendance_mode">
         <source>Attendance mode</source>
@@ -693,7 +693,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_sites.title">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">Név</target>
       </trans-unit>
       <trans-unit id="tx_seminars_sites.address">
         <source>Full address</source>
@@ -701,7 +701,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_sites.city">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">Város</target>
       </trans-unit>
       <trans-unit id="tx_seminars_sites.homepage">
         <source>Homepage</source>
@@ -729,15 +729,15 @@
       </trans-unit>
       <trans-unit id="tx_seminars_organizers">
         <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <target state="translated">Szervező</target>
       </trans-unit>
       <trans-unit id="tx_seminars_organizers.title">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">Név</target>
       </trans-unit>
       <trans-unit id="tx_seminars_organizers.description">
         <source>Description</source>
-        <target state="needs-translation">Description</target>
+        <target state="translated">Leírás</target>
       </trans-unit>
       <trans-unit id="tx_seminars_organizers.homepage">
         <source>Homepage</source>
@@ -753,11 +753,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_payment_methods">
         <source>Method of payment</source>
-        <target state="needs-translation">Method of payment</target>
+        <target state="translated">Fizetési mód</target>
       </trans-unit>
       <trans-unit id="tx_seminars_payment_methods.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_payment_methods.description">
         <source>Detailed description for emails</source>
@@ -765,11 +765,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_event_types">
         <source>Event type</source>
-        <target state="needs-translation">Event type</target>
+        <target state="translated">Eseménytípus</target>
       </trans-unit>
       <trans-unit id="tx_seminars_event_types.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_event_types.single_view_page">
         <source>Single view page for events of this type</source>
@@ -781,7 +781,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_checkboxes.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_lodgings">
         <source>Lodging option</source>
@@ -789,7 +789,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_lodgings.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_foods">
         <source>Food option</source>
@@ -797,7 +797,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_foods.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_timeslots">
         <source>Time slot</source>
@@ -813,11 +813,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_timeslots.place">
         <source>Place</source>
-        <target state="needs-translation">Place</target>
+        <target state="translated">Helyszín</target>
       </trans-unit>
       <trans-unit id="tx_seminars_timeslots.room">
         <source>Room</source>
-        <target state="needs-translation">Room</target>
+        <target state="translated">Terem</target>
       </trans-unit>
       <trans-unit id="tx_seminars_target_groups">
         <source>Target Groups</source>
@@ -825,7 +825,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_target_groups.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_target_groups.minimum_age">
         <source>Minimum age</source>
@@ -841,7 +841,7 @@
       </trans-unit>
       <trans-unit id="tx_seminars_categories.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_seminars_categories.single_view_page">
         <source>Single view page for events in this category</source>
@@ -853,11 +853,11 @@
       </trans-unit>
       <trans-unit id="tx_seminars_skills.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tt_content.list_type_pi1">
         <source>Seminar Manager</source>
-        <target state="needs-translation">Seminar Manager</target>
+        <target state="translated">Szemináriumkezelő</target>
       </trans-unit>
       <trans-unit id="owner_feuser">
         <source>Front-end user who has created this record</source>
