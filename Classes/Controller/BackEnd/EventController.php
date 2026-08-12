@@ -100,21 +100,23 @@ class EventController extends ActionController
             $this->eventStatisticsCalculator->enrichWithStatistics($event);
         }
 
-        $this->view->assign('permissions', $this->permissions);
-        $this->view->assign('pageUid', $pageUid);
-        $this->view->assign('events', $events);
-        $this->view->assign('searchTerm', \trim($searchTerm));
-
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
         if ((new Typo3Version())->getMajorVersion() >= 12) {
             $this->pageRenderer->loadJavaScriptModule('@oliverklee/seminars/DeleteConfirmationModule.js');
+            $moduleTemplate->assign('permissions', $this->permissions);
+            $moduleTemplate->assign('pageUid', $pageUid);
+            $moduleTemplate->assign('events', $events);
+            $moduleTemplate->assign('searchTerm', \trim($searchTerm));
+            $response = $moduleTemplate->renderResponse('BackEnd/Event/Search');
         } else {
             $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Seminars/BackEnd/DeleteConfirmationAmdModule');
+            $this->view->assign('permissions', $this->permissions);
+            $this->view->assign('pageUid', $pageUid);
+            $this->view->assign('events', $events);
+            $this->view->assign('searchTerm', \trim($searchTerm));
+            $moduleTemplate->setContent($this->view->render());
+            $response = $this->htmlResponse($moduleTemplate->renderContent());
         }
-
-        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
-
-        $moduleTemplate->setContent($this->view->render());
-        $response = $this->htmlResponse($moduleTemplate->renderContent());
 
         return $response;
     }

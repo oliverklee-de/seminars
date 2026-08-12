@@ -77,10 +77,6 @@ class RegistrationController extends ActionController
 
         $this->eventStatisticsCalculator->enrichWithStatistics($event);
 
-        $this->view->assign('permissions', $this->permissions);
-        $this->view->assign('pageUid', $this->getPageUid());
-        $this->view->assign('event', $event);
-
         if ($event instanceof EventDateInterface) {
             $regularRegistrations = $this->registrationRepository->findRegularRegistrationsByEvent($eventUid);
             $this->registrationRepository->enrichWithRawData($regularRegistrations);
@@ -88,22 +84,33 @@ class RegistrationController extends ActionController
             $this->registrationRepository->enrichWithRawData($waitingListRegistrations);
             $nonbindingReservations = $this->registrationRepository->findNonbindingReservationsByEvent($eventUid);
             $this->registrationRepository->enrichWithRawData($nonbindingReservations);
-
-            $this->view->assign('regularRegistrations', $regularRegistrations);
-            $this->view->assign('waitingListRegistrations', $waitingListRegistrations);
-            $this->view->assign('nonbindingReservations', $nonbindingReservations);
-        }
-
-        if ((new Typo3Version())->getMajorVersion() >= 12) {
-            $this->pageRenderer->loadJavaScriptModule('@oliverklee/seminars/DeleteConfirmationModule.js');
         } else {
-            $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Seminars/BackEnd/DeleteConfirmationAmdModule');
+            $regularRegistrations = null;
+            $waitingListRegistrations = null;
+            $nonbindingReservations = null;
         }
 
         $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
-
-        $moduleTemplate->setContent($this->view->render());
-        $response = $this->htmlResponse($moduleTemplate->renderContent());
+        if ((new Typo3Version())->getMajorVersion() >= 12) {
+            $this->pageRenderer->loadJavaScriptModule('@oliverklee/seminars/DeleteConfirmationModule.js');
+            $moduleTemplate->assign('permissions', $this->permissions);
+            $moduleTemplate->assign('pageUid', $this->getPageUid());
+            $moduleTemplate->assign('event', $event);
+            $moduleTemplate->assign('regularRegistrations', $regularRegistrations);
+            $moduleTemplate->assign('waitingListRegistrations', $waitingListRegistrations);
+            $moduleTemplate->assign('nonbindingReservations', $nonbindingReservations);
+            $response = $moduleTemplate->renderResponse('BackEnd/Registration/ShowForEvent');
+        } else {
+            $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Seminars/BackEnd/DeleteConfirmationAmdModule');
+            $this->view->assign('permissions', $this->permissions);
+            $this->view->assign('pageUid', $this->getPageUid());
+            $this->view->assign('event', $event);
+            $this->view->assign('regularRegistrations', $regularRegistrations);
+            $this->view->assign('waitingListRegistrations', $waitingListRegistrations);
+            $this->view->assign('nonbindingReservations', $nonbindingReservations);
+            $moduleTemplate->setContent($this->view->render());
+            $response = $this->htmlResponse($moduleTemplate->renderContent());
+        }
 
         return $response;
     }

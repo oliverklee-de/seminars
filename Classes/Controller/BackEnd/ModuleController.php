@@ -59,24 +59,29 @@ class ModuleController extends ActionController
             $this->eventStatisticsCalculator->enrichWithStatistics($event);
         }
 
-        $this->view->assign('permissions', $this->permissions);
-        $this->view->assign('pageUid', $pageUid);
-        $this->view->assign('events', $events);
-        $this->view->assign(
-            'numberOfRegistrations',
-            $this->registrationRepository->countRegularRegistrationsByPageUid($pageUid),
-        );
-
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
         if ((new Typo3Version())->getMajorVersion() >= 12) {
             $this->pageRenderer->loadJavaScriptModule('@oliverklee/seminars/DeleteConfirmationModule.js');
+            $moduleTemplate->assign('permissions', $this->permissions);
+            $moduleTemplate->assign('pageUid', $pageUid);
+            $moduleTemplate->assign('events', $events);
+            $moduleTemplate->assign(
+                'numberOfRegistrations',
+                $this->registrationRepository->countRegularRegistrationsByPageUid($pageUid),
+            );
+            $response = $moduleTemplate->renderResponse('BackEnd/Module/Overview');
         } else {
             $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Seminars/BackEnd/DeleteConfirmationAmdModule');
+            $this->view->assign('permissions', $this->permissions);
+            $this->view->assign('pageUid', $pageUid);
+            $this->view->assign('events', $events);
+            $this->view->assign(
+                'numberOfRegistrations',
+                $this->registrationRepository->countRegularRegistrationsByPageUid($pageUid),
+            );
+            $moduleTemplate->setContent($this->view->render());
+            $response = $this->htmlResponse($moduleTemplate->renderContent());
         }
-
-        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
-
-        $moduleTemplate->setContent($this->view->render());
-        $response = $this->htmlResponse($moduleTemplate->renderContent());
 
         return $response;
     }
