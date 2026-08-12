@@ -8,7 +8,8 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 
 - Add support for PHP 8.4 (#5296)
-- Add support for TYPO3 12LTS (#5281, #5286, #5294, #5309, #5327, #5333, #5335)
+- Add support for TYPO3 12LTS
+  (#5281, #5286, #5294, #5309, #5327, #5333, #5335, #5337)
 - Add more data to the "EventController" single view (#5213)
 - Add more data to the "my registrations" single view
   (#5159, #5172, #5180, #5298, #5299, #5300, #5302, #5318)
