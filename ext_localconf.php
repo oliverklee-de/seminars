@@ -15,6 +15,7 @@ use OliverKlee\Seminars\UpgradeWizards\GenerateEventSlugsUpgradeWizard;
 use OliverKlee\Seminars\UpgradeWizards\RemoveDuplicateEventVenueRelationsUpgradeWizard;
 use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -94,12 +95,14 @@ defined('TYPO3') or die('Access denied.');
 ',
     );
 
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['seminars_generateEventSlugs']
-        = GenerateEventSlugsUpgradeWizard::class;
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['seminars_removeDuplicateEventVenueRelations']
-        = RemoveDuplicateEventVenueRelationsUpgradeWizard::class;
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['seminars_copyBillingAddressToRegistrations']
-        = CopyBillingAddressToRegistrationsUpgradeWizard::class;
+    if ((new Typo3Version())->getMajorVersion() <= 11) {
+        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['seminars_generateEventSlugs']
+            = GenerateEventSlugsUpgradeWizard::class;
+        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['seminars_removeDuplicateEventVenueRelations']
+            = RemoveDuplicateEventVenueRelationsUpgradeWizard::class;
+        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['seminars_copyBillingAddressToRegistrations']
+            = CopyBillingAddressToRegistrationsUpgradeWizard::class;
+    }
 
     $archiveActions = [EventController::class => 'archive'];
     ExtensionUtility::configurePlugin('Seminars', 'EventArchive', $archiveActions);

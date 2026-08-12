@@ -8,6 +8,7 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
+use TYPO3\CMS\Install\Attribute\UpgradeWizard;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
@@ -19,6 +20,7 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
  *
  * @internal
  */
+#[UpgradeWizard('seminars_removeDuplicateEventVenueRelations')]
 class RemoveDuplicateEventVenueRelationsUpgradeWizard implements
     UpgradeWizardInterface,
     RepeatableInterface,
