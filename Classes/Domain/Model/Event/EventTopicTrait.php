@@ -11,6 +11,7 @@ use OliverKlee\Seminars\Domain\Model\Price;
 use OliverKlee\Seminars\Domain\Model\TargetGroup;
 use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Annotation\Validate;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -68,6 +69,13 @@ trait EventTopicTrait
      * @Lazy
      */
     protected ObjectStorage $targetGroups;
+
+    /**
+     * @var FileReference|null
+     * @phpstan-var FileReference|LazyLoadingProxy|null
+     * @Lazy
+     */
+    protected $image;
 
     private function initializeEventTopic(): void
     {
@@ -293,5 +301,22 @@ trait EventTopicTrait
     public function setTargetGroups(ObjectStorage $targetGroups): void
     {
         $this->targetGroups = $targetGroups;
+    }
+
+    public function getImage(): ?FileReference
+    {
+        $image = $this->image;
+        if ($image instanceof LazyLoadingProxy) {
+            $image = $image->_loadRealInstance();
+            $image = ($image instanceof FileReference) ? $image : null;
+            $this->image = $image;
+        }
+
+        return $image;
+    }
+
+    public function setImage(?FileReference $image): void
+    {
+        $this->image = $image;
     }
 }

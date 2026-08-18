@@ -2920,4 +2920,60 @@ final class EventRepositoryTest extends FunctionalTestCase
         self::assertCount(1, $associatedModels);
         self::assertInstanceOf(TimeSlot::class, $associatedModels->toArray()[0]);
     }
+
+    /**
+     * @test
+     */
+    public function fillsImageRelationForSingleEvent(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/SingleEventWithImage.csv');
+
+        $result = $this->subject->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $result);
+
+        $image = $result->getImage();
+        self::assertInstanceOf(FileReference::class, $image);
+        self::assertSame(1, $image->getUid());
+    }
+
+    /**
+     * @test
+     */
+    public function fillsImageRelationForEventTopic(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/EventTopicWithImage.csv');
+
+        $model = $this->subject->findByUid(1);
+        self::assertInstanceOf(EventTopic::class, $model);
+
+        $image = $model->getImage();
+        self::assertInstanceOf(FileReference::class, $image);
+        self::assertSame(1, $image->getUid());
+    }
+
+    /**
+     * @test
+     */
+    public function mapsMissingImageRelationToNullForSingleEvent(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/SingleEventWithMissingImage.csv');
+
+        $model = $this->subject->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $model);
+
+        self::assertNull($model->getImage());
+    }
+
+    /**
+     * @test
+     */
+    public function mapsMissingImageRelationToNullForEventTopic(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/EventTopicWithMissingImage.csv');
+
+        $model = $this->subject->findByUid(1);
+        self::assertInstanceOf(EventTopic::class, $model);
+
+        self::assertNull($model->getImage());
+    }
 }

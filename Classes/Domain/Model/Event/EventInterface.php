@@ -9,6 +9,7 @@ use OliverKlee\Seminars\Domain\Model\EventType;
 use OliverKlee\Seminars\Domain\Model\PaymentMethod;
 use OliverKlee\Seminars\Domain\Model\Price;
 use OliverKlee\Seminars\Domain\Model\TargetGroup;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\DomainObjectInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -121,4 +122,6 @@ interface EventInterface extends DomainObjectInterface
      * This is a stub method that gets overwritten by the `seminars_premium` extension.
      */
     public function hasDownloadableCertificate(): bool;
+
+    public function getImage(): ?FileReference;
 }
