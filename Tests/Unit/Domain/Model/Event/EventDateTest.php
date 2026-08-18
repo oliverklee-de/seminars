@@ -1982,7 +1982,7 @@ final class EventDateTest extends UnitTestCase
     /**
      * @test
      */
-    public function getImageForEventDateWithTopicWithoutImageReturnsNoImage(): void
+    public function getImageForEventDateWithTopicWithoutImageReturnsNull(): void
     {
         $topic = new EventTopic();
         $topic->setImage(null);
