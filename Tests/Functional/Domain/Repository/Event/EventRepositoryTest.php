@@ -2954,12 +2954,25 @@ final class EventRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function mapsMissingImageRelationToNull(): void
+    public function mapsMissingImageRelationToNullForSingleEvent(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/DeletedImage.csv');
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/SingleEventWithMissingImage.csv');
 
         $model = $this->subject->findByUid(1);
-        self::assertInstanceOf(EventDate::class, $model);
+        self::assertInstanceOf(SingleEvent::class, $model);
+
+        self::assertNull($model->getImage());
+    }
+
+    /**
+     * @test
+     */
+    public function mapsMissingImageRelationToNullForEventTopic(): void
+    {
+        $this->importCSVDataSet(__DIR__ . '/Fixtures/propertyMapping/EventTopicWithMissingImage.csv');
+
+        $model = $this->subject->findByUid(1);
+        self::assertInstanceOf(EventTopic::class, $model);
 
         self::assertNull($model->getImage());
     }
