@@ -2073,6 +2073,9 @@
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.vacancies">
         <source>vacancies</source>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.image">
+        <source>image</source>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.teaser">
         <source>teaser</source>
       </trans-unit>

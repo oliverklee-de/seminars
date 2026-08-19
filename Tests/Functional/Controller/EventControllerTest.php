@@ -26,10 +26,15 @@ final class EventControllerTest extends FunctionalTestCase
         'typo3/cms-extensionmanager',
         'typo3/cms-install',
         'typo3/cms-fluid-styled-content',
+        'typo3/cms-filemetadata',
     ];
 
     protected array $pathsToLinkInTestInstance = [
         'typo3conf/ext/seminars/Tests/Functional/Controller/Fixtures/Sites/' => 'typo3conf/sites',
+    ];
+
+    protected array $pathsToProvideInTestInstance = [
+        'typo3conf/ext/seminars/Tests/Functional/Controller/Fixtures/EventController/showAction/ImageFile.jpg' => 'fileadmin/user_upload/ImageFile.jpg',
     ];
 
     protected array $configurationToUseInTestInstance = [
@@ -2274,6 +2279,112 @@ final class EventControllerTest extends FunctionalTestCase
         );
         self::assertIsString($fullyBooked);
         self::assertStringContainsString($fullyBooked, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionRendersImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventWithImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('<figure>', $html);
+        self::assertStringContainsString('<img', $html);
+        self::assertStringContainsString('ImageFile.jpg', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventDateWithImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('<figure>', $html);
+        self::assertStringContainsString('<img', $html);
+        self::assertStringContainsString('ImageFile.jpg', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionRendersAltTextFromImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventWithAltText.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('alt="Alt-text"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersAltTextFromImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventDateWithAltText.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('alt="Alt-text"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionRendersCopyrightOfImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventWithCopyrightOfImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertMatchesRegularExpression('#<figcaption>\\s*Max\\s*</figcaption>#', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersCopyrightOfImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventDateWithCopyrightOfImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertMatchesRegularExpression('#<figcaption>\\s*Max\\s*</figcaption>#', $html);
     }
 
     /**
