@@ -3000,6 +3000,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>target groups</source>
         <target state="final">Zielgruppen</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.image">
+        <source>image</source>
+        <target state="needs-translation">image</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.teaser" approved="yes">
         <source>teaser</source>
         <target state="final">Teaser</target>
