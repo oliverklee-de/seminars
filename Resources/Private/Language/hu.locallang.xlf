@@ -3033,6 +3033,10 @@
         <source>target groups</source>
         <target state="translated">célcsoportok</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.image">
+        <source>image</source>
+        <target state="needs-translation">image</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.teaser">
         <source>teaser</source>
         <target state="translated">előnézeti szöveg</target>
