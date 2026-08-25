@@ -3027,6 +3027,10 @@
         <source>target groups</source>
         <target state="needs-translation">target groups</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.image">
+        <source>image</source>
+        <target state="needs-translation">image</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.teaser">
         <source>teaser</source>
         <target state="needs-translation">teaser</target>
