@@ -2817,6 +2817,10 @@
         <source>vacancies</source>
         <target state="needs-translation">vacancies</target>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.image">
+        <source>image</source>
+        <target state="needs-translation">image</target>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.teaser">
         <source>teaser</source>
         <target state="needs-translation">teaser</target>
