@@ -16,6 +16,10 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 {
     private const FIXTURES_PATH = __DIR__ . '/Fixtures/MyRegistrationsController';
 
+    protected array $pathsToProvideInTestInstance = [
+        'typo3conf/ext/seminars/Tests/Functional/Controller/Fixtures/MyRegistrationsController/showAction/ImageFile.jpg' => 'fileadmin/user_upload/ImageFile.jpg',
+    ];
+
     protected array $testExtensionsToLoad = [
         'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
@@ -27,6 +31,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
         'typo3/cms-extensionmanager',
         'typo3/cms-install',
         'typo3/cms-fluid-styled-content',
+        'typo3/cms-filemetadata',
     ];
 
     protected array $pathsToLinkInTestInstance = [
@@ -1202,6 +1207,130 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('Fortgeschrittene,', $html);
         self::assertStringContainsString('Profi', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionRendersImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('<figure>', $html);
+        self::assertStringContainsString('<img', $html);
+        self::assertStringContainsString('ImageFile.jpg', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForEventDateWithImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('<figure>', $html);
+        self::assertStringContainsString('<img', $html);
+        self::assertStringContainsString('ImageFile.jpg', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionRendersAltTextFromImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithAltText.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('alt="Alt-text"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersAltTextFromImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForEventDateWithAltText.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('alt="Alt-text"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionRendersCopyrightOfImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithCopyrightOfImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertMatchesRegularExpression('#<figcaption>\\s*Max\\s*</figcaption>#', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersCopyrightOfImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForEventDateWithCopyrightOfImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertMatchesRegularExpression('#<figcaption>\\s*Max\\s*</figcaption>#', $html);
     }
 
     /**

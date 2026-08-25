@@ -2235,6 +2235,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.targetGroups">
         <source>target groups</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.image">
+        <source>image</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.teaser">
         <source>teaser</source>
       </trans-unit>

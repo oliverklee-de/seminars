@@ -102,6 +102,23 @@
             </f:if>
         </oelib:isFieldEnabled>
 
+        <oelib:isFieldEnabled fieldName="image">
+            <f:if condition="{event.image}">
+                <figure>
+                    <f:image
+                        image="{event.image}"
+                        alt="{event.image.alternative}"
+                    />
+
+                    <f:if condition="{event.image.originalResource.properties.copyright}">
+                        <figcaption>
+                            {event.image.originalResource.properties.copyright}
+                        </figcaption>
+                    </f:if>
+                </figure>
+            </f:if>
+        </oelib:isFieldEnabled>
+
         <oelib:isFieldEnabled fieldName="teaser">
             <f:if condition="{event.teaser}">
                 <p>
