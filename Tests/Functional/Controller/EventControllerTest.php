@@ -820,6 +820,36 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function outlookActionWithEventDateAndWithoutTopicDoesNotThrowAnException(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventDateWithoutTopic.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $this->executeFrontendSubRequest($request);
+
+        self::addToAssertionCount(1);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionWithEventDateAndMissingTopicRelationDoesNotThrowAnException(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventDateWithMissingTopicRelation.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $this->executeFrontendSubRequest($request);
+
+        self::addToAssertionCount(1);
+    }
+
+    /**
+     * @test
+     */
     public function outlookActionForEventDateRendersTitleOfTopic(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
