@@ -1,7 +1,8 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:oelib="OliverKlee\Oelib\ViewHelpers"
       data-namespace-typo3-fluid="true">
-    <div class="event-list">
-        <f:for each="{events}" as="event">
+<div class="event-list">
+    <f:for each="{events}" as="event">
+        <f:if condition="!{event.eventDate} || {event.topic}">
             <f:variable name="singleViewLinkAriaLabel"
                         value="{f:translate(key: 'plugin.eventArchive.events.property.singleViewLink.ariaLabel', arguments: {0: event.displayTitle})}"/>
 
@@ -141,6 +142,7 @@
                     </oelib:isFieldEnabled>
                 </div>
             </div>
-        </f:for>
-    </div>
+        </f:if>
+    </f:for>
+</div>
 </html>
