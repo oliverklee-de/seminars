@@ -1,0 +1,7 @@
+"tx_seminars_seminars"
+,"uid","pid","object_type","title","topic","registrations"
+,1,2,2,"Extension Development with Extbase and Fluid",5,1
+
+"tx_seminars_attendances"
+,"uid","pid","seminar","user"
+,1,1,1,2
