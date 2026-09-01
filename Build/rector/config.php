@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\PHPUnit\PHPUnit60\Rector\ClassMethod\AddDoesNotPerformAssertionToNonAssertingTestRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRector;
 use Rector\ValueObject\PhpVersion;
 use Ssch\TYPO3Rector\CodeQuality\General\ConvertImplicitVariablesToExplicitGlobalsRector;
@@ -97,6 +98,8 @@ return RectorConfig::configure()
         ExtEmConfRector::ADDITIONAL_VALUES_TO_BE_REMOVED => [],
     ])
     ->withSkip([
+        // This rule creates false positives as the TYPO3 testing framework always adds assertions.
+        AddDoesNotPerformAssertionToNonAssertingTestRector::class,
         GeneralUtilityMakeInstanceToConstructorPropertyRector::class => [
             'Classes/Bag/*',
             'Classes/BagBuilder/*',
