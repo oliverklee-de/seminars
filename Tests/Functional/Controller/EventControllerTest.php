@@ -382,6 +382,36 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function archiveActionWithEventDateAndWithoutTopicDoesNotThrowAnException(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEventDateWithoutTopic.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $this->executeFrontendSubRequest($request);
+
+        self::addToAssertionCount(1);
+    }
+
+    /**
+     * @test
+     */
+    public function archiveActionWithEventDateAndMissingTopicRelationDoesNotThrowAnException(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/PastEventDateWithMissingTopicRelation.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $this->executeFrontendSubRequest($request);
+
+        self::addToAssertionCount(1);
+    }
+
+    /**
+     * @test
+     */
     public function archiveActionRendersOrganizersOfEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/archiveAction/EventArchiveContentElement.csv');
