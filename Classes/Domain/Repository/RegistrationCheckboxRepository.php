@@ -10,6 +10,4 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * @extends Repository<RegistrationCheckbox>
  */
-class RegistrationCheckboxRepository extends Repository
-{
-}
+class RegistrationCheckboxRepository extends Repository {}

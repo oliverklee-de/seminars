@@ -10,6 +10,4 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * @extends Repository<TimeSlot>
  */
-class TimeSlotRepository extends Repository
-{
-}
+class TimeSlotRepository extends Repository {}

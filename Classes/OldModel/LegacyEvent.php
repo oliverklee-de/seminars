@@ -1894,7 +1894,7 @@ class LegacyEvent extends AbstractTimeSpan
 
         return \array_filter(
             $this->registrations,
-            static fn (array $registration): bool
+            static fn(array $registration): bool
                 => (int)$registration['registration_queue']
                 === ExtbaseRegistration::STATUS_REGULAR,
         );

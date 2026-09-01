@@ -8,7 +8,5 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 final class TestingContentObjectRenderer extends ContentObjectRenderer
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 }
