@@ -10,6 +10,4 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 /**
  * @extends Repository<FoodOption>
  */
-class FoodOptionRepository extends Repository
-{
-}
+class FoodOptionRepository extends Repository {}

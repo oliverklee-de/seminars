@@ -7,6 +7,4 @@ namespace OliverKlee\Seminars\Domain\Model\Event;
 /**
  * This interface is required for events that contain topic information: `SingleEvent` and `EventTopic`.
  */
-interface EventTopicInterface extends EventInterface
-{
-}
+interface EventTopicInterface extends EventInterface {}

@@ -95,7 +95,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizard implements
             }
             $statistics[$key]['count']++;
         }
-        $duplicates = \array_filter($statistics, static fn (array $item): bool => $item['count'] > 1);
+        $duplicates = \array_filter($statistics, static fn(array $item): bool => $item['count'] > 1);
 
         $numberOfDeletions = 0;
         $connection = $this->connectionPool->getConnectionForTable('tx_seminars_seminars_place_mm');
