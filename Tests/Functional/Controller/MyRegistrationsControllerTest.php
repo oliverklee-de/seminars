@@ -241,6 +241,70 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function indexActionWithEventDateAndWithoutTopicDoesNotThrowAnException(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithEventDateWithoutTopic.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $this->executeFrontendSubRequest($request, $requestContext);
+
+        self::addToAssertionCount(1);
+    }
+
+    /**
+     * @test
+     */
+    public function indexActionWithEventOfDateAndMissingTopicRelationDoesNotThrowAnException(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithMissingTopicRelation.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $this->executeFrontendSubRequest($request, $requestContext);
+
+        self::addToAssertionCount(1);
+    }
+
+    /**
+     * @test
+     */
+    public function indexActionWithMissingRelationOfEventAndRegistrationsDoesNotThrowAnException(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithMissingRelationOfEventAndRegistrations.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $this->executeFrontendSubRequest($request, $requestContext);
+
+        self::addToAssertionCount(1);
+    }
+
+    /**
+     * @test
+     */
+    public function indexActionWithMissingRelationOfUidToEventDoesNotThrowAnException(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithMissingRelationOfUidToEvent.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $this->executeFrontendSubRequest($request, $requestContext);
+
+        self::addToAssertionCount(1);
+    }
+
+    /**
+     * @test
+     */
     public function indexActionRendersEventTypeOfSingleEventRegistrationOfTheLoggedInUser(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
