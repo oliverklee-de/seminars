@@ -10,12 +10,6 @@
                         </th>
                     </oelib:isFieldEnabled>
 
-                    <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventType">
-                        <th scope="col">
-                            <f:translate key="plugin.myRegistrations.index.heading.eventType"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="topic">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.topic"/>
@@ -40,6 +34,18 @@
                         </th>
                     </oelib:isFieldEnabled>
 
+                    <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="speakers">
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.index.heading.speakers"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+
+                    <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventType">
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.index.heading.eventType"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="attendanceMode">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.attendanceMode"/>
@@ -49,12 +55,6 @@
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="categories">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.categories"/>
-                        </th>
-                    </oelib:isFieldEnabled>
-
-                    <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="speakers">
-                        <th scope="col">
-                            <f:translate key="plugin.myRegistrations.index.heading.speakers"/>
                         </th>
                     </oelib:isFieldEnabled>
 
@@ -85,14 +85,6 @@
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="date">
                                 <td>
                                     <f:render partial="EventDate" arguments="{event: event}"/>
-                                </td>
-                            </oelib:isFieldEnabled>
-
-                            <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventType">
-                                <td>
-                                    <f:if condition="{event.eventType}">
-                                        {event.eventType.title}
-                                    </f:if>
                                 </td>
                             </oelib:isFieldEnabled>
 
@@ -128,6 +120,22 @@
                                 </td>
                             </oelib:isFieldEnabled>
 
+                            <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="speakers">
+                                <td>
+                                    <f:for each="{event.speakers}" as="speaker" iteration="iteration">
+                                        {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
+                                    </f:for>
+                                </td>
+                            </oelib:isFieldEnabled>
+
+                            <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="eventType">
+                                <td>
+                                    <f:if condition="{event.eventType}">
+                                        {event.eventType.title}
+                                    </f:if>
+                                </td>
+                            </oelib:isFieldEnabled>
+
                             <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="attendanceMode">
                                 <td>
                                     <f:if condition="{registration.attendanceMode}">
@@ -141,14 +149,6 @@
                                 <td>
                                     <f:for each="{event.categories}" as="category">
                                         {category.title}
-                                    </f:for>
-                                </td>
-                            </oelib:isFieldEnabled>
-
-                            <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="speakers">
-                                <td>
-                                    <f:for each="{event.speakers}" as="speaker" iteration="iteration">
-                                        {speaker.name}{f:if(condition: iteration.isLast, then: '', else: ', ')}
                                     </f:for>
                                 </td>
                             </oelib:isFieldEnabled>
