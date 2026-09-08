@@ -2357,7 +2357,7 @@ final class EventControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('<figure>', $html);
         self::assertStringContainsString('<img', $html);
-        self::assertStringContainsString('ImageFile.png', $html);
+        self::assertStringContainsString('ImageFile', $html);
     }
 
     /**
@@ -2376,7 +2376,7 @@ final class EventControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('<figure>', $html);
         self::assertStringContainsString('<img', $html);
-        self::assertStringContainsString('ImageFile.png', $html);
+        self::assertStringContainsString('ImageFile', $html);
     }
 
     /**
@@ -2445,6 +2445,42 @@ final class EventControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         self::assertMatchesRegularExpression('#<figcaption>\\s*Max\\s*</figcaption>#', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionRendersMaxWidthOfImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventWithProcessedImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('/_processed_/', $html);
+        self::assertStringContainsString('width="1280"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersMaxWidthOfImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventDateWithProcessedImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('/_processed_/', $html);
+        self::assertStringContainsString('width="1280"', $html);
     }
 
     /**
