@@ -2196,6 +2196,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.eventUid">
         <source>event UID</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.singleViewLink">
+        <source>link to the single view</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.registrationStatus">
         <source>registration status</source>
       </trans-unit>
@@ -2297,6 +2300,9 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.eventUid">
         <source>Event number</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.singleViewLink">
+        <source>Details</source>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus">
         <source>Status</source>

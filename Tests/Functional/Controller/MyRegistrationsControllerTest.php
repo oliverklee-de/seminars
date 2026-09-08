@@ -654,6 +654,27 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function indexActionLinksSingleViewLabelToShowAction(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/Registration.csv');
+
+        $request = (new InternalRequest())->withPageId(7);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        $label = LocalizationUtility::translate('plugin.myRegistrations.index.heading.singleViewLink', 'seminars');
+        self::assertIsString($label);
+        $urlPrefix = '/my-events\\?tx_seminars_myregistrations%5Baction%5D=show&amp;'
+            . 'tx_seminars_myregistrations%5Bcontroller%5D=MyRegistrations&amp;'
+            . 'tx_seminars_myregistrations%5Bregistration%5D=1';
+        self::assertMatchesRegularExpression('#' . $urlPrefix . '[^"]*">.*' . $label . '#s', $html);
+    }
+
+    /**
+     * @test
+     */
     public function showActionForNoUserLoggedInShowsPleaseLogInMessage(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
