@@ -100,8 +100,8 @@ class RegistrationBagBuilder extends AbstractBagBuilder
 
         $whereClause = 'tx_seminars_attendances.user = ' . $user->getUid();
         if ($user->getRegistration() !== null) {
-            $whereClause .= ' OR tx_seminars_attendances.uid = ' .
-                $user->getRegistration()->getUid();
+            $whereClause .= ' OR tx_seminars_attendances.uid = '
+                . $user->getRegistration()->getUid();
         }
 
         $this->whereClauseParts['attendee'] = $whereClause;
@@ -127,7 +127,7 @@ class RegistrationBagBuilder extends AbstractBagBuilder
     public function limitToExistingUsers(): void
     {
         $this->whereClauseParts['existingUsers'] = 'EXISTS (
-            SELECT * FROM fe_users WHERE fe_users.uid = tx_seminars_attendances.user' .
-            $this->pageRepository->enableFields('fe_users') . ')';
+            SELECT * FROM fe_users WHERE fe_users.uid = tx_seminars_attendances.user'
+            . $this->pageRepository->enableFields('fe_users') . ')';
     }
 }

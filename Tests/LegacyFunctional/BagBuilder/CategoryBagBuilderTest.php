@@ -510,8 +510,7 @@ final class CategoryBagBuilderTest extends FunctionalTestCase
         );
         $this->expectExceptionMessage(
             'The event UIDs were empty. This means limitToEvents has not been called. LimitToEvents has to be called before '
-            .
-            'calling this function.',
+            . 'calling this function.',
         );
 
         $this->subject->sortByRelationOrder();

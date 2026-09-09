@@ -1279,8 +1279,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->subject->notifyOrganizers($registration);
 
         self::assertStringContainsString(
-            $this->translate('label_vacancies') . ': ' .
-            $this->translate('label_unlimited'),
+            $this->translate('label_vacancies') . ': '
+            . $this->translate('label_unlimited'),
             $this->email->getTextBody(),
         );
     }

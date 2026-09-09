@@ -276,7 +276,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     public function indexActionWithMissingRelationOfEventAndRegistrationsDoesNotThrowAnException(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/indexAction/RegistrationWithMissingRelationOfEventAndRegistrations.csv');
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/indexAction/RegistrationWithMissingRelationOfEventAndRegistrations.csv',
+        );
 
         $request = (new InternalRequest())->withPageId(7);
         $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
@@ -1258,7 +1260,9 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     public function showActionForEventDateRendersTargetGroups(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForEventDateWithTopicAndTwoTargetGroups.csv');
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/showAction/RegistrationForEventDateWithTopicAndTwoTargetGroups.csv',
+        );
 
         $request = (new InternalRequest())
             ->withPageId(7)

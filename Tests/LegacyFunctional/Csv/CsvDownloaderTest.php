@@ -455,8 +455,8 @@ final class CsvDownloaderTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            "\r\n" . $firstRegistrationUid . "\r\n" .
-            $secondRegistrationUid . "\r\n",
+            "\r\n" . $firstRegistrationUid . "\r\n"
+            . $secondRegistrationUid . "\r\n",
             $this->subject->createAndOutputListOfRegistrations($this->eventUid),
         );
     }

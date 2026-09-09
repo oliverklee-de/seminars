@@ -49,7 +49,9 @@ final class TargetGroupRepositoryTest extends FunctionalTestCase
      */
     public function mapsAllModelFields(): void
     {
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/TargetGroupRepository/propertyMapping/TargetGroupWithAllFields.csv');
+        $this->importCSVDataSet(
+            __DIR__ . '/Fixtures/TargetGroupRepository/propertyMapping/TargetGroupWithAllFields.csv',
+        );
 
         $result = $this->subject->findByUid(1);
 

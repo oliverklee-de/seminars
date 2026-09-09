@@ -2826,8 +2826,8 @@ final class EventBagBuilderTest extends FunctionalTestCase
             \InvalidArgumentException::class,
         );
         $this->expectExceptionMessage(
-            'The event object given in the first parameter $event must ' .
-            'have an end date set.',
+            'The event object given in the first parameter $event must '
+            . 'have an end date set.',
         );
 
         $eventUid = $this->testingFramework->createRecord(

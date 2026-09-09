@@ -49,7 +49,8 @@
                                 <minitems>1</minitems>
                                 <maxitems>99</maxitems>
                                 <default>
-                                    title, eventType, registrationTop, dateAndTime, venue, categories, room, price, targetGroups, vacancies,
+                                    title, eventType, registrationTop, dateAndTime, venue, categories, room, price,
+                                    targetGroups, vacancies,
                                     image, teaser, description, speakers, registrationBottom
                                 </default>
                                 <items type="array">

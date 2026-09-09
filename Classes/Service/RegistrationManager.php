@@ -439,16 +439,16 @@ class RegistrationManager implements SingletonInterface
             return;
         }
 
-        $content = "BEGIN:VCALENDAR\r\n" .
-            "VERSION:2.0\r\n" .
-            "PRODID:TYPO3 CMS\r\n" .
-            "METHOD:PUBLISH\r\n" .
-            "BEGIN:VEVENT\r\n" .
-            'UID:' . \uniqid('event/' . $event->getUid() . '/', true) . "\r\n" .
-            'DTSTAMP:' . $this->formatDateForCalendar($this->nowAsTimestamp()) . "\r\n" .
-            'SUMMARY:' . $event->getDisplayTitle() . "\r\n" .
-            'DTSTART:' . $this->formatDateForCalendar($begin->getTimestamp()) . "\r\n" .
-            'DTEND:' . $this->formatDateForCalendar($end->getTimestamp()) . "\r\n";
+        $content = "BEGIN:VCALENDAR\r\n"
+            . "VERSION:2.0\r\n"
+            . "PRODID:TYPO3 CMS\r\n"
+            . "METHOD:PUBLISH\r\n"
+            . "BEGIN:VEVENT\r\n"
+            . 'UID:' . \uniqid('event/' . $event->getUid() . '/', true) . "\r\n"
+            . 'DTSTAMP:' . $this->formatDateForCalendar($this->nowAsTimestamp()) . "\r\n"
+            . 'SUMMARY:' . $event->getDisplayTitle() . "\r\n"
+            . 'DTSTART:' . $this->formatDateForCalendar($begin->getTimestamp()) . "\r\n"
+            . 'DTEND:' . $this->formatDateForCalendar($end->getTimestamp()) . "\r\n";
 
         if ($event->isAtLeastPartiallyOnSite() && $event->hasExactlyOneVenue()) {
             $firstVenue = $event->getFirstVenue();
@@ -466,8 +466,8 @@ class RegistrationManager implements SingletonInterface
         }
 
         $organizer = $event->getFirstOrganizer();
-        $content .= 'ORGANIZER;CN="' . \addcslashes($organizer->getName(), '"') .
-            '":mailto:' . $organizer->getEmailAddress() . "\r\n";
+        $content .= 'ORGANIZER;CN="' . \addcslashes($organizer->getName(), '"')
+            . '":mailto:' . $organizer->getEmailAddress() . "\r\n";
         $content .= "END:VEVENT\r\nEND:VCALENDAR";
 
         $emailBuilder->attach($content, 'text/calendar; charset="utf-8"; component="vevent"; method="publish"');

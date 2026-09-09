@@ -32,13 +32,13 @@ class OrganizerBagBuilder extends AbstractBagBuilder
      */
     public function limitToEvent(int $eventUid): void
     {
-        $this->whereClauseParts['event'] = 'EXISTS (' .
-            'SELECT * FROM tx_seminars_seminars_organizers_mm' .
-            ' WHERE uid_local = ' . $eventUid . ' AND uid_foreign = ' .
-            'tx_seminars_organizers.uid)';
+        $this->whereClauseParts['event'] = 'EXISTS ('
+            . 'SELECT * FROM tx_seminars_seminars_organizers_mm'
+            . ' WHERE uid_local = ' . $eventUid . ' AND uid_foreign = '
+            . 'tx_seminars_organizers.uid)';
 
-        $this->orderBy = '(SELECT sorting ' .
-            'FROM tx_seminars_seminars_organizers_mm WHERE uid_local = ' .
-            $eventUid . ' AND uid_foreign = tx_seminars_organizers.uid)';
+        $this->orderBy = '(SELECT sorting '
+            . 'FROM tx_seminars_seminars_organizers_mm WHERE uid_local = '
+            . $eventUid . ' AND uid_foreign = tx_seminars_organizers.uid)';
     }
 }

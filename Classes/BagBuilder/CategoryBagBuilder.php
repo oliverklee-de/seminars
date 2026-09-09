@@ -57,11 +57,11 @@ class CategoryBagBuilder extends AbstractBagBuilder
             );
         }
 
-        $this->whereClauseParts['event'] = 'EXISTS (' .
-            'SELECT * FROM tx_seminars_seminars_categories_mm' .
-            ' WHERE tx_seminars_seminars_categories_mm.uid_local IN(' .
-            $cleanUids . ') AND tx_seminars_seminars_categories_mm' .
-            '.uid_foreign = tx_seminars_categories.uid)';
+        $this->whereClauseParts['event'] = 'EXISTS ('
+            . 'SELECT * FROM tx_seminars_seminars_categories_mm'
+            . ' WHERE tx_seminars_seminars_categories_mm.uid_local IN('
+            . $cleanUids . ') AND tx_seminars_seminars_categories_mm'
+            . '.uid_foreign = tx_seminars_categories.uid)';
 
         $this->eventUids = $cleanUids;
     }
@@ -78,17 +78,17 @@ class CategoryBagBuilder extends AbstractBagBuilder
     {
         if ($this->eventUids === '') {
             throw new \BadMethodCallException(
-                'The event UIDs were empty. This means limitToEvents has not been called. ' .
-                'LimitToEvents has to be called before calling this function.',
+                'The event UIDs were empty. This means limitToEvents has not been called. '
+                . 'LimitToEvents has to be called before calling this function.',
                 1333292662,
             );
         }
 
         $this->addAdditionalTableName('tx_seminars_seminars_categories_mm');
-        $this->whereClauseParts['category'] = 'tx_seminars_categories.uid = ' .
-            'tx_seminars_seminars_categories_mm.uid_foreign AND ' .
-            'tx_seminars_seminars_categories_mm.uid_local IN (' .
-            $this->eventUids . ')';
+        $this->whereClauseParts['category'] = 'tx_seminars_categories.uid = '
+            . 'tx_seminars_seminars_categories_mm.uid_foreign AND '
+            . 'tx_seminars_seminars_categories_mm.uid_local IN ('
+            . $this->eventUids . ')';
         $this->orderBy = 'tx_seminars_seminars_categories_mm.sorting ASC';
     }
 }

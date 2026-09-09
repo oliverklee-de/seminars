@@ -5446,8 +5446,8 @@ final class LegacyEventTest extends FunctionalTestCase
         $this->subject->setDescription('foo bar');
 
         self::assertMatchesRegularExpression(
-            '/.*' . $this->subject->getTitle() . '.*\\n.*' .
-            $this->subject->getRecordPropertyString('description') . '/',
+            '/.*' . $this->subject->getTitle() . '.*\\n.*'
+            . $this->subject->getRecordPropertyString('description') . '/',
             $this->subject->dumpSeminarValues('title,description'),
         );
     }
@@ -5500,8 +5500,8 @@ final class LegacyEventTest extends FunctionalTestCase
         $this->subject->setUnlimitedVacancies();
 
         self::assertSame(
-            $this->translate('label_vacancies') . ': ' .
-            $this->translate('label_unlimited') . "\n",
+            $this->translate('label_vacancies') . ': '
+            . $this->translate('label_unlimited') . "\n",
             $this->subject->dumpSeminarValues('vacancies'),
         );
     }
