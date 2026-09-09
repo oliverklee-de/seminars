@@ -121,8 +121,8 @@ class EventDetailsElement extends GroupElement
     {
         $glue = self::SINGLE_EVENT_CLOSING_WRAPPER . "\n" . self::SINGLE_EVENT_OPENING_WRAPPER;
 
-        return self::ALL_EVENTS_OPENING_WRAPPER . "\n" . self::SINGLE_EVENT_OPENING_WRAPPER .
-            \implode($glue, $allRenderedEventData) .
-            self::SINGLE_EVENT_CLOSING_WRAPPER . "\n" . self::ALL_EVENTS_CLOSING_WRAPPER;
+        return self::ALL_EVENTS_OPENING_WRAPPER . "\n" . self::SINGLE_EVENT_OPENING_WRAPPER
+            . \implode($glue, $allRenderedEventData)
+            . self::SINGLE_EVENT_CLOSING_WRAPPER . "\n" . self::ALL_EVENTS_CLOSING_WRAPPER;
     }
 }

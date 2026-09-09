@@ -625,9 +625,9 @@ final class TemplateHelperTest extends UnitTestCase
     public function getSubpartFromTemplateCanContainUtf8Umlauts(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###MY_SUBPART### -->' .
-            'äöüßÄÖÜßéèáàóò' .
-            '<!-- ###MY_SUBPART### -->',
+            '<!-- ###MY_SUBPART### -->'
+            . 'äöüßÄÖÜßéèáàóò'
+            . '<!-- ###MY_SUBPART### -->',
         );
 
         self::assertSame(
@@ -643,9 +643,9 @@ final class TemplateHelperTest extends UnitTestCase
     {
         // 228 = ä, 223 = ß (in ISO8859-1)
         $this->subject->processTemplate(
-            '<!-- ###MY_SUBPART### -->' .
-            \chr(228) . \chr(223) .
-            '<!-- ###MY_SUBPART### -->',
+            '<!-- ###MY_SUBPART### -->'
+            . \chr(228) . \chr(223)
+            . '<!-- ###MY_SUBPART### -->',
         );
 
         self::assertSame(
@@ -789,9 +789,9 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayAndGetHiddenSubpartReturnsEmptySubpartContent(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###MY_SUBPART### -->' .
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->',
+            '<!-- ###MY_SUBPART### -->'
+            . 'Some text. '
+            . '<!-- ###MY_SUBPART### -->',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
 
@@ -2072,8 +2072,8 @@ final class TemplateHelperTest extends UnitTestCase
     public function getSubpartReturnsContentOfVisibleSubpartThatWasFilledWhenHidden(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###MY_SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->',
+            '<!-- ###MY_SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->',
         );
         $this->subject->hideSubparts('MY_SUBPART');
         $this->subject->setSubpart('MY_SUBPART', 'foo');
@@ -2090,16 +2090,16 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayWithCompleteTemplateHidesSubpart(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2110,16 +2110,16 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayWithCompleteTemplateHidesOverwrittenSubpart(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->setSubpart('MY_SUBPART', 'More text. ');
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2130,17 +2130,17 @@ final class TemplateHelperTest extends UnitTestCase
     public function unhideSubpartsArrayWithCompleteTemplateUnhidesSubpart(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->unhideSubpartsArray(['MY_SUBPART']);
         self::assertSame(
-            'Some text. ' .
-            'More text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2151,18 +2151,18 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayWithCompleteTemplateHidesAndUnhidesSubpart(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART']);
         self::assertSame(
-            'Some text. ' .
-            'More text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2173,18 +2173,18 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayHidesSubpartInSubpart(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###OUTER_SUBPART### -->' .
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.' .
-            '<!-- ###OUTER_SUBPART### -->',
+            '<!-- ###OUTER_SUBPART### -->'
+            . 'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.'
+            . '<!-- ###OUTER_SUBPART### -->',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart('OUTER_SUBPART'),
         );
     }
@@ -2195,20 +2195,20 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayHidesSubpartInNestedSubpart(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###SINGLE_VIEW###  -->' .
-            '<!-- ###FIELD_WRAPPER_TITLE### -->' .
-            '<h3 class="seminars-item-title">Title' .
-            '<!-- ###FIELD_WRAPPER_SUBTITLE### -->' .
-            '<span class="seminars-item-subtitle"> - ###SUBTITLE###</span>' .
-            '<!-- ###FIELD_WRAPPER_SUBTITLE### -->' .
-            '</h3>' .
-            '<!-- ###FIELD_WRAPPER_TITLE### -->' .
-            '<!-- ###SINGLE_VIEW###  -->',
+            '<!-- ###SINGLE_VIEW###  -->'
+            . '<!-- ###FIELD_WRAPPER_TITLE### -->'
+            . '<h3 class="seminars-item-title">Title'
+            . '<!-- ###FIELD_WRAPPER_SUBTITLE### -->'
+            . '<span class="seminars-item-subtitle"> - ###SUBTITLE###</span>'
+            . '<!-- ###FIELD_WRAPPER_SUBTITLE### -->'
+            . '</h3>'
+            . '<!-- ###FIELD_WRAPPER_TITLE### -->'
+            . '<!-- ###SINGLE_VIEW###  -->',
         );
         $this->subject->hideSubpartsArray(['FIELD_WRAPPER_SUBTITLE']);
         self::assertSame(
-            '<h3 class="seminars-item-title">Title' .
-            '</h3>',
+            '<h3 class="seminars-item-title">Title'
+            . '</h3>',
             $this->subject->getSubpart('SINGLE_VIEW'),
         );
     }
@@ -2219,19 +2219,19 @@ final class TemplateHelperTest extends UnitTestCase
     public function unhideSubpartsArrayUnhidesSubpartInSubpart(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###OUTER_SUBPART### -->' .
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.' .
-            '<!-- ###OUTER_SUBPART### -->',
+            '<!-- ###OUTER_SUBPART### -->'
+            . 'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.'
+            . '<!-- ###OUTER_SUBPART### -->',
         );
         $this->subject->unhideSubpartsArray(['MY_SUBPART']);
         self::assertSame(
-            'Some text. ' .
-            'More text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text. '
+            . 'Even more text.',
             $this->subject->getSubpart('OUTER_SUBPART'),
         );
     }
@@ -2242,20 +2242,20 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesAndUnhidesSubpartInSubpart(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###OUTER_SUBPART### -->' .
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.' .
-            '<!-- ###OUTER_SUBPART### -->',
+            '<!-- ###OUTER_SUBPART### -->'
+            . 'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.'
+            . '<!-- ###OUTER_SUBPART### -->',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART']);
         self::assertSame(
-            'Some text. ' .
-            'More text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text. '
+            . 'Even more text.',
             $this->subject->getSubpart('OUTER_SUBPART'),
         );
     }
@@ -2266,20 +2266,20 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayHidesTwoSubpartsSeparately(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            'More text here.' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART_1### -->'
+            . 'More text here.'
+            . '<!-- ###MY_SUBPART_1### -->'
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART_1']);
         $this->subject->hideSubpartsArray(['MY_SUBPART_2']);
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2290,19 +2290,19 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayHidesTwoSubparts(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            'More text here.' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART_1### -->'
+            . 'More text here.'
+            . '<!-- ###MY_SUBPART_1### -->'
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART_1', 'MY_SUBPART_2']);
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2313,19 +2313,19 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayHidesTwoSubpartsInReverseOrder(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            'More text here.' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART_1### -->'
+            . 'More text here.'
+            . '<!-- ###MY_SUBPART_1### -->'
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART_2', 'MY_SUBPART_1']);
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2336,24 +2336,24 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesAndUnhidesTwoSubpartsSeparately(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            'More text here.' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART_1### -->'
+            . 'More text here.'
+            . '<!-- ###MY_SUBPART_1### -->'
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART_1']);
         $this->subject->hideSubpartsArray(['MY_SUBPART_2']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART_1']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART_2']);
         self::assertSame(
-            'Some text. ' .
-            'More text here.' .
-            'More text there. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text here.'
+            . 'More text there. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2364,22 +2364,22 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesAndUnhidesTwoSubpartsInSameOrder(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            'More text here.' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART_1### -->'
+            . 'More text here.'
+            . '<!-- ###MY_SUBPART_1### -->'
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART_1', 'MY_SUBPART_2']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART_1', 'MY_SUBPART_2']);
         self::assertSame(
-            'Some text. ' .
-            'More text here.' .
-            'More text there. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text here.'
+            . 'More text there. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2390,22 +2390,22 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesAndUnhidesTwoSubpartsInReverseOrder(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            'More text here.' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART_1### -->'
+            . 'More text here.'
+            . '<!-- ###MY_SUBPART_1### -->'
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART_1', 'MY_SUBPART_2']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART_2', 'MY_SUBPART_1']);
         self::assertSame(
-            'Some text. ' .
-            'More text here.' .
-            'More text there. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text here.'
+            . 'More text there. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2416,21 +2416,21 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesTwoSubpartsAndUnhidesTheFirst(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            'More text here.' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART_1### -->'
+            . 'More text here.'
+            . '<!-- ###MY_SUBPART_1### -->'
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART_1', 'MY_SUBPART_2']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART_1']);
         self::assertSame(
-            'Some text. ' .
-            'More text here.' .
-            'Even more text.',
+            'Some text. '
+            . 'More text here.'
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2441,21 +2441,21 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesTwoSubpartsAndUnhidesTheSecond(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            'More text here.' .
-            '<!-- ###MY_SUBPART_1### -->' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART_1### -->'
+            . 'More text here.'
+            . '<!-- ###MY_SUBPART_1### -->'
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART_1', 'MY_SUBPART_2']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART_2']);
         self::assertSame(
-            'Some text. ' .
-            'More text there. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text there. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2466,11 +2466,11 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesPermanentlyHiddenSubpart(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text here. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text here. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->unhideSubpartsArray(
@@ -2478,8 +2478,8 @@ final class TemplateHelperTest extends UnitTestCase
             ['MY_SUBPART'],
         );
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2490,11 +2490,11 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesOneOfTwoPermanentlyHiddenSubparts(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text here. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text here. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->unhideSubpartsArray(
@@ -2502,8 +2502,8 @@ final class TemplateHelperTest extends UnitTestCase
             ['MY_SUBPART', 'MY_OTHER_SUBPART'],
         );
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2514,11 +2514,11 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayUnhidesSubpartAndPermanentlyHidesAnother(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text here. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text here. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->unhideSubpartsArray(
@@ -2526,9 +2526,9 @@ final class TemplateHelperTest extends UnitTestCase
             ['MY_OTHER_SUBPART'],
         );
         self::assertSame(
-            'Some text. ' .
-            'More text here. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text here. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2539,13 +2539,13 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesPermanentlyHiddenSubpartWithPrefix(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###SUBPART### -->' .
-            'Some text. ' .
-            '<!-- ###SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text here. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            '<!-- ###SUBPART### -->'
+            . 'Some text. '
+            . '<!-- ###SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text here. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->unhideSubpartsArray(
@@ -2554,8 +2554,8 @@ final class TemplateHelperTest extends UnitTestCase
             'MY',
         );
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2566,13 +2566,13 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesOneOfTwoPermanentlyHiddenSubpartsWithPrefix(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###SUBPART### -->' .
-            'Some text. ' .
-            '<!-- ###SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text here. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            '<!-- ###SUBPART### -->'
+            . 'Some text. '
+            . '<!-- ###SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text here. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->unhideSubpartsArray(
@@ -2581,8 +2581,8 @@ final class TemplateHelperTest extends UnitTestCase
             'MY',
         );
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2593,13 +2593,13 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayUnhidesSubpartAndPermanentlyHidesAnotherWithPrefix(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###SUBPART### -->' .
-            'Some text. ' .
-            '<!-- ###SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text here. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            '<!-- ###SUBPART### -->'
+            . 'Some text. '
+            . '<!-- ###SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text here. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->unhideSubpartsArray(
@@ -2608,9 +2608,9 @@ final class TemplateHelperTest extends UnitTestCase
             'MY',
         );
         self::assertSame(
-            'Some text. ' .
-            'More text here. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text here. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -2621,8 +2621,8 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayResultsInNotVisibleSubpart(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###MY_SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->',
+            '<!-- ###MY_SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         self::assertFalse(
@@ -2636,8 +2636,8 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayResultsInVisibleSubpart(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###MY_SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->',
+            '<!-- ###MY_SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART']);
@@ -2652,8 +2652,8 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayWithFilledSubpartWhenHiddenReturnsContentOfUnhiddenSubpart(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###MY_SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->',
+            '<!-- ###MY_SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART']);
         $this->subject->setSubpart('MY_SUBPART', 'foo');
@@ -2868,8 +2868,8 @@ final class TemplateHelperTest extends UnitTestCase
     public function setSubpartAndGetSubpartCanHaveUtf8UmlautsInSubpartContent(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###MY_SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->',
+            '<!-- ###MY_SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->',
         );
         $this->subject->setSubpart('MY_SUBPART', 'äöüßÄÖÜßéèáàóò');
 
@@ -2885,8 +2885,8 @@ final class TemplateHelperTest extends UnitTestCase
     public function setSubpartAndGetSubpartCanHaveIso88591UmlautsInSubpartContent(): void
     {
         $this->subject->processTemplate(
-            '<!-- ###MY_SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->',
+            '<!-- ###MY_SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->',
         );
         // 228 = ä, 223 = ß (in ISO8859-1)
         $this->subject->setSubpart('MY_SUBPART', \chr(228) . \chr(223));
@@ -3175,20 +3175,20 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayHidesSubpartWithPrefix(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###FIRST_MY_SUBPART### -->' .
-            'More text here. ' .
-            '<!-- ###FIRST_MY_SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###FIRST_MY_SUBPART### -->'
+            . 'More text here. '
+            . '<!-- ###FIRST_MY_SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['MY_SUBPART'], 'FIRST');
         self::assertSame(
-            'Some text. ' .
-            'More text there. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text there. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -3199,22 +3199,22 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideSubpartsArrayHidesTwoSubpartsWithPrefix(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###FIRST_MY_SUBPART_1### -->' .
-            'More text here. ' .
-            '<!-- ###FIRST_MY_SUBPART_1### -->' .
-            '<!-- ###FIRST_MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###FIRST_MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###FIRST_MY_SUBPART_1### -->'
+            . 'More text here. '
+            . '<!-- ###FIRST_MY_SUBPART_1### -->'
+            . '<!-- ###FIRST_MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###FIRST_MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(
             ['1', '2'],
             'FIRST_MY_SUBPART',
         );
         self::assertSame(
-            'Some text. ' .
-            'Even more text.',
+            'Some text. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -3225,22 +3225,22 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesAndUnhidesSubpartWithPrefix(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###FIRST_MY_SUBPART### -->' .
-            'More text here. ' .
-            '<!-- ###FIRST_MY_SUBPART### -->' .
-            '<!-- ###MY_SUBPART### -->' .
-            'More text there. ' .
-            '<!-- ###MY_SUBPART### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###FIRST_MY_SUBPART### -->'
+            . 'More text here. '
+            . '<!-- ###FIRST_MY_SUBPART### -->'
+            . '<!-- ###MY_SUBPART### -->'
+            . 'More text there. '
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['FIRST_MY_SUBPART']);
         $this->subject->unhideSubpartsArray(['MY_SUBPART'], [''], 'FIRST');
         self::assertSame(
-            'Some text. ' .
-            'More text here. ' .
-            'More text there. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text here. '
+            . 'More text there. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }
@@ -3251,14 +3251,14 @@ final class TemplateHelperTest extends UnitTestCase
     public function hideAndUnhideSubpartsArrayHidesAndUnhidesTwoSubpartsWithPrefix(): void
     {
         $this->subject->processTemplate(
-            'Some text. ' .
-            '<!-- ###FIRST_MY_SUBPART_1### -->' .
-            'More text here. ' .
-            '<!-- ###FIRST_MY_SUBPART_1### -->' .
-            '<!-- ###FIRST_MY_SUBPART_2### -->' .
-            'More text there. ' .
-            '<!-- ###FIRST_MY_SUBPART_2### -->' .
-            'Even more text.',
+            'Some text. '
+            . '<!-- ###FIRST_MY_SUBPART_1### -->'
+            . 'More text here. '
+            . '<!-- ###FIRST_MY_SUBPART_1### -->'
+            . '<!-- ###FIRST_MY_SUBPART_2### -->'
+            . 'More text there. '
+            . '<!-- ###FIRST_MY_SUBPART_2### -->'
+            . 'Even more text.',
         );
         $this->subject->hideSubpartsArray(['FIRST_MY_SUBPART_1']);
         $this->subject->hideSubpartsArray(['FIRST_MY_SUBPART_2']);
@@ -3268,10 +3268,10 @@ final class TemplateHelperTest extends UnitTestCase
             'FIRST_MY_SUBPART',
         );
         self::assertSame(
-            'Some text. ' .
-            'More text here. ' .
-            'More text there. ' .
-            'Even more text.',
+            'Some text. '
+            . 'More text here. '
+            . 'More text there. '
+            . 'Even more text.',
             $this->subject->getSubpart(),
         );
     }

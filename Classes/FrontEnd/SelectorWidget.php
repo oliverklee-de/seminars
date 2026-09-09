@@ -330,8 +330,8 @@ class SelectorWidget extends AbstractView
                 break;
             default:
                 throw new \InvalidArgumentException(
-                    'The given search field . "' . $searchField . '" was not an allowed value. ' .
-                    'Allowed values are: "event_type", "city", "place" or "organizer".',
+                    'The given search field . "' . $searchField . '" was not an allowed value. '
+                    . 'Allowed values are: "event_type", "city", "place" or "organizer".',
                     1333293298,
                 );
         }

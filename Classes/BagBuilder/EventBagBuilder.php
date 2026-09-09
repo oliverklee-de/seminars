@@ -98,13 +98,13 @@ class EventBagBuilder extends AbstractBagBuilder
 
         $uidMatcher = ' IN(' . \implode(',', $this->cleanIntegers($directMatchUids)) . ')';
         $this->whereClauseParts['categories'] =
-            '(' .
-            '(object_type <> ' . EventInterface::TYPE_EVENT_DATE . ' AND ' .
-            'tx_seminars_seminars.uid' . $uidMatcher . ')' .
-            ' OR ' .
-            '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND ' .
-            'tx_seminars_seminars.topic' . $uidMatcher . ')' .
-            ')';
+            '('
+            . '(object_type <> ' . EventInterface::TYPE_EVENT_DATE . ' AND '
+            . 'tx_seminars_seminars.uid' . $uidMatcher . ')'
+            . ' OR '
+            . '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND '
+            . 'tx_seminars_seminars.topic' . $uidMatcher . ')'
+            . ')';
     }
 
     /**
@@ -121,12 +121,12 @@ class EventBagBuilder extends AbstractBagBuilder
             return;
         }
 
-        $this->whereClauseParts['places'] = 'EXISTS (SELECT * FROM ' .
-            'tx_seminars_seminars_place_mm WHERE ' .
-            'tx_seminars_seminars_place_mm.uid_local = ' .
-            'tx_seminars_seminars.uid AND ' .
-            'tx_seminars_seminars_place_mm.uid_foreign IN(' . \implode(',', $this->cleanIntegers($uids)) . ')' .
-            ')';
+        $this->whereClauseParts['places'] = 'EXISTS (SELECT * FROM '
+            . 'tx_seminars_seminars_place_mm WHERE '
+            . 'tx_seminars_seminars_place_mm.uid_local = '
+            . 'tx_seminars_seminars.uid AND '
+            . 'tx_seminars_seminars_place_mm.uid_foreign IN(' . \implode(',', $this->cleanIntegers($uids)) . ')'
+            . ')';
     }
 
     /**
@@ -180,31 +180,31 @@ class EventBagBuilder extends AbstractBagBuilder
                 // 2. If the event has an end date, does it lie in the past?, OR
                 // 3. If the event has *no* end date, does the *begin* date lie
                 //    in the past?
-                $where = 'tx_seminars_seminars.begin_date <> 0 ' .
-                    'AND ( (tx_seminars_seminars.end_date <> 0 ' .
-                    'AND tx_seminars_seminars.end_date <= ' . $now .
-                    ') OR (' .
-                    'tx_seminars_seminars.end_date = 0 ' .
-                    'AND tx_seminars_seminars.begin_date <= ' . $now .
-                    ')' .
-                    ')';
+                $where = 'tx_seminars_seminars.begin_date <> 0 '
+                    . 'AND ( (tx_seminars_seminars.end_date <> 0 '
+                    . 'AND tx_seminars_seminars.end_date <= ' . $now
+                    . ') OR ('
+                    . 'tx_seminars_seminars.end_date = 0 '
+                    . 'AND tx_seminars_seminars.begin_date <= ' . $now
+                    . ')'
+                    . ')';
                 break;
             case 'pastAndCurrent':
                 // As past and current events, shows the following:
                 // 1. Generally, only events that have a begin date set, AND
                 // 2. the begin date lies in the past.
                 // (So events without a begin date won't be listed here.)
-                $where = 'tx_seminars_seminars.begin_date <> 0 ' .
-                    'AND tx_seminars_seminars.begin_date <= ' . $now;
+                $where = 'tx_seminars_seminars.begin_date <> 0 '
+                    . 'AND tx_seminars_seminars.begin_date <= ' . $now;
                 break;
             case 'current':
                 // As current events, shows the following:
                 // 1. Events that have both a begin and end date, AND
                 // 2. The begin date lies in the past, AND
                 // 3. The end date lies in the future.
-                $where = 'tx_seminars_seminars.begin_date <> 0 ' .
-                    'AND tx_seminars_seminars.begin_date <= ' . $now . ' ' .
-                    // This implies that end_date is != 0.
+                $where = 'tx_seminars_seminars.begin_date <> 0 '
+                    . 'AND tx_seminars_seminars.begin_date <= ' . $now . ' '
+                    . // This implies that end_date is != 0.
                     'AND tx_seminars_seminars.end_date > ' . $now;
                 break;
             case 'currentAndUpcoming':
@@ -214,20 +214,20 @@ class EventBagBuilder extends AbstractBagBuilder
                 //    in the future (open-ended events that have not started yet),
                 //    OR
                 // 3. Events that have no (begin) date set yet.
-                $where = 'tx_seminars_seminars.end_date > ' . $now .
-                    ' OR (' .
-                    'tx_seminars_seminars.end_date = 0 ' .
-                    'AND tx_seminars_seminars.begin_date > ' . $now .
-                    ') OR ' .
-                    'tx_seminars_seminars.begin_date = 0';
+                $where = 'tx_seminars_seminars.end_date > ' . $now
+                    . ' OR ('
+                    . 'tx_seminars_seminars.end_date = 0 '
+                    . 'AND tx_seminars_seminars.begin_date > ' . $now
+                    . ') OR '
+                    . 'tx_seminars_seminars.begin_date = 0';
                 break;
             case 'upcoming':
                 // As upcoming events, shows the following:
                 // 1. Events with an existing begin date in the future
                 //    (events that have not started yet), OR
                 // 3. Events that have no (begin) date set yet.
-                $where = 'tx_seminars_seminars.begin_date > ' . $now .
-                    ' OR tx_seminars_seminars.begin_date = 0';
+                $where = 'tx_seminars_seminars.begin_date > ' . $now
+                    . ' OR tx_seminars_seminars.begin_date = 0';
                 break;
             case 'upcomingWithBeginDate':
                 $where = 'tx_seminars_seminars.begin_date > ' . $now;
@@ -240,16 +240,16 @@ class EventBagBuilder extends AbstractBagBuilder
                 //    with an existing begin date in the future
                 //    (events that have not started yet), OR
                 // 3. Events that have no (begin) date set yet.
-                $where = '(' .
-                    'tx_seminars_seminars.deadline_registration <> 0 ' .
-                    'AND tx_seminars_seminars.deadline_registration > ' . $now .
-                    ') OR (' .
-                    'tx_seminars_seminars.deadline_registration = 0 ' .
-                    'AND (' .
-                    'tx_seminars_seminars.begin_date > ' . $now .
-                    ' OR tx_seminars_seminars.begin_date = 0' .
-                    ')' .
-                    ')';
+                $where = '('
+                    . 'tx_seminars_seminars.deadline_registration <> 0 '
+                    . 'AND tx_seminars_seminars.deadline_registration > ' . $now
+                    . ') OR ('
+                    . 'tx_seminars_seminars.deadline_registration = 0 '
+                    . 'AND ('
+                    . 'tx_seminars_seminars.begin_date > ' . $now
+                    . ' OR tx_seminars_seminars.begin_date = 0'
+                    . ')'
+                    . ')';
                 break;
             case 'today':
                 $day = (int)\date('j', $now);
@@ -259,16 +259,16 @@ class EventBagBuilder extends AbstractBagBuilder
                 $todayBegin = \mktime(0, 0, 0, $month, $day, $year);
                 $todayEnd = \mktime(23, 59, 59, $month, $day, $year);
 
-                $where = '(' .
-                    'tx_seminars_seminars.begin_date BETWEEN ' .
-                    $todayBegin . ' AND ' . $todayEnd .
-                    ') OR ( ' .
-                    'tx_seminars_seminars.end_date BETWEEN ' .
-                    $todayBegin . ' AND ' . $todayEnd .
-                    ') OR ( ' .
-                    'tx_seminars_seminars.begin_date < ' . $todayBegin .
-                    ' AND tx_seminars_seminars.end_date > ' . $todayEnd .
-                    ')';
+                $where = '('
+                    . 'tx_seminars_seminars.begin_date BETWEEN '
+                    . $todayBegin . ' AND ' . $todayEnd
+                    . ') OR ( '
+                    . 'tx_seminars_seminars.end_date BETWEEN '
+                    . $todayBegin . ' AND ' . $todayEnd
+                    . ') OR ( '
+                    . 'tx_seminars_seminars.begin_date < ' . $todayBegin
+                    . ' AND tx_seminars_seminars.end_date > ' . $todayEnd
+                    . ')';
                 break;
             case 'all':
                 // The fall-through is intentional.
@@ -299,16 +299,16 @@ class EventBagBuilder extends AbstractBagBuilder
         $safeEventTypeUids = \implode(',', $this->cleanIntegers($uids));
         $this->whereClauseParts['eventTypes'] = '(
             (
-                object_type IN(' .
-            EventInterface::TYPE_SINGLE_EVENT . ',' . EventInterface::TYPE_EVENT_TOPIC .
-            ') AND event_type IN(' . $safeEventTypeUids . ')
+                object_type IN('
+            . EventInterface::TYPE_SINGLE_EVENT . ',' . EventInterface::TYPE_EVENT_TOPIC
+            . ') AND event_type IN(' . $safeEventTypeUids . ')
             ) OR (
                 object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND EXISTS (
                     SELECT * FROM tx_seminars_seminars AS topic
                     WHERE topic.uid = tx_seminars_seminars.topic AND topic.event_type IN(' . $safeEventTypeUids . ')
                 )
-            )' .
-            ')';
+            )'
+            . ')';
     }
 
     /**
@@ -324,17 +324,17 @@ class EventBagBuilder extends AbstractBagBuilder
             return;
         }
 
-        $this->whereClauseParts['cities'] = 'tx_seminars_seminars.uid IN(' .
-            'SELECT tx_seminars_seminars.uid' .
-            ' FROM tx_seminars_seminars' .
-            ' LEFT JOIN tx_seminars_seminars_place_mm ON ' .
-            'tx_seminars_seminars.uid=' .
-            'tx_seminars_seminars_place_mm.uid_local' .
-            ' LEFT JOIN tx_seminars_sites ON ' .
-            'tx_seminars_seminars_place_mm.uid_foreign = ' .
-            'tx_seminars_sites.uid' .
-            ' WHERE tx_seminars_sites.city IN(' . $this->quoteAndImplodeForDatabaseQuery($cities) . ')' .
-            ')';
+        $this->whereClauseParts['cities'] = 'tx_seminars_seminars.uid IN('
+            . 'SELECT tx_seminars_seminars.uid'
+            . ' FROM tx_seminars_seminars'
+            . ' LEFT JOIN tx_seminars_seminars_place_mm ON '
+            . 'tx_seminars_seminars.uid='
+            . 'tx_seminars_seminars_place_mm.uid_local'
+            . ' LEFT JOIN tx_seminars_sites ON '
+            . 'tx_seminars_seminars_place_mm.uid_foreign = '
+            . 'tx_seminars_sites.uid'
+            . ' WHERE tx_seminars_sites.city IN(' . $this->quoteAndImplodeForDatabaseQuery($cities) . ')'
+            . ')';
     }
 
     /**
@@ -357,8 +357,8 @@ class EventBagBuilder extends AbstractBagBuilder
      */
     public function limitToTopicRecords(): void
     {
-        $this->whereClauseParts['topic'] = 'tx_seminars_seminars' .
-            '.object_type = ' . EventInterface::TYPE_EVENT_TOPIC;
+        $this->whereClauseParts['topic'] = 'tx_seminars_seminars'
+            . '.object_type = ' . EventInterface::TYPE_EVENT_TOPIC;
     }
 
     /**
@@ -374,10 +374,10 @@ class EventBagBuilder extends AbstractBagBuilder
      */
     public function limitToDateAndSingleRecords(): void
     {
-        $this->whereClauseParts['date_single'] = '(tx_seminars_seminars' .
-            '.object_type = ' . EventInterface::TYPE_EVENT_DATE . ' OR ' .
-            'tx_seminars_seminars.object_type = ' .
-            EventInterface::TYPE_SINGLE_EVENT . ')';
+        $this->whereClauseParts['date_single'] = '(tx_seminars_seminars'
+            . '.object_type = ' . EventInterface::TYPE_EVENT_DATE . ' OR '
+            . 'tx_seminars_seminars.object_type = '
+            . EventInterface::TYPE_SINGLE_EVENT . ')';
     }
 
     /**
@@ -407,8 +407,8 @@ class EventBagBuilder extends AbstractBagBuilder
         $midnightBeforeEndDate = $endDate - ($endDate % self::SECONDS_PER_DAY);
         $secondMidnightAfterEndDate = $midnightBeforeEndDate + 2 * self::SECONDS_PER_DAY;
 
-        $this->whereClauseParts['next_day'] = 'begin_date>=' . $endDate .
-            ' AND begin_date<' . $secondMidnightAfterEndDate;
+        $this->whereClauseParts['next_day'] = 'begin_date>=' . $endDate
+            . ' AND begin_date<' . $secondMidnightAfterEndDate;
     }
 
     /**
@@ -426,11 +426,11 @@ class EventBagBuilder extends AbstractBagBuilder
             );
         }
 
-        $this->whereClauseParts['other_dates'] = '(' .
-            'tx_seminars_seminars.topic = ' . $event->getTopicOrSelfUid() .
-            ' AND object_type = ' . EventInterface::TYPE_EVENT_DATE .
-            ' AND uid <> ' . $event->getUid() .
-            ')';
+        $this->whereClauseParts['other_dates'] = '('
+            . 'tx_seminars_seminars.topic = ' . $event->getTopicOrSelfUid()
+            . ' AND object_type = ' . EventInterface::TYPE_EVENT_DATE
+            . ' AND uid <> ' . $event->getUid()
+            . ')';
     }
 
     /**
@@ -582,14 +582,14 @@ class EventBagBuilder extends AbstractBagBuilder
     private function getSearchWherePartForEventTypes(string $quotedSearchWord): array
     {
         return [
-            'EXISTS (' .
-            'SELECT * FROM tx_seminars_event_types, tx_seminars_seminars s1, tx_seminars_seminars s2' .
-            ' WHERE (MATCH (tx_seminars_event_types.title) AGAINST (' . $quotedSearchWord . ' IN BOOLEAN MODE)' .
-            ' AND tx_seminars_event_types.uid = s1.event_type' .
-            ' AND ((s1.uid = s2.topic AND s2.object_type = ' . EventInterface::TYPE_EVENT_DATE . ') ' .
-            'OR (s1.uid = s2.uid AND s1.object_type <> ' . EventInterface::TYPE_EVENT_DATE . '))' .
-            ' AND s2.uid = tx_seminars_seminars.uid)' .
-            ')',
+            'EXISTS ('
+            . 'SELECT * FROM tx_seminars_event_types, tx_seminars_seminars s1, tx_seminars_seminars s2'
+            . ' WHERE (MATCH (tx_seminars_event_types.title) AGAINST (' . $quotedSearchWord . ' IN BOOLEAN MODE)'
+            . ' AND tx_seminars_event_types.uid = s1.event_type'
+            . ' AND ((s1.uid = s2.topic AND s2.object_type = ' . EventInterface::TYPE_EVENT_DATE . ') '
+            . 'OR (s1.uid = s2.uid AND s1.object_type <> ' . EventInterface::TYPE_EVENT_DATE . '))'
+            . ' AND s2.uid = tx_seminars_seminars.uid)'
+            . ')',
         ];
     }
 
@@ -637,8 +637,8 @@ class EventBagBuilder extends AbstractBagBuilder
         $inUids = ' IN (' . \implode(',', $matchingUids) . ')';
         return [
             '(object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ' AND tx_seminars_seminars.uid' . $inUids . ')',
-            '(tx_seminars_seminars.object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND ' .
-            'tx_seminars_seminars.topic' . $inUids . ')',
+            '(tx_seminars_seminars.object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND '
+            . 'tx_seminars_seminars.topic' . $inUids . ')',
         ];
     }
 
@@ -699,20 +699,20 @@ class EventBagBuilder extends AbstractBagBuilder
     ): array {
         $this->checkParametersForMmSearchFunctions($quotedSearchWord, $searchFieldKey, $foreignTable, $mmTable);
 
-        $matchQueryPart = 'MATCH (' .
-            $foreignTable . '.' . \implode(',' . $foreignTable . '.', self::$searchFieldList[$searchFieldKey]) .
-            ') AGAINST (' . $quotedSearchWord . ' IN BOOLEAN MODE)';
+        $matchQueryPart = 'MATCH ('
+            . $foreignTable . '.' . \implode(',' . $foreignTable . '.', self::$searchFieldList[$searchFieldKey])
+            . ') AGAINST (' . $quotedSearchWord . ' IN BOOLEAN MODE)';
         return [
-            'EXISTS ' .
-            '(SELECT * FROM ' . 'tx_seminars_seminars s1, ' . $mmTable . ', ' . $foreignTable .
-            ' WHERE ((tx_seminars_seminars.object_type = ' .
-            EventInterface::TYPE_EVENT_DATE . ' AND s1.object_type <> ' . EventInterface::TYPE_EVENT_DATE .
-            ' AND tx_seminars_seminars.topic = s1.uid)' .
-            ' OR (tx_seminars_seminars.object_type = ' . EventInterface::TYPE_SINGLE_EVENT .
-            ' AND tx_seminars_seminars.uid = s1.uid))' .
-            ' AND ' . $mmTable . '.uid_local = s1.uid' .
-            ' AND ' . $mmTable . '.uid_foreign = ' . $foreignTable . '.uid' .
-            ' AND ' . $matchQueryPart . ')',
+            'EXISTS '
+            . '(SELECT * FROM ' . 'tx_seminars_seminars s1, ' . $mmTable . ', ' . $foreignTable
+            . ' WHERE ((tx_seminars_seminars.object_type = '
+            . EventInterface::TYPE_EVENT_DATE . ' AND s1.object_type <> ' . EventInterface::TYPE_EVENT_DATE
+            . ' AND tx_seminars_seminars.topic = s1.uid)'
+            . ' OR (tx_seminars_seminars.object_type = ' . EventInterface::TYPE_SINGLE_EVENT
+            . ' AND tx_seminars_seminars.uid = s1.uid))'
+            . ' AND ' . $mmTable . '.uid_local = s1.uid'
+            . ' AND ' . $mmTable . '.uid_foreign = ' . $foreignTable . '.uid'
+            . ' AND ' . $matchQueryPart . ')',
         ];
     }
 
@@ -837,9 +837,9 @@ class EventBagBuilder extends AbstractBagBuilder
     public function limitToRequiredEventTopics(int $eventUid): void
     {
         $this->whereClauseParts['requiredEventTopics'] =
-            'tx_seminars_seminars_requirements_mm.uid_local = ' . $eventUid .
-            ' AND tx_seminars_seminars_requirements_mm.uid_foreign = ' .
-            'tx_seminars_seminars.uid';
+            'tx_seminars_seminars_requirements_mm.uid_local = ' . $eventUid
+            . ' AND tx_seminars_seminars_requirements_mm.uid_foreign = '
+            . 'tx_seminars_seminars.uid';
         $this->addAdditionalTableName('tx_seminars_seminars_requirements_mm');
         $this->setOrderBy('tx_seminars_seminars_requirements_mm.sorting');
     }
@@ -852,9 +852,9 @@ class EventBagBuilder extends AbstractBagBuilder
     public function limitToDependingEventTopics(int $eventUid): void
     {
         $this->whereClauseParts['dependingEventTopics'] =
-            'tx_seminars_seminars_requirements_mm.uid_foreign = ' . $eventUid .
-            ' AND tx_seminars_seminars_requirements_mm.uid_local = ' .
-            'tx_seminars_seminars.uid';
+            'tx_seminars_seminars_requirements_mm.uid_foreign = ' . $eventUid
+            . ' AND tx_seminars_seminars_requirements_mm.uid_local = '
+            . 'tx_seminars_seminars.uid';
         $this->addAdditionalTableName('tx_seminars_seminars_requirements_mm');
         $this->setOrderBy(
             'tx_seminars_seminars_requirements_mm.sorting_foreign ASC',
@@ -901,10 +901,10 @@ class EventBagBuilder extends AbstractBagBuilder
         }
 
         $this->whereClauseParts['latestBeginDate'] =
-            '(tx_seminars_seminars.begin_date <> 0 AND ' .
-            'tx_seminars_seminars.begin_date <= ' . $latestBeginDate . ' OR ' .
-            'tx_seminars_seminars.end_date <> 0 AND ' .
-            'tx_seminars_seminars.end_date <= ' . $latestBeginDate . ')';
+            '(tx_seminars_seminars.begin_date <> 0 AND '
+            . 'tx_seminars_seminars.begin_date <= ' . $latestBeginDate . ' OR '
+            . 'tx_seminars_seminars.end_date <> 0 AND '
+            . 'tx_seminars_seminars.end_date <= ' . $latestBeginDate . ')';
     }
 
     /**
@@ -912,17 +912,17 @@ class EventBagBuilder extends AbstractBagBuilder
      */
     public function limitToEventsWithVacancies(): void
     {
-        $seats = '(SELECT COALESCE(SUM(seats),0) FROM tx_seminars_attendances ' .
-            'WHERE seminar = tx_seminars_seminars.uid' .
-            $this->pageRepository->enableFields('tx_seminars_attendances') . ')';
+        $seats = '(SELECT COALESCE(SUM(seats),0) FROM tx_seminars_attendances '
+            . 'WHERE seminar = tx_seminars_seminars.uid'
+            . $this->pageRepository->enableFields('tx_seminars_attendances') . ')';
         $hasVacancies = '(attendees_max > (' . $seats . ' + offline_attendees))';
 
         $this->whereClauseParts['eventsWithVacancies'] =
-            '(needs_registration = 0 OR (needs_registration = 1 AND ' .
-            '(attendees_max = 0 OR ' .
-            '(attendees_max > 0 AND ' . $hasVacancies . ')' .
-            '))' .
-            ')';
+            '(needs_registration = 0 OR (needs_registration = 1 AND '
+            . '(attendees_max = 0 OR '
+            . '(attendees_max > 0 AND ' . $hasVacancies . ')'
+            . '))'
+            . ')';
     }
 
     /**
@@ -954,12 +954,12 @@ class EventBagBuilder extends AbstractBagBuilder
         }
 
         $this->whereClauseParts['eventsWithOrganizers'] =
-            '((object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ') ' .
-            'AND (tx_seminars_seminars.uid IN (' . $eventUids .
-            ')) OR (' .
-            '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ') AND (' .
-            'tx_seminars_seminars.topic IN (' . $eventUids . ')))' .
-            ')';
+            '((object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ') '
+            . 'AND (tx_seminars_seminars.uid IN (' . $eventUids
+            . ')) OR ('
+            . '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ') AND ('
+            . 'tx_seminars_seminars.topic IN (' . $eventUids . ')))'
+            . ')';
     }
 
     /**
@@ -1048,12 +1048,12 @@ class EventBagBuilder extends AbstractBagBuilder
         } else {
             $matchingEventsUidList = \implode(',', $matchingEventsUids);
             $this->whereClauseParts['ageLimit'] =
-                '((object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ' AND ' .
-                'tx_seminars_seminars.uid IN (' . $matchingEventsUidList . ')) ' .
-                'OR ' .
-                '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND ' .
-                'topic IN (' . $matchingEventsUidList . '))' .
-                ')';
+                '((object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ' AND '
+                . 'tx_seminars_seminars.uid IN (' . $matchingEventsUidList . ')) '
+                . 'OR '
+                . '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND '
+                . 'topic IN (' . $matchingEventsUidList . '))'
+                . ')';
         }
     }
 
@@ -1072,23 +1072,23 @@ class EventBagBuilder extends AbstractBagBuilder
         $notZeroAndInRange = '(%1$s > 0 AND %1$s <= %2$u)';
         $now = $this->getNowAsUnixTimestamp();
 
-        $whereClause = '(object_type = ' . EventInterface::TYPE_EVENT_TOPIC . ' OR ' .
-            'object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ') AND (' .
-            '(deadline_early_bird < ' . $now . ' AND ' .
-            '(price_regular <= ' . $maximumPrice . ' OR ' .
-            \sprintf($notZeroAndInRange, 'price_special', $maximumPrice) . ')) ' .
-            'OR (deadline_early_bird > ' . $now . ' AND ((' .
-            '(price_regular_early = 0 AND price_regular <= ' .
-            $maximumPrice . ') ' .
-            'OR (price_special_early = 0 AND price_special > 0 ' .
-            'AND price_special <= ' . $maximumPrice .
-            ')' .
-            ') OR (' .
-            \sprintf($notZeroAndInRange, 'price_regular_early', $maximumPrice) .
-            ' OR ' .
-            \sprintf($notZeroAndInRange, 'price_special_early', $maximumPrice) .
-            '))) ' .
-            ')';
+        $whereClause = '(object_type = ' . EventInterface::TYPE_EVENT_TOPIC . ' OR '
+            . 'object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ') AND ('
+            . '(deadline_early_bird < ' . $now . ' AND '
+            . '(price_regular <= ' . $maximumPrice . ' OR '
+            . \sprintf($notZeroAndInRange, 'price_special', $maximumPrice) . ')) '
+            . 'OR (deadline_early_bird > ' . $now . ' AND (('
+            . '(price_regular_early = 0 AND price_regular <= '
+            . $maximumPrice . ') '
+            . 'OR (price_special_early = 0 AND price_special > 0 '
+            . 'AND price_special <= ' . $maximumPrice
+            . ')'
+            . ') OR ('
+            . \sprintf($notZeroAndInRange, 'price_regular_early', $maximumPrice)
+            . ' OR '
+            . \sprintf($notZeroAndInRange, 'price_special_early', $maximumPrice)
+            . '))) '
+            . ')';
 
         $table = 'tx_seminars_seminars';
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);
@@ -1104,11 +1104,11 @@ class EventBagBuilder extends AbstractBagBuilder
             $this->whereClauseParts['maximumPrice'] = '(0 = 1)';
         } else {
             $this->whereClauseParts['maximumPrice'] =
-                '((object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ' ' .
-                'AND tx_seminars_seminars.uid IN (' . $foundUids .
-                ')) OR ' .
-                '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND ' .
-                'topic IN (' . $foundUids . ')))';
+                '((object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ' '
+                . 'AND tx_seminars_seminars.uid IN (' . $foundUids
+                . ')) OR '
+                . '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND '
+                . 'topic IN (' . $foundUids . ')))';
         }
     }
 
@@ -1125,21 +1125,21 @@ class EventBagBuilder extends AbstractBagBuilder
         }
 
         $now = $this->getNowAsUnixTimestamp();
-        $whereClause = '(object_type = ' . EventInterface::TYPE_EVENT_TOPIC . ' OR ' .
-            'object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ') AND (' .
-            '(deadline_early_bird < ' . $now . ' ' .
-            'AND (price_regular >= ' . $minimumPrice . ' ' .
-            'OR price_special >= ' . $minimumPrice . ')' .
-            ') OR (deadline_early_bird > ' . $now . ' ' .
-            'AND ((' .
-            '(price_regular_early = 0 ' .
-            'AND price_regular >= ' . $minimumPrice . ') ' .
-            'OR (price_special_early = 0 ' .
-            'AND price_special >= ' . $minimumPrice . ')) ' .
-            'OR (price_regular_early >= ' . $minimumPrice . ' ' .
-            'OR price_special_early >= ' . $minimumPrice . ') ' .
-            ')) ' .
-            ') ';
+        $whereClause = '(object_type = ' . EventInterface::TYPE_EVENT_TOPIC . ' OR '
+            . 'object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ') AND ('
+            . '(deadline_early_bird < ' . $now . ' '
+            . 'AND (price_regular >= ' . $minimumPrice . ' '
+            . 'OR price_special >= ' . $minimumPrice . ')'
+            . ') OR (deadline_early_bird > ' . $now . ' '
+            . 'AND (('
+            . '(price_regular_early = 0 '
+            . 'AND price_regular >= ' . $minimumPrice . ') '
+            . 'OR (price_special_early = 0 '
+            . 'AND price_special >= ' . $minimumPrice . ')) '
+            . 'OR (price_regular_early >= ' . $minimumPrice . ' '
+            . 'OR price_special_early >= ' . $minimumPrice . ') '
+            . ')) '
+            . ') ';
 
         $table = 'tx_seminars_seminars';
         $queryBuilder = $this->connectionPool->getQueryBuilderForTable($table);
@@ -1156,11 +1156,11 @@ class EventBagBuilder extends AbstractBagBuilder
             $this->whereClauseParts['maximumPrice'] = '(0 = 1)';
         } else {
             $this->whereClauseParts['maximumPrice'] =
-                '((object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ' ' .
-                'AND tx_seminars_seminars.uid IN (' . $foundUids .
-                ')) OR ' .
-                '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND ' .
-                'topic IN (' . $foundUids . ')))';
+                '((object_type = ' . EventInterface::TYPE_SINGLE_EVENT . ' '
+                . 'AND tx_seminars_seminars.uid IN (' . $foundUids
+                . ')) OR '
+                . '(object_type = ' . EventInterface::TYPE_EVENT_DATE . ' AND '
+                . 'topic IN (' . $foundUids . ')))';
         }
     }
 

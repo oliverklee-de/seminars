@@ -72,14 +72,14 @@ class EventMapper extends AbstractDataMapper
      */
     public function findForRegistrationDigestEmail(): Collection
     {
-        $whereClause = 'object_type <> ' . EventInterface::TYPE_EVENT_TOPIC .
-            ' AND hidden = 0 AND deleted = 0 ' .
-            ' AND EXISTS (' .
-            'SELECT * FROM tx_seminars_attendances ' .
-            'WHERE tx_seminars_attendances.deleted = 0 ' .
-            ' AND tx_seminars_attendances.seminar = tx_seminars_seminars.uid' .
-            ' AND tx_seminars_attendances.crdate > tx_seminars_seminars.date_of_last_registration_digest' .
-            ')';
+        $whereClause = 'object_type <> ' . EventInterface::TYPE_EVENT_TOPIC
+            . ' AND hidden = 0 AND deleted = 0 '
+            . ' AND EXISTS ('
+            . 'SELECT * FROM tx_seminars_attendances '
+            . 'WHERE tx_seminars_attendances.deleted = 0 '
+            . ' AND tx_seminars_attendances.seminar = tx_seminars_seminars.uid'
+            . ' AND tx_seminars_attendances.crdate > tx_seminars_seminars.date_of_last_registration_digest'
+            . ')';
 
         $sql = 'SELECT * FROM ' . $this->getTableName() . ' WHERE ' . $whereClause . ' ORDER BY begin_date ASC';
 

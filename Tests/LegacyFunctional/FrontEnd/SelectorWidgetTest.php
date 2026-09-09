@@ -128,8 +128,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<input type="submit" value="' .
-            $this->translate('label_selector_submit') . '" />',
+            '<input type="submit" value="'
+            . $this->translate('label_selector_submit') . '" />',
             $this->subject->render(),
         );
     }
@@ -145,8 +145,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<input type="submit" value="' .
-            $this->translate('label_selector_reset') . '"',
+            '<input type="submit" value="'
+            . $this->translate('label_selector_reset') . '"',
             $this->subject->render(),
         );
     }
@@ -166,9 +166,9 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<option value="0">' .
-            $this->translate('label_selector_pleaseChoose') .
-            '</option>',
+            '<option value="0">'
+            . $this->translate('label_selector_pleaseChoose')
+            . '</option>',
             $this->subject->render(),
         );
     }
@@ -202,8 +202,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
     {
         $this->subject->setConfigurationValue(
             'displaySearchFormFields',
-            'event_type,city,place,full_text_search,date,' .
-            'age,organizer,price',
+            'event_type,city,place,full_text_search,date,'
+            . 'age,organizer,price',
         );
 
         self::assertStringNotContainsString(
@@ -314,8 +314,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<option value="' . $eventTypeUid . '">' . $eventTypeTitle .
-            '</option>',
+            '<option value="' . $eventTypeUid . '">' . $eventTypeTitle
+            . '</option>',
             $this->subject->render(),
         );
     }
@@ -341,9 +341,9 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<option value="' . $eventTypeUid . '">' .
-            \htmlspecialchars($eventTypeTitle, ENT_QUOTES | ENT_HTML5) .
-            '</option>',
+            '<option value="' . $eventTypeUid . '">'
+            . \htmlspecialchars($eventTypeTitle, ENT_QUOTES | ENT_HTML5)
+            . '</option>',
             $this->subject->render(),
         );
     }
@@ -371,8 +371,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         $this->subject->piVars['event_type'][] = (string)$eventTypeUid;
 
         self::assertStringContainsString(
-            $eventTypeUid . '" selected="selected">' . $eventTypeTitle .
-            '</option>',
+            $eventTypeUid . '" selected="selected">' . $eventTypeTitle
+            . '</option>',
             $this->subject->render(),
         );
     }
@@ -413,13 +413,13 @@ final class SelectorWidgetTest extends FunctionalTestCase
         $output = $this->subject->render();
 
         self::assertStringContainsString(
-            $eventTypeUid . '" selected="selected">' . $eventTypeTitle .
-            '</option>',
+            $eventTypeUid . '" selected="selected">' . $eventTypeTitle
+            . '</option>',
             $output,
         );
         self::assertStringContainsString(
-            $eventTypeUid2 . '" selected="selected">' . $eventTypeTitle2 .
-            '</option>',
+            $eventTypeUid2 . '" selected="selected">' . $eventTypeTitle2
+            . '</option>',
             $output,
         );
     }
@@ -435,8 +435,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<select name="tx_seminars_pi1[event_type][]" ' .
-            'id="tx_seminars_pi1-event_type" size="5" multiple="multiple">',
+            '<select name="tx_seminars_pi1[event_type][]" '
+            . 'id="tx_seminars_pi1-event_type" size="5" multiple="multiple">',
             $this->subject->render(),
         );
     }
@@ -559,8 +559,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<option value="' . $placeUid . '">' .
-            \htmlspecialchars($placeTitle, ENT_QUOTES | ENT_HTML5) . '</option>',
+            '<option value="' . $placeUid . '">'
+            . \htmlspecialchars($placeTitle, ENT_QUOTES | ENT_HTML5) . '</option>',
             $this->subject->render(),
         );
     }
@@ -576,8 +576,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<select name="tx_seminars_pi1[place][]" ' .
-            'id="tx_seminars_pi1-place" size="5" multiple="multiple">',
+            '<select name="tx_seminars_pi1[place][]" '
+            . 'id="tx_seminars_pi1-place" size="5" multiple="multiple">',
             $this->subject->render(),
         );
     }
@@ -656,13 +656,13 @@ final class SelectorWidgetTest extends FunctionalTestCase
         $output = $this->subject->render();
 
         self::assertStringContainsString(
-            '<option value="' . $placeUid . '" selected="selected">' .
-            $placeTitle . '</option>',
+            '<option value="' . $placeUid . '" selected="selected">'
+            . $placeTitle . '</option>',
             $output,
         );
         self::assertStringContainsString(
-            '<option value="' . $placeUid2 . '" selected="selected">' .
-            $placeTitle2 . '</option>',
+            '<option value="' . $placeUid2 . '" selected="selected">'
+            . $placeTitle2 . '</option>',
             $output,
         );
     }
@@ -789,8 +789,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         $this->subject->piVars['city'][] = $cityTitle;
 
         self::assertStringContainsString(
-            '<option value="' . $cityTitle . '" selected="selected">' .
-            $cityTitle . '</option>',
+            '<option value="' . $cityTitle . '" selected="selected">'
+            . $cityTitle . '</option>',
             $this->subject->render(),
         );
     }
@@ -838,13 +838,13 @@ final class SelectorWidgetTest extends FunctionalTestCase
         $output = $this->subject->render();
 
         self::assertStringContainsString(
-            '<option value="' . $cityTitle1 . '" selected="selected">' .
-            $cityTitle1 . '</option>',
+            '<option value="' . $cityTitle1 . '" selected="selected">'
+            . $cityTitle1 . '</option>',
             $output,
         );
         self::assertStringContainsString(
-            '<option value="' . $cityTitle2 . '" selected="selected">' .
-            $cityTitle2 . '</option>',
+            '<option value="' . $cityTitle2 . '" selected="selected">'
+            . $cityTitle2 . '</option>',
             $output,
         );
     }
@@ -1133,8 +1133,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
             $output,
         );
         self::assertStringContainsString(
-            '<option value="' . $thisYear . '" selected="selected">' .
-            $thisYear . '</option>',
+            '<option value="' . $thisYear . '" selected="selected">'
+            . $thisYear . '</option>',
             $output,
         );
     }
@@ -1518,8 +1518,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<option value="' . $organizerUid . '">' . $organizerName .
-            '</option>',
+            '<option value="' . $organizerUid . '">' . $organizerName
+            . '</option>',
             $this->subject->render(),
         );
     }
@@ -1550,9 +1550,9 @@ final class SelectorWidgetTest extends FunctionalTestCase
         );
 
         self::assertStringContainsString(
-            '<option value="' . $organizerUid . '">' .
-            \htmlspecialchars($organizerName, ENT_QUOTES | ENT_HTML5) .
-            '</option>',
+            '<option value="' . $organizerUid . '">'
+            . \htmlspecialchars($organizerName, ENT_QUOTES | ENT_HTML5)
+            . '</option>',
             $this->subject->render(),
         );
     }
@@ -1585,8 +1585,8 @@ final class SelectorWidgetTest extends FunctionalTestCase
         $this->subject->piVars['organizer'][] = (string)$organizerUid;
 
         self::assertStringContainsString(
-            $organizerUid . '" selected="selected">' . $organizerName .
-            '</option>',
+            $organizerUid . '" selected="selected">' . $organizerName
+            . '</option>',
             $this->subject->render(),
         );
     }
@@ -1633,13 +1633,13 @@ final class SelectorWidgetTest extends FunctionalTestCase
         $output = $this->subject->render();
 
         self::assertStringContainsString(
-            $organizerUid1 . '" selected="selected">' . $organizerName1 .
-            '</option>',
+            $organizerUid1 . '" selected="selected">' . $organizerName1
+            . '</option>',
             $output,
         );
         self::assertStringContainsString(
-            $organizerUid2 . '" selected="selected">' . $organizerName2 .
-            '</option>',
+            $organizerUid2 . '" selected="selected">' . $organizerName2
+            . '</option>',
             $output,
         );
     }

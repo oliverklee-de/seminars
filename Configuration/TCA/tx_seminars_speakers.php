@@ -159,8 +159,8 @@ $tca = [
     ],
     'types' => [
         [
-            'showitem' => 'hidden, title, organization, homepage, description, image, skills, notes, ' .
-                'address, phone_work, phone_home, phone_mobile, email, cancelation_period',
+            'showitem' => 'hidden, title, organization, homepage, description, image, skills, notes, '
+                . 'address, phone_work, phone_home, phone_mobile, email, cancelation_period',
         ],
     ],
 ];

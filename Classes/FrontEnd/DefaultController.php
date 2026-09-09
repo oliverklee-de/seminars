@@ -1040,8 +1040,8 @@ class DefaultController extends TemplateHelper
         }
 
         $this->hideSubparts(
-            'accreditation_number,date,time,place,room,speakers,organizers,' .
-            'vacancies,deadline_registration,registration,eventsnextday',
+            'accreditation_number,date,time,place,room,speakers,organizers,'
+            . 'vacancies,deadline_registration,registration,eventsnextday',
             'field_wrapper',
         );
     }
@@ -1883,8 +1883,8 @@ class DefaultController extends TemplateHelper
     {
         if (!\in_array($speakerType, ['speakers', 'partners', 'tutors', 'leaders'], true)) {
             throw new \InvalidArgumentException(
-                'The given speaker type "' . $speakerType .
-                '" is not an allowed type. Allowed types are "speakers", "partners", "tutors" or "leaders".',
+                'The given speaker type "' . $speakerType
+                . '" is not an allowed type. Allowed types are "speakers", "partners", "tutors" or "leaders".',
                 1333293103,
             );
         }

@@ -42,8 +42,8 @@ final class SalutationAwareTranslateViewHelperTest extends FunctionalTestCase
 
     private function embedInHtmlWithNamespace(string $html): string
     {
-        return '<html xmlns:s="OliverKlee\Seminars\ViewHelpers" data-namespace-typo3-fluid="true">' .
-            $html . '</html>';
+        return '<html xmlns:s="OliverKlee\Seminars\ViewHelpers" data-namespace-typo3-fluid="true">'
+            . $html . '</html>';
     }
 
     private function renderViewHelper(string $html): string
