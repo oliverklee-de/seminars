@@ -34,7 +34,7 @@ final class EventControllerTest extends FunctionalTestCase
     ];
 
     protected array $pathsToProvideInTestInstance = [
-        'typo3conf/ext/seminars/Tests/Functional/Controller/Fixtures/EventController/showAction/ImageFile.jpg' => 'fileadmin/user_upload/ImageFile.jpg',
+        'typo3conf/ext/seminars/Tests/Functional/Controller/Fixtures/EventController/showAction/ImageFile.png' => 'fileadmin/user_upload/ImageFile.png',
     ];
 
     protected array $configurationToUseInTestInstance = [
@@ -2357,7 +2357,7 @@ final class EventControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('<figure>', $html);
         self::assertStringContainsString('<img', $html);
-        self::assertStringContainsString('ImageFile.jpg', $html);
+        self::assertStringContainsString('ImageFile.png', $html);
     }
 
     /**
@@ -2376,7 +2376,7 @@ final class EventControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('<figure>', $html);
         self::assertStringContainsString('<img', $html);
-        self::assertStringContainsString('ImageFile.jpg', $html);
+        self::assertStringContainsString('ImageFile.png', $html);
     }
 
     /**

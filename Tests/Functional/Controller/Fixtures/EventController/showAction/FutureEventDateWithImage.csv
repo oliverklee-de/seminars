@@ -5,7 +5,8 @@
 
 "sys_file_reference"
 ,"uid","uid_local","uid_foreign","tablenames","fieldname"
-,1,6,2,"tx_seminars_seminars","image"
+,1,7,2,"tx_seminars_seminars","image"
+
 "sys_file"
 ,"uid","storage","type","folder_hash","identifier","identifier_hash","name","extension","mime_type"
-,6,1,2,"19669f1e02c2f16705ec7587044c66443be70725","/user_upload/ImageFile.jpg","2da50466075bf5051ab08574fff6c8c8d10d8852","ImageFile.jpg","jpg","image/jpeg"
+,7,1,2,"19669f1e02c2f16705ec7587044c66443be70725","/user_upload/ImageFile.png","6d306c1480d49ab0506a2ee33920ec851171f361","ImageFile.png","png","image/png"
