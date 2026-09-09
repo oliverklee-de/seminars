@@ -17,7 +17,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     private const FIXTURES_PATH = __DIR__ . '/Fixtures/MyRegistrationsController';
 
     protected array $pathsToProvideInTestInstance = [
-        'typo3conf/ext/seminars/Tests/Functional/Controller/Fixtures/MyRegistrationsController/showAction/ImageFile.jpg' => 'fileadmin/user_upload/ImageFile.jpg',
+        'typo3conf/ext/seminars/Tests/Functional/Controller/Fixtures/MyRegistrationsController/showAction/ImageFile.png' => 'fileadmin/user_upload/ImageFile.png',
     ];
 
     protected array $testExtensionsToLoad = [
@@ -1292,7 +1292,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('<figure>', $html);
         self::assertStringContainsString('<img', $html);
-        self::assertStringContainsString('ImageFile.jpg', $html);
+        self::assertStringContainsString('ImageFile.png', $html);
     }
 
     /**
@@ -1314,7 +1314,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('<figure>', $html);
         self::assertStringContainsString('<img', $html);
-        self::assertStringContainsString('ImageFile.jpg', $html);
+        self::assertStringContainsString('ImageFile.png', $html);
     }
 
     /**
