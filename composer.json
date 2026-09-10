@@ -122,7 +122,6 @@
 			"dev-main": "6.0.x-dev"
 		},
 		"typo3/cms": {
-			"app-dir": ".Build",
 			"extension-key": "seminars",
 			"web-dir": ".Build/public"
 		}
