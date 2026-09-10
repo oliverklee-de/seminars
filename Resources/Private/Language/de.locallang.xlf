@@ -2948,6 +2948,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>event UID</source>
         <target state="final">UID der Veranstaltung</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.singleViewLink">
+        <source>link to the single view</source>
+        <target state="needs-translation">link to the single view</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.registrationStatus" approved="yes">
         <source>registration status</source>
         <target state="final">Anmeldestatus</target>
@@ -3083,6 +3087,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.myRegistrations.index.heading.eventUid" approved="yes">
         <source>Event number</source>
         <target state="final">Veranstaltungsnummer</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.singleViewLink">
+        <source>Details</source>
+        <target state="needs-translation">Details</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus" approved="yes">
         <source>Status</source>
