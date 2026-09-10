@@ -64,6 +64,12 @@
                         </th>
                     </oelib:isFieldEnabled>
 
+                    <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="singleViewLink">
+                        <th scope="col">
+                            <f:translate key="plugin.myRegistrations.index.heading.singleViewLink"/>
+                        </th>
+                    </oelib:isFieldEnabled>
+
                     <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="registrationStatus">
                         <th scope="col">
                             <f:translate key="plugin.myRegistrations.index.heading.registrationStatus"/>
@@ -157,6 +163,14 @@
                                 <td class="text-end">
                                     <f:translate key="plugin.myRegistrations.property.eventUid.number"
                                                  arguments="{0: event.uid}"/>
+                                </td>
+                            </oelib:isFieldEnabled>
+
+                            <oelib:isFieldEnabled configurationKey="columnsToShow" fieldName="singleViewLink">
+                                <td>
+                                    <f:link.action action="show" arguments="{registration: registration}">
+                                        <f:translate key="plugin.myRegistrations.index.heading.singleViewLink"/>
+                                    </f:link.action>
                                 </td>
                             </oelib:isFieldEnabled>
 
