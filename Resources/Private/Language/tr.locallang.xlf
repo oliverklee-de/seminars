@@ -2975,6 +2975,10 @@
         <source>event UID</source>
         <target state="needs-translation">event UID</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.singleViewLink">
+        <source>link to the single view</source>
+        <target state="needs-translation">link to the single view</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.registrationStatus">
         <source>registration status</source>
         <target state="needs-translation">registration status</target>
@@ -3110,6 +3114,10 @@
       <trans-unit id="plugin.myRegistrations.index.heading.eventUid">
         <source>Event number</source>
         <target state="needs-translation">Event number</target>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.heading.singleViewLink">
+        <source>Details</source>
+        <target state="needs-translation">Details</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus">
         <source>Status</source>
