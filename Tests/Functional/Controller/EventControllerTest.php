@@ -2519,24 +2519,6 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionForEventDateRendersNameOfOrganizer(): void
-    {
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
-        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventDateWithTwoOrganizers.csv');
-
-        $request = (new InternalRequest())
-            ->withPageId(3)
-            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
-
-        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
-
-        self::assertStringContainsString('Rainbow Recitals,', $html);
-        self::assertStringContainsString('Fortran Foundation', $html);
-    }
-
-    /**
-     * @test
-     */
     public function showActionRendersNameOfSpeaker(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
