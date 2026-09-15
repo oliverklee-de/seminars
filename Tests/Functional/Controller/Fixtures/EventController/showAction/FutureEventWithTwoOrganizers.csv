@@ -1,0 +1,13 @@
+"tx_seminars_seminars"
+,"uid","pid","title","begin_date","end_date","organizers"
+,1,2,"Extension Development with Extbase and Fluid",2524604400,2524604401,2
+
+"tx_seminars_organizers"
+,"uid","pid","title"
+,1,2,"Rainbow Recitals"
+,2,2,"Fortran Foundation"
+
+"tx_seminars_seminars_organizers_mm"
+,"uid_local","uid_foreign","sorting"
+,1,1,1
+,1,2,2
