@@ -2784,9 +2784,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>vacancies</source>
         <target state="final">freie Plätze</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.image">
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.image" approved="yes">
         <source>image</source>
-        <target state="needs-translation">image</target>
+        <target state="final">Bild</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.teaser" approved="yes">
         <source>teaser</source>
@@ -2948,9 +2948,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>event UID</source>
         <target state="final">UID der Veranstaltung</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.singleViewLink">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.singleViewLink" approved="yes">
         <source>link to the single view</source>
-        <target state="needs-translation">link to the single view</target>
+        <target state="final">Link zur Einzelansicht</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.columns.registrationStatus" approved="yes">
         <source>registration status</source>
@@ -3004,9 +3004,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>target groups</source>
         <target state="final">Zielgruppen</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.image">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.image" approved="yes">
         <source>image</source>
-        <target state="needs-translation">image</target>
+        <target state="final">Bild</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.teaser" approved="yes">
         <source>teaser</source>
@@ -3088,9 +3088,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Event number</source>
         <target state="final">Veranstaltungsnummer</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.heading.singleViewLink">
+      <trans-unit id="plugin.myRegistrations.index.heading.singleViewLink" approved="yes">
         <source>Details</source>
-        <target state="needs-translation">Details</target>
+        <target state="final">Details</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.index.heading.registrationStatus" approved="yes">
         <source>Status</source>
