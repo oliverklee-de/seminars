@@ -164,12 +164,13 @@
         </oelib:isFieldEnabled>
 
         <oelib:isFieldEnabled fieldName="eventFormat">
-            <f:if condition="{event.eventFormat}">
+                <h3>
+                    <f:translate key="plugin.eventSingleView.events.property.eventFormat"/>
+                </h3>
                 <p>
                     <f:translate
                         key="plugin.eventSingleView.events.property.eventFormat.{event.eventFormat}"/>
                 </p>
-            </f:if>
         </oelib:isFieldEnabled>
 
         <oelib:isFieldEnabled fieldName="speakers">
