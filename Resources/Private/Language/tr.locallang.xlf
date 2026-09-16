@@ -3023,6 +3023,10 @@
         <source>venue</source>
         <target state="needs-translation">venue</target>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.organizer">
+        <source>organizer</source>
+        <target state="needs-translation">organizer</target>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.attendanceMode">
         <source>attendance mode</source>
         <target state="needs-translation">attendance mode</target>
