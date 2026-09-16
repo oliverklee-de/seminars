@@ -1484,6 +1484,27 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function showActionRendersNameOfOrganizer(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithTwoOrganizers.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('Rainbow Recitals,', $html);
+        self::assertStringContainsString('Fortran Foundation', $html);
+    }
+
+    /**
+     * @test
+     */
     public function showActionCanRenderMultipleSpeakers(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');

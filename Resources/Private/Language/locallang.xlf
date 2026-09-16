@@ -2232,6 +2232,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.venue">
         <source>venue</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.organizer">
+        <source>organizer</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.attendanceMode">
         <source>attendance mode</source>
       </trans-unit>
