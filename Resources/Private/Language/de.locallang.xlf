@@ -2764,9 +2764,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.organizer">
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.organizer" approved="yes">
         <source>organizer</source>
-        <target state="needs-translation">organizer</target>
+        <target state="final">Veranstalter</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.categories" approved="yes">
         <source>categories</source>
@@ -2872,9 +2872,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.organizer">
+      <trans-unit id="plugin.eventSingleView.events.property.organizer" approved="yes">
         <source>Organizer</source>
-        <target state="needs-translation">Organizer</target>
+        <target state="final">Veranstalter</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.categories" approved="yes">
         <source>Categories</source>
@@ -2996,9 +2996,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>venue</source>
         <target state="final">Veranstaltungsort</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.organizer">
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.organizer" approved="yes">
         <source>organizer</source>
-        <target state="needs-translation">organizer</target>
+        <target state="final">Veranstalter</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.attendanceMode" approved="yes">
         <source>attendance mode</source>
