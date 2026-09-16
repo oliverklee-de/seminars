@@ -2535,6 +2535,40 @@ final class EventControllerTest extends FunctionalTestCase
     }
 
     /**
+     * @return array<non-empty-string, array{0: non-empty-string, 1: non-empty-string}>
+     */
+    public static function eventFormatForShowActionDataProvider(): array
+    {
+        return [
+            'on-site' => ['FutureOnSiteEvent.csv', '0'],
+            'hybrid' => ['FutureHybridEvent.csv', '1'],
+            'online' => ['FutureOnlineEvent.csv', '2'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider eventFormatForShowActionDataProvider
+     */
+    public function showActionRendersEventFormat(string $fixtureFile, string $labelKey): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/' . $fixtureFile);
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $keyPrefix = 'plugin.eventSingleView.events.property.eventFormat.';
+        $expected = LocalizationUtility::translate($keyPrefix . $labelKey, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
      * @test
      */
     public function showActionRendersNameOfOrganizer(): void
