@@ -56,6 +56,14 @@ jobs:
         run: phive --no-progress install --trust-gpg-keys D8406D0D82947747293778314AA394086372C20A
       - name: Start MySQL
         run: "sudo /etc/init.d/mysql start"
+      - name: Install GraphicsMagick
+        # The testing framework configures GraphicsMagick as the image processor
+        # of every functional test instance, and the runner image does not ship
+        # it. Without it, image processing silently falls back to the original
+        # file, which then renders without any dimensions.
+        run: |
+          sudo apt-get --quiet update
+          sudo apt-get --quiet --yes --no-install-recommends install graphicsmagick
       - name: Create the tests directory
         run: "mkdir -p .Build/public/typo3temp/var/tests"
       - name: Run unit tests with coverage
