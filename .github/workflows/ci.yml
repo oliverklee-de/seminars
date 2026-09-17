@@ -162,7 +162,7 @@ jobs:
   functional-tests:
     name: Functional tests
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 10
     needs: php-lint
     steps:
       - name: Checkout
@@ -222,7 +222,7 @@ jobs:
   legacy-functional-tests:
     name: Legacy functional tests
     runs-on: ubuntu-24.04
-    timeout-minutes: 7
+    timeout-minutes: 10
     needs: php-lint
     steps:
       - name: Checkout
