@@ -1,11 +1,5 @@
 ---
 name: CI
-# Every "runTests.sh" call below passes "-b docker". The script prefers podman
-# whenever it is present and only falls back to docker, which is the right
-# default for local runs, but GitHub hosted runners ship both. On these runners
-# the MariaDB container of the functional tests is never reachable under podman
-# (#2103), while the same run passes with docker. Selecting docker here keeps the
-# script default and local runs untouched.
 on:
   push:
     branches:
@@ -24,9 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Show the Composer version
-        run: ./Build/Scripts/runTests.sh -b docker -s composer -- --version
+        run: ./Build/Scripts/runTests.sh -s composer -- --version
       - name: Show the Composer configuration
-        run: ./Build/Scripts/runTests.sh -b docker -s composer config --global --list
+        run: ./Build/Scripts/runTests.sh -s composer config --global --list
       - name: Cache dependencies installed with composer
         uses: actions/cache@v6
         with:
@@ -35,10 +29,10 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-typo3-${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-\n"
       - name: Install composer dependencies
         run: |
-          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
       - name: Lint PHP
         run: |
-          Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -s lintPhp
+          Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -s lintPhp
     strategy:
       fail-fast: false
       matrix:
@@ -67,9 +61,9 @@ jobs:
           extensions: zip
           coverage: none
       - name: Show the Composer version
-        run: ./Build/Scripts/runTests.sh -b docker -s composer -- --version
+        run: ./Build/Scripts/runTests.sh -s composer -- --version
       - name: Show the Composer configuration
-        run: ./Build/Scripts/runTests.sh -b docker -s composer config --global --list
+        run: ./Build/Scripts/runTests.sh -s composer config --global --list
       - name: Cache dependencies installed with composer
         uses: actions/cache@v6
         with:
@@ -78,10 +72,10 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-typo3-${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-\n"
       - name: Install composer dependencies
         run: |
-          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
       - name: Run code quality checks
         run: |
-          Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -s composer check:${{ matrix.command }}
+          Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -s composer check:${{ matrix.command }}
     strategy:
       fail-fast: false
       matrix:
@@ -108,7 +102,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Run prepare release
-        run: Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -s composer prepare-release
+        run: Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -s composer prepare-release
     strategy:
       matrix:
         php-version:
@@ -122,9 +116,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Show the Composer version
-        run: ./Build/Scripts/runTests.sh -b docker -s composer -- --version
+        run: ./Build/Scripts/runTests.sh -s composer -- --version
       - name: Show the Composer configuration
-        run: ./Build/Scripts/runTests.sh -b docker -s composer config --global --list
+        run: ./Build/Scripts/runTests.sh -s composer config --global --list
       - name: Cache dependencies installed with composer
         uses: actions/cache@v6
         with:
@@ -133,10 +127,10 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-typo3-${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-\n"
       - name: Install composer dependencies
         run: |
-          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
       - name: Run unit tests
         run: |
-          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -s unit
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -s unit
     strategy:
       fail-fast: false
       matrix:
@@ -174,9 +168,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Show the Composer version
-        run: ./Build/Scripts/runTests.sh -b docker -s composer -- --version
+        run: ./Build/Scripts/runTests.sh -s composer -- --version
       - name: Show the Composer configuration
-        run: ./Build/Scripts/runTests.sh -b docker -s composer config --global --list
+        run: ./Build/Scripts/runTests.sh -s composer config --global --list
       - name: Cache dependencies installed with composer
         uses: actions/cache@v6
         with:
@@ -185,10 +179,10 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-typo3-${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-\n"
       - name: Install composer dependencies
         run: |
-          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
       - name: Run functional tests
         run: |
-          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -d ${{ matrix.dbms }} -s functional Tests/Functional/
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -d ${{ matrix.dbms }} -s functional Tests/Functional/
     strategy:
       fail-fast: false
       matrix:
@@ -234,9 +228,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Show the Composer version
-        run: ./Build/Scripts/runTests.sh -b docker -s composer -- --version
+        run: ./Build/Scripts/runTests.sh -s composer -- --version
       - name: Show the Composer configuration
-        run: ./Build/Scripts/runTests.sh -b docker -s composer config --global --list
+        run: ./Build/Scripts/runTests.sh -s composer config --global --list
       - name: Cache dependencies installed with composer
         uses: actions/cache@v6
         with:
@@ -245,10 +239,10 @@ jobs:
           restore-keys: "php-${{ matrix.php-version }}-typo3-${{ matrix.typo3-version }}-${{ matrix.composer-dependencies }}-composer-\n"
       - name: Install composer dependencies
         run: |
-          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
       - name: Run legacy functional tests
         run: |
-          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -d ${{ matrix.dbms }} -s functional Tests/LegacyFunctional/
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -d ${{ matrix.dbms }} -s functional Tests/LegacyFunctional/
     strategy:
       fail-fast: false
       matrix:
@@ -294,7 +288,7 @@ jobs:
         uses: actions/checkout@v7
       - name: Check scripts
         run: |
-          Build/Scripts/runTests.sh -b docker -s shellcheck
+          Build/Scripts/runTests.sh -s shellcheck
   documentation:
     name: Documentation
     runs-on: ubuntu-24.04
@@ -304,4 +298,4 @@ jobs:
         uses: actions/checkout@v7
       - name: Test if the documentation will render without warnings
         run: |
-          Build/Scripts/runTests.sh -b docker -s docsGenerate
+          Build/Scripts/runTests.sh -s docsGenerate
