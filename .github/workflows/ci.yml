@@ -186,12 +186,20 @@ jobs:
       - name: Install composer dependencies
         run: |
           ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
+      - name: Find and split files
+        uses: remarkablemark/find-and-split@v1
+        id: functionalTests
+        with:
+         chunk: ${{ matrix.shard }}
+         directory: Tests/Functional/
+         pattern: '*Test.php'
       - name: Run functional tests
         run: |
-          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -d ${{ matrix.dbms }} -s functional Tests/Functional/
+          ./Build/Scripts/runTests.sh -b docker -p ${{ matrix.php-version }} -d ${{ matrix.dbms }} -s functional ${{ steps.functionalTests.outputs.files }}
     strategy:
       fail-fast: false
       matrix:
+        shard: [ 1/2, 1/2 ]
         include:
           - typo3-version: "11.5"
             php-version: "7.4"
