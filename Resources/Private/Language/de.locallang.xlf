@@ -2800,6 +2800,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>description</source>
         <target state="final">Beschreibung</target>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.eventFormat">
+        <source>event format</source>
+        <target state="needs-translation">event format</target>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.speakers" approved="yes">
         <source>speakers</source>
         <target state="final">Referent_innen</target>
@@ -2807,6 +2811,22 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.registrationBottom" approved="yes">
         <source>registration link (bottom)</source>
         <target state="final">Anmeldelink (unten)</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat">
+        <source>Event format</source>
+        <target state="needs-translation">Event format</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.0">
+        <source>on-site</source>
+        <target state="needs-translation">on-site</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.1">
+        <source>hybrid</source>
+        <target state="needs-translation">hybrid</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.2">
+        <source>online</source>
+        <target state="needs-translation">online</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.dateAndTime" approved="yes">
         <source>Date and time</source>
