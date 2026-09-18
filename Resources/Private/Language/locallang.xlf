@@ -2085,11 +2085,26 @@
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.description">
         <source>description</source>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.eventFormat">
+        <source>event format</source>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.speakers">
         <source>speakers</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.registrationBottom">
         <source>registration link (bottom)</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat">
+        <source>Event format</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.0">
+        <source>on-site</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.1">
+       <source>hybrid</source>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.2">
+        <source>online</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.dateAndTime">
         <source>Date and time</source>

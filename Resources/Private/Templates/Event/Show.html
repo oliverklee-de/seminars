@@ -163,6 +163,16 @@
             </f:if>
         </oelib:isFieldEnabled>
 
+        <oelib:isFieldEnabled fieldName="eventFormat">
+                <h3>
+                    <f:translate key="plugin.eventSingleView.events.property.eventFormat"/>
+                </h3>
+                <p>
+                    <f:translate
+                        key="plugin.eventSingleView.events.property.eventFormat.{event.eventFormat}"/>
+                </p>
+        </oelib:isFieldEnabled>
+
         <oelib:isFieldEnabled fieldName="speakers">
             <f:render partial="Event/SpeakersHeading" arguments="{event: event}"/>
             <f:render partial="Event/Speakers" arguments="{event: event}"/>
