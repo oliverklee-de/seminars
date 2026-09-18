@@ -2095,7 +2095,7 @@
         <source>registration link (bottom)</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.eventFormat">
-        <source>event format</source>
+        <source>Event format</source>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.eventFormat.0">
         <source>on-site</source>
