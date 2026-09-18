@@ -6,6 +6,7 @@ namespace OliverKlee\Seminars\Tests\Functional\Domain\Repository;
 
 use OliverKlee\Seminars\Domain\Model\Speaker;
 use OliverKlee\Seminars\Domain\Repository\SpeakerRepository;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -87,5 +88,20 @@ final class SpeakerRepositoryTest extends FunctionalTestCase
         $first = $result->getFirst();
         self::assertInstanceOf(Speaker::class, $first);
         self::assertSame('Earlier', $first->getName());
+    }
+
+    /**
+     * @test
+     */
+    public function fillsImageRelationForSpeaker(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/propertyMapping/SpeakerWithImage.csv');
+
+        $result = $this->subject->findByUid(1);
+        self::assertInstanceOf(Speaker::class, $result);
+
+        $image = $result->getImage();
+        self::assertInstanceOf(FileReference::class, $image);
+        self::assertSame(1, $image->getUid());
     }
 }

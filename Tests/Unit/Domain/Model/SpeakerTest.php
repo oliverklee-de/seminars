@@ -6,6 +6,7 @@ namespace OliverKlee\Seminars\Tests\Unit\Domain\Model;
 
 use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Seminars\Domain\Model\Speaker;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -114,4 +115,34 @@ final class SpeakerTest extends UnitTestCase
 
         self::assertSame($value, $this->subject->getHomepage());
     }
+
+    /**
+     * @test
+     */
+    public function getImageInitiallyReturnsNull(): void
+    {
+        self::assertNull($this->subject->getImage());
+    }
+
+    /**
+     * @test
+     */
+    public function setImageSetsImage(): void
+    {
+        $image = new FileReference();
+        $this->subject->setImage($image);
+
+        self::assertSame($image, $this->subject->getImage());
+    }
+
+    /**
+     * @test
+     */
+    public function setImageIsNullable(): void
+    {
+        $this->subject->setImage(null);
+
+        self::assertNull($this->subject->getImage());
+    }
+
 }
