@@ -1317,7 +1317,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('<figure>', $html);
         self::assertStringContainsString('<img', $html);
-        self::assertStringContainsString('ImageFile.png', $html);
+        self::assertStringContainsString('ImageFile', $html);
     }
 
     /**
@@ -1339,7 +1339,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         self::assertStringContainsString('<figure>', $html);
         self::assertStringContainsString('<img', $html);
-        self::assertStringContainsString('ImageFile.png', $html);
+        self::assertStringContainsString('ImageFile', $html);
     }
 
     /**
@@ -1420,6 +1420,48 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
         self::assertMatchesRegularExpression('#<figcaption>\\s*Max\\s*</figcaption>#', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionRendersMaxWidthOfImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithProcessedImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('/_processed_/', $html);
+        self::assertStringContainsString('width="1280"', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForEventDateRendersMaxWidthOfImage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationForEventDateWithProcessedImage.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('/_processed_/', $html);
+        self::assertStringContainsString('width="1280"', $html);
     }
 
     /**
