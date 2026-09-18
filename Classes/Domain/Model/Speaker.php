@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Domain\Model;
 
 use OliverKlee\Oelib\Interfaces\MailRole;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Annotation\Validate;
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 
 /**
  * This class represents a speaker for an event.
