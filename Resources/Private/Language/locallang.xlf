@@ -2271,6 +2271,9 @@
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.description">
         <source>description</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.eventFormat">
+        <source>event format</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.settings.displayOptions.fields.speakers">
         <source>speakers</source>
       </trans-unit>
@@ -2387,6 +2390,18 @@
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.property.attendanceMode.1">
         <source>on-site</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.eventFormat">
+        <source>Event format</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.eventFormat.0">
+        <source>on-site</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.eventFormat.1">
+       <source>hybrid</source>
+      </trans-unit>
+      <trans-unit id="plugin.myRegistrations.property.eventFormat.2">
+        <source>online</source>
       </trans-unit>
     </body>
   </file>

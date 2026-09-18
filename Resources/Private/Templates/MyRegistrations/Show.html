@@ -152,6 +152,16 @@
             <f:render partial="Event/Speakers" arguments="{event: event}"/>
         </oelib:isFieldEnabled>
 
+        <oelib:isFieldEnabled fieldName="eventFormat">
+            <h3>
+                <f:translate key="plugin.myRegistrations.property.eventFormat"/>
+            </h3>
+            <p>
+                <f:translate
+                    key="plugin.myRegistrations.property.eventFormat.{event.eventFormat}"/>
+            </p>
+        </oelib:isFieldEnabled>
+
         <oelib:isFieldEnabled fieldName="unregistration">
             <f:if condition="{unregistrationIsPossible}">
                 <h3>

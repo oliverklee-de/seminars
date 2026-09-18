@@ -1524,6 +1524,80 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     }
 
     /**
+     * @return array<non-empty-string, array{0: non-empty-string, 1: non-empty-string}>
+     */
+    public static function eventFormatForShowActionDataProvider(): array
+    {
+        return [
+            'on-site' => ['RegistrationWithOnSiteEvent.csv', '0'],
+            'hybrid' => ['RegistrationWithHybridEvent.csv', '1'],
+            'online' => ['RegistrationWithOnlineEvent.csv', '2'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider eventFormatForShowActionDataProvider
+     */
+    public function showActionRendersEventFormat(string $fixtureFile, string $labelKey): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/' . $fixtureFile);
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        $keyPrefix = 'plugin.myRegistrations.property.eventFormat.';
+        $expected = LocalizationUtility::translate($keyPrefix . $labelKey, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
+     * @return array<non-empty-string, array{0: non-empty-string, 1: non-empty-string}>
+     */
+    public static function eventFormatForShowActionForEventDateDataProvider(): array
+    {
+        return [
+            'on-site' => ['RegistrationWithOnSiteEventDateWithTopic.csv', '0'],
+            'hybrid' => ['RegistrationWithHybridEventDateWithTopic.csv', '1'],
+            'online' => ['RegistrationWithOnlineEventDateWithTopic.csv', '2'],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider eventFormatForShowActionForEventDateDataProvider
+     */
+    public function showActionForEventDateRendersEventFormat(string $fixtureFile, string $labelKey): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/' . $fixtureFile);
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        $keyPrefix = 'plugin.myRegistrations.property.eventFormat.';
+        $expected = LocalizationUtility::translate($keyPrefix . $labelKey, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
+    }
+
+    /**
      * @test
      */
     public function showActionRendersNameOfOrganizer(): void
