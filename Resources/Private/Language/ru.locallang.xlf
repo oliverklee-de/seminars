@@ -2833,6 +2833,10 @@
         <source>description</source>
         <target state="needs-translation">description</target>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.eventFormat">
+        <source>event format</source>
+        <target state="needs-translation">event format</target>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.speakers">
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
@@ -2840,6 +2844,22 @@
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.registrationBottom">
         <source>registration link (bottom)</source>
         <target state="needs-translation">registration link (bottom)</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat">
+        <source>Event format</source>
+        <target state="needs-translation">Event format</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.0">
+        <source>on-site</source>
+        <target state="needs-translation">on-site</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.1">
+        <source>hybrid</source>
+        <target state="needs-translation">hybrid</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.2">
+        <source>online</source>
+        <target state="needs-translation">online</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.dateAndTime">
         <source>Date and time</source>
