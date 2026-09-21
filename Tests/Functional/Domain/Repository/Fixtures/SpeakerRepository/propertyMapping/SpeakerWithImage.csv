@@ -1,0 +1,7 @@
+"tx_seminars_speakers"
+,"uid","title","image"
+,1,"Joey Coolguy",1
+
+"sys_file_reference"
+,"uid","uid_foreign","tablenames","fieldname"
+,1,1,"tx_seminars_speakers","image"
