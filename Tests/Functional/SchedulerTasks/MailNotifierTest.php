@@ -134,14 +134,13 @@ final class MailNotifierTest extends FunctionalTestCase
     public function executeWithPageConfigurationCallsAllSeparateSteps(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MailNotifierConfiguration.csv');
-        $subject =
-            $this->getMockBuilder(MailNotifier::class)->onlyMethods(
-                [
-                    'sendEventTakesPlaceReminders',
-                    'sendCancellationDeadlineReminders',
-                    'automaticallyChangeEventStatuses',
-                ],
-            )->getMock();
+        $subject = $this->getMockBuilder(MailNotifier::class)->onlyMethods(
+            [
+                'sendEventTakesPlaceReminders',
+                'sendCancellationDeadlineReminders',
+                'automaticallyChangeEventStatuses',
+            ],
+        )->getMock();
         $subject->setConfigurationPageUid(1);
 
         $subject->expects(self::once())->method('sendEventTakesPlaceReminders');
@@ -156,14 +155,13 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function executeWithoutPageConfigurationNotCallsAnySeparateStep(): void
     {
-        $subject =
-            $this->getMockBuilder(MailNotifier::class)->onlyMethods(
-                [
-                    'sendEventTakesPlaceReminders',
-                    'sendCancellationDeadlineReminders',
-                    'automaticallyChangeEventStatuses',
-                ],
-            )->getMock();
+        $subject = $this->getMockBuilder(MailNotifier::class)->onlyMethods(
+            [
+                'sendEventTakesPlaceReminders',
+                'sendCancellationDeadlineReminders',
+                'automaticallyChangeEventStatuses',
+            ],
+        )->getMock();
         $subject->setConfigurationPageUid(0);
 
         $subject->expects(self::never())->method('sendEventTakesPlaceReminders');
@@ -179,14 +177,13 @@ final class MailNotifierTest extends FunctionalTestCase
     public function executeWithPageConfigurationExecutesRegistrationDigest(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/MailNotifierConfiguration.csv');
-        $subject =
-            $this->getMockBuilder(MailNotifier::class)->onlyMethods(
-                [
-                    'sendEventTakesPlaceReminders',
-                    'sendCancellationDeadlineReminders',
-                    'automaticallyChangeEventStatuses',
-                ],
-            )->getMock();
+        $subject = $this->getMockBuilder(MailNotifier::class)->onlyMethods(
+            [
+                'sendEventTakesPlaceReminders',
+                'sendCancellationDeadlineReminders',
+                'automaticallyChangeEventStatuses',
+            ],
+        )->getMock();
         $subject->setConfigurationPageUid(1);
         $this->registrationDigestMock->expects(self::once())->method('execute');
 
