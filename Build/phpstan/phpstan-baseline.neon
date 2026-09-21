@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
-			count: 1
-			path: ../../Classes/BackEnd/EmailService.php
-
-		-
 			message: "#^Argument of an invalid type array\\<int, string\\>\\|false supplied for foreach, only iterables are supported\\.$#"
 			count: 1
 			path: ../../Classes/Bag/AbstractBag.php
@@ -1116,6 +1111,11 @@ parameters:
 			path: ../../Classes/SchedulerTasks/RegistrationDigest.php
 
 		-
+			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
+			count: 1
+			path: ../../Classes/Service/EmailService.php
+
+		-
 			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
 			count: 1
 			path: ../../Classes/Service/EventStatisticsCalculator.php
@@ -1299,16 +1299,6 @@ parameters:
 			message: "#^PHPDoc tag @var with type array\\<string, int\\<0, max\\>\\|string\\> is not subtype of type array\\<string, string\\>\\.$#"
 			count: 1
 			path: ../../Classes/UpgradeWizards/GenerateEventSlugsUpgradeWizard.php
-
-		-
-			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/Functional/BackEnd/EmailServiceTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
-			count: 1
-			path: ../../Tests/Functional/BackEnd/EmailServiceTest.php
 
 		-
 			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\AbstractModel\\|null\\.$#"
@@ -1894,6 +1884,16 @@ parameters:
 			message: "#^Cannot call method hasSkills\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacySpeaker\\|null\\.$#"
 			count: 2
 			path: ../../Tests/Functional/OldModel/LegacySpeakerTest.php
+
+		-
+			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
+			count: 1
+			path: ../../Tests/Functional/Service/EmailServiceTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
+			count: 1
+			path: ../../Tests/Functional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"

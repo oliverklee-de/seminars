@@ -7,6 +7,8 @@ namespace OliverKlee\Seminars\Tests\Functional\Service;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\DataStructures\Collection;
+use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
+use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Organizer;
@@ -27,6 +29,8 @@ final class EmailServiceTest extends FunctionalTestCase
     use EmailTrait;
     use MakeInstanceTrait;
 
+    public const FIXTURES_PATH = __DIR__ . '/Fixtures/EmailService';
+
     protected array $coreExtensionsToLoad = [
         'typo3/cms-extensionmanager',
         'typo3/cms-install',
@@ -39,7 +43,16 @@ final class EmailServiceTest extends FunctionalTestCase
         'oliverklee/seminars',
     ];
 
+    protected array $configurationToUseInTestInstance = [
+        'MAIL' => [
+            'defaultMailFromAddress' => 'system-foo@example.com',
+            'defaultMailFromName' => 'Mr. Default',
+        ],
+    ];
+
     private EmailService $subject;
+
+    private EventRepository $eventRepository;
 
     private Event $event;
 
@@ -55,6 +68,7 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
 
         $this->email = $this->createEmailMock();
+        $this->eventRepository = $this->get(EventRepository::class);
 
         $this->organizer = new Organizer();
         $this->organizer->setData(
@@ -174,5 +188,128 @@ final class EmailServiceTest extends FunctionalTestCase
         $result = $this->email->getTextBody();
         self::assertIsString($result);
         self::assertStringContainsString($footer, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function sendPlainTextEmailToRegularAttendeesForTwoRegistrationsSendsTwoEmails(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/Records.csv');
+        $event = $this->eventRepository->findByUid(2);
+        self::assertInstanceOf(SingleEvent::class, $event);
+
+        $this->email->expects(self::exactly(2))->method('send');
+        $this->addMockedInstance(MailMessage::class, $this->email);
+        $this->addMockedInstance(MailMessage::class, $this->email);
+
+        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+    }
+
+    /**
+     * @test
+     */
+    public function sendPlainTextEmailToRegularAttendeesUsesTypo3DefaultFromAddressAsSender(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/Records.csv');
+        $event = $this->eventRepository->findByUid(2);
+        self::assertInstanceOf(SingleEvent::class, $event);
+
+        $this->email->expects(self::exactly(2))->method('send');
+        $this->addMockedInstance(MailMessage::class, $this->email);
+        $this->addMockedInstance(MailMessage::class, $this->email);
+
+        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+
+        self::assertArrayHasKey('system-foo@example.com', $this->getFromOfEmail($this->email));
+    }
+
+    /**
+     * @test
+     */
+    public function sendPlainTextEmailToRegularAttendeesForNoTypo3EmailConfiguredUsesFirstOrganizerAsSender(): void
+    {
+        $GLOBALS['TYPO3_CONF_VARS']['MAIL'] = [];
+
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/Records.csv');
+        $event = $this->eventRepository->findByUid(2);
+        self::assertInstanceOf(SingleEvent::class, $event);
+
+        $this->email->expects(self::exactly(2))->method('send');
+        $this->addMockedInstance(MailMessage::class, $this->email);
+        $this->addMockedInstance(MailMessage::class, $this->email);
+
+        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+
+        self::assertArrayHasKey('oliver@example.com', $this->getFromOfEmail($this->email));
+    }
+
+    /**
+     * @test
+     */
+    public function sendPlainTextEmailToRegularAttendeesEmailUsesFirstOrganizerAsReplyTo(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/Records.csv');
+        $event = $this->eventRepository->findByUid(2);
+        self::assertInstanceOf(SingleEvent::class, $event);
+
+        $this->email->expects(self::exactly(2))->method('send');
+        $this->addMockedInstance(MailMessage::class, $this->email);
+        $this->addMockedInstance(MailMessage::class, $this->email);
+
+        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+
+        self::assertArrayHasKey('oliver@example.com', $this->getReplyToOfEmail($this->email));
+    }
+
+    /**
+     * @test
+     */
+    public function sendPlainTextEmailToRegularAttendeesEmailAppendsFirstOrganizerFooterToMessageBody(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/Records.csv');
+        $event = $this->eventRepository->findByUid(2);
+        self::assertInstanceOf(SingleEvent::class, $event);
+
+        $this->email->expects(self::exactly(2))->method('send');
+        $this->addMockedInstance(MailMessage::class, $this->email);
+        $this->addMockedInstance(MailMessage::class, $this->email);
+
+        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+
+        self::assertStringContainsString("\n-- \nThe one and only", $this->email->getTextBody());
+    }
+
+    /**
+     * @test
+     */
+    public function sendPlainTextEmailToRegularAttendeesUsesProvidedEmailSubject(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/Records.csv');
+        $event = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $event);
+
+        $this->email->expects(self::once())->method('send');
+        $this->addMockedInstance(MailMessage::class, $this->email);
+        $emailSubject = 'Thank you for your registration.';
+
+        $this->subject->sendPlainTextEmailToRegularAttendees($event, $emailSubject, 'some message body');
+
+        self::assertSame($emailSubject, $this->email->getSubject());
+    }
+
+    /**
+     * @test
+     */
+    public function sendPlainTextEmailToRegularAttendeesNotSendsEmailToUserWithoutEmailAddress(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/Records.csv');
+        $event = $this->eventRepository->findByUid(4);
+        self::assertInstanceOf(SingleEvent::class, $event);
+
+        $this->email->expects(self::never())->method('send');
+        $this->addMockedInstance(MailMessage::class, $this->email);
+
+        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
     }
 }
