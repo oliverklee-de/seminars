@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\Functional\Hooks;
 
 use OliverKlee\Seminars\Hooks\DataHandlerHook;
-use OliverKlee\Seminars\Tests\Functional\Support\BackEndTestsTrait;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -18,8 +18,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class DataHandlerHookTest extends FunctionalTestCase
 {
-    use BackEndTestsTrait;
-
     private const EVENTS_TABLE = 'tx_seminars_seminars';
 
     protected array $coreExtensionsToLoad = [
@@ -54,8 +52,9 @@ final class DataHandlerHookTest extends FunctionalTestCase
     private function initializeBackEndUser(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/DataHandlerHook/BackEndUser.csv');
-        $this->setUpBackendUser(1);
-        $this->unifyBackEndLanguage();
+        $GLOBALS['LANG'] = $this
+            ->get(LanguageServiceFactory::class)
+            ->createFromUserPreferences($this->setUpBackendUser(1));
     }
 
     /**
