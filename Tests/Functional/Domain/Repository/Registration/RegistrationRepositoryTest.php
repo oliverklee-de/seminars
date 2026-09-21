@@ -16,7 +16,7 @@ use OliverKlee\Seminars\Domain\Model\RegistrationCheckbox;
 use OliverKlee\Seminars\Domain\Repository\AbstractRawDataCapableRepository;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
-use OliverKlee\Seminars\Tests\Functional\Support\BackEndTestsTrait;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -33,8 +33,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class RegistrationRepositoryTest extends FunctionalTestCase
 {
-    use BackEndTestsTrait;
-
     protected array $coreExtensionsToLoad = [
         'typo3/cms-extensionmanager',
         'typo3/cms-install',
@@ -65,8 +63,9 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     private function initializeBackEndUser(): void
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/BackEndUser.csv');
-        $this->setUpBackendUser(1);
-        $this->unifyBackEndLanguage();
+        $GLOBALS['LANG'] = $this
+            ->get(LanguageServiceFactory::class)
+            ->createFromUserPreferences($this->setUpBackendUser(1));
     }
 
     /**
