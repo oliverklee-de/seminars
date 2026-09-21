@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Unit\Templating;
 
+use OliverKlee\Oelib\Exception\NotFoundException;
 use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Seminars\Tests\Unit\Templating\Fixtures\TestingContentObjectRenderer;
 use OliverKlee\Seminars\Tests\Unit\Templating\Fixtures\TestingTemplateHelper;
@@ -4091,5 +4092,115 @@ final class TemplateHelperTest extends UnitTestCase
             $frontEndController->cObj,
             $this->subject->getContentObjectRenderer(),
         );
+    }
+
+    ///////////////////////////////
+    // Tests for getting subparts.
+    ///////////////////////////////
+
+    /**
+     * @test
+     */
+    public function noSubpartsAndEmptySubpartName(): void
+    {
+        self::assertSame(
+            '',
+            $this->subject->getSubpart(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getSubpartWithNotExistingSubpartNameThrowsException(): void
+    {
+        $this->expectException(NotFoundException::class);
+        $this->expectExceptionMessage('$key contained the subpart name "FOOBAR"');
+        $this->expectExceptionCode(1632760625);
+
+        $this->subject->getSubpart('FOOBAR');
+    }
+
+    /**
+     * @test
+     */
+    public function getSubpartWithLabelsReturnsVerbatimSubpartWithoutLabels(): void
+    {
+        $subpartContent = 'Subpart content';
+        $templateCode = 'Text before the subpart
+            <!-- ###MY_SUBPART### -->'
+            . $subpartContent
+            . '<!-- ###MY_SUBPART### -->'
+            . 'Text after the subpart.';
+
+        $this->subject->processTemplate($templateCode);
+
+        self::assertSame($subpartContent, $this->subject->getSubpartWithLabels('MY_SUBPART'));
+    }
+
+    /**
+     * @test
+     */
+    public function getCompleteTemplateReturnsCompleteTemplateContent(): void
+    {
+        $templateCode = "This is a test including\na linefeed.\n";
+        $this->subject->processTemplate(
+            $templateCode,
+        );
+        self::assertSame(
+            $templateCode,
+            $this->subject->getSubpart(),
+        );
+    }
+
+    ///////////////////////////////////////////////////
+    // Tests for getting subparts with invalid names.
+    ///////////////////////////////////////////////////
+
+    /**
+     * @test
+     */
+    public function getSubpartWithLowercaseNameIsIgnoredWithUsingLowercase(): void
+    {
+        $this->subject->processTemplate(
+            '<!-- ###my_subpart### -->'
+            . 'Some text.'
+            . '<!-- ###my_subpart### -->',
+        );
+
+        $this->expectException(NotFoundException::class);
+        $this->expectExceptionMessage('$key contained the subpart name "my_subpart"');
+        $this->expectExceptionCode(1632760625);
+
+        $this->subject->getSubpart('my_subpart');
+    }
+
+    /**
+     * @test
+     */
+    public function subpartWithLowercaseNameIsIgnoredWithUsingUppercase(): void
+    {
+        $this->subject->processTemplate(
+            '<!-- ###my_subpart### -->'
+            . 'Some text.'
+            . '<!-- ###my_subpart### -->',
+        );
+
+        $this->expectException(NotFoundException::class);
+        $this->expectExceptionMessage('$key contained the subpart name "MY_SUBPART"');
+        $this->expectExceptionCode(1632760625);
+
+        $this->subject->getSubpart('MY_SUBPART');
+    }
+
+    // Tests for automatically setting labels.
+
+    /**
+     * @test
+     */
+    public function setLabelsAfterGetTemplateCodeWithoutTemplatePathDoesNotCrash(): void
+    {
+        $this->subject->getTemplateCode();
+        $this->subject->setLabels();
     }
 }
