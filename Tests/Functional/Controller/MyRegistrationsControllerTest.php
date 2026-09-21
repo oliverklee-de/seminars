@@ -1568,6 +1568,29 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function showActionCanRenderImageAndAltTextOfSpeaker(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithImageAndAltTextOfSpeaker.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(7)
+            ->withQueryParameter('tx_seminars_myregistrations[action]', 'show')
+            ->withQueryParameter('tx_seminars_myregistrations[controller]', 'MyRegistrations')
+            ->withQueryParameter('tx_seminars_myregistrations[registration]', 1);
+        $requestContext = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
+
+        self::assertStringContainsString('<figure>', $html);
+        self::assertStringContainsString('<img', $html);
+        self::assertStringContainsString('ImageFile', $html);
+        self::assertStringContainsString('alt="Alt-text"', $html);
+    }
+
+    /**
+     * @test
+     */
     public function showActionRendersRegularRegistrationStatusOfRegistrationOfTheLoggedInUser(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
