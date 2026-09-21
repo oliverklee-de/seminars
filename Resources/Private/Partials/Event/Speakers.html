@@ -3,12 +3,23 @@
     <f:if condition="{speakers}">
         <div class="row">
             <f:for each="{speakers}" as="speaker">
-                <div class="col-sm-6">
+                <div class="col-6 col-lg-3 mb-4">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
                                 {speaker.name}
                             </h5>
+
+                            <f:if condition="{speaker.image}">
+                                <figure>
+                                    <f:image
+                                        image="{speaker.image}"
+                                        alt="{speaker.image.alternative}"
+                                        class="img-fluid"
+                                    />
+                                </figure>
+                            </f:if>
+
                             <f:if condition="{speaker.organization}">
                                 <h6 class="card-subtitle mb-2 text-body-secondary">
                                     {speaker.organization}

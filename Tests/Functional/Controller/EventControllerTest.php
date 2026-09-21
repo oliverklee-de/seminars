@@ -2753,6 +2753,26 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function showActionRendersImageAndAltTextOfSpeaker(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventWithImageAndAltTextOfSpeaker.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('<figure>', $html);
+        self::assertStringContainsString('<img', $html);
+        self::assertStringContainsString('ImageFile', $html);
+        self::assertStringContainsString('alt="Alt-text"', $html);
+    }
+
+    /**
+     * @test
+     */
     public function showActionForEventWithOneVacancyRendersLinkToRegistrationForEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
