@@ -2349,6 +2349,9 @@
       <trans-unit id="plugin.myRegistrations.index.heading.unregistration">
         <source>Unregistration</source>
       </trans-unit>
+      <trans-unit id="plugin.myRegistrations.index.singleViewLink">
+        <source>Details</source>
+      </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm">
         <source>proceed to unregistration</source>
       </trans-unit>
