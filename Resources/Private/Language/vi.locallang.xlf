@@ -2953,9 +2953,17 @@
         <source>registration</source>
         <target state="needs-translation">registration</target>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.registration.register.ariaLabel">
+        <source>Register for the event &quot;%1$s&quot;</source>
+        <target state="needs-translation">Register for the event "%1$s"</target>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.registration.waitingList">
         <source>register for the waiting list</source>
         <target state="needs-translation">register for the waiting list</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.registration.waitingList.ariaLabel">
+        <source>Subscribe to the waiting list for the event &quot;%1$s&quot;</source>
+        <target state="needs-translation">Subscribe to the waiting list for the event "%1$s"</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations">
         <source>My registrations</source>
