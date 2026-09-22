@@ -1111,11 +1111,6 @@ parameters:
 			path: ../../Classes/SchedulerTasks/RegistrationDigest.php
 
 		-
-			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
-			count: 1
-			path: ../../Classes/Service/EmailService.php
-
-		-
 			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
 			count: 1
 			path: ../../Classes/Service/EventStatisticsCalculator.php
@@ -1887,16 +1882,6 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Service/EmailServiceTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
-			count: 1
-			path: ../../Tests/Functional/Service/EmailServiceTest.php
-
-		-
-			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
 			count: 6
 			path: ../../Tests/Functional/Service/RegistrationManagerTest.php
 
@@ -2174,26 +2159,6 @@ parameters:
 			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, string\\|null given\\.$#"
 			count: 4
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
-			message: "#^Cannot access offset 'MAIL' on mixed\\.$#"
-			count: 6
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
-			message: "#^Cannot access offset 'defaultMailFromAddr…' on mixed\\.$#"
-			count: 3
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
-			message: "#^Cannot access offset 'defaultMailFromName' on mixed\\.$#"
-			count: 3
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, resource\\|string\\|null given\\.$#"
-			count: 5
-			path: ../../Tests/LegacyFunctional/Service/EmailServiceTest.php
 
 		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with PHPUnit\\\\Framework\\\\MockObject\\\\MockObject&TYPO3\\\\CMS\\\\Core\\\\Mail\\\\MailMessage will always evaluate to true\\.$#"

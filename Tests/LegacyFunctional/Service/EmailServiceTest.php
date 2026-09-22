@@ -108,9 +108,11 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesUsesTypo3DefaultFromAddressAsSender(): void
     {
+        self::assertTrue(is_array($GLOBALS['TYPO3_CONF_VARS']) && is_array($GLOBALS['TYPO3_CONF_VARS']['MAIL']));
         $defaultMailFromAddress = 'system-foo@example.com';
-        $defaultMailFromName = 'Mr. Default';
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] = $defaultMailFromAddress;
+        self::assertTrue(is_array($GLOBALS['TYPO3_CONF_VARS']) && is_array($GLOBALS['TYPO3_CONF_VARS']['MAIL']));
+        $defaultMailFromName = 'Mr. Default';
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = $defaultMailFromName;
 
         $this->email->expects(self::once())->method('send');
@@ -126,7 +128,9 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesUsesFirstOrganizerAsReplyTo(): void
     {
+        self::assertTrue(is_array($GLOBALS['TYPO3_CONF_VARS']) && is_array($GLOBALS['TYPO3_CONF_VARS']['MAIL']));
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] = 'system-foo@example.com';
+        self::assertTrue(is_array($GLOBALS['TYPO3_CONF_VARS']) && is_array($GLOBALS['TYPO3_CONF_VARS']['MAIL']));
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = 'Mr. Default';
 
         $this->email->expects(self::once())->method('send');
@@ -142,7 +146,9 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesWithoutTypo3DefaultFromAddressUsesFirstOrganizerAsSender(): void
     {
+        self::assertTrue(is_array($GLOBALS['TYPO3_CONF_VARS']) && is_array($GLOBALS['TYPO3_CONF_VARS']['MAIL']));
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] = '';
+        self::assertTrue(is_array($GLOBALS['TYPO3_CONF_VARS']) && is_array($GLOBALS['TYPO3_CONF_VARS']['MAIL']));
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = '';
 
         $this->email->expects(self::once())->method('send');
@@ -220,8 +226,10 @@ final class EmailServiceTest extends FunctionalTestCase
 
         $this->email->expects(self::once())->method('send');
         $this->subject->sendEmailToAttendees($this->event, 'Bonjour!', $body);
+        $result = $this->email->getTextBody();
+        self::assertIsString($result);
 
-        self::assertStringContainsString($body, $this->email->getTextBody());
+        self::assertStringContainsString($body, $result);
     }
 
     /**
@@ -303,8 +311,10 @@ final class EmailServiceTest extends FunctionalTestCase
 
         $this->email->expects(self::once())->method('send');
         $this->subject->sendEmailToAttendees($this->event, 'Bonjour!', '%salutation (This was the salutation)');
+        $result = $this->email->getTextBody();
+        self::assertIsString($result);
 
-        self::assertStringContainsString($this->user->getName(), $this->email->getTextBody());
+        self::assertStringContainsString($this->user->getName(), $result);
     }
 
     /**
@@ -316,11 +326,10 @@ final class EmailServiceTest extends FunctionalTestCase
 
         $this->email->expects(self::once())->method('send');
         $this->subject->sendEmailToAttendees($this->event, 'Bonjour!', 'Hello %userName!');
+        $result = $this->email->getTextBody();
+        self::assertIsString($result);
 
-        self::assertStringContainsString(
-            'Hello ' . $this->user->getName() . '!',
-            $this->email->getTextBody(),
-        );
+        self::assertStringContainsString('Hello ' . $this->user->getName() . '!', $result);
     }
 
     /**
@@ -332,11 +341,10 @@ final class EmailServiceTest extends FunctionalTestCase
 
         $this->email->expects(self::once())->method('send');
         $this->subject->sendEmailToAttendees($this->event, 'Bonjour!', 'Event: %eventTitle');
+        $result = $this->email->getTextBody();
+        self::assertIsString($result);
 
-        self::assertStringContainsString(
-            'Event: ' . $this->event->getTitle(),
-            $this->email->getTextBody(),
-        );
+        self::assertStringContainsString('Event: ' . $this->event->getTitle(), $result);
     }
 
     /**
@@ -350,10 +358,9 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->addMockedInstance(MailMessage::class, $this->email);
 
         $this->subject->sendEmailToAttendees($this->event, 'Bonjour!', 'Date: %eventDate');
+        $result = $this->email->getTextBody();
+        self::assertIsString($result);
 
-        self::assertStringContainsString(
-            'Date: ' . $formattedDate,
-            $this->email->getTextBody(),
-        );
+        self::assertStringContainsString('Date: ' . $formattedDate, $result);
     }
 }

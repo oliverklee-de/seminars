@@ -229,6 +229,7 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendPlainTextEmailToRegularAttendeesForNoTypo3EmailConfiguredUsesFirstOrganizerAsSender(): void
     {
+        self::assertIsArray($GLOBALS['TYPO3_CONF_VARS']);
         $GLOBALS['TYPO3_CONF_VARS']['MAIL'] = [];
 
         $this->importCSVDataSet(self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/Records.csv');
@@ -276,8 +277,10 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->addMockedInstance(MailMessage::class, $this->email);
 
         $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+        $result = $this->email->getTextBody();
+        self::assertIsString($result);
 
-        self::assertStringContainsString("\n-- \nThe one and only", $this->email->getTextBody());
+        self::assertStringContainsString("\n-- \nThe one and only", $result);
     }
 
     /**
