@@ -2144,13 +2144,13 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Registrations</source>
         <target state="final">Anmeldungen</target>
       </trans-unit>
-      <trans-unit id="backEndModule.heading.regularRegistrations">
+      <trans-unit id="backEndModule.heading.regularRegistrations" approved="yes">
         <source>Regular registrations</source>
-        <target state="needs-translation">Regular registrations</target>
+        <target state="final">Reguläre Anmeldungen</target>
       </trans-unit>
-      <trans-unit id="backEndModule.heading.waitingListRegistrations">
+      <trans-unit id="backEndModule.heading.waitingListRegistrations" approved="yes">
         <source>Registrations on the waiting list</source>
-        <target state="needs-translation">Registrations on the waiting list</target>
+        <target state="final">Anmeldungen auf der Warteliste</target>
       </trans-unit>
       <trans-unit id="backEndModule.heading.nonbindingReservations" approved="yes">
         <source>Nonbinding reservations</source>
@@ -2800,9 +2800,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>description</source>
         <target state="final">Beschreibung</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.eventFormat">
+      <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.eventFormat" approved="yes">
         <source>event format</source>
-        <target state="needs-translation">event format</target>
+        <target state="final">Veranstaltungsformat</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.settings.displayOptions.dataToDisplay.speakers" approved="yes">
         <source>speakers</source>
@@ -2812,21 +2812,21 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>registration link (bottom)</source>
         <target state="final">Anmeldelink (unten)</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.eventFormat">
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat" approved="yes">
         <source>Event format</source>
-        <target state="needs-translation">Event format</target>
+        <target state="final">Veranstaltungsformat</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.0">
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.0" approved="yes">
         <source>on-site</source>
-        <target state="needs-translation">on-site</target>
+        <target state="final">vor Ort</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.1">
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.1" approved="yes">
         <source>hybrid</source>
-        <target state="needs-translation">hybrid</target>
+        <target state="final">hybrid</target>
       </trans-unit>
-      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.2">
+      <trans-unit id="plugin.eventSingleView.events.property.eventFormat.2" approved="yes">
         <source>online</source>
-        <target state="needs-translation">online</target>
+        <target state="final">online</target>
       </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.dateAndTime" approved="yes">
         <source>Date and time</source>
@@ -2920,9 +2920,17 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>registration</source>
         <target state="final">zur Anmeldung</target>
       </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.registration.register.ariaLabel">
+        <source>Register for the event &quot;%1$s&quot;</source>
+        <target state="needs-translation">Register for the event "%1$s"</target>
+      </trans-unit>
       <trans-unit id="plugin.eventSingleView.events.property.registration.waitingList" approved="yes">
         <source>register for the waiting list</source>
         <target state="final">auf die Warteliste eintragen</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventSingleView.events.property.registration.waitingList.ariaLabel">
+        <source>Subscribe to the waiting list for the event &quot;%1$s&quot;</source>
+        <target state="needs-translation">Subscribe to the waiting list for the event "%1$s"</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations" approved="yes">
         <source>My registrations</source>
