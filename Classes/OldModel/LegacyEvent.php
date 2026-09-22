@@ -567,50 +567,6 @@ class LegacyEvent extends AbstractTimeSpan
     }
 
     /**
-     * @return int<0, max>
-     */
-    public function getNumberOfSpeakers(): int
-    {
-        $number = $this->getRecordPropertyInteger('speakers');
-        \assert($number >= 0);
-
-        return $number;
-    }
-
-    /**
-     * @return int<0, max>
-     */
-    public function getNumberOfPartners(): int
-    {
-        $number = $this->getRecordPropertyInteger('partners');
-        \assert($number >= 0);
-
-        return $number;
-    }
-
-    /**
-     * @return int<0, max>
-     */
-    public function getNumberOfTutors(): int
-    {
-        $number = $this->getRecordPropertyInteger('tutors');
-        \assert($number >= 0);
-
-        return $number;
-    }
-
-    /**
-     * @return int<0, max>
-     */
-    public function getNumberOfLeaders(): int
-    {
-        $number = $this->getRecordPropertyInteger('leaders');
-        \assert($number >= 0);
-
-        return $number;
-    }
-
-    /**
      * Checks whether we have speaker relations of the specified type set.
      *
      * @param 'speakers'|'tutors'|'leaders'|'partners' $speakerType
@@ -1016,17 +972,6 @@ class LegacyEvent extends AbstractTimeSpan
     }
 
     /**
-     * @return int<0, max>
-     */
-    public function getNumberOfPaymentMethods(): int
-    {
-        $number = $this->getTopicInteger('payment_methods');
-        \assert($number >= 0);
-
-        return $number;
-    }
-
-    /**
      * Returns the type of the record. This is one out of the following values:
      * 0 = single event (and default value of older records)
      * 1 = multiple event topic record
@@ -1237,17 +1182,6 @@ class LegacyEvent extends AbstractTimeSpan
         }
 
         return $this->getTopicMmRecordTitles('tx_seminars_target_groups', 'tx_seminars_seminars_target_groups_mm');
-    }
-
-    /**
-     * @return int<0, max>
-     */
-    public function getNumberOfTargetGroups(): int
-    {
-        $number = $this->getRecordPropertyInteger('target_groups');
-        \assert($number >= 0);
-
-        return $number;
     }
 
     /**
@@ -1473,51 +1407,6 @@ class LegacyEvent extends AbstractTimeSpan
     }
 
     /**
-     * Gets our organizers' names and email addresses in the format '"John Doe" <john.doe@example.com>'.
-     *
-     * The name is not encoded yet.
-     *
-     * @return string[] the organizers' names and email addresses
-     */
-    public function getOrganizersNameAndEmail(): array
-    {
-        if (!$this->hasOrganizers()) {
-            return [];
-        }
-
-        $result = [];
-
-        /** @var LegacyOrganizer $organizer */
-        foreach ($this->getOrganizerBag() as $organizer) {
-            $result[] = '"' . $organizer->getName() . '"' . ' <' . $organizer->getEmailAddress() . '>';
-        }
-
-        return $result;
-    }
-
-    /**
-     * Gets our organizers' email addresses in the format
-     * "john.doe@example.com".
-     *
-     * @return string[] the organizers' email addresses
-     */
-    public function getOrganizersEmail(): array
-    {
-        if (!$this->hasOrganizers()) {
-            return [];
-        }
-
-        $result = [];
-
-        /** @var LegacyOrganizer $organizer */
-        foreach ($this->getOrganizerBag() as $organizer) {
-            $result[] = $organizer->getEmailAddress();
-        }
-
-        return $result;
-    }
-
-    /**
      * Gets our organizers' email footers.
      *
      * @return string[] the organizers' email footers, will be empty if no
@@ -1551,17 +1440,6 @@ class LegacyEvent extends AbstractTimeSpan
     public function hasOrganizers(): bool
     {
         return $this->hasRecordPropertyInteger('organizers');
-    }
-
-    /**
-     * @return int<0, max>
-     */
-    public function getNumberOfOrganizers(): int
-    {
-        $number = $this->getRecordPropertyInteger('organizers');
-        \assert($number >= 0);
-
-        return $number;
     }
 
     /**
@@ -1603,17 +1481,6 @@ class LegacyEvent extends AbstractTimeSpan
     public function hasOrganizingPartners(): bool
     {
         return $this->hasRecordPropertyInteger('organizing_partners');
-    }
-
-    /**
-     * @return int<0, max>
-     */
-    public function getNumberOfOrganizingPartners(): int
-    {
-        $number = $this->getRecordPropertyInteger('organizing_partners');
-        \assert($number >= 0);
-
-        return $number;
     }
 
     /**
@@ -2494,17 +2361,6 @@ class LegacyEvent extends AbstractTimeSpan
     public function hasCategories(): bool
     {
         return $this->hasTopicInteger('categories');
-    }
-
-    /**
-     * @return int<0, max>
-     */
-    public function getNumberOfCategories(): int
-    {
-        $number = $this->getTopicInteger('categories');
-        \assert($number >= 0);
-
-        return $number;
     }
 
     /**
