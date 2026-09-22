@@ -3152,9 +3152,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>Unregistration</source>
         <target state="final">Abmeldung</target>
       </trans-unit>
-      <trans-unit id="plugin.myRegistrations.index.singleViewLink">
+      <trans-unit id="plugin.myRegistrations.index.singleViewLink" approved="yes">
         <source>Details</source>
-        <target state="needs-translation">Details</target>
+        <target state="final">Details</target>
       </trans-unit>
       <trans-unit id="plugin.myRegistrations.show.toUnregistrationForm" approved="yes">
         <source>proceed to unregistration</source>
