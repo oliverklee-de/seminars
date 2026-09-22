@@ -664,7 +664,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
 
         $html = (string)$this->executeFrontendSubRequest($request, $requestContext)->getBody();
 
-        $label = LocalizationUtility::translate('plugin.myRegistrations.index.heading.singleViewLink', 'seminars');
+        $label = LocalizationUtility::translate('plugin.myRegistrations.index.singleViewLink', 'seminars');
         self::assertIsString($label);
         $urlPrefix = '/my-events\\?tx_seminars_myregistrations%5Baction%5D=show&amp;'
             . 'tx_seminars_myregistrations%5Bcontroller%5D=MyRegistrations&amp;'
