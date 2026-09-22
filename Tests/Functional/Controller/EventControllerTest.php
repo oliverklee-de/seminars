@@ -2827,8 +2827,7 @@ final class EventControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         $ariaLabel = LocalizationUtility::translate(
-            // Note: The partial uses the hardcoded "eventOutlook".
-            'plugin.eventOutlook.events.property.registration.register.ariaLabel',
+            'plugin.eventSingleView.events.property.registration.register.ariaLabel',
             'seminars',
             ['Extension Development with Extbase and Fluid'],
         );
@@ -2912,8 +2911,7 @@ final class EventControllerTest extends FunctionalTestCase
         $html = (string)$this->executeFrontendSubRequest($request)->getBody();
 
         $ariaLabel = LocalizationUtility::translate(
-            // Note: The partial uses the hardcoded "eventOutlook".
-            'plugin.eventOutlook.events.property.registration.waitingList.ariaLabel',
+            'plugin.eventSingleView.events.property.registration.waitingList.ariaLabel',
             'seminars',
             ['Extension Development with Extbase and Fluid'],
         );
