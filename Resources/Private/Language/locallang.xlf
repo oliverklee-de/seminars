@@ -1594,10 +1594,10 @@
         <source>Registrations</source>
       </trans-unit>
       <trans-unit id="backEndModule.heading.regularRegistrations">
-        <source>Regular registrations (%u)</source>
+        <source>Regular registrations</source>
       </trans-unit>
       <trans-unit id="backEndModule.heading.waitingListRegistrations">
-        <source>Registrations on the waiting list (%u)</source>
+        <source>Registrations on the waiting list</source>
       </trans-unit>
       <trans-unit id="backEndModule.heading.nonbindingReservations">
         <source>Nonbinding reservations</source>

@@ -63,8 +63,7 @@
 
             <h2>
                 <core:icon identifier="actions-check"/>
-                <f:translate key="backEndModule.heading.regularRegistrations"
-                             arguments="{0: '{f:count(subject: regularRegistrations)}'}"/>
+                <f:translate key="backEndModule.heading.regularRegistrations"/>
             </h2>
             <f:if condition="{regularRegistrations}">
                 <f:then>
@@ -80,8 +79,7 @@
             <f:if condition="{waitingListRegistrations}">
                 <h2>
                     <core:icon identifier="actions-clock"/>
-                    <f:translate key="backEndModule.heading.waitingListRegistrations"
-                                 arguments="{0: '{f:count(subject: waitingListRegistrations)}'}"/>
+                    <f:translate key="backEndModule.heading.waitingListRegistrations"/>
                 </h2>
                 <f:render partial="BackEnd/RegistrationList"
                           arguments="{eventUid: event.uid, registrations: waitingListRegistrations, permissions: permissions}"/>
