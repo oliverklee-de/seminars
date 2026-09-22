@@ -11,6 +11,7 @@ use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
+use OliverKlee\Seminars\Domain\Repository\FrontendUserRepository;
 use OliverKlee\Seminars\Email\SalutationBuilder;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
@@ -59,6 +60,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     private EventRepository $eventRepository;
 
+    private FrontendUserRepository $frontendUserRepository;
+
     private int $nowAsUnixTimestamp;
 
     private RegistrationManager $subject;
@@ -102,6 +105,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->connectionPool = $this->get(ConnectionPool::class);
         $this->context = $this->get(Context::class);
         $this->eventRepository = $this->get(EventRepository::class);
+        $this->frontendUserRepository = $this->get(FrontendUserRepository::class);
         $this->templateRegistry = $this->get(TemplateRegistry::class);
         $this->configurationRegistry = $this->get(ConfigurationRegistry::class);
         $this->salutationBuilder = $this->get(SalutationBuilder::class);
@@ -955,6 +959,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
+                    $this->frontendUserRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                     $this->salutationBuilder,
@@ -991,6 +996,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
+                    $this->frontendUserRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                     $this->salutationBuilder,
@@ -1022,6 +1028,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
+                    $this->frontendUserRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                     $this->salutationBuilder,
@@ -1060,6 +1067,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
+                    $this->frontendUserRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                     $this->salutationBuilder,
@@ -1106,6 +1114,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
                     $this->connectionPool,
                     $this->context,
                     $this->eventRepository,
+                    $this->frontendUserRepository,
                     $this->templateRegistry,
                     $this->configurationRegistry,
                     $this->salutationBuilder,

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Email;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
-use OliverKlee\Seminars\Model\FrontEndUser;
+use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -28,7 +28,7 @@ class SalutationBuilder
      *
      * @return non-empty-string the localized salutation with a trailing comma
      */
-    public function getSalutation(FrontEndUser $user): string
+    public function getSalutation(FrontendUser $user): string
     {
         $salutationParts = [];
 
@@ -39,7 +39,8 @@ class SalutationBuilder
                 \assert(\is_string($label));
                 \assert($label !== '');
                 $salutationParts['dear'] = $label;
-                $salutationParts['name'] = $user->getFirstOrFullName();
+                $firstName = $user->getFirstName();
+                $salutationParts['name'] = ($firstName !== '') ? $firstName : $user->getName();
                 break;
             default:
                 $label = LocalizationUtility::translate('email_hello_formal_99', 'seminars');

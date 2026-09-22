@@ -8,13 +8,13 @@ use OliverKlee\Oelib\Email\SystemEmailFromBuilder;
 use OliverKlee\Oelib\Exception\NotFoundException;
 use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
+use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Organizer;
+use OliverKlee\Seminars\Domain\Repository\FrontendUserRepository;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use OliverKlee\Seminars\Email\SalutationBuilder;
 use OliverKlee\Seminars\Model\Event;
-use OliverKlee\Seminars\Model\FrontEndUser;
-use OliverKlee\Seminars\Model\Registration;
 use OliverKlee\Seminars\ViewHelpers\DateRangeViewHelper;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
@@ -43,10 +43,16 @@ class EmailService implements SingletonInterface
 
     private RegistrationRepository $registrationRepository;
 
-    public function __construct(SalutationBuilder $salutationBuilder, RegistrationRepository $registrationRepository)
-    {
+    private FrontendUserRepository $frontendUserRepository;
+
+    public function __construct(
+        SalutationBuilder $salutationBuilder,
+        RegistrationRepository $registrationRepository,
+        FrontendUserRepository $frontendUserRepository
+    ) {
         $this->salutationBuilder = $salutationBuilder;
         $this->registrationRepository = $registrationRepository;
+        $this->frontendUserRepository = $frontendUserRepository;
         $this->dateRangeViewHelper = GeneralUtility::makeInstance(DateRangeViewHelper::class);
     }
 
@@ -60,10 +66,16 @@ class EmailService implements SingletonInterface
         $sender = $this->determineEmailSenderForEvent($event);
         $firstOrganizer = $event->getFirstOrganizer();
 
-        /** @var Registration $registration */
         foreach ($event->getRegistrations() as $registration) {
-            $user = $registration->getFrontEndUser();
-            if ($user === null || !$user->hasEmailAddress()) {
+            $oelibFrontEndUser = $registration->getFrontEndUser();
+            if (!($oelibFrontEndUser instanceof \OliverKlee\Oelib\Model\FrontEndUser)) {
+                continue;
+            }
+            $userUid = $oelibFrontEndUser->getUid();
+            assert($userUid > 0);
+            $user = $this->frontendUserRepository->findByUid($userUid);
+            assert($user instanceof FrontendUser);
+            if ($user->getEmail() === '') {
                 continue;
             }
 
@@ -99,7 +111,7 @@ class EmailService implements SingletonInterface
     /**
      * Builds the message body (including the email footer).
      */
-    protected function buildMessageBody(string $rawBody, Event $event, FrontEndUser $user): string
+    protected function buildMessageBody(string $rawBody, Event $event, FrontendUser $user): string
     {
         $bodyWithFooter = $this->replaceMarkers($rawBody, $event, $user);
         $organizer = $event->getFirstOrganizer();
@@ -120,7 +132,7 @@ class EmailService implements SingletonInterface
      * %eventTitle
      * %eventDate
      */
-    protected function replaceMarkers(string $textWithMarkers, Event $event, FrontEndUser $user): string
+    protected function replaceMarkers(string $textWithMarkers, Event $event, FrontendUser $user): string
     {
         $markers = [
             '%salutation' => $this->salutationBuilder->getSalutation($user),
@@ -149,7 +161,7 @@ class EmailService implements SingletonInterface
 
         foreach ($this->registrationRepository->findRegularRegistrationsByEvent($eventUid) as $registration) {
             $user = $registration->getUser();
-            if (!($user instanceof \OliverKlee\Seminars\Domain\Model\FrontendUser) || $user->getEmail() === '') {
+            if (!($user instanceof FrontendUser) || $user->getEmail() === '') {
                 continue;
             }
 
