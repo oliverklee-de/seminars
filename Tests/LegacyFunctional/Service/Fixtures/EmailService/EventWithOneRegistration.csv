@@ -1,0 +1,19 @@
+"tx_seminars_seminars"
+,"uid","title","begin_date","end_date","organizers","registrations"
+,1,"A nice event",1459576800,1459607400,1,1
+
+"tx_seminars_organizers"
+,"uid","title","email"
+,1,"Brain Gourmets","organizer@example.com"
+
+"tx_seminars_seminars_organizers_mm"
+,"uid_local","uid_foreign"
+,1,1
+
+"fe_users"
+,"uid","name","email"
+,1,"John Doe","john.doe@example.com"
+
+"tx_seminars_attendances"
+,"uid","seminar","user"
+,1,1,1
