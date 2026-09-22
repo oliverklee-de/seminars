@@ -1505,7 +1505,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function outlookActionForEventWithOneVacancyRendersLinkWithRegistrationLabelAriaLabel(): void
+    public function outlookActionForEventWithOneVacancyRendersLinkWithRegistrationAriaLabel(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithOneVacancy.csv');
@@ -2815,6 +2815,32 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function showActionForEventWithOneVacancyRendersRegistrationAriaLabel(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventWithOneVacancy.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $ariaLabel = LocalizationUtility::translate(
+            // Note: The partial uses the hardcoded "eventOutlook".
+            'plugin.eventOutlook.events.property.registration.register.ariaLabel',
+            'seminars',
+            ['Extension Development with Extbase and Fluid'],
+        );
+        self::assertIsString($ariaLabel);
+        $encodedLabel = \htmlspecialchars($ariaLabel, ENT_QUOTES | ENT_HTML5);
+        $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>#s';
+        self::assertMatchesRegularExpression($expected, $html);
+    }
+
+    /**
+     * @test
+     */
     public function showActionForFutureEventWithNoVacanciesAndWaitingListRendersLinkToRegistration(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
@@ -2869,6 +2895,32 @@ final class EventControllerTest extends FunctionalTestCase
         );
         self::assertIsString($expectedMessage);
         self::assertStringContainsString($expectedMessage, $html);
+    }
+
+    /**
+     * @test
+     */
+    public function showActionForFutureEventWithNoVacanciesAndWaitingListRendersWaitingListAriaLabel(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/FutureEventWithNoVacanciesAndWaitingList.csv');
+
+        $request = (new InternalRequest())
+            ->withPageId(3)
+            ->withQueryParameter('tx_seminars_eventsingleview[event]', 1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        $ariaLabel = LocalizationUtility::translate(
+            // Note: The partial uses the hardcoded "eventOutlook".
+            'plugin.eventOutlook.events.property.registration.waitingList.ariaLabel',
+            'seminars',
+            ['Extension Development with Extbase and Fluid'],
+        );
+        self::assertIsString($ariaLabel);
+        $encodedLabel = \htmlspecialchars($ariaLabel, ENT_QUOTES | ENT_HTML5);
+        $expected = '#<a [^>]*aria-label="' . $encodedLabel . '"[^>]*>#s';
+        self::assertMatchesRegularExpression($expected, $html);
     }
 
     /**
