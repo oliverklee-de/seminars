@@ -152,9 +152,7 @@ final class LegacyEventTest extends FunctionalTestCase
             $eventUid,
             $uid,
         );
-        $this->subject->setNumberOfTargetGroups(
-            $this->subject->getNumberOfTargetGroups() + 1,
-        );
+        $this->subject->setNumberOfTargetGroups(1);
 
         return $uid;
     }
@@ -174,14 +172,14 @@ final class LegacyEventTest extends FunctionalTestCase
 
         $uid = $this->testingFramework->createRecord('tx_seminars_payment_methods', $paymentMethodData);
         $this->testingFramework->createRelation('tx_seminars_seminars_payment_methods_mm', $eventUid, $uid);
-        $this->subject->setNumberOfPaymentMethods($this->subject->getNumberOfPaymentMethods() + 1);
+        $this->subject->setNumberOfPaymentMethods(1);
 
         return $uid;
     }
 
     /**
      * Inserts an organizer record into the database and creates a relation to
-     * it from the fixture as a organizing partner.
+     * it from the fixture as an organizing partner.
      *
      * @param array $organizerData data of the organizer to add, may be empty
      *
@@ -203,9 +201,7 @@ final class LegacyEventTest extends FunctionalTestCase
             $eventUid,
             $uid,
         );
-        $this->subject->setNumberOfOrganizingPartners(
-            $this->subject->getNumberOfOrganizingPartners() + 1,
-        );
+        $this->subject->setNumberOfOrganizingPartners(1);
 
         return $uid;
     }
@@ -229,7 +225,7 @@ final class LegacyEventTest extends FunctionalTestCase
         );
 
         $this->testingFramework->createRelation('tx_seminars_seminars_categories_mm', $eventUid, $uid);
-        $this->subject->setNumberOfCategories($this->subject->getNumberOfCategories() + 1);
+        $this->subject->setNumberOfCategories(1);
 
         return $uid;
     }
@@ -257,9 +253,7 @@ final class LegacyEventTest extends FunctionalTestCase
             $eventUid,
             $uid,
         );
-        $this->subject->setNumberOfOrganizers(
-            $this->subject->getNumberOfOrganizers() + 1,
-        );
+        $this->subject->setNumberOfOrganizers(1);
 
         return $uid;
     }
@@ -287,9 +281,7 @@ final class LegacyEventTest extends FunctionalTestCase
             $eventUid,
             $uid,
         );
-        $this->subject->setNumberOfSpeakers(
-            $this->subject->getNumberOfSpeakers() + 1,
-        );
+        $this->subject->setNumberOfSpeakers(1);
 
         return $uid;
     }
@@ -317,9 +309,7 @@ final class LegacyEventTest extends FunctionalTestCase
             $eventUid,
             $uid,
         );
-        $this->subject->setNumberOfPartners(
-            $this->subject->getNumberOfPartners() + 1,
-        );
+        $this->subject->setNumberOfPartners(1);
 
         return $uid;
     }
@@ -347,9 +337,7 @@ final class LegacyEventTest extends FunctionalTestCase
             $eventUid,
             $uid,
         );
-        $this->subject->setNumberOfTutors(
-            $this->subject->getNumberOfTutors() + 1,
-        );
+        $this->subject->setNumberOfTutors(1);
 
         return $uid;
     }
@@ -377,9 +365,7 @@ final class LegacyEventTest extends FunctionalTestCase
             $eventUid,
             $uid,
         );
-        $this->subject->setNumberOfLeaders(
-            $this->subject->getNumberOfLeaders() + 1,
-        );
+        $this->subject->setNumberOfLeaders(1);
 
         return $uid;
     }
@@ -456,29 +442,6 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function addCategoryRelationIncreasesTheNumberOfCategories(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfCategories(),
-        );
-
-        $this->addCategoryRelation();
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfCategories(),
-        );
-
-        $this->addCategoryRelation();
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfCategories(),
-        );
-    }
-
-    /**
-     * @test
-     */
     public function addCategoryRelationCreatesRelations(): void
     {
         $eventUid = $this->subject->getUid();
@@ -527,29 +490,6 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function addTargetGroupRelationIncreasesTheNumberOfTargetGroups(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfTargetGroups(),
-        );
-
-        $this->addTargetGroupRelation();
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfTargetGroups(),
-        );
-
-        $this->addTargetGroupRelation();
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfTargetGroups(),
-        );
-    }
-
-    /**
-     * @test
-     */
     public function addTargetGroupRelationCreatesRelations(): void
     {
         $eventUid = $this->subject->getUid();
@@ -582,29 +522,6 @@ final class LegacyEventTest extends FunctionalTestCase
         self::assertNotSame(
             $this->addPaymentMethodRelation(),
             $this->addPaymentMethodRelation(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function addPaymentMethodRelationIncreasesTheNumberOfPaymentMethods(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfPaymentMethods(),
-        );
-
-        $this->addPaymentMethodRelation();
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfPaymentMethods(),
-        );
-
-        $this->addPaymentMethodRelation();
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfPaymentMethods(),
         );
     }
 
@@ -690,29 +607,6 @@ final class LegacyEventTest extends FunctionalTestCase
         self::assertNotSame(
             $this->addOrganizerRelation(),
             $this->addOrganizerRelation(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function addOrganizerRelationIncreasesTheNumberOfOrganizers(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfOrganizers(),
-        );
-
-        $this->addOrganizerRelation();
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfOrganizers(),
-        );
-
-        $this->addOrganizerRelation();
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfOrganizers(),
         );
     }
 
@@ -2526,42 +2420,6 @@ final class LegacyEventTest extends FunctionalTestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function getNumberOfOrganizingPartnersWithNoOrganizingPartnerReturnsZero(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfOrganizingPartners(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfOrganizingPartnersWithSingleOrganizingPartnerReturnsOne(): void
-    {
-        $this->addOrganizingPartnerRelation();
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfOrganizingPartners(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfOrganizingPartnersWithMultipleOrganizingPartnersReturnsTwo(): void
-    {
-        $this->addOrganizingPartnerRelation();
-        $this->addOrganizingPartnerRelation();
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfOrganizingPartners(),
-        );
-    }
-
     // Tests regarding the categories
 
     /**
@@ -2571,10 +2429,6 @@ final class LegacyEventTest extends FunctionalTestCase
     {
         self::assertFalse(
             $this->subject->hasCategories(),
-        );
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfCategories(),
         );
         self::assertSame(
             [],
@@ -2593,10 +2447,6 @@ final class LegacyEventTest extends FunctionalTestCase
             $this->subject->hasCategories(),
         );
         self::assertSame(
-            1,
-            $this->subject->getNumberOfCategories(),
-        );
-        self::assertSame(
             [$categoryUid => ['title' => 'Test']],
             $this->subject->getCategories(),
         );
@@ -2612,10 +2462,6 @@ final class LegacyEventTest extends FunctionalTestCase
 
         self::assertTrue(
             $this->subject->hasCategories(),
-        );
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfCategories(),
         );
 
         $categories = $this->subject->getCategories();
@@ -2714,42 +2560,6 @@ final class LegacyEventTest extends FunctionalTestCase
 
         self::assertTrue(
             $this->subject->hasOrganizers(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfOrganizersWithNoOrganizerReturnsZero(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfOrganizers(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfOrganizersWithSingleOrganizerReturnsOne(): void
-    {
-        $this->addOrganizerRelation();
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfOrganizers(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfOrganizersWithMultipleOrganizersReturnsTwo(): void
-    {
-        $this->addOrganizerRelation();
-        $this->addOrganizerRelation();
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfOrganizers(),
         );
     }
 
@@ -2945,98 +2755,6 @@ final class LegacyEventTest extends FunctionalTestCase
         );
     }
 
-    // Tests concerning getOrganizersNameAndEmail
-
-    /**
-     * @test
-     */
-    public function getOrganizersNameAndEmailWithNoOrganizersReturnsEmptyString(): void
-    {
-        self::assertSame(
-            [],
-            $this->subject->getOrganizersNameAndEmail(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getOrganizersNameAndEmailWithSingleOrganizerReturnsSingleOrganizer(): void
-    {
-        $organizer = [
-            'title' => 'test organizer',
-            'email' => 'test@organizer.org',
-        ];
-        $this->addOrganizerRelation($organizer);
-        self::assertSame(
-            ['"' . $organizer['title'] . '" <' . $organizer['email'] . '>'],
-            $this->subject->getOrganizersNameAndEmail(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getOrganizersNameAndEmailWithMultipleOrganizersReturnsTwoOrganizers(): void
-    {
-        $firstOrganizer = [
-            'title' => 'test organizer 1',
-            'email' => 'test1@organizer.org',
-        ];
-        $secondOrganizer = [
-            'title' => 'test organizer 2',
-            'email' => 'test2@organizer.org',
-        ];
-        $this->addOrganizerRelation($firstOrganizer);
-        $this->addOrganizerRelation($secondOrganizer);
-        self::assertSame(
-            [
-                '"' . $firstOrganizer['title'] . '" <' . $firstOrganizer['email'] . '>',
-                '"' . $secondOrganizer['title'] . '" <' . $secondOrganizer['email'] . '>',
-            ],
-            $this->subject->getOrganizersNameAndEmail(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getOrganizersEmailWithNoOrganizersReturnsEmptyString(): void
-    {
-        self::assertSame(
-            [],
-            $this->subject->getOrganizersEmail(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getOrganizersEmailWithSingleOrganizerReturnsSingleOrganizer(): void
-    {
-        $organizer = ['email' => 'test@organizer.org'];
-        $this->addOrganizerRelation($organizer);
-        self::assertSame(
-            [$organizer['email']],
-            $this->subject->getOrganizersEmail(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getOrganizersEmailWithMultipleOrganizersReturnsTwoOrganizers(): void
-    {
-        $firstOrganizer = ['email' => 'test1@organizer.org'];
-        $secondOrganizer = ['email' => 'test2@organizer.org'];
-        $this->addOrganizerRelation($firstOrganizer);
-        $this->addOrganizerRelation($secondOrganizer);
-        self::assertSame(
-            [$firstOrganizer['email'], $secondOrganizer['email']],
-            $this->subject->getOrganizersEmail(),
-        );
-    }
-
     // Tests concerning getOrganizersFooter
 
     /**
@@ -3172,150 +2890,6 @@ final class LegacyEventTest extends FunctionalTestCase
     }
 
     // Tests regarding the speakers
-
-    /**
-     * @test
-     */
-    public function getNumberOfSpeakersWithNoSpeakerReturnsZero(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfSpeakers(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfSpeakersWithSingleSpeakerReturnsOne(): void
-    {
-        $this->addSpeakerRelation();
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfSpeakers(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfSpeakersWithMultipleSpeakersReturnsTwo(): void
-    {
-        $this->addSpeakerRelation();
-        $this->addSpeakerRelation();
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfSpeakers(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfPartnersWithNoPartnerReturnsZero(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfPartners(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfPartnersWithSinglePartnerReturnsOne(): void
-    {
-        $this->addPartnerRelation([]);
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfPartners(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfPartnersWithMultiplePartnersReturnsTwo(): void
-    {
-        $this->addPartnerRelation([]);
-        $this->addPartnerRelation([]);
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfPartners(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfTutorsWithNoTutorReturnsZero(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfTutors(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfTutorsWithSingleTutorReturnsOne(): void
-    {
-        $this->addTutorRelation([]);
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfTutors(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfTutorsWithMultipleTutorsReturnsTwo(): void
-    {
-        $this->addTutorRelation([]);
-        $this->addTutorRelation([]);
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfTutors(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfLeadersWithNoLeaderReturnsZero(): void
-    {
-        self::assertSame(
-            0,
-            $this->subject->getNumberOfLeaders(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfLeadersWithSingleLeaderReturnsOne(): void
-    {
-        $this->addLeaderRelation([]);
-        self::assertSame(
-            1,
-            $this->subject->getNumberOfLeaders(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfLeadersWithMultipleLeadersReturnsTwo(): void
-    {
-        $this->addLeaderRelation([]);
-        $this->addLeaderRelation([]);
-        self::assertSame(
-            2,
-            $this->subject->getNumberOfLeaders(),
-        );
-    }
 
     /**
      * @test
