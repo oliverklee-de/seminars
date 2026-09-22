@@ -2178,12 +2178,12 @@
         <target state="translated">Regisztrációk</target>
       </trans-unit>
       <trans-unit id="backEndModule.heading.regularRegistrations">
-        <source>Regular registrations (%u)</source>
-        <target state="translated">Rendes regisztrációk (%u)</target>
+        <source>Regular registrations</source>
+        <target state="needs-translation">Regular registrations</target>
       </trans-unit>
       <trans-unit id="backEndModule.heading.waitingListRegistrations">
-        <source>Registrations on the waiting list (%u)</source>
-        <target state="translated">Várólistán lévő regisztrációk (%u)</target>
+        <source>Registrations on the waiting list</source>
+        <target state="needs-translation">Registrations on the waiting list</target>
       </trans-unit>
       <trans-unit id="backEndModule.heading.nonbindingReservations">
         <source>Nonbinding reservations</source>
