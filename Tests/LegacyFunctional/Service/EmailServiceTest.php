@@ -68,7 +68,7 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesForEventWithoutRegistrationsNotSendsMail(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithoutRegistrations.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithoutRegistrations.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -90,7 +90,7 @@ final class EmailServiceTest extends FunctionalTestCase
         $defaultMailFromName = 'Mr. Default';
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = $defaultMailFromName;
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -112,7 +112,7 @@ final class EmailServiceTest extends FunctionalTestCase
         self::assertTrue(is_array($GLOBALS['TYPO3_CONF_VARS']) && is_array($GLOBALS['TYPO3_CONF_VARS']['MAIL']));
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = 'Mr. Default';
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -134,7 +134,7 @@ final class EmailServiceTest extends FunctionalTestCase
         self::assertTrue(is_array($GLOBALS['TYPO3_CONF_VARS']) && is_array($GLOBALS['TYPO3_CONF_VARS']['MAIL']));
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = '';
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -153,7 +153,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         $subject = 'Bonjour!';
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -172,7 +172,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         $subjectPrefix = 'Event title goes here: ';
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -189,7 +189,7 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesReplacesEventDateInSubject(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -211,7 +211,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         $body = 'Life is good.';
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -233,7 +233,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -248,7 +248,7 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesForTwoRegistrationsSendsTwoEmails(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithTwoRegistrations.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithTwoRegistrations.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -267,7 +267,7 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesForRegistrationWithoutUserNotSendsMail(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistrationWithoutUser.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistrationWithoutUser.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -282,7 +282,9 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesForAttendeeWithoutEmailAddressNotSendsMail(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistrationWithoutEmailAddress.csv');
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistrationWithoutEmailAddress.csv',
+        );
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -299,7 +301,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -318,7 +320,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -337,7 +339,7 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
@@ -354,7 +356,7 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesInsertsEventDateIntoMailTextWithEventDateMarker(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithOneRegistration.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'sendEmailToAttendees/EventWithOneRegistration.csv');
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
