@@ -6,8 +6,8 @@ namespace OliverKlee\Seminars\Tests\Functional\Email;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
+use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Email\SalutationBuilder;
-use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -90,7 +90,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
         $this->configuration->setAsString('salutation', $salutationMode);
 
         $fullName = 'Max Minimax';
-        $user = new FrontEndUser();
+        $user = new FrontendUser();
         $user->setName($fullName);
 
         $result = $this->subject->getSalutation($user);
@@ -103,7 +103,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
      */
     public function getSalutationReturnsGenderNeutralSalutation(): void
     {
-        $user = new FrontEndUser();
+        $user = new FrontendUser();
         $user->setName('Max Minimax');
 
         $result = $this->subject->getSalutation($user);
@@ -119,7 +119,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
     public function getSalutationForInformalSalutationModeReturnsInformalSalutation(): void
     {
         $this->configuration->setAsString('salutation', 'informal');
-        $user = new FrontEndUser();
+        $user = new FrontendUser();
         $user->setName('Max Minimax');
 
         $result = $this->subject->getSalutation($user);
@@ -135,7 +135,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
     public function getSalutationForFormalSalutationModeReturnsFormalSalutation(): void
     {
         $this->configuration->setAsString('salutation', 'formal');
-        $user = new FrontEndUser();
+        $user = new FrontendUser();
         $user->setName('Max Minimax');
 
         $result = $this->subject->getSalutation($user);
@@ -151,7 +151,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
     public function getSalutationForEmptySalutationModeReturnsFormalSalutation(): void
     {
         $this->configuration->setAsString('salutation', '');
-        $user = new FrontEndUser();
+        $user = new FrontendUser();
         $user->setName('Max Minimax');
 
         $result = $this->subject->getSalutation($user);
@@ -169,7 +169,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
     {
         $this->configuration->setAsString('salutation', $salutationMode);
 
-        $user = new FrontEndUser();
+        $user = new FrontendUser();
         $user->setName('Max Minimax');
 
         $result = $this->subject->getSalutation($user);

@@ -12,12 +12,14 @@ use OliverKlee\Oelib\Templating\Template;
 use OliverKlee\Oelib\Templating\TemplateRegistry;
 use OliverKlee\Seminars\BagBuilder\RegistrationBagBuilder;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
+use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
+use OliverKlee\Seminars\Domain\Repository\FrontendUserRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use OliverKlee\Seminars\Email\SalutationBuilder;
 use OliverKlee\Seminars\FrontEnd\DefaultController;
-use OliverKlee\Seminars\Model\FrontEndUser;
+use OliverKlee\Seminars\Model\FrontEndUser as LegacyFrontEndUser;
 use OliverKlee\Seminars\Model\Place;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyOrganizer;
@@ -45,6 +47,8 @@ class RegistrationManager implements SingletonInterface
 
     private EventRepository $eventRepository;
 
+    private FrontendUserRepository $frontendUserRepository;
+
     private TemplateRegistry $templateRegistry;
 
     private ConfigurationRegistry $configurationRegistry;
@@ -57,6 +61,7 @@ class RegistrationManager implements SingletonInterface
         ConnectionPool $connectionPool,
         Context $context,
         EventRepository $eventRepository,
+        FrontendUserRepository $frontendUserRepository,
         TemplateRegistry $templateRegistry,
         ConfigurationRegistry $configurationRegistry,
         SalutationBuilder $salutationBuilder
@@ -64,6 +69,7 @@ class RegistrationManager implements SingletonInterface
         $this->connectionPool = $connectionPool;
         $this->context = $context;
         $this->eventRepository = $eventRepository;
+        $this->frontendUserRepository = $frontendUserRepository;
         $this->templateRegistry = $templateRegistry;
         $this->configurationRegistry = $configurationRegistry;
         $this->salutationBuilder = $salutationBuilder;
@@ -387,7 +393,7 @@ class RegistrationManager implements SingletonInterface
         }
 
         $user = $oldRegistration->getFrontEndUser();
-        if (!$user instanceof FrontEndUser || !$user->hasEmailAddress()) {
+        if (!$user instanceof LegacyFrontEndUser || !$user->hasEmailAddress()) {
             return;
         }
 
@@ -1054,8 +1060,12 @@ class RegistrationManager implements SingletonInterface
     private function setEmailIntroduction(string $helloSubjectPrefix, LegacyRegistration $registration): void
     {
         $template = $this->getInitializedEmailTemplate();
-        $user = $registration->getFrontEndUser();
-        if ($user instanceof FrontEndUser) {
+        $legacyUser = $registration->getFrontEndUser();
+        if ($legacyUser instanceof LegacyFrontEndUser) {
+            $userUid = $legacyUser->getUid();
+            \assert($userUid > 0);
+            $user = $this->frontendUserRepository->findByUid($userUid);
+            \assert($user instanceof FrontendUser);
             $salutationText = $this->salutationBuilder->getSalutation($user);
         } else {
             $salutationText = '';
