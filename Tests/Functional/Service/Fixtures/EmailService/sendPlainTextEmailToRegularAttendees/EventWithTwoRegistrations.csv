@@ -1,0 +1,21 @@
+"tx_seminars_seminars"
+,"uid","title","needs_registration","registrations","organizers"
+,1,"Event with one registration without email address",1,2,1
+
+"tx_seminars_organizers"
+,"uid","title","email","email_footer"
+,1,"Oliver Klee",oliver@example.com,"The one and only"
+
+"tx_seminars_seminars_organizers_mm"
+,"uid_local","uid_foreign"
+,1,1
+
+"fe_users"
+,"uid","username","name","email"
+,1,"max","Max","max@example.com"
+,2,"joe","Joe","joe@example.com"
+
+"tx_seminars_attendances"
+,"uid","user","seminar"
+,1,1,1
+,2,2,1
