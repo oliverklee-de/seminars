@@ -355,7 +355,7 @@ class FrontEndEditorController extends ActionController
         $this->checkEventOwner($event);
 
         $eventUid = $event->getUid();
-        \assert(\is_int($eventUid) && $eventUid > 0);
+        \assert(\is_int($eventUid));
         $this->view->assignMultiple([
             'event' => $event,
             'regularRegistrations' => $this->registrationRepository->findRegularRegistrationsByEvent($eventUid),

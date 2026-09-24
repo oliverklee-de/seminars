@@ -50,10 +50,7 @@ class EmailService implements SingletonInterface
     {
         $sender = $this->determineEmailSenderForEvent($event);
         $firstOrganizer = $event->getFirstOrganizer();
-        $eventUid = $event->getUid();
-        assert($eventUid > 0);
-
-        foreach ($this->registrationRepository->findRegularRegistrationsByEvent($eventUid) as $registration) {
+        foreach ($this->registrationRepository->findRegularRegistrationsByEvent($event->getUid()) as $registration) {
             $user = $registration->getUser();
             if (!($user instanceof FrontendUser)) {
                 continue;
@@ -140,7 +137,7 @@ class EmailService implements SingletonInterface
         $organizer = $event->getFirstOrganizer();
         $sender = $this->determineEmailSenderForEvent($event);
         $eventUid = $event->getUid();
-        \assert(\is_int($eventUid) && $eventUid > 0);
+        \assert(\is_int($eventUid));
 
         foreach ($this->registrationRepository->findRegularRegistrationsByEvent($eventUid) as $registration) {
             $user = $registration->getUser();
