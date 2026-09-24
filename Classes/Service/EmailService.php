@@ -9,7 +9,6 @@ use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Organizer;
-use OliverKlee\Seminars\Domain\Repository\FrontendUserRepository;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use OliverKlee\Seminars\Email\SalutationBuilder;
@@ -35,16 +34,10 @@ class EmailService implements SingletonInterface
 
     private RegistrationRepository $registrationRepository;
 
-    private FrontendUserRepository $frontendUserRepository;
-
-    public function __construct(
-        SalutationBuilder $salutationBuilder,
-        RegistrationRepository $registrationRepository,
-        FrontendUserRepository $frontendUserRepository
-    ) {
+    public function __construct(SalutationBuilder $salutationBuilder, RegistrationRepository $registrationRepository)
+    {
         $this->salutationBuilder = $salutationBuilder;
         $this->registrationRepository = $registrationRepository;
-        $this->frontendUserRepository = $frontendUserRepository;
         $this->dateRangeViewHelper = GeneralUtility::makeInstance(DateRangeViewHelper::class);
     }
 
@@ -57,17 +50,17 @@ class EmailService implements SingletonInterface
     {
         $sender = $this->determineEmailSenderForEvent($event);
         $firstOrganizer = $event->getFirstOrganizer();
+        $eventUid = $event->getUid();
+        assert($eventUid > 0);
 
-        foreach ($event->getRegistrations() as $registration) {
-            $oelibFrontEndUser = $registration->getFrontEndUser();
-            if (!($oelibFrontEndUser instanceof \OliverKlee\Oelib\Model\FrontEndUser)) {
+        foreach ($this->registrationRepository->findRegularRegistrationsByEvent($eventUid) as $registration) {
+            $user = $registration->getUser();
+            if (!($user instanceof FrontendUser)) {
                 continue;
             }
-            $userUid = $oelibFrontEndUser->getUid();
-            assert($userUid > 0);
-            $user = $this->frontendUserRepository->findByUid($userUid);
-            assert($user instanceof FrontendUser);
-            if ($user->getEmail() === '') {
+            try {
+                $user->getValidEmail();
+            } catch (\UnexpectedValueException $exception) {
                 continue;
             }
 
