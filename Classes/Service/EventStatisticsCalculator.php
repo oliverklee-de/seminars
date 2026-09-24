@@ -42,7 +42,6 @@ class EventStatisticsCalculator implements SingletonInterface
         $eventUid = $event->getUid();
         // This mostly is for making unit tests less of a hassle.
         if (\is_int($eventUid)) {
-            \assert($eventUid > 0);
             $regularSeatsFromRegistrations = $this->registrationRepository->countRegularSeatsByEvent($eventUid);
             $waitingListSeats = $this->registrationRepository->countWaitingListSeatsByEvent($eventUid);
             $nonbindingReservationSeats = $this->registrationRepository

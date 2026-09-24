@@ -64,8 +64,6 @@ class RegistrationController extends ActionController
     }
 
     /**
-     * @param int<1, max> $eventUid
-     *
      * @throws \RuntimeException
      */
     public function showForEventAction(int $eventUid): ResponseInterface

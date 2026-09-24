@@ -79,8 +79,6 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
      *
      * Registrations with 0 seats will be ignored.
      *
-     * @param positive-int $eventUid
-     *
      * @return int<0, max>
      */
     public function countRegularSeatsByEvent(int $eventUid): int
@@ -92,8 +90,6 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
      * Sums up the seats of all waiting-list registrations for the given event UID.
      *
      * Registrations with 0 seats will be ignored.
-     *
-     * @param positive-int $eventUid
      *
      * @return int<0, max>
      */
@@ -107,8 +103,6 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
      *
      * Reservations with 0 seats will be ignored.
      *
-     * @param positive-int $eventUid
-     *
      * @return int<0, max>
      */
     public function countNonbindingReservationSeatsByEvent(int $eventUid): int
@@ -121,7 +115,6 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
      *
      * Registrations with 0 seats will be ignored.
      *
-     * @param positive-int $eventUid
      * @param Registration::STATUS_* $status
      *
      * @return int<0, max>
@@ -149,8 +142,6 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
     }
 
     /**
-     * @param positive-int $eventUid
-     *
      * @return array<Registration>
      */
     public function findRegularRegistrationsByEvent(int $eventUid): array
@@ -159,8 +150,6 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
     }
 
     /**
-     * @param positive-int $eventUid
-     *
      * @return array<Registration>
      */
     public function findWaitingListRegistrationsByEvent(int $eventUid): array
@@ -169,8 +158,6 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
     }
 
     /**
-     * @param positive-int $eventUid
-     *
      * @return array<Registration>
      */
     public function findNonbindingReservationsByEvent(int $eventUid): array
@@ -179,7 +166,6 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
     }
 
     /**
-     * @param positive-int $eventUid
      * @param Registration::STATUS_* $status
      *
      * @return array<Registration>

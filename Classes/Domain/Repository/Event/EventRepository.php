@@ -67,8 +67,6 @@ class EventRepository extends AbstractRawDataCapableRepository
      * Finds a single event by UID, including hidden events.
      *
      * This method is particularly useful in the backend.
-     *
-     * @param int<0, max> $uid
      */
     public function findOneByUidForBackend(int $uid): ?Event
     {
