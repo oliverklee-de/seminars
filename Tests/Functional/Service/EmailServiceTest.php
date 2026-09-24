@@ -6,13 +6,11 @@ namespace OliverKlee\Seminars\Tests\Functional\Service;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Oelib\DataStructures\Collection;
+use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
+use OliverKlee\Seminars\Mapper\EventMapper;
 use OliverKlee\Seminars\Model\Event;
-use OliverKlee\Seminars\Model\FrontEndUser;
-use OliverKlee\Seminars\Model\Organizer;
-use OliverKlee\Seminars\Model\Registration;
 use OliverKlee\Seminars\Service\EmailService;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
@@ -50,13 +48,11 @@ final class EmailServiceTest extends FunctionalTestCase
         ],
     ];
 
-    private EmailService $subject;
-
     private EventRepository $eventRepository;
 
-    private Event $event;
+    private EventMapper $eventMapper;
 
-    private Organizer $organizer;
+    private EmailService $subject;
 
     protected function setUp(): void
     {
@@ -69,36 +65,17 @@ final class EmailServiceTest extends FunctionalTestCase
 
         $this->email = $this->createEmailMock();
         $this->eventRepository = $this->get(EventRepository::class);
-
-        $this->organizer = new Organizer();
-        $this->organizer->setData(
-            [
-                'title' => 'Brain Gourmets',
-                'email' => 'organizer@example.com',
-            ],
-        );
-        /** @var Collection<Organizer> $organizers */
-        $organizers = new Collection();
-        $organizers->add($this->organizer);
-
-        $this->event = new Event();
-        $this->event->setData(
-            [
-                'title' => 'A nice event',
-                'registrations' => new Collection(),
-                'organizers' => $organizers,
-            ],
-        );
-
-        $user = new FrontEndUser();
-        $user->setData(['name' => 'John Doe', 'email' => 'john.doe@example.com']);
-        $registration = new Registration();
-        $registration->setData([]);
-        $registration->setFrontEndUser($user);
-        $registration->setEvent($this->event);
-        $this->event->getRegistrations()->add($registration);
+        $this->eventMapper = $this->get(MapperRegistry::class)->getByClassName(EventMapper::class);
 
         $this->subject = $this->get(EmailService::class);
+    }
+
+    protected function tearDown(): void
+    {
+        // This is temporarily necessary to remove the mapper registry instance as long as we haven't switched the
+        // tested class to also use the Extbase event model.
+        MapperRegistry::purgeInstance();
+        parent::tearDown();
     }
 
     /**
@@ -114,14 +91,18 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesForOrganizerWithoutFooterNotAppendsFooterSeparatorInTextBody(): void
     {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/sendEmailToAttendees/EventWithOrganizerWithoutFooterAndOneRegistration.csv',
+        );
+        $event = $this->eventMapper->find(1);
+        self::assertInstanceOf(Event::class, $event);
+
         self::assertInstanceOf(MailMessage::class, $this->email);
         self::assertInstanceOf(MockObject::class, $this->email);
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->organizer->setEmailFooter('');
-
         $this->email->expects(self::once())->method('send');
-        $this->subject->sendEmailToAttendees($this->event, 'Bonjour!', 'Hello!');
+        $this->subject->sendEmailToAttendees($event, 'Bonjour!', 'Hello!');
 
         $result = $this->email->getTextBody();
         self::assertIsString($result);
@@ -133,15 +114,19 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesForOrganizerWithFooterUsesFooterSeparatorInTextBody(): void
     {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/sendEmailToAttendees/EventWithOrganizerWithFooterAndOneRegistration.csv',
+        );
+        $event = $this->eventMapper->find(1);
+        self::assertInstanceOf(Event::class, $event);
+
         self::assertInstanceOf(MailMessage::class, $this->email);
         self::assertInstanceOf(MockObject::class, $this->email);
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->organizer->setEmailFooter('We are here for you.');
-
         $this->email->expects(self::once())->method('send');
 
-        $this->subject->sendEmailToAttendees($this->event, 'Bonjour!', 'Hello!');
+        $this->subject->sendEmailToAttendees($event, 'Bonjour!', 'Hello!');
 
         $result = $this->email->getTextBody();
         self::assertIsString($result);
@@ -153,20 +138,23 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesForOrganizerWithFooterAppendsFooterInTextBody(): void
     {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/sendEmailToAttendees/EventWithOrganizerWithFooterAndOneRegistration.csv',
+        );
+        $event = $this->eventMapper->find(1);
+        self::assertInstanceOf(Event::class, $event);
+
         self::assertInstanceOf(MailMessage::class, $this->email);
         self::assertInstanceOf(MockObject::class, $this->email);
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $footer = 'We are here for you.';
-        $this->organizer->setEmailFooter($footer);
-
         $this->email->expects(self::once())->method('send');
 
-        $this->subject->sendEmailToAttendees($this->event, 'Bonjour!', 'Hello!');
+        $this->subject->sendEmailToAttendees($event, 'Bonjour!', 'Hello!');
 
         $result = $this->email->getTextBody();
         self::assertIsString($result);
-        self::assertStringContainsString($footer, $result);
+        self::assertStringContainsString('We are here for you.', $result);
     }
 
     /**
@@ -174,20 +162,24 @@ final class EmailServiceTest extends FunctionalTestCase
      */
     public function sendEmailToAttendeesForOrganizerWithFooterKeepsLinebreaksInTextBody(): void
     {
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH
+            . '/sendEmailToAttendees/EventWithOrganizerWithFooterWithLinebreakAndOneRegistration.csv',
+        );
+        $event = $this->eventMapper->find(1);
+        self::assertInstanceOf(Event::class, $event);
+
         self::assertInstanceOf(MailMessage::class, $this->email);
         self::assertInstanceOf(MockObject::class, $this->email);
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $footer = "We are here for you.\nAlways.";
-        $this->organizer->setEmailFooter($footer);
-
         $this->email->expects(self::once())->method('send');
 
-        $this->subject->sendEmailToAttendees($this->event, 'Bonjour!', 'Hello!');
+        $this->subject->sendEmailToAttendees($event, 'Bonjour!', 'Hello!');
 
         $result = $this->email->getTextBody();
         self::assertIsString($result);
-        self::assertStringContainsString($footer, $result);
+        self::assertStringContainsString("We are here for you.\nAlways.", $result);
     }
 
     /**
