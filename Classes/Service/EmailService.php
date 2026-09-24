@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Service;
 
 use OliverKlee\Oelib\Email\SystemEmailFromBuilder;
-use OliverKlee\Oelib\Exception\NotFoundException;
 use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Organizer;
@@ -133,19 +132,17 @@ class EmailService implements SingletonInterface
     }
 
     /**
-     * Sends an email to the regular attendees of the event with the given UID using the provided email subject
-     * and message body.
-     *
-     * @param \OliverKlee\Seminars\Domain\Model\Event\Event&EventDateInterface $event
-     *
-     * @throws NotFoundException if event could not be instantiated
+     * Sends an email to the regular attendees of the given event using the provided email subject and message body.
      */
-    public function sendPlainTextEmailToRegularAttendees($event, string $subject, string $rawBody): void
-    {
+    public function sendPlainTextEmailToRegularAttendees(
+        EventDateInterface $event,
+        string $subject,
+        string $rawBody
+    ): void {
         $organizer = $event->getFirstOrganizer();
         $sender = $this->determineEmailSenderForEvent($event);
         $eventUid = $event->getUid();
-        \assert(\is_int($eventUid));
+        \assert(\is_int($eventUid) && $eventUid > 0);
 
         foreach ($this->registrationRepository->findRegularRegistrationsByEvent($eventUid) as $registration) {
             $user = $registration->getUser();
