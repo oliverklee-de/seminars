@@ -25,14 +25,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * This class takes care of sending emails.
- *
- * The following markers will get replaced in the email body:
- *
- * %salutation
- * %userName
- * %eventTitle
- * %eventDate
+ * This class takes care of sending emails related to events and registrations.
  */
 class EmailService implements SingletonInterface
 {
@@ -126,10 +119,10 @@ class EmailService implements SingletonInterface
      *
      * The following markers will get replaced:
      *
-     * %salutation
-     * %userName
-     * %eventTitle
-     * %eventDate
+     * `%salutation`
+     * `%userName`
+     * `%eventTitle`
+     * `%eventDate`
      */
     protected function replaceMarkers(string $textWithMarkers, Event $event, FrontendUser $user): string
     {
