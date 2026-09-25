@@ -2521,6 +2521,10 @@
         <source>speakers</source>
         <target state="needs-translation">speakers</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.teaser">
+        <source>teaser</source>
+        <target state="needs-translation">teaser</target>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventType">
         <source>event type</source>
         <target state="needs-translation">event type</target>
