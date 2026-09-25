@@ -2596,9 +2596,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>topic</source>
         <target state="final">Thema</target>
       </trans-unit>
-      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.teaser">
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.teaser" approved="yes">
         <source>teaser</source>
-        <target state="needs-translation">teaser</target>
+        <target state="final">Teaser</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer" approved="yes">
         <source>organizer</source>
