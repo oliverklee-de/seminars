@@ -2488,6 +2488,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>speakers</source>
         <target state="final">Referent_innen</target>
       </trans-unit>
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.teaser">
+        <source>teaser</source>
+        <target state="needs-translation">teaser</target>
+      </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventType" approved="yes">
         <source>event type</source>
         <target state="final">Veranstaltungsart</target>
