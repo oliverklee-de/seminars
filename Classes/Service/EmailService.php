@@ -120,7 +120,7 @@ class EmailService implements SingletonInterface
             '%salutation' => $this->salutationBuilder->getSalutation($user),
             '%userName' => $user->getName(),
             '%eventTitle' => $event->getTitle(),
-            '%eventDate' => $this->dateRangeViewHelper->render($event, '-'),
+            '%eventDate' => $this->dateRangeViewHelper->render($event),
         ];
 
         return str_replace(array_keys($markers), $markers, $textWithMarkers);

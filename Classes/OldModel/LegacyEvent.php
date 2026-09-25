@@ -178,7 +178,7 @@ class LegacyEvent extends AbstractTimeSpan
      */
     public function getTitleAndDate(string $dash = '–'): string
     {
-        $date = $this->hasDate() ? ', ' . $this->getDate($dash) : '';
+        $date = $this->hasDate() ? ', ' . $this->getDate() : '';
 
         return $this->getTitle() . $date;
     }
@@ -1531,7 +1531,7 @@ class LegacyEvent extends AbstractTimeSpan
         foreach ($keysWithLabels as $currentKey => $currentLabel) {
             switch ($currentKey) {
                 case 'date':
-                    $value = $this->getDate('-');
+                    $value = $this->getDate();
                     break;
                 case 'place':
                     $value = $this->getPlaceShort();
@@ -1552,7 +1552,7 @@ class LegacyEvent extends AbstractTimeSpan
                     $value = $this->getSpeakersShort();
                     break;
                 case 'time':
-                    $value = $this->getTime('-');
+                    $value = $this->getTime();
                     break;
                 case 'titleanddate':
                     $value = $this->getTitleAndDate('-');
@@ -2159,10 +2159,10 @@ class LegacyEvent extends AbstractTimeSpan
                 $result = $this->getCreditPoints();
                 break;
             case 'date':
-                $result = $this->getDate('-');
+                $result = $this->getDate();
                 break;
             case 'time':
-                $result = $this->getTime('-');
+                $result = $this->getTime();
                 break;
             case 'deadline_registration':
                 $result = $this->getRegistrationDeadline();
@@ -2255,16 +2255,14 @@ class LegacyEvent extends AbstractTimeSpan
      * Returns just one day if we take place on only one day.
      * Returns a date range if we take several days.
      *
-     * @param string $dash the character or HTML entity used to separate start date and end date
-     *
      * @return string the seminar date (or an empty string or a localized message)
      */
-    public function getDate(string $dash = '&#8211;'): string
+    public function getDate(): string
     {
         $result = '';
 
         if ($this->getRecordPropertyInteger('object_type') !== EventInterface::TYPE_EVENT_TOPIC) {
-            $result = parent::getDate($dash);
+            $result = parent::getDate();
         }
 
         return $result;

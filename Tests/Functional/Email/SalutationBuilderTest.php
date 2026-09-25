@@ -219,7 +219,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
 
         $result = $this->subject->createIntroduction('%s', $event);
 
-        $expected = \date(self::DATE_FORMAT, $beginDate) . '-' . \date(self::DATE_FORMAT, $endDate);
+        $expected = \date(self::DATE_FORMAT, $beginDate) . '–' . \date(self::DATE_FORMAT, $endDate);
         self::assertStringContainsString($expected, $result);
     }
 
@@ -248,10 +248,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
 
         $result = $this->subject->createIntroduction('%s', $event);
 
-        $timeToWithPlaceholders = LocalizationUtility::translate('email_timeTo', 'seminars');
-        self::assertIsString($timeToWithPlaceholders);
-        $timeInsert = \date(self::TIME_FORMAT, $beginDate) . ' ' . $timeToWithPlaceholders . ' '
-            . \date(self::TIME_FORMAT, $endDate);
+        $timeInsert = \date(self::TIME_FORMAT, $beginDate) . '–' . \date(self::TIME_FORMAT, $endDate);
         $timeFromWithPlaceholders = LocalizationUtility::translate('email_timeFrom', 'seminars');
         self::assertIsString($timeFromWithPlaceholders);
         $expected = \sprintf($timeFromWithPlaceholders, $timeInsert);

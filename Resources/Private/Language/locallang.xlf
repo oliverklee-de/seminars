@@ -421,9 +421,6 @@
       <trans-unit id="email_timeAt">
         <source>at %s</source>
       </trans-unit>
-      <trans-unit id="email_timeTo">
-        <source>to</source>
-      </trans-unit>
       <trans-unit id="schedulerTasks.mailNotifier.name">
         <source>Email notifications</source>
       </trans-unit>

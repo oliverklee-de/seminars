@@ -43,10 +43,8 @@ abstract class AbstractTimeSpan extends AbstractModel
      *
      * Returns just one day if the timespan takes place on only one day.
      * Returns a date range if the timespan takes several days.
-     *
-     * @param string $dash the character or HTML entity used to separate start date and end date
      */
-    public function getDate(string $dash = '&#8211;'): string
+    public function getDate(): string
     {
         if (!$this->hasDate()) {
             return '';
@@ -63,13 +61,10 @@ abstract class AbstractTimeSpan extends AbstractModel
         if ($beginDateDay === $endDateDay || !$this->hasEndDate()) {
             $result = $beginDateDay;
         } else {
-            $resultBeforeHook = $beginDateDay . $dash . $endDateDay;
-            $result = $this->getDateTimeSpanHookProvider()->executeHookReturningModifiedValue(
-                'modifyDateSpan',
-                $resultBeforeHook,
-                $this,
-                $dash,
-            );
+            $resultBeforeHook = $beginDateDay . '–' . $endDateDay;
+            $result = $this
+                ->getDateTimeSpanHookProvider()
+                ->executeHookReturningModifiedValue('modifyDateSpan', $resultBeforeHook, $this);
         }
 
         return (string)$result;
@@ -91,10 +86,8 @@ abstract class AbstractTimeSpan extends AbstractModel
      * Returns an empty string if there's no time set (i.e., both begin time and end time are 00:00).
      *
      * Returns only the begin time if begin time and end time are the same.
-     *
-     * @param string $dash the character or HTML entity used to separate begin time and end time
      */
-    public function getTime(string $dash = '&#8211;'): string
+    public function getTime(): string
     {
         if (!$this->hasTime()) {
             return '';
@@ -109,13 +102,10 @@ abstract class AbstractTimeSpan extends AbstractModel
         // Only display the end time if the event has an end date/time set
         // and the end time is not the same as the begin time.
         if (($beginTime !== $endTime) && $this->hasEndTime()) {
-            $result .= $dash . $endTime;
-            $result = $this->getDateTimeSpanHookProvider()->executeHookReturningModifiedValue(
-                'modifyTimeSpan',
-                $result,
-                $this,
-                $dash,
-            );
+            $result .= '–' . $endTime;
+            $result = $this
+                ->getDateTimeSpanHookProvider()
+                ->executeHookReturningModifiedValue('modifyTimeSpan', $result, $this);
         }
         $hours = $this->translate('label_hours');
         $result .= ' ' . $hours;

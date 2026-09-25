@@ -4876,13 +4876,13 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getEventDataForEventWithDateUsesHyphenAsDateSeparator(): void
+    public function getEventDataForEventWithDateUsesEnDashAsDateSeparator(): void
     {
         $this->subject->setBeginDate($this->nowAsUnixTimestamp);
         $this->subject->setEndDate($this->nowAsUnixTimestamp + self::SECONDS_PER_DAY);
 
         self::assertStringContainsString(
-            '-',
+            '–',
             $this->subject->getEventData('date'),
         );
     }
@@ -4890,13 +4890,13 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getEventDataForEventWithTimeUsesHyphenAsTimeSeparator(): void
+    public function getEventDataForEventWithTimeUsesEnDashAsTimeSeparator(): void
     {
         $this->subject->setBeginDate($this->nowAsUnixTimestamp);
         $this->subject->setEndDate($this->nowAsUnixTimestamp + 3600);
 
         self::assertStringContainsString(
-            '-',
+            '–',
             $this->subject->getEventData('time'),
         );
     }

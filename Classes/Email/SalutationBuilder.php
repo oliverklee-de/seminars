@@ -76,14 +76,13 @@ class SalutationBuilder
 
         $eventDateLabel = LocalizationUtility::translate('email_eventDate', 'seminars');
         \assert(\is_string($eventDateLabel));
-        $result .= ' ' . \sprintf($eventDateLabel, $event->getDate('-'));
+        $result .= ' ' . \sprintf($eventDateLabel, $event->getDate());
 
         if ($event->hasTime() && !$event->hasTimeslots()) {
-            $timeToLabelWithPlaceholders = LocalizationUtility::translate('email_timeTo', 'seminars');
             $timeFromLabel = LocalizationUtility::translate('email_timeFrom', 'seminars');
             $timeAtLabel = LocalizationUtility::translate('email_timeAt', 'seminars');
-            \assert(\is_string($timeToLabelWithPlaceholders) && \is_string($timeFromLabel) && \is_string($timeAtLabel));
-            $time = $event->getTime(' ' . $timeToLabelWithPlaceholders . ' ');
+            \assert(\is_string($timeFromLabel) && \is_string($timeAtLabel));
+            $time = $event->getTime();
             $label = ' ' . (!$event->isOpenEnded() ? $timeFromLabel : $timeAtLabel);
             $result .= \sprintf($label, $time);
         }

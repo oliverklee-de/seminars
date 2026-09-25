@@ -105,6 +105,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- !!! Always use an UTF-8 en-dash for date/time spans (#5244)
 - Allow oelib 7.x (#5278)
 - Rename `Salutation` to `SalutationBuilder` (#5086)
 - Don't display "will be announced" for events without venues (#4883)
