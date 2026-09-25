@@ -587,10 +587,6 @@
         <source>at %s</source>
         <target state="translated">%s helyszínen</target>
       </trans-unit>
-      <trans-unit id="email_timeTo">
-        <source>to</source>
-        <target state="translated">-ig</target>
-      </trans-unit>
       <trans-unit id="schedulerTasks.mailNotifier.name">
         <source>Email notifications</source>
         <target state="translated">E-mail értesítések</target>
@@ -2632,6 +2628,10 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.topic">
         <source>topic</source>
         <target state="translated">téma</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.teaser">
+        <source>teaser</source>
+        <target state="needs-translation">teaser</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer">
         <source>organizer</source>
