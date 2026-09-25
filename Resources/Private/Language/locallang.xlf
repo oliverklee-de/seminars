@@ -1935,6 +1935,9 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.topic">
         <source>topic</source>
       </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.teaser">
+        <source>teaser</source>
+      </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer">
         <source>organizer</source>
       </trans-unit>
