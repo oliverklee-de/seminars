@@ -587,10 +587,6 @@
         <source>at %s</source>
         <target state="final">à %</target>
       </trans-unit>
-      <trans-unit id="email_timeTo" approved="yes">
-        <source>to</source>
-        <target state="final">jusqu'au</target>
-      </trans-unit>
       <trans-unit id="schedulerTasks.mailNotifier.name">
         <source>Email notifications</source>
         <target state="needs-translation">Email notifications</target>
@@ -2632,6 +2628,10 @@
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.topic">
         <source>topic</source>
         <target state="needs-translation">topic</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.teaser">
+        <source>teaser</source>
+        <target state="needs-translation">teaser</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer">
         <source>organizer</source>
