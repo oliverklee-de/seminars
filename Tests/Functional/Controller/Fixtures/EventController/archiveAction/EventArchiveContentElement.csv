@@ -19,7 +19,7 @@
                                                                  <sheet index=""displayOptions"">
                                                                      <language index=""lDEF"">
                                                                          <field index=""settings.fieldsToShow"">
-                                                                             <value index=""vDEF"">date,topic,organizer,city,venue,speakers,eventType,eventFormat,categories,eventUid,singleViewLink</value>
+                                                                             <value index=""vDEF"">date,topic,teaser,organizer,city,venue,speakers,eventType,eventFormat,categories,eventUid,singleViewLink</value>
                                                                         </field>
                                                                      </language>
                                                                  </sheet>
