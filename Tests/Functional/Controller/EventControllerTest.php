@@ -1007,6 +1007,36 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function outlookActionRendersTeaser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventWithTeaser.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Ganz ganz toll', $html);
+    }
+
+    /**
+     * @test
+     */
+    public function outlookActionForEventDateRendersTeaser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/FutureEventDateWithTopicAndTeaser.csv');
+
+        $request = (new InternalRequest())->withPageId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request)->getBody();
+
+        self::assertStringContainsString('Ganz ganz toll', $html);
+    }
+
+    /**
+     * @test
+     */
     public function outlookActionRendersDateOfSingleDayEvent(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/outlookAction/EventOutlookContentElement.csv');
