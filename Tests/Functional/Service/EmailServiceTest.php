@@ -219,7 +219,7 @@ final class EmailServiceTest extends FunctionalTestCase
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
-        $formattedDate = (new DateRangeViewHelper())->render($event, '-');
+        $formattedDate = (new DateRangeViewHelper())->render($event);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
@@ -386,7 +386,7 @@ final class EmailServiceTest extends FunctionalTestCase
         $event = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $event);
 
-        $formattedDate = (new DateRangeViewHelper())->render($event, '-');
+        $formattedDate = (new DateRangeViewHelper())->render($event);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);

@@ -24,11 +24,10 @@ interface DateTimeSpan extends Hook
      *
      * @param string $dateSpan the date span produced by `AbstractTimeSpan::getDate()`
      * @param AbstractTimeSpan $dateTimeSpan the date provider
-     * @param string $dash the glue used by `AbstractTimeSpan::getDate()` (may be HTML encoded)
      *
      * @return string the modified date span to use
      */
-    public function modifyDateSpan(string $dateSpan, AbstractTimeSpan $dateTimeSpan, string $dash): string;
+    public function modifyDateSpan(string $dateSpan, AbstractTimeSpan $dateTimeSpan): string;
 
     /**
      * Modifies the time span string.
@@ -43,9 +42,8 @@ interface DateTimeSpan extends Hook
      *
      * @param string $timeSpan the time span produced by `AbstractTimeSpan::getTime()`
      * @param AbstractTimeSpan $dateTimeSpan the date provider
-     * @param string $dash the glue used by `AbstractTimeSpan::getTime()` (may be HTML encoded)
      *
      * @return string the modified time span to use
      */
-    public function modifyTimeSpan(string $timeSpan, AbstractTimeSpan $dateTimeSpan, string $dash): string;
+    public function modifyTimeSpan(string $timeSpan, AbstractTimeSpan $dateTimeSpan): string;
 }

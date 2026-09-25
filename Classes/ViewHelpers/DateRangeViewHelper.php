@@ -21,25 +21,23 @@ class DateRangeViewHelper
      *
      * Returns a date range if the timespan takes several days.
      *
-     * @param string $dash the character or HTML entity used to separate start date and end date
-     *
      * @return string the timespan date
      */
-    public function render(Event $timeSpan, string $dash = '&#8211;'): string
+    public function render(Event $event): string
     {
-        if (!$timeSpan->hasBeginDate()) {
+        if (!$event->hasBeginDate()) {
             return '';
         }
 
-        $beginDate = $timeSpan->getBeginDateAsUnixTimeStamp();
-        $endDate = $timeSpan->getEndDateAsUnixTimeStamp();
+        $beginDate = $event->getBeginDateAsUnixTimeStamp();
+        $endDate = $event->getEndDateAsUnixTimeStamp();
 
-        $isOpenEnded = !$timeSpan->hasEndDate();
+        $isOpenEnded = !$event->hasEndDate();
         if ($isOpenEnded || $this->isSameDay($beginDate, $endDate)) {
             return $this->getAsDateFormatYmd($beginDate);
         }
 
-        return $this->getAsDateFormatYmd($beginDate) . $dash . $this->getAsDateFormatYmd($endDate);
+        return $this->getAsDateFormatYmd($beginDate) . '–' . $this->getAsDateFormatYmd($endDate);
     }
 
     /**

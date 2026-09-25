@@ -807,8 +807,8 @@ class RegistrationManager implements SingletonInterface
             $template->hideSubparts('credit_points', $wrapperPrefix);
         }
 
-        $template->setMarker('date', $event->getDate(($useHtml ? '&#8212;' : '-')));
-        $template->setMarker('time', $event->getTime(($useHtml ? '&#8212;' : '-')));
+        $template->setMarker('date', $event->getDate());
+        $template->setMarker('time', $event->getTime());
 
         $this->fillPlacesMarker($event, $useHtml);
 

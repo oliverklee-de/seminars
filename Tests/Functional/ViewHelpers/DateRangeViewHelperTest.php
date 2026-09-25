@@ -110,7 +110,7 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function renderWithBeginAndEndDateOnDifferentDaysReturnsBothFullDatesSeparatedByDash(): void
+    public function renderWithBeginAndEndDateOnDifferentDaysReturnsBothFullDatesSeparatedByEnDash(): void
     {
         $timeSpan = new Event();
         $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
@@ -118,26 +118,8 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
         $timeSpan->setEndDateAsUnixTimeStamp($endDate);
 
         self::assertSame(
-            \date('Y-m-d', self::BEGIN_DATE) . '&#8211;' . \date('Y-m-d', $endDate),
+            \date('Y-m-d', self::BEGIN_DATE) . '–' . \date('Y-m-d', $endDate),
             $this->subject->render($timeSpan),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function renderWithBeginAndEndDateOnDifferentDaysReturnsBothFullDatesSeparatedBySpecifiedDash(): void
-    {
-        $dash = '#DASH#';
-
-        $timeSpan = new Event();
-        $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
-        $endDate = self::BEGIN_DATE + (2 * 86400);
-        $timeSpan->setEndDateAsUnixTimeStamp($endDate);
-
-        self::assertSame(
-            \date('Y-m-d', self::BEGIN_DATE) . $dash . \date('Y-m-d', $endDate),
-            $this->subject->render($timeSpan, $dash),
         );
     }
 }

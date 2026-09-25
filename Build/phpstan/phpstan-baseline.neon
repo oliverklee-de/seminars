@@ -1502,12 +1502,12 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$beginDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setBeginDateAndTime\\(\\) expects int, int\\|false given\\.$#"
-			count: 13
+			count: 12
 			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$endDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setEndDateAndTime\\(\\) expects int, int\\|false given\\.$#"
-			count: 12
+			count: 11
 			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
 
 		-

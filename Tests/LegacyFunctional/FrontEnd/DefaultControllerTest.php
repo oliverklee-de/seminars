@@ -731,7 +731,7 @@ final class DefaultControllerTest extends FunctionalTestCase
 
         $this->subject->piVars['showUid'] = $this->seminarUid;
         self::assertStringContainsString(
-            '9:45&#8211;18:30',
+            '9:45–18:30',
             $this->subject->main('', []),
         );
     }
