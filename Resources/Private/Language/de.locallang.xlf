@@ -569,10 +569,6 @@ Eine Mindestteilnehmer­zahl ist Voraussetzung für die Durchführung dieser Ver
         <source>at %s</source>
         <target state="final">um %s Uhr</target>
       </trans-unit>
-      <trans-unit id="email_timeTo" approved="yes">
-        <source>to</source>
-        <target state="final">bis</target>
-      </trans-unit>
       <trans-unit id="schedulerTasks.mailNotifier.name" approved="yes">
         <source>Email notifications</source>
         <target state="final">E-Mail-Benachrichtigungen</target>
@@ -2488,9 +2484,9 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
         <source>speakers</source>
         <target state="final">Referent_innen</target>
       </trans-unit>
-      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.teaser">
+      <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.teaser" approved="yes">
         <source>teaser</source>
-        <target state="needs-translation">teaser</target>
+        <target state="final">Teaser</target>
       </trans-unit>
       <trans-unit id="plugin.eventArchive.settings.displayOptions.columns.eventType" approved="yes">
         <source>event type</source>
@@ -2599,6 +2595,10 @@ Du kannst die Liste der angezeigten Veranstaltungen filtern. Um wieder alle Vera
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.topic" approved="yes">
         <source>topic</source>
         <target state="final">Thema</target>
+      </trans-unit>
+      <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.teaser">
+        <source>teaser</source>
+        <target state="needs-translation">teaser</target>
       </trans-unit>
       <trans-unit id="plugin.eventOutlook.settings.displayOptions.columns.organizer" approved="yes">
         <source>organizer</source>
