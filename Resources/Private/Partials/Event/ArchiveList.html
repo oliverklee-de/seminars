@@ -25,6 +25,14 @@
                                 </h2>
                             </oelib:isFieldEnabled>
 
+                            <oelib:isFieldEnabled fieldName="teaser">
+                                <f:if condition="{event.teaser}">
+                                    <p>
+                                        <b>{event.teaser}</b>
+                                    </p>
+                                </f:if>
+                            </oelib:isFieldEnabled>
+
                             <div class="event-list-item__details">
                                 <oelib:isFieldEnabled fieldName="organizer">
                                     <f:if condition="{event.organizers}">
