@@ -11,9 +11,9 @@
         <source>Hide</source>
         <target state="needs-translation">Hide</target>
       </trans-unit>
-      <trans-unit id="LGL.starttime">
+      <trans-unit id="LGL.starttime" approved="yes">
         <source>Start</source>
-        <target state="needs-translation">Start</target>
+        <target state="final">Begin</target>
       </trans-unit>
       <trans-unit id="LGL.endtime">
         <source>Stop</source>
@@ -591,9 +591,9 @@
         <source>Country</source>
         <target state="final">Land</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_attendances.telephone">
+      <trans-unit id="tx_seminars_attendances.telephone" approved="yes">
         <source>Telephone</source>
-        <target state="needs-translation">Telephone</target>
+        <target state="final">Telefoon</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.email">
         <source>Email</source>
