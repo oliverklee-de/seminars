@@ -125,7 +125,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
   (#4487, #4491, #4492, #4493, #4494, #4495, #4496)
 - !!! Reduce the length of the billing address fields (#4480, #4488)
 - Change the label for the TCEforms billing tab of registrations (#4478)
-- Require Emogrifier >= 8.1.0 (#4455, #4524)
+- Require Emogrifier >= 8.3.0 (#4455, #4524, #5435)
 - !!! Allow registrations for events without a date by default (#4348)
 - Do not mention in the thank-you email that unregistration is free (#4309)
 - !!! Always allow unregistration before the unregistration deadline even
