@@ -101,6 +101,11 @@ class Registration extends AbstractEntity implements RawDataInterface
     protected string $knownFrom = '';
 
     /**
+     * @Validate("StringLength", options={"maximum": 65535})
+     */
+    protected string $userAgent = '';
+
+    /**
      * @var ObjectStorage<AccommodationOption>
      * @Lazy
      */
@@ -287,6 +292,16 @@ class Registration extends AbstractEntity implements RawDataInterface
     public function setKnownFrom(string $knownFrom): void
     {
         $this->knownFrom = $knownFrom;
+    }
+
+    public function getUserAgent(): string
+    {
+        return $this->userAgent;
+    }
+
+    public function setUserAgent(string $userAgent): void
+    {
+        $this->userAgent = $userAgent;
     }
 
     /**

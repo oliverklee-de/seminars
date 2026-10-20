@@ -752,6 +752,25 @@ final class RegistrationTest extends UnitTestCase
     /**
      * @test
      */
+    public function getUserAgentInitiallyReturnsEmptyString(): void
+    {
+        self::assertSame('', $this->subject->getKnownFrom());
+    }
+
+    /**
+     * @test
+     */
+    public function setUserAgentSetsUserAgent(): void
+    {
+        $value = 'James Bond';
+        $this->subject->setUserAgent($value);
+
+        self::assertSame($value, $this->subject->getUserAgent());
+    }
+
+    /**
+     * @test
+     */
     public function getAdditionalPersonsInitiallyReturnsEmptyStorage(): void
     {
         $associatedModels = $this->subject->getAdditionalPersons();
