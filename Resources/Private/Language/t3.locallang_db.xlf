@@ -1,0 +1,878 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="moduleFunction.tx_seminars_modfunc1">
+        <source>Seminars</source>
+        <target>crwdns302852:0crwdne302852:0</target>
+      </trans-unit>
+      <trans-unit id="LGL.hidden">
+        <source>Hide</source>
+        <target>crwdns302854:0crwdne302854:0</target>
+      </trans-unit>
+      <trans-unit id="LGL.starttime">
+        <source>Start</source>
+        <target>crwdns302856:0crwdne302856:0</target>
+      </trans-unit>
+      <trans-unit id="LGL.endtime">
+        <source>Stop</source>
+        <target>crwdns302858:0crwdne302858:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars">
+        <source>Event</source>
+        <target>crwdns367006:0crwdne367006:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.divLabelGeneral">
+        <source>General</source>
+        <target>crwdns302866:0crwdne302866:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.uid">
+        <source>Event number</source>
+        <target>crwdns302868:0crwdne302868:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.object_type">
+        <source>Type</source>
+        <target>crwdns302870:0crwdne302870:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.object_type.I.0">
+        <source>Single event</source>
+        <target>crwdns302872:0crwdne302872:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.object_type.I.1">
+        <source>Topic for multiple events</source>
+        <target>crwdns302874:0crwdne302874:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.object_type.I.2">
+        <source>Date for a topic</source>
+        <target>crwdns302876:0crwdne302876:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.title">
+        <source>Title</source>
+        <target>crwdns302878:0crwdne302878:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.slug">
+        <source>URL segment</source>
+        <target>crwdns302880:0crwdne302880:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.subtitle">
+        <source>Subtitle</source>
+        <target>crwdns302882:0crwdne302882:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.categories">
+        <source>Categories</source>
+        <target>crwdns302884:0crwdne302884:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.teaser">
+        <source>Teaser text</source>
+        <target>crwdns302886:0crwdne302886:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.description">
+        <source>Description</source>
+        <target>crwdns302888:0crwdne302888:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.topic">
+        <source>Topic</source>
+        <target>crwdns302890:0crwdne302890:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.event_type">
+        <source>Event type</source>
+        <target>crwdns302892:0crwdne302892:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.date">
+        <source>Date</source>
+        <target>crwdns302894:0crwdne302894:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.time">
+        <source>Time</source>
+        <target>crwdns302896:0crwdne302896:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.accreditation_number">
+        <source>Accreditation number</source>
+        <target>crwdns302900:0crwdne302900:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.credit_points">
+        <source>Credit points</source>
+        <target>crwdns302902:0crwdne302902:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.details_page">
+        <source>Page with the details view</source>
+        <target>crwdns302904:0crwdne302904:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.additional_information">
+        <source>Additional information</source>
+        <target>crwdns302906:0crwdne302906:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.checkboxes">
+        <source>Registration options with checkbox</source>
+        <target>crwdns302908:0crwdne302908:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.uses_terms_2">
+        <source>Display the additional terms checkbox in the registration form</source>
+        <target>crwdns367008:0crwdne367008:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.needs_registration">
+        <source>Needs registration</source>
+        <target>crwdns302912:0crwdne302912:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.allows_multiple_registrations">
+        <source>Allows multiple registrations from the same person</source>
+        <target>crwdns302914:0crwdne302914:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.cancelled">
+        <source>Status</source>
+        <target>crwdns302916:0crwdne302916:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.cancelled_planned">
+        <source>planned</source>
+        <target>crwdns302918:0crwdne302918:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.cancelled_canceled">
+        <source>canceled</source>
+        <target>crwdns302920:0crwdne302920:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.cancelled_confirmed">
+        <source>confirmed</source>
+        <target>crwdns302922:0crwdne302922:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.automatic_confirmation_cancelation">
+        <source>Set the status automatically</source>
+        <target>crwdns302924:0crwdne302924:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.notes">
+        <source>Internal Notes</source>
+        <target>crwdns302926:0crwdne302926:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.attached_files">
+        <source>Downloads for registered persons</source>
+        <target>crwdns370543:0crwdne370543:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.download_start_date">
+        <source>Downloads available starting at</source>
+        <target>crwdns370406:0crwdne370406:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.divLabelSpeakers">
+        <source>Speakers</source>
+        <target>crwdns302930:0crwdne302930:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.speakers">
+        <source>Speakers</source>
+        <target>crwdns302932:0crwdne302932:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.partners">
+        <source>Partners</source>
+        <target>crwdns302934:0crwdne302934:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.tutors">
+        <source>Tutors</source>
+        <target>crwdns302936:0crwdne302936:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.leaders">
+        <source>Leaders</source>
+        <target>crwdns302938:0crwdne302938:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.divLabelOrganizers">
+        <source>Organizer</source>
+        <target>crwdns302940:0crwdne302940:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.organizers">
+        <source>Organizers</source>
+        <target>crwdns302942:0crwdne302942:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.organizing_partners">
+        <source>Organizing Partners</source>
+        <target>crwdns302944:0crwdne302944:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.event_takes_place_reminder_sent">
+        <source>Organizers have been reminded about this event being about to take place</source>
+        <target>crwdns302946:0crwdne302946:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.cancelation_deadline_reminder_sent">
+        <source>Organizers have been notified that the cancelation deadline has just passed</source>
+        <target>crwdns302948:0crwdne302948:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.divLabelPlaceTime">
+        <source>Place/Time</source>
+        <target>crwdns302950:0crwdne302950:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.event_format">
+        <source>Event format</source>
+        <target>crwdns340462:0crwdne340462:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.event_format.on-site">
+        <source>on-site</source>
+        <target>crwdns340464:0crwdne340464:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.event_format.hybrid">
+        <source>hybrid</source>
+        <target>crwdns340466:0crwdne340466:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.event_format.online">
+        <source>online</source>
+        <target>crwdns340470:0crwdne340470:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.webinar_url">
+        <source>Webinar URL</source>
+        <target>crwdns340478:0crwdne340478:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.begin_date">
+        <source>Begin time and date</source>
+        <target>crwdns302952:0crwdne302952:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.end_date">
+        <source>End time and date</source>
+        <target>crwdns302954:0crwdne302954:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.timeslots">
+        <source>Time slots</source>
+        <target>crwdns302956:0crwdne302956:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.begin_date_registration">
+        <source>Begin date for registration</source>
+        <target>crwdns302958:0crwdne302958:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.deadline_registration">
+        <source>Registration deadline</source>
+        <target>crwdns302960:0crwdne302960:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.deadline_early_bird">
+        <source>Early bird deadline</source>
+        <target>crwdns302962:0crwdne302962:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.deadline_unregistration">
+        <source>Unregistration deadline</source>
+        <target>crwdns302964:0crwdne302964:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.expiry">
+        <source>License expiry</source>
+        <target>crwdns302966:0crwdne302966:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.place">
+        <source>Place</source>
+        <target>crwdns302968:0crwdne302968:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.room">
+        <source>Room</source>
+        <target>crwdns302970:0crwdne302970:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.tab.attendeeInformation">
+        <source>Information for attendees</source>
+        <target>crwdns370404:0crwdne370404:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.divLabelLodging">
+        <source>Lodging/Food</source>
+        <target>crwdns302972:0crwdne302972:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.lodgings">
+        <source>Available lodgings</source>
+        <target>crwdns302974:0crwdne302974:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.foods">
+        <source>Available foods</source>
+        <target>crwdns302976:0crwdne302976:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.divLabelAttendees">
+        <source>Attendees</source>
+        <target>crwdns302978:0crwdne302978:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.attendees_min">
+        <source>Minimal number of attendees</source>
+        <target>crwdns302980:0crwdne302980:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.attendees_max">
+        <source>Maximal number of attendees</source>
+        <target>crwdns302982:0crwdne302982:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.queue_size">
+        <source>Registration queue</source>
+        <target>crwdns302984:0crwdne302984:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.offline_attendees">
+        <source>Number of offline-registered attendees</source>
+        <target>crwdns302986:0crwdne302986:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.organizers_notified_about_minimum_reached">
+        <source>Organizers have been notified that the minimum number of attendees has been reached</source>
+        <target>crwdns302988:0crwdne302988:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.mute_notification_emails">
+        <source>Mute the notification emails to the organizers</source>
+        <target>crwdns302990:0crwdne302990:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.target_groups">
+        <source>Target groups</source>
+        <target>crwdns302992:0crwdne302992:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.attendees">
+        <source>Current number of attendees</source>
+        <target>crwdns302994:0crwdne302994:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.vacancies">
+        <source>Current number of vacancies</source>
+        <target>crwdns302996:0crwdne302996:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.enough_attendees">
+        <source>Has enough registrations</source>
+        <target>crwdns302998:0crwdne302998:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.is_full">
+        <source>Is full</source>
+        <target>crwdns303000:0crwdne303000:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.divLabelPayment">
+        <source>Payment</source>
+        <target>crwdns303002:0crwdne303002:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.price_regular">
+        <source>Regular price</source>
+        <target>crwdns303004:0crwdne303004:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.price_regular_early">
+        <source>Regular price (early bird)</source>
+        <target>crwdns303006:0crwdne303006:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.price_special">
+        <source>Special price</source>
+        <target>crwdns303008:0crwdne303008:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.price_special_early">
+        <source>Special price (early bird)</source>
+        <target>crwdns303010:0crwdne303010:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.payment_methods">
+        <source>Allowed methods of payment</source>
+        <target>crwdns303012:0crwdne303012:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.divLabelBilling">
+        <source>Billing</source>
+        <target>crwdns374472:0crwdne374472:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.billing_start">
+        <source>Start of the billing process</source>
+        <target>crwdns374474:0crwdne374474:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.divLabelAccess">
+        <source>Access</source>
+        <target>crwdns303014:0crwdne303014:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.image">
+        <source>Image</source>
+        <target>crwdns303018:0crwdne303018:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.requirements">
+        <source>Requirements</source>
+        <target>crwdns303020:0crwdne303020:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.dependencies">
+        <source>Requirement for</source>
+        <target>crwdns303022:0crwdne303022:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.price_on_request">
+        <source>Price on request</source>
+        <target>crwdns303024:0crwdne303024:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.date_of_last_registration_digest">
+        <source>Date of last registration digest email</source>
+        <target>crwdns303026:0crwdne303026:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_seminars.additional_email_text">
+        <source>Additional text for the thank-you email to the attendees</source>
+        <target>crwdns340522:0crwdne340522:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers">
+        <source>Speaker</source>
+        <target>crwdns367030:0crwdne367030:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.title">
+        <source>Name</source>
+        <target>crwdns303030:0crwdne303030:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.organization">
+        <source>Organization</source>
+        <target>crwdns303032:0crwdne303032:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.homepage">
+        <source>Homepage</source>
+        <target>crwdns303034:0crwdne303034:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.description">
+        <source>Description</source>
+        <target>crwdns303036:0crwdne303036:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.image">
+        <source>Image</source>
+        <target>crwdns303038:0crwdne303038:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.skills">
+        <source>Skills</source>
+        <target>crwdns303040:0crwdne303040:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.notes">
+        <source>Internal Notes</source>
+        <target>crwdns303042:0crwdne303042:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.address">
+        <source>Address</source>
+        <target>crwdns303044:0crwdne303044:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.phone_work">
+        <source>Phone number (work)</source>
+        <target>crwdns303046:0crwdne303046:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.phone_home">
+        <source>Phone numer (home)</source>
+        <target>crwdns303048:0crwdne303048:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.phone_mobile">
+        <source>Phone number (mobile)</source>
+        <target>crwdns303050:0crwdne303050:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.email">
+        <source>Email address</source>
+        <target>crwdns333258:0crwdne333258:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_speakers.cancelation_period">
+        <source>Cancelation period (in days)</source>
+        <target>crwdns303054:0crwdne303054:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances">
+        <source>Registration</source>
+        <target>crwdns367032:0crwdne367032:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.divLabelOverview">
+        <source>Overview</source>
+        <target>crwdns303058:0crwdne303058:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.divLabelBookingInformation">
+        <source>Booking Information</source>
+        <target>crwdns303060:0crwdne303060:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.divLabelRegistrationComments">
+        <source>Registration Comments</source>
+        <target>crwdns303062:0crwdne303062:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.divLabelCertificateOfAttendance">
+        <source>Certificate of attendance</source>
+        <target>crwdns390216:0crwdne390216:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.divLabelPaymentInformation">
+        <source>Billing</source>
+        <target>crwdns374480:0crwdne374480:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.divLabelBillingAddress">
+        <source>Billing Address</source>
+        <target>crwdns303066:0crwdne303066:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.uid">
+        <source>Ticket ID</source>
+        <target>crwdns303068:0crwdne303068:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.crdate">
+        <source>Registration date</source>
+        <target>crwdns303070:0crwdne303070:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.title">
+        <source>Title</source>
+        <target>crwdns303072:0crwdne303072:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.user">
+        <source>Front-end User</source>
+        <target>crwdns303074:0crwdne303074:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.seminar">
+        <source>Event</source>
+        <target>crwdns367010:0crwdne367010:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.registration_queue">
+        <source>Status</source>
+        <target>crwdns368258:0crwdne368258:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.registration_queue.regular">
+        <source>regular registration</source>
+        <target>crwdns368260:0crwdne368260:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.registration_queue.waitingList">
+        <source>waiting list</source>
+        <target>crwdns368262:0crwdne368262:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.registration_queue.nonbindingReservation">
+        <source>nonbinding reservation</source>
+        <target>crwdns368264:0crwdne368264:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.price">
+        <source>Price to pay</source>
+        <target>crwdns303080:0crwdne303080:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.price_code">
+        <source>Price code</source>
+        <target>crwdns303082:0crwdne303082:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.price_code.standard">
+        <source>Regular price</source>
+        <target>crwdns303084:0crwdne303084:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.price_code.earlyBird">
+        <source>Early-bird price</source>
+        <target>crwdns303086:0crwdne303086:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.price_code.special">
+        <source>Special price</source>
+        <target>crwdns303088:0crwdne303088:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.price_code.specialEarlyBird">
+        <source>Early-bird special price</source>
+        <target>crwdns303090:0crwdne303090:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.total_price">
+        <source>Total price for this attendance</source>
+        <target>crwdns303092:0crwdne303092:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.invoice_date">
+        <source>Invoice date</source>
+        <target>crwdns377942:0crwdne377942:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.datepaid">
+        <source>Date of payment</source>
+        <target>crwdns303094:0crwdne303094:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.invoice_number">
+        <source>Invoice number</source>
+        <target>crwdns377944:0crwdne377944:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.customer_number">
+        <source>Customer number</source>
+        <target>crwdns377946:0crwdne377946:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.method_of_payment">
+        <source>Method of payment</source>
+        <target>crwdns303096:0crwdne303096:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.separate_billing_address">
+        <source>Separate billing address</source>
+        <target>crwdns303098:0crwdne303098:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.company">
+        <source>Company</source>
+        <target>crwdns303100:0crwdne303100:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.name">
+        <source>Name</source>
+        <target>crwdns303102:0crwdne303102:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.gender">
+        <source>Gender</source>
+        <target>crwdns303104:0crwdne303104:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.gender.I.0">
+        <source>Mr.</source>
+        <target>crwdns303106:0crwdne303106:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.gender.I.1">
+        <source>Ms.</source>
+        <target>crwdns303108:0crwdne303108:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.gender.I.2">
+        <source>diverse</source>
+        <target>crwdns303110:0crwdne303110:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.address">
+        <source>Street address</source>
+        <target>crwdns376738:0crwdne376738:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.zip">
+        <source>ZIP</source>
+        <target>crwdns303114:0crwdne303114:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.city">
+        <source>City</source>
+        <target>crwdns303116:0crwdne303116:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.country">
+        <source>Country</source>
+        <target>crwdns303118:0crwdne303118:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.telephone">
+        <source>Telephone</source>
+        <target>crwdns303120:0crwdne303120:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.email">
+        <source>Email</source>
+        <target>crwdns333260:0crwdne333260:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.been_there">
+        <source>Has attended</source>
+        <target>crwdns303124:0crwdne303124:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.checkboxes">
+        <source>Selected options</source>
+        <target>crwdns303126:0crwdne303126:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.interests">
+        <source>Special interests</source>
+        <target>crwdns303128:0crwdne303128:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.expectations">
+        <source>Expectations for the event</source>
+        <target>crwdns303130:0crwdne303130:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.background_knowledge">
+        <source>Background knowledge</source>
+        <target>crwdns303132:0crwdne303132:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.lodgings">
+        <source>Selected lodging options</source>
+        <target>crwdns303134:0crwdne303134:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.accommodation">
+        <source>
+          How are your lodging preferences (if possible a single room, a double room, no lodging)?
+        </source>
+        <target>crwdns384216:0crwdne384216:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.foods">
+        <source>Selected food options</source>
+        <target>crwdns303138:0crwdne303138:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.food">
+        <source>Which kind of food do you prefer (normal, vegetarian, or a special diet)</source>
+        <target>crwdns303140:0crwdne303140:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.known_from">
+        <source>How have you heard of this event?</source>
+        <target>crwdns303142:0crwdne303142:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.notes">
+        <source>Additional notes</source>
+        <target>crwdns303144:0crwdne303144:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.registered_themselves">
+        <source>Has signed up themselves (too)</source>
+        <target>crwdns367012:0crwdne367012:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.seats">
+        <source>Number of seats</source>
+        <target>crwdns303148:0crwdne303148:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.attendees_names">
+        <source>Additional registered persons</source>
+        <target>crwdns303150:0crwdne303150:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.additional_persons">
+        <source>Additional registered persons</source>
+        <target>crwdns303152:0crwdne303152:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.kids">
+        <source>Number of kids</source>
+        <target>crwdns303154:0crwdne303154:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.attendance_mode">
+        <source>Attendance mode</source>
+        <target>crwdns368250:0crwdne368250:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.attendance_mode.onSite">
+        <source>on-site</source>
+        <target>crwdns368252:0crwdne368252:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.attendance_mode.online">
+        <source>online</source>
+        <target>crwdns368254:0crwdne368254:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.attendance_mode.hybrid">
+        <source>hybrid</source>
+        <target>crwdns368256:0crwdne368256:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_attendances.order_reference">
+        <source>Order reference</source>
+        <target>crwdns369792:0crwdne369792:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites">
+        <source>Venue</source>
+        <target>crwdns367034:0crwdne367034:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites.title">
+        <source>Name</source>
+        <target>crwdns303158:0crwdne303158:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites.address">
+        <source>Full address</source>
+        <target>crwdns367004:0crwdne367004:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites.city">
+        <source>City</source>
+        <target>crwdns303164:0crwdne303164:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites.homepage">
+        <source>Homepage</source>
+        <target>crwdns303168:0crwdne303168:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites.directions">
+        <source>Directions</source>
+        <target>crwdns303170:0crwdne303170:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites.notes">
+        <source>Internal Notes</source>
+        <target>crwdns303172:0crwdne303172:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites.contact_person">
+        <source>Contact person</source>
+        <target>crwdns340472:0crwdne340472:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites.email_address">
+        <source>Email address</source>
+        <target>crwdns340474:0crwdne340474:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_sites.phone_number">
+        <source>Phone number</source>
+        <target>crwdns340476:0crwdne340476:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_organizers">
+        <source>Organizer</source>
+        <target>crwdns367036:0crwdne367036:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_organizers.title">
+        <source>Name</source>
+        <target>crwdns303176:0crwdne303176:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_organizers.description">
+        <source>Description</source>
+        <target>crwdns303178:0crwdne303178:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_organizers.homepage">
+        <source>Homepage</source>
+        <target>crwdns303180:0crwdne303180:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_organizers.email">
+        <source>Email address</source>
+        <target>crwdns333262:0crwdne333262:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_organizers.email_footer">
+        <source>Email footer</source>
+        <target>crwdns367014:0crwdne367014:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_payment_methods">
+        <source>Method of payment</source>
+        <target>crwdns367038:0crwdne367038:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_payment_methods.title">
+        <source>Title</source>
+        <target>crwdns303188:0crwdne303188:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_payment_methods.description">
+        <source>Detailed description for emails</source>
+        <target>crwdns333266:0crwdne333266:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_event_types">
+        <source>Event type</source>
+        <target>crwdns367040:0crwdne367040:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_event_types.title">
+        <source>Title</source>
+        <target>crwdns303194:0crwdne303194:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_event_types.single_view_page">
+        <source>Single view page for events of this type</source>
+        <target>crwdns303196:0crwdne303196:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_checkboxes">
+        <source>Registration option with checkbox</source>
+        <target>crwdns367042:0crwdne367042:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_checkboxes.title">
+        <source>Title</source>
+        <target>crwdns303200:0crwdne303200:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_lodgings">
+        <source>Lodging option</source>
+        <target>crwdns367044:0crwdne367044:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_lodgings.title">
+        <source>Title</source>
+        <target>crwdns303204:0crwdne303204:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_foods">
+        <source>Food option</source>
+        <target>crwdns367046:0crwdne367046:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_foods.title">
+        <source>Title</source>
+        <target>crwdns303208:0crwdne303208:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_timeslots">
+        <source>Time slot</source>
+        <target>crwdns367048:0crwdne367048:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_timeslots.begin_date">
+        <source>Begin date</source>
+        <target>crwdns303212:0crwdne303212:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_timeslots.end_date">
+        <source>End date</source>
+        <target>crwdns303214:0crwdne303214:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_timeslots.place">
+        <source>Place</source>
+        <target>crwdns303220:0crwdne303220:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_timeslots.room">
+        <source>Room</source>
+        <target>crwdns303222:0crwdne303222:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_target_groups">
+        <source>Target Groups</source>
+        <target>crwdns303224:0crwdne303224:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_target_groups.title">
+        <source>Title</source>
+        <target>crwdns303226:0crwdne303226:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_target_groups.minimum_age">
+        <source>Minimum age</source>
+        <target>crwdns303228:0crwdne303228:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_target_groups.maximum_age">
+        <source>Maximum age</source>
+        <target>crwdns303230:0crwdne303230:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_categories">
+        <source>Event category</source>
+        <target>crwdns367050:0crwdne367050:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_categories.title">
+        <source>Title</source>
+        <target>crwdns303234:0crwdne303234:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_categories.single_view_page">
+        <source>Single view page for events in this category</source>
+        <target>crwdns303238:0crwdne303238:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_skills">
+        <source>Skill</source>
+        <target>crwdns367052:0crwdne367052:0</target>
+      </trans-unit>
+      <trans-unit id="tx_seminars_skills.title">
+        <source>Title</source>
+        <target>crwdns303242:0crwdne303242:0</target>
+      </trans-unit>
+      <trans-unit id="tt_content.list_type_pi1">
+        <source>Seminar Manager</source>
+        <target>crwdns303244:0crwdne303244:0</target>
+      </trans-unit>
+      <trans-unit id="owner_feuser">
+        <source>Front-end user who has created this record</source>
+        <target>crwdns366952:0crwdne366952:0</target>
+      </trans-unit>
+      <trans-unit id="fe_users.divLabel.seminars">
+        <source>Event management</source>
+        <target>crwdns370962:0crwdne370962:0</target>
+      </trans-unit>
+      <trans-unit id="fe_users.default_organizer">
+        <source>Default organizer (for the FE editor)</source>
+        <target>crwdns371006:0crwdne371006:0</target>
+      </trans-unit>
+      <trans-unit id="fe_users.available_topics">
+        <source>Available topics in the FE editor</source>
+        <target>crwdns372312:0crwdne372312:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
