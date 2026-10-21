@@ -75,7 +75,9 @@ final class EmailServiceTest extends FunctionalTestCase
     {
         // This is temporarily necessary to remove the mapper registry instance as long as we haven't switched the
         // tested class to also use the Extbase event model.
-        MapperRegistry::purgeInstance();
+        if (method_exists(MapperRegistry::class, 'purgeInstance')) {
+            MapperRegistry::purgeInstance();
+        }
         parent::tearDown();
     }
 
