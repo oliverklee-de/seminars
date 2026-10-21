@@ -1441,11 +1441,6 @@ parameters:
 			path: ../../Tests/Functional/Mapper/EventMapperTest.php
 
 		-
-			message: "#^Use explicit methods over array access on object$#"
-			count: 2
-			path: ../../Tests/Functional/Middleware/ResponseHeadersModifierTest.php
-
-		-
 			message: "#^Cannot access offset 'crdate' on array\\<string, mixed\\>\\|false\\.$#"
 			count: 2
 			path: ../../Tests/Functional/OldModel/AbstractModelTest.php
