@@ -58,7 +58,6 @@
 		"phpstan/phpstan-strict-rules": "1.6.2",
 		"phpunit/phpunit": "9.6.38",
 		"rector/rector": "1.2.10",
-		"rector/type-perfect": "1.0.0",
 		"saschaegerer/phpstan-typo3": "1.10.2",
 		"squizlabs/php_codesniffer": "4.0.4",
 		"ssch/typo3-rector": "2.15.3",
