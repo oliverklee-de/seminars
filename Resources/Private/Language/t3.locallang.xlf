@@ -3172,6 +3172,10 @@
         <source>on-site</source>
         <target>crwdns411185:0crwdne411185:0</target>
       </trans-unit>
+      <trans-unit id="extension_configuration.record_user_agent_on_registration" resname="config.checkboxLabel">
+        <source>Record user agent string on event registration</source>
+        <target>crwdns416155:0crwdne416155:0</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
