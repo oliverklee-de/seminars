@@ -183,6 +183,7 @@ CREATE TABLE tx_seminars_attendances
 	checkboxes               int(11) unsigned    DEFAULT 0   NOT NULL,
 	attendance_mode          int(1) unsigned     DEFAULT 0   NOT NULL,
 	order_reference          tinytext,
+	user_agent               text,
 
 	KEY seminar (seminar),
 	KEY user (user)

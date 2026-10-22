@@ -104,6 +104,7 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
         self::assertSame('crash course', $result->getBackgroundKnowledge());
         self::assertSame(Registration::ATTENDANCE_MODE_ON_SITE, $result->getAttendanceMode());
         self::assertEquals(new \DateTime('2026-03-01 09:00:00'), $result->getRegistrationDate());
+        self::assertSame('James Bond', $result->getUserAgent());
     }
 
     /**

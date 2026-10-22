@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Add user agent to `Registration`(#5438)
 - Add support for PHP 8.4 (#5296)
 - Add support for TYPO3 12LTS
   (#5281, #5286, #5294, #5309, #5327, #5333, #5335, #5337)

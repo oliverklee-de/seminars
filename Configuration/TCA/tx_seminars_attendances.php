@@ -321,6 +321,15 @@ $tca = [
                 'eval' => 'trim',
             ],
         ],
+        'user_agent' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.user_agent',
+            'config' => [
+                'type' => 'input',
+                'max' => 65535,
+                'default' => '',
+            ],
+        ],
         'interests' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.interests',
@@ -529,7 +538,7 @@ $tca = [
         [
             'showitem' => ''
                 . '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.divLabelOverview, title, crdate, uid, seminar, user, hidden, '
-                . '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.divLabelBookingInformation, registration_queue, attendance_mode, registered_themselves, seats, price, price_code, total_price, attendees_names, additional_persons, kids, foods, food, lodgings, accommodation, checkboxes, order_reference, '
+                . '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.divLabelBookingInformation, registration_queue, attendance_mode, registered_themselves, seats, price, price_code, total_price, attendees_names, additional_persons, kids, foods, food, lodgings, accommodation, checkboxes, order_reference, user_agent, '
                 . '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.divLabelRegistrationComments, interests, expectations, background_knowledge, known_from, notes, '
                 . '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.divLabelCertificateOfAttendance, been_there, '
                 . '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_attendances.divLabelPaymentInformation, customer_number, invoice_number, invoice_date, datepaid, method_of_payment, '
