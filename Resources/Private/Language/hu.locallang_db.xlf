@@ -687,6 +687,10 @@
         <source>Order reference</source>
         <target state="translated">Rendelési hivatkozás</target>
       </trans-unit>
+      <trans-unit id="tx_seminars_attendances.user_agent">
+        <source>Browser user agent</source>
+        <target state="needs-translation">Browser user agent</target>
+      </trans-unit>
       <trans-unit id="tx_seminars_sites">
         <source>Venue</source>
         <target state="translated">Helyszín</target>
