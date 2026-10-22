@@ -19,9 +19,9 @@
         <source>Stop</source>
         <target state="needs-translation">Stop</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_seminars">
+      <trans-unit id="tx_seminars_seminars" approved="yes">
         <source>Event</source>
-        <target state="needs-translation">Event</target>
+        <target state="final">Evenement</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.divLabelGeneral" approved="yes">
         <source>General</source>
@@ -127,9 +127,9 @@
         <source>planned</source>
         <target state="needs-translation">planned</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_seminars.cancelled_canceled">
+      <trans-unit id="tx_seminars_seminars.cancelled_canceled" approved="yes">
         <source>canceled</source>
-        <target state="needs-translation">canceled</target>
+        <target state="final">geannuleerd</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.cancelled_confirmed" approved="yes">
         <source>confirmed</source>
@@ -207,9 +207,9 @@
         <source>hybrid</source>
         <target state="needs-translation">hybrid</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_seminars.event_format.online">
+      <trans-unit id="tx_seminars_seminars.event_format.online" approved="yes">
         <source>online</source>
-        <target state="needs-translation">online</target>
+        <target state="final">online</target>
       </trans-unit>
       <trans-unit id="tx_seminars_seminars.webinar_url" approved="yes">
         <source>Webinar URL</source>
@@ -483,9 +483,9 @@
         <source>Event</source>
         <target state="needs-translation">Event</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_attendances.registration_queue">
+      <trans-unit id="tx_seminars_attendances.registration_queue" approved="yes">
         <source>Status</source>
-        <target state="needs-translation">Status</target>
+        <target state="final">Status</target>
       </trans-unit>
       <trans-unit id="tx_seminars_attendances.registration_queue.regular">
         <source>regular registration</source>
