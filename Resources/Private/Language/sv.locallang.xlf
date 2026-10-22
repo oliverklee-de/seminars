@@ -3253,6 +3253,10 @@
         <source>on-site</source>
         <target state="needs-translation">on-site</target>
       </trans-unit>
+      <trans-unit id="extension_configuration.record_user_agent_on_registration" resname="config.checkboxLabel">
+        <source>Record user agent string on event registration</source>
+        <target state="needs-translation">Record user agent string on event registration</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
