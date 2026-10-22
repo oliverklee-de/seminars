@@ -685,6 +685,10 @@
         <source>Order reference</source>
         <target>crwdns369792:0crwdne369792:0</target>
       </trans-unit>
+      <trans-unit id="tx_seminars_attendances.user_agent">
+        <source>Browser user agent</source>
+        <target>crwdns416153:0crwdne416153:0</target>
+      </trans-unit>
       <trans-unit id="tx_seminars_sites">
         <source>Venue</source>
         <target>crwdns367034:0crwdne367034:0</target>
