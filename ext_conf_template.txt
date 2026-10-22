@@ -1,2 +1,2 @@
-# cat=Feature toggles; type=boolean; label=LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:config.checkboxLabel
+# cat=Feature toggles; type=boolean; label=LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:extension_configuration.record_user_agent_on_registration
 record_user_agent_on_registration = 0
