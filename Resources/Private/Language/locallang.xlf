@@ -2400,6 +2400,9 @@
       <trans-unit id="plugin.myRegistrations.property.attendanceMode.1">
         <source>on-site</source>
       </trans-unit>
+      <trans-unit id="extension_configuration.record_user_agent_on_registration" resname="config.checkboxLabel">
+        <source>Record user agent string on event registration</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>
