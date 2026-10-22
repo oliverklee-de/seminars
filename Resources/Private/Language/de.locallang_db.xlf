@@ -685,6 +685,10 @@
         <source>Order reference</source>
         <target state="final">Bestellzeichen</target>
       </trans-unit>
+      <trans-unit id="tx_seminars_attendances.user_agent">
+        <source>Browser user agent</source>
+        <target state="needs-translation">Browser user agent</target>
+      </trans-unit>
       <trans-unit id="tx_seminars_sites" approved="yes">
         <source>Venue</source>
         <target state="final">Veranstaltungsort</target>
