@@ -14,6 +14,7 @@ use OliverKlee\Seminars\Domain\Repository\FrontendUserRepository;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -41,18 +42,22 @@ class RegistrationProcessor implements SingletonInterface
 
     private RegistrationManager $registrationManager;
 
+    private ExtensionConfiguration $extensionConfiguration;
+
     public function __construct(
         RegistrationRepository $registrationRepository,
         EventRepository $eventRepository,
         FrontendUserRepository $frontendUserRepository,
         RegistrationGuard $registrationGuard,
-        RegistrationManager $registrationManager
+        RegistrationManager $registrationManager,
+        ExtensionConfiguration $extensionConfiguration
     ) {
         $this->registrationRepository = $registrationRepository;
         $this->eventRepository = $eventRepository;
         $this->frontendUserRepository = $frontendUserRepository;
         $this->registrationGuard = $registrationGuard;
         $this->registrationManager = $registrationManager;
+        $this->extensionConfiguration = $extensionConfiguration;
     }
 
     /**
@@ -87,6 +92,10 @@ class RegistrationProcessor implements SingletonInterface
 
         if ($event->hasWaitingList() && $this->registrationGuard->getVacancies($event) === 0) {
             $registration->moveToWaitingList();
+        }
+        $userAgentRecordingFeatureToggle = $this->extensionConfiguration->get('seminars', 'record_user_agent_on_registration');
+        if (($userAgentRecordingFeatureToggle ?? null) === '1') {
+            $registration->setUserAgent($request->getHeaderLine('user-agent'));
         }
     }
 
