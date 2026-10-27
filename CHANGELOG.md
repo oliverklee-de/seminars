@@ -189,6 +189,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+- Drop unused Event methods (#5454)
 - Drop the legacy "my managed events" view (#5141, #5146)
 - Drop the hooks for the `DataHandler` hook (#5135)
 - Drop the hook system for modifying the CSV export (#5134)

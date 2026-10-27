@@ -12,9 +12,6 @@ use OliverKlee\Seminars\Model\EventType;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Organizer;
 use OliverKlee\Seminars\Model\Registration;
-use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -26,14 +23,9 @@ final class EventTest extends UnitTestCase
 
     private Event $subject;
 
-    protected int $now = 1424751343;
-
     protected function setUp(): void
     {
         parent::setUp();
-
-        GeneralUtility::makeInstance(Context::class)
-            ->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
 
         $this->subject = new Event();
     }
@@ -63,164 +55,6 @@ final class EventTest extends UnitTestCase
         self::assertSame(
             42,
             $this->subject->getBeginDateAsUnixTimeStamp(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setBeginDateAsUnixTimeStampWithNegativeTimeStampThrowsException(): void
-    {
-        $this->expectException(
-            \InvalidArgumentException::class,
-        );
-        $this->expectExceptionMessage(
-            'The parameter $beginDate must be >= 0.',
-        );
-
-        $this->subject->setBeginDateAsUnixTimeStamp(-1);
-    }
-
-    /**
-     * @test
-     */
-    public function setBeginDateAsUnixTimeStampWithZeroTimeStampSetsBeginDate(): void
-    {
-        $this->subject->setBeginDateAsUnixTimeStamp(0);
-
-        self::assertSame(
-            0,
-            $this->subject->getBeginDateAsUnixTimeStamp(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setBeginDateAsUnixTimeStampWithPositiveTimeStampSetsBeginDate(): void
-    {
-        $this->subject->setBeginDateAsUnixTimeStamp(42);
-
-        self::assertSame(
-            42,
-            $this->subject->getBeginDateAsUnixTimeStamp(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function hasBeginDateWithoutBeginDateReturnsFalse(): void
-    {
-        $this->subject->setData([]);
-
-        self::assertFalse(
-            $this->subject->hasBeginDate(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function hasBeginDateWithBeginDateReturnsTrue(): void
-    {
-        $this->subject->setBeginDateAsUnixTimeStamp(42);
-
-        self::assertTrue(
-            $this->subject->hasBeginDate(),
-        );
-    }
-
-    // Tests regarding the end date.
-
-    /**
-     * @test
-     */
-    public function getEndDateAsUnixTimeStampWithoutEndDateReturnsZero(): void
-    {
-        $this->subject->setData([]);
-
-        self::assertSame(
-            0,
-            $this->subject->getEndDateAsUnixTimeStamp(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getEndDateAsUnixTimeStampWithEndDateReturnsEndDate(): void
-    {
-        $this->subject->setData(['end_date' => 42]);
-
-        self::assertSame(
-            42,
-            $this->subject->getEndDateAsUnixTimeStamp(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setEndDateAsUnixTimeStampWithNegativeTimeStampThrowsException(): void
-    {
-        $this->expectException(
-            \InvalidArgumentException::class,
-        );
-        $this->expectExceptionMessage(
-            'The parameter $endDate must be >= 0.',
-        );
-
-        $this->subject->setEndDateAsUnixTimeStamp(-1);
-    }
-
-    /**
-     * @test
-     */
-    public function setEndDateAsUnixTimeStampWithZeroTimeStampSetsEndDate(): void
-    {
-        $this->subject->setEndDateAsUnixTimeStamp(0);
-
-        self::assertSame(
-            0,
-            $this->subject->getEndDateAsUnixTimeStamp(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setEndDateAsUnixTimeStampWithPositiveTimeStampSetsEndDate(): void
-    {
-        $this->subject->setEndDateAsUnixTimeStamp(42);
-
-        self::assertSame(
-            42,
-            $this->subject->getEndDateAsUnixTimeStamp(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function hasEndDateWithoutEndDateReturnsFalse(): void
-    {
-        $this->subject->setData([]);
-
-        self::assertFalse(
-            $this->subject->hasEndDate(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function hasEndDateWithEndDateReturnsTrue(): void
-    {
-        $this->subject->setEndDateAsUnixTimeStamp(42);
-
-        self::assertTrue(
-            $this->subject->hasEndDate(),
         );
     }
 
@@ -1390,28 +1224,5 @@ final class EventTest extends UnitTestCase
         $this->subject->setDateOfLastRegistrationDigestEmailAsUnixTimeStamp(42);
 
         self::assertSame(42, $this->subject->getDateOfLastRegistrationDigestEmailAsUnixTimeStamp());
-    }
-
-    // Tests concerning the dates
-
-    /**
-     * @test
-     */
-    public function getBeginDateAsUnixTimeStampByDefaultReturnsZero(): void
-    {
-        $this->subject->setData([]);
-
-        self::assertSame(0, $this->subject->getBeginDateAsUnixTimeStamp());
-    }
-
-    /**
-     * @test
-     */
-    public function getBeginDateAsUnixTimeStampReturnsBeginDate(): void
-    {
-        $timeStamp = 455456;
-        $this->subject->setData(['begin_date' => $timeStamp]);
-
-        self::assertSame($timeStamp, $this->subject->getBeginDateAsUnixTimeStamp());
     }
 }
