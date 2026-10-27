@@ -93,10 +93,10 @@ class EmailService implements SingletonInterface
     /**
      * Builds the message body (including the email footer).
      */
-    protected function buildMessageBody(string $rawBody, Event $event, FrontendUser $user): string
+    protected function buildMessageBody(string $rawBody, Event $legacyEvent, FrontendUser $user): string
     {
-        $bodyWithFooter = $this->replaceMarkers($rawBody, $event, $user);
-        $organizer = $event->getFirstOrganizer();
+        $bodyWithFooter = $this->replaceMarkers($rawBody, $legacyEvent, $user);
+        $organizer = $legacyEvent->getFirstOrganizer();
         if ($organizer->hasEmailFooter()) {
             $bodyWithFooter .= "\n-- \n" . $organizer->getEmailFooter();
         }
@@ -114,13 +114,13 @@ class EmailService implements SingletonInterface
      * `%eventTitle`
      * `%eventDate`
      */
-    protected function replaceMarkers(string $textWithMarkers, Event $event, FrontendUser $user): string
+    protected function replaceMarkers(string $textWithMarkers, Event $legacyEvent, FrontendUser $user): string
     {
         $markers = [
             '%salutation' => $this->salutationBuilder->getSalutation($user),
             '%userName' => $user->getName(),
-            '%eventTitle' => $event->getTitle(),
-            '%eventDate' => $this->dateRangeViewHelper->render($event),
+            '%eventTitle' => $legacyEvent->getTitle(),
+            '%eventDate' => $this->dateRangeViewHelper->render($legacyEvent),
         ];
 
         return str_replace(array_keys($markers), $markers, $textWithMarkers);
