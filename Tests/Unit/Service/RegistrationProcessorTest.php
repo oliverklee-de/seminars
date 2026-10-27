@@ -17,6 +17,7 @@ use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Service\RegistrationProcessor;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -53,6 +54,11 @@ final class RegistrationProcessorTest extends UnitTestCase
     private RegistrationProcessor $subject;
 
     /**
+     * @var ExtensionConfiguration&MockObject
+     */
+    private ExtensionConfiguration $extensionConfigurationMock;
+
+    /**
      * @var ServerRequestInterface&MockObject
      */
     private ServerRequestInterface $requestMock;
@@ -66,6 +72,7 @@ final class RegistrationProcessorTest extends UnitTestCase
         $this->frontendUserRepositoryMock = $this->createMock(FrontendUserRepository::class);
         $this->registrationGuardMock = $this->createMock(RegistrationGuard::class);
         $this->registrationManagerMock = $this->createMock(RegistrationManager::class);
+        $this->extensionConfigurationMock = $this->createMock(ExtensionConfiguration::class);
         $this->requestMock = $this->createMock(ServerRequestInterface::class);
 
         $this->subject = new RegistrationProcessor(
@@ -74,6 +81,7 @@ final class RegistrationProcessorTest extends UnitTestCase
             $this->frontendUserRepositoryMock,
             $this->registrationGuardMock,
             $this->registrationManagerMock,
+            $this->extensionConfigurationMock,
         );
     }
 
@@ -175,6 +183,52 @@ final class RegistrationProcessorTest extends UnitTestCase
         );
 
         self::assertSame($folderUid, $registration->getPid());
+    }
+
+    /**
+     * @test
+     */
+    public function enrichWithMetadataSetsUserAgentWhenEnabled(): void
+    {
+        $event = new SingleEvent();
+        $registration = new Registration();
+        $browserUserAgentValue = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1';
+        $this->extensionConfigurationMock->expects(self::once())->method('get')
+            ->with('seminars', 'record_user_agent_on_registration')
+            ->willReturn('1');
+        $this->requestMock->method('getHeaderLine')
+            ->with('user-agent')
+            ->willReturn($browserUserAgentValue);
+
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestMock)->willReturn(15);
+        $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
+
+        $this->subject->enrichWithMetadata($registration, $event, [], $this->requestMock);
+
+        self::assertSame($browserUserAgentValue, $registration->getUserAgent());
+    }
+
+    /**
+     * @test
+     */
+    public function enrichWithMetadataDoesNotSetsUserAgentWhenDisabled(): void
+    {
+        $event = new SingleEvent();
+        $registration = new Registration();
+        $browserUserAgentValue = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1';
+        $this->extensionConfigurationMock->expects(self::once())->method('get')
+            ->with('seminars', 'record_user_agent_on_registration')
+            ->willReturn('0');
+        $this->requestMock->method('getHeaderLine')
+            ->with('user-agent')
+            ->willReturn($browserUserAgentValue);
+
+        $this->registrationGuardMock->method('getFrontEndUserUidFromSession')->with($this->requestMock)->willReturn(15);
+        $this->frontendUserRepositoryMock->method('findByUid')->with(self::anything())->willReturn(new FrontendUser());
+
+        $this->subject->enrichWithMetadata($registration, $event, [], $this->requestMock);
+
+        self::assertSame('', $registration->getUserAgent());
     }
 
     /**
