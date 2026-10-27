@@ -160,36 +160,6 @@ abstract class AbstractTimeSpan extends AbstractModel
     }
 
     /**
-     * Gets our end date and time as a UNIX timestamp. If this event is
-     * open-ended, midnight after the begin date and time is returned.
-     * If we don't even have a begin date, 0 is returned.
-     *
-     * @return int our end date and time as a UNIX timestamp, 0 if we don't have a begin date
-     */
-    public function getEndDateAsTimestampEvenIfOpenEnded(): int
-    {
-        $result = 0;
-
-        if ($this->hasBeginDate()) {
-            if ($this->isOpenEnded()) {
-                $splitBeginDate = getdate($this->getBeginDateAsTimestamp());
-                $result = mktime(
-                    0,
-                    0,
-                    0,
-                    $splitBeginDate['mon'],
-                    $splitBeginDate['mday'] + 1,
-                    $splitBeginDate['year'],
-                );
-            } else {
-                $result = $this->getEndDateAsTimestamp();
-            }
-        }
-
-        return $result;
-    }
-
-    /**
      * Gets the seminar room (not the site).
      *
      * @return string the seminar room (may be empty)
