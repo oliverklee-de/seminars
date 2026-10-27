@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\Functional\ViewHelpers;
 
-use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
-use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\ViewHelpers\DateRangeViewHelper;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
@@ -29,9 +27,9 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
         'oliverklee/seminars',
     ];
 
-    private DateRangeViewHelper $subject;
-
     private string $dateFormat;
+
+    private DateRangeViewHelper $subject;
 
     protected function setUp(): void
     {
@@ -41,11 +39,6 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
         $GLOBALS['LANG'] = $this
             ->get(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
-
-        // Make sure that the test results do not depend on the machine's PHP time zone.
-        \date_default_timezone_set('UTC');
-
-        $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
 
         $dateFormat = LocalizationUtility::translate('dateFormat', 'seminars');
         self::assertIsString($dateFormat);
