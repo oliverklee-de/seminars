@@ -7,6 +7,7 @@ namespace OliverKlee\Seminars\Tests\Functional\Service;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
+use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Mapper\EventMapper;
@@ -221,7 +222,9 @@ final class EmailServiceTest extends FunctionalTestCase
         $legacyEvent = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $legacyEvent);
 
-        $formattedDate = (new DateRangeViewHelper())->render($legacyEvent);
+        $event = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(EventDateInterface::class, $event);
+        $formattedDate = (new DateRangeViewHelper())->render($event);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
@@ -388,7 +391,9 @@ final class EmailServiceTest extends FunctionalTestCase
         $legacyEvent = $this->eventMapper->find(1);
         self::assertInstanceOf(Event::class, $legacyEvent);
 
-        $formattedDate = (new DateRangeViewHelper())->render($legacyEvent);
+        $event = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(EventDateInterface::class, $event);
+        $formattedDate = (new DateRangeViewHelper())->render($event);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
@@ -504,14 +509,14 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/EventWithTwoRegistrations.csv',
         );
-        $event = $this->eventRepository->findByUid(1);
-        self::assertInstanceOf(SingleEvent::class, $event);
+        $legacyEvent = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $legacyEvent);
 
         $this->email->expects(self::exactly(2))->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+        $this->subject->sendPlainTextEmailToRegularAttendees($legacyEvent, 'foo', 'some message body');
     }
 
     /**
@@ -522,13 +527,13 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/EventWithRegistration.csv',
         );
-        $event = $this->eventRepository->findByUid(1);
-        self::assertInstanceOf(SingleEvent::class, $event);
+        $legacyEvent = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $legacyEvent);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+        $this->subject->sendPlainTextEmailToRegularAttendees($legacyEvent, 'foo', 'some message body');
 
         self::assertArrayHasKey('system-foo@example.com', $this->getFromOfEmail($this->email));
     }
@@ -544,13 +549,13 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/EventWithRegistration.csv',
         );
-        $event = $this->eventRepository->findByUid(1);
-        self::assertInstanceOf(SingleEvent::class, $event);
+        $legacyEvent = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $legacyEvent);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+        $this->subject->sendPlainTextEmailToRegularAttendees($legacyEvent, 'foo', 'some message body');
 
         self::assertArrayHasKey('oliver@example.com', $this->getFromOfEmail($this->email));
     }
@@ -563,13 +568,13 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/EventWithRegistration.csv',
         );
-        $event = $this->eventRepository->findByUid(1);
-        self::assertInstanceOf(SingleEvent::class, $event);
+        $legacyEvent = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $legacyEvent);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+        $this->subject->sendPlainTextEmailToRegularAttendees($legacyEvent, 'foo', 'some message body');
 
         self::assertArrayHasKey('oliver@example.com', $this->getReplyToOfEmail($this->email));
     }
@@ -583,13 +588,13 @@ final class EmailServiceTest extends FunctionalTestCase
             self::FIXTURES_PATH
             . '/sendPlainTextEmailToRegularAttendees/EventWithTwoOrganizersWithFooterAndRegistration.csv',
         );
-        $event = $this->eventRepository->findByUid(1);
-        self::assertInstanceOf(SingleEvent::class, $event);
+        $legacyEvent = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $legacyEvent);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+        $this->subject->sendPlainTextEmailToRegularAttendees($legacyEvent, 'foo', 'some message body');
         $result = $this->email->getTextBody();
         self::assertIsString($result);
 
@@ -604,14 +609,14 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/EventWithRegistration.csv',
         );
-        $event = $this->eventRepository->findByUid(1);
-        self::assertInstanceOf(SingleEvent::class, $event);
+        $legacyEvent = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $legacyEvent);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
         $emailSubject = 'Thank you for your registration.';
 
-        $this->subject->sendPlainTextEmailToRegularAttendees($event, $emailSubject, 'some message body');
+        $this->subject->sendPlainTextEmailToRegularAttendees($legacyEvent, $emailSubject, 'some message body');
 
         self::assertSame($emailSubject, $this->email->getSubject());
     }
@@ -624,12 +629,12 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/sendPlainTextEmailToRegularAttendees/EventWithRegistrationWithoutEmail.csv',
         );
-        $event = $this->eventRepository->findByUid(1);
-        self::assertInstanceOf(SingleEvent::class, $event);
+        $legacyEvent = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(SingleEvent::class, $legacyEvent);
 
         $this->email->expects(self::never())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
 
-        $this->subject->sendPlainTextEmailToRegularAttendees($event, 'foo', 'some message body');
+        $this->subject->sendPlainTextEmailToRegularAttendees($legacyEvent, 'foo', 'some message body');
     }
 }
