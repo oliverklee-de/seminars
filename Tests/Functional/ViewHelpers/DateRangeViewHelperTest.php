@@ -6,9 +6,10 @@ namespace OliverKlee\Seminars\Tests\Functional\ViewHelpers;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Seminars\Model\Event;
+use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\ViewHelpers\DateRangeViewHelper;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -28,12 +29,9 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
         'oliverklee/seminars',
     ];
 
-    /**
-     * some random date (2001-01-01 00:00:00 UTC)
-     */
-    private const BEGIN_DATE = 978307200;
-
     private DateRangeViewHelper $subject;
+
+    private string $dateFormat;
 
     protected function setUp(): void
     {
@@ -49,6 +47,10 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
 
         $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
 
+        $dateFormat = LocalizationUtility::translate('dateFormat', 'seminars');
+        self::assertIsString($dateFormat);
+        $this->dateFormat = $dateFormat;
+
         $this->subject = new DateRangeViewHelper();
     }
 
@@ -57,10 +59,9 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithNoDatesReturnsEmptyString(): void
     {
-        $timeSpan = new Event();
-        $timeSpan->setData([]);
+        $event = new SingleEvent();
 
-        self::assertSame('', $this->subject->render($timeSpan));
+        self::assertSame('', $this->subject->render($event));
     }
 
     /**
@@ -68,12 +69,13 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithBeginDateOnlyRendersOnlyBeginDate(): void
     {
-        $timeSpan = new Event();
-        $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-15 10:00:00');
+        $event->setStart($start);
 
         self::assertSame(
-            \date('Y-m-d', self::BEGIN_DATE),
-            $this->subject->render($timeSpan),
+            $start->format($this->dateFormat),
+            $this->subject->render($event),
         );
     }
 
@@ -82,13 +84,14 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithEqualBeginAndEndDateReturnsOnlyBeginDate(): void
     {
-        $timeSpan = new Event();
-        $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
-        $timeSpan->setEndDateAsUnixTimeStamp(self::BEGIN_DATE);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-15 10:00:00');
+        $event->setStart($start);
+        $event->setEnd(new \DateTime('2026-10-15 18:00:00'));
 
         self::assertSame(
-            \date('Y-m-d', self::BEGIN_DATE),
-            $this->subject->render($timeSpan),
+            $start->format($this->dateFormat),
+            $this->subject->render($event),
         );
     }
 
@@ -97,13 +100,14 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithBeginAndEndDateOnSameDayReturnsOnlyBeginDate(): void
     {
-        $timeSpan = new Event();
-        $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
-        $timeSpan->setEndDateAsUnixTimeStamp(self::BEGIN_DATE + 3600);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-15 10:00:00');
+        $event->setStart($start);
+        $event->setEnd(new \DateTime('2026-10-15 18:00:00'));
 
         self::assertSame(
-            \date('Y-m-d', self::BEGIN_DATE),
-            $this->subject->render($timeSpan),
+            $start->format($this->dateFormat),
+            $this->subject->render($event),
         );
     }
 
@@ -112,14 +116,15 @@ final class DateRangeViewHelperTest extends FunctionalTestCase
      */
     public function renderWithBeginAndEndDateOnDifferentDaysReturnsBothFullDatesSeparatedByEnDash(): void
     {
-        $timeSpan = new Event();
-        $timeSpan->setBeginDateAsUnixTimeStamp(self::BEGIN_DATE);
-        $endDate = self::BEGIN_DATE + (2 * 86400);
-        $timeSpan->setEndDateAsUnixTimeStamp($endDate);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-15 10:00:00');
+        $event->setStart($start);
+        $end = new \DateTime('2026-10-16 18:00:00');
+        $event->setEnd($end);
 
         self::assertSame(
-            \date('Y-m-d', self::BEGIN_DATE) . '–' . \date('Y-m-d', $endDate),
-            $this->subject->render($timeSpan),
+            $start->format($this->dateFormat) . '–' . $end->format($this->dateFormat),
+            $this->subject->render($event),
         );
     }
 }

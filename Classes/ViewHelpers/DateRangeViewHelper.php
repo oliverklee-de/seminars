@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\ViewHelpers;
 
-use OliverKlee\Seminars\Model\Event;
+use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -17,45 +17,41 @@ class DateRangeViewHelper
     /**
      * Renders the time span in a human-readable way.
      *
-     * Returns a localized string "will be announced" if there's no date set.
-     *
      * Returns a date range if the timespan takes several days.
-     *
-     * @return string the timespan date
      */
-    public function render(Event $event): string
+    public function render(EventDateInterface $event): string
     {
-        if (!$event->hasBeginDate()) {
+        if (!($event->getStart() instanceof \DateTime)) {
             return '';
         }
 
-        $beginDate = $event->getBeginDateAsUnixTimeStamp();
-        $endDate = $event->getEndDateAsUnixTimeStamp();
+        $start = $event->getStart();
+        $end = $event->getEnd();
 
-        $isOpenEnded = !$event->hasEndDate();
-        if ($isOpenEnded || $this->isSameDay($beginDate, $endDate)) {
-            return $this->getAsDateFormatYmd($beginDate);
+        $isOpenEnded = ($end === null);
+        if ($isOpenEnded || $this->isSameDay($start, $end)) {
+            return $this->formatDate($start);
         }
 
-        return $this->getAsDateFormatYmd($beginDate) . '–' . $this->getAsDateFormatYmd($endDate);
+        $rangeWithPlaceholders = LocalizationUtility::translate('range', 'seminars');
+        \assert(is_string($rangeWithPlaceholders));
+
+        return sprintf($rangeWithPlaceholders, $this->formatDate($start), $this->formatDate($end));
     }
 
-    /**
-     * Returns whether the two given timestamps are on the same day.
-     */
-    protected function isSameDay(int $beginDate, int $endDate): bool
+    private function isSameDay(\DateTime $start, \DateTime $end): bool
     {
-        return $this->getAsDateFormatYmd($beginDate) === $this->getAsDateFormatYmd($endDate);
+        return $start->format('Y-m-d') === $end->format('Y-m-d');
     }
 
     /**
      * Renders a UNIX timestamp in the localized date format.
      */
-    protected function getAsDateFormatYmd(int $timestamp): string
+    private function formatDate(\DateTime $date): string
     {
         $format = LocalizationUtility::translate('dateFormat', 'seminars');
         \assert(\is_string($format));
 
-        return \date($format, $timestamp);
+        return $date->format($format);
     }
 }
