@@ -99,14 +99,6 @@ final class AbstractTimeSpanTest extends UnitTestCase
     /**
      * @test
      */
-    public function getEndDateAsTimestampEvenIfOpenEndedInitiallyReturnsZero(): void
-    {
-        self::assertSame(0, $this->subject->getEndDateAsTimestampEvenIfOpenEnded());
-    }
-
-    /**
-     * @test
-     */
     public function setBeginDateAndTimeSetsBeginDate(): void
     {
         $value = 42;
@@ -163,16 +155,6 @@ final class AbstractTimeSpanTest extends UnitTestCase
         $this->subject->setEndDateAndTime(42);
 
         self::assertFalse($this->subject->hasDate());
-    }
-
-    /**
-     * @test
-     */
-    public function getEndDateAsTimestampEvenIfOpenEndedAfterSettingEndDateOnlyReturnsZero(): void
-    {
-        $this->subject->setEndDateAndTime(42);
-
-        self::assertSame(0, $this->subject->getEndDateAsTimestampEvenIfOpenEnded());
     }
 
     // Test for getting the time.
@@ -256,53 +238,7 @@ final class AbstractTimeSpanTest extends UnitTestCase
         self::assertFalse($this->subject->isOpenEnded());
     }
 
-    // Tests for getting the end date and time for open-ended events.
-
-    /**
-     * @test
-     */
-    public function endDateIsMidnightIfOpenEndedStartsAtOneOClock(): void
-    {
-        $this->subject->setBeginDateAndTime(\mktime(1, 0, 0, 1, 1, 2010));
-
-        self::assertTrue($this->subject->isOpenEnded());
-        self::assertSame(\mktime(0, 0, 0, 1, 2, 2010), $this->subject->getEndDateAsTimestampEvenIfOpenEnded());
-    }
-
-    /**
-     * @test
-     */
-    public function endDateIsMidnightIfOpenEndedStartsAtMorning(): void
-    {
-        $this->subject->setBeginDateAndTime(\mktime(9, 0, 0, 1, 1, 2010));
-
-        self::assertTrue($this->subject->isOpenEnded());
-        self::assertSame(\mktime(0, 0, 0, 1, 2, 2010), $this->subject->getEndDateAsTimestampEvenIfOpenEnded());
-    }
-
-    /**
-     * @test
-     */
-    public function endDateIsMidnightIfOpenEndedStartsAtElevenPm(): void
-    {
-        $this->subject->setBeginDateAndTime(\mktime(23, 0, 0, 1, 1, 2010));
-
-        self::assertTrue($this->subject->isOpenEnded());
-        self::assertSame(\mktime(0, 0, 0, 1, 2, 2010), $this->subject->getEndDateAsTimestampEvenIfOpenEnded());
-    }
-
-    /**
-     * @test
-     */
-    public function endDateIsMidnightIfOpenEndedStartsAtMidnight(): void
-    {
-        $this->subject->setBeginDateAndTime(\mktime(0, 0, 0, 1, 1, 2010));
-
-        self::assertTrue($this->subject->isOpenEnded());
-        self::assertSame(\mktime(0, 0, 0, 1, 2, 2010), $this->subject->getEndDateAsTimestampEvenIfOpenEnded());
-    }
-
-    // Tests for for the begin date.
+    // Tests for the begin date.
 
     /**
      * @test
