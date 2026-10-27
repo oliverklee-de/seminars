@@ -661,7 +661,7 @@ final class RegistrationProcessorTest extends UnitTestCase
         self::assertFalse($registration->isOnWaitingList());
     }
 
-    /**Replace requestStub with requestMock - #5451#5451
+    /**
      * @test
      */
     public function enrichWithMetadataForEventWithUnlimitedVacanciesWithWaitingListKeepsRegistrationRegular(): void
