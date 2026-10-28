@@ -1072,7 +1072,8 @@ class RegistrationManager implements SingletonInterface
         }
         $template->setMarker('salutation', $salutationText);
 
-        $event = $registration->getSeminarObject();
+        $event = $this->eventRepository->findByUid($registration->getSeminarObject()->getUid());
+        assert($event instanceof EventDateInterface);
         $introductionTemplate = $this->translate('email_' . $helloSubjectPrefix . 'Hello');
         \assert($introductionTemplate !== '');
         $introduction = $this->salutationBuilder->createIntroduction($introductionTemplate, $event);
