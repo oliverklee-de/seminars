@@ -233,7 +233,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
 
         $result = $this->subject->createIntroduction('%s', $event);
 
-        $timeInsert = \date(self::TIME_FORMAT, $beginDate) . '–' . \date(self::TIME_FORMAT, $endDate);
+        $timeInsert = \date(self::TIME_FORMAT, $beginDate);
         $timeAtWithPlaceholders = LocalizationUtility::translate('email_timeAt', 'seminars');
         self::assertIsString($timeAtWithPlaceholders);
         $expected = \sprintf($timeAtWithPlaceholders, $timeInsert);
