@@ -145,15 +145,13 @@ class EmailService implements SingletonInterface
 
     private function renderEventDate(EventDateInterface $event): string
     {
-        if (!($event->getStart() instanceof \DateTime)) {
+        $start = $event->getStart();
+        if (!($start instanceof \DateTime)) {
             return '';
         }
 
-        $start = $event->getStart();
         $end = $event->getEnd();
-
-        $isOpenEnded = ($end === null);
-        if ($isOpenEnded || $this->isSameDay($start, $end)) {
+        if (!($end instanceof \DateTime) || $this->isSameDay($start, $end)) {
             return $this->formatDate($start);
         }
 

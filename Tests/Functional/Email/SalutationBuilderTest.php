@@ -225,7 +225,7 @@ final class SalutationBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function createIntroductionForEventWithStartAndEndOnOneDayReturnsTimeFromTo(): void
+    public function createIntroductionForEventWithStartAndEndOnOneDayReturnsTimeAt(): void
     {
         $beginDate = 1779529905;
         $endDate = 1779529905 + self::SECONDS_PER_HOUR;
@@ -234,9 +234,9 @@ final class SalutationBuilderTest extends FunctionalTestCase
         $result = $this->subject->createIntroduction('%s', $event);
 
         $timeInsert = \date(self::TIME_FORMAT, $beginDate) . '–' . \date(self::TIME_FORMAT, $endDate);
-        $timeFromWithPlaceholders = LocalizationUtility::translate('email_timeFrom', 'seminars');
-        self::assertIsString($timeFromWithPlaceholders);
-        $expected = \sprintf($timeFromWithPlaceholders, $timeInsert);
+        $timeAtWithPlaceholders = LocalizationUtility::translate('email_timeAt', 'seminars');
+        self::assertIsString($timeAtWithPlaceholders);
+        $expected = \sprintf($timeAtWithPlaceholders, $timeInsert);
 
         self::assertStringContainsString($expected, $result);
     }

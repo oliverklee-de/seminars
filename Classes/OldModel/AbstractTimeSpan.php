@@ -162,16 +162,6 @@ abstract class AbstractTimeSpan extends AbstractModel
         return $this->hasRecordPropertyString('room');
     }
 
-    /**
-     * Checks whether this time span is open-ended.
-     *
-     * A time span is considered to be open-ended if it does not have an end date.
-     */
-    public function isOpenEnded(): bool
-    {
-        return !$this->hasEndDate();
-    }
-
     public function hasPlace(): bool
     {
         return $this->hasRecordPropertyInteger('place');
