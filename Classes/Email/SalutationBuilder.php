@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Email;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
+use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
-use OliverKlee\Seminars\OldModel\LegacyEvent;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
@@ -59,24 +59,23 @@ class SalutationBuilder
      *
      * @param non-empty-string $introductionBegin
      *        the start of the introduction, must contain %s as place to fill the title of the event in
-     *
-     * @throws \InvalidArgumentException
      */
-    public function createIntroduction(string $introductionBegin, LegacyEvent $event): string
+    public function createIntroduction(string $introductionBegin, EventDateInterface $event): string
     {
-        $result = \sprintf($introductionBegin, $event->getTitle());
-        if (!$event->hasDate()) {
+        $result = \sprintf($introductionBegin, $event->getDisplayTitle());
+        $start = $event->getStart();
+        if (!($start instanceof \DateTime)) {
             return $result;
         }
 
         $eventDateLabel = LocalizationUtility::translate('email_eventDate', 'seminars');
         \assert(\is_string($eventDateLabel));
-        $result .= ' ' . \sprintf($eventDateLabel, $event->getDate());
+        $result .= ' ' . \sprintf($eventDateLabel, $this->renderEventDate($event));
 
-        if (!$event->hasTimeslots()) {
+        if ($event->getTimeSlots()->count() === 0) {
             $timeAtLabel = LocalizationUtility::translate('email_timeAt', 'seminars');
             \assert(\is_string($timeAtLabel));
-            $time = $this->formatTime($event->getBeginDateAsTimestamp());
+            $time = $this->formatTime($start);
             $label = ' ' . $timeAtLabel;
             $result .= \sprintf($label, $time);
         }
@@ -84,12 +83,45 @@ class SalutationBuilder
         return $result;
     }
 
-    private function formatTime(int $timestamp): string
+    private function renderEventDate(EventDateInterface $event): string
+    {
+        $start = $event->getStart();
+        assert($start instanceof \DateTime);
+        $end = $event->getEnd();
+        if (!($end instanceof \DateTime) || $this->isSameDay($start, $end)) {
+            return $this->formatDate($start);
+        }
+
+        $rangeWithPlaceholders = LocalizationUtility::translate('range', 'seminars');
+        \assert(is_string($rangeWithPlaceholders));
+
+        return sprintf($rangeWithPlaceholders, $this->formatDate($start), $this->formatDate($end));
+    }
+
+    private function isSameDay(\DateTime $start, \DateTime $end): bool
+    {
+        return $start->format('Y-m-d') === $end->format('Y-m-d');
+    }
+
+    private function formatDate(\DateTime $date): string
+    {
+        return $date->format($this->getDateFormat());
+    }
+
+    private function getDateFormat(): string
+    {
+        $format = LocalizationUtility::translate('dateFormat', 'seminars');
+        \assert(\is_string($format));
+
+        return $format;
+    }
+
+    private function formatTime(\DateTime $date): string
     {
         $hours = LocalizationUtility::translate('label_hours', 'seminars');
         \assert(\is_string($hours));
 
-        return \date($this->getTimeFormat(), $timestamp) . ' ' . $hours;
+        return $date->format($this->getTimeFormat()) . ' ' . $hours;
     }
 
     private function getTimeFormat(): string

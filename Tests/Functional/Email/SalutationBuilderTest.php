@@ -6,9 +6,9 @@ namespace OliverKlee\Seminars\Tests\Functional\Email;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
+use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Email\SalutationBuilder;
-use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -18,10 +18,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class SalutationBuilderTest extends FunctionalTestCase
 {
-    private const DATE_FORMAT = 'Y-m-d';
-    private const TIME_FORMAT = 'H:i';
-    private const SECONDS_PER_HOUR = 3600;
-
     protected array $coreExtensionsToLoad = [
         'typo3/cms-extensionmanager',
         'typo3/cms-install',
@@ -51,6 +47,22 @@ final class SalutationBuilderTest extends FunctionalTestCase
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
         $this->subject = $this->get(SalutationBuilder::class);
+    }
+
+    private function formatDate(\DateTime $date): string
+    {
+        $format = LocalizationUtility::translate('dateFormat', 'seminars');
+        \assert(\is_string($format));
+
+        return $date->format($format);
+    }
+
+    private function formatTime(\DateTime $date): string
+    {
+        $format = LocalizationUtility::translate('timeFormat', 'seminars');
+        \assert(\is_string($format));
+
+        return $date->format($format);
     }
 
     private static function assertNotContainsRawLabelKey(string $string): void
@@ -184,12 +196,13 @@ final class SalutationBuilderTest extends FunctionalTestCase
      */
     public function createIntroductionForEventWithDateReturnsEventsDate(): void
     {
-        $beginDate = 1779529905;
-        $event = TestingLegacyEvent::fromData(['begin_date' => $beginDate]);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
 
         $result = $this->subject->createIntroduction('%s', $event);
 
-        $expected = \date(self::DATE_FORMAT, $beginDate);
+        $expected = $this->formatDate($start);
         self::assertStringContainsString($expected, $result);
     }
 
@@ -198,13 +211,15 @@ final class SalutationBuilderTest extends FunctionalTestCase
      */
     public function createIntroductionForEventWithBeginAndEndDateOnDifferentDaysReturnsEventsDateFromTo(): void
     {
-        $beginDate = 1779529905;
-        $endDate = 1779929905;
-        $event = TestingLegacyEvent::fromData(['begin_date' => $beginDate, 'end_date' => $endDate]);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
+        $end = new \DateTime('2026-10-13 18:00:00');
+        $event->setEnd($end);
 
         $result = $this->subject->createIntroduction('%s', $event);
 
-        $expected = \date(self::DATE_FORMAT, $beginDate) . '–' . \date(self::DATE_FORMAT, $endDate);
+        $expected = $this->formatDate($start) . '–' . $this->formatDate($end);
         self::assertStringContainsString($expected, $result);
     }
 
@@ -213,12 +228,13 @@ final class SalutationBuilderTest extends FunctionalTestCase
      */
     public function createIntroductionForEventWithTimeReturnsEventsTime(): void
     {
-        $beginDate = 1779529905;
-        $event = TestingLegacyEvent::fromData(['begin_date' => $beginDate]);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
 
         $result = $this->subject->createIntroduction('%s', $event);
 
-        $expected = \date(self::TIME_FORMAT, $beginDate);
+        $expected = $this->formatTime($start);
         self::assertStringContainsString($expected, $result);
     }
 
@@ -227,13 +243,15 @@ final class SalutationBuilderTest extends FunctionalTestCase
      */
     public function createIntroductionForEventWithStartAndEndOnOneDayReturnsTimeAt(): void
     {
-        $beginDate = 1779529905;
-        $endDate = 1779529905 + self::SECONDS_PER_HOUR;
-        $event = TestingLegacyEvent::fromData(['begin_date' => $beginDate, 'end_date' => $endDate]);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
+        $end = new \DateTime('2026-10-12 18:00:00');
+        $event->setEnd($end);
 
         $result = $this->subject->createIntroduction('%s', $event);
 
-        $timeInsert = \date(self::TIME_FORMAT, $beginDate);
+        $timeInsert = $this->formatTime($start);
         $timeAtWithPlaceholders = LocalizationUtility::translate('email_timeAt', 'seminars');
         self::assertIsString($timeAtWithPlaceholders);
         $expected = \sprintf($timeAtWithPlaceholders, $timeInsert);
@@ -246,13 +264,15 @@ final class SalutationBuilderTest extends FunctionalTestCase
      */
     public function createIntroductionForEventWithStartAndEndOnOneDayContainsDate(): void
     {
-        $beginDate = 1779529905;
-        $endDate = 1779529905 + self::SECONDS_PER_HOUR;
-        $event = TestingLegacyEvent::fromData(['begin_date' => $beginDate, 'end_date' => $endDate]);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
+        $end = new \DateTime('2026-10-12 18:00:00');
+        $event->setEnd($end);
 
         $result = $this->subject->createIntroduction('%s', $event);
 
-        $formattedDate = \date(self::DATE_FORMAT, $beginDate);
+        $formattedDate = $this->formatDate($start);
         self::assertStringContainsString($formattedDate, $result);
     }
 
@@ -264,7 +284,9 @@ final class SalutationBuilderTest extends FunctionalTestCase
     {
         $this->configuration->setAsString('salutation', $salutationMode);
 
-        $event = TestingLegacyEvent::fromData(['begin_date' => 1779529905]);
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
 
         $result = $this->subject->createIntroduction('%s', $event);
 
