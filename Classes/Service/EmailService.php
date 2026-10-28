@@ -14,7 +14,6 @@ use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use OliverKlee\Seminars\Email\SalutationBuilder;
 use OliverKlee\Seminars\Model\Event;
-use OliverKlee\Seminars\ViewHelpers\DateRangeViewHelper;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -31,8 +30,6 @@ class EmailService implements SingletonInterface
 {
     private SalutationBuilder $salutationBuilder;
 
-    private DateRangeViewHelper $dateRangeViewHelper;
-
     private EventRepository $eventRepository;
 
     private RegistrationRepository $registrationRepository;
@@ -45,7 +42,6 @@ class EmailService implements SingletonInterface
         $this->salutationBuilder = $salutationBuilder;
         $this->registrationRepository = $registrationRepository;
         $this->eventRepository = $eventRepository;
-        $this->dateRangeViewHelper = GeneralUtility::makeInstance(DateRangeViewHelper::class);
     }
 
     /**
@@ -141,10 +137,43 @@ class EmailService implements SingletonInterface
             '%salutation' => $this->salutationBuilder->getSalutation($user),
             '%userName' => $user->getName(),
             '%eventTitle' => $legacyEvent->getTitle(),
-            '%eventDate' => $this->dateRangeViewHelper->render($event),
+            '%eventDate' => $this->renderEventDate($event),
         ];
 
         return str_replace(array_keys($markers), $markers, $textWithMarkers);
+    }
+
+    private function renderEventDate(EventDateInterface $event): string
+    {
+        if (!($event->getStart() instanceof \DateTime)) {
+            return '';
+        }
+
+        $start = $event->getStart();
+        $end = $event->getEnd();
+
+        $isOpenEnded = ($end === null);
+        if ($isOpenEnded || $this->isSameDay($start, $end)) {
+            return $this->formatDate($start);
+        }
+
+        $rangeWithPlaceholders = LocalizationUtility::translate('range', 'seminars');
+        \assert(is_string($rangeWithPlaceholders));
+
+        return sprintf($rangeWithPlaceholders, $this->formatDate($start), $this->formatDate($end));
+    }
+
+    private function isSameDay(\DateTime $start, \DateTime $end): bool
+    {
+        return $start->format('Y-m-d') === $end->format('Y-m-d');
+    }
+
+    private function formatDate(\DateTime $date): string
+    {
+        $format = LocalizationUtility::translate('dateFormat', 'seminars');
+        \assert(\is_string($format));
+
+        return $date->format($format);
     }
 
     /**
