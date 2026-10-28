@@ -15,10 +15,10 @@ use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\Service\EmailService;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
-use OliverKlee\Seminars\ViewHelpers\DateRangeViewHelper;
 use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Mail\MailMessage;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -80,6 +80,36 @@ final class EmailServiceTest extends FunctionalTestCase
             MapperRegistry::purgeInstance();
         }
         parent::tearDown();
+    }
+
+    private function formatEventDate(EventDateInterface $eventDate): string
+    {
+        $start = $eventDate->getStart();
+        assert($start instanceof \DateTime);
+        $end = $eventDate->getEnd();
+        assert($end instanceof \DateTime);
+
+        if ($this->isSameDay($start, $end)) {
+            return $this->formatDate($start);
+        }
+
+        $rangeWithPlaceholders = LocalizationUtility::translate('range', 'seminars');
+        \assert(is_string($rangeWithPlaceholders));
+
+        return sprintf($rangeWithPlaceholders, $this->formatDate($start), $this->formatDate($end));
+    }
+
+    private function isSameDay(\DateTime $start, \DateTime $end): bool
+    {
+        return $start->format('Y-m-d') === $end->format('Y-m-d');
+    }
+
+    private function formatDate(\DateTime $date): string
+    {
+        $format = LocalizationUtility::translate('dateFormat', 'seminars');
+        \assert(\is_string($format));
+
+        return $date->format($format);
     }
 
     /**
@@ -224,7 +254,7 @@ final class EmailServiceTest extends FunctionalTestCase
 
         $event = $this->eventRepository->findByUid(1);
         self::assertInstanceOf(EventDateInterface::class, $event);
-        $formattedDate = (new DateRangeViewHelper())->render($event);
+        $formattedDate = $this->formatEventDate($event);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);
@@ -393,7 +423,7 @@ final class EmailServiceTest extends FunctionalTestCase
 
         $event = $this->eventRepository->findByUid(1);
         self::assertInstanceOf(EventDateInterface::class, $event);
-        $formattedDate = (new DateRangeViewHelper())->render($event);
+        $formattedDate = $this->formatEventDate($event);
 
         $this->email->expects(self::once())->method('send');
         $this->addMockedInstance(MailMessage::class, $this->email);

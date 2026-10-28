@@ -44,9 +44,6 @@ class DateRangeViewHelper
         return $start->format('Y-m-d') === $end->format('Y-m-d');
     }
 
-    /**
-     * Renders a UNIX timestamp in the localized date format.
-     */
     private function formatDate(\DateTime $date): string
     {
         $format = LocalizationUtility::translate('dateFormat', 'seminars');
