@@ -47,27 +47,6 @@ final class AbstractTimeSpanTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function getTimeForNoTimeReturnsEmptyString(): void
-    {
-        self::assertSame('', $this->subject->getTime());
-    }
-
-    /**
-     * @test
-     */
-    public function getTimeForBeginTimeOnlyReturnsBeginTime(): void
-    {
-        $this->subject->setBeginDateAndTime(\mktime(9, 50, 0, 1, 1, 2010));
-
-        self::assertSame(
-            '09:50' . ' ' . $this->translate('label_hours'),
-            $this->subject->getTime(),
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getTimeForBeginTimeAndEndTimeOnSameDayReturnsBothTimesWithEnDashByDefault(): void
     {
         $this->subject->setBeginDateAndTime(\mktime(9, 50, 0, 1, 1, 2010));

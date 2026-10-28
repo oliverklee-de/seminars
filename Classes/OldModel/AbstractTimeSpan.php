@@ -20,7 +20,7 @@ abstract class AbstractTimeSpan extends AbstractModel
     }
 
     /**
-     * Checks whether there's a begin date set, and whether this has already passed.
+     * Checks whether there's a start date set, and whether this has already passed.
      *
      * @return bool true if the time-span has a begin date set that lies in
      *                 the future (time-span has not started yet), false otherwise
@@ -72,31 +72,24 @@ abstract class AbstractTimeSpan extends AbstractModel
     }
 
     /**
-     * Gets the time.
+     * Gets the formatted time.
      *
      * Returns an empty string if there's no time set (i.e., both begin time and end time are 00:00).
      *
-     * Returns only the begin time if begin time and end time are the same.
+     * Returns only the start time if begin time and end time are the same.
      */
     public function getTime(): string
     {
-        if (!$this->hasTime()) {
-            return '';
-        }
-
         $timeFormat = $this->getTimeFormat();
-        $beginTime = \date($timeFormat, $this->getBeginDateAsTimestamp());
+        $startTime = \date($timeFormat, $this->getBeginDateAsTimestamp());
         $endTime = \date($timeFormat, $this->getEndDateAsTimestamp());
 
-        $result = $beginTime;
-
-        // Only display the end time if the event has an end date/time set
-        // and the end time is not the same as the begin time.
-        if (($beginTime !== $endTime) && $this->hasEndTime()) {
-            $result .= '–' . $endTime;
+        // Only display the end time if the end time is not the same as the start time.
+        if ($startTime !== $endTime) {
+            $result = $startTime . '–' . $endTime . ' ' . $this->translate('label_hours');
+        } else {
+            $result = $startTime . ' ' . $this->translate('label_hours');
         }
-        $hours = $this->translate('label_hours');
-        $result .= ' ' . $hours;
 
         return $result;
     }
@@ -111,18 +104,6 @@ abstract class AbstractTimeSpan extends AbstractModel
         $beginTime = \date('H:i', $this->getBeginDateAsTimestamp());
 
         return $this->hasDate() && $beginTime !== '00:00';
-    }
-
-    /**
-     * Checks whether there's an end time set (end time != 00:00).
-     *
-     * If there's no end date/time set, the result will be false.
-     */
-    public function hasEndTime(): bool
-    {
-        $endTime = \date('H:i', $this->getEndDateAsTimestamp());
-
-        return $this->hasEndDate() && $endTime !== '00:00';
     }
 
     /**

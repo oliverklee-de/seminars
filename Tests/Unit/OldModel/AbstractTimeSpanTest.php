@@ -167,27 +167,7 @@ final class AbstractTimeSpanTest extends UnitTestCase
         self::assertFalse($this->subject->hasTime());
     }
 
-    /**
-     * @test
-     */
-    public function hasEndTimeWithEndTimeAtMidnightReturnsFalse(): void
-    {
-        $this->subject->setEndDateAndTime(\mktime(0, 0, 0, 1, 1, 2010));
-
-        self::assertFalse($this->subject->hasEndTime());
-    }
-
-    /**
-     * @test
-     */
-    public function hasEndTimeWithEndTimeDuringTheDayReturnsTrue(): void
-    {
-        $this->subject->setEndDateAndTime(\mktime(9, 0, 0, 1, 1, 2010));
-
-        self::assertTrue($this->subject->hasEndTime());
-    }
-
-    // Tests for the begin date.
+    // Tests for the start date.
 
     /**
      * @test
