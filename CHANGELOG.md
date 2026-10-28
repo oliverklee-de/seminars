@@ -106,6 +106,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Also display start time for event starting at midnight (#5462)
 - Also display midnight as end time (#5461)
 - !!! Always use an UTF-8 en-dash for date/time spans (#5244)
 - Allow oelib 7.x (#5278)
