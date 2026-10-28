@@ -64,11 +64,6 @@ class SalutationBuilder
      */
     public function createIntroduction(string $introductionBegin, LegacyEvent $event): string
     {
-        // @phpstan-ignore identical.alwaysFalse (We're checking for a contract violation here.)
-        if ($introductionBegin === '') {
-            throw new \InvalidArgumentException('$introductionBegin must not be empty.', 1440109640);
-        }
-
         $result = \sprintf($introductionBegin, $event->getTitle());
         if (!$event->hasDate()) {
             return $result;
@@ -78,7 +73,7 @@ class SalutationBuilder
         \assert(\is_string($eventDateLabel));
         $result .= ' ' . \sprintf($eventDateLabel, $event->getDate());
 
-        if ($event->hasTime() && !$event->hasTimeslots()) {
+        if (!$event->hasTimeslots()) {
             $timeFromLabel = LocalizationUtility::translate('email_timeFrom', 'seminars');
             $timeAtLabel = LocalizationUtility::translate('email_timeAt', 'seminars');
             \assert(\is_string($timeFromLabel) && \is_string($timeAtLabel));
