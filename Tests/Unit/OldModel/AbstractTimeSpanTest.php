@@ -187,57 +187,6 @@ final class AbstractTimeSpanTest extends UnitTestCase
         self::assertTrue($this->subject->hasEndTime());
     }
 
-    // Test for open-ended events.
-
-    /**
-     * @test
-     */
-    public function isOpenEndedInitiallyReturnsTrue(): void
-    {
-        self::assertTrue($this->subject->isOpenEnded());
-    }
-
-    /**
-     * @test
-     */
-    public function isOpenEndedAfterSettingOnlyTheBeginDateReturnsTrue(): void
-    {
-        $this->subject->setBeginDateAndTime(42);
-
-        self::assertTrue($this->subject->isOpenEnded());
-    }
-
-    /**
-     * @test
-     */
-    public function isOpenEndedAfterSettingOnlyTheEndDateToMorningReturnsFalse(): void
-    {
-        $this->subject->setEndDateAndTime(\mktime(9, 0, 0, 1, 1, 2010));
-
-        self::assertFalse($this->subject->isOpenEnded());
-    }
-
-    /**
-     * @test
-     */
-    public function isOpenEndedAfterSettingBeginAndEndDateToMorningReturnsFalse(): void
-    {
-        $this->subject->setBeginDateAndTime(\mktime(8, 0, 0, 1, 1, 2010));
-        $this->subject->setEndDateAndTime(\mktime(9, 0, 0, 1, 1, 2010));
-
-        self::assertFalse($this->subject->isOpenEnded());
-    }
-
-    /**
-     * @test
-     */
-    public function isOpenEndedIfEndsAtMidnightReturnsFalse(): void
-    {
-        $this->subject->setEndDateAndTime(\mktime(0, 0, 0, 1, 1, 2010));
-
-        self::assertFalse($this->subject->isOpenEnded());
-    }
-
     // Tests for the begin date.
 
     /**

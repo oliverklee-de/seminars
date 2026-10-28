@@ -74,11 +74,10 @@ class SalutationBuilder
         $result .= ' ' . \sprintf($eventDateLabel, $event->getDate());
 
         if (!$event->hasTimeslots()) {
-            $timeFromLabel = LocalizationUtility::translate('email_timeFrom', 'seminars');
             $timeAtLabel = LocalizationUtility::translate('email_timeAt', 'seminars');
-            \assert(\is_string($timeFromLabel) && \is_string($timeAtLabel));
+            \assert(\is_string($timeAtLabel));
             $time = $event->getTime();
-            $label = ' ' . (!$event->isOpenEnded() ? $timeFromLabel : $timeAtLabel);
+            $label = ' ' . $timeAtLabel;
             $result .= \sprintf($label, $time);
         }
 

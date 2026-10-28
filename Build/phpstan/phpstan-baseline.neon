@@ -2386,13 +2386,8 @@ parameters:
 			path: ../../Tests/Unit/Hooks/HookProviderTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$beginDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setBeginDateAndTime\\(\\) expects int, int\\|false given\\.$#"
-			count: 1
-			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$endDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setEndDateAndTime\\(\\) expects int, int\\|false given\\.$#"
-			count: 5
+			count: 2
 			path: ../../Tests/Unit/OldModel/AbstractTimeSpanTest.php
 
 		-
