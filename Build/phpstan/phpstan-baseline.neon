@@ -941,16 +941,6 @@ parameters:
 			path: ../../Classes/OldModel/AbstractModel.php
 
 		-
-			message: "#^Binary operation \"\\.\\=\" between mixed and non\\-falsy\\-string results in an error\\.$#"
-			count: 1
-			path: ../../Classes/OldModel/AbstractTimeSpan.php
-
-		-
-			message: "#^Cannot cast mixed to string\\.$#"
-			count: 1
-			path: ../../Classes/OldModel/AbstractTimeSpan.php
-
-		-
 			message: "#^Cannot call method cObjGetSingle\\(\\) on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
 			count: 1
 			path: ../../Classes/OldModel/LegacyEvent.php
@@ -1471,33 +1461,13 @@ parameters:
 			path: ../../Tests/Functional/OldModel/AbstractModelTest.php
 
 		-
-			message: "#^Cannot access an offset on mixed\\.$#"
-			count: 10
-			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
-
-		-
-			message: "#^Cannot access offset 'EXTCONF' on mixed\\.$#"
-			count: 10
-			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
-
-		-
-			message: "#^Cannot access offset 'OliverKlee\\\\\\\\Seminars\\\\\\\\Hooks\\\\\\\\Interfaces\\\\\\\\DateTimeSpan' on mixed\\.$#"
-			count: 10
-			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
-
-		-
-			message: "#^Cannot access offset 'seminars' on mixed\\.$#"
-			count: 10
-			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$beginDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setBeginDateAndTime\\(\\) expects int, int\\|false given\\.$#"
-			count: 12
+			count: 6
 			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$endDate of method OliverKlee\\\\Seminars\\\\Tests\\\\Unit\\\\OldModel\\\\Fixtures\\\\TestingTimeSpan\\:\\:setEndDateAndTime\\(\\) expects int, int\\|false given\\.$#"
-			count: 11
+			count: 5
 			path: ../../Tests/Functional/OldModel/AbstractTimeSpanTest.php
 
 		-

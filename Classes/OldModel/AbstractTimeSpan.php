@@ -4,17 +4,11 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\OldModel;
 
-use OliverKlee\Seminars\Hooks\HookProvider;
-use OliverKlee\Seminars\Hooks\Interfaces\DateTimeSpan;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /**
  * This class offers timespan-related methods for the time slot and seminar classes.
  */
 abstract class AbstractTimeSpan extends AbstractModel
 {
-    protected ?HookProvider $dateTimeSpanHookProvider = null;
-
     public function hasBeginDate(): bool
     {
         return $this->getBeginDateAsTimestamp() > 0;
@@ -61,13 +55,10 @@ abstract class AbstractTimeSpan extends AbstractModel
         if ($beginDateDay === $endDateDay || !$this->hasEndDate()) {
             $result = $beginDateDay;
         } else {
-            $resultBeforeHook = $beginDateDay . '–' . $endDateDay;
-            $result = $this
-                ->getDateTimeSpanHookProvider()
-                ->executeHookReturningModifiedValue('modifyDateSpan', $resultBeforeHook, $this);
+            $result = $beginDateDay . '–' . $endDateDay;
         }
 
-        return (string)$result;
+        return $result;
     }
 
     /**
@@ -103,9 +94,6 @@ abstract class AbstractTimeSpan extends AbstractModel
         // and the end time is not the same as the begin time.
         if (($beginTime !== $endTime) && $this->hasEndTime()) {
             $result .= '–' . $endTime;
-            $result = $this
-                ->getDateTimeSpanHookProvider()
-                ->executeHookReturningModifiedValue('modifyTimeSpan', $result, $this);
         }
         $hours = $this->translate('label_hours');
         $result .= ' ' . $hours;
@@ -197,13 +185,4 @@ abstract class AbstractTimeSpan extends AbstractModel
      * @return string our places or an empty string if the timespan has no places
      */
     abstract public function getPlaceShort(): string;
-
-    protected function getDateTimeSpanHookProvider(): HookProvider
-    {
-        if (!$this->dateTimeSpanHookProvider instanceof HookProvider) {
-            $this->dateTimeSpanHookProvider = GeneralUtility::makeInstance(HookProvider::class, DateTimeSpan::class);
-        }
-
-        return $this->dateTimeSpanHookProvider;
-    }
 }
