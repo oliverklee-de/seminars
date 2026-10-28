@@ -106,6 +106,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Stop mentioning the end time in the email intro text (#5463)
 - Also display start time for event starting at midnight (#5462)
 - Also display midnight as end time (#5461)
 - !!! Always use an UTF-8 en-dash for date/time spans (#5244)

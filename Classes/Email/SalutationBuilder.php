@@ -76,11 +76,27 @@ class SalutationBuilder
         if (!$event->hasTimeslots()) {
             $timeAtLabel = LocalizationUtility::translate('email_timeAt', 'seminars');
             \assert(\is_string($timeAtLabel));
-            $time = $event->getTime();
+            $time = $this->formatTime($event->getBeginDateAsTimestamp());
             $label = ' ' . $timeAtLabel;
             $result .= \sprintf($label, $time);
         }
 
         return $result;
+    }
+
+    private function formatTime(int $timestamp): string
+    {
+        $hours = LocalizationUtility::translate('label_hours', 'seminars');
+        \assert(\is_string($hours));
+
+        return \date($this->getTimeFormat(), $timestamp) . ' ' . $hours;
+    }
+
+    private function getTimeFormat(): string
+    {
+        $format = LocalizationUtility::translate('timeFormat', 'seminars');
+        \assert(\is_string($format));
+
+        return $format;
     }
 }
