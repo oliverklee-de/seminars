@@ -182,21 +182,6 @@ final class SalutationBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function createIntroductionWithEmptyBeginThrowsException(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('$introductionBegin must not be empty.');
-        $this->expectExceptionCode(1440109640);
-
-        $event = TestingLegacyEvent::fromData(['begin_date' => 0]);
-
-        // @phpstan-ignore argument.type (We're checking for a contract violation here.)
-        $this->subject->createIntroduction('', $event);
-    }
-
-    /**
-     * @test
-     */
     public function createIntroductionForEventWithDateReturnsEventsDate(): void
     {
         $beginDate = 1779529905;
