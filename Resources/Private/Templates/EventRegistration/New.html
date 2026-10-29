@@ -7,7 +7,7 @@
         <f:render partial="EventRegistration/Headline" arguments="{event: event, registration: registration}"/>
 
         <f:form action="confirm" name="registration" object="{registration}" class="tx-seminars-event-registration"
-                data="{behavior: 'tx-seminars-registration-form'}">
+                data="{behavior: 'tx-seminars-registration-form', prevent-multiple-submits: ''}">
             <f:form.hidden name="event" value="{event}"/>
             <f:variable name="idPrefix" value="seminars-registration"/>
             <f:variable name="labelPrefix" value="plugin.eventRegistration.property"/>

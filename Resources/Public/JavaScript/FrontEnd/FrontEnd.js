@@ -25,11 +25,14 @@
 
     elements = {}
 
+    isAlreadySubmitted = false;
+
     constructor() {
       document.addEventListener('readystatechange', () => {
         this.initializeSearchWidget();
         this.initializeRegistrationForm();
         this.initializeUnregistrationForm();
+        this.initializePreventDoubleSubmits();
       });
     }
 
@@ -277,6 +280,30 @@
 
         attendeeIndex++;
       }
+    }
+
+    initializePreventDoubleSubmits() {
+      const forms = document.querySelectorAll('[data-prevent-multiple-submits]');
+
+      forms.forEach((form) => {
+        form.addEventListener('submit', (event) => this.handleRegistrationSubmit(event), false);
+      });
+    }
+
+    handleRegistrationSubmit(event) {
+      if (this.isAlreadySubmitted) {
+        event.preventDefault();
+        return;
+      }
+
+      this.isAlreadySubmitted = true;
+
+      const form = event.currentTarget;
+      const submitButtons = form.querySelectorAll('button[type="submit"], input[type="submit"]');
+
+      submitButtons.forEach((submitButton) => {
+        submitButton.setAttribute('disabled', 'disabled');
+      });
     }
 
     showElement(element) {

@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Add prevention of double submits to all forms (#5467)
 - Add user agent to `Registration` (#5438, #5446, #5447, #5448)
 - Add support for PHP 8.4 (#5296)
 - Add support for TYPO3 12LTS
