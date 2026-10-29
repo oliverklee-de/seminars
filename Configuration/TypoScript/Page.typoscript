@@ -10,4 +10,8 @@ page {
       defer = 1
     }
   }
+
+  includeSubmitButtonJS {
+    seminarsSubmitButton = EXT:seminars/Resources/Public/JavaScript/FrontEnd/submitButton.js
+  }
 }
