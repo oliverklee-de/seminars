@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\Tests\Functional\Email;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Seminars\Domain\Model\Event\SingleEvent;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Email\SalutationBuilder;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
@@ -47,22 +46,6 @@ final class SalutationBuilderTest extends FunctionalTestCase
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
         $this->subject = $this->get(SalutationBuilder::class);
-    }
-
-    private function formatDate(\DateTime $date): string
-    {
-        $format = LocalizationUtility::translate('dateFormat', 'seminars');
-        \assert(\is_string($format));
-
-        return $date->format($format);
-    }
-
-    private function formatTime(\DateTime $date): string
-    {
-        $format = LocalizationUtility::translate('timeFormat', 'seminars');
-        \assert(\is_string($format));
-
-        return $date->format($format);
     }
 
     private static function assertNotContainsRawLabelKey(string $string): void
@@ -185,110 +168,6 @@ final class SalutationBuilderTest extends FunctionalTestCase
         $user->setName('Max Minimax');
 
         $result = $this->subject->getSalutation($user);
-
-        self::assertNotContainsRawLabelKey($result);
-    }
-
-    // Tests concerning createIntroduction
-
-    /**
-     * @test
-     */
-    public function createIntroductionForEventWithDateReturnsEventsDate(): void
-    {
-        $event = new SingleEvent();
-        $start = new \DateTime('2026-10-12 10:00:00');
-        $event->setStart($start);
-
-        $result = $this->subject->createIntroduction('%s', $event);
-
-        $expected = $this->formatDate($start);
-        self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createIntroductionForEventWithBeginAndEndDateOnDifferentDaysReturnsEventsDateFromTo(): void
-    {
-        $event = new SingleEvent();
-        $start = new \DateTime('2026-10-12 10:00:00');
-        $event->setStart($start);
-        $end = new \DateTime('2026-10-13 18:00:00');
-        $event->setEnd($end);
-
-        $result = $this->subject->createIntroduction('%s', $event);
-
-        $expected = $this->formatDate($start) . '–' . $this->formatDate($end);
-        self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createIntroductionForEventWithTimeReturnsEventsTime(): void
-    {
-        $event = new SingleEvent();
-        $start = new \DateTime('2026-10-12 10:00:00');
-        $event->setStart($start);
-
-        $result = $this->subject->createIntroduction('%s', $event);
-
-        $expected = $this->formatTime($start);
-        self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createIntroductionForEventWithStartAndEndOnOneDayReturnsTimeAt(): void
-    {
-        $event = new SingleEvent();
-        $start = new \DateTime('2026-10-12 10:00:00');
-        $event->setStart($start);
-        $end = new \DateTime('2026-10-12 18:00:00');
-        $event->setEnd($end);
-
-        $result = $this->subject->createIntroduction('%s', $event);
-
-        $timeInsert = $this->formatTime($start);
-        $timeAtWithPlaceholders = LocalizationUtility::translate('email_timeAt', 'seminars');
-        self::assertIsString($timeAtWithPlaceholders);
-        $expected = \sprintf($timeAtWithPlaceholders, $timeInsert);
-
-        self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createIntroductionForEventWithStartAndEndOnOneDayContainsDate(): void
-    {
-        $event = new SingleEvent();
-        $start = new \DateTime('2026-10-12 10:00:00');
-        $event->setStart($start);
-        $end = new \DateTime('2026-10-12 18:00:00');
-        $event->setEnd($end);
-
-        $result = $this->subject->createIntroduction('%s', $event);
-
-        $formattedDate = $this->formatDate($start);
-        self::assertStringContainsString($formattedDate, $result);
-    }
-
-    /**
-     * @test
-     * @dataProvider salutationModeDataProvider
-     */
-    public function createIntroductionForAllSalutationModesContainsNoRawLabelKeys(string $salutationMode): void
-    {
-        $this->configuration->setAsString('salutation', $salutationMode);
-
-        $event = new SingleEvent();
-        $start = new \DateTime('2026-10-12 10:00:00');
-        $event->setStart($start);
-
-        $result = $this->subject->createIntroduction('%s', $event);
 
         self::assertNotContainsRawLabelKey($result);
     }

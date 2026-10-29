@@ -55,6 +55,8 @@ class RegistrationManager implements SingletonInterface
 
     private SalutationBuilder $salutationBuilder;
 
+    private EmailService $emailService;
+
     private ?Template $emailTemplate = null;
 
     public function __construct(
@@ -64,7 +66,8 @@ class RegistrationManager implements SingletonInterface
         FrontendUserRepository $frontendUserRepository,
         TemplateRegistry $templateRegistry,
         ConfigurationRegistry $configurationRegistry,
-        SalutationBuilder $salutationBuilder
+        SalutationBuilder $salutationBuilder,
+        EmailService $emailService
     ) {
         $this->connectionPool = $connectionPool;
         $this->context = $context;
@@ -73,6 +76,7 @@ class RegistrationManager implements SingletonInterface
         $this->templateRegistry = $templateRegistry;
         $this->configurationRegistry = $configurationRegistry;
         $this->salutationBuilder = $salutationBuilder;
+        $this->emailService = $emailService;
     }
 
     private function getSharedPluginConfiguration(): Configuration
@@ -1076,7 +1080,7 @@ class RegistrationManager implements SingletonInterface
         assert($event instanceof EventDateInterface);
         $introductionTemplate = $this->translate('email_' . $helloSubjectPrefix . 'Hello');
         \assert($introductionTemplate !== '');
-        $introduction = $this->salutationBuilder->createIntroduction($introductionTemplate, $event);
+        $introduction = $this->emailService->createIntroduction($introductionTemplate, $event);
 
         if ($registration->hasTotalPrice()) {
             $introduction .= ' ' . sprintf($this->translate('email_price'), $registration->getTotalPrice());

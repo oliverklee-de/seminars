@@ -174,6 +174,22 @@ class EmailService implements SingletonInterface
         return $date->format($format);
     }
 
+    private function formatTime(\DateTime $date): string
+    {
+        $hours = LocalizationUtility::translate('label_hours', 'seminars');
+        \assert(\is_string($hours));
+
+        return $date->format($this->getTimeFormat()) . ' ' . $hours;
+    }
+
+    private function getTimeFormat(): string
+    {
+        $format = LocalizationUtility::translate('timeFormat', 'seminars');
+        \assert(\is_string($format));
+
+        return $format;
+    }
+
     /**
      * Sends an email to the regular attendees of the given event using the provided email subject and message body.
      */
@@ -227,5 +243,35 @@ class EmailService implements SingletonInterface
         $messageFooter = $sender->hasEmailFooter() ? "\n-- \n" . $sender->getEmailFooter() : '';
 
         return $rawBody . $messageFooter;
+    }
+
+    /**
+     * Creates an email introduction with the given event's title, date and time prepended with the given introduction
+     * string.
+     *
+     * @param non-empty-string $introductionBegin
+     *        the start of the introduction, must contain %s as place to fill the title of the event in
+     */
+    public function createIntroduction(string $introductionBegin, EventDateInterface $event): string
+    {
+        $result = \sprintf($introductionBegin, $event->getDisplayTitle());
+        $start = $event->getStart();
+        if (!($start instanceof \DateTime)) {
+            return $result;
+        }
+
+        $eventDateLabel = LocalizationUtility::translate('email_eventDate', 'seminars');
+        \assert(\is_string($eventDateLabel));
+        $result .= ' ' . \sprintf($eventDateLabel, $this->renderEventDate($event));
+
+        if ($event->getTimeSlots()->count() === 0) {
+            $timeAtLabel = LocalizationUtility::translate('email_timeAt', 'seminars');
+            \assert(\is_string($timeAtLabel));
+            $time = $this->formatTime($start);
+            $label = ' ' . $timeAtLabel;
+            $result .= \sprintf($label, $time);
+        }
+
+        return $result;
     }
 }

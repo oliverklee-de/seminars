@@ -112,6 +112,14 @@ final class EmailServiceTest extends FunctionalTestCase
         return $date->format($format);
     }
 
+    private function formatTime(\DateTime $date): string
+    {
+        $format = LocalizationUtility::translate('timeFormat', 'seminars');
+        \assert(\is_string($format));
+
+        return $date->format($format);
+    }
+
     /**
      * @test
      */
@@ -666,5 +674,112 @@ final class EmailServiceTest extends FunctionalTestCase
         $this->addMockedInstance(MailMessage::class, $this->email);
 
         $this->subject->sendPlainTextEmailToRegularAttendees($legacyEvent, 'foo', 'some message body');
+    }
+
+    /**
+     * @test
+     */
+    public function createIntroductionForEventWithDateReturnsEventsDate(): void
+    {
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
+
+        $result = $this->subject->createIntroduction('%s', $event);
+
+        $expected = $this->formatDate($start);
+        self::assertStringContainsString($expected, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function createIntroductionForEventWithBeginAndEndDateOnDifferentDaysReturnsEventsDateFromTo(): void
+    {
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
+        $end = new \DateTime('2026-10-13 18:00:00');
+        $event->setEnd($end);
+
+        $result = $this->subject->createIntroduction('%s', $event);
+
+        $expected = $this->formatDate($start) . '–' . $this->formatDate($end);
+        self::assertStringContainsString($expected, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function createIntroductionForEventWithTimeReturnsEventsTime(): void
+    {
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
+
+        $result = $this->subject->createIntroduction('%s', $event);
+
+        $expected = $this->formatTime($start);
+        self::assertStringContainsString($expected, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function createIntroductionForEventWithStartAndEndOnOneDayReturnsTimeAt(): void
+    {
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
+        $end = new \DateTime('2026-10-12 18:00:00');
+        $event->setEnd($end);
+
+        $result = $this->subject->createIntroduction('%s', $event);
+
+        $timeInsert = $this->formatTime($start);
+        $timeAtWithPlaceholders = LocalizationUtility::translate('email_timeAt', 'seminars');
+        self::assertIsString($timeAtWithPlaceholders);
+        $expected = \sprintf($timeAtWithPlaceholders, $timeInsert);
+
+        self::assertStringContainsString($expected, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function createIntroductionForEventWithStartAndEndOnOneDayContainsDate(): void
+    {
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
+        $end = new \DateTime('2026-10-12 18:00:00');
+        $event->setEnd($end);
+
+        $result = $this->subject->createIntroduction('%s', $event);
+
+        $formattedDate = $this->formatDate($start);
+        self::assertStringContainsString($formattedDate, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function createIntroductionForAllSalutationModesContainsNoRawLabelKeys(): void
+    {
+        $event = new SingleEvent();
+        $start = new \DateTime('2026-10-12 10:00:00');
+        $event->setStart($start);
+
+        $result = $this->subject->createIntroduction('%s', $event);
+
+        $this->assertNotContainsRawLabelKey($result);
+    }
+
+    private function assertNotContainsRawLabelKey(string $string): void
+    {
+        self::assertStringNotContainsString('_', $string);
+        self::assertStringNotContainsString('email', $string);
+        self::assertStringNotContainsString('formal', $string);
+        self::assertStringNotContainsString('salutation', $string);
     }
 }
