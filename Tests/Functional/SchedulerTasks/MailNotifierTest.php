@@ -7,9 +7,8 @@ namespace OliverKlee\Seminars\Tests\Functional\SchedulerTasks;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Configuration\PageFinder;
-use OliverKlee\Oelib\Mapper\MapperRegistry;
-use OliverKlee\Seminars\Mapper\EventMapper;
-use OliverKlee\Seminars\Model\Event;
+use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
+use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\SchedulerTasks\MailNotifier;
 use OliverKlee\Seminars\SchedulerTasks\RegistrationDigest;
 use OliverKlee\Seminars\Service\EmailService;
@@ -49,7 +48,7 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     private EmailService $emailService;
 
-    private EventMapper $eventMapper;
+    private EventRepository $eventRepository;
 
     /**
      * @var RegistrationDigest&MockObject
@@ -74,7 +73,7 @@ final class MailNotifierTest extends FunctionalTestCase
         $configurationRegistry->set('plugin', new DummyConfiguration());
         $configurationRegistry->set('plugin.tx_seminars', new DummyConfiguration());
 
-        $this->eventMapper = $this->get(MapperRegistry::class)->getByClassName(EventMapper::class);
+        $this->eventRepository = $this->get(EventRepository::class);
 
         $this->emailService = $this->createMock(EmailService::class);
         GeneralUtility::setSingletonInstance(EmailService::class, $this->emailService);
@@ -295,8 +294,8 @@ final class MailNotifierTest extends FunctionalTestCase
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/PlannedEventWithAutomation.csv',
         );
-        $event = $this->eventMapper->find(1);
-        self::assertInstanceOf(Event::class, $event);
+        $event = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(EventDateInterface::class, $event);
 
         $this->emailService
             ->expects(self::once())->method('sendEmailToAttendees')
@@ -363,8 +362,8 @@ final class MailNotifierTest extends FunctionalTestCase
         $this->importCSVDataSet(
             self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/PlannedEventWithUnsufficientRegistrations.csv',
         );
-        $event = $this->eventMapper->find(1);
-        self::assertInstanceOf(Event::class, $event);
+        $event = $this->eventRepository->findByUid(1);
+        self::assertInstanceOf(EventDateInterface::class, $event);
 
         $this->emailService
             ->expects(self::once())->method('sendEmailToAttendees')
