@@ -56,9 +56,9 @@ class EmailService implements SingletonInterface
         $event = $this->eventRepository->findByUid($eventUid);
         assert($event instanceof EventDateInterface);
 
-        $sender = $this->determineEmailSenderForEvent($legacyEvent);
-        $firstOrganizer = $legacyEvent->getFirstOrganizer();
-        $registrations = $this->registrationRepository->findRegularRegistrationsByEvent($legacyEvent->getUid());
+        $sender = $this->determineEmailSenderForEvent($event);
+        $firstOrganizer = $event->getFirstOrganizer();
+        $registrations = $this->registrationRepository->findRegularRegistrationsByEvent($eventUid);
         foreach ($registrations as $registration) {
             $user = $registration->getUser();
             if (!($user instanceof FrontendUser)) {
@@ -74,8 +74,8 @@ class EmailService implements SingletonInterface
                 ->to($user)
                 ->from($sender)
                 ->replyTo($firstOrganizer)
-                ->subject($this->replaceMarkers($subject, $event, $legacyEvent, $user))
-                ->text($this->buildMessageBody($body, $event, $legacyEvent, $user))
+                ->subject($this->replaceMarkers($subject, $event, $user))
+                ->text($this->buildMessageBody($body, $event, $user))
                 ->build()->send();
         }
     }
@@ -84,10 +84,8 @@ class EmailService implements SingletonInterface
      * Returns a `MailRole` with the default email data from the TYPO3 configuration if possible.
      *
      * Otherwise, returns the first organizer of the given event.
-     *
-     * @param Event|EventDateInterface $event
      */
-    private function determineEmailSenderForEvent($event): MailRole
+    private function determineEmailSenderForEvent(EventDateInterface $event): MailRole
     {
         $systemEmailFromBuilder = GeneralUtility::makeInstance(SystemEmailFromBuilder::class);
         if ($systemEmailFromBuilder->canBuild()) {
@@ -102,16 +100,12 @@ class EmailService implements SingletonInterface
     /**
      * Builds the message body (including the email footer).
      */
-    protected function buildMessageBody(
-        string $rawBody,
-        EventDateInterface $event,
-        Event $legacyEvent,
-        FrontendUser $user
-    ): string {
-        $bodyWithFooter = $this->replaceMarkers($rawBody, $event, $legacyEvent, $user);
-        $organizer = $legacyEvent->getFirstOrganizer();
-        if ($organizer->hasEmailFooter()) {
-            $bodyWithFooter .= "\n-- \n" . $organizer->getEmailFooter();
+    protected function buildMessageBody(string $rawBody, EventDateInterface $event, FrontendUser $user): string
+    {
+        $bodyWithFooter = $this->replaceMarkers($rawBody, $event, $user);
+        $footer = $event->getFirstOrganizer()->getEmailFooter();
+        if ($footer !== '') {
+            $bodyWithFooter .= "\n-- \n" . $footer;
         }
 
         return $bodyWithFooter;
@@ -127,16 +121,12 @@ class EmailService implements SingletonInterface
      * `%eventTitle`
      * `%eventDate`
      */
-    protected function replaceMarkers(
-        string $textWithMarkers,
-        EventDateInterface $event,
-        Event $legacyEvent,
-        FrontendUser $user
-    ): string {
+    protected function replaceMarkers(string $textWithMarkers, EventDateInterface $event, FrontendUser $user): string
+    {
         $markers = [
             '%salutation' => $this->salutationBuilder->getSalutation($user),
             '%userName' => $user->getName(),
-            '%eventTitle' => $legacyEvent->getTitle(),
+            '%eventTitle' => $event->getDisplayTitle(),
             '%eventDate' => $this->renderEventDate($event),
         ];
 
