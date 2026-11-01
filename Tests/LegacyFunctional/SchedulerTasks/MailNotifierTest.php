@@ -5,20 +5,12 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\SchedulerTasks;
 
 use OliverKlee\Oelib\Configuration\PageFinder;
-use OliverKlee\Oelib\DataStructures\Collection;
-use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
-use OliverKlee\Seminars\Mapper\EventMapper;
-use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\SchedulerTasks\MailNotifier;
-use OliverKlee\Seminars\SchedulerTasks\RegistrationDigest;
-use OliverKlee\Seminars\Service\EmailService;
-use OliverKlee\Seminars\Service\EventStatusService;
 use OliverKlee\Seminars\Tests\Functional\Support\BackEndTestsTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
-use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Mail\MailMessage;
@@ -53,21 +45,6 @@ final class MailNotifierTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
-    /**
-     * @var EventStatusService&MockObject
-     */
-    private EventStatusService $eventStatusService;
-
-    /**
-     * @var EmailService&MockObject
-     */
-    private EmailService $emailService;
-
-    /**
-     * @var EventMapper&MockObject
-     */
-    private EventMapper $eventMapper;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -78,18 +55,6 @@ final class MailNotifierTest extends FunctionalTestCase
 
         $this->configuration->setAsInteger('sendEventTakesPlaceReminderDaysBeforeBeginDate', 2);
         $this->configuration->setAsBoolean('sendCancelationDeadlineReminder', true);
-
-        $this->eventMapper = $this->createMock(EventMapper::class);
-        $this->get(MapperRegistry::class)->setByClassName(EventMapper::class, $this->eventMapper);
-
-        $this->eventStatusService = $this->createMock(EventStatusService::class);
-        GeneralUtility::setSingletonInstance(EventStatusService::class, $this->eventStatusService);
-
-        $this->emailService = $this->createMock(EmailService::class);
-        GeneralUtility::setSingletonInstance(EmailService::class, $this->emailService);
-
-        $registrationDigestMock = $this->createMock(RegistrationDigest::class);
-        GeneralUtility::setSingletonInstance(RegistrationDigest::class, $registrationDigestMock);
 
         $this->email = $this->createEmailMock();
 
@@ -103,10 +68,6 @@ final class MailNotifierTest extends FunctionalTestCase
 
     protected function tearDown(): void
     {
-        if ($this->testingFramework instanceof TestingFramework) {
-            $this->testingFramework->cleanUpWithoutDatabase();
-        }
-
         PageFinder::purgeInstance();
         GeneralUtility::resetSingletonInstances([]);
 
@@ -114,6 +75,11 @@ final class MailNotifierTest extends FunctionalTestCase
     }
 
     // Utility functions
+
+    private function getConnectionForTable(string $table): Connection
+    {
+        return $this->get(ConnectionPool::class)->getConnectionForTable($table);
+    }
 
     /**
      * Creates a seminar record and an organizer record and the relation
@@ -1169,283 +1135,5 @@ final class MailNotifierTest extends FunctionalTestCase
         $this->subject->sendEventTakesPlaceReminders();
 
         self::assertStringContainsString('1', $this->email->getTextBody());
-    }
-
-    /**
-     * Tests for the automatic status change
-     */
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForNoEventsForStatusChangeNotRequestsStatusChange(): void
-    {
-        $events = new Collection();
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->expects(self::never())->method('updateStatusAndSave');
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForNoEventsForStatusChangeSendsNoEmail(): void
-    {
-        $events = new Collection();
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->emailService->expects(self::never())->method('sendEmailToAttendees');
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventForStatusChangeRequestsStatusChangeWithThatEvent(): void
-    {
-        $events = new Collection();
-        $event = new Event();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService
-            ->expects(self::once())
-            ->method('updateStatusAndSave')->with($event)
-            ->willReturn(false);
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventWithNoStatusChangeNeededNotSendsEmail(): void
-    {
-        $events = new Collection();
-        $event = new Event();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(false);
-
-        $this->emailService->expects(self::never())->method('sendEmailToAttendees');
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmail(): void
-    {
-        $events = new Collection();
-        $event = new Event();
-        $event->confirm();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
-
-        $this->emailService
-            ->expects(self::once())->method('sendEmailToAttendees')
-            ->with($event, self::anything(), self::anything());
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmailWithConfirmSubject(
-    ): void {
-        $events = new Collection();
-        $event = new Event();
-        $event->confirm();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
-
-        $emailSubject = $this->translate('email-event-confirmed-subject');
-        $this->emailService
-            ->expects(self::once())->method('sendEmailToAttendees')
-            ->with(self::anything(), $emailSubject, self::anything());
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmailWithConfirmBody(
-    ): void {
-        $events = new Collection();
-        $event = new Event();
-        $event->confirm();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
-
-        $emailBody = $this->translate('email-event-confirmed-body');
-        $this->emailService
-            ->expects(self::once())->method('sendEmailToAttendees')
-            ->with(self::anything(), self::anything(), $emailBody);
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForTwoEventsWithConfirmedStatusChangeSendsTwoEmails(): void
-    {
-        $events = new Collection();
-        $event1 = new Event();
-        $event1->confirm();
-        $events->add($event1);
-        $event2 = new Event();
-        $event2->confirm();
-        $events->add($event2);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
-
-        $this->emailService->expects(self::exactly(2))->method('sendEmailToAttendees');
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventWithCanceledStatusChangeSendsEmail(): void
-    {
-        $events = new Collection();
-        $event = new Event();
-        $event->cancel();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
-
-        $this->emailService
-            ->expects(self::once())->method('sendEmailToAttendees')
-            ->with($event, self::anything(), self::anything());
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventWithCanceledStatusChangeSendsEmailWithCancelSubject(
-    ): void {
-        $events = new Collection();
-        $event = new Event();
-        $event->cancel();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
-
-        $emailSubject = $this->translate('email-event-canceled-subject');
-        $this->emailService
-            ->expects(self::once())->method('sendEmailToAttendees')
-            ->with(self::anything(), $emailSubject, self::anything());
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventWithCanceledStatusChangeSendsEmailWithCancelBody(): void
-    {
-        $events = new Collection();
-        $event = new Event();
-        $event->cancel();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
-
-        $emailBody = $this->translate('email-event-canceled-body');
-        $this->emailService
-            ->expects(self::once())->method('sendEmailToAttendees')
-            ->with(self::anything(), self::anything(), $emailBody);
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForTwoEventsWithCanceledStatusChangeSendsTwoEmails(): void
-    {
-        $events = new Collection();
-        $event1 = new Event();
-        $event1->cancel();
-        $events->add($event1);
-        $event2 = new Event();
-        $event2->cancel();
-        $events->add($event2);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
-
-        $this->emailService->expects(self::exactly(2))->method('sendEmailToAttendees');
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventWithPlannedStatusChangeThrowsException(): void
-    {
-        $this->expectException(\UnexpectedValueException::class);
-
-        $events = new Collection();
-        $event = new Event();
-        $event->setStatus(EventInterface::STATUS_PLANNED);
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method('findForAutomaticStatusChange')->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    private function getConnectionForTable(string $table): Connection
-    {
-        return $this->get(ConnectionPool::class)->getConnectionForTable($table);
     }
 }

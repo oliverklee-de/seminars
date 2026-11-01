@@ -2086,11 +2086,6 @@ parameters:
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
 
 		-
-			message: "#^Instanceof between OliverKlee\\\\Oelib\\\\Testing\\\\TestingFramework and OliverKlee\\\\Oelib\\\\Testing\\\\TestingFramework will always evaluate to true\\.$#"
-			count: 1
-			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
-
-		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Tests\\\\LegacyFunctional\\\\SchedulerTasks\\\\MailNotifierTest\\:\\:createSeminarWithOrganizer\\(\\) has parameter \\$additionalSeminarData with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: ../../Tests/LegacyFunctional/SchedulerTasks/MailNotifierTest.php
