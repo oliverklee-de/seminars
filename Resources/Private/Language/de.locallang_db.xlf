@@ -773,10 +773,6 @@
         <source>Title</source>
         <target state="final">Titel</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_event_types.single_view_page" approved="yes">
-        <source>Single view page for events of this type</source>
-        <target state="final">Seite mit der Einzelansicht für Veranstaltungen dieses Typs</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_checkboxes" approved="yes">
         <source>Registration option with checkbox</source>
         <target state="final">Anmeldeoption mit Checkbox</target>
