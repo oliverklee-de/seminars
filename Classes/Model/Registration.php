@@ -13,14 +13,6 @@ use OliverKlee\Seminars\Domain\Model\Registration\Registration as ExtbaseRegistr
  */
 class Registration extends AbstractModel
 {
-    /**
-     * @return string the title of this registration, will not be empty
-     */
-    public function getTitle(): string
-    {
-        return $this->getAsString('title');
-    }
-
     public function getFrontEndUser(): ?FrontEndUser
     {
         /** @var FrontEndUser|null $user */
@@ -101,15 +93,6 @@ class Registration extends AbstractModel
     }
 
     /**
-     * @param string $attendeesNames the names of the attendees of this registration to set separated
-     *        by CRLF, may be empty
-     */
-    public function setAttendeesNames(string $attendeesNames): void
-    {
-        $this->setAsString('attendees_names', $attendeesNames);
-    }
-
-    /**
      * Gets the additional persons (FE users) attached to this registration.
      *
      * @return Collection<FrontEndUser>
@@ -120,15 +103,5 @@ class Registration extends AbstractModel
         $additionalPersons = $this->getAsCollection('additional_persons');
 
         return $additionalPersons;
-    }
-
-    /**
-     * Sets the additional persons attached to this registration.
-     *
-     * @param Collection<FrontEndUser> $persons
-     */
-    public function setAdditionalPersons(Collection $persons): void
-    {
-        $this->set('additional_persons', $persons);
     }
 }

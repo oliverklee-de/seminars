@@ -73,16 +73,12 @@ final class RegistrationMapperTest extends FunctionalTestCase
      */
     public function findWithUidOfExistingRecordReturnsRecordAsModel(): void
     {
-        $uid = $this->testingFramework->createRecord(
-            'tx_seminars_attendances',
-            ['title' => 'registration for event'],
-        );
+        $uid = $this->testingFramework->createRecord('tx_seminars_attendances');
 
         $model = $this->subject->find($uid);
-        self::assertEquals(
-            'registration for event',
-            $model->getTitle(),
-        );
+
+        self::assertInstanceOf(Registration::class, $model);
+        self::assertSame($uid, $model->getUid());
     }
 
     // Tests concerning the event.
