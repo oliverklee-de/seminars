@@ -140,47 +140,12 @@ class Event extends AbstractModel
      */
     public function getCombinedSingleViewPage(): string
     {
-        $result = '';
-
-        if ($this->hasDetailsPage()) {
-            $result = $this->getDetailsPage();
-        } elseif ($this->hasSingleViewPageUidFromCategories()) {
-            $result = (string)$this->getSingleViewPageUidFromCategories();
-        }
-
-        return $result;
+        return $this->hasDetailsPage() ? $this->getDetailsPage() : '';
     }
 
     public function hasCombinedSingleViewPage(): bool
     {
         return $this->getCombinedSingleViewPage() !== '';
-    }
-
-    /**
-     * This function returns the first found UID from the event categories.
-     *
-     * @return int the single view page UID from the categories, will be > 0 if
-     *         this event has at least one category with a single view page
-     *         UID, will be 0 otherwise
-     */
-    protected function getSingleViewPageUidFromCategories(): int
-    {
-        $result = 0;
-
-        /** @var Category $category */
-        foreach ($this->getCategories() as $category) {
-            if ($category->hasSingleViewPageUid()) {
-                $result = $category->getSingleViewPageUid();
-                break;
-            }
-        }
-
-        return $result;
-    }
-
-    protected function hasSingleViewPageUidFromCategories(): bool
-    {
-        return $this->getSingleViewPageUidFromCategories() > 0;
     }
 
     /**

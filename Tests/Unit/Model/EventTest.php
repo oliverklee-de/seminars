@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\Tests\Unit\Model;
 
 use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
-use OliverKlee\Seminars\Model\Category;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Organizer;
@@ -310,60 +309,6 @@ final class EventTest extends UnitTestCase
 
         self::assertSame(
             'www.example.com',
-            $this->subject->getCombinedSingleViewPage(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getCombinedSingleViewPageForAvailableCategoryWithoutSingleViewPageReturnsEmptyString(): void
-    {
-        $category = new Category();
-        $category->setData([]);
-        $categories = new Collection();
-        $categories->add($category);
-        $this->subject->setData(['categories' => $categories]);
-
-        self::assertSame(
-            '',
-            $this->subject->getCombinedSingleViewPage(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getCombinedSingleViewPageForAvailableCategoryWithSingleViewPageReturnsSingleViewPageFromCategory(
-    ): void {
-        $category = new Category();
-        $category->setData(['single_view_page' => 42]);
-        $categories = new Collection();
-        $categories->add($category);
-        $this->subject->setData(['categories' => $categories]);
-
-        self::assertSame(
-            '42',
-            $this->subject->getCombinedSingleViewPage(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getCombinedSingleViewPageForTwoAvailableCategoriesWithSingleViewPageReturnsSingleViewPageFromFirstCategory(
-    ): void {
-        $category1 = new Category();
-        $category1->setData(['single_view_page' => 42]);
-        $category2 = new Category();
-        $category2->setData(['single_view_page' => 12]);
-        $categories = new Collection();
-        $categories->add($category1);
-        $categories->add($category2);
-        $this->subject->setData(['categories' => $categories]);
-
-        self::assertSame(
-            '42',
             $this->subject->getCombinedSingleViewPage(),
         );
     }
