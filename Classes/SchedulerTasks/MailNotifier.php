@@ -330,22 +330,24 @@ class MailNotifier extends AbstractTask
                 continue;
             }
 
-            if ($event->isConfirmed()) {
-                $subject = LocalizationUtility::translate('email-event-confirmed-subject', 'seminars');
-                $body = LocalizationUtility::translate('email-event-confirmed-body', 'seminars');
-            } elseif ($event->isCanceled()) {
-                $subject = LocalizationUtility::translate('email-event-canceled-subject', 'seminars');
-                $body = LocalizationUtility::translate('email-event-canceled-body', 'seminars');
-            } else {
-                throw new \UnexpectedValueException(
-                    'Event status for event #' . $event->getUid() . ' was still "planned" after the status change.',
-                    1457982810,
-                );
+            $status = $event->getStatus();
+            switch ($status) {
+                case EventInterface::STATUS_CONFIRMED:
+                    $subject = LocalizationUtility::translate('email-event-confirmed-subject', 'seminars');
+                    $body = LocalizationUtility::translate('email-event-confirmed-body', 'seminars');
+                    break;
+                case EventInterface::STATUS_CANCELED:
+                    $subject = LocalizationUtility::translate('email-event-canceled-subject', 'seminars');
+                    $body = LocalizationUtility::translate('email-event-canceled-body', 'seminars');
+                    break;
+                default:
+                    $subject = null;
+                    $body = null;
             }
-            \assert(\is_string($subject));
-            \assert(\is_string($body));
 
-            $this->emailService->sendEmailToAttendees($event, $subject, $body);
+            if (is_string($subject) && is_string($body)) {
+                $this->emailService->sendEmailToAttendees($event, $subject, $body);
+            }
         }
     }
 

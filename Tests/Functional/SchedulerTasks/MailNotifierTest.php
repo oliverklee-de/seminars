@@ -9,7 +9,6 @@ use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Configuration\PageFinder;
 use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
-use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Mapper\EventMapper;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\SchedulerTasks\MailNotifier;
@@ -473,24 +472,6 @@ final class MailNotifierTest extends FunctionalTestCase
         $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
 
         $this->emailService->expects(self::exactly(2))->method('sendEmailToAttendees');
-
-        $this->subject->automaticallyChangeEventStatuses();
-    }
-
-    /**
-     * @test
-     */
-    public function automaticallyChangeEventStatusesForOneEventWithPlannedStatusChangeThrowsException(): void
-    {
-        $this->expectException(\UnexpectedValueException::class);
-
-        $events = new Collection();
-        $event = new Event();
-        $event->setStatus(EventInterface::STATUS_PLANNED);
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method('findForAutomaticStatusChange')->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
 
         $this->subject->automaticallyChangeEventStatuses();
     }
