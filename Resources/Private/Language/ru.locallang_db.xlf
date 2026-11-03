@@ -843,10 +843,6 @@
         <source>Title</source>
         <target state="final">Название</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_categories.single_view_page">
-        <source>Single view page for events in this category</source>
-        <target state="needs-translation">Single view page for events in this category</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_skills">
         <source>Skill</source>
         <target state="needs-translation">Skill</target>
