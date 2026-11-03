@@ -325,4 +325,152 @@ final class LegacyEventTest extends UnitTestCase
 
         self::assertFalse($date->hasAttachedFiles());
     }
+
+    /**
+     * @return array<non-empty-string, array{0: EventInterface::STATUS_*}>
+     */
+    public static function statusDataProvider(): array
+    {
+        return [
+            'planned' => [EventInterface::STATUS_PLANNED],
+            'confirmed' => [EventInterface::STATUS_CONFIRMED],
+            'canceled' => [EventInterface::STATUS_CANCELED],
+        ];
+    }
+
+    /**
+     * @test
+     *
+     * @param EventInterface::STATUS_* $status
+     *
+     * @dataProvider statusDataProvider
+     */
+    public function getStatusReturnsStatus(int $status): void
+    {
+        $subject = LegacyEvent::fromData(['cancelled' => $status]);
+
+        self::assertSame($status, $subject->getStatus());
+    }
+
+    /**
+     * @test
+     *
+     * @param EventInterface::STATUS_* $status
+     *
+     * @dataProvider statusDataProvider
+     */
+    public function setStatusSetsStatus(int $status): void
+    {
+        $this->subject->setStatus($status);
+
+        self::assertSame($status, $this->subject->getStatus());
+    }
+
+    /**
+     * @test
+     */
+    public function isConfirmedForStatusPlannedReturnsFalse(): void
+    {
+        $this->subject->setStatus(EventInterface::STATUS_PLANNED);
+
+        self::assertFalse(
+            $this->subject->isConfirmed(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function isConfirmedForStatusConfirmedReturnsTrue(): void
+    {
+        $this->subject->setStatus(EventInterface::STATUS_CONFIRMED);
+
+        self::assertTrue(
+            $this->subject->isConfirmed(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function isConfirmedForStatusCanceledReturnsFalse(): void
+    {
+        $this->subject->setStatus(EventInterface::STATUS_CANCELED);
+
+        self::assertFalse(
+            $this->subject->isConfirmed(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function isCanceledForPlannedEventReturnsFalse(): void
+    {
+        $this->subject->setStatus(EventInterface::STATUS_PLANNED);
+
+        self::assertFalse(
+            $this->subject->isCanceled(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function isCanceledForCanceledEventReturnsTrue(): void
+    {
+        $this->subject->setStatus(EventInterface::STATUS_CANCELED);
+
+        self::assertTrue(
+            $this->subject->isCanceled(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function isCanceledForConfirmedEventReturnsFalse(): void
+    {
+        $this->subject->setStatus(EventInterface::STATUS_CONFIRMED);
+
+        self::assertFalse(
+            $this->subject->isCanceled(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function isPlannedForStatusPlannedReturnsTrue(): void
+    {
+        $this->subject->setStatus(EventInterface::STATUS_PLANNED);
+
+        self::assertTrue(
+            $this->subject->isPlanned(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function isPlannedForStatusConfirmedReturnsFalse(): void
+    {
+        $this->subject->setStatus(EventInterface::STATUS_CONFIRMED);
+
+        self::assertFalse(
+            $this->subject->isPlanned(),
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function isPlannedForStatusCanceledReturnsFalse(): void
+    {
+        $this->subject->setStatus(EventInterface::STATUS_CANCELED);
+
+        self::assertFalse(
+            $this->subject->isPlanned(),
+        );
+    }
 }
