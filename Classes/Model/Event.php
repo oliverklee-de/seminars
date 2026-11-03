@@ -152,8 +152,6 @@ class Event extends AbstractModel
 
         if ($this->hasDetailsPage()) {
             $result = $this->getDetailsPage();
-        } elseif ($this->hasSingleViewPageUidFromEventType()) {
-            $result = (string)$this->getSingleViewPageUidFromEventType();
         } elseif ($this->hasSingleViewPageUidFromCategories()) {
             $result = (string)$this->getSingleViewPageUidFromCategories();
         }
@@ -164,29 +162,6 @@ class Event extends AbstractModel
     public function hasCombinedSingleViewPage(): bool
     {
         return $this->getCombinedSingleViewPage() !== '';
-    }
-
-    /**
-     * @return int the single view page UID from the event type, will be > 0 if
-     *         this event has an event type and a that type has a single view
-     *         page UID, will be 0 otherwise
-     */
-    protected function getSingleViewPageUidFromEventType(): int
-    {
-        if (!$this->hasSingleViewPageUidFromEventType()) {
-            return 0;
-        }
-
-        $eventType = $this->getEventType();
-
-        return $eventType instanceof EventType ? $eventType->getSingleViewPageUid() : 0;
-    }
-
-    protected function hasSingleViewPageUidFromEventType(): bool
-    {
-        $eventType = $this->getEventType();
-
-        return $eventType instanceof EventType && $eventType->hasSingleViewPageUid();
     }
 
     /**

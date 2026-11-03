@@ -581,9 +581,6 @@
       <trans-unit id="tx_seminars_event_types.title">
         <source>Title</source>
       </trans-unit>
-      <trans-unit id="tx_seminars_event_types.single_view_page">
-        <source>Single view page for events of this type</source>
-      </trans-unit>
       <trans-unit id="tx_seminars_checkboxes">
         <source>Registration option with checkbox</source>
       </trans-unit>
