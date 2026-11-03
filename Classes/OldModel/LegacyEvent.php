@@ -2518,7 +2518,7 @@ class LegacyEvent extends AbstractTimeSpan
      *
      * @return int<0, max> the status of this event
      */
-    private function getStatus(): int
+    public function getStatus(): int
     {
         $status = $this->getRecordPropertyInteger('cancelled');
         \assert($status >= 0);
