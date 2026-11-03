@@ -841,10 +841,6 @@
         <source>Title</source>
         <target>crwdns303234:0crwdne303234:0</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_categories.single_view_page">
-        <source>Single view page for events in this category</source>
-        <target>crwdns303238:0crwdne303238:0</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_skills">
         <source>Skill</source>
         <target>crwdns367052:0crwdne367052:0</target>
