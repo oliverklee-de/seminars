@@ -7,15 +7,15 @@ namespace OliverKlee\Seminars\Tests\Functional\SchedulerTasks;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Configuration\PageFinder;
-use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\Mapper\EventMapper;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\SchedulerTasks\MailNotifier;
 use OliverKlee\Seminars\SchedulerTasks\RegistrationDigest;
 use OliverKlee\Seminars\Service\EmailService;
-use OliverKlee\Seminars\Service\EventStatusService;
 use PHPUnit\Framework\MockObject\MockObject;
+use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -27,6 +27,10 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class MailNotifierTest extends FunctionalTestCase
 {
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures/MailNotifier';
+
+    private const ASSERTIONS_PATH = __DIR__ . '/Assertions/MailNotifier';
+
     protected array $coreExtensionsToLoad = [
         'typo3/cms-extensionmanager',
         'typo3/cms-install',
@@ -41,18 +45,10 @@ final class MailNotifierTest extends FunctionalTestCase
     ];
 
     /**
-     * @var EventStatusService&MockObject
-     */
-    private EventStatusService $eventStatusService;
-
-    /**
      * @var EmailService&MockObject
      */
     private EmailService $emailService;
 
-    /**
-     * @var EventMapper&MockObject
-     */
     private EventMapper $eventMapper;
 
     /**
@@ -71,15 +67,14 @@ final class MailNotifierTest extends FunctionalTestCase
             ->get(LanguageServiceFactory::class)
             ->createFromUserPreferences($this->setUpBackendUser(1));
 
+        $now = new \DateTimeImmutable('2018-04-26 12:42:23');
+        $this->get(Context::class)->setAspect('date', new DateTimeAspect($now));
+
         $configurationRegistry = $this->get(ConfigurationRegistry::class);
         $configurationRegistry->set('plugin', new DummyConfiguration());
         $configurationRegistry->set('plugin.tx_seminars', new DummyConfiguration());
 
-        $this->eventMapper = $this->createMock(EventMapper::class);
-        $this->get(MapperRegistry::class)->setByClassName(EventMapper::class, $this->eventMapper);
-
-        $this->eventStatusService = $this->createMock(EventStatusService::class);
-        GeneralUtility::setSingletonInstance(EventStatusService::class, $this->eventStatusService);
+        $this->eventMapper = $this->get(MapperRegistry::class)->getByClassName(EventMapper::class);
 
         $this->emailService = $this->createMock(EmailService::class);
         GeneralUtility::setSingletonInstance(EmailService::class, $this->emailService);
@@ -222,29 +217,41 @@ final class MailNotifierTest extends FunctionalTestCase
     }
 
     /**
-     * @test
+     * @return array<non-empty-string, array{0: non-empty-string}>
      */
-    public function automaticallyChangeEventStatusesForNoEventsForStatusChangeNotRequestsStatusChange(): void
+    public static function eventsWithoutStatusChangeDataProvider(): array
     {
-        $events = new Collection();
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->expects(self::never())->method('updateStatusAndSave');
-
-        $this->subject->automaticallyChangeEventStatuses();
+        return [
+            'planned, but without automation' => ['PlannedEventWithoutAutomation.csv'],
+            'hidden, planned, with automation' => ['HiddenPlannedEventWithAutomation.csv'],
+            'canceled, with automation' => ['CanceledEventWithAutomation.csv'],
+            'confirmed, with automation' => ['ConfirmedEventWithAutomation.csv'],
+        ];
     }
 
     /**
      * @test
+     *
+     * @dataProvider eventsWithoutStatusChangeDataProvider
      */
-    public function automaticallyChangeEventStatusesForNoEventsForStatusChangeSendsNoEmail(): void
+    public function automaticallyChangeEventStatusesForNoStatusChangesKeepsEventsUnchanged(string $file): void
     {
-        $events = new Collection();
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
+        $fileWithPath = '/automaticallyChangeEventStatuses/' . $file;
+        $this->importCSVDataSet(self::FIXTURES_PATH . $fileWithPath);
+
+        $this->subject->automaticallyChangeEventStatuses();
+
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . $fileWithPath);
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider eventsWithoutStatusChangeDataProvider
+     */
+    public function automaticallyChangeEventStatusesForNoStatusChangesSendsNoEmail(string $file): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/' . $file);
 
         $this->emailService->expects(self::never())->method('sendEmailToAttendees');
 
@@ -254,36 +261,26 @@ final class MailNotifierTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function automaticallyChangeEventStatusesForOneEventForStatusChangeRequestsStatusChangeWithThatEvent(): void
+    public function automaticallyChangeEventStatusesForOneStatusChangeMarksEventAsConfirmed(): void
     {
-        $events = new Collection();
-        $event = new Event();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService
-            ->expects(self::once())
-            ->method('updateStatusAndSave')->with($event)
-            ->willReturn(false);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/PlannedEventWithAutomation.csv',
+        );
 
         $this->subject->automaticallyChangeEventStatuses();
+
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/automaticallyChangeEventStatuses/ConfirmedEvent.csv');
     }
 
     /**
      * @test
+     *
+     * @dataProvider eventsWithoutStatusChangeDataProvider
      */
-    public function automaticallyChangeEventStatusesForOneEventWithNoStatusChangeNeededNotSendsEmail(): void
+    public function automaticallyChangeEventStatusesForOneEventWithNoStatusChangeNeededNotSendsEmail(string $file): void
     {
-        $events = new Collection();
-        $event = new Event();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(false);
+        $fileWithPath = '/automaticallyChangeEventStatuses/' . $file;
+        $this->importCSVDataSet(self::FIXTURES_PATH . $fileWithPath);
 
         $this->emailService->expects(self::never())->method('sendEmailToAttendees');
 
@@ -295,15 +292,11 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmail(): void
     {
-        $events = new Collection();
-        $event = new Event();
-        $event->confirm();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/PlannedEventWithAutomation.csv',
+        );
+        $event = $this->eventMapper->find(1);
+        self::assertInstanceOf(Event::class, $event);
 
         $this->emailService
             ->expects(self::once())->method('sendEmailToAttendees')
@@ -317,15 +310,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmailWithConfirmSubject(
     ): void {
-        $events = new Collection();
-        $event = new Event();
-        $event->confirm();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/PlannedEventWithAutomation.csv',
+        );
 
         $emailSubject = LocalizationUtility::translate('email-event-confirmed-subject', 'seminars');
         self::assertIsString($emailSubject);
@@ -341,15 +328,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function automaticallyChangeEventStatusesForOneEventWithConfirmedStatusChangeSendsEmailWithConfirmBody(
     ): void {
-        $events = new Collection();
-        $event = new Event();
-        $event->confirm();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/PlannedEventWithAutomation.csv',
+        );
 
         $emailBody = LocalizationUtility::translate('email-event-confirmed-body', 'seminars');
         self::assertIsString($emailBody);
@@ -365,18 +346,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function automaticallyChangeEventStatusesForTwoEventsWithConfirmedStatusChangeSendsTwoEmails(): void
     {
-        $events = new Collection();
-        $event1 = new Event();
-        $event1->confirm();
-        $events->add($event1);
-        $event2 = new Event();
-        $event2->confirm();
-        $events->add($event2);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/TwoPlannedEventsWithAutomation.csv',
+        );
 
         $this->emailService->expects(self::exactly(2))->method('sendEmailToAttendees');
 
@@ -388,15 +360,11 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function automaticallyChangeEventStatusesForOneEventWithCanceledStatusChangeSendsEmail(): void
     {
-        $events = new Collection();
-        $event = new Event();
-        $event->cancel();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/PlannedEventWithUnsufficientRegistrations.csv',
+        );
+        $event = $this->eventMapper->find(1);
+        self::assertInstanceOf(Event::class, $event);
 
         $this->emailService
             ->expects(self::once())->method('sendEmailToAttendees')
@@ -410,15 +378,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function automaticallyChangeEventStatusesForOneEventWithCanceledStatusChangeSendsEmailWithCancelSubject(
     ): void {
-        $events = new Collection();
-        $event = new Event();
-        $event->cancel();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/PlannedEventWithUnsufficientRegistrations.csv',
+        );
 
         $emailSubject = LocalizationUtility::translate('email-event-canceled-subject', 'seminars');
         self::assertIsString($emailSubject);
@@ -434,15 +396,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function automaticallyChangeEventStatusesForOneEventWithCanceledStatusChangeSendsEmailWithCancelBody(): void
     {
-        $events = new Collection();
-        $event = new Event();
-        $event->cancel();
-        $events->add($event);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/PlannedEventWithUnsufficientRegistrations.csv',
+        );
 
         $emailBody = LocalizationUtility::translate('email-event-canceled-body', 'seminars');
         self::assertIsString($emailBody);
@@ -458,18 +414,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function automaticallyChangeEventStatusesForTwoEventsWithCanceledStatusChangeSendsTwoEmails(): void
     {
-        $events = new Collection();
-        $event1 = new Event();
-        $event1->cancel();
-        $events->add($event1);
-        $event2 = new Event();
-        $event2->cancel();
-        $events->add($event2);
-        $this->eventMapper->expects(self::once())->method(
-            'findForAutomaticStatusChange',
-        )->willReturn($events);
-
-        $this->eventStatusService->method('updateStatusAndSave')->willReturn(true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/automaticallyChangeEventStatuses/TwoPlannedEventsWithAutomation.csv',
+        );
 
         $this->emailService->expects(self::exactly(2))->method('sendEmailToAttendees');
 
