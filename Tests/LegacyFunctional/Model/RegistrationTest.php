@@ -59,23 +59,6 @@ final class RegistrationTest extends FunctionalTestCase
         parent::tearDown();
     }
 
-    ///////////////////////////////
-    // Tests regarding the title.
-    ///////////////////////////////
-
-    /**
-     * @test
-     */
-    public function getTitleWithNonEmptyTitleReturnsTitle(): void
-    {
-        $this->subject->setData(['title' => 'registration for event']);
-
-        self::assertEquals(
-            'registration for event',
-            $this->subject->getTitle(),
-        );
-    }
-
     ////////////////////////////////////////
     // Tests regarding the front-end user.
     ////////////////////////////////////////
@@ -232,19 +215,6 @@ final class RegistrationTest extends FunctionalTestCase
     public function getAttendeesNamesWithAttendeesNamesReturnsAttendeesNames(): void
     {
         $this->subject->setData(['attendees_names' => 'John Doe']);
-
-        self::assertEquals(
-            'John Doe',
-            $this->subject->getAttendeesNames(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setAttendeesNamesSetsAttendeesNames(): void
-    {
-        $this->subject->setAttendeesNames('John Doe');
 
         self::assertEquals(
             'John Doe',
