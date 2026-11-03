@@ -775,10 +775,6 @@
         <source>Title</source>
         <target state="final">Titel</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_event_types.single_view_page">
-        <source>Single view page for events of this type</source>
-        <target state="needs-translation">Single view page for events of this type</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_checkboxes">
         <source>Registration option with checkbox</source>
         <target state="needs-translation">Registration option with checkbox</target>
