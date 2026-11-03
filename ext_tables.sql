@@ -239,7 +239,6 @@ CREATE TABLE tx_seminars_payment_methods
 CREATE TABLE tx_seminars_event_types
 (
 	title            tinytext,
-	single_view_page int(11) unsigned DEFAULT 0 NOT NULL,
 
 	FULLTEXT index_searchfields (title)
 )

@@ -101,7 +101,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function createRelativeUrlWithEventTypeAndCategoryWithoutSingleViewPageUsesPageFromConfiguration(): void
+    public function createRelativeUrlWithCategoryWithoutSingleViewPageUsesPageFromConfiguration(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
         $event = $this->eventMapper->find(3);
@@ -110,19 +110,6 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
 
         $expected = '/defaultSingleView?tx_seminars_pi1%5BshowUid%5D=3';
         self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createRelativeUrlWithEventTypeWithSingleViewPageUsesPageFromEventType(): void
-    {
-        $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(4);
-
-        $result = $this->subject->createRelativeUrlForEvent($event);
-
-        self::assertStringContainsString('/eventTypeSpecificSingleView?tx_seminars_pi1%5BshowUid%5D=4', $result);
     }
 
     /**
@@ -141,23 +128,10 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function createRelativeUrlWithCategoryAndEventTypeWithSingleViewPageUsesPageFromEventType(): void
+    public function createRelativeUrlWithIndividualUrlUsesIndividualUrl(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(6);
-
-        $result = $this->subject->createRelativeUrlForEvent($event);
-
-        self::assertStringContainsString('/eventTypeSpecificSingleView?tx_seminars_pi1%5BshowUid%5D=6', $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createRelativeUrlWithIndividualUrlAndEventTypeWithSingleViewPageUsesIndividualUrl(): void
-    {
-        $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(7);
+        $event = $this->eventMapper->find(2);
 
         $result = $this->subject->createRelativeUrlForEvent($event);
 
@@ -206,7 +180,7 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function createAbsoluteUrlWithEventTypeAndCategoryWithoutSingleViewPageUsesPageFromConfiguration(): void
+    public function createAbsoluteUrlWithCategoryWithoutSingleViewPageUsesPageFromConfiguration(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
         $event = $this->eventMapper->find(3);
@@ -214,20 +188,6 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 
         $expected = 'http://typo3-test.dev/defaultSingleView?tx_seminars_pi1%5BshowUid%5D=3';
-        self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createAbsoluteUrlWithEventTypeWithSingleViewPageUsesPageFromEventType(): void
-    {
-        $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(4);
-
-        $result = $this->subject->createAbsoluteUrlForEvent($event);
-
-        $expected = 'http://typo3-test.dev/eventTypeSpecificSingleView?tx_seminars_pi1%5BshowUid%5D=4';
         self::assertStringContainsString($expected, $result);
     }
 
@@ -243,32 +203,5 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
 
         $expected = 'http://typo3-test.dev/categorySpecificSingleView?tx_seminars_pi1%5BshowUid%5D=5';
         self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createAbsoluteUrlWithCategoryAndEventTypeWithSingleViewPageUsesPageFromEventType(): void
-    {
-        $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(6);
-
-        $result = $this->subject->createAbsoluteUrlForEvent($event);
-
-        $expected = 'http://typo3-test.dev/eventTypeSpecificSingleView?tx_seminars_pi1%5BshowUid%5D=6';
-        self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createAbsoluteUrlWithIndividualUrlAndEventTypeWithSingleViewPageUsesIndividualUrl(): void
-    {
-        $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(7);
-
-        $result = $this->subject->createAbsoluteUrlForEvent($event);
-
-        self::assertSame('http://www.example.com', $result);
     }
 }

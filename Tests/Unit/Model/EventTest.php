@@ -8,7 +8,6 @@ use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Model\Category;
 use OliverKlee\Seminars\Model\Event;
-use OliverKlee\Seminars\Model\EventType;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Organizer;
 use OliverKlee\Seminars\Model\Registration;
@@ -318,46 +317,6 @@ final class EventTest extends UnitTestCase
     /**
      * @test
      */
-    public function getCombinedSingleViewPageForAvailableEventTypeWithoutSingleViewPageReturnsEmptyString(): void
-    {
-        $eventType = new EventType();
-        $eventType->setData([]);
-        $this->subject->setData(
-            [
-                'event_type' => $eventType,
-                'categories' => new Collection(),
-            ],
-        );
-
-        self::assertSame(
-            '',
-            $this->subject->getCombinedSingleViewPage(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getCombinedSingleViewPageForAvailableEventTypeWithSingleViewPageReturnsSingleViewPageFromEventType(
-    ): void {
-        $eventType = new EventType();
-        $eventType->setData(['single_view_page' => 42]);
-        $this->subject->setData(
-            [
-                'event_type' => $eventType,
-                'categories' => new Collection(),
-            ],
-        );
-
-        self::assertSame(
-            '42',
-            $this->subject->getCombinedSingleViewPage(),
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getCombinedSingleViewPageForAvailableCategoryWithoutSingleViewPageReturnsEmptyString(): void
     {
         $category = new Category();
@@ -375,7 +334,7 @@ final class EventTest extends UnitTestCase
     /**
      * @test
      */
-    public function getCombinedSingleViewPageForAvailableCategoryTypeWithSingleViewPageReturnsSingleViewPageFromCategory(
+    public function getCombinedSingleViewPageForAvailableCategoryWithSingleViewPageReturnsSingleViewPageFromCategory(
     ): void {
         $category = new Category();
         $category->setData(['single_view_page' => 42]);
@@ -436,53 +395,6 @@ final class EventTest extends UnitTestCase
 
         self::assertTrue(
             $subject->hasCombinedSingleViewPage(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getCombinedSingleViewPageUsesDetailsPageInsteadOfEventTypeIfBothAreAvailable(): void
-    {
-        $eventType = new EventType();
-        $eventType->setData(['single_view_page' => 42]);
-
-        $this->subject->setData(
-            [
-                'details_page' => '5',
-                'event_type' => $eventType,
-                'categories' => new Collection(),
-            ],
-        );
-
-        self::assertSame(
-            '5',
-            $this->subject->getCombinedSingleViewPage(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getCombinedSingleViewPageUsesEventTypeInsteadOfCategoriesIfBothAreAvailable(): void
-    {
-        $eventType = new EventType();
-        $eventType->setData(['single_view_page' => 42]);
-        $category = new Category();
-        $category->setData(['single_view_page' => 91]);
-        $categories = new Collection();
-        $categories->add($category);
-
-        $this->subject->setData(
-            [
-                'event_type' => $eventType,
-                'categories' => $categories,
-            ],
-        );
-
-        self::assertSame(
-            '42',
-            $this->subject->getCombinedSingleViewPage(),
         );
     }
 

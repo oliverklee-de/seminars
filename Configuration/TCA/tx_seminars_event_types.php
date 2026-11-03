@@ -24,22 +24,10 @@ $tca = [
                 'required' => true,
             ],
         ],
-        'single_view_page' => [
-            'exclude' => 1,
-            'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_event_types.single_view_page',
-            'config' => [
-                'type' => 'group',
-                'allowed' => 'pages',
-                'default' => 0,
-                'size' => 1,
-                'minitems' => 0,
-                'maxitems' => 1,
-            ],
-        ],
     ],
     'types' => [
         [
-            'showitem' => 'title, single_view_page',
+            'showitem' => 'title',
         ],
     ],
 ];
