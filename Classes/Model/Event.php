@@ -102,14 +102,6 @@ class Event extends AbstractModel
             : $this->hasString('description');
     }
 
-    public function getEventType(): ?EventType
-    {
-        /** @var EventType|null $type */
-        $type = $this->isEventDate() ? $this->getTopic()->getEventType() : $this->getAsModel('event_type');
-
-        return $type;
-    }
-
     /**
      * @return int<0, max> our registration deadline as UNIX time-stamp, will be 0 if this event has no registration
      *                     deadline

@@ -192,6 +192,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+- Drop the legacy `EventType` model and mapper (#5484)
 - Drop the single page per-event-type configuration (#5482)
 - Drop the `modifyDateSpan`/`modifyTimeSpan` hooks (#5460)
 - Drop unused Event methods (#5454)

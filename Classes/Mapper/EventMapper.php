@@ -24,7 +24,6 @@ class EventMapper extends AbstractDataMapper
     protected $relations = [
         'topic' => EventMapper::class,
         'categories' => CategoryMapper::class,
-        'event_type' => EventTypeMapper::class,
         'organizers' => OrganizerMapper::class,
         'owner_feuser' => FrontEndUserMapper::class,
         // @deprecated #1324 will be removed in seminars 6.0
