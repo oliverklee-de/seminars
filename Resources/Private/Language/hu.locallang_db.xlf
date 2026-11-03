@@ -843,10 +843,6 @@
         <source>Title</source>
         <target state="translated">Cím</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_categories.single_view_page">
-        <source>Single view page for events in this category</source>
-        <target state="translated">Az ebbe a kategóriába tartozó események részletes nézet oldala</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_skills">
         <source>Skill</source>
         <target state="translated">Készség</target>
