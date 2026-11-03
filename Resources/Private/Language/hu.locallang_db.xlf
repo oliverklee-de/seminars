@@ -775,10 +775,6 @@
         <source>Title</source>
         <target state="translated">Cím</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_event_types.single_view_page">
-        <source>Single view page for events of this type</source>
-        <target state="translated">Az ilyen típusú események részletes nézet oldala</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_checkboxes">
         <source>Registration option with checkbox</source>
         <target state="translated">Regisztrációs opció jelölőnégyzettel</target>
