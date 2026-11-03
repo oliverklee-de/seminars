@@ -10,9 +10,7 @@ use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Mapper\CategoryMapper;
 use OliverKlee\Seminars\Mapper\EventMapper;
-use OliverKlee\Seminars\Mapper\EventTypeMapper;
 use OliverKlee\Seminars\Model\Category;
-use OliverKlee\Seminars\Model\EventType;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -38,8 +36,6 @@ final class EventTopicMapperTest extends FunctionalTestCase
 
     private CategoryMapper $categoryMapper;
 
-    private EventTypeMapper $eventTypeMapper;
-
     private EventMapper $subject;
 
     protected function setUp(): void
@@ -49,7 +45,6 @@ final class EventTopicMapperTest extends FunctionalTestCase
         $this->testingFramework = $this->get(TestingFramework::class);
 
         $mapperRegistry = $this->get(MapperRegistry::class);
-        $this->eventTypeMapper = $mapperRegistry->getByClassName(EventTypeMapper::class);
         $this->categoryMapper = $mapperRegistry->getByClassName(CategoryMapper::class);
 
         $this->subject = $mapperRegistry->getByClassName(EventMapper::class);
@@ -144,35 +139,5 @@ final class EventTopicMapperTest extends FunctionalTestCase
             (string)$categoryUid,
             $model->getCategories()->getUids(),
         );
-    }
-
-    // Tests regarding getEventType().
-
-    /**
-     * @test
-     */
-    public function getEventTypeForEventTopicWithoutEventTypeReturnsNull(): void
-    {
-        $testingModel = $this->subject->getLoadedTestingModel(
-            ['object_type' => EventInterface::TYPE_EVENT_TOPIC],
-        );
-
-        self::assertNull($testingModel->getEventType());
-    }
-
-    /**
-     * @test
-     */
-    public function getEventTypeForEventTopicWithEventTypeReturnsEventTypeInstance(): void
-    {
-        $eventType = $this->eventTypeMapper->getLoadedTestingModel([]);
-        $testingModel = $this->subject->getLoadedTestingModel(
-            [
-                'object_type' => EventInterface::TYPE_EVENT_TOPIC,
-                'event_type' => $eventType->getUid(),
-            ],
-        );
-
-        self::assertInstanceOf(EventType::class, $testingModel->getEventType());
     }
 }
