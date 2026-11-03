@@ -11,7 +11,9 @@ use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Seminars\BagBuilder\EventBagBuilder;
+use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
+use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use OliverKlee\Seminars\Mapper\EventMapper;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
@@ -43,6 +45,8 @@ class MailNotifier extends AbstractTask
 
     private Context $context;
 
+    private EventRepository $eventRepository;
+
     private bool $dependenciesAreSetUp = false;
 
     /**
@@ -63,6 +67,7 @@ class MailNotifier extends AbstractTask
         $this->eventMapper = GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(EventMapper::class);
         $this->registrationDigest = GeneralUtility::makeInstance(RegistrationDigest::class);
         $this->context = GeneralUtility::makeInstance(Context::class);
+        $this->eventRepository = GeneralUtility::makeInstance(EventRepository::class);
 
         $this->dependenciesAreSetUp = true;
     }
@@ -324,14 +329,15 @@ class MailNotifier extends AbstractTask
     {
         $this->constituteDependencies();
 
-        foreach ($this->eventMapper->findForAutomaticStatusChange() as $event) {
-            $statusWasChanged = $this->eventStatusService->updateStatusAndSave($event);
+        foreach ($this->eventMapper->findForAutomaticStatusChange() as $legacyEvent) {
+            $statusWasChanged = $this->eventStatusService->updateStatusAndSave($legacyEvent);
             if (!$statusWasChanged) {
                 continue;
             }
 
-            $status = $event->getStatus();
-            switch ($status) {
+            $event = $this->eventRepository->findByUid($legacyEvent->getUid());
+            assert($event instanceof EventDateInterface);
+            switch ($legacyEvent->getStatus()) {
                 case EventInterface::STATUS_CONFIRMED:
                     $subject = LocalizationUtility::translate('email-event-confirmed-subject', 'seminars');
                     $body = LocalizationUtility::translate('email-event-confirmed-body', 'seminars');
@@ -344,7 +350,6 @@ class MailNotifier extends AbstractTask
                     $subject = null;
                     $body = null;
             }
-
             if (is_string($subject) && is_string($body)) {
                 $this->emailService->sendEmailToAttendees($event, $subject, $body);
             }

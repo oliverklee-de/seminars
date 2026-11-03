@@ -9,11 +9,9 @@ use OliverKlee\Oelib\Interfaces\MailRole;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Organizer;
-use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use OliverKlee\Seminars\Email\SalutationBuilder;
-use OliverKlee\Seminars\Model\Event;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -30,18 +28,12 @@ class EmailService implements SingletonInterface
 {
     private SalutationBuilder $salutationBuilder;
 
-    private EventRepository $eventRepository;
-
     private RegistrationRepository $registrationRepository;
 
-    public function __construct(
-        SalutationBuilder $salutationBuilder,
-        EventRepository $eventRepository,
-        RegistrationRepository $registrationRepository
-    ) {
+    public function __construct(SalutationBuilder $salutationBuilder, RegistrationRepository $registrationRepository)
+    {
         $this->salutationBuilder = $salutationBuilder;
         $this->registrationRepository = $registrationRepository;
-        $this->eventRepository = $eventRepository;
     }
 
     /**
@@ -49,15 +41,13 @@ class EmailService implements SingletonInterface
      *
      * @param string $body can contain %salutation which will expand to a full salutation with the user's name
      */
-    public function sendEmailToAttendees(Event $legacyEvent, string $subject, string $body): void
+    public function sendEmailToAttendees(EventDateInterface $event, string $subject, string $body): void
     {
-        $eventUid = $legacyEvent->getUid();
+        $eventUid = $event->getUid();
         assert($eventUid > 0);
-        $event = $this->eventRepository->findByUid($eventUid);
-        assert($event instanceof EventDateInterface);
 
         $sender = $this->determineEmailSenderForEvent($event);
-        $firstOrganizer = $legacyEvent->getFirstOrganizer();
+        $firstOrganizer = $event->getFirstOrganizer();
         $registrations = $this->registrationRepository->findRegularRegistrationsByEvent($eventUid);
         foreach ($registrations as $registration) {
             $user = $registration->getUser();
