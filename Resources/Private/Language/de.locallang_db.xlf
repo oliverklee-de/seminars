@@ -841,10 +841,6 @@
         <source>Title</source>
         <target state="final">Titel</target>
       </trans-unit>
-      <trans-unit id="tx_seminars_categories.single_view_page" approved="yes">
-        <source>Single view page for events in this category</source>
-        <target state="final">Seite mit der Einzelansicht für Veranstaltungen in dieser Kategorie</target>
-      </trans-unit>
       <trans-unit id="tx_seminars_skills" approved="yes">
         <source>Skill</source>
         <target state="final">Fähigkeit</target>
