@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\Mapper;
 
-use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
-use OliverKlee\Seminars\Mapper\CategoryMapper;
 use OliverKlee\Seminars\Mapper\EventMapper;
-use OliverKlee\Seminars\Model\Category;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -34,8 +31,6 @@ final class SingleEventMapperTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
-    private CategoryMapper $categoryMapper;
-
     private EventMapper $subject;
 
     protected function setUp(): void
@@ -45,7 +40,6 @@ final class SingleEventMapperTest extends FunctionalTestCase
         $this->testingFramework = $this->get(TestingFramework::class);
 
         $mapperRegistry = $this->get(MapperRegistry::class);
-        $this->categoryMapper = $mapperRegistry->getByClassName(CategoryMapper::class);
 
         $this->subject = $mapperRegistry->getByClassName(EventMapper::class);
     }
@@ -78,66 +72,5 @@ final class SingleEventMapperTest extends FunctionalTestCase
         );
 
         $testingModel->getTopic();
-    }
-
-    // Tests regarding getCategories().
-
-    /**
-     * @test
-     */
-    public function getCategoriesForSingleEventReturnsListInstance(): void
-    {
-        $testingModel = $this->subject->getLoadedTestingModel(
-            ['object_type' => EventInterface::TYPE_SINGLE_EVENT],
-        );
-
-        self::assertInstanceOf(Collection::class, $testingModel->getCategories());
-    }
-
-    /**
-     * @test
-     */
-    public function getCategoriesForSingleEventWithOneCategoryReturnsListOfCategories(): void
-    {
-        $uid = $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            ['object_type' => EventInterface::TYPE_SINGLE_EVENT],
-        );
-        $categoryUid = $this->categoryMapper->getNewGhost()->getUid();
-        \assert($categoryUid > 0);
-        $this->testingFramework->createRelationAndUpdateCounter(
-            'tx_seminars_seminars',
-            $uid,
-            $categoryUid,
-            'categories',
-        );
-
-        $model = $this->subject->find($uid);
-        self::assertInstanceOf(Category::class, $model->getCategories()->first());
-    }
-
-    /**
-     * @test
-     */
-    public function getCategoriesForSingleEventWithOneCategoryReturnsOneCategory(): void
-    {
-        $uid = $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            ['object_type' => EventInterface::TYPE_SINGLE_EVENT],
-        );
-        $categoryUid = $this->categoryMapper->getNewGhost()->getUid();
-        \assert($categoryUid > 0);
-        $this->testingFramework->createRelationAndUpdateCounter(
-            'tx_seminars_seminars',
-            $uid,
-            $categoryUid,
-            'categories',
-        );
-
-        $model = $this->subject->find($uid);
-        self::assertSame(
-            (string)$categoryUid,
-            $model->getCategories()->getUids(),
-        );
     }
 }

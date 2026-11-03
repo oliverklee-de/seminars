@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\Tests\LegacyFunctional\Mapper;
 
-use OliverKlee\Oelib\DataStructures\Collection;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
-use OliverKlee\Seminars\Mapper\CategoryMapper;
 use OliverKlee\Seminars\Mapper\EventMapper;
-use OliverKlee\Seminars\Model\Category;
 use OliverKlee\Seminars\Model\Event;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -35,8 +32,6 @@ final class EventDateMapperTest extends FunctionalTestCase
 
     private TestingFramework $testingFramework;
 
-    private CategoryMapper $categoryMapper;
-
     private EventMapper $subject;
 
     protected function setUp(): void
@@ -46,7 +41,6 @@ final class EventDateMapperTest extends FunctionalTestCase
         $this->testingFramework = $this->get(TestingFramework::class);
 
         $mapperRegistry = $this->get(MapperRegistry::class);
-        $this->categoryMapper = $mapperRegistry->getByClassName(CategoryMapper::class);
 
         $this->subject = $mapperRegistry->getByClassName(EventMapper::class);
     }
@@ -92,80 +86,5 @@ final class EventDateMapperTest extends FunctionalTestCase
         );
 
         self::assertInstanceOf(Event::class, $testingModel->getTopic());
-    }
-
-    //////////////////////////////////////
-    // Tests regarding getCategories().
-    //////////////////////////////////////
-
-    /**
-     * @test
-     */
-    public function getCategoriesForEventDateReturnsListInstance(): void
-    {
-        $topic = $this->subject->getLoadedTestingModel(['object_type' => EventInterface::TYPE_EVENT_TOPIC]);
-        $date = $this->subject->getLoadedTestingModel(
-            [
-                'object_type' => EventInterface::TYPE_EVENT_DATE,
-                'topic' => $topic->getUid(),
-            ],
-        );
-
-        self::assertInstanceOf(Collection::class, $date->getCategories());
-    }
-
-    /**
-     * @test
-     */
-    public function getCategoriesForEventDateWithOneCategoryReturnsListOfCategories(): void
-    {
-        $topicUid = $this->testingFramework->createRecord('tx_seminars_seminars');
-        $uid = $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            [
-                'object_type' => EventInterface::TYPE_EVENT_DATE,
-                'topic' => $topicUid,
-            ],
-        );
-        $categoryUid = $this->categoryMapper->getNewGhost()->getUid();
-        \assert($categoryUid > 0);
-        $this->testingFramework->createRelationAndUpdateCounter(
-            'tx_seminars_seminars',
-            $topicUid,
-            $categoryUid,
-            'categories',
-        );
-
-        $model = $this->subject->find($uid);
-        self::assertInstanceOf(Category::class, $model->getCategories()->first());
-    }
-
-    /**
-     * @test
-     */
-    public function getCategoriesForEventDateWithOneCategoryReturnsOneCategory(): void
-    {
-        $topicUid = $this->testingFramework->createRecord('tx_seminars_seminars');
-        $uid = $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            [
-                'object_type' => EventInterface::TYPE_EVENT_DATE,
-                'topic' => $topicUid,
-            ],
-        );
-        $categoryUid = $this->categoryMapper->getNewGhost()->getUid();
-        \assert($categoryUid > 0);
-        $this->testingFramework->createRelationAndUpdateCounter(
-            'tx_seminars_seminars',
-            $topicUid,
-            $categoryUid,
-            'categories',
-        );
-
-        $model = $this->subject->find($uid);
-        self::assertSame(
-            (string)$categoryUid,
-            $model->getCategories()->getUids(),
-        );
     }
 }

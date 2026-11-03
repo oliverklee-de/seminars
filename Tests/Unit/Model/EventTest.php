@@ -269,7 +269,7 @@ final class EventTest extends UnitTestCase
      */
     public function getCombinedSingleViewPageInitiallyReturnsEmptyString(): void
     {
-        $this->subject->setData(['categories' => new Collection()]);
+        $this->subject->setData([]);
 
         self::assertSame(
             '',
@@ -282,12 +282,7 @@ final class EventTest extends UnitTestCase
      */
     public function getCombinedSingleViewPageForAvailableDetailsPageUidReturnsTheDetailsPageUid(): void
     {
-        $this->subject->setData(
-            [
-                'details_page' => '5',
-                'categories' => new Collection(),
-            ],
-        );
+        $this->subject->setData(['details_page' => '5']);
 
         self::assertSame(
             '5',
@@ -300,12 +295,7 @@ final class EventTest extends UnitTestCase
      */
     public function getCombinedSingleViewPageForAvailableDetailsPageUrlReturnsTheDetailsPageUrl(): void
     {
-        $this->subject->setData(
-            [
-                'details_page' => 'www.example.com',
-                'categories' => new Collection(),
-            ],
-        );
+        $this->subject->setData(['details_page' => 'www.example.com']);
 
         self::assertSame(
             'www.example.com',

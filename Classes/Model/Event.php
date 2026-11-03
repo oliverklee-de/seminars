@@ -71,21 +71,6 @@ class Event extends AbstractModel
     }
 
     /**
-     * @return Collection<Category>
-     */
-    public function getCategories(): Collection
-    {
-        if ($this->isEventDate()) {
-            return $this->getTopic()->getCategories();
-        }
-
-        /** @var Collection<Category> $categories */
-        $categories = $this->getAsCollection('categories');
-
-        return $categories;
-    }
-
-    /**
      * @return string our teaser, might be empty
      */
     public function getTeaser(): string
