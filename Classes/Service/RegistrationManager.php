@@ -624,7 +624,7 @@ class RegistrationManager implements SingletonInterface
         $emailBuilder->to(...$recipients);
         $emailBuilder->build()->send();
 
-        if ($event->hasEnoughAttendances() && !$event->haveOrganizersBeenNotifiedAboutEnoughAttendees()) {
+        if ($event->hasEnoughAttendances()) {
             $event->setOrganizersBeenNotifiedAboutEnoughAttendees();
             $event->commitToDatabase();
         }
