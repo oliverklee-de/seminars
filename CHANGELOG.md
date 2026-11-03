@@ -192,8 +192,9 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+- Drop the per-category single view page configuration (#5485)
 - Drop the legacy `EventType` model and mapper (#5484)
-- Drop the single page per-event-type configuration (#5482)
+- Drop the per-event-type single view page configuration (#5482)
 - Drop the `modifyDateSpan`/`modifyTimeSpan` hooks (#5460)
 - Drop unused Event methods (#5454)
 - Drop the legacy "my managed events" view (#5141, #5146)

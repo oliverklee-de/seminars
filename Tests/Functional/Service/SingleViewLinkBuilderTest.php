@@ -101,33 +101,6 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function createRelativeUrlWithCategoryWithoutSingleViewPageUsesPageFromConfiguration(): void
-    {
-        $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(3);
-
-        $result = $this->subject->createRelativeUrlForEvent($event);
-
-        $expected = '/defaultSingleView?tx_seminars_pi1%5BshowUid%5D=3';
-        self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createRelativeUrlWithCategoryWithSingleViewPageUsesPageFromCategory(): void
-    {
-        $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(5);
-
-        $result = $this->subject->createRelativeUrlForEvent($event);
-
-        self::assertStringContainsString('/categorySpecificSingleView?tx_seminars_pi1%5BshowUid%5D=5', $result);
-    }
-
-    /**
-     * @test
-     */
     public function createRelativeUrlWithIndividualUrlUsesIndividualUrl(): void
     {
         $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
@@ -175,33 +148,5 @@ final class SingleViewLinkBuilderTest extends FunctionalTestCase
         $result = $this->subject->createAbsoluteUrlForEvent($event);
 
         self::assertSame('http://www.example.com', $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createAbsoluteUrlWithCategoryWithoutSingleViewPageUsesPageFromConfiguration(): void
-    {
-        $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(3);
-
-        $result = $this->subject->createAbsoluteUrlForEvent($event);
-
-        $expected = 'http://typo3-test.dev/defaultSingleView?tx_seminars_pi1%5BshowUid%5D=3';
-        self::assertStringContainsString($expected, $result);
-    }
-
-    /**
-     * @test
-     */
-    public function createAbsoluteUrlWithCategoryWithSingleViewPageUsesPageFromCategory(): void
-    {
-        $this->configuration->setAsInteger('detailPID', self::DEFAULT_SINGLE_VIEW_PAGE_UID);
-        $event = $this->eventMapper->find(5);
-
-        $result = $this->subject->createAbsoluteUrlForEvent($event);
-
-        $expected = 'http://typo3-test.dev/categorySpecificSingleView?tx_seminars_pi1%5BshowUid%5D=5';
-        self::assertStringContainsString($expected, $result);
     }
 }

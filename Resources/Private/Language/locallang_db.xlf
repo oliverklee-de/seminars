@@ -632,9 +632,6 @@
       <trans-unit id="tx_seminars_categories.title">
         <source>Title</source>
       </trans-unit>
-      <trans-unit id="tx_seminars_categories.single_view_page">
-        <source>Single view page for events in this category</source>
-      </trans-unit>
       <trans-unit id="tx_seminars_skills">
         <source>Skill</source>
       </trans-unit>
