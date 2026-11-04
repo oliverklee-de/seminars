@@ -188,11 +188,11 @@ jobs:
       matrix:
         include:
           - typo3-version: "11.5"
-            php-version: "7.4"
+            php-version: "8.1"
             dbms: "mysql"
             composer-dependencies: Min
           - typo3-version: "11.5"
-            php-version: "7.4"
+            php-version: "8.1"
             dbms: "mysql"
             composer-dependencies: Max
           - typo3-version: "11.5"
