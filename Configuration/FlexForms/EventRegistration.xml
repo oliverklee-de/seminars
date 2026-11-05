@@ -3,239 +3,209 @@
     <sheets>
         <pagesAndFolders>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>
-                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.tab.pagesAndFolders
-                    </sheetTitle>
-                </TCEforms>
+                <sheetTitle>
+                    LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.tab.pagesAndFolders
+                </sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.pageForMissingEvent>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.pageForMissingEvent
-                            </label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <minitems>1</minitems>
-                                <maxitems>1</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.pageForMissingEvent
+                        </label>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <minitems>1</minitems>
+                            <maxitems>1</maxitems>
+                            <hideSuggest>1</hideSuggest>
+                        </config>
                     </settings.pageForMissingEvent>
                     <settings.loginPage>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.loginPage
-                            </label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <minitems>1</minitems>
-                                <maxitems>1</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.loginPage
+                        </label>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <minitems>1</minitems>
+                            <maxitems>1</maxitems>
+                            <hideSuggest>1</hideSuggest>
+                        </config>
                     </settings.loginPage>
                     <settings.termsAndConditionsPage>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.termsAndConditionsPage
-                            </label>
-                            <description>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.termsAndConditionsPage.description
-                            </description>
-                            <onChange>reload</onChange>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.termsAndConditionsPage
+                        </label>
+                        <description>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.termsAndConditionsPage.description
+                        </description>
+                        <onChange>reload</onChange>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <minitems>0</minitems>
+                            <maxitems>1</maxitems>
+                            <hideSuggest>1</hideSuggest>
+                        </config>
                     </settings.termsAndConditionsPage>
                     <settings.termsAndConditionsLinkTitle>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.termsAndConditionsLinkTitle
-                            </label>
-                            <displayCond>FIELD:settings.termsAndConditionsPage:&gt;:0</displayCond>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,required</eval>
-                                <required>1</required>
-                                <size>50</size>
-                                <max>128</max>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.termsAndConditionsLinkTitle
+                        </label>
+                        <displayCond>FIELD:settings.termsAndConditionsPage:&gt;:0</displayCond>
+                        <config>
+                            <type>input</type>
+                            <eval>trim,required</eval>
+                            <required>1</required>
+                            <size>50</size>
+                            <max>128</max>
+                        </config>
                     </settings.termsAndConditionsLinkTitle>
                     <settings.additionalTermsPage>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalTermsPage
-                            </label>
-                            <description>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalTermsPage.description
-                            </description>
-                            <onChange>reload</onChange>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalTermsPage
+                        </label>
+                        <description>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalTermsPage.description
+                        </description>
+                        <onChange>reload</onChange>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <minitems>0</minitems>
+                            <maxitems>1</maxitems>
+                            <hideSuggest>1</hideSuggest>
+                        </config>
                     </settings.additionalTermsPage>
                     <settings.additionalTermsLinkTitle>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalTermsLinkTitle
-                            </label>
-                            <displayCond>FIELD:settings.additionalTermsPage:&gt;:0</displayCond>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,required</eval>
-                                <required>1</required>
-                                <size>50</size>
-                                <max>128</max>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalTermsLinkTitle
+                        </label>
+                        <displayCond>FIELD:settings.additionalTermsPage:&gt;:0</displayCond>
+                        <config>
+                            <type>input</type>
+                            <eval>trim,required</eval>
+                            <required>1</required>
+                            <size>50</size>
+                            <max>128</max>
+                        </config>
                     </settings.additionalTermsLinkTitle>
                     <settings.registrationRecordsStorageFolder>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.registrationRecordsStorageFolder
-                            </label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <minitems>1</minitems>
-                                <maxitems>1</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.registrationRecordsStorageFolder
+                        </label>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <minitems>1</minitems>
+                            <maxitems>1</maxitems>
+                            <hideSuggest>1</hideSuggest>
+                        </config>
                     </settings.registrationRecordsStorageFolder>
                     <settings.additionalPersonsStorageFolder>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalPersonsStorageFolder
-                            </label>
-                            <description>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalPersonsStorageFolder.description
-                            </description>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalPersonsStorageFolder
+                        </label>
+                        <description>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.additionalPersonsStorageFolder.description
+                        </description>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <minitems>0</minitems>
+                            <maxitems>1</maxitems>
+                            <hideSuggest>1</hideSuggest>
+                        </config>
                     </settings.additionalPersonsStorageFolder>
                 </el>
             </ROOT>
         </pagesAndFolders>
         <personsToRegister>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>
-                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.tab.personsToRegister
-                    </sheetTitle>
-                </TCEforms>
+                <sheetTitle>
+                    LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.tab.personsToRegister
+                </sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.maximumBookableSeats>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.maximumBookableSeats
-                            </label>
-                            <config>
-                                <type>input</type>
-                                <range>
-                                    <lower>1</lower>
-                                    <upper>999</upper>
-                                </range>
-                                <size>3</size>
-                                <max>3</max>
-                                <eval>int,nospace,trim</eval>
-                                <default>10</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.maximumBookableSeats
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <range>
+                                <lower>1</lower>
+                                <upper>999</upper>
+                            </range>
+                            <size>3</size>
+                            <max>3</max>
+                            <eval>int,nospace,trim</eval>
+                            <default>10</default>
+                        </config>
                     </settings.maximumBookableSeats>
                     <settings.registerThemselvesDefault>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.registerThemselvesDefault
-                            </label>
-                            <config>
-                                <type>check</type>
-                                <default>1</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.registerThemselvesDefault
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>1</default>
+                        </config>
                     </settings.registerThemselvesDefault>
                     <settings.showEmailFieldForAdditionalAttendees>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.showEmailFieldForAdditionalAttendees
-                            </label>
-                            <config>
-                                <type>check</type>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.showEmailFieldForAdditionalAttendees
+                        </label>
+                        <config>
+                            <type>check</type>
+                        </config>
                     </settings.showEmailFieldForAdditionalAttendees>
                 </el>
             </ROOT>
         </personsToRegister>
         <formFields>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>
-                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.tab.formFields
-                    </sheetTitle>
-                </TCEforms>
+                <sheetTitle>
+                    LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.tab.formFields
+                </sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.fieldsToShow>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.fieldsToShow
-                            </label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectCheckBox</renderType>
-                                <minitems>0</minitems>
-                                <maxitems>99</maxitems>
-                                <itemsProcFunc>
-                                    OliverKlee\Seminars\Configuration\EventRegistrationFlexForms->buildFields
-                                </itemsProcFunc>
-                                <itemGroups>
-                                    <inputFields>
-                                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.fieldsToShow.group.inputFields
-                                    </inputFields>
-                                    <billingAddress>
-                                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.fieldsToShow.group.billingAddress
-                                    </billingAddress>
-                                    <confirmationPage>
-                                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.fieldsToShow.group.confirmationPage
-                                    </confirmationPage>
-                                </itemGroups>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.fieldsToShow
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <minitems>0</minitems>
+                            <maxitems>99</maxitems>
+                            <itemsProcFunc>
+                                OliverKlee\Seminars\Configuration\EventRegistrationFlexForms->buildFields
+                            </itemsProcFunc>
+                            <itemGroups>
+                                <inputFields>
+                                    LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.fieldsToShow.group.inputFields
+                                </inputFields>
+                                <billingAddress>
+                                    LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.fieldsToShow.group.billingAddress
+                                </billingAddress>
+                                <confirmationPage>
+                                    LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventRegistration.settings.fieldsToShow.group.confirmationPage
+                                </confirmationPage>
+                            </itemGroups>
+                        </config>
                     </settings.fieldsToShow>
                 </el>
             </ROOT>
