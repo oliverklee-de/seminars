@@ -263,7 +263,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
-- Avoid obsolete `TCEFORMS` wrapper from FlexForms in TYPO3 >= 12(#5492)
+- Avoid obsolete `TCEFORMS` wrapper from FlexForms in TYPO3 >= 12 (#5492, #5493)
 - Use native ES6 JavaScript modules in the BE in TYPO3 >= 12LTS (#5321)
 - Avoid the deprecated `renderStatic` (#5233, #5237)
 - Remove extraneous closing braces in Fluid templates (#5232)
