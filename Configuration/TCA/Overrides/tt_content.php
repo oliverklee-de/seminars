@@ -1,5 +1,6 @@
 <?php
 
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
@@ -18,10 +19,17 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['seminars_pi1'] = 'recursive,pages';
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['seminars_pi1'] = 'pi_flexform';
 
-    ExtensionManagementUtility::addPiFlexFormValue(
-        'seminars_pi1',
-        'FILE:EXT:seminars/Configuration/FlexForms/flexforms_pi1.xml',
-    );
+    if ((new Typo3Version())->getMajorVersion() >= 12) {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_pi1',
+            'FILE:EXT:seminars/Configuration/FlexForms/flexforms_pi1.xml',
+        );
+    } else {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_pi1',
+            'FILE:EXT:seminars/Configuration/FlexForms/flexforms_pi1-legacy.xml',
+        );
+    }
 
     //
     // Event archive
@@ -42,10 +50,17 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
     // These two commands add the flexform configuration for the plugin.
     // @phpstan-ignore-next-line We know that this array key exists and is an array.
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['seminars_eventarchive'] = 'pi_flexform';
-    ExtensionManagementUtility::addPiFlexFormValue(
-        'seminars_eventarchive',
-        'FILE:EXT:seminars/Configuration/FlexForms/EventArchive.xml',
-    );
+    if ((new Typo3Version())->getMajorVersion() >= 12) {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_eventarchive',
+            'FILE:EXT:seminars/Configuration/FlexForms/EventArchive.xml',
+        );
+    } else {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_eventarchive',
+            'FILE:EXT:seminars/Configuration/FlexForms/EventArchive-legacy.xml',
+        );
+    }
 
     //
     // Event outlook
@@ -66,10 +81,17 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
     // These two commands add the flexform configuration for the plugin.
     // @phpstan-ignore-next-line We know that this array key exists and is an array.
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['seminars_eventoutlook'] = 'pi_flexform';
-    ExtensionManagementUtility::addPiFlexFormValue(
-        'seminars_eventoutlook',
-        'FILE:EXT:seminars/Configuration/FlexForms/EventOutlook.xml',
-    );
+    if ((new Typo3Version())->getMajorVersion() >= 12) {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_eventoutlook',
+            'FILE:EXT:seminars/Configuration/FlexForms/EventOutlook.xml',
+        );
+    } else {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_eventoutlook',
+            'FILE:EXT:seminars/Configuration/FlexForms/EventOutlook-legacy.xml',
+        );
+    }
 
     //
     // Event single view
@@ -91,10 +113,17 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
     // These two commands add the flexform configuration for the plugin.
     // @phpstan-ignore-next-line We know that this array key exists and is an array.
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['seminars_eventsingleview'] = 'pi_flexform';
-    ExtensionManagementUtility::addPiFlexFormValue(
-        'seminars_eventsingleview',
-        'FILE:EXT:seminars/Configuration/FlexForms/EventSingleView.xml',
-    );
+    if ((new Typo3Version())->getMajorVersion() >= 12) {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_eventsingleview',
+            'FILE:EXT:seminars/Configuration/FlexForms/EventSingleView.xml',
+        );
+    } else {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_eventsingleview',
+            'FILE:EXT:seminars/Configuration/FlexForms/EventSingleView-legacy.xml',
+        );
+    }
 
     //
     // Registration form
@@ -116,10 +145,17 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
     // These two commands add the flexform configuration for the plugin.
     // @phpstan-ignore-next-line We know that this array key exists and is an array.
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['seminars_eventregistration'] = 'pi_flexform';
-    ExtensionManagementUtility::addPiFlexFormValue(
-        'seminars_eventregistration',
-        'FILE:EXT:seminars/Configuration/FlexForms/EventRegistration.xml',
-    );
+    if ((new Typo3Version())->getMajorVersion() >= 12) {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_eventregistration',
+            'FILE:EXT:seminars/Configuration/FlexForms/EventRegistration.xml',
+        );
+    } else {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_eventregistration',
+            'FILE:EXT:seminars/Configuration/FlexForms/EventRegistration-legacy.xml',
+        );
+    }
 
     //
     // FE editor
@@ -141,10 +177,17 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
     // These two commands add the flexform configuration for the plugin.
     // @phpstan-ignore-next-line We know that this array key exists and is an array.
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['seminars_frontendeditor'] = 'pi_flexform';
-    ExtensionManagementUtility::addPiFlexFormValue(
-        'seminars_frontendeditor',
-        'FILE:EXT:seminars/Configuration/FlexForms/FrontEndEditor.xml',
-    );
+    if ((new Typo3Version())->getMajorVersion() >= 12) {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_frontendeditor',
+            'FILE:EXT:seminars/Configuration/FlexForms/FrontEndEditor.xml',
+        );
+    } else {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_frontendeditor',
+            'FILE:EXT:seminars/Configuration/FlexForms/FrontEndEditor-legacy.xml',
+        );
+    }
 
     //
     // "My registrations" list
@@ -166,8 +209,15 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
     // These two commands add the flexform configuration for the plugin.
     // @phpstan-ignore-next-line We know that this array key exists and is an array.
     $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['seminars_myregistrations'] = 'pi_flexform';
-    ExtensionManagementUtility::addPiFlexFormValue(
-        'seminars_myregistrations',
-        'FILE:EXT:seminars/Configuration/FlexForms/MyRegistrations.xml',
-    );
+    if ((new Typo3Version())->getMajorVersion() >= 12) {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_myregistrations',
+            'FILE:EXT:seminars/Configuration/FlexForms/MyRegistrations.xml',
+        );
+    } else {
+        ExtensionManagementUtility::addPiFlexFormValue(
+            'seminars_myregistrations',
+            'FILE:EXT:seminars/Configuration/FlexForms/MyRegistrations-legacy.xml',
+        );
+    }
 })();

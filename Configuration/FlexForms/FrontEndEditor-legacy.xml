@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DataStructure>
+    <sheets>
+        <general>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.eventCreation
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.eventType>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.eventCreation.eventType
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.eventCreation.eventType.singleEvents
+                                        </numIndex>
+                                        <numIndex index="1">singleEvents</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.eventCreation.eventType.eventDates
+                                        </numIndex>
+                                        <numIndex index="1">eventDates</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.eventType>
+                    <settings.folderForCreatedEvents>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.eventCreation.folderForCreatedEvents
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <minitems>1</minitems>
+                                <maxitems>1</maxitems>
+                                <hideSuggest>1</hideSuggest>
+                            </config>
+                        </TCEforms>
+                    </settings.folderForCreatedEvents>
+                </el>
+            </ROOT>
+        </general>
+        <displayOptions>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.fieldsToShow>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectCheckBox</renderType>
+                                <minitems>1</minitems>
+                                <maxitems>99</maxitems>
+                                <default>
+                                    description,eventType,categories,dateAndTime,earlyBirdDeadline,registrationDeadline,registrationRequired,waitingList,minimumNumberOfRegistrations,maximumNumberOfRegistrations,numberOfOfflineRegistrations,standardPrice,earlyBirdPrice,venues,speakers
+                                </default>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.description
+                                        </numIndex>
+                                        <numIndex index="1">description</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.eventType
+                                        </numIndex>
+                                        <numIndex index="1">eventType</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.categories
+                                        </numIndex>
+                                        <numIndex index="1">categories</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.dateAndTime
+                                        </numIndex>
+                                        <numIndex index="1">dateAndTime</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.earlyBirdDeadline
+                                        </numIndex>
+                                        <numIndex index="1">earlyBirdDeadline</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.registrationDeadline
+                                        </numIndex>
+                                        <numIndex index="1">registrationDeadline</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.registrationRequired
+                                        </numIndex>
+                                        <numIndex index="1">registrationRequired</numIndex>
+                                    </numIndex>
+                                    <numIndex index="7" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.waitingList
+                                        </numIndex>
+                                        <numIndex index="1">waitingList</numIndex>
+                                    </numIndex>
+                                    <numIndex index="8" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.minimumNumberOfRegistrations
+                                        </numIndex>
+                                        <numIndex index="1">minimumNumberOfRegistrations</numIndex>
+                                    </numIndex>
+                                    <numIndex index="9" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.maximumNumberOfRegistrations
+                                        </numIndex>
+                                        <numIndex index="1">maximumNumberOfRegistrations</numIndex>
+                                    </numIndex>
+                                    <numIndex index="10" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.numberOfOfflineRegistrations
+                                        </numIndex>
+                                        <numIndex index="1">numberOfOfflineRegistrations</numIndex>
+                                    </numIndex>
+                                    <numIndex index="11" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.standardPrice
+                                        </numIndex>
+                                        <numIndex index="1">standardPrice</numIndex>
+                                    </numIndex>
+                                    <numIndex index="12" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.earlyBirdPrice
+                                        </numIndex>
+                                        <numIndex index="1">earlyBirdPrice</numIndex>
+                                    </numIndex>
+                                    <numIndex index="13" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.venues
+                                        </numIndex>
+                                        <numIndex index="1">venues</numIndex>
+                                    </numIndex>
+                                    <numIndex index="14" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.speakers
+                                        </numIndex>
+                                        <numIndex index="1">speakers</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.fieldsToShow>
+                </el>
+            </ROOT>
+        </displayOptions>
+        <registrationList>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.registrationFieldsToShow>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectCheckBox</renderType>
+                                <minitems>1</minitems>
+                                <maxitems>99</maxitems>
+                                <default>
+                                    counter,membershipNumber,name,address,email,telephone,dateOfBirth,registrationDate
+                                </default>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.counter
+                                        </numIndex>
+                                        <numIndex index="1">counter</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.membershipNumber
+                                        </numIndex>
+                                        <numIndex index="1">membershipNumber</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.name
+                                        </numIndex>
+                                        <numIndex index="1">name</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.address
+                                        </numIndex>
+                                        <numIndex index="1">address</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.email
+                                        </numIndex>
+                                        <numIndex index="1">email</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.telephone
+                                        </numIndex>
+                                        <numIndex index="1">telephone</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.dateOfBirth
+                                        </numIndex>
+                                        <numIndex index="1">dateOfBirth</numIndex>
+                                    </numIndex>
+                                    <numIndex index="7" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.registrationDate
+                                        </numIndex>
+                                        <numIndex index="1">registrationDate</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.registrationFieldsToShow>
+                </el>
+            </ROOT>
+        </registrationList>
+    </sheets>
+</T3DataStructure>

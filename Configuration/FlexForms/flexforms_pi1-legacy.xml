@@ -1,0 +1,658 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.sheet_general
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <what_to_display>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.what_to_display
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.seminar_list
+                                        </numIndex>
+                                        <numIndex index="1">seminar_list</numIndex>
+                                    </numIndex>
+                                    <numIndex index="12" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.single_view
+                                        </numIndex>
+                                        <numIndex index="1">single_view</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.topic_list
+                                        </numIndex>
+                                        <numIndex index="1">topic_list</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.my_events
+                                        </numIndex>
+                                        <numIndex index="1">my_events</numIndex>
+                                    </numIndex>
+                                    <numIndex index="10" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.category_list
+                                        </numIndex>
+                                        <numIndex index="1">category_list</numIndex>
+                                    </numIndex>
+                                </items>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </what_to_display>
+                    <listPID>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.listPID
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                                <hideSuggest>1</hideSuggest>
+                            </config>
+                        </TCEforms>
+                    </listPID>
+                    <detailPID>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.detailPID
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                                <hideSuggest>1</hideSuggest>
+                            </config>
+                        </TCEforms>
+                    </detailPID>
+                    <myEventsPID>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.myEventsPID
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                                <hideSuggest>1</hideSuggest>
+                            </config>
+                        </TCEforms>
+                    </myEventsPID>
+                    <registerPID>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.registerPID
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                                <hideSuggest>1</hideSuggest>
+                            </config>
+                        </TCEforms>
+                    </registerPID>
+                    <loginPID>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.loginPID
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                                <hideSuggest>1</hideSuggest>
+                            </config>
+                        </TCEforms>
+                    </loginPID>
+                    <limitFileDownloadToAttendees>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.limitFileDownloadToAttendees
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </limitFileDownloadToAttendees>
+                    <pages>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.startingpoint
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>pages</allowed>
+                                <size>3</size>
+                                <minitems>0</minitems>
+                                <maxitems>99</maxitems>
+                                <hideSuggest>1</hideSuggest>
+                            </config>
+                        </TCEforms>
+                    </pages>
+                    <recursive>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.0
+                                        </numIndex>
+                                        <numIndex index="1">0</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.1
+                                        </numIndex>
+                                        <numIndex index="1">1</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.2
+                                        </numIndex>
+                                        <numIndex index="1">2</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.3
+                                        </numIndex>
+                                        <numIndex index="1">3</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.4
+                                        </numIndex>
+                                        <numIndex index="1">4</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.5
+                                        </numIndex>
+                                        <numIndex index="1">250</numIndex>
+                                    </numIndex>
+                                </items>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                                <size>1</size>
+                            </config>
+                        </TCEforms>
+                    </recursive>
+                </el>
+            </ROOT>
+        </sDEF>
+        <s_listView>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.sheet_list_view
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <displaySearchFormFields>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.displaySearchFormFields
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectCheckBox</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.type
+                                        </numIndex>
+                                        <numIndex index="1">event_type</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.city
+                                        </numIndex>
+                                        <numIndex index="1">city</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.place
+                                        </numIndex>
+                                        <numIndex index="1">place</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.organizer
+                                        </numIndex>
+                                        <numIndex index="1">organizer</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.categories
+                                        </numIndex>
+                                        <numIndex index="1">categories</numIndex>
+                                    </numIndex>
+                                    <numIndex index="7" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.date
+                                        </numIndex>
+                                        <numIndex index="1">date</numIndex>
+                                    </numIndex>
+                                    <numIndex index="8" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.age
+                                        </numIndex>
+                                        <numIndex index="1">age</numIndex>
+                                    </numIndex>
+                                    <numIndex index="9" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.price
+                                        </numIndex>
+                                        <numIndex index="1">price</numIndex>
+                                    </numIndex>
+                                    <numIndex index="10" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.textField
+                                        </numIndex>
+                                        <numIndex index="1">full_text_search</numIndex>
+                                    </numIndex>
+                                </items>
+                                <minitems>0</minitems>
+                                <maxitems>99</maxitems>
+                                <renderMode>checkbox</renderMode>
+                            </config>
+                        </TCEforms>
+                    </displaySearchFormFields>
+                    <numberOfYearsInDateFilter>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.numberOfYearsInDateFilter
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.fromTsSetup
+                                        </numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">1</numIndex>
+                                        <numIndex index="1">1</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">2</numIndex>
+                                        <numIndex index="1">2</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">3</numIndex>
+                                        <numIndex index="1">3</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">4</numIndex>
+                                        <numIndex index="1">4</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">5</numIndex>
+                                        <numIndex index="1">5</numIndex>
+                                    </numIndex>
+                                </items>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </numberOfYearsInDateFilter>
+                    <limitListViewToEventTypes>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.limitListViewToEventTypes
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <foreign_table>tx_seminars_event_types</foreign_table>
+                                <renderType>selectCheckBox</renderType>
+                                <maxitems>100</maxitems>
+                                <renderMode>checkbox</renderMode>
+                            </config>
+                        </TCEforms>
+                    </limitListViewToEventTypes>
+                    <limitListViewToCategories>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.limitListViewToCategories
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectCheckBox</renderType>
+                                <foreign_table>tx_seminars_categories</foreign_table>
+                                <maxitems>100</maxitems>
+                                <renderMode>checkbox</renderMode>
+                            </config>
+                        </TCEforms>
+                    </limitListViewToCategories>
+                    <limitListViewToPlaces>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.limitListViewToPlaces
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectCheckBox</renderType>
+                                <foreign_table>tx_seminars_sites</foreign_table>
+                                <maxitems>100</maxitems>
+                                <renderMode>checkbox</renderMode>
+                            </config>
+                        </TCEforms>
+                    </limitListViewToPlaces>
+                    <limitListViewToOrganizers>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.limitListViewToOrganizers
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectCheckBox</renderType>
+                                <foreign_table>tx_seminars_organizers</foreign_table>
+                                <maxitems>100</maxitems>
+                                <renderMode>checkbox</renderMode>
+                            </config>
+                        </TCEforms>
+                    </limitListViewToOrganizers>
+                    <showOnlyEventsWithVacancies>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.showOnlyEventsWithVacancies
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </showOnlyEventsWithVacancies>
+                    <linkToSingleView>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.linkToSingleView
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.fromTsSetup
+                                        </numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.always
+                                        </numIndex>
+                                        <numIndex index="1">always</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.never
+                                        </numIndex>
+                                        <numIndex index="1">never</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.onlyForNonEmptyDescription
+                                        </numIndex>
+                                        <numIndex index="1">onlyForNonEmptyDescription</numIndex>
+                                    </numIndex>
+                                </items>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </linkToSingleView>
+                </el>
+            </ROOT>
+        </s_listView>
+        <s_template_special>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>
+                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.sheet_template_and_special
+                    </sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <showSingleEvent>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.showSingleEvent
+                            </label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>tx_seminars_seminars</allowed>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                                <hideSuggest>1</hideSuggest>
+                            </config>
+                        </TCEforms>
+                    </showSingleEvent>
+                    <timeframeInList>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList1
+                                        </numIndex>
+                                        <numIndex index="1">all</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList2
+                                        </numIndex>
+                                        <numIndex index="1">past</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList3
+                                        </numIndex>
+                                        <numIndex index="1">pastAndCurrent</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList4
+                                        </numIndex>
+                                        <numIndex index="1">current</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList5
+                                        </numIndex>
+                                        <numIndex index="1">currentAndUpcoming</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList6
+                                        </numIndex>
+                                        <numIndex index="1">upcoming</numIndex>
+                                    </numIndex>
+                                    <numIndex index="7" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList7
+                                        </numIndex>
+                                        <numIndex index="1">deadlineNotOver</numIndex>
+                                    </numIndex>
+                                    <numIndex index="8" type="array">
+                                        <numIndex index="0">
+                                            LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList8
+                                        </numIndex>
+                                        <numIndex index="1">today</numIndex>
+                                    </numIndex>
+                                </items>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </timeframeInList>
+                    <hideColumns>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.hideColumns
+                            </label>
+                            <config>
+                                <type>input</type>
+                                <size>45</size>
+                                <max>400</max>
+                            </config>
+                        </TCEforms>
+                    </hideColumns>
+                    <hideFields>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.hideFields
+                            </label>
+                            <config>
+                                <type>input</type>
+                                <size>45</size>
+                                <max>500</max>
+                            </config>
+                        </TCEforms>
+                    </hideFields>
+                    <showEmptyEntryInOptionLists>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.showEmptyEntryInOptionLists
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </showEmptyEntryInOptionLists>
+                    <hidePageBrowser>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.hidePageBrowser
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </hidePageBrowser>
+                    <hideCanceledEvents>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.hideCanceledEvents
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </hideCanceledEvents>
+                    <sortListViewByCategory>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.sortListViewByCategory
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </sortListViewByCategory>
+                    <generalPriceInList>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.generalPriceInList
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </generalPriceInList>
+                    <generalPriceInSingle>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.generalPriceInSingle
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </generalPriceInSingle>
+                    <showSpeakerDetails>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.showSpeakerDetails
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </showSpeakerDetails>
+                    <showSiteDetails>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.showSiteDetails
+                            </label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </showSiteDetails>
+                </el>
+            </ROOT>
+        </s_template_special>
+    </sheets>
+</T3DataStructure>
