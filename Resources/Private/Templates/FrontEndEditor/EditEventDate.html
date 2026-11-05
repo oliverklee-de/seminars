@@ -6,7 +6,8 @@
         <h2>
             <f:translate key="plugin.frontEndEditor.edit.headline"/>
         </h2>
-        <f:form action="updateEventDate" name="event" object="{event}" class="tx-seminars-frontendeditor">
+        <f:form action="updateEventDate" name="event" object="{event}" class="tx-seminars-frontendeditor"
+                data="{prevent-multiple-submits: ''}">
             <f:render partial="FrontEndEditor/Form" arguments="{_all}"/>
         </f:form>
     </f:section>
