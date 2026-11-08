@@ -606,18 +606,22 @@ class RegistrationManager implements SingletonInterface
      * If both things happen at the same time (minimum and maximum count of
      * attendees are the same), only the "event is full" message will be sent.
      *
-     * @param LegacyRegistration $registration the registration for which the notification should be sent
+     * @param LegacyRegistration $legacyRegistration the registration for which the notification should be sent
      */
-    public function sendAdditionalNotification(LegacyRegistration $registration): void
+    public function sendAdditionalNotification(LegacyRegistration $legacyRegistration): void
     {
-        if ($registration->isOnRegistrationQueue()) {
+        $registrationUid = $legacyRegistration->getUid();
+        assert($registrationUid > 0);
+        $registration = $this->registrationRepository->findOneByUid($registrationUid);
+        assert($registration instanceof Registration);
+        if ($legacyRegistration->isOnRegistrationQueue()) {
             return;
         }
-        $emailReason = $this->getReasonForNotification($registration);
+        $emailReason = $this->getReasonForNotification($legacyRegistration);
         if ($emailReason === '') {
             return;
         }
-        $event = $registration->getSeminarObject();
+        $event = $legacyRegistration->getSeminarObject();
         if ($event->shouldMuteNotificationEmails()) {
             return;
         }
@@ -626,7 +630,7 @@ class RegistrationManager implements SingletonInterface
         $emailBuilder
             ->from($this->determineEmailSenderForEvent($event))
             ->replyTo($event->getFirstOrganizer())
-            ->text($this->getMessageForNotification($registration, $emailReason))
+            ->text($this->getMessageForNotification($legacyRegistration, $emailReason))
             ->subject(
                 \sprintf(
                     $this->translate('email_additionalNotification' . $emailReason . 'Subject'),
