@@ -1106,16 +1106,6 @@ parameters:
 			path: ../../Classes/Service/RegistrationGuard.php
 
 		-
-			message: "#^Cannot call method getSeats\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
-			count: 2
-			path: ../../Classes/Service/RegistrationManager.php
-
-		-
-			message: "#^Cannot call method getUid\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
-			count: 1
-			path: ../../Classes/Service/RegistrationManager.php
-
-		-
 			message: "#^Method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getLinkToRegistrationPage\\(\\) should return string but returns string\\|TYPO3\\\\CMS\\\\Frontend\\\\Typolink\\\\LinkResult\\.$#"
 			count: 1
 			path: ../../Classes/Service/RegistrationManager.php
@@ -1127,21 +1117,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$css of method Pelago\\\\Emogrifier\\\\CssInliner\\:\\:inlineCss\\(\\) expects string, string\\|false given\\.$#"
-			count: 1
-			path: ../../Classes/Service/RegistrationManager.php
-
-		-
-			message: "#^Parameter \\#1 \\$oldRegistration of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:notifyAttendee\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
-			count: 1
-			path: ../../Classes/Service/RegistrationManager.php
-
-		-
-			message: "#^Parameter \\#1 \\$registration of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:notifyOrganizers\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
-			count: 1
-			path: ../../Classes/Service/RegistrationManager.php
-
-		-
-			message: "#^Parameter \\#1 \\$registration of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:sendAdditionalNotification\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/Service/RegistrationManager.php
 
