@@ -16,6 +16,7 @@ use OliverKlee\Seminars\Domain\Model\FrontendUser;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Domain\Repository\Event\EventRepository;
 use OliverKlee\Seminars\Domain\Repository\FrontendUserRepository;
+use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\Email\EmailBuilder;
 use OliverKlee\Seminars\Email\SalutationBuilder;
 use OliverKlee\Seminars\FrontEnd\DefaultController;
@@ -47,6 +48,8 @@ class RegistrationManager implements SingletonInterface
 
     private EventRepository $eventRepository;
 
+    private RegistrationRepository $registrationRepository;
+
     private FrontendUserRepository $frontendUserRepository;
 
     private TemplateRegistry $templateRegistry;
@@ -63,6 +66,7 @@ class RegistrationManager implements SingletonInterface
         ConnectionPool $connectionPool,
         Context $context,
         EventRepository $eventRepository,
+        RegistrationRepository $registrationRepository,
         FrontendUserRepository $frontendUserRepository,
         TemplateRegistry $templateRegistry,
         ConfigurationRegistry $configurationRegistry,
@@ -72,6 +76,7 @@ class RegistrationManager implements SingletonInterface
         $this->connectionPool = $connectionPool;
         $this->context = $context;
         $this->eventRepository = $eventRepository;
+        $this->registrationRepository = $registrationRepository;
         $this->frontendUserRepository = $frontendUserRepository;
         $this->templateRegistry = $templateRegistry;
         $this->configurationRegistry = $configurationRegistry;
@@ -288,18 +293,23 @@ class RegistrationManager implements SingletonInterface
     /**
      * Sends the emails for a new registration.
      */
-    public function sendEmailsForNewRegistration(LegacyRegistration $registration): void
+    public function sendEmailsForNewRegistration(LegacyRegistration $legacyRegistration): void
     {
-        if ($registration->isOnRegistrationQueue()) {
-            $this->notifyAttendee($registration, 'confirmationOnRegistrationForQueue');
-            $this->notifyOrganizers($registration, 'notificationOnRegistrationForQueue');
+        $registrationUid = $legacyRegistration->getUid();
+        assert($registrationUid > 0);
+        $registration = $this->registrationRepository->findOneByUid($registrationUid);
+        assert($registration instanceof Registration);
+
+        if ($legacyRegistration->isOnRegistrationQueue()) {
+            $this->notifyAttendee($legacyRegistration, 'confirmationOnRegistrationForQueue');
+            $this->notifyOrganizers($legacyRegistration, 'notificationOnRegistrationForQueue');
         } else {
-            $this->notifyAttendee($registration);
-            $this->notifyOrganizers($registration);
+            $this->notifyAttendee($legacyRegistration);
+            $this->notifyOrganizers($legacyRegistration);
         }
 
         if ($this->getSharedPluginConfiguration()->getAsBoolean('sendAdditionalNotificationEmails')) {
-            $this->sendAdditionalNotification($registration);
+            $this->sendAdditionalNotification($legacyRegistration);
         }
     }
 
@@ -311,12 +321,12 @@ class RegistrationManager implements SingletonInterface
      */
     public function removeRegistration(int $uid): void
     {
-        $unregistration = LegacyRegistration::fromUid($uid);
-        if (!($unregistration instanceof LegacyRegistration)) {
-            return;
-        }
+        $legacyRegistration = LegacyRegistration::fromUid($uid);
+        assert($legacyRegistration instanceof LegacyRegistration);
+        $registration = $this->registrationRepository->findOneByUid($uid);
+        assert($registration instanceof Registration);
 
-        if ($unregistration->getUser() !== $this->getLoggedInFrontEndUserUid()) {
+        if ($legacyRegistration->getUser() !== $this->getLoggedInFrontEndUserUid()) {
             return;
         }
 
@@ -326,24 +336,28 @@ class RegistrationManager implements SingletonInterface
             ['uid' => $uid],
         );
 
-        $this->notifyAttendee($unregistration, 'confirmationOnUnregistration');
-        $this->notifyOrganizers($unregistration, 'notificationOnUnregistration');
+        $this->notifyAttendee($legacyRegistration, 'confirmationOnUnregistration');
+        $this->notifyOrganizers($legacyRegistration, 'notificationOnUnregistration');
 
-        $this->fillVacancies($unregistration);
+        $this->fillVacancies($legacyRegistration);
     }
 
     /**
      * Fills vacancies created through a unregistration with attendees from the registration queue.
      */
-    private function fillVacancies(LegacyRegistration $unregistration): void
+    private function fillVacancies(LegacyRegistration $legacyRegistration): void
     {
         if (!$this->getSharedPluginConfiguration()->getAsBoolean('automaticallyFillVacanciesOnUnregistration')) {
             return;
         }
-        $seminar = $unregistration->getSeminarObject();
+        $seminar = $legacyRegistration->getSeminarObject();
         if (!$seminar->hasVacancies()) {
             return;
         }
+        $registrationUid = $legacyRegistration->getUid();
+        assert($registrationUid > 0);
+        $registration = $this->registrationRepository->findOneByUid($registrationUid);
+        assert($registration instanceof Registration);
 
         $seminarUid = $seminar->getUid();
         \assert($seminarUid > 0);
@@ -354,24 +368,30 @@ class RegistrationManager implements SingletonInterface
         $registrationBagBuilder->limitToOnQueue();
         $registrationBagBuilder->limitToSeatsAtMost($vacancies);
 
-        foreach ($registrationBagBuilder->build() as $registration) {
+        foreach ($registrationBagBuilder->build() as $waitingListLegacyRegistration) {
+            assert($waitingListLegacyRegistration instanceof LegacyRegistration);
             if ($vacancies <= 0) {
                 break;
             }
 
-            if ($registration->getSeats() <= $vacancies) {
+            $waitingListRegistrationUid = $waitingListLegacyRegistration->getUid();
+            assert($waitingListRegistrationUid > 0);
+            $waitingListRegistration = $this->registrationRepository->findOneByUid($waitingListRegistrationUid);
+            assert($waitingListRegistration instanceof Registration);
+
+            if ($waitingListLegacyRegistration->getSeats() <= $vacancies) {
                 $this->connectionPool->getConnectionForTable('tx_seminars_attendances')->update(
                     'tx_seminars_attendances',
                     ['registration_queue' => Registration::STATUS_REGULAR],
-                    ['uid' => $registration->getUid()],
+                    ['uid' => $waitingListRegistrationUid],
                 );
-                $vacancies -= $registration->getSeats();
+                $vacancies -= $waitingListLegacyRegistration->getSeats();
 
-                $this->notifyAttendee($registration, 'confirmationOnQueueUpdate');
-                $this->notifyOrganizers($registration, 'notificationOnQueueUpdate');
+                $this->notifyAttendee($waitingListLegacyRegistration, 'confirmationOnQueueUpdate');
+                $this->notifyOrganizers($waitingListLegacyRegistration, 'notificationOnQueueUpdate');
 
                 if ($this->getSharedPluginConfiguration()->getAsBoolean('sendAdditionalNotificationEmails')) {
-                    $this->sendAdditionalNotification($registration);
+                    $this->sendAdditionalNotification($waitingListLegacyRegistration);
                 }
             }
         }
@@ -380,23 +400,22 @@ class RegistrationManager implements SingletonInterface
     /**
      * Sends an email to the attendee with a message concerning his/her registration or unregistration.
      *
-     * @param LegacyRegistration $oldRegistration the registration for which the notification should be sent
      * @param HelloSubjectPrefix $helloSubjectPrefix
      */
     public function notifyAttendee(
-        LegacyRegistration $oldRegistration,
+        LegacyRegistration $legacyRegistation,
         string $helloSubjectPrefix = 'confirmation'
     ): void {
         if (!$this->getSharedPluginConfiguration()->getAsBoolean('send' . ucfirst($helloSubjectPrefix))) {
             return;
         }
 
-        $event = $oldRegistration->getSeminarObject();
+        $event = $legacyRegistation->getSeminarObject();
         if (!$event->hasOrganizers()) {
             return;
         }
 
-        $user = $oldRegistration->getFrontEndUser();
+        $user = $legacyRegistation->getFrontEndUser();
         if (!$user instanceof LegacyFrontEndUser || !$user->hasEmailAddress()) {
             return;
         }
@@ -409,8 +428,8 @@ class RegistrationManager implements SingletonInterface
             ->subject(
                 $this->translate('email_' . $helloSubjectPrefix . 'Subject') . ': ' . $event->getTitleAndDate('-'),
             )
-            ->text($this->buildEmailContent($oldRegistration, $helloSubjectPrefix));
-        $emailBuilder->html($this->buildEmailContent($oldRegistration, $helloSubjectPrefix, true));
+            ->text($this->buildEmailContent($legacyRegistation, $helloSubjectPrefix));
+        $emailBuilder->html($this->buildEmailContent($legacyRegistation, $helloSubjectPrefix, true));
 
         $this->addCalendarAttachment($emailBuilder, $event->getUid());
 
