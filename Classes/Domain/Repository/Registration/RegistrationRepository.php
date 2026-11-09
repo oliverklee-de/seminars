@@ -41,6 +41,24 @@ class RegistrationRepository extends AbstractRawDataCapableRepository
         $this->persistenceManager->persistAll();
     }
 
+    /**
+     * Finds a single registration by UID, including hidden registrations. This is helpful for finding canceled
+     * registrations, which currently are modeled as hidden records.
+     */
+    public function findOneByUidIncludingHidden(int $uid): ?Registration
+    {
+        $query = $this->createQuery();
+
+        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
+        $querySettings->setRespectStoragePage(false);
+        $querySettings->setIgnoreEnableFields(true);
+        $query->setQuerySettings($querySettings);
+
+        $query->matching($query->equals('uid', $uid));
+
+        return $query->execute()->getFirst();
+    }
+
     public function existsRegistrationForEventAndUser(EventInterface $event, int $userUid): bool
     {
         $query = $this->createQuery();

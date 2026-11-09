@@ -375,6 +375,64 @@ final class RegistrationRepositoryTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function findOneByUidIncludingHiddenForNoMatchReturnsNull(): void
+    {
+        $result = $this->subject->findOneByUidIncludingHidden(1);
+
+        self::assertNull($result);
+    }
+
+    /**
+     * @test
+     */
+    public function findOneByUidIncludingHiddenCanFindVisibleRecord(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findOneByUidIncludingHidden/VisibleRegistration.csv');
+
+        $result = $this->subject->findOneByUidIncludingHidden(1);
+
+        self::assertInstanceOf(Registration::class, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findOneByUidIncludingHiddenCanFindRecordOnPage(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findOneByUidIncludingHidden/RegistrationOnPage.csv');
+
+        $result = $this->subject->findOneByUidIncludingHidden(1);
+
+        self::assertInstanceOf(Registration::class, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findOneByUidIncludingHiddenCanFindHiddenRecord(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findOneByUidIncludingHidden/HiddenRegistration.csv');
+
+        $result = $this->subject->findOneByUidIncludingHidden(1);
+
+        self::assertInstanceOf(Registration::class, $result);
+    }
+
+    /**
+     * @test
+     */
+    public function findOneByUidIncludingHiddenIgnoresDeletedRecord(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/findOneByUidIncludingHidden/DeletedRegistration.csv');
+
+        $result = $this->subject->findOneByUidIncludingHidden(1);
+
+        self::assertNull($result);
+    }
+
+    /**
+     * @test
+     */
     public function existsRegistrationForEventAndUserForZeroUserUidReturnsFalse(): void
     {
         $this->importCSVDataSet(
