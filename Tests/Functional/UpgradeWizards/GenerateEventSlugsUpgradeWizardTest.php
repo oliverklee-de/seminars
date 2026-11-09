@@ -15,7 +15,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
 {
-    private const FIXTURES_PREFIX = __DIR__ . '/Fixtures/GenerateEventSlugsUpgradeWizard/';
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures/GenerateEventSlugsUpgradeWizard/';
 
     protected array $coreExtensionsToLoad = [
         'typo3/cms-extensionmanager',
@@ -56,7 +56,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function updateNecessaryForOnlyEventsWithSlugsReturnsFalse(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'EventWithSlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithSlug.csv');
 
         self::assertFalse($this->subject->updateNecessary());
     }
@@ -66,7 +66,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function updateNecessaryForEventWithEmptySlugReturnsTrue(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'EventsWithAndWithEmptySlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventsWithAndWithEmptySlug.csv');
 
         self::assertTrue($this->subject->updateNecessary());
     }
@@ -76,7 +76,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function updateNecessaryForEventWithNullSlugReturnsTrue(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'EventWithNullSlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithNullSlug.csv');
 
         self::assertTrue($this->subject->updateNecessary());
     }
@@ -86,7 +86,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function updateNecessaryForHiddenEventWithNullSlugReturnsTrue(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'HiddenEventWithNullSlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'HiddenEventWithNullSlug.csv');
 
         self::assertTrue($this->subject->updateNecessary());
     }
@@ -96,7 +96,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function updateNecessaryForDeletedEventWithNullSlugReturnsTrue(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'DeletedEventWithNullSlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'DeletedEventWithNullSlug.csv');
 
         self::assertTrue($this->subject->updateNecessary());
     }
@@ -106,7 +106,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function updateNecessaryForTimedEventWithNullSlugReturnsTrue(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'TimedEventWithNullSlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'TimedEventWithNullSlug.csv');
 
         self::assertTrue($this->subject->updateNecessary());
     }
@@ -116,7 +116,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function executeUpdateKeepsEventWithSlugUnmodified(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'EventsWithAndWithEmptySlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventsWithAndWithEmptySlug.csv');
 
         $wizardResult = $this->subject->executeUpdate();
 
@@ -136,7 +136,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function executeUpdateUpdatesSlugOfEventWithEmptySlug(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'EventsWithAndWithEmptySlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventsWithAndWithEmptySlug.csv');
 
         $wizardResult = $this->subject->executeUpdate();
 
@@ -156,7 +156,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function executeUpdateUpdatesSlugOfEventWithNullSlug(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'EventWithNullSlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'EventWithNullSlug.csv');
 
         $wizardResult = $this->subject->executeUpdate();
 
@@ -176,7 +176,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function executeUpdateUpdatesSlugOfHiddenEventWithNullSlug(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'HiddenEventWithNullSlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'HiddenEventWithNullSlug.csv');
 
         $wizardResult = $this->subject->executeUpdate();
 
@@ -196,7 +196,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function executeUpdateUpdatesSlugOfDeletedEventWithNullSlug(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'DeletedEventWithNullSlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'DeletedEventWithNullSlug.csv');
 
         $wizardResult = $this->subject->executeUpdate();
 
@@ -216,7 +216,7 @@ class GenerateEventSlugsUpgradeWizardTest extends FunctionalTestCase
      */
     public function executeUpdateUpdatesSlugOfTimedEventWithNullSlug(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'TimedEventWithNullSlug.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'TimedEventWithNullSlug.csv');
 
         $wizardResult = $this->subject->executeUpdate();
 
