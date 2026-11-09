@@ -14,7 +14,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTestCase
 {
-    private const FIXTURES_PREFIX = __DIR__ . '/Fixtures/RemoveDuplicateEventVenueRelationsUpgradeWizard/';
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures/RemoveDuplicateEventVenueRelationsUpgradeWizard/';
     private const ASSERTIONS_PATH = __DIR__ . '/Assertions/RemoveDuplicateEventVenueRelationsUpgradeWizard/';
 
     protected array $coreExtensionsToLoad = [
@@ -52,7 +52,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
      */
     public function updateNecessaryForNoRelationsReturnsFalse(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'NoRelations.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'NoRelations.csv');
 
         self::assertFalse($this->subject->updateNecessary());
     }
@@ -62,7 +62,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
      */
     public function updateNecessaryForOneUniqueRelationReturnsFalse(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'OneUniqueRelation.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'OneUniqueRelation.csv');
 
         self::assertFalse($this->subject->updateNecessary());
     }
@@ -72,7 +72,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
      */
     public function updateNecessaryForTwoUniqueRelationsFromTwoEventsToTheSameVenueReturnsFalse(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'TwoUniqueRelationsFromTwoEventsToTheSameVenue.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'TwoUniqueRelationsFromTwoEventsToTheSameVenue.csv');
 
         self::assertFalse($this->subject->updateNecessary());
     }
@@ -82,7 +82,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
      */
     public function updateNecessaryForTwoUniqueRelationsFromOneEventToTwoVenuesReturnsFalse(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'TwoUniqueRelationsFromOneEventToTwoVenues.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'TwoUniqueRelationsFromOneEventToTwoVenues.csv');
 
         self::assertFalse($this->subject->updateNecessary());
     }
@@ -96,7 +96,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
             self::markTestSkipped('This test is not relevant for TYPO3 v12 and later.');
         }
 
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'TwoDuplicateRelations.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'TwoDuplicateRelations.csv');
 
         self::assertTrue($this->subject->updateNecessary());
     }
@@ -110,7 +110,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
             self::markTestSkipped('This test is not relevant for TYPO3 v12 and later.');
         }
 
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'OneDuplicateAndOneUniqueRelationFromOneEventToTwoVenues.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'OneDuplicateAndOneUniqueRelationFromOneEventToTwoVenues.csv');
 
         self::assertTrue($this->subject->updateNecessary());
     }
@@ -120,7 +120,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
      */
     public function executeUpdateForNoRelationsDoesNotAddAnyRelation(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'NoRelations.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'NoRelations.csv');
 
         $this->subject->executeUpdate();
 
@@ -132,7 +132,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
      */
     public function executeUpdateForOneUniqueRelationKeepsUniqueRelation(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'OneUniqueRelation.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'OneUniqueRelation.csv');
 
         $this->subject->executeUpdate();
 
@@ -144,7 +144,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
      */
     public function executeUpdateForTwoUniqueRelationsFromTwoEventsToTheSameVenueKeepsBothUniqueRelations(): void
     {
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'TwoUniqueRelationsFromTwoEventsToTheSameVenue.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'TwoUniqueRelationsFromTwoEventsToTheSameVenue.csv');
 
         $this->subject->executeUpdate();
 
@@ -160,7 +160,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
             self::markTestSkipped('This test is not relevant for TYPO3 v12 and later.');
         }
 
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'TwoUniqueRelationsFromOneEventToTwoVenues.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'TwoUniqueRelationsFromOneEventToTwoVenues.csv');
 
         $this->subject->executeUpdate();
 
@@ -176,7 +176,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
             self::markTestSkipped('This test is not relevant for TYPO3 v12 and later.');
         }
 
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'TwoDuplicateRelations.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'TwoDuplicateRelations.csv');
 
         $this->subject->executeUpdate();
 
@@ -192,7 +192,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
             self::markTestSkipped('This test is not relevant for TYPO3 v12 and later.');
         }
 
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'ThreeDuplicateRelations.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'ThreeDuplicateRelations.csv');
 
         $this->subject->executeUpdate();
 
@@ -208,7 +208,7 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizardTest extends FunctionalTest
             self::markTestSkipped('This test is not relevant for TYPO3 v12 and later.');
         }
 
-        $this->importCSVDataSet(self::FIXTURES_PREFIX . 'OneDuplicateAndOneUniqueRelationFromOneEventToTwoVenues.csv');
+        $this->importCSVDataSet(self::FIXTURES_PATH . 'OneDuplicateAndOneUniqueRelationFromOneEventToTwoVenues.csv');
 
         $this->subject->executeUpdate();
 
