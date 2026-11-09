@@ -297,7 +297,7 @@ class RegistrationManager implements SingletonInterface
     {
         $registrationUid = $legacyRegistration->getUid();
         assert($registrationUid > 0);
-        $registration = $this->registrationRepository->findOneByUid($registrationUid);
+        $registration = $this->registrationRepository->findOneByUidIncludingHidden($registrationUid);
         assert($registration instanceof Registration);
 
         if ($legacyRegistration->isOnRegistrationQueue()) {
@@ -323,7 +323,7 @@ class RegistrationManager implements SingletonInterface
     {
         $legacyRegistration = LegacyRegistration::fromUid($uid);
         assert($legacyRegistration instanceof LegacyRegistration);
-        $registration = $this->registrationRepository->findOneByUid($uid);
+        $registration = $this->registrationRepository->findOneByUidIncludingHidden($uid);
         assert($registration instanceof Registration);
 
         if ($legacyRegistration->getUser() !== $this->getLoggedInFrontEndUserUid()) {
@@ -356,7 +356,7 @@ class RegistrationManager implements SingletonInterface
         }
         $registrationUid = $legacyRegistration->getUid();
         assert($registrationUid > 0);
-        $registration = $this->registrationRepository->findOneByUid($registrationUid);
+        $registration = $this->registrationRepository->findOneByUidIncludingHidden($registrationUid);
         assert($registration instanceof Registration);
 
         $seminarUid = $seminar->getUid();
@@ -376,7 +376,8 @@ class RegistrationManager implements SingletonInterface
 
             $waitingListRegistrationUid = $waitingListLegacyRegistration->getUid();
             assert($waitingListRegistrationUid > 0);
-            $waitingListRegistration = $this->registrationRepository->findOneByUid($waitingListRegistrationUid);
+            $waitingListRegistration =
+                $this->registrationRepository->findOneByUidIncludingHidden($waitingListRegistrationUid);
             assert($waitingListRegistration instanceof Registration);
 
             if ($waitingListLegacyRegistration->getSeats() <= $vacancies) {
@@ -612,7 +613,7 @@ class RegistrationManager implements SingletonInterface
     {
         $registrationUid = $legacyRegistration->getUid();
         assert($registrationUid > 0);
-        $registration = $this->registrationRepository->findOneByUid($registrationUid);
+        $registration = $this->registrationRepository->findOneByUidIncludingHidden($registrationUid);
         assert($registration instanceof Registration);
         if ($legacyRegistration->isOnRegistrationQueue()) {
             return;
