@@ -222,6 +222,6 @@ class RegistrationProcessor implements SingletonInterface
 
         $legacyRegistration = GeneralUtility::makeInstance(LegacyRegistration::class, $registrationUid);
 
-        $this->registrationManager->sendEmailsForNewRegistration($legacyRegistration);
+        $this->registrationManager->sendEmailsForNewRegistration($registration, $legacyRegistration);
     }
 }
