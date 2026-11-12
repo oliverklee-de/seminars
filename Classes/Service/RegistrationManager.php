@@ -290,22 +290,18 @@ class RegistrationManager implements SingletonInterface
         return $event->isUserRegistered($this->getLoggedInFrontEndUserUid());
     }
 
-    /**
-     * Sends the emails for a new registration.
-     */
-    public function sendEmailsForNewRegistration(LegacyRegistration $legacyRegistration): void
-    {
-        $registrationUid = $legacyRegistration->getUid();
-        assert($registrationUid > 0);
-        $registration = $this->registrationRepository->findOneByUidIncludingHidden($registrationUid);
-        assert($registration instanceof Registration);
-
-        if ($legacyRegistration->isOnRegistrationQueue()) {
-            $this->notifyAttendee($legacyRegistration, 'confirmationOnRegistrationForQueue');
-            $this->notifyOrganizers($legacyRegistration, 'notificationOnRegistrationForQueue');
-        } else {
-            $this->notifyAttendee($legacyRegistration);
-            $this->notifyOrganizers($legacyRegistration);
+    public function sendEmailsForNewRegistration(
+        Registration $registration,
+        LegacyRegistration $legacyRegistration
+    ): void {
+        switch ($registration->getStatus()) {
+            case Registration::STATUS_WAITING_LIST:
+                $this->notifyAttendee($legacyRegistration, 'confirmationOnRegistrationForQueue');
+                $this->notifyOrganizers($legacyRegistration, 'notificationOnRegistrationForQueue');
+                break;
+            default:
+                $this->notifyAttendee($legacyRegistration);
+                $this->notifyOrganizers($legacyRegistration);
         }
 
         if ($this->getSharedPluginConfiguration()->getAsBoolean('sendAdditionalNotificationEmails')) {
