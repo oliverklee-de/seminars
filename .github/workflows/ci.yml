@@ -240,12 +240,20 @@ jobs:
       - name: Install composer dependencies
         run: |
           ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -t ${{matrix.typo3-version}} -s composerUpdate${{matrix.composer-dependencies}}
+      - name: Find and split files
+        uses: remarkablemark/find-and-split@v1
+        id: tests
+        with:
+          chunk: ${{ matrix.shard }}
+          directory: Tests/LegacyFunctional
+          pattern: '*Test.php'
       - name: Run legacy functional tests
         run: |
-          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -d ${{ matrix.dbms }} -s functional Tests/LegacyFunctional/
+          ./Build/Scripts/runTests.sh -p ${{ matrix.php-version }} -d ${{ matrix.dbms }} -s functional --testdox ${{ steps.tests.outputs.files }}
     strategy:
       fail-fast: false
       matrix:
+        shard: [1/2, 2/2]
         include:
           - typo3-version: "11.5"
             php-version: "7.4"
