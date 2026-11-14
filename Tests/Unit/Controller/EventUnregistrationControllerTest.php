@@ -274,14 +274,12 @@ final class EventUnregistrationControllerTest extends UnitTestCase
      */
     public function unregisterActionRemovesRegistration(): void
     {
-        $registrationUid = 4;
-        $registration = $this->createMock(Registration::class);
-        $registration->method('getUid')->willReturn($registrationUid);
+        $registration = new Registration();
         $this->stubRedirect();
 
         $this->registrationManagerMock
             ->expects(self::once())
-            ->method('removeRegistration')->with($registrationUid);
+            ->method('removeRegistration')->with($registration);
 
         $this->subject->unregisterAction($registration);
     }

@@ -97,11 +97,6 @@ parameters:
 
 		-
 			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
-			count: 1
-			path: ../../Classes/Controller/EventUnregistrationController.php
-
-		-
-			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
 			count: 2
 			path: ../../Classes/Controller/FrontEndEditorController.php
 

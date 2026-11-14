@@ -108,10 +108,7 @@ class EventUnregistrationController extends ActionController
      */
     public function unregisterAction(Registration $registration): ResponseInterface
     {
-        $uid = $registration->getUid();
-        if (\is_int($uid) && $uid > 0) {
-            $this->registrationManager->removeRegistration($uid);
-        }
+        $this->registrationManager->removeRegistration($registration);
 
         return $this->redirect('thankYou', null, null, ['event' => $registration->getEvent()]);
     }

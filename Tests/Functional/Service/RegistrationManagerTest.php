@@ -9,6 +9,8 @@ use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventDateInterface;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
+use OliverKlee\Seminars\Domain\Model\Registration\Registration;
+use OliverKlee\Seminars\Domain\Repository\Registration\RegistrationRepository;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
@@ -60,6 +62,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
     private Context $context;
 
+    private RegistrationRepository $registrationRepository;
+
     private TestingFramework $testingFramework;
 
     private RegistrationManager $subject;
@@ -97,6 +101,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $configurationRegistry->set('plugin.tx_seminars._LOCAL_LANG.default', new DummyConfiguration());
         $configurationRegistry->set('config', new DummyConfiguration());
         $configurationRegistry->set('page.config', new DummyConfiguration());
+
+        $this->registrationRepository = $this->get(RegistrationRepository::class);
 
         $this->testingFramework = $this->get(TestingFramework::class);
 
@@ -2402,8 +2408,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/removeRegistration/RegistrationWithEventAndUser.csv');
         $this->loginFrontEndUser(1);
+        $registration = $this->registrationRepository->findByUid(1);
+        self::assertInstanceOf(Registration::class, $registration);
 
-        $this->subject->removeRegistration(1);
+        $this->subject->removeRegistration($registration);
 
         $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/removeRegistration/CanceledRegistration.csv');
     }
@@ -2418,8 +2426,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
             self::FIXTURES_PATH . '/removeRegistration/RegularAndWaitingListRegistrationWithEventAndUsers.csv',
         );
         $this->loginFrontEndUser(1);
+        $registration = $this->registrationRepository->findByUid(1);
+        self::assertInstanceOf(Registration::class, $registration);
 
-        $this->subject->removeRegistration(1);
+        $this->subject->removeRegistration($registration);
 
         $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/removeRegistration/CanceledAndRegularRegistration.csv');
     }
@@ -2435,8 +2445,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
             self::FIXTURES_PATH . '/removeRegistration/RegularAndWaitingListRegistrationWithEventAndUsers.csv',
         );
         $this->loginFrontEndUser(1);
+        $registration = $this->registrationRepository->findByUid(1);
+        self::assertInstanceOf(Registration::class, $registration);
 
-        $this->subject->removeRegistration(1);
+        $this->subject->removeRegistration($registration);
 
         $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/removeRegistration/CanceledAndWaitingListRegistration.csv');
     }
@@ -2452,8 +2464,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
             . '/removeRegistration/RegularRegistrationAndNonbindingReservationWithEventAndUsers.csv',
         );
         $this->loginFrontEndUser(1);
+        $registration = $this->registrationRepository->findByUid(1);
+        self::assertInstanceOf(Registration::class, $registration);
 
-        $this->subject->removeRegistration(1);
+        $this->subject->removeRegistration($registration);
 
         $this->assertCSVDataSet(
             self::ASSERTIONS_PATH . '/removeRegistration/CanceledRegistrationAndNonbindingReservation.csv',

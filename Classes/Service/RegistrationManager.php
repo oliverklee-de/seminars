@@ -312,15 +312,13 @@ class RegistrationManager implements SingletonInterface
     /**
      * Removes the given registration (if it exists and if it belongs to the
      * currently logged-in FE user).
-     *
-     * @param positive-int $uid the UID of the registration that should be removed
      */
-    public function removeRegistration(int $uid): void
+    public function removeRegistration(Registration $registation): void
     {
+        $uid = $registation->getUid();
+        assert(is_int($uid));
         $legacyRegistration = LegacyRegistration::fromUid($uid);
         assert($legacyRegistration instanceof LegacyRegistration);
-        $registration = $this->registrationRepository->findOneByUidIncludingHidden($uid);
-        assert($registration instanceof Registration);
 
         if ($legacyRegistration->getUser() !== $this->getLoggedInFrontEndUserUid()) {
             return;
