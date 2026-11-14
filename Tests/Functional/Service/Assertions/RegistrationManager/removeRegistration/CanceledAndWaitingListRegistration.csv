@@ -1,0 +1,4 @@
+"tx_seminars_attendances"
+,"uid","title","seminar","user","registration_queue","hidden"
+,1,"registration to cancel",1,1,0,1
+,2,"registration on waiting list",1,2,1,0

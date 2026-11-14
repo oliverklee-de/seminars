@@ -20,8 +20,10 @@ use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
 use Symfony\Component\Mime\Part\DataPart;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
+use TYPO3\CMS\Core\Context\UserAspect;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -35,6 +37,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
     use EmailTrait;
     use MakeInstanceTrait;
 
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures/RegistrationManager';
+    private const ASSERTIONS_PATH = __DIR__ . '/Assertions/RegistrationManager';
     private const EMAIL_TEMPLATE_PATH = 'EXT:seminars/Resources/Private/Templates/Mail/e-mail.html';
 
     /**
@@ -53,6 +57,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
         'oliverklee/oelib',
         'oliverklee/seminars',
     ];
+
+    private Context $context;
 
     private TestingFramework $testingFramework;
 
@@ -76,6 +82,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $context = $this->get(Context::class);
         $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
+        $this->context = $context;
         $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
 
         $this->initializeBackEndLanguage();
@@ -124,6 +131,17 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $defaultController->conf = ['registerPID' => '3'];
 
         return $defaultController;
+    }
+
+    /**
+     * @param positive-int $uid
+     */
+    private function loginFrontEndUser(int $uid): void
+    {
+        $userAuthentication = $this->createStub(FrontendUserAuthentication::class);
+        $userAuthentication->user = ['uid' => $uid];
+        $userAspect = new UserAspect($userAuthentication);
+        $this->context->setAspect('frontend.user', $userAspect);
     }
 
     /**
@@ -213,6 +231,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         self::assertInstanceOf(RegistrationManager::class, $this->get(RegistrationManager::class));
     }
+
     // Tests concerning notifyOrganizers
 
     /**
@@ -2374,5 +2393,70 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $label = $this->translate('label_attendance_mode.online');
         $htmlBody = $this->extractHtmlBodyFromEmail($this->email);
         self::assertStringContainsString($label, $htmlBody);
+    }
+
+    /**
+     * @test
+     */
+    public function removeRegistrationHidesRegistrationOfUser(): void
+    {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/removeRegistration/RegistrationWithEventAndUser.csv');
+        $this->loginFrontEndUser(1);
+
+        $this->subject->removeRegistration(1);
+
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/removeRegistration/CanceledRegistration.csv');
+    }
+
+    /**
+     * @test
+     */
+    public function removeRegistrationWithWaitingListRegistrationMovesItToRegularIfEnabled(): void
+    {
+        $this->configuration->setAsBoolean('automaticallyFillVacanciesOnUnregistration', true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/removeRegistration/RegularAndWaitingListRegistrationWithEventAndUsers.csv',
+        );
+        $this->loginFrontEndUser(1);
+
+        $this->subject->removeRegistration(1);
+
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/removeRegistration/CanceledAndRegularRegistration.csv');
+    }
+
+    /**
+     * @test
+     */
+    public function removeRegistrationWithWaitingListRegistrationKeepsItOnWaitingListIfSuccessionIsDisabled(): void
+    {
+        $this->configuration->setAsBoolean('automaticallyFillVacanciesOnUnregistration', false);
+
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH . '/removeRegistration/RegularAndWaitingListRegistrationWithEventAndUsers.csv',
+        );
+        $this->loginFrontEndUser(1);
+
+        $this->subject->removeRegistration(1);
+
+        $this->assertCSVDataSet(self::ASSERTIONS_PATH . '/removeRegistration/CanceledAndWaitingListRegistration.csv');
+    }
+
+    /**
+     * @test
+     */
+    public function removeRegistrationDoesNotMoveNonbindingReservationToRegular(): void
+    {
+        $this->configuration->setAsBoolean('automaticallyFillVacanciesOnUnregistration', true);
+        $this->importCSVDataSet(
+            self::FIXTURES_PATH
+            . '/removeRegistration/RegularRegistrationAndNonbindingReservationWithEventAndUsers.csv',
+        );
+        $this->loginFrontEndUser(1);
+
+        $this->subject->removeRegistration(1);
+
+        $this->assertCSVDataSet(
+            self::ASSERTIONS_PATH . '/removeRegistration/CanceledRegistrationAndNonbindingReservation.csv',
+        );
     }
 }
