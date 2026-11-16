@@ -20,82 +20,82 @@
                             <default>date,topic,city,venue,eventType,registrationStatus</default>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.date
-                                    </numIndex>
-                                    <numIndex index="1">date</numIndex>
+                                    </label>
+                                    <value>date</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.topic
-                                    </numIndex>
-                                    <numIndex index="1">topic</numIndex>
+                                    </label>
+                                    <value>topic</value>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.organizer
-                                    </numIndex>
-                                    <numIndex index="1">organizer</numIndex>
+                                    </label>
+                                    <value>organizer</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.city
-                                    </numIndex>
-                                    <numIndex index="1">city</numIndex>
+                                    </label>
+                                    <value>city</value>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.venue
-                                    </numIndex>
-                                    <numIndex index="1">venue</numIndex>
+                                    </label>
+                                    <value>venue</value>
                                 </numIndex>
                                 <numIndex index="5" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.speakers
-                                    </numIndex>
-                                    <numIndex index="1">speakers</numIndex>
+                                    </label>
+                                    <value>speakers</value>
                                 </numIndex>
                                 <numIndex index="6" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.eventType
-                                    </numIndex>
-                                    <numIndex index="1">eventType</numIndex>
+                                    </label>
+                                    <value>eventType</value>
                                 </numIndex>
                                 <numIndex index="7" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.attendanceMode
-                                    </numIndex>
-                                    <numIndex index="1">attendanceMode</numIndex>
+                                    </label>
+                                    <value>attendanceMode</value>
                                 </numIndex>
                                 <numIndex index="8" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.categories
-                                    </numIndex>
-                                    <numIndex index="1">categories</numIndex>
+                                    </label>
+                                    <value>categories</value>
                                 </numIndex>
                                 <numIndex index="9" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.eventUid
-                                    </numIndex>
-                                    <numIndex index="1">eventUid</numIndex>
+                                    </label>
+                                    <value>eventUid</value>
                                 </numIndex>
                                 <numIndex index="10" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.singleViewLink
-                                    </numIndex>
-                                    <numIndex index="1">singleViewLink</numIndex>
+                                    </label>
+                                    <value>singleViewLink</value>
                                 </numIndex>
                                 <numIndex index="11" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.registrationStatus
-                                    </numIndex>
-                                    <numIndex index="1">registrationStatus</numIndex>
+                                    </label>
+                                    <value>registrationStatus</value>
                                 </numIndex>
                                 <numIndex index="12" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.columns.certificateOfAttendance
-                                    </numIndex>
-                                    <numIndex index="1">certificateOfAttendance</numIndex>
+                                    </label>
+                                    <value>certificateOfAttendance</value>
                                 </numIndex>
                             </items>
                         </config>
@@ -114,100 +114,100 @@
                             </default>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.topic
-                                    </numIndex>
-                                    <numIndex index="1">topic</numIndex>
+                                    </label>
+                                    <value>topic</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.eventType
-                                    </numIndex>
-                                    <numIndex index="1">eventType</numIndex>
+                                    </label>
+                                    <value>eventType</value>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.registrationStatus
-                                    </numIndex>
-                                    <numIndex index="1">registrationStatus</numIndex>
+                                    </label>
+                                    <value>registrationStatus</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.dateAndTime
-                                    </numIndex>
-                                    <numIndex index="1">dateAndTime</numIndex>
+                                    </label>
+                                    <value>dateAndTime</value>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.venue
-                                    </numIndex>
-                                    <numIndex index="1">venue</numIndex>
+                                    </label>
+                                    <value>venue</value>
                                 </numIndex>
                                 <numIndex index="5" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.organizer
-                                    </numIndex>
-                                    <numIndex index="1">organizer</numIndex>
+                                    </label>
+                                    <value>organizer</value>
                                 </numIndex>
                                 <numIndex index="6" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.attendanceMode
-                                    </numIndex>
-                                    <numIndex index="1">attendanceMode</numIndex>
+                                    </label>
+                                    <value>attendanceMode</value>
                                 </numIndex>
                                 <numIndex index="7" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.categories
-                                    </numIndex>
-                                    <numIndex index="1">categories</numIndex>
+                                    </label>
+                                    <value>categories</value>
                                 </numIndex>
                                 <numIndex index="8" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.room
-                                    </numIndex>
-                                    <numIndex index="1">room</numIndex>
+                                    </label>
+                                    <value>room</value>
                                 </numIndex>
                                 <numIndex index="9" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.targetGroups
-                                    </numIndex>
-                                    <numIndex index="1">targetGroups</numIndex>
+                                    </label>
+                                    <value>targetGroups</value>
                                 </numIndex>
                                 <numIndex index="10" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.image
-                                    </numIndex>
-                                    <numIndex index="1">image</numIndex>
+                                    </label>
+                                    <value>image</value>
                                 </numIndex>
                                 <numIndex index="11" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.teaser
-                                    </numIndex>
-                                    <numIndex index="1">teaser</numIndex>
+                                    </label>
+                                    <value>teaser</value>
                                 </numIndex>
                                 <numIndex index="12" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.description
-                                    </numIndex>
-                                    <numIndex index="1">description</numIndex>
+                                    </label>
+                                    <value>description</value>
                                 </numIndex>
                                 <numIndex index="13" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.speakers
-                                    </numIndex>
-                                    <numIndex index="1">speakers</numIndex>
+                                    </label>
+                                    <value>speakers</value>
                                 </numIndex>
                                 <numIndex index="14" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.unregistration
-                                    </numIndex>
-                                    <numIndex index="1">unregistration</numIndex>
+                                    </label>
+                                    <value>unregistration</value>
                                 </numIndex>
                                 <numIndex index="15" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.myRegistrations.settings.displayOptions.fields.downloads
-                                    </numIndex>
-                                    <numIndex index="1">downloads</numIndex>
+                                    </label>
+                                    <value>downloads</value>
                                 </numIndex>
                             </items>
                         </config>
