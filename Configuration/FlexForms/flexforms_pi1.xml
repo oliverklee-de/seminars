@@ -19,34 +19,34 @@
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.seminar_list
-                                    </numIndex>
-                                    <numIndex index="1">seminar_list</numIndex>
+                                    </label>
+                                    <value>seminar_list</value>
                                 </numIndex>
                                 <numIndex index="12" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.single_view
-                                    </numIndex>
-                                    <numIndex index="1">single_view</numIndex>
+                                    </label>
+                                    <value>single_view</value>
                                 </numIndex>
                                 <numIndex index="6" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.topic_list
-                                    </numIndex>
-                                    <numIndex index="1">topic_list</numIndex>
+                                    </label>
+                                    <value>topic_list</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.my_events
-                                    </numIndex>
-                                    <numIndex index="1">my_events</numIndex>
+                                    </label>
+                                    <value>my_events</value>
                                 </numIndex>
                                 <numIndex index="10" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.category_list
-                                    </numIndex>
-                                    <numIndex index="1">category_list</numIndex>
+                                    </label>
+                                    <value>category_list</value>
                                 </numIndex>
                             </items>
                             <size>1</size>
@@ -160,40 +160,40 @@
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.0
-                                    </numIndex>
-                                    <numIndex index="1">0</numIndex>
+                                    </label>
+                                    <value>0</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.1
-                                    </numIndex>
-                                    <numIndex index="1">1</numIndex>
+                                    </label>
+                                    <value>1</value>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.2
-                                    </numIndex>
-                                    <numIndex index="1">2</numIndex>
+                                    </label>
+                                    <value>2</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.3
-                                    </numIndex>
-                                    <numIndex index="1">3</numIndex>
+                                    </label>
+                                    <value>3</value>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.4
-                                    </numIndex>
-                                    <numIndex index="1">4</numIndex>
+                                    </label>
+                                    <value>4</value>
                                 </numIndex>
                                 <numIndex index="5" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.recursive.I.5
-                                    </numIndex>
-                                    <numIndex index="1">250</numIndex>
+                                    </label>
+                                    <value>250</value>
                                 </numIndex>
                             </items>
                             <minitems>0</minitems>
@@ -220,58 +220,58 @@
                             <renderType>selectCheckBox</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.type
-                                    </numIndex>
-                                    <numIndex index="1">event_type</numIndex>
+                                    </label>
+                                    <value>event_type</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.city
-                                    </numIndex>
-                                    <numIndex index="1">city</numIndex>
+                                    </label>
+                                    <value>city</value>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.place
-                                    </numIndex>
-                                    <numIndex index="1">place</numIndex>
+                                    </label>
+                                    <value>place</value>
                                 </numIndex>
                                 <numIndex index="5" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.organizer
-                                    </numIndex>
-                                    <numIndex index="1">organizer</numIndex>
+                                    </label>
+                                    <value>organizer</value>
                                 </numIndex>
                                 <numIndex index="6" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.categories
-                                    </numIndex>
-                                    <numIndex index="1">categories</numIndex>
+                                    </label>
+                                    <value>categories</value>
                                 </numIndex>
                                 <numIndex index="7" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.date
-                                    </numIndex>
-                                    <numIndex index="1">date</numIndex>
+                                    </label>
+                                    <value>date</value>
                                 </numIndex>
                                 <numIndex index="8" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.age
-                                    </numIndex>
-                                    <numIndex index="1">age</numIndex>
+                                    </label>
+                                    <value>age</value>
                                 </numIndex>
                                 <numIndex index="9" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.price
-                                    </numIndex>
-                                    <numIndex index="1">price</numIndex>
+                                    </label>
+                                    <value>price</value>
                                 </numIndex>
                                 <numIndex index="10" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.searchForm.textField
-                                    </numIndex>
-                                    <numIndex index="1">full_text_search</numIndex>
+                                    </label>
+                                    <value>full_text_search</value>
                                 </numIndex>
                             </items>
                             <minitems>0</minitems>
@@ -288,30 +288,30 @@
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.fromTsSetup
-                                    </numIndex>
-                                    <numIndex index="1"></numIndex>
+                                    </label>
+                                    <value></value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">1</numIndex>
-                                    <numIndex index="1">1</numIndex>
+                                    <label>1</label>
+                                    <value>1</value>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <numIndex index="0">2</numIndex>
-                                    <numIndex index="1">2</numIndex>
+                                    <label>2</label>
+                                    <value>2</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">3</numIndex>
-                                    <numIndex index="1">3</numIndex>
+                                    <label>3</label>
+                                    <value>3</value>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <numIndex index="0">4</numIndex>
-                                    <numIndex index="1">4</numIndex>
+                                    <label>4</label>
+                                    <value>4</value>
                                 </numIndex>
                                 <numIndex index="5" type="array">
-                                    <numIndex index="0">5</numIndex>
-                                    <numIndex index="1">5</numIndex>
+                                    <label>5</label>
+                                    <value>5</value>
                                 </numIndex>
                             </items>
                             <size>1</size>
@@ -384,28 +384,28 @@
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.fromTsSetup
-                                    </numIndex>
-                                    <numIndex index="1"></numIndex>
+                                    </label>
+                                    <value></value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.always
-                                    </numIndex>
-                                    <numIndex index="1">always</numIndex>
+                                    </label>
+                                    <value>always</value>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.never
-                                    </numIndex>
-                                    <numIndex index="1">never</numIndex>
+                                    </label>
+                                    <value>never</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.onlyForNonEmptyDescription
-                                    </numIndex>
-                                    <numIndex index="1">onlyForNonEmptyDescription</numIndex>
+                                    </label>
+                                    <value>onlyForNonEmptyDescription</value>
                                 </numIndex>
                             </items>
                             <size>1</size>
@@ -447,56 +447,56 @@
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0"></numIndex>
-                                    <numIndex index="1"></numIndex>
+                                    <label></label>
+                                    <value></value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList1
-                                    </numIndex>
-                                    <numIndex index="1">all</numIndex>
+                                    </label>
+                                    <value>all</value>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList2
-                                    </numIndex>
-                                    <numIndex index="1">past</numIndex>
+                                    </label>
+                                    <value>past</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList3
-                                    </numIndex>
-                                    <numIndex index="1">pastAndCurrent</numIndex>
+                                    </label>
+                                    <value>pastAndCurrent</value>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList4
-                                    </numIndex>
-                                    <numIndex index="1">current</numIndex>
+                                    </label>
+                                    <value>current</value>
                                 </numIndex>
                                 <numIndex index="5" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList5
-                                    </numIndex>
-                                    <numIndex index="1">currentAndUpcoming</numIndex>
+                                    </label>
+                                    <value>currentAndUpcoming</value>
                                 </numIndex>
                                 <numIndex index="6" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList6
-                                    </numIndex>
-                                    <numIndex index="1">upcoming</numIndex>
+                                    </label>
+                                    <value>upcoming</value>
                                 </numIndex>
                                 <numIndex index="7" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList7
-                                    </numIndex>
-                                    <numIndex index="1">deadlineNotOver</numIndex>
+                                    </label>
+                                    <value>deadlineNotOver</value>
                                 </numIndex>
                                 <numIndex index="8" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.timeframeInList8
-                                    </numIndex>
-                                    <numIndex index="1">today</numIndex>
+                                    </label>
+                                    <value>today</value>
                                 </numIndex>
                             </items>
                             <size>1</size>

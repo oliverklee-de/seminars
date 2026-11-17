@@ -48,106 +48,106 @@
                             </default>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.title
-                                    </numIndex>
-                                    <numIndex index="1">title</numIndex>
+                                    </label>
+                                    <value>title</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.eventType
-                                    </numIndex>
-                                    <numIndex index="1">eventType</numIndex>
+                                    </label>
+                                    <value>eventType</value>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.registrationTop
-                                    </numIndex>
-                                    <numIndex index="1">registrationTop</numIndex>
+                                    </label>
+                                    <value>registrationTop</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.dateAndTime
-                                    </numIndex>
-                                    <numIndex index="1">dateAndTime</numIndex>
+                                    </label>
+                                    <value>dateAndTime</value>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.venue
-                                    </numIndex>
-                                    <numIndex index="1">venue</numIndex>
+                                    </label>
+                                    <value>venue</value>
                                 </numIndex>
                                 <numIndex index="5" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.organizer
-                                    </numIndex>
-                                    <numIndex index="1">organizer</numIndex>
+                                    </label>
+                                    <value>organizer</value>
                                 </numIndex>
                                 <numIndex index="6" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.categories
-                                    </numIndex>
-                                    <numIndex index="1">categories</numIndex>
+                                    </label>
+                                    <value>categories</value>
                                 </numIndex>
                                 <numIndex index="7" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.room
-                                    </numIndex>
-                                    <numIndex index="1">room</numIndex>
+                                    </label>
+                                    <value>room</value>
                                 </numIndex>
                                 <numIndex index="8" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.price
-                                    </numIndex>
-                                    <numIndex index="1">price</numIndex>
+                                    </label>
+                                    <value>price</value>
                                 </numIndex>
                                 <numIndex index="9" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.targetGroups
-                                    </numIndex>
-                                    <numIndex index="1">targetGroups</numIndex>
+                                    </label>
+                                    <value>targetGroups</value>
                                 </numIndex>
                                 <numIndex index="10" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.vacancies
-                                    </numIndex>
-                                    <numIndex index="1">vacancies</numIndex>
+                                    </label>
+                                    <value>vacancies</value>
                                 </numIndex>
                                 <numIndex index="11" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.image
-                                    </numIndex>
-                                    <numIndex index="1">image</numIndex>
+                                    </label>
+                                    <value>image</value>
                                 </numIndex>
                                 <numIndex index="12" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.teaser
-                                    </numIndex>
-                                    <numIndex index="1">teaser</numIndex>
+                                    </label>
+                                    <value>teaser</value>
                                 </numIndex>
                                 <numIndex index="13" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.description
-                                    </numIndex>
-                                    <numIndex index="1">description</numIndex>
+                                    </label>
+                                    <value>description</value>
                                 </numIndex>
                                 <numIndex index="14" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.eventFormat
-                                    </numIndex>
-                                    <numIndex index="1">eventFormat</numIndex>
+                                    </label>
+                                    <value>eventFormat</value>
                                 </numIndex>
                                 <numIndex index="15" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.speakers
-                                    </numIndex>
-                                    <numIndex index="1">speakers</numIndex>
+                                    </label>
+                                    <value>speakers</value>
                                 </numIndex>
                                 <numIndex index="16" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.eventSingleView.settings.displayOptions.dataToDisplay.registrationBottom
-                                    </numIndex>
-                                    <numIndex index="1">registrationBottom</numIndex>
+                                    </label>
+                                    <value>registrationBottom</value>
                                 </numIndex>
                             </items>
                         </config>

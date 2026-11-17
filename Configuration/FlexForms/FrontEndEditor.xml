@@ -17,16 +17,16 @@
                             <renderType>selectSingle</renderType>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.eventCreation.eventType.singleEvents
-                                    </numIndex>
-                                    <numIndex index="1">singleEvents</numIndex>
+                                    </label>
+                                    <value>singleEvents</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.eventCreation.eventType.eventDates
-                                    </numIndex>
-                                    <numIndex index="1">eventDates</numIndex>
+                                    </label>
+                                    <value>eventDates</value>
                                 </numIndex>
                             </items>
                         </config>
@@ -69,94 +69,94 @@
                             </default>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.description
-                                    </numIndex>
-                                    <numIndex index="1">description</numIndex>
+                                    </label>
+                                    <value>description</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.eventType
-                                    </numIndex>
-                                    <numIndex index="1">eventType</numIndex>
+                                    </label>
+                                    <value>eventType</value>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.categories
-                                    </numIndex>
-                                    <numIndex index="1">categories</numIndex>
+                                    </label>
+                                    <value>categories</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.dateAndTime
-                                    </numIndex>
-                                    <numIndex index="1">dateAndTime</numIndex>
+                                    </label>
+                                    <value>dateAndTime</value>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.earlyBirdDeadline
-                                    </numIndex>
-                                    <numIndex index="1">earlyBirdDeadline</numIndex>
+                                    </label>
+                                    <value>earlyBirdDeadline</value>
                                 </numIndex>
                                 <numIndex index="5" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.registrationDeadline
-                                    </numIndex>
-                                    <numIndex index="1">registrationDeadline</numIndex>
+                                    </label>
+                                    <value>registrationDeadline</value>
                                 </numIndex>
                                 <numIndex index="6" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.registrationRequired
-                                    </numIndex>
-                                    <numIndex index="1">registrationRequired</numIndex>
+                                    </label>
+                                    <value>registrationRequired</value>
                                 </numIndex>
                                 <numIndex index="7" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.waitingList
-                                    </numIndex>
-                                    <numIndex index="1">waitingList</numIndex>
+                                    </label>
+                                    <value>waitingList</value>
                                 </numIndex>
                                 <numIndex index="8" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.minimumNumberOfRegistrations
-                                    </numIndex>
-                                    <numIndex index="1">minimumNumberOfRegistrations</numIndex>
+                                    </label>
+                                    <value>minimumNumberOfRegistrations</value>
                                 </numIndex>
                                 <numIndex index="9" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.maximumNumberOfRegistrations
-                                    </numIndex>
-                                    <numIndex index="1">maximumNumberOfRegistrations</numIndex>
+                                    </label>
+                                    <value>maximumNumberOfRegistrations</value>
                                 </numIndex>
                                 <numIndex index="10" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.numberOfOfflineRegistrations
-                                    </numIndex>
-                                    <numIndex index="1">numberOfOfflineRegistrations</numIndex>
+                                    </label>
+                                    <value>numberOfOfflineRegistrations</value>
                                 </numIndex>
                                 <numIndex index="11" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.standardPrice
-                                    </numIndex>
-                                    <numIndex index="1">standardPrice</numIndex>
+                                    </label>
+                                    <value>standardPrice</value>
                                 </numIndex>
                                 <numIndex index="12" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.earlyBirdPrice
-                                    </numIndex>
-                                    <numIndex index="1">earlyBirdPrice</numIndex>
+                                    </label>
+                                    <value>earlyBirdPrice</value>
                                 </numIndex>
                                 <numIndex index="13" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.venues
-                                    </numIndex>
-                                    <numIndex index="1">venues</numIndex>
+                                    </label>
+                                    <value>venues</value>
                                 </numIndex>
                                 <numIndex index="14" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.displayOptions.fieldsToShow.speakers
-                                    </numIndex>
-                                    <numIndex index="1">speakers</numIndex>
+                                    </label>
+                                    <value>speakers</value>
                                 </numIndex>
                             </items>
                         </config>
@@ -185,52 +185,52 @@
                             </default>
                             <items type="array">
                                 <numIndex index="0" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.counter
-                                    </numIndex>
-                                    <numIndex index="1">counter</numIndex>
+                                    </label>
+                                    <value>counter</value>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.membershipNumber
-                                    </numIndex>
-                                    <numIndex index="1">membershipNumber</numIndex>
+                                    </label>
+                                    <value>membershipNumber</value>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.name
-                                    </numIndex>
-                                    <numIndex index="1">name</numIndex>
+                                    </label>
+                                    <value>name</value>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.address
-                                    </numIndex>
-                                    <numIndex index="1">address</numIndex>
+                                    </label>
+                                    <value>address</value>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.email
-                                    </numIndex>
-                                    <numIndex index="1">email</numIndex>
+                                    </label>
+                                    <value>email</value>
                                 </numIndex>
                                 <numIndex index="5" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.telephone
-                                    </numIndex>
-                                    <numIndex index="1">telephone</numIndex>
+                                    </label>
+                                    <value>telephone</value>
                                 </numIndex>
                                 <numIndex index="6" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.dateOfBirth
-                                    </numIndex>
-                                    <numIndex index="1">dateOfBirth</numIndex>
+                                    </label>
+                                    <value>dateOfBirth</value>
                                 </numIndex>
                                 <numIndex index="7" type="array">
-                                    <numIndex index="0">
+                                    <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:plugin.frontEndEditor.settings.registrationList.registrationFieldsToShow.registrationDate
-                                    </numIndex>
-                                    <numIndex index="1">registrationDate</numIndex>
+                                    </label>
+                                    <value>registrationDate</value>
                                 </numIndex>
                             </items>
                         </config>
