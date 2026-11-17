@@ -90,9 +90,7 @@ defined('TYPO3') or die('Access denied.');
     }
 
     ExtensionManagementUtility::addPageTSConfig(
-        '
-    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:seminars/Configuration/TsConfig/ContentElementWizard.txt">
-',
+        '@import "EXT:seminars/Configuration/TsConfig/ContentElementWizard.tsconfig"',
     );
 
     if ((new Typo3Version())->getMajorVersion() <= 11) {
