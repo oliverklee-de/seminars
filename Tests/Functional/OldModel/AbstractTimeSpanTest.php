@@ -6,8 +6,10 @@ namespace OliverKlee\Seminars\Tests\Functional\OldModel;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
-use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingTimeSpan;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -16,8 +18,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class AbstractTimeSpanTest extends FunctionalTestCase
 {
-    use BackendLanguageTrait;
-
     protected array $coreExtensionsToLoad = [
         'typo3/cms-extensionmanager',
         'typo3/cms-install',
@@ -36,10 +36,15 @@ final class AbstractTimeSpanTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->initializeBackEndLanguage();
-
         $this->subject = new TestingTimeSpan();
         $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
+
+        if ((new Typo3Version())->getMajorVersion() <= 11) {
+            $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
+            $GLOBALS['LANG'] = $this
+                ->get(LanguageServiceFactory::class)
+                ->createFromUserPreferences($this->setUpBackendUser(1));
+        }
     }
 
     // Test for getting the time.
@@ -52,10 +57,9 @@ final class AbstractTimeSpanTest extends FunctionalTestCase
         $this->subject->setBeginDateAndTime(\mktime(9, 50, 0, 1, 1, 2010));
         $this->subject->setEndDateAndTime(\mktime(18, 30, 0, 1, 1, 2010));
 
-        self::assertSame(
-            '09:50–18:30' . ' ' . $this->translate('label_hours'),
-            $this->subject->getTime(),
-        );
+        $hoursLabel = LocalizationUtility::translate('label_hours', 'seminars');
+        self::assertIsString($hoursLabel);
+        self::assertSame('09:50–18:30 ' . $hoursLabel, $this->subject->getTime());
     }
 
     /**
@@ -66,10 +70,9 @@ final class AbstractTimeSpanTest extends FunctionalTestCase
         $this->subject->setBeginDateAndTime(\mktime(9, 50, 0, 1, 1, 2010));
         $this->subject->setEndDateAndTime(\mktime(18, 30, 0, 1, 2, 2010));
 
-        self::assertSame(
-            '09:50–18:30' . ' ' . $this->translate('label_hours'),
-            $this->subject->getTime(),
-        );
+        $hoursLabel = LocalizationUtility::translate('label_hours', 'seminars');
+        self::assertIsString($hoursLabel);
+        self::assertSame('09:50–18:30 ' . $hoursLabel, $this->subject->getTime());
     }
 
     // Test for getting the date.
