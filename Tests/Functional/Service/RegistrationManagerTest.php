@@ -16,15 +16,17 @@ use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
 use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Tests\Functional\FrontEnd\Fixtures\TestingDefaultController;
-use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
 use Symfony\Component\Mime\Part\DataPart;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Context\UserAspect;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -35,7 +37,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class RegistrationManagerTest extends FunctionalTestCase
 {
-    use BackendLanguageTrait;
     use EmailTrait;
     use MakeInstanceTrait;
 
@@ -84,12 +85,17 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         parent::setUp();
 
+        if ((new Typo3Version())->getMajorVersion() <= 11) {
+            $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
+            $GLOBALS['LANG'] = $this
+                ->get(LanguageServiceFactory::class)
+                ->createFromUserPreferences($this->setUpBackendUser(1));
+        }
+
         $context = $this->get(Context::class);
         $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('2018-04-26 12:42:23')));
         $this->context = $context;
         $this->now = (int)$context->getPropertyFromAspect('date', 'timestamp');
-
-        $this->initializeBackEndLanguage();
 
         $configurationRegistry = $this->get(ConfigurationRegistry::class);
         $this->configuration = new DummyConfiguration(
@@ -258,8 +264,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyOrganizers($registration);
 
-        $expectedExpression = '/' . $this->translate('label_vacancies') . ': 1\\n*$/';
-        self::assertMatchesRegularExpression($expectedExpression, $this->extractTextBodyFromEmail($this->email));
+        $label = LocalizationUtility::translate('label_vacancies', 'seminars');
+        self::assertIsString($label);
+        $labelExpression = '/' . $label . ': 1\\n*$/';
+        self::assertMatchesRegularExpression($labelExpression, $this->extractTextBodyFromEmail($this->email));
     }
 
     /**
@@ -279,7 +287,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyOrganizers($registration);
 
-        $label = $this->translate('label_attendance_mode.onSite');
+        $label = LocalizationUtility::translate('label_attendance_mode.onSite', 'seminars');
+        self::assertIsString($label);
         $emailBody = $this->extractTextBodyFromEmail($this->email);
         self::assertStringContainsString($label, $emailBody);
     }
@@ -301,7 +310,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyOrganizers($registration);
 
-        $label = $this->translate('label_attendance_mode.online');
+        $label = LocalizationUtility::translate('label_attendance_mode.online', 'seminars');
+        self::assertIsString($label);
         $emailBody = $this->extractTextBodyFromEmail($this->email);
         self::assertStringContainsString($label, $emailBody);
     }
@@ -434,7 +444,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $result = $this->subject->getLinkToRegistrationPage($plugin, $event);
 
-        self::assertStringContainsString($this->translate('label_onlinePrebooking'), $result);
+        $label = LocalizationUtility::translate('label_onlinePrebooking', 'seminars');
+        self::assertIsString($label);
+        self::assertStringContainsString($label, $result);
     }
 
     /**
@@ -449,7 +461,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $result = $this->subject->getLinkToRegistrationPage($plugin, $event);
 
-        self::assertStringContainsString($this->translate('label_onlineRegistration'), $result);
+        $label = LocalizationUtility::translate('label_onlineRegistration', 'seminars');
+        self::assertIsString($label);
+        self::assertStringContainsString($label, $result);
     }
 
     /**
@@ -464,8 +478,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $result = $this->subject->getLinkToRegistrationPage($plugin, $event);
 
-        $expected = $this->translate('label_onlineRegistrationOnQueue');
-        self::assertStringContainsString($expected, $result);
+        $label = LocalizationUtility::translate('label_onlineRegistrationOnQueue', 'seminars');
+        self::assertIsString($label);
+        self::assertStringContainsString($label, $result);
     }
 
     // Tests concerning notifyAttendee
@@ -520,10 +535,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = $this->createRegistration();
         $this->subject->notifyAttendee($registration);
 
-        self::assertStringContainsString(
-            $this->translate('email_confirmationSubject'),
-            $this->email->getSubject(),
-        );
+        $label = LocalizationUtility::translate('email_confirmationSubject', 'seminars');
+        self::assertIsString($label);
+        self::assertStringContainsString($label, $this->email->getSubject());
     }
 
     /**
@@ -913,10 +927,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyAttendee($registration);
 
-        self::assertStringNotContainsString(
-            $this->translate('label_planned_disclaimer'),
-            $this->extractTextBodyFromEmail($this->email),
-        );
+        $label = LocalizationUtility::translate('label_planned_disclaimer', 'seminars');
+        self::assertIsString($label);
+        self::assertStringNotContainsString($label, $this->extractTextBodyFromEmail($this->email));
     }
 
     /**
@@ -934,10 +947,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyAttendee($registration);
 
-        self::assertStringNotContainsString(
-            $this->translate('label_planned_disclaimer'),
-            $this->extractTextBodyFromEmail($this->email),
-        );
+        $label = LocalizationUtility::translate('label_planned_disclaimer', 'seminars');
+        self::assertIsString($label);
+        self::assertStringNotContainsString($label, $this->extractTextBodyFromEmail($this->email));
     }
 
     /**
@@ -955,10 +967,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyAttendee($registration);
 
-        self::assertStringContainsString(
-            $this->translate('label_planned_disclaimer'),
-            $this->extractTextBodyFromEmail($this->email),
-        );
+        $label = LocalizationUtility::translate('label_planned_disclaimer', 'seminars');
+        self::assertIsString($label);
+        self::assertStringContainsString($label, $this->extractTextBodyFromEmail($this->email));
     }
 
     /**
@@ -977,10 +988,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyAttendee($registration);
 
-        self::assertStringNotContainsString(
-            $this->translate('label_planned_disclaimer'),
-            $this->extractTextBodyFromEmail($this->email),
-        );
+        $label = LocalizationUtility::translate('label_planned_disclaimer', 'seminars');
+        self::assertIsString($label);
+        self::assertStringNotContainsString($label, $this->extractTextBodyFromEmail($this->email));
     }
 
     /**
@@ -2339,7 +2349,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyAttendee($registration);
 
-        $label = $this->translate('label_attendance_mode.onSite');
+        $label = LocalizationUtility::translate('label_attendance_mode.onSite', 'seminars');
+        self::assertIsString($label);
         $textBody = $this->extractTextBodyFromEmail($this->email);
         self::assertStringContainsString($label, $textBody);
     }
@@ -2358,7 +2369,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyAttendee($registration);
 
-        $label = $this->translate('label_attendance_mode.onSite');
+        $label = LocalizationUtility::translate('label_attendance_mode.onSite', 'seminars');
+        self::assertIsString($label);
         $htmlBody = $this->extractHtmlBodyFromEmail($this->email);
         self::assertStringContainsString($label, $htmlBody);
     }
@@ -2377,7 +2389,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyAttendee($registration);
 
-        $label = $this->translate('label_attendance_mode.online');
+        $label = LocalizationUtility::translate('label_attendance_mode.online', 'seminars');
+        self::assertIsString($label);
         $textBody = $this->extractTextBodyFromEmail($this->email);
         self::assertStringContainsString($label, $textBody);
     }
@@ -2396,7 +2409,8 @@ final class RegistrationManagerTest extends FunctionalTestCase
 
         $this->subject->notifyAttendee($registration);
 
-        $label = $this->translate('label_attendance_mode.online');
+        $label = LocalizationUtility::translate('label_attendance_mode.online', 'seminars');
+        self::assertIsString($label);
         $htmlBody = $this->extractHtmlBodyFromEmail($this->email);
         self::assertStringContainsString($label, $htmlBody);
     }
