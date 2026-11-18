@@ -2013,7 +2013,7 @@ final class EventControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionConvertsNewlinesToBreakInVenuAddress(): void
+    public function showActionConvertsNewlinesToBreakInVenueAddress(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/EventSingleViewContentElement.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/PastEventWithOneVenue.csv');

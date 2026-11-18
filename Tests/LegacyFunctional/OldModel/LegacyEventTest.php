@@ -1052,7 +1052,7 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canSomebodyRegisterForCancelledEventReturnsFalse(): void
+    public function canSomebodyRegisterForCanceledEventReturnsFalse(): void
     {
         $this->subject->setStatus(EventInterface::STATUS_CANCELED);
 
@@ -1255,7 +1255,7 @@ final class LegacyEventTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function canSomebodyRegisterMessageForCancelledEventReturnsSeminarCancelledMessage(): void
+    public function canSomebodyRegisterMessageForCanceledEventReturnsSeminarCanceledMessage(): void
     {
         $this->subject->setStatus(EventInterface::STATUS_CANCELED);
 
