@@ -1,9 +1,9 @@
-<INCLUDE_TYPOSCRIPT: source="FILE:./Page.typoscript">
+@import 'EXT:seminars/Configuration/TypoScript/Page.typoscript'
 
-<INCLUDE_TYPOSCRIPT: source="FILE:./PluginSettings.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:./View.typoscript">
+@import 'EXT:seminars/Configuration/TypoScript/PluginSettings.typoscript'
+@import 'EXT:seminars/Configuration/TypoScript/View.typoscript'
 
-<INCLUDE_TYPOSCRIPT: source="FILE:./PluginShared.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:./FrontEnd.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:./ListView.typoscript">
-<INCLUDE_TYPOSCRIPT: source="FILE:./RegistrationDigestEmail.typoscript">
+@import 'EXT:seminars/Configuration/TypoScript/PluginShared.typoscript'
+@import 'EXT:seminars/Configuration/TypoScript/FrontEnd.typoscript'
+@import 'EXT:seminars/Configuration/TypoScript/ListView.typoscript'
+@import 'EXT:seminars/Configuration/TypoScript/RegistrationDigestEmail.typoscript'
