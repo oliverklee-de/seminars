@@ -6,7 +6,7 @@ namespace OliverKlee\Seminars\Tests\Functional\FrontEnd;
 
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\FrontEnd\CategoryList;
-use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
@@ -17,8 +17,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class CategoryListTest extends FunctionalTestCase
 {
-    use BackendLanguageTrait;
-
     protected array $coreExtensionsToLoad = [
         'typo3/cms-extensionmanager',
         'typo3/cms-install',
@@ -83,7 +81,9 @@ final class CategoryListTest extends FunctionalTestCase
 
         $result = $this->subject->render();
 
-        self::assertStringContainsString($this->translate('label_no_categories'), $result);
+        $expected = LocalizationUtility::translate('label_no_categories', 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $result);
     }
 
     /**
