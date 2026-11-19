@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Seminars\Tests\Functional\Support;
+namespace OliverKlee\Seminars\Tests\LegacyFunctional\Support;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
+use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;

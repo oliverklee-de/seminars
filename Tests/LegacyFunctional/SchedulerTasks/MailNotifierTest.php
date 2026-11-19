@@ -8,7 +8,7 @@ use OliverKlee\Oelib\Configuration\PageFinder;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\SchedulerTasks\MailNotifier;
-use OliverKlee\Seminars\Tests\Functional\Support\BackEndTestsTrait;
+use OliverKlee\Seminars\Tests\LegacyFunctional\Support\BackEndTestsTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
 use TYPO3\CMS\Core\Database\Connection;
