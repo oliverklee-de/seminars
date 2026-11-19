@@ -15,7 +15,7 @@ use OliverKlee\Seminars\Hooks\Interfaces\SeminarSingleView;
 use OliverKlee\Seminars\Mapper\EventMapper;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\Tests\Functional\FrontEnd\Fixtures\TestingDefaultController;
-use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
+use OliverKlee\Seminars\Tests\LegacyFunctional\Support\BackendLanguageTrait;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use Psr\Log\NullLogger;
 use TYPO3\CMS\Core\Context\Context;

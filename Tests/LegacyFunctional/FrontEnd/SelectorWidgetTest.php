@@ -7,7 +7,7 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\FrontEnd;
 use OliverKlee\Oelib\Testing\TestingFramework;
 use OliverKlee\Seminars\FrontEnd\SelectorWidget;
 use OliverKlee\Seminars\Hooks\Interfaces\SeminarSelectorWidget;
-use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
+use OliverKlee\Seminars\Tests\LegacyFunctional\Support\BackendLanguageTrait;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
