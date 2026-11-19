@@ -935,7 +935,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function notifyAttendeeForCancelledEventNotHasPlannedDisclaimer(): void
+    public function notifyAttendeeForCanceledEventNotHasPlannedDisclaimer(): void
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
@@ -1390,7 +1390,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function notifyAttendeeHasVenuCityOnlyOnceInPlainTextEmail(): void
+    public function notifyAttendeeHasVenueCityOnlyOnceInPlainTextEmail(): void
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
@@ -1416,7 +1416,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function notifyAttendeeHasVenuCityOnlyOnceInHtmlEmail(): void
+    public function notifyAttendeeHasVenueCityOnlyOnceInHtmlEmail(): void
     {
         $this->setUpFakeFrontEnd();
         $this->configuration->setAsBoolean('sendConfirmation', true);
@@ -2019,7 +2019,7 @@ final class RegistrationManagerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function notifyAttendeeForHybridEventWithWithWebinarUrlWithOneVenuHasUrlInCalendarInviteDescription(): void
+    public function notifyAttendeeForHybridEventWithWithWebinarUrlWithOneVenueHasUrlInCalendarInviteDescription(): void
     {
         $webinarUrl = 'https://example.com';
         $this->setUpFakeFrontEnd();

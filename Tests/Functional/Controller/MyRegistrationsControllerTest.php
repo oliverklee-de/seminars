@@ -1196,7 +1196,7 @@ final class MyRegistrationsControllerTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function showActionConvertsNewlinesToBreakInVenuAddress(): void
+    public function showActionConvertsNewlinesToBreakInVenueAddress(): void
     {
         $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontEndUserAndGroup.csv');
         $this->importCSVDataSet(self::FIXTURES_PATH . '/showAction/RegistrationWithOneVenue.csv');
