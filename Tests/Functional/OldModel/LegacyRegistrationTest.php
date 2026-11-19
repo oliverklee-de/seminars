@@ -11,7 +11,9 @@ use OliverKlee\Seminars\Domain\Model\Registration\Registration;
 use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
-use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -20,8 +22,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class LegacyRegistrationTest extends FunctionalTestCase
 {
-    use BackendLanguageTrait;
-
     protected array $coreExtensionsToLoad = [
         'typo3/cms-extensionmanager',
         'typo3/cms-install',
@@ -40,8 +40,14 @@ final class LegacyRegistrationTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->initializeBackEndLanguage();
         $this->get(ConfigurationRegistry::class)->set('plugin.tx_seminars', new DummyConfiguration());
+
+        if ((new Typo3Version())->getMajorVersion() <= 11) {
+            $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
+            $GLOBALS['LANG'] = $this
+                ->get(LanguageServiceFactory::class)
+                ->createFromUserPreferences($this->setUpBackendUser(1));
+        }
 
         $this->subject = new LegacyRegistration();
     }
@@ -152,7 +158,9 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $result = $this->subject->dumpUserValues('email');
 
-        self::assertStringContainsString($this->translate('label_email'), $result);
+        $expected = LocalizationUtility::translate('label_email', 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $result);
     }
 
     /**
@@ -171,8 +179,12 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $result = $this->subject->dumpUserValues('name , email');
 
-        self::assertStringContainsString($this->translate('label_name'), $result);
-        self::assertStringContainsString($this->translate('label_email'), $result);
+        $expectedNameLabel = LocalizationUtility::translate('label_name', 'seminars');
+        self::assertIsString($expectedNameLabel);
+        self::assertStringContainsString($expectedNameLabel, $result);
+        $expectedEmailLabel = LocalizationUtility::translate('label_email', 'seminars');
+        self::assertIsString($expectedEmailLabel);
+        self::assertStringContainsString($expectedEmailLabel, $result);
     }
 
     /**
@@ -439,7 +451,9 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $result = $this->subject->dumpUserValues('gender');
 
-        self::assertStringContainsString($this->translate('label_gender.I.' . $value), $result);
+        $expected = LocalizationUtility::translate('label_gender.I.' . $value, 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $result);
     }
 
     // Tests regarding the billing address
@@ -453,7 +467,9 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $result = $subject->getBillingAddress();
 
-        self::assertStringContainsString($this->translate('label_gender.I.0'), $result);
+        $expected = LocalizationUtility::translate('label_gender.I.0', 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $result);
     }
 
     /**
@@ -465,7 +481,9 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $result = $subject->getBillingAddress();
 
-        self::assertStringContainsString($this->translate('label_gender.I.1'), $result);
+        $expected = LocalizationUtility::translate('label_gender.I.1', 'seminars');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $result);
     }
 
     /**
@@ -515,7 +533,8 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $result = $subject->getRegistrationData('attendance_mode');
 
-        $expected = $this->translate('label_attendance_mode.onSite');
+        $expected = LocalizationUtility::translate('label_attendance_mode.onSite', 'seminars');
+        self::assertIsString($expected);
         self::assertSame($expected, $result);
     }
 
@@ -528,7 +547,8 @@ final class LegacyRegistrationTest extends FunctionalTestCase
 
         $result = $subject->getRegistrationData('attendance_mode');
 
-        $expected = $this->translate('label_attendance_mode.online');
+        $expected = LocalizationUtility::translate('label_attendance_mode.online', 'seminars');
+        self::assertIsString($expected);
         self::assertSame($expected, $result);
     }
 
