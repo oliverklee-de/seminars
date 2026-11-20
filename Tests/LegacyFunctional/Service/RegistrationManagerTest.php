@@ -18,7 +18,6 @@ use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyRegistration;
 use OliverKlee\Seminars\Service\EmailService;
 use OliverKlee\Seminars\Service\RegistrationManager;
-use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use OliverKlee\Seminars\Tests\Unit\Traits\EmailTrait;
 use OliverKlee\Seminars\Tests\Unit\Traits\MakeInstanceTrait;
@@ -26,8 +25,11 @@ use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -36,7 +38,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class RegistrationManagerTest extends FunctionalTestCase
 {
-    use BackendLanguageTrait;
     use EmailTrait;
     use MakeInstanceTrait;
 
@@ -100,6 +101,13 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         parent::setUp();
 
+        if ((new Typo3Version())->getMajorVersion() <= 11) {
+            $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
+            $GLOBALS['LANG'] = $this
+                ->get(LanguageServiceFactory::class)
+                ->createFromUserPreferences($this->setUpBackendUser(1));
+        }
+
         $this->connectionPool = $this->get(ConnectionPool::class);
         $this->context = $this->get(Context::class);
         $this->eventRepository = $this->get(EventRepository::class);
@@ -121,7 +129,6 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->rootPageUid = $this->testingFramework->createFrontEndPage();
         $this->testingFramework->changeRecord('pages', $this->rootPageUid, ['slug' => '/home']);
         $this->testingFramework->createFakeFrontEnd($this->rootPageUid);
-        $this->getLanguageService();
 
         $this->email = $this->createEmailMock();
         $secondEmail = $this->createEmailMock();
@@ -590,10 +597,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
             ],
         );
 
-        self::assertSame(
-            $this->translate('message_alreadyRegistered'),
-            $this->subject->canRegisterIfLoggedInMessage($this->seminar),
-        );
+        $label = LocalizationUtility::translate('message_alreadyRegistered', 'seminars');
+        self::assertIsString($label);
+        self::assertSame($label, $this->subject->canRegisterIfLoggedInMessage($this->seminar));
     }
 
     /**
@@ -624,10 +630,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->createBookedOutSeminar();
 
-        self::assertSame(
-            $this->translate('message_noVacancies'),
-            $this->subject->canRegisterIfLoggedInMessage($this->fullyBookedSeminar),
-        );
+        $label = LocalizationUtility::translate('message_noVacancies', 'seminars');
+        self::assertIsString($label);
+        self::assertSame($label, $this->subject->canRegisterIfLoggedInMessage($this->fullyBookedSeminar));
     }
 
     /**
@@ -637,10 +642,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
     {
         $this->seminar->setStatus(EventInterface::STATUS_CANCELED);
 
-        self::assertSame(
-            $this->translate('message_seminarCancelled'),
-            $this->subject->canRegisterIfLoggedInMessage($this->seminar),
-        );
+        $label = LocalizationUtility::translate('message_seminarCancelled', 'seminars');
+        self::assertIsString($label);
+        self::assertSame($label, $this->subject->canRegisterIfLoggedInMessage($this->seminar));
     }
 
     /**
@@ -651,10 +655,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $this->seminar->setAttendancesMax(0);
         $this->seminar->setNeedsRegistration(false);
 
-        self::assertSame(
-            $this->translate('message_noRegistrationNecessary'),
-            $this->subject->canRegisterIfLoggedInMessage($this->seminar),
-        );
+        $label = LocalizationUtility::translate('message_noRegistrationNecessary', 'seminars');
+        self::assertIsString($label);
+        self::assertSame($label, $this->subject->canRegisterIfLoggedInMessage($this->seminar));
     }
 
     /**
@@ -1046,10 +1049,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = $this->createRegistration();
         $this->subject->notifyOrganizers($registration);
 
-        self::assertMatchesRegularExpression(
-            '/' . $this->translate('label_vacancies') . ': 1\\n*$/',
-            $this->email->getTextBody(),
-        );
+        $label = LocalizationUtility::translate('label_vacancies', 'seminars');
+        self::assertIsString($label);
+        self::assertMatchesRegularExpression('/' . $label . ': 1\\n*$/', $this->email->getTextBody());
     }
 
     /**
@@ -1068,9 +1070,12 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = $this->createRegistration();
         $this->subject->notifyOrganizers($registration);
 
+        $vacanciesLabel = LocalizationUtility::translate('label_vacancies', 'seminars');
+        self::assertIsString($vacanciesLabel);
+        $unlimitedLabel = LocalizationUtility::translate('label_unlimited', 'seminars');
+        self::assertIsString($unlimitedLabel);
         self::assertStringContainsString(
-            $this->translate('label_vacancies') . ': '
-            . $this->translate('label_unlimited'),
+            $vacanciesLabel . ': ' . $unlimitedLabel,
             $this->email->getTextBody(),
         );
     }
@@ -1095,10 +1100,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = new LegacyRegistration($registrationUid);
         $this->subject->notifyOrganizers($registration);
 
-        self::assertStringContainsString(
-            $this->translate('label_company'),
-            $this->email->getTextBody(),
-        );
+        $label = LocalizationUtility::translate('label_company', 'seminars');
+        self::assertIsString($label);
+        self::assertStringContainsString($label, $this->email->getTextBody());
     }
 
     /**
@@ -1300,12 +1304,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = $this->createRegistration();
         $this->subject->sendAdditionalNotification($registration);
 
+        $label = LocalizationUtility::translate('email_additionalNotificationEnoughRegistrationsSubject', 'seminars');
+        self::assertIsString($label);
         self::assertStringContainsString(
-            sprintf(
-                $this->translate('email_additionalNotificationEnoughRegistrationsSubject'),
-                $this->seminarUid,
-                '',
-            ),
+            sprintf($label, $this->seminarUid, ''),
             $this->email->getSubject(),
         );
     }
@@ -1368,14 +1370,12 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = $this->createRegistration();
         $this->subject->sendAdditionalNotification($registration);
 
+        $label = LocalizationUtility::translate('email_additionalNotificationEnoughRegistrationsSubject', 'seminars');
+        self::assertIsString($label);
         $firstEmail = $this->email;
         self::assertNotNull($firstEmail);
         self::assertStringContainsString(
-            sprintf(
-                $this->translate('email_additionalNotificationEnoughRegistrationsSubject'),
-                $this->seminarUid,
-                '',
-            ),
+            sprintf($label, $this->seminarUid, ''),
             $firstEmail->getSubject(),
         );
     }
@@ -1497,12 +1497,10 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = $this->createRegistration();
         $this->subject->sendAdditionalNotification($registration);
 
+        $label = LocalizationUtility::translate('email_additionalNotificationIsFullSubject', 'seminars');
+        self::assertIsString($label);
         self::assertStringContainsString(
-            sprintf(
-                $this->translate('email_additionalNotificationIsFullSubject'),
-                $this->seminarUid,
-                '',
-            ),
+            sprintf($label, $this->seminarUid, ''),
             $this->email->getSubject(),
         );
     }
@@ -1520,10 +1518,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = $this->createRegistration();
         $this->subject->sendAdditionalNotification($registration);
 
-        self::assertStringContainsString(
-            $this->translate('email_additionalNotificationIsFull'),
-            $this->email->getTextBody(),
-        );
+        $label = LocalizationUtility::translate('email_additionalNotificationIsFull', 'seminars');
+        self::assertIsString($label);
+        self::assertStringContainsString($label, $this->email->getTextBody());
     }
 
     /**
@@ -1586,10 +1583,9 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = $this->createRegistration();
         $this->subject->sendAdditionalNotification($registration);
 
-        self::assertMatchesRegularExpression(
-            '/' . $this->translate('label_vacancies') . ': 1\\n*$/',
-            $this->email->getTextBody(),
-        );
+        $label = LocalizationUtility::translate('label_vacancies', 'seminars');
+        self::assertIsString($label);
+        self::assertMatchesRegularExpression('/' . $label . ': 1\\n*$/', $this->email->getTextBody());
     }
 
     /**
@@ -1611,11 +1607,11 @@ final class RegistrationManagerTest extends FunctionalTestCase
         $registration = $this->createRegistration();
         $this->subject->sendAdditionalNotification($registration);
 
-        self::assertStringContainsString(
-            $this->translate('label_vacancies') . ': '
-            . $this->translate('label_unlimited'),
-            $this->email->getTextBody(),
-        );
+        $vacanciesLabel = LocalizationUtility::translate('label_vacancies', 'seminars');
+        self::assertIsString($vacanciesLabel);
+        $unlimitedLabel = LocalizationUtility::translate('label_unlimited', 'seminars');
+        self::assertIsString($unlimitedLabel);
+        self::assertStringContainsString($vacanciesLabel . ': ' . $unlimitedLabel, $this->email->getTextBody());
     }
 
     // Tests concerning allowsRegistrationByDate
