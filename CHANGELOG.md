@@ -264,6 +264,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Add `role="alert"` to backend flash messages (#5531)
 - Avoid the deprecated `INCLUDE_TYPOSCRIPT` (#5511)
 - Avoid deprecation warnings in the flexforms (#5510)
 - Avoid obsolete `TCEFORMS` wrapper from FlexForms in TYPO3 >= 12 (#5492, #5493)
