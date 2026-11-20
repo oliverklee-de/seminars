@@ -12,10 +12,10 @@ use OliverKlee\Seminars\Domain\Model\Registration\Registration as ExtbaseRegistr
 use OliverKlee\Seminars\FrontEnd\DefaultController;
 use OliverKlee\Seminars\Model\Place;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
-use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyEvent;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -28,8 +28,6 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
  */
 final class LegacyEventTest extends FunctionalTestCase
 {
-    use BackendLanguageTrait;
-
     protected array $testExtensionsToLoad = [
         'sjbr/static-info-tables',
         'oliverklee/feuserextrafields',
@@ -50,10 +48,12 @@ final class LegacyEventTest extends FunctionalTestCase
     {
         parent::setUp();
 
-        $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
-        $GLOBALS['LANG'] = $this
-            ->get(LanguageServiceFactory::class)
-            ->createFromUserPreferences($this->setUpBackendUser(1));
+        if ((new Typo3Version())->getMajorVersion() <= 11) {
+            $this->importCSVDataSet(__DIR__ . '/Fixtures/AdminBackEndUser.csv');
+            $GLOBALS['LANG'] = $this
+                ->get(LanguageServiceFactory::class)
+                ->createFromUserPreferences($this->setUpBackendUser(1));
+        }
 
         $this->registrationsConnection = $this
             ->get(ConnectionPool::class)
@@ -618,7 +618,6 @@ final class LegacyEventTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(1);
-        $this->initializeBackEndLanguage();
 
         $result = $subject->getPlaceWithDetailsRaw();
 
@@ -713,7 +712,6 @@ final class LegacyEventTest extends FunctionalTestCase
     {
         $this->importCSVDataSet(__DIR__ . '/Fixtures/Events/EventsWithPlaces.csv');
         $subject = TestingLegacyEvent::fromUid(1);
-        $this->initializeBackEndLanguage();
 
         $result = $subject->getPlaceShort();
 
