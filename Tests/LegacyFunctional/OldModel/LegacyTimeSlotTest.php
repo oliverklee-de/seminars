@@ -7,7 +7,7 @@ namespace OliverKlee\Seminars\Tests\LegacyFunctional\OldModel;
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\Configuration\DummyConfiguration;
 use OliverKlee\Oelib\Testing\TestingFramework;
-use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
+use OliverKlee\Seminars\Tests\LegacyFunctional\Support\BackendLanguageTrait;
 use OliverKlee\Seminars\Tests\Unit\OldModel\Fixtures\TestingLegacyTimeSlot;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
