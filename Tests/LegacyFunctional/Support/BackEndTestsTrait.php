@@ -10,7 +10,6 @@ use OliverKlee\Seminars\Tests\Functional\Support\BackendLanguageTrait;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -76,17 +75,5 @@ trait BackEndTestsTrait
         $configurationRegistry->set('plugin', new DummyConfiguration());
         $this->configuration = new DummyConfiguration();
         $configurationRegistry->set('plugin.tx_seminars', $this->configuration);
-    }
-
-    /**
-     * @param non-empty-string $key
-     */
-    private function translate(string $key): string
-    {
-        $label = LocalizationUtility::translate($key, 'seminars');
-        \assert(is_string($label));
-        \assert($label !== '');
-
-        return $label;
     }
 }

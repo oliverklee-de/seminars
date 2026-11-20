@@ -15,6 +15,7 @@ use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -249,9 +250,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function sendEventTakesPlaceRemindersSendsReminderWithEventTakesPlaceSubject(): void
     {
-        $this->getLanguageService()->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-        $emailSubject = $this->translate('email_eventTakesPlaceReminderSubject');
-        $emailSubject = str_replace(['%event', '%days'], ['', 2], $emailSubject);
+        $labelWithPlaceholders = LocalizationUtility::translate('email_eventTakesPlaceReminderSubject', 'seminars');
+        self::assertIsString($labelWithPlaceholders);
+        $emailSubject = str_replace(['%event', '%days'], ['', 2], $labelWithPlaceholders);
 
         $this->createSeminarWithOrganizer(
             [
@@ -273,9 +274,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function sendEventTakesPlaceRemindersSendsReminderWithEventTakesPlaceMessage(): void
     {
-        $this->getLanguageService()->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-        $message = $this->translate('email_eventTakesPlaceReminder');
-        $message = str_replace(['%event', '%organizer'], ['', 'Mr. Test'], $message);
+        $labelWithPlaceholders = LocalizationUtility::translate('email_eventTakesPlaceReminder', 'seminars');
+        self::assertIsString($labelWithPlaceholders);
+        $message = str_replace(['%event', '%organizer'], ['', 'Mr. Test'], $labelWithPlaceholders);
 
         $this->createSeminarWithOrganizer(
             [
@@ -506,9 +507,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function sendCancellationDeadlineRemindersSendsReminderWithCancelationDeadlineSubject(): void
     {
-        $this->getLanguageService()->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-        $emailSubject = $this->translate('email_cancelationDeadlineReminderSubject');
-        $emailSubject = str_replace('%event', '', $emailSubject);
+        $labelWithPlaceholders = LocalizationUtility::translate('email_cancelationDeadlineReminderSubject', 'seminars');
+        self::assertIsString($labelWithPlaceholders);
+        $emailSubject = str_replace('%event', '', $labelWithPlaceholders);
 
         $this->addSpeaker(
             $this->createSeminarWithOrganizer(
@@ -532,9 +533,9 @@ final class MailNotifierTest extends FunctionalTestCase
      */
     public function sendCancellationDeadlineRemindersSendsReminderWithCancelationDeadlineMessage(): void
     {
-        $this->getLanguageService()->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-        $message = $this->translate('email_cancelationDeadlineReminder');
-        $message = str_replace(['%event', '%organizer'], ['', 'Mr. Test'], $message);
+        $labelWithPlaceholders = LocalizationUtility::translate('email_cancelationDeadlineReminder', 'seminars');
+        self::assertIsString($labelWithPlaceholders);
+        $message = str_replace(['%event', '%organizer'], ['', 'Mr. Test'], $labelWithPlaceholders);
 
         $this->addSpeaker(
             $this->createSeminarWithOrganizer(
