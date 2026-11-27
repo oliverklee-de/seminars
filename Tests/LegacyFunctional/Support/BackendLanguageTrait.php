@@ -21,11 +21,9 @@ trait BackendLanguageTrait
 
     private function getLanguageService(): LanguageService
     {
-        if (!$this->languageService instanceof LanguageService) {
-            $languageService = GeneralUtility::makeInstance(LanguageServiceFactory::class)->create('default');
-            $languageService->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-            $this->languageService = $languageService;
-            $GLOBALS['LANG'] = $languageService;
+        if (!($this->languageService instanceof LanguageService)) {
+            $this->languageService = GeneralUtility::makeInstance(LanguageServiceFactory::class)->create('default');
+            $GLOBALS['LANG'] = $this->languageService;
         }
 
         return $this->languageService;
