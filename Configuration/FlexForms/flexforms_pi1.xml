@@ -36,12 +36,6 @@
                                     </label>
                                     <value>topic_list</value>
                                 </numIndex>
-                                <numIndex index="1" type="array">
-                                    <label>
-                                        LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.my_events
-                                    </label>
-                                    <value>my_events</value>
-                                </numIndex>
                                 <numIndex index="10" type="array">
                                     <label>
                                         LLL:EXT:seminars/Resources/Private/Language/locallang.xlf:seminars.pi_flexform.category_list
