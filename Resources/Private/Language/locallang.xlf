@@ -844,9 +844,6 @@
       <trans-unit id="label_list_dates">
         <source>Dates for this topic</source>
       </trans-unit>
-      <trans-unit id="label_eventsnextday">
-        <source>Subsequent events</source>
-      </trans-unit>
       <trans-unit id="label_edit">
         <source>Edit</source>
       </trans-unit>

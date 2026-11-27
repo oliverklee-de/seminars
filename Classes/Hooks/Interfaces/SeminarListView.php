@@ -24,8 +24,7 @@ interface SeminarListView extends Hook
      * "events next day", "other dates".
      *
      * @param DefaultController $controller the calling controller
-     * @param string $whatToDisplay the flavor of list view: 'seminar_list', 'topic_list',
-     *        'events_next_day' or 'other_dates'
+     * @param string $whatToDisplay the flavor of list view: 'seminar_list', 'topic_list', 'other_dates'
      *
      * @see AbstractBagBuilder::getWhereClausePart()
      * @see AbstractBagBuilder::setWhereClausePart()

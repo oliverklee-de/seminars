@@ -471,10 +471,6 @@ class DefaultController extends TemplateHelper
 
         $resultParts = [$this->getSubpart('SINGLE_VIEW')];
 
-        if ($event->hasEndDate()) {
-            $this->seminar = $event;
-            $resultParts[] = $this->createEventsOnNextDayList();
-        }
         if ($event->isEventTopic() || $event->isEventDate()) {
             $this->seminar = $event;
             $resultParts[] = $this->createOtherDatesList();
@@ -1047,34 +1043,6 @@ class DefaultController extends TemplateHelper
     }
 
     /**
-     * Creates the list of events that start the next day (after the current
-     * event has ended). Practically, this is just a special kind of list view.
-     * In case the current record is a topic record, this function will return
-     * an empty string.
-     *
-     * Note: This function relies on $this->seminar, but also overwrites
-     * $this->seminar.
-     *
-     * @return string HTML for the events list (may be an empty string)
-     */
-    private function createEventsOnNextDayList(): string
-    {
-        $result = '';
-
-        $seminarBag = $this->initListView('events_next_day');
-
-        if ($this->internal['res_count'] > 0) {
-            $tableEventsNextDay = $this->createListTable($seminarBag, 'events_next_day');
-
-            $this->setMarker('table_eventsnextday', $tableEventsNextDay);
-
-            $result = $this->getSubpart('EVENTSNEXTDAY_VIEW');
-        }
-
-        return $result;
-    }
-
-    /**
      * Creates the list of (other) dates for this topic. Practically, this is
      * just a special kind of list view. In case this topic has no other dates,
      * this function will return an empty string.
@@ -1262,9 +1230,6 @@ class DefaultController extends TemplateHelper
                 break;
             case 'my_events':
                 $builder->limitToAttendee($user);
-                break;
-            case 'events_next_day':
-                $builder->limitToEventsNextDay($this->seminar);
                 break;
             case 'other_dates':
                 $builder->limitToOtherDatesForTopic($this->seminar);

@@ -176,11 +176,11 @@ override the corresponding value from TS Setup.**
          rice\_regular,price\_special,additional\_information,
          target\_groups, attached\_files,
          paymentmethods, target\_groups, organizers, vacancies,
-         deadline\_registration, otherdates, eventsnextday, registration, back,
+         deadline\_registration, otherdates, registration, back,
          image, requirements, dependencies
 
    Default
-         credit\_points,eventsnextday
+         credit\_points
 
 
 .. container:: table-row
