@@ -4786,7 +4786,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $hook = $this->createMock(SeminarListView::class);
         $hook->expects(self::once())->method('modifyListHeader')->with($this->subject);
         $hook->expects(self::once())->method('modifyListRow')->with($this->subject);
-        $hook->expects(self::never())->method('modifyMyEventsListRow');
         $hook->expects(self::once())->method('modifyListFooter')->with($this->subject);
         $hook
             ->expects(self::once())->method('modifyEventBagBuilder')
@@ -4809,7 +4808,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $hook = $this->createMock(SeminarListView::class);
         $hook->expects(self::once())->method('modifyListHeader')->with($this->subject);
         $hook->expects(self::once())->method('modifyListRow')->with($this->subject);
-        $hook->expects(self::never())->method('modifyMyEventsListRow');
         $hook->expects(self::once())->method('modifyListFooter')->with($this->subject);
         $hook
             ->expects(self::once())->method('modifyEventBagBuilder')
@@ -4860,7 +4858,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $hook = $this->createMock(SeminarListView::class);
         $hook->expects(self::exactly(2))->method('modifyListHeader')->with($this->subject);
         $hook->expects(self::exactly(2))->method('modifyListRow')->with($this->subject);
-        $hook->expects(self::never())->method('modifyMyEventsListRow');
         $hook->expects(self::exactly(2))->method('modifyListFooter')->with($this->subject);
         $hook->expects(self::exactly(2))->method('modifyEventBagBuilder');
 
