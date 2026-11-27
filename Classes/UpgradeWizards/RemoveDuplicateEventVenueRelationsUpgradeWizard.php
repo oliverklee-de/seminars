@@ -107,7 +107,8 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizard implements UpgradeWizardIn
         }
 
         $this->logger->info(
-            \sprintf('Removed %d duplicate event-venue relations.', $numberOfDeletions),
+            'Removed {numberOfDeletions} duplicate event-venue relations.',
+            ['numberOfDeletions' => $numberOfDeletions],
         );
 
         return true;
