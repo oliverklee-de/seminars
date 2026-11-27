@@ -58,15 +58,6 @@ interface SeminarListView extends Hook
     public function modifyListRow(DefaultController $controller): void;
 
     /**
-     * Modifies a list view row in a "my seminars" list.
-     *
-     * This function will be called for "my events" lists only.
-     *
-     * @param DefaultController $controller the calling controller
-     */
-    public function modifyMyEventsListRow(DefaultController $controller): void;
-
-    /**
      * Modifies the list view footer in a seminars list.
      *
      * This function will be called for all types of seminar lists ("topics",

@@ -1502,14 +1502,9 @@ class DefaultController extends TemplateHelper
             $this->setMarker('attached_files', $this->getAttachedFilesListMarkerContent());
             $this->setMarker('vacancies', $this->seminar->getVacanciesString());
             $this->setMarker('class_listvacancies', $this->getVacanciesClasses($this->seminar));
-
             $this->setRegistrationLinkMarker($whatToDisplay);
 
             $this->getListViewHookProvider()->executeHook('modifyListRow', $this);
-
-            if ($whatToDisplay === 'my_events') {
-                $this->getListViewHookProvider()->executeHook('modifyMyEventsListRow', $this);
-            }
 
             $result = $this->getSubpart('LIST_ITEM');
         }
