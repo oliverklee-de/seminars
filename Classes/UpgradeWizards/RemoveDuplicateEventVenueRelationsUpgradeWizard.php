@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\UpgradeWizards;
 
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Install\Attribute\UpgradeWizard;
@@ -21,20 +20,18 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
  * @internal
  */
 #[UpgradeWizard('seminars_removeDuplicateEventVenueRelations')]
-class RemoveDuplicateEventVenueRelationsUpgradeWizard implements
-    UpgradeWizardInterface,
-    RepeatableInterface,
-    LoggerAwareInterface
+class RemoveDuplicateEventVenueRelationsUpgradeWizard implements UpgradeWizardInterface, RepeatableInterface
 {
-    use LoggerAwareTrait;
-
     private const TABLE_NAME_EVENTS = 'tx_seminars_seminars';
 
     private ConnectionPool $connectionPool;
 
-    public function __construct(ConnectionPool $connectionPool)
+    private LoggerInterface $logger;
+
+    public function __construct(ConnectionPool $connectionPool, LoggerInterface $logger)
     {
         $this->connectionPool = $connectionPool;
+        $this->logger = $logger;
     }
 
     public function getIdentifier(): string
@@ -109,11 +106,9 @@ class RemoveDuplicateEventVenueRelationsUpgradeWizard implements
             ]);
         }
 
-        if ($this->logger instanceof LoggerAwareInterface) {
-            $this->logger->info(
-                \sprintf('Removed %d duplicate event-venue relations.', $numberOfDeletions),
-            );
-        }
+        $this->logger->info(
+            \sprintf('Removed %d duplicate event-venue relations.', $numberOfDeletions),
+        );
 
         return true;
     }
