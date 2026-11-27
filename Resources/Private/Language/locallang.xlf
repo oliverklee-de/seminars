@@ -225,12 +225,6 @@
       <trans-unit id="label_checkboxes">
         <source>Selected options</source>
       </trans-unit>
-      <trans-unit id="message_notLoggedIn">
-        <source>Please log in first.</source>
-      </trans-unit>
-      <trans-unit id="message_notLoggedIn_informal">
-        <source>Please log in first.</source>
-      </trans-unit>
       <trans-unit id="message_alreadyRegistered">
         <source>You already have registered for this event.</source>
       </trans-unit>
@@ -739,12 +733,6 @@
       <trans-unit id="pi_list_searchBox_search">
         <source>Search</source>
       </trans-unit>
-      <trans-unit id="label_myevents">
-        <source>You are registered for the following events:</source>
-      </trans-unit>
-      <trans-unit id="label_myevents_informal">
-        <source>You are registered for the following events:</source>
-      </trans-unit>
       <trans-unit id="label_category">
         <source>Category</source>
       </trans-unit>
@@ -968,12 +956,6 @@
       </trans-unit>
       <trans-unit id="message_noResults">
         <source>Sorry, currently no events could be found.</source>
-      </trans-unit>
-      <trans-unit id="message_pleaseLogIn">
-        <source>Please log in to view this page.</source>
-      </trans-unit>
-      <trans-unit id="message_pleaseLogIn_informal">
-        <source>Please log in to view this page.</source>
       </trans-unit>
       <trans-unit id="message_noRegistrations">
         <source>For this event, there are no registrations yet.</source>

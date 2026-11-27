@@ -9,22 +9,17 @@ use OliverKlee\Oelib\Configuration\FallbackConfiguration;
 use OliverKlee\Oelib\Configuration\FlexformsConfiguration;
 use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
-use OliverKlee\Seminars\Bag\AbstractBag;
 use OliverKlee\Seminars\Bag\EventBag;
-use OliverKlee\Seminars\Bag\RegistrationBag;
 use OliverKlee\Seminars\BagBuilder\EventBagBuilder;
-use OliverKlee\Seminars\BagBuilder\RegistrationBagBuilder;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Hooks\HookProvider;
 use OliverKlee\Seminars\Hooks\Interfaces\SeminarListView;
 use OliverKlee\Seminars\Hooks\Interfaces\SeminarSingleView;
 use OliverKlee\Seminars\Mapper\EventMapper;
-use OliverKlee\Seminars\Mapper\FrontEndUserMapper;
 use OliverKlee\Seminars\Middleware\ResponseHeadersModifier;
 use OliverKlee\Seminars\Model\Event;
 use OliverKlee\Seminars\OldModel\LegacyEvent;
 use OliverKlee\Seminars\OldModel\LegacyOrganizer;
-use OliverKlee\Seminars\OldModel\LegacyRegistration;
 use OliverKlee\Seminars\Seo\SingleViewPageTitleProvider;
 use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Service\SingleViewLinkBuilder;
@@ -49,19 +44,12 @@ class DefaultController extends TemplateHelper
 
     private EventMapper $eventMapper;
 
-    private FrontEndUserMapper $frontEndUserMapper;
-
     private RegistrationManager $registrationManager;
 
     /**
      * @var LegacyEvent|null the seminar which we want to list/show or for which the user wants to register
      */
     private ?LegacyEvent $seminar = null;
-
-    /**
-     * @var LegacyRegistration|null the registration which we want to list/show in the "my events" view
-     */
-    private ?LegacyRegistration $registration = null;
 
     /**
      * @var string the previous event's category (used for the list view)
@@ -218,9 +206,6 @@ class DefaultController extends TemplateHelper
             case 'topic_list':
                 // The fallthrough is intended
                 // because createListView() will differentiate later.
-            case 'my_events':
-                // The fallthrough is intended
-                // because createListView() will differentiate later.
             case 'seminar_list':
                 // The fallthrough is intended
                 // because createListView() will differentiate later.
@@ -240,7 +225,6 @@ class DefaultController extends TemplateHelper
         $this->configurationRegistry = GeneralUtility::makeInstance(ConfigurationRegistry::class);
         $mapperRegistry = GeneralUtility::makeInstance(MapperRegistry::class);
         $this->eventMapper = $mapperRegistry->getByClassName(EventMapper::class);
-        $this->frontEndUserMapper = $mapperRegistry->getByClassName(FrontEndUserMapper::class);
         $this->registrationManager = GeneralUtility::makeInstance(RegistrationManager::class);
         $this->responseHeadersModifier = GeneralUtility::makeInstance(ResponseHeadersModifier::class);
     }
@@ -1134,8 +1118,6 @@ class DefaultController extends TemplateHelper
      */
     protected function createListView(string $whatToDisplay): string
     {
-        $result = '';
-        $isOkay = true;
         $this->ensureIntegerPiVars(
             [
                 'from_day',
@@ -1150,45 +1132,24 @@ class DefaultController extends TemplateHelper
             ],
         );
 
-        switch ($whatToDisplay) {
-            case 'my_events':
-                if ($this->isLoggedIn()) {
-                    $result .= $this->getSubpart('MESSAGE_MY_EVENTS');
-                } else {
-                    $this->setMarker('error_text', $this->translate('message_notLoggedIn'));
-                    $result .= $this->getSubpart('ERROR_VIEW');
-                    $result .= $this->getLoginLink(
-                        $this->translate('message_pleaseLogIn'),
-                        (int)$this->getFrontEndController()->id,
-                    );
-                    $isOkay = false;
-                }
-                break;
-            default:
-                // nothing to do
+        $result = $this->getSelectorWidgetIfNecessary($whatToDisplay);
+
+        // Creates the event bag for the list view (with all the filtering applied).
+        $eventBag = $this->initListView($whatToDisplay);
+
+        if ($this->internal['res_count'] > 0) {
+            $result .= $this->createListTable($eventBag, $whatToDisplay);
+        } else {
+            $this->setMarker(
+                'error_text',
+                $this->translate('message_noResults'),
+            );
+            $result .= $this->getSubpart('ERROR_VIEW');
         }
 
-        if ($isOkay) {
-            $result .= $this->getSelectorWidgetIfNecessary($whatToDisplay);
-
-            // Creates the seminar or registration bag for the list view (with
-            // all the filtering applied).
-            $seminarOrRegistrationBag = $this->initListView($whatToDisplay);
-
-            if ($this->internal['res_count'] > 0) {
-                $result .= $this->createListTable($seminarOrRegistrationBag, $whatToDisplay);
-            } else {
-                $this->setMarker(
-                    'error_text',
-                    $this->translate('message_noResults'),
-                );
-                $result .= $this->getSubpart('ERROR_VIEW');
-            }
-
-            // Shows the page browser (if not deactivated in the configuration).
-            if (!$this->getConfValueBoolean('hidePageBrowser', 's_template_special')) {
-                $result .= $this->pi_list_browseresults();
-            }
+        // Shows the page browser (if not deactivated in the configuration).
+        if (!$this->getConfValueBoolean('hidePageBrowser', 's_template_special')) {
+            $result .= $this->pi_list_browseresults();
         }
 
         return $result;
@@ -1196,15 +1157,15 @@ class DefaultController extends TemplateHelper
 
     /**
      * Initializes the list view (normal list or "my events") and
-     * creates a seminar bag or a registration bag (for the "my events" view),
+     * creates an event bag,
      * but does not create any actual HTML output.
      *
      * @param string $whatToDisplay the flavor of list view: either an empty string (for the default list view),
      *        the value from "what_to_display", or "other_dates"
      *
-     * @return RegistrationBag|EventBag a bag containing the items for the list view
+     * @return EventBag a bag containing the items for the list view
      */
-    public function initListView(string $whatToDisplay = ''): AbstractBag
+    public function initListView(string $whatToDisplay = ''): EventBag
     {
         if (\str_contains($this->cObj->currentRecord, 'tt_content')) {
             $this->conf['pidList'] = $this->getConfValueString('pages');
@@ -1212,8 +1173,8 @@ class DefaultController extends TemplateHelper
         }
 
         $this->hideColumnsForAllViewsFromTypoScriptSetup();
-        $this->hideRegisterColumnIfNecessary($whatToDisplay);
-        $this->hideColumnsForAllViewsExceptMyEvents($whatToDisplay);
+        $this->hideRegisterColumnIfNecessary();
+        $this->hideDroppedMyEventsColumns();
         $this->hideFilesColumnIfUserCannotAccessFiles();
 
         if (!isset($this->piVars['pointer'])) {
@@ -1238,30 +1199,17 @@ class DefaultController extends TemplateHelper
             2,
         );
 
-        if ($whatToDisplay === 'my_events') {
-            $builder = $this->createRegistrationBagBuilder();
-        } else {
-            $builder = $this->createSeminarBagBuilder();
-        }
-
-        if ($whatToDisplay !== 'my_events') {
-            $this->limitForAdditionalParameters($builder);
-        }
-        if (!in_array($whatToDisplay, ['my_events', 'topic_list'], true)) {
+        $builder = $this->createSeminarBagBuilder();
+        $this->limitForAdditionalParameters($builder);
+        if ($whatToDisplay !== 'topic_list') {
             $builder->limitToDateAndSingleRecords();
             $this->limitToTimeFrameSetting($builder);
         }
-
-        $userUid = $this->getLoggedInFrontEndUserUid();
-        $user = ($userUid > 0) ? $this->frontEndUserMapper->find($userUid) : null;
 
         switch ($whatToDisplay) {
             case 'topic_list':
                 $builder->limitToTopicRecords();
                 $this->hideColumnsForTheTopicListView();
-                break;
-            case 'my_events':
-                $builder->limitToAttendee($user);
                 break;
             case 'events_next_day':
                 $builder->limitToEventsNextDay($this->seminar);
@@ -1283,18 +1231,14 @@ class DefaultController extends TemplateHelper
         $pointer = (int)($this->piVars['pointer'] ?? 0);
         $resultsAtATime = MathUtility::forceIntegerInRange($this->internal['results_at_a_time'], 1, 1000);
         $builder->setLimit(($pointer * $resultsAtATime) . ',' . $resultsAtATime);
+        $this->getListViewHookProvider()->executeHook('modifyEventBagBuilder', $this, $builder, $whatToDisplay);
+        $eventBag = $builder->build();
 
-        if ($builder instanceof EventBagBuilder) {
-            $this->getListViewHookProvider()->executeHook('modifyEventBagBuilder', $this, $builder, $whatToDisplay);
-        }
-
-        $seminarOrRegistrationBag = $builder->build();
-
-        $this->internal['res_count'] = $seminarOrRegistrationBag->countWithoutLimit();
+        $this->internal['res_count'] = $eventBag->countWithoutLimit();
 
         $this->previousCategory = '';
 
-        return $seminarOrRegistrationBag;
+        return $eventBag;
     }
 
     /**
@@ -1303,26 +1247,19 @@ class DefaultController extends TemplateHelper
      * This function should only be called when there are actually any list
      * items.
      *
-     * @param RegistrationBag|EventBag $seminarOrRegistrationBag initialized bag
      * @param string $whatToDisplay a string selecting the flavor of list view: either an empty string
      *        (for the default list view), the value from "what_to_display" or "other_dates"
      *
      * @return string HTML for the table (will not be empty)
      */
-    protected function createListTable(AbstractBag $seminarOrRegistrationBag, string $whatToDisplay): string
+    protected function createListTable(EventBag $eventBag, string $whatToDisplay): string
     {
         $result = $this->createListHeader();
         $rowCounter = 0;
 
-        foreach ($seminarOrRegistrationBag as $currentItem) {
-            if ($whatToDisplay === 'my_events') {
-                /** @var LegacyRegistration $currentItem */
-                $this->registration = $currentItem;
-                $this->setSeminar($this->registration->getSeminarObject());
-            } else {
-                /** @var LegacyEvent $currentItem */
-                $this->setSeminar($currentItem);
-            }
+        foreach ($eventBag as $event) {
+            assert($event instanceof LegacyEvent);
+            $this->setSeminar($event);
 
             $result .= $this->createListRow($rowCounter, $whatToDisplay);
             $rowCounter++;
@@ -1356,15 +1293,12 @@ class DefaultController extends TemplateHelper
             'time',
             'place',
             'city',
-            'seats',
             'price_regular',
             'price_special',
-            'total_price',
             'organizers',
             'target_groups',
             'attached_files',
             'vacancies',
-            'status_registration',
             'registration',
             'edit',
         ];
@@ -1424,18 +1358,6 @@ class DefaultController extends TemplateHelper
 
             $this->setMarker('class_itemrow', $completeClass);
 
-            // Retrieves the data for the columns "number of seats", "total
-            // price" and "status", but only if we are on the "my_events" list.
-            if ($whatToDisplay === 'my_events') {
-                $attendanceData = [
-                    'seats' => $this->registration->getSeats(),
-                    'total_price' => $this->registration->getTotalPrice(),
-                ];
-                $this->setMarker('status_registration', $this->registration->getStatus());
-            } else {
-                $attendanceData = ['seats' => '', 'total_price' => ''];
-            }
-
             $image = $this->seminar->getImage();
             if ($image instanceof FileReference) {
                 $imageConfiguration = [
@@ -1484,16 +1406,12 @@ class DefaultController extends TemplateHelper
                 $dateToShow = $this->seminar->getDate();
             }
             $this->setMarker('date', $dateToShow);
-
             $this->setMarker('time', $this->seminar->getTime());
-            $this->setMarker('expiry', $this->seminar->getExpiry());
 
             $this->setMarker('place', \htmlspecialchars($this->seminar->getPlaceShort(), ENT_QUOTES | ENT_HTML5));
             $this->setMarker('city', \htmlspecialchars($this->seminar->getCities(), ENT_QUOTES | ENT_HTML5));
-            $this->setMarker('seats', $attendanceData['seats']);
             $this->setMarker('price_regular', $this->seminar->getCurrentPriceRegular());
             $this->setMarker('price_special', $this->seminar->getCurrentPriceSpecial());
-            $this->setMarker('total_price', $attendanceData['total_price']);
             $this->setMarker('organizers', $this->seminar->getOrganizers($this));
             $this->setMarker(
                 'target_groups',
@@ -1502,7 +1420,7 @@ class DefaultController extends TemplateHelper
             $this->setMarker('attached_files', $this->getAttachedFilesListMarkerContent());
             $this->setMarker('vacancies', $this->seminar->getVacanciesString());
             $this->setMarker('class_listvacancies', $this->getVacanciesClasses($this->seminar));
-            $this->setRegistrationLinkMarker($whatToDisplay);
+            $this->setRegistrationLinkMarker();
 
             $this->getListViewHookProvider()->executeHook('modifyListRow', $this);
 
@@ -1524,24 +1442,6 @@ class DefaultController extends TemplateHelper
         $seminarBagBuilder->setOrderBy($this->getOrderByForListView());
 
         return $seminarBagBuilder;
-    }
-
-    /**
-     * Returns a registrationBagBuilder object limited for registrations of the
-     * currently logged in front-end user as attendee for the "my events" list view.
-     *
-     * @return RegistrationBagBuilder the registrations for the "my events" list
-     */
-    private function createRegistrationBagBuilder(): RegistrationBagBuilder
-    {
-        $registrationBagBuilder = GeneralUtility::makeInstance(RegistrationBagBuilder::class);
-
-        $userUid = $this->getLoggedInFrontEndUserUid();
-        $user = ($userUid > 0) ? $this->frontEndUserMapper->find($userUid) : null;
-        $registrationBagBuilder->limitToAttendee($user);
-        $registrationBagBuilder->setOrderByEventColumn($this->getOrderByForListView());
-
-        return $registrationBagBuilder;
     }
 
     /**
@@ -1802,11 +1702,8 @@ class DefaultController extends TemplateHelper
 
     /**
      * Hides the registration column if online registration is disabled.
-     *
-     * @param string $whatToDisplay a string selecting the flavor of list view: either an empty string
-     *        (for the default list view), the value from "what_to_display" or "other_dates"
      */
-    private function hideRegisterColumnIfNecessary(string $whatToDisplay): void
+    private function hideRegisterColumnIfNecessary(): void
     {
         if (!$this->isRegistrationEnabled()) {
             $this->hideColumns(['registration']);
@@ -1834,19 +1731,12 @@ class DefaultController extends TemplateHelper
     }
 
     /**
-     * Hides the number of seats, the total price and the registration status
-     * columns when we're not on the "my_events" list view.
-     *
-     * @param string $whatToDisplay a string selecting the flavor of list view: either an empty string
-     *        (for the default list view), the value from "what_to_display" or "other_dates"
+     * Hides columns that were dropped with the legacy "my events" view. The columns still get hidden so that
+     * installations that still have the corresponding parts in the HTML template won't have unreplaced markers.
      */
-    private function hideColumnsForAllViewsExceptMyEvents(string $whatToDisplay): void
+    private function hideDroppedMyEventsColumns(): void
     {
-        if ($whatToDisplay !== 'my_events') {
-            $this->hideColumns(
-                ['expiry', 'seats', 'total_price', 'status_registration'],
-            );
-        }
+        $this->hideColumns(['expiry', 'seats', 'total_price', 'status_registration']);
     }
 
     /**
@@ -1931,21 +1821,9 @@ class DefaultController extends TemplateHelper
 
     /**
      * Sets the marker for the registration link in the list view.
-     *
-     * @param string $whatToDisplay the list type which should be shown, must not be empty
      */
-    private function setRegistrationLinkMarker(string $whatToDisplay): void
+    private function setRegistrationLinkMarker(): void
     {
-        if ($whatToDisplay === 'my_events') {
-            $this->setMarker(
-                'registration',
-                $this->seminar->isUnregistrationPossible()
-                    ? $this->registrationManager->getLinkToUnregistrationPage($this, $this->registration) : '',
-            );
-
-            return;
-        }
-
         $registrationLink = $this->registrationManager->getRegistrationLink($this, $this->seminar);
 
         if ($registrationLink === '' && !$this->registrationManager->registrationHasStarted($this->seminar)) {

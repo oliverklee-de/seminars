@@ -3788,74 +3788,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         );
     }
 
-    //////////////////////////////////////////
-    // Tests concerning the "my events" view
-    //////////////////////////////////////////
-
-    /**
-     * @test
-     */
-    public function myEventsContainsTitleOfEventWithRegularRegistrationForLoggedInUser(): void
-    {
-        $this->createLogInAndRegisterFeUser();
-        $this->subject->setConfigurationValue('what_to_display', 'my_events');
-
-        self::assertStringContainsString(
-            'Test &amp; event',
-            $this->subject->main('', []),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function myEventsContainsTitleOfEventWithNonbindingReservationForLoggedInUser(): void
-    {
-        $this->testingFramework->createRecord(
-            'tx_seminars_attendances',
-            [
-                'seminar' => $this->seminarUid,
-                'user' => $this->testingFramework->createAndLoginFrontEndUser(),
-                'registration_queue' => Registration::STATUS_NONBINDING_RESERVATION,
-            ],
-        );
-
-        $this->subject->setConfigurationValue('what_to_display', 'my_events');
-
-        self::assertStringContainsString(
-            'Test &amp; event',
-            $this->subject->main('', []),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function myEventsNotContainsTitleOfEventWithoutRegistrationForLoggedInUser(): void
-    {
-        $this->testingFramework->createAndLoginFrontEndUser();
-        $this->subject->setConfigurationValue('what_to_display', 'my_events');
-
-        self::assertStringNotContainsString(
-            'Test &amp; event',
-            $this->subject->main('', []),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function myEventsContainsExpiryOfEventWithExpiryAndRegistrationForLoggedInUser(): void
-    {
-        $this->createLogInAndRegisterFeUser();
-        $this->subject->setConfigurationValue('what_to_display', 'my_events');
-
-        self::assertStringContainsString(
-            '2008-01-01',
-            $this->subject->main('', []),
-        );
-    }
-
     // Tests concerning getFieldHeader
 
     /**
@@ -4738,23 +4670,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $subject->expects(self::once())->method('limitForAdditionalParameters');
 
         $subject->initListView('topic_list');
-    }
-
-    /**
-     * @test
-     */
-    public function initListViewForMyEventsListNotLimitsListByAdditionalParameters(): void
-    {
-        $subject =
-            $this
-                ->getMockBuilder(TestingDefaultController::class)
-                ->onlyMethods(['limitForAdditionalParameters'])
-                ->getMock();
-        $subject->setUpDependencies();
-        $subject->setContentObjectRenderer($this->createMock(ContentObjectRenderer::class));
-        $subject->expects(self::never())->method('limitForAdditionalParameters');
-
-        $subject->initListView('my_events');
     }
 
     // Tests concerning the hooks for the event lists
