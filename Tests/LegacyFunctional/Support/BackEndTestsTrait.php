@@ -58,14 +58,9 @@ trait BackEndTestsTrait
 
     private function unifyBackEndLanguage(): void
     {
-        $newLanguageService = $this->getLanguageService();
-        $newLanguageService->lang = 'default';
-
-        $newLanguageService->includeLLFile('EXT:core/Resources/Private/Language/locallang_general.xlf');
-        $newLanguageService->includeLLFile('EXT:seminars/Resources/Private/Language/locallang.xlf');
-        $newLanguageService->includeLLFile('EXT:seminars/Resources/Private/Language/locallang_db.xlf');
-
-        $GLOBALS['LANG'] = $newLanguageService;
+        $languageService = $this->getLanguageService();
+        $languageService->lang = 'default';
+        $GLOBALS['LANG'] = $languageService;
     }
 
     private function setUpExtensionConfiguration(): void
