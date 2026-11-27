@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Seminars\UpgradeWizards;
 
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
@@ -23,21 +22,19 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
  * @internal
  */
 #[UpgradeWizard('seminars_copyBillingAddressToRegistrations')]
-class CopyBillingAddressToRegistrationsUpgradeWizard implements
-    UpgradeWizardInterface,
-    RepeatableInterface,
-    LoggerAwareInterface
+class CopyBillingAddressToRegistrationsUpgradeWizard implements UpgradeWizardInterface, RepeatableInterface
 {
-    use LoggerAwareTrait;
-
     private const TABLE_NAME_REGISTRATIONS = 'tx_seminars_attendances';
     private const TABLE_NAME_USERS = 'fe_users';
 
     private ConnectionPool $connectionPool;
 
-    public function __construct(ConnectionPool $connectionPool)
+    private LoggerInterface $logger;
+
+    public function __construct(ConnectionPool $connectionPool, LoggerInterface $logger)
     {
         $this->connectionPool = $connectionPool;
+        $this->logger = $logger;
     }
 
     public function getIdentifier(): string
@@ -143,12 +140,10 @@ class CopyBillingAddressToRegistrationsUpgradeWizard implements
                 ->update(self::TABLE_NAME_REGISTRATIONS, $updatedRegistrationData, ['uid' => $registrationUid]);
         }
 
-        if ($this->logger instanceof LoggerAwareInterface) {
-            $this->logger->info(
-                '{registrationCount} registrations updated with billing address',
-                ['registrationCount' => \count($registrations)],
-            );
-        }
+        $this->logger->info(
+            '{registrationCount} registrations updated with billing address',
+            ['registrationCount' => \count($registrations)],
+        );
 
         return true;
     }

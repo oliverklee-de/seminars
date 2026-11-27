@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\UpgradeWizards;
 
 use OliverKlee\Seminars\Seo\SlugGenerator;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
@@ -22,17 +21,18 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
  * @internal
  */
 #[UpgradeWizard('seminars_generateEventSlugs')]
-class GenerateEventSlugsUpgradeWizard implements UpgradeWizardInterface, RepeatableInterface, LoggerAwareInterface
+class GenerateEventSlugsUpgradeWizard implements UpgradeWizardInterface, RepeatableInterface
 {
-    use LoggerAwareTrait;
-
     private const TABLE_NAME_EVENTS = 'tx_seminars_seminars';
 
     private ConnectionPool $connectionPool;
 
-    public function __construct(ConnectionPool $connectionPool)
+    private LoggerInterface $logger;
+
+    public function __construct(ConnectionPool $connectionPool, LoggerInterface $logger)
     {
         $this->connectionPool = $connectionPool;
+        $this->logger = $logger;
     }
 
     public function getIdentifier(): string
@@ -91,9 +91,7 @@ class GenerateEventSlugsUpgradeWizard implements UpgradeWizardInterface, Repeata
             $connection->update(self::TABLE_NAME_EVENTS, ['slug' => $slug], ['uid' => $row['uid']]);
         }
 
-        if ($this->logger instanceof LoggerAwareInterface) {
-            $this->logger->info('All events that had no slug now have one.');
-        }
+        $this->logger->info('All events that had no slug now have one.');
 
         return true;
     }

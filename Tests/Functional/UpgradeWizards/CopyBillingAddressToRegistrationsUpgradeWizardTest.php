@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\Functional\UpgradeWizards;
 
 use OliverKlee\Seminars\UpgradeWizards\CopyBillingAddressToRegistrationsUpgradeWizard;
-use Psr\Log\NullLogger;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
@@ -35,7 +34,6 @@ class CopyBillingAddressToRegistrationsUpgradeWizardTest extends FunctionalTestC
         parent::setUp();
 
         $this->subject = $this->get(CopyBillingAddressToRegistrationsUpgradeWizard::class);
-        $this->subject->setLogger(new NullLogger());
     }
 
     /**

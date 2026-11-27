@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\Unit\UpgradeWizards;
 
 use OliverKlee\Seminars\UpgradeWizards\CopyBillingAddressToRegistrationsUpgradeWizard;
-use Psr\Log\LoggerAwareInterface;
+use Psr\Log\NullLogger;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
@@ -23,7 +23,10 @@ final class CopyBillingAddressToRegistrationsUpgradeWizardTest extends UnitTestC
     {
         parent::setUp();
 
-        $this->subject = new CopyBillingAddressToRegistrationsUpgradeWizard($this->createStub(ConnectionPool::class));
+        $this->subject = new CopyBillingAddressToRegistrationsUpgradeWizard(
+            $this->createStub(ConnectionPool::class),
+            new NullLogger(),
+        );
     }
 
     /**
@@ -40,14 +43,6 @@ final class CopyBillingAddressToRegistrationsUpgradeWizardTest extends UnitTestC
     public function isRepeatable(): void
     {
         self::assertInstanceOf(RepeatableInterface::class, $this->subject);
-    }
-
-    /**
-     * @test
-     */
-    public function isLoggerAware(): void
-    {
-        self::assertInstanceOf(LoggerAwareInterface::class, $this->subject);
     }
 
     /**

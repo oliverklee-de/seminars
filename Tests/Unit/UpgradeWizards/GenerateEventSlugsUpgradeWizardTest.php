@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Tests\Unit\UpgradeWizards;
 
 use OliverKlee\Seminars\UpgradeWizards\GenerateEventSlugsUpgradeWizard;
-use Psr\Log\LoggerAwareInterface;
+use Psr\Log\NullLogger;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\RepeatableInterface;
@@ -23,7 +23,10 @@ final class GenerateEventSlugsUpgradeWizardTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->subject = new GenerateEventSlugsUpgradeWizard($this->createStub(ConnectionPool::class));
+        $this->subject = new GenerateEventSlugsUpgradeWizard(
+            $this->createStub(ConnectionPool::class),
+            new NullLogger(),
+        );
     }
 
     /**
@@ -40,14 +43,6 @@ final class GenerateEventSlugsUpgradeWizardTest extends UnitTestCase
     public function isRepeatable(): void
     {
         self::assertInstanceOf(RepeatableInterface::class, $this->subject);
-    }
-
-    /**
-     * @test
-     */
-    public function isLoggerAware(): void
-    {
-        self::assertInstanceOf(LoggerAwareInterface::class, $this->subject);
     }
 
     /**
