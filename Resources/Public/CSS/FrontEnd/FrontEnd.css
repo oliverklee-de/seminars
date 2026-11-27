@@ -36,7 +36,6 @@ th.tx-seminars-pi1-title {
     display: block;
 }
 
-td.tx-seminars-pi1-expiry,
 .tx-seminars-pi1-vacancies,
 .tx-seminars-pi1-price,
 .tx-seminars-pi1-uid {
@@ -45,10 +44,6 @@ td.tx-seminars-pi1-expiry,
 
 .tx-seminars-pi1-date {
     white-space: nowrap;
-}
-
-.tx-seminars-pi1-seats {
-    text-align: center;
 }
 
 .tx-seminars-pi1-vacancies-available .tx-seminars-pi1-square {

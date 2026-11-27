@@ -211,42 +211,7 @@ parameters:
 			path: ../../Classes/FrontEnd/CategoryList.php
 
 		-
-			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToAttendee\\(\\)\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToDateAndSingleRecords\\(\\)\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToEventsNextDay\\(\\)\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToEventsWithVacancies\\(\\)\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToOtherDatesForTopic\\(\\)\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Call to an undefined method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder\\:\\:limitToTopicRecords\\(\\)\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Cannot access property \\$currentRecord on TYPO3\\\\CMS\\\\Frontend\\\\ContentObject\\\\ContentObjectRenderer\\|null\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Cannot access property \\$id on TYPO3\\\\CMS\\\\Frontend\\\\Controller\\\\TypoScriptFrontendController\\|null\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -332,7 +297,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method getExpiry\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 2
+			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -411,22 +376,12 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Cannot call method getSeats\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Cannot call method getSpeakersShort\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 2
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
 			message: "#^Cannot call method getSpeakersWithDetails\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Cannot call method getStatus\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -458,11 +413,6 @@ parameters:
 		-
 			message: "#^Cannot call method getTitle\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 3
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Cannot call method getTotalPrice\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null\\.$#"
-			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -616,11 +566,6 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Cannot call method isUnregistrationPossible\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
 			message: "#^Cannot call method isUserRegistered\\(\\) on OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
@@ -638,11 +583,6 @@ parameters:
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 2
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Casting to int something that's already int\\.$#"
-			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
@@ -696,12 +636,12 @@ parameters:
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Parameter \\#1 \\$builder of method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:limitForAdditionalParameters\\(\\) expects OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder, OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder given\\.$#"
+			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:limitToEventsNextDay\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
 		-
-			message: "#^Parameter \\#1 \\$builder of method OliverKlee\\\\Seminars\\\\FrontEnd\\\\DefaultController\\:\\:limitToTimeFrameSetting\\(\\) expects OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder, OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\|OliverKlee\\\\Seminars\\\\BagBuilder\\\\RegistrationBagBuilder given\\.$#"
+			message: "#^Parameter \\#1 \\$event of method OliverKlee\\\\Seminars\\\\BagBuilder\\\\EventBagBuilder\\:\\:limitToOtherDatesForTopic\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
@@ -752,11 +692,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#2 \\$event of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getRegistrationLink\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyEvent\\|null given\\.$#"
-			count: 1
-			path: ../../Classes/FrontEnd/DefaultController.php
-
-		-
-			message: "#^Parameter \\#2 \\$registration of method OliverKlee\\\\Seminars\\\\Service\\\\RegistrationManager\\:\\:getLinkToUnregistrationPage\\(\\) expects OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration, OliverKlee\\\\Seminars\\\\OldModel\\\\LegacyRegistration\\|null given\\.$#"
 			count: 1
 			path: ../../Classes/FrontEnd/DefaultController.php
 
