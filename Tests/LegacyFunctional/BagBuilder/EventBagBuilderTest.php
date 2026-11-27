@@ -42,7 +42,7 @@ final class EventBagBuilderTest extends FunctionalTestCase
 
     private int $pastAsUnixTimestamp;
 
-    private int $futureAsUnixTimestamp = 0;
+    private int $futureAsUnixTimestamp;
 
     protected function setUp(): void
     {
@@ -2730,111 +2730,6 @@ final class EventBagBuilderTest extends FunctionalTestCase
         self::assertSame(
             1,
             $bag->count(),
-        );
-    }
-
-    /////////////////////////////////////
-    // Tests for limitToEventsNextDay()
-    /////////////////////////////////////
-
-    /**
-     * @test
-     */
-    public function limitToEventsNextDayFindsEventsNextDay(): void
-    {
-        $eventUid1 = $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            ['begin_date' => self::SECONDS_PER_DAY, 'end_date' => self::SECONDS_PER_DAY + 60 * 60],
-        );
-        $eventUid2 = $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            [
-                'begin_date' => 2 * self::SECONDS_PER_DAY,
-                'end_date' => 60 * 60 + 2 * self::SECONDS_PER_DAY,
-            ],
-        );
-        $event = new LegacyEvent($eventUid1);
-        $this->subject->limitToEventsNextDay($event);
-        $bag = $this->subject->build();
-
-        self::assertSame(
-            1,
-            $bag->count(),
-        );
-        self::assertSame(
-            $eventUid2,
-            $bag->current()->getUid(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function limitToEventsNextDayIgnoresEarlierEvents(): void
-    {
-        $eventUid = $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            ['begin_date' => self::SECONDS_PER_DAY, 'end_date' => self::SECONDS_PER_DAY + 60 * 60],
-        );
-        $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            [
-                'begin_date' => 0,
-                'end_date' => 60 * 60,
-            ],
-        );
-        $event = new LegacyEvent($eventUid);
-        $this->subject->limitToEventsNextDay($event);
-        $bag = $this->subject->build();
-
-        self::assertTrue(
-            $bag->isEmpty(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function limitToEventsNextDayIgnoresEventsLaterThanOneDay(): void
-    {
-        $eventUid = $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            ['begin_date' => self::SECONDS_PER_DAY, 'end_date' => self::SECONDS_PER_DAY + 60 * 60],
-        );
-        $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-            [
-                'begin_date' => 3 * self::SECONDS_PER_DAY,
-                'end_date' => 60 * 60 + 3 * self::SECONDS_PER_DAY,
-            ],
-        );
-        $event = new LegacyEvent($eventUid);
-        $this->subject->limitToEventsNextDay($event);
-        $bag = $this->subject->build();
-
-        self::assertTrue(
-            $bag->isEmpty(),
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function limitToEventsNextDayWithEventWithEmptyEndDateThrowsException(): void
-    {
-        $this->expectException(
-            \InvalidArgumentException::class,
-        );
-        $this->expectExceptionMessage(
-            'The event object given in the first parameter $event must '
-            . 'have an end date set.',
-        );
-
-        $eventUid = $this->testingFramework->createRecord(
-            'tx_seminars_seminars',
-        );
-        $this->subject->limitToEventsNextDay(
-            new LegacyEvent($eventUid),
         );
     }
 

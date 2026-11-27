@@ -389,29 +389,6 @@ class EventBagBuilder extends AbstractBagBuilder
     }
 
     /**
-     * Limits the bag to events on the day after the end date of the event given
-     * event in the first parameter $event.
-     *
-     * @param LegacyEvent $event the event object with the end date to limit for, must have an end date
-     */
-    public function limitToEventsNextDay(LegacyEvent $event): void
-    {
-        if (!$event->hasEndDate()) {
-            throw new \InvalidArgumentException(
-                'The event object given in the first parameter $event must have an end date set.',
-                1333292744,
-            );
-        }
-
-        $endDate = $event->getEndDateAsTimestamp();
-        $midnightBeforeEndDate = $endDate - ($endDate % self::SECONDS_PER_DAY);
-        $secondMidnightAfterEndDate = $midnightBeforeEndDate + 2 * self::SECONDS_PER_DAY;
-
-        $this->whereClauseParts['next_day'] = 'begin_date>=' . $endDate
-            . ' AND begin_date<' . $secondMidnightAfterEndDate;
-    }
-
-    /**
      * Limits the bag to date event records of the same topic as the event
      * given in the first parameter $event.
      *

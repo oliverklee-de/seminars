@@ -193,6 +193,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
+- Drop the list of next-day events from the legacy single view (#5563)
 - Drop the legacy `Category` model and mapper (#5486)
 - Drop the per-category single view page configuration (#5485)
 - Drop the legacy `EventType` model and mapper (#5484)

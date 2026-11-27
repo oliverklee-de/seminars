@@ -18,7 +18,7 @@ plugin.tx_seminars_pi1 {
   hideColumns = image,category,subtitle,event_type,accreditation_number,credit_points,teaser,time,expiry,place,city,price_special,speakers,target_groups,attached_files
 
   # comma-separated list of field names that shouldn't be displayed in the detail view, e.g. organizers,price_special
-  hideFields = credit_points,eventsnextday
+  hideFields = credit_points
 
   # whether the option boxes in the selector widget contain an empty entry like "not selected"
   showEmptyEntryInOptionLists = 0

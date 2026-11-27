@@ -4860,11 +4860,11 @@ final class DefaultControllerTest extends FunctionalTestCase
         $this->subject->piVars['showUid'] = (string)$dateUid;
 
         $hook = $this->createMock(SeminarListView::class);
-        $hook->expects(self::exactly(2))->method('modifyListHeader')->with($this->subject);
-        $hook->expects(self::exactly(2))->method('modifyListRow')->with($this->subject);
+        $hook->expects(self::exactly(1))->method('modifyListHeader')->with($this->subject);
+        $hook->expects(self::exactly(1))->method('modifyListRow')->with($this->subject);
         $hook->expects(self::never())->method('modifyMyEventsListRow');
-        $hook->expects(self::exactly(2))->method('modifyListFooter')->with($this->subject);
-        $hook->expects(self::exactly(2))->method('modifyEventBagBuilder');
+        $hook->expects(self::exactly(1))->method('modifyListFooter')->with($this->subject);
+        $hook->expects(self::exactly(1))->method('modifyEventBagBuilder');
         $hook->expects(self::never())->method('modifyRegistrationBagBuilder');
 
         $hookClass = \get_class($hook);
