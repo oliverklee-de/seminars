@@ -273,19 +273,17 @@ class DefaultController extends TemplateHelper
      * this function will return `false`.
      *
      * @param positive-int $seminarUid
-     * @param bool $showHidden whether hidden records should be retrieved as well
      *
      * @return bool TRUE if the seminar UID is valid and the object has been created, FALSE otherwise
      */
-    public function createSeminar(int $seminarUid, bool $showHidden = false): bool
+    public function createSeminar(int $seminarUid): bool
     {
         $this->seminar = null;
 
-        /** @var LegacyEvent|null $event */
-        $event = LegacyEvent::fromUid($seminarUid, $showHidden);
+        $event = LegacyEvent::fromUid($seminarUid);
         if ($event instanceof LegacyEvent) {
             $this->setSeminar($event);
-            $result = $showHidden ? $this->canShowCurrentEvent() : true;
+            $result = true;
         } else {
             $this->setSeminar();
             $result = false;
@@ -380,7 +378,7 @@ class DefaultController extends TemplateHelper
             $this->setMarker('error_text', $this->translate('message_missingSeminarNumber'));
             $result = $this->getSubpart('ERROR_VIEW');
             $this->responseHeadersModifier->setOverrideStatusCode(404);
-        } elseif ($this->createSeminar($this->showUid, $this->isLoggedIn())) {
+        } elseif ($this->createSeminar($this->showUid)) {
             $event = $this->getSeminar();
             \assert($event instanceof LegacyEvent);
             $result = $this->createSingleViewForExistingEvent($event);
@@ -1421,9 +1419,6 @@ class DefaultController extends TemplateHelper
             if ($this->seminar->isCanceled()) {
                 $cssClasses[] = $this->pi_getClassName('canceled');
             }
-            if ($this->seminar->isOwnerFeUser()) {
-                $cssClasses[] = $this->pi_getClassName('owner');
-            }
             $completeClass = implode(' ', $cssClasses);
 
             $this->setMarker('class_itemrow', $completeClass);
@@ -2127,24 +2122,6 @@ class DefaultController extends TemplateHelper
 
         return !$limitToAttendees
             || ($this->isLoggedIn() && $this->seminar->isUserRegistered($this->getLoggedInFrontEndUserUid()));
-    }
-
-    /**
-     * Checks whether the currently logged-in user can display the current event.
-     *
-     * When this function is called, $this->seminar must contain a seminar, and
-     * a user must be logged in at the front end.
-     */
-    private function canShowCurrentEvent(): bool
-    {
-        if (!$this->seminar->isHidden()) {
-            return true;
-        }
-        if (!$this->seminar->hasOwner()) {
-            return false;
-        }
-
-        return $this->seminar->getOwner()->getUid() === $this->getLoggedInFrontEndUserUid();
     }
 
     /**

@@ -209,16 +209,6 @@ final class TestingLegacyEvent extends LegacyEvent
     }
 
     /**
-     * Sets the UID of the owner FE user.
-     *
-     * @param int $ownerUid the UID of the owner FE user, must be >= 0
-     */
-    public function setOwnerUid(int $ownerUid): void
-    {
-        $this->setRecordPropertyInteger('owner_feuser', $ownerUid);
-    }
-
-    /**
      * Sets the file name of the image.
      *
      * @param string $fileName the name of the image, must not be empty
