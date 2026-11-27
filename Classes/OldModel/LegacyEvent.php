@@ -6,7 +6,6 @@ namespace OliverKlee\Seminars\OldModel;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\DataStructures\Collection;
-use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\ViewHelpers\PriceViewHelper;
 use OliverKlee\Seminars\Bag\EventBag;
 use OliverKlee\Seminars\Bag\OrganizerBag;
@@ -17,9 +16,7 @@ use OliverKlee\Seminars\BagBuilder\EventBagBuilder;
 use OliverKlee\Seminars\BagBuilder\OrganizerBagBuilder;
 use OliverKlee\Seminars\Domain\Model\Event\EventInterface;
 use OliverKlee\Seminars\Domain\Model\Registration\Registration as ExtbaseRegistration;
-use OliverKlee\Seminars\Mapper\FrontEndUserMapper;
 use OliverKlee\Seminars\Mapper\PlaceMapper;
-use OliverKlee\Seminars\Model\FrontEndUser;
 use OliverKlee\Seminars\Model\Place;
 use OliverKlee\Seminars\Service\RegistrationManager;
 use OliverKlee\Seminars\Templating\TemplateHelper;
@@ -2043,45 +2040,6 @@ class LegacyEvent extends AbstractTimeSpan
         }
 
         return $options;
-    }
-
-    /**
-     * Gets this event's owner (the FE user who has created this event).
-     */
-    public function getOwner(): ?FrontEndUser
-    {
-        if (!$this->hasRecordPropertyInteger('owner_feuser')) {
-            return null;
-        }
-
-        $ownerUid = $this->getRecordPropertyInteger('owner_feuser');
-        \assert($ownerUid > 0);
-
-        return GeneralUtility::makeInstance(MapperRegistry::class)->getByClassName(FrontEndUserMapper::class)
-            ->find($ownerUid);
-    }
-
-    /**
-     * Checks whether this event has an existing owner (the FE user who has
-     * created this event).
-     *
-     * @return bool TRUE if this event has an existing owner, FALSE otherwise
-     */
-    public function hasOwner(): bool
-    {
-        return $this->hasRecordPropertyInteger('owner_feuser');
-    }
-
-    /**
-     * Checks whether the logged-in FE user is the owner of this event.
-     *
-     * @return bool TRUE if a FE user is logged in and the user is the owner of this event, FALSE otherwise
-     */
-    public function isOwnerFeUser(): bool
-    {
-        $loggedInUserUid = $this->getLoggedInFrontEndUserUid();
-
-        return $loggedInUserUid > 0 && ($this->getRecordPropertyInteger('owner_feuser') === $loggedInUserUid);
     }
 
     /**
