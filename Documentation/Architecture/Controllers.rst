@@ -54,8 +54,6 @@ In ``FrontEnd/``, there are additional classes that are used by the ``DefaultCon
 +----------------------------+------------------------------------------------------------------+
 | ``seminar_list``           | List of all seminars (you don`t have to be logged-in).           |
 +----------------------------+------------------------------------------------------------------+
-| ``my_events``              | Shows the events the currently logged-in user is registered for. |
-+----------------------------+------------------------------------------------------------------+
 | ``category_list``          | List of event categories.                                        |
 +----------------------------+------------------------------------------------------------------+
 | ``topic_list``             | List of event topics.                                            |

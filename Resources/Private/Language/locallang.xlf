@@ -535,9 +535,6 @@
       <trans-unit id="seminars.pi_flexform.topic_list">
         <source>Topic List</source>
       </trans-unit>
-      <trans-unit id="seminars.pi_flexform.my_events">
-        <source>My Events</source>
-      </trans-unit>
       <trans-unit id="seminars.pi_flexform.category_list">
         <source>Category List</source>
       </trans-unit>
