@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Seminars\Hooks\Interfaces;
 
 use OliverKlee\Seminars\BagBuilder\EventBagBuilder;
-use OliverKlee\Seminars\BagBuilder\RegistrationBagBuilder;
 use OliverKlee\Seminars\FrontEnd\DefaultController;
 
 /**
@@ -33,26 +32,6 @@ interface SeminarListView extends Hook
     public function modifyEventBagBuilder(
         DefaultController $controller,
         EventBagBuilder $builder,
-        string $whatToDisplay
-    ): void;
-
-    /**
-     * Modifies the list view registration bag builder (the item collection for a "my events" list).
-     *
-     * Add or alter limitations for the selection of seminars to be shown in the
-     * list.
-     *
-     * This function will be called for "my events" lists only.
-     *
-     * @param DefaultController $controller the calling controller
-     * @param string $whatToDisplay the flavor of list view ('my_events' only?)
-     *
-     * @see AbstractBagBuilder::getWhereClausePart()
-     * @see AbstractBagBuilder::setWhereClausePart()
-     */
-    public function modifyRegistrationBagBuilder(
-        DefaultController $controller,
-        RegistrationBagBuilder $builder,
         string $whatToDisplay
     ): void;
 
