@@ -4791,7 +4791,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $hook
             ->expects(self::once())->method('modifyEventBagBuilder')
             ->with($this->subject, self::anything(), 'topic_list');
-        $hook->expects(self::never())->method('modifyRegistrationBagBuilder');
 
         $hookClass = \get_class($hook);
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][SeminarListView::class][] = $hookClass;
@@ -4815,7 +4814,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $hook
             ->expects(self::once())->method('modifyEventBagBuilder')
             ->with($this->subject, self::anything(), 'seminar_list');
-        $hook->expects(self::never())->method('modifyRegistrationBagBuilder');
 
         $hookClass = \get_class($hook);
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][SeminarListView::class][] = $hookClass;
@@ -4865,35 +4863,6 @@ final class DefaultControllerTest extends FunctionalTestCase
         $hook->expects(self::never())->method('modifyMyEventsListRow');
         $hook->expects(self::exactly(2))->method('modifyListFooter')->with($this->subject);
         $hook->expects(self::exactly(2))->method('modifyEventBagBuilder');
-        $hook->expects(self::never())->method('modifyRegistrationBagBuilder');
-
-        $hookClass = \get_class($hook);
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][SeminarListView::class][] = $hookClass;
-        GeneralUtility::addInstance($hookClass, $hook);
-
-        $this->subject->main('', []);
-    }
-
-    /**
-     * @test
-     */
-    public function listViewCallsSeminarListViewHookMethodsForMyEventsList(): void
-    {
-        $this->subject->setConfigurationValue('what_to_display', 'my_events');
-
-        $this->createLogInAndRegisterFeUser();
-
-        $hook = $this->createMock(SeminarListView::class);
-        $hook->expects(self::once())->method('modifyListHeader')->with($this->subject);
-        $hook->expects(self::once())->method('modifyListRow')->with($this->subject);
-        $hook->expects(self::once())->method('modifyMyEventsListRow')->with($this->subject);
-        $hook->expects(self::once())->method('modifyListFooter')->with($this->subject);
-        $hook->expects(self::never())->method('modifyEventBagBuilder');
-        $hook
-            ->expects(self::once())->method('modifyRegistrationBagBuilder')
-            ->with($this->subject, self::anything(), 'my_events');
-        // We don't test for the second parameter (the bag builder instance here)
-        // because we cannot access it from the outside.
 
         $hookClass = \get_class($hook);
         $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['seminars'][SeminarListView::class][] = $hookClass;

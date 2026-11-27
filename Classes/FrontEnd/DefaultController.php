@@ -1286,10 +1286,6 @@ class DefaultController extends TemplateHelper
 
         if ($builder instanceof EventBagBuilder) {
             $this->getListViewHookProvider()->executeHook('modifyEventBagBuilder', $this, $builder, $whatToDisplay);
-        } elseif ($builder instanceof RegistrationBagBuilder) {
-            $this
-                ->getListViewHookProvider()
-                ->executeHook('modifyRegistrationBagBuilder', $this, $builder, $whatToDisplay);
         }
 
         $seminarOrRegistrationBag = $builder->build();
