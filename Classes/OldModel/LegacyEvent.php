@@ -6,6 +6,7 @@ namespace OliverKlee\Seminars\OldModel;
 
 use OliverKlee\Oelib\Configuration\ConfigurationRegistry;
 use OliverKlee\Oelib\DataStructures\Collection;
+use OliverKlee\Oelib\Interfaces\Configuration;
 use OliverKlee\Oelib\Mapper\MapperRegistry;
 use OliverKlee\Oelib\ViewHelpers\PriceViewHelper;
 use OliverKlee\Seminars\Bag\EventBag;
@@ -56,6 +57,8 @@ class LegacyEvent extends AbstractTimeSpan
     protected bool $statisticsHaveBeenCalculated = false;
 
     private ?LegacyEvent $topic = null;
+
+    private ?Configuration $sharedPluginConfiguration = null;
 
     public function getTopic(): ?LegacyEvent
     {
@@ -661,8 +664,7 @@ class LegacyEvent extends AbstractTimeSpan
      */
     public function formatPrice(string $value): string
     {
-        $currency = GeneralUtility::makeInstance(ConfigurationRegistry::class)
-            ->getByNamespace('plugin.tx_seminars')->getAsString('currency');
+        $currency = $this->getSharedConfiguration()->getAsString('currency');
         if ($currency === '') {
             $currency = 'EUR';
         }
@@ -2821,5 +2823,15 @@ class LegacyEvent extends AbstractTimeSpan
         // Events with time slots should only display their time with the time slots,
         // but not as general times in order to avoid confusion.
         return !$this->hasTimeslots() && parent::hasTime();
+    }
+
+    private function getSharedConfiguration(): Configuration
+    {
+        if (!($this->sharedPluginConfiguration instanceof Configuration)) {
+            $this->sharedPluginConfiguration = GeneralUtility::makeInstance(ConfigurationRegistry::class)
+                ->getByNamespace('plugin.tx_seminars');
+        }
+
+        return $this->sharedPluginConfiguration;
     }
 }
